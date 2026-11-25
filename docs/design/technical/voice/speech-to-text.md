@@ -12,6 +12,9 @@ assistant, where this part works. It is to be confirmed in Rust.
   behind one interface, chosen in settings.
 - A local model must be enough for the system to work.
 - English first, built so that other languages can be added.
+- **It runs on the server only, for now.** Devices send audio to the
+  server. Running it on capable devices can be added later, and the design
+  must not rule that out.
 - Speech to text is not used to detect the wake word. See
   [wake-word.md](wake-word.md).
 
@@ -79,7 +82,5 @@ Assumed, needing a build to confirm:
 - Which local model is the default, given accuracy, speed on low-power
   hardware and licence.
 - Which cloud providers are supported first, beyond Deepgram.
-- Whether transcription runs on the server only, or also on capable
-  devices.
 - The silence timings, and whether a person can tune them.
 - How another language is added.

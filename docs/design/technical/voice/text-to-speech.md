@@ -12,6 +12,9 @@ assistant, where this part works. It is to be confirmed in Rust.
 - A local voice must be enough for the system to work.
 - Each [assistant](assistants.md) has its own voice.
 - English first, built so that other languages can be added.
+- **Speech is produced on the server only, for now.** Devices play the
+  audio the server sends. Producing it on capable devices can be added
+  later, and the design must not rule that out.
 - An answer is always speakable. A device without a screen gets the answer
   by voice. See [A2UI](../a2ui.md).
 
@@ -62,6 +65,4 @@ Assumed, needing a build to confirm:
 
 - Which local voices are offered, given quality and licence.
 - Which cloud providers are supported first.
-- Whether speech is produced on the server only, or also on capable
-  devices.
 - How another language is added.

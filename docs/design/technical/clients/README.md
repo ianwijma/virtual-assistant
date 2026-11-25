@@ -20,6 +20,10 @@ Status: draft.
   up and offers abilities down. See [protocol](../server/protocol.md).
 - **It is never blocked by the server.** It writes locally first and syncs
   in the background. See [data and sync](../server/data-and-sync.md).
+- **Without the server, local features keep working.** Whatever lives on
+  the device itself still works, including data that was already synced.
+  Anything that needs the assistant, voice or another device waits, and
+  shows that it is waiting.
 - **An action that needs the server shows that it is waiting.** It talks
   to the server and shows a loader or a similar sign until the answer
   arrives. The rest of the client stays usable meanwhile.
@@ -47,4 +51,4 @@ system features are untouched.
 
 ## Open questions
 
-- Which features of each client must work with no server at all.
+None at the moment.

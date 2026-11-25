@@ -55,6 +55,13 @@ and a work server. See
   The owner's machine runs Pop!_OS from before the COSMIC desktop. macOS
   and Windows come after the first release.
 
+## Without the server
+
+The launcher, window control, the local clipboard history and anything
+already synced keep working. The assistant, voice and anything that
+involves another device wait for the server, and show that they are
+waiting.
+
 ## Where its data lives
 
 | Data | Lives |
@@ -80,7 +87,6 @@ Assumed, needing a build to confirm:
 
 ## Open questions
 
-- Which features must work with no server at all.
 - Where the wake word is detected on a desktop.
 - How notifications, clipboard access, global hotkeys and window control
   work across Linux desktops on X11 and Wayland. This is research still to

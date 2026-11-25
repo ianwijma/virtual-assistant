@@ -51,10 +51,14 @@ together is not needed for now.
   [admin panel](../clients/web-admin.md). There are no configuration files
   for users.
 
+## What it runs on
+
+For the first release the server runs on Linux, on both ARM and x86
+processors. That covers small boards such as a Raspberry Pi, and ordinary
+home servers and mini PCs.
+
 ## Open questions
 
-- What the server runs on for the first release: a home server, a
-  Raspberry Pi, a container? Which processor types?
 - How it is installed and updated: a single binary, a container image, a
   package?
 - How backups are made and restored.

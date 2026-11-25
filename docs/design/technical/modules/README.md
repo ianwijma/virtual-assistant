@@ -62,6 +62,21 @@ None are designed yet. The system features that modules will expose first:
 
 The example tools are illustrations, not decisions.
 
+## First release
+
+The first release has a small set of base modules. More follow once the
+overall system and these are in place.
+
+| Module | Its tools |
+|---|---|
+| Feedback | Report a bug, suggest a feature |
+| Notifications | Send a notification or an announcement to a person or a device |
+| Timers and reminders | Set, list and cancel timers, alarms and reminders |
+| Device control | Act on a device, such as showing something on its screen or opening an app |
+
+The set may grow before the first release. Each of these needs its system
+feature to exist first.
+
 ## What exists to draw on
 
 The earlier voice assistant has about 21 modules. There a module carries
@@ -81,7 +96,8 @@ its list of modules.
 
 ## Open questions
 
-- Which modules are in the first release.
+- Timers, alarms and reminders are a system feature with no design
+  document yet. What do they cover, and where do they ring?
 - Can one tool belong to several modules, and is a module only a
   grouping, or also where a tool is written?
 - Can an assistant be given a module with some of its tools switched off?

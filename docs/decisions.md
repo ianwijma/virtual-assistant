@@ -79,3 +79,7 @@ are 25 November 2026.
 | 59 | A personal assistant is on a household device only if assigned there; nobody is tracked through the home, and presence is known only at a recognised wake word | [assistants](design/technical/voice/assistants.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 60 | A source connected through a person's own account is private to them; household things are shared by default | [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 61 | Account switching on a computer covers different people in one household and one person's accounts on different servers | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 62 | For the first release the server runs on Linux, on ARM and x86 | [server](design/technical/server/README.md) |
+| 63 | Without the server, local features and synced data keep working; the assistant, voice and anything involving another device wait and show it | [clients](design/technical/clients/README.md), [desktop](design/technical/clients/desktop.md) |
+| 64 | Speech to text and text to speech run on the server only for now; on-device speech stays possible later | [speech to text](design/technical/voice/speech-to-text.md), [text to speech](design/technical/voice/text-to-speech.md) |
+| 65 | The first release has base modules for feedback, notifications, timers and reminders, and device control; more follow | [modules](design/technical/modules/README.md) |
