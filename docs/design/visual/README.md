@@ -35,21 +35,22 @@ Each of these becomes its own file in this folder when work on it starts:
 | `assistant-visuals.md` | How an assistant appears and reacts to speech |
 | One file per client | How the look applies to the desktop, phone, admin panel and voice page |
 
-## What exists to draw on
+## A fresh start
 
-The earlier voice assistant has a look that can be reused or replaced:
-
-- a "quiet instrument" idea: warm, near-black surfaces;
-- a colour language where amber is the assistant and mint is the person;
-- 19 animated characters driven by the audio.
-
-See [the reference](../../reference/existing-voice-assistant.md).
+The identity starts fresh. Nothing visual is reused from the earlier voice
+assistant: not its characters, not its colours, not its surfaces.
 
 ## Our own look, everywhere
 
 Every client has our own look. No client imitates the look of the desktop
 or the phone it runs on, and there is no theme that does. This replaces
 the desktop brief's request to mimic the host desktop by default.
+
+## Light and dark, and no themes
+
+- There is one look, in a light and a dark form. Each client follows the
+  light or dark setting of the device it runs on.
+- A person cannot choose a theme.
 
 ## Open questions
 
@@ -60,7 +61,3 @@ the desktop brief's request to mimic the host desktop by default.
   and the admin panel.
 - Three or four words for how it should feel, and products whose look you
   admire.
-- Do the existing characters and the amber and mint colour language carry
-  over, or does the identity start fresh?
-- Can a person choose a different theme, and how far may it differ?
-- Light and dark: both, and which is the default?

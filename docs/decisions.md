@@ -162,3 +162,6 @@ are 25 November 2026.
 | 142 | The server is delivered as a single program and as a container image, and is updated from the admin panel | [server](design/technical/server/README.md) |
 | 143 | Full backups are made outside the system; the server keeps daily snapshots of things such as settings and assistants, so an admin can roll one person back | [server](design/technical/server/README.md) |
 | 144 | No data is brought over from the earlier voice assistant | [data and sync](design/technical/server/data-and-sync.md) |
+| 145 | The visual identity starts fresh; nothing visual is reused from the earlier voice assistant | [visual](design/visual/README.md) |
+| 146 | There is one look, light and dark, following the device; a person cannot choose a theme | [visual](design/visual/README.md) |
+| 147 | Visual design questions are worked on in a separate thread; the planning thread covers the technical design and how the systems work together | [visual](design/visual/README.md) |
