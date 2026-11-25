@@ -159,3 +159,6 @@ are 25 November 2026.
 | 139 | A password is never spoken and never shown on a household device | [vault](design/technical/server/vault.md) |
 | 140 | The core of a client is hand-built; feature screens and everything an assistant shows are described with A2UI | [A2UI](design/technical/a2ui.md) |
 | 141 | Saving a generated screen for reuse is not in the first release | [A2UI](design/technical/a2ui.md) |
+| 142 | The server is delivered as a single program and as a container image, and is updated from the admin panel | [server](design/technical/server/README.md) |
+| 143 | Full backups are made outside the system; the server keeps daily snapshots of things such as settings and assistants, so an admin can roll one person back | [server](design/technical/server/README.md) |
+| 144 | No data is brought over from the earlier voice assistant | [data and sync](design/technical/server/data-and-sync.md) |

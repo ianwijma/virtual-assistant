@@ -53,6 +53,11 @@ the desktop brief's request to mimic the host desktop by default.
 
 ## Open questions
 
+- Are settings screens generated from each feature's description, so
+  that one definition serves the phone app, the desktop client and the
+  admin panel? A2UI makes this possible, but one solution may not suit
+  every device. This is decided once there are visual designs of the app
+  and the admin panel.
 - Three or four words for how it should feel, and products whose look you
   admire.
 - Do the existing characters and the amber and mint colour language carry

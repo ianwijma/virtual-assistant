@@ -53,10 +53,13 @@ History is kept forever by default: clipboard items, notifications and
 other events. A person or an admin can set a limit per kind, such as 90
 days for the clipboard.
 
+## Nothing is migrated
+
+The system starts empty. No data is brought over from the earlier voice
+assistant.
+
 ## Open questions
 
 - How the log handles household data that several people can see.
 - How search stays fast over years of history. This is research still to
   do.
-- Whether there is any data to bring over from the earlier voice
-  assistant.

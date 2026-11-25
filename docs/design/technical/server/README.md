@@ -60,9 +60,23 @@ For the first release the server runs on Linux, on both ARM and x86
 processors. That covers small boards such as a Raspberry Pi, and ordinary
 home servers and mini PCs.
 
+## Installing and updating
+
+The server comes in two forms: a single self-contained program that runs
+as a service, and the same thing as a container image. Updates are
+started from the [admin panel](../clients/web-admin.md).
+
+## Backups and snapshots
+
+- **A full backup of the system is made outside it,** with whatever the
+  admin already uses to back up a machine. The server does not make one
+  itself.
+- **The server keeps daily snapshots of certain things,** such as a
+  person's settings and assistants. If someone breaks their settings or
+  an assistant, an admin can roll that one person back, without touching
+  anyone else.
+
 ## Open questions
 
-- How it is installed and updated: a single binary, a container image, a
-  package?
-- How backups are made and restored.
+- Snapshots: which things are in them, and how many days are kept.
 - Which database the server uses.

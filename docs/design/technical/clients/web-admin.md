@@ -54,5 +54,4 @@ Browsers need HTTPS. See [networking](../server/networking.md).
 
 ## Open questions
 
-- Are settings screens generated from each feature's description, as in
-  the earlier voice assistant?
+None at the moment.
