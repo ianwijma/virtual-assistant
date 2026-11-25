@@ -99,3 +99,7 @@ are 25 November 2026.
 | 79 | Unrecognised voices are served by guest assistants: assistants marked to answer anyone, with guest-level tools; there can be several | [identity and sharing](design/technical/server/identity-and-sharing.md), [assistants](design/technical/voice/assistants.md) |
 | 80 | Several AI providers can be configured, and each assistant uses exactly one; nobody overrides it per person. This replaces the single household configuration | [AI providers](design/technical/server/ai-providers.md) |
 | 81 | A subscription's command-line tool runs on the server | [AI providers](design/technical/server/ai-providers.md) |
+| 82 | An assistant that is not a guest assistant gives an unrecognised voice a short refusal, for now | [summoning](design/technical/voice/summoning.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 83 | A guest assistant that recognises the speaker acts with that person's permissions | [identity and sharing](design/technical/server/identity-and-sharing.md), [assistants](design/technical/voice/assistants.md) |
+| 84 | A module is both a grouping of tools around a subject and the place where those tools are written; core features and shared parts stay in the system | [modules](design/technical/modules/README.md) |
+| 85 | When several devices hear the wake word, the one that heard it loudest and clearest answers; the choice is a replaceable step | [summoning](design/technical/voice/summoning.md) |

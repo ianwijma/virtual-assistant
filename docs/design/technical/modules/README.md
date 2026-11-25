@@ -7,16 +7,22 @@ Status: draft. The list of modules for the first release is not decided.
 
 ## What a module is
 
-A module is a set of tools that an AI agent can call. That is all it is.
+A module is a set of tools that an AI agent can call, grouped around one
+subject. It is both the grouping and the place where those tools are
+written.
 
 - **A tool does one thing,** such as "send a test notification to this
   device" or "add a reminder".
-- **The feature behind a tool lives in the system,** not in the module.
-  Notifications are a core part of the server; a module only adds the
-  tools through which an agent uses them.
-- **The complicated parts stay in the system:** storage, settings and
-  their screens, sync, routing, permissions and sign-ins to outside
-  services. A module has none of these of its own.
+- **A module covers a subject.** A kitchen module, for example, would
+  manage the pantry ("five kilos of rice") and find recipes. It would have
+  one tool that fetches what is in the pantry and one that finds recipes
+  that can be made with it.
+- **A core feature stays in the system.** Notifications are a core part of
+  the server; a module only adds the tools through which an agent uses
+  them.
+- **The shared, complicated parts stay in the system:** storage, settings
+  and their screens, sync, routing, permissions and sign-ins to outside
+  services. A module uses these; it does not build its own.
 - **Modules are given to assistants.** Each
   [assistant](../voice/assistants.md) has the modules it may use, and the
   same module can be given to several assistants. This is how assistants
@@ -101,11 +107,12 @@ its list of modules.
 
 ## Open questions
 
+- Where does a module's own data live, such as a kitchen module's pantry:
+  is the pantry a system feature that is built first, or data the module
+  keeps through the system's storage?
 - A lists module, for lists and things a person asks the assistant to
   remember: is it in the first release, and is a list private or shared
   with the household by default?
 - Timers, alarms and reminders are a system feature with no design
   document yet. What do they cover, and where do they ring?
-- Can one tool belong to several modules, and is a module only a
-  grouping, or also where a tool is written?
 - Can an assistant be given a module with some of its tools switched off?

@@ -45,8 +45,9 @@ device. A household can have several, each a distinct character.
 - An assistant always acts with the permissions of the person it is
   talking to. See [summoning](summoning.md).
 - **A guest assistant answers anyone.** An assistant can be marked as a
-  guest assistant. It needs no recognised voice and has only guest-level
-  tools. There can be several, each with its own wake word. See
+  guest assistant. It needs no recognised voice. It works at guest level
+  for an unrecognised voice, and with the person's own permissions when
+  it recognises them. Any other assistant refuses an unrecognised voice. There can be several, each with its own wake word. See
   [identity and sharing](../server/identity-and-sharing.md).
 - **Each assistant has one AI provider,** chosen from those configured on
   the server. See [AI providers](../server/ai-providers.md).

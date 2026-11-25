@@ -80,8 +80,11 @@ voice can do things that touch nobody's private data: set a timer, ask a
 general question, ask for a joke.
 
 This is done with **guest assistants**. An assistant can be marked as a
-guest assistant: it answers anyone, recognised or not, and has only
-guest-level tools. There can be several, each with its own wake word and
+guest assistant: it answers anyone, recognised or not. For an unrecognised
+voice it has only guest-level tools. When it recognises the speaker, it
+acts with that person's permissions, so it can answer "what is my name?".
+An assistant that is not a guest assistant gives an unrecognised voice a
+short refusal. There can be several, each with its own wake word and
 its own modules. Examples are a "Hey Home" assistant for the house, and
 one whose wake word is "report feedback" and whose only job is to take a
 bug report or a suggestion. See
@@ -134,10 +137,6 @@ On a household device:
 
 ## Open questions
 
-- When an unrecognised voice uses the wake word of an assistant that is
-  not a guest assistant, what happens: no answer, or a short refusal?
-- When a recognised person talks to a guest assistant, does it stay at
-  guest level, or act with that person's permissions?
 - A household device invite: how long is it valid, for how many devices,
   and can it be withdrawn?
 - May an admin connect a source, such as a shared mailbox, for the whole

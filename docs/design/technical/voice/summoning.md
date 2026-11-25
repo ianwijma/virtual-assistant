@@ -14,9 +14,16 @@ Summoning is one explicit state machine on the server:
 2. **The speaker is identified** against enrolled voices. See
    [speaker-identification.md](speaker-identification.md).
 3. **Permissions are resolved.** The assistant acts as that person. An
-   unrecognised voice gets guest abilities.
+   unrecognised voice is answered only by a guest assistant, at guest
+   level. Any other assistant gives a short refusal, such as "Sorry, I
+   don't recognise your voice", and does nothing. The refusal is how it
+   works for now: a voice can go unrecognised for innocent reasons, such
+   as distance or a mask, so this will be looked at again.
 4. **One device answers.** If several devices heard the wake word, exactly
-   one responds.
+   one responds: the one that heard it loudest and clearest, which is
+   usually the one the person is nearest to. The choice is one replaceable
+   step, so that a weighting per device can be added later, for a device
+   that hears well from a corner.
 
 Every decision to wake or to ignore is logged with its reason and shown in
 the [admin panel](../clients/web-admin.md).
@@ -52,8 +59,6 @@ This leads to four rules:
 ## Open questions
 
 - The states and transitions themselves.
-- Which device answers when several hear the wake word: the loudest, the
-  first, the nearest?
 - Whether a follow-up without the wake word is allowed, and for how long.
 - How sure speaker identification must be before personal data is spoken,
   and what the fallback is: a PIN, or a confirmation on the phone?
