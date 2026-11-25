@@ -149,3 +149,4 @@ are 25 November 2026.
 | 129 | Each person gets a recovery sheet as a PDF, like 1Password's emergency kit, and an admin should be able to help recover a key | [vault](design/technical/server/vault.md) |
 | 130 | Browsers do not get at a person's sensitive data in the first release | [vault](design/technical/server/vault.md) |
 | 131 | Assistants should be able to use the clipboard and passwords. This reopens decisions 122 and 123: whether the server can read a person's sensitive data is an open question again | [vault](design/technical/server/vault.md), [clipboard](design/technical/server/clipboard.md) |
+| 132 | An assistant asks before searching a person's clipboard; for passwords it asks twice, once to search and once before a password is decrypted | [vault](design/technical/server/vault.md), [clipboard](design/technical/server/clipboard.md), [AI providers](design/technical/server/ai-providers.md) |

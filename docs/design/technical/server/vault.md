@@ -22,7 +22,16 @@ both are encrypted.
   notifications and lists, is not, because the server has to read it.
 - **The vault is also a password manager,** in the first release.
   Passwords can be shared with the household.
-- **Assistants should be able to use the clipboard and passwords.**
+- **An assistant can use the clipboard and passwords, but only with the
+  person's approval:**
+
+  | Data | Approval |
+  |---|---|
+  | Clipboard | The assistant first asks whether it may search the clipboard |
+  | Passwords | Two steps: it asks whether it may search the passwords, and then asks again before a password is decrypted |
+
+  These are the first actions that need a confirmation. Other tools do
+  not ask, for now. See [AI providers](ai-providers.md).
 - **Each person gets a recovery sheet:** a PDF with their key and the
   other details needed to get back in, like the emergency kit of
   1Password.
@@ -39,6 +48,8 @@ both are encrypted.
   different directions: the server should not know the content,
   assistants should be able to use it, and an admin should be able to
   recover it. The answer may differ for the clipboard and for passwords.
+- Where the person gives an approval: by voice to the device they are
+  talking to, or on one of their own devices?
 - What an assistant may do with a password: say it, fill it in on a
   device, or use it to sign in somewhere by itself?
 - How passwords are shared with the household: one shared vault, or
