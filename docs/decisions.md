@@ -144,3 +144,8 @@ are 25 November 2026.
 | 124 | The vault is also a password manager, using the same personal keys | [vault](design/technical/server/vault.md) |
 | 125 | A fixed spoken sentence comes from the system feature, with reusable audio; the AI model words anything that is raw data, needs character or may lead to conversation | [A2UI](design/technical/a2ui.md), [text to speech](design/technical/voice/text-to-speech.md) |
 | 126 | The voice page is spoken to by default, can show the conversation as live text, and can be chatted with by typing, without spoken answers | [voice page](design/technical/clients/web-voice.md) |
+| 127 | Only the clipboard and passwords are a person's sensitive data; anything an assistant must read by itself stays readable by the server | [vault](design/technical/server/vault.md) |
+| 128 | The password manager is in the first release, and passwords can be shared with the household | [vault](design/technical/server/vault.md) |
+| 129 | Each person gets a recovery sheet as a PDF, like 1Password's emergency kit, and an admin should be able to help recover a key | [vault](design/technical/server/vault.md) |
+| 130 | Browsers do not get at a person's sensitive data in the first release | [vault](design/technical/server/vault.md) |
+| 131 | Assistants should be able to use the clipboard and passwords. This reopens decisions 122 and 123: whether the server can read a person's sensitive data is an open question again | [vault](design/technical/server/vault.md), [clipboard](design/technical/server/clipboard.md) |

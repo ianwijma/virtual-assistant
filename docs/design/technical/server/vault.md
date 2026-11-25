@@ -1,43 +1,52 @@
 # Vault
 
 The one place where sensitive data is kept: the system's own secrets, and
-each person's encrypted data. Part of [the server design](README.md).
+each person's most sensitive data. Part of [the server design](README.md).
 
-Status: draft. The outline is decided; the cryptography is not.
+Status: draft. The outline is decided. Who can read a person's sensitive
+data, and the cryptography, are not.
 
 ## Design
 
 The vault holds two kinds of thing. Both are stored on the server, and
-both are encrypted, but they differ in who can read them.
+both are encrypted.
 
-| Kind | Examples | Who can read it |
-|---|---|---|
-| System secrets | Keys and sign-ins of the [AI providers](ai-providers.md) and cloud speech providers, the mail account for sign-in codes, an admin's GitHub token, [email](email.md) credentials | The server, which uses them when needed |
-| A person's encrypted data | Their [clipboard](clipboard.md) history, their passwords | Only that person's devices |
+| Kind | Examples |
+|---|---|
+| System secrets | Keys and sign-ins of the [AI providers](ai-providers.md) and cloud speech providers, the mail account for sign-in codes, an admin's GitHub token, [email](email.md) credentials |
+| A person's sensitive data | Their [clipboard](clipboard.md) history, their passwords |
 
-- **A person's encrypted data is encrypted and decrypted on their
-  devices,** with keys that person holds. The server only stores it. The
-  server cannot read it, and so neither can an admin or an assistant.
-- **The same keys serve everything of that person:** the clipboard
-  history, and a password manager.
-- **The person stays in control.** Their encrypted data is used by
-  another part of the system, such as an assistant, only when they allow
-  it. It is then sent from a device that holds the key, which is the
-  preferred way, so the server never learns the content.
+- **The server uses system secrets when it needs them.**
+- **Only the clipboard and passwords are a person's sensitive data.**
+  Anything an assistant must read on its own, such as email,
+  notifications and lists, is not, because the server has to read it.
+- **The vault is also a password manager,** in the first release.
+  Passwords can be shared with the household.
+- **Assistants should be able to use the clipboard and passwords.**
+- **Each person gets a recovery sheet:** a PDF with their key and the
+  other details needed to get back in, like the emergency kit of
+  1Password.
+- **An admin should be able to help a person recover their key.**
+- **Browsers do not get at a person's sensitive data in the first
+  release.** The admin panel and the voice page do not show clipboard
+  history or passwords; the desktop client and the phone app do.
 - Every part of the system that needs a secret keeps it here, and nowhere
   else.
 
 ## Open questions
 
+- Can the server read a person's sensitive data? Three wishes pull in
+  different directions: the server should not know the content,
+  assistants should be able to use it, and an admin should be able to
+  recover it. The answer may differ for the clipboard and for passwords.
+- What an assistant may do with a password: say it, fill it in on a
+  device, or use it to sign in somewhere by itself?
+- How passwords are shared with the household: one shared vault, or
+  sharing item by item?
 - How a person's keys are made, how a new device of theirs gets them, and
-  how they are recovered when every device is lost. There are no
-  passwords to derive a key from. This is research still to do.
-- Which data is a person's encrypted data, beyond the clipboard and
-  passwords: email, notifications, lists?
-- The web clients run in a browser. Do the admin panel and the voice page
-  hold a person's keys?
-- Is the password manager in the first release, and can passwords be
-  shared with the household?
+  how recovery works. There are no account passwords to derive a key
+  from. This is research still to do, and it depends on the first
+  question.
 - How system secrets are encrypted, and where that key is kept, so that a
   stolen disk or a copied backup gives nothing away. This is research
   still to do.
