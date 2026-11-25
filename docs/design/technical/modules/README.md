@@ -23,6 +23,8 @@ written.
 - **The shared, complicated parts stay in the system:** storage, settings
   and their screens, sync, routing, permissions and sign-ins to outside
   services. A module uses these; it does not build its own.
+- **A module is given whole.** An assistant has all of a module's tools or
+  none of them, for now. Switching single tools off may come later.
 - **Modules are given to assistants.** Each
   [assistant](../voice/assistants.md) has the modules it may use, and the
   same module can be given to several assistants. This is how assistants
@@ -112,4 +114,3 @@ its list of modules.
 
 ## Open questions
 
-- Can an assistant be given a module with some of its tools switched off?

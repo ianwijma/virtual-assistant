@@ -128,3 +128,6 @@ are 25 November 2026.
 | 108 | A timer or alarm rings where it was set, and can be asked to ring elsewhere | [timers](design/technical/server/timers.md) |
 | 109 | A notification that matches no rule falls back to its owner's phone; a household one goes to the admin's phone and the history | [notifications and routing](design/technical/server/notifications-and-routing.md) |
 | 110 | Quiet hours exist per person and per device | [notifications and routing](design/technical/server/notifications-and-routing.md) |
+| 111 | Every personal device shows the notification centre, with personal and household notifications, and a notification is controlled from anywhere | [notifications and routing](design/technical/server/notifications-and-routing.md) |
+| 112 | An assistant is given a module whole; single tools are not switched off, for now | [modules](design/technical/modules/README.md) |
+| 113 | A feedback report arrives in the admin panel first; an admin is notified, reviews a preview of the GitHub issue and creates it under their own account with their own token | [feedback](design/technical/server/feedback.md) |

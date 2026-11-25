@@ -17,16 +17,21 @@ release.
 ## Design
 
 - Every app has "Report a bug" and "Suggest a feature".
-- The report goes to the household server, and the server files the
-  GitHub issue. No app carries a GitHub credential.
+- **A report goes to the admin panel first.** It is kept on the household
+  server and nothing leaves the house yet.
+- **An admin is notified** that a report or a suggestion has arrived.
+- **An admin reviews it** in the
+  [admin panel](../clients/web-admin.md), and sees a preview of the
+  GitHub issue exactly as it will be created. The repository is public,
+  and logs can contain email subjects or clipboard text.
+- **The admin creates the issue,** and it is filed under their own GitHub
+  account. Each admin enters their own GitHub token for this. No app
+  carries a GitHub credential.
+- **The admin panel explains how** to make a GitHub account and a token.
 - Attached automatically: app version, platform, device type and recent
   logs.
-- The person sees exactly what will be sent and can edit it first. The
-  repository is public, and logs can contain email subjects or clipboard
-  text.
-- Reports queue on the server until there is internet.
-- Feedback has its own screen in the
-  [admin panel](../clients/web-admin.md).
+- A report waits on the server until an admin sends it, and until there
+  is internet.
 
 ## What exists to draw on
 
@@ -42,9 +47,5 @@ Its repository name is hard-coded, which this design should avoid.
 
 ## Open questions
 
-- How the server signs in to GitHub: a token the admin enters, a relay
-  the project hosts, or a prefilled link only?
-- Is a report always reviewed by a person before it is sent, and by whom:
-  the reporter, or an admin?
 - May any member file a report, including by voice?
 - How duplicates are avoided.

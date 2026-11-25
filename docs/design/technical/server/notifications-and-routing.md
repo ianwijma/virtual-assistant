@@ -21,6 +21,14 @@ Status: draft.
   so it shows the popup at once. It then forwards the notification to the
   server, where it is routed like any other and kept in history.
 
+## One notification centre, on every personal device
+
+- Every personal device shows the notification centre: the person's own
+  notifications and the household's.
+- **Notifications are controlled from anywhere.** What a person does to a
+  notification on one device, such as dismissing it, holds on all of
+  them. It is one system, not a set of separate inboxes.
+
 ## Routing
 
 - Each person configures where their own notifications go.
@@ -69,7 +77,7 @@ devices and to personal devices.
 
 ## Open questions
 
-- Which actions can be taken on a notification from another device
-  (dismiss, reply, open), and what if the source device is off?
+- Which notifications can be replied to or opened from another device,
+  and what happens when the source device is off.
 - How the "copy the login code" behaviour works: on the server, on the
   desktop, or both.
