@@ -21,6 +21,12 @@ This project is in planning. There is no code yet.
   write it into the design file it belongs to, remove the matching open
   question, and add a line to `docs/decisions.md`. Do not append review
   notes or history to a design document.
+- During implementation, getting things done comes before thorough
+  testing and validation. The aim is to reach a minimum viable product as
+  soon as possible; fixes and hardening come after it. Write the tests a
+  change needs to be trusted, and no more. Do not add broad test suites,
+  extra validation passes or polish that slows the path to a working
+  product.
 - `docs/sources/` is never edited.
 - Work goes through pull requests into `develop`. `main` receives releases.
 - The licence is GPLv3. Every dependency, model and voice must allow use in
