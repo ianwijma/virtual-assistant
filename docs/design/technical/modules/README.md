@@ -82,6 +82,7 @@ overall system and these are in place.
 | Feedback | Report a bug, suggest a feature |
 | Notifications | Send a notification or an announcement to a person or a device |
 | Timers and reminders | Set, list and cancel timers, alarms and reminders |
+| Lists | Add to, read and change lists; remember something on request |
 | Device control | Act on a device, such as showing something on its screen or opening an app |
 
 There is no Home Assistant integration. When smart-home control is
@@ -111,9 +112,6 @@ its list of modules.
 
 ## Open questions
 
-- A lists module, for lists and things a person asks the assistant to
-  remember: is it in the first release, and is a list private or shared
-  with the household by default?
 - Timers, alarms and reminders are a system feature with no design
   document yet. What do they cover, and where do they ring?
 - Can an assistant be given a module with some of its tools switched off?

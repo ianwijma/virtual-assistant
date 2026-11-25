@@ -10,6 +10,7 @@ assistant, where this part works. It is to be confirmed in Rust.
 - Providers are modular and configurable: local voices and cloud ones
   behind one interface, chosen in settings.
 - A local voice must be enough for the system to work.
+- The first cloud providers are ElevenLabs and Cartesia.
 - Each [assistant](assistants.md) has its own voice.
 - English first, built so that other languages can be added.
 - **Speech is produced on the server only, for now.** Devices play the
@@ -64,5 +65,4 @@ Assumed, needing a build to confirm:
 ## Open questions
 
 - Which local voices are offered, given quality and licence.
-- Which cloud providers are supported first.
 - How another language is added.

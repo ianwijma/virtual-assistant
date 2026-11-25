@@ -11,7 +11,12 @@ Status: draft. Nothing like this exists in the earlier voice assistant.
   the utterance is compared with enrolled voices.
 - The result decides whose permissions the assistant uses.
 - **A person enrols by recording the wake words** of the assistants they
-  use. See [wake word](wake-word.md).
+  use. See [wake word](wake-word.md). They can do it on any of their
+  devices that has a microphone: the phone app, the desktop client or a
+  voice page.
+- **Voice data stays on the server.** The recordings and the voiceprint
+  made from them are kept there and never leave it. A person can delete
+  their own at any time, and they are then no longer recognised.
 - An unknown or uncertain voice is treated as unrecognised. There is no
   "probably this person" level. If recognition is not good enough, it is
   improved; it is kept as a part that can be replaced.
@@ -38,7 +43,6 @@ Assumed, needing a build to confirm:
 
 ## Open questions
 
-- On which device a person records the wake words, how many recordings
-  are needed, and whether a new wake word means recording again.
+- How many recordings are needed, and whether a new wake word means
+  recording again.
 - The level of certainty at which a voice counts as recognised.
-- Where voice data is stored, and how it is removed.

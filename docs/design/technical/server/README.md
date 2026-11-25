@@ -29,6 +29,7 @@ and tablet app, the admin panel and the voice page.
 | Feedback: bug reports and feature suggestions | [feedback.md](feedback.md) |
 | Email | [email.md](email.md) |
 | Clipboard history and sharing | [clipboard.md](clipboard.md) |
+| Lists, and remembering on request | [lists.md](lists.md) |
 | Modules: the sets of tools given to assistants | [../modules/README.md](../modules/README.md) |
 | Screens sent to devices | [../a2ui.md](../a2ui.md) |
 

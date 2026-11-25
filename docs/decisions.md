@@ -120,3 +120,7 @@ are 25 November 2026.
 | 100 | Tags are never shown or spoken; whether a device shows a character is a capability, and without it character tags are not offered to the model and are removed if returned | [reply tags](design/technical/voice/reply-tags.md), [protocol](design/technical/server/protocol.md) |
 | 101 | "Stop" while something rings or while the assistant speaks, and "snooze" on an alarm, work without the wake word | [summoning](design/technical/voice/summoning.md) |
 | 102 | An assistant has a list of wake words chosen by the household, with room for other spellings; people record the wake words, and the recordings are used to recognise them | [wake word](design/technical/voice/wake-word.md), [speaker identification](design/technical/voice/speaker-identification.md) |
+| 103 | A person records the wake words on any of their devices with a microphone | [speaker identification](design/technical/voice/speaker-identification.md) |
+| 104 | Voice recordings and voiceprints stay on the server, and a person can delete their own | [speaker identification](design/technical/voice/speaker-identification.md) |
+| 105 | The first cloud speech providers are Deepgram for speech to text, and ElevenLabs and Cartesia for text to speech | [speech to text](design/technical/voice/speech-to-text.md), [text to speech](design/technical/voice/text-to-speech.md) |
+| 106 | Lists are a system feature with a module in the first release | [lists](design/technical/server/lists.md), [modules](design/technical/modules/README.md) |
