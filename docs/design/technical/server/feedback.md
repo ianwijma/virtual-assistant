@@ -17,6 +17,9 @@ release.
 ## Design
 
 - Every app has "Report a bug" and "Suggest a feature".
+- **Anyone may file one:** any member, from an app or by voice, and also
+  an unrecognised voice through a guest assistant. Everything waits for
+  an admin's review.
 - **A report goes to the admin panel first.** It is kept on the household
   server and nothing leaves the house yet.
 - **An admin is notified** that a report or a suggestion has arrived.
@@ -47,5 +50,4 @@ Its repository name is hard-coded, which this design should avoid.
 
 ## Open questions
 
-- May any member file a report, including by voice?
 - How duplicates are avoided.

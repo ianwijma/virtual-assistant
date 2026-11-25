@@ -9,6 +9,8 @@ Status: draft. Only the outline is decided.
 
 - Lists are a system feature in the first release. Their data lives on
   the server.
+- **An entry is like a note in Google Keep.** It is either a list of
+  items that can be ticked off, or plain text.
 - A lists [module](../modules/README.md) gives an assistant the tools to
   use them, such as adding an item or reading a list out.
 - "Remember this for me" is handled here. It is how an assistant keeps
@@ -19,6 +21,4 @@ Status: draft. Only the outline is decided.
 
 ## Open questions
 
-- What a list can hold: plain items, amounts, check marks, notes?
-- Is "remember this" a list like any other, or a separate kind of note?
 - Where lists are shown and edited in each client.

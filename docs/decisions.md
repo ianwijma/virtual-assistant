@@ -131,3 +131,7 @@ are 25 November 2026.
 | 111 | Every personal device shows the notification centre, with personal and household notifications, and a notification is controlled from anywhere | [notifications and routing](design/technical/server/notifications-and-routing.md) |
 | 112 | An assistant is given a module whole; single tools are not switched off, for now | [modules](design/technical/modules/README.md) |
 | 113 | A feedback report arrives in the admin panel first; an admin is notified, reviews a preview of the GitHub issue and creates it under their own account with their own token | [feedback](design/technical/server/feedback.md) |
+| 114 | Timers and alarms ring on a device; a reminder is a notification at a set time, routed like any other; alarms and reminders can repeat | [timers](design/technical/server/timers.md) |
+| 115 | A timer or alarm whose device is off falls back like a notification: to the setter's phone, or to other household devices | [timers](design/technical/server/timers.md) |
+| 116 | A list entry is like a Google Keep note: a list of items to tick off, or plain text | [lists](design/technical/server/lists.md) |
+| 117 | Anyone may file feedback, including an unrecognised voice through a guest assistant | [feedback](design/technical/server/feedback.md) |
