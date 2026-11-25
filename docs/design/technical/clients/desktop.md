@@ -11,6 +11,14 @@ One launcher application in the style of Raycast, opened by a global
 hotkey, with views inside it. It is a personal device: it belongs to one
 person and is an extension of the rest of the household's system.
 
+## Accounts
+
+A computer can hold more than one account. A person switches between them
+with a short passcode. The accounts can belong to different people in the
+household, or to one person on different servers, such as a home server
+and a work server. See
+[identity and sharing](../server/identity-and-sharing.md).
+
 ## Views and features
 
 - **Launcher:** start applications and reach everything else.
@@ -80,4 +88,3 @@ Assumed, needing a build to confirm:
 - The numbers that define "snappy", and the tests for them.
 - The list of actions a shortcut can be bound to, and how the shortcut
   system works.
-- Whether several people can use one computer.

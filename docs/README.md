@@ -6,7 +6,7 @@
 | [design/technical/](design/technical/README.md) | How the system is built, one subject per file | Yes, kept current |
 | [design/visual/](design/visual/README.md) | How the system looks and feels | Yes, kept current |
 | [decisions.md](decisions.md) | The log of decisions, each with the design document it is written into | Append only |
-| [open-questions.md](open-questions.md) | Index of the open questions, which live in each design file | Yes |
+| [open-questions.md](open-questions.md) | Every open question in one list, for the owner to answer from | Yes |
 | [reference/existing-voice-assistant.md](reference/existing-voice-assistant.md) | Findings from the earlier voice assistant project | Rarely |
 | [sources/](sources/) | The original brief and design conversation, unedited | Never |
 

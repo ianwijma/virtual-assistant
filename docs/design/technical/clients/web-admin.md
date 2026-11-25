@@ -23,6 +23,10 @@ fulfils "a screen for every setting".
 - The log of summoning decisions, with the reason for each.
 - The log of admin access to other people's data.
 
+A person signs in with their email address and password. It also holds
+the settings of devices that have no settings screen of their own, such as
+whether a tablet in kiosk mode listens for a wake word.
+
 ## How it is built
 
 Rust compiled to WebAssembly, using Leptos.
@@ -34,6 +38,5 @@ Browsers need HTTPS. See [networking](../server/networking.md).
 - Is the admin panel only for admins, or does every member use it for
   their own settings?
 - Is first-run setup done here, and what does it cover?
-- How a person signs in to it.
 - Are settings screens generated from each feature's description, as in
   the earlier voice assistant?

@@ -37,6 +37,11 @@ the fast path:
   so there are few conflicts.
 - Settings use last-writer-wins.
 
+## Removing data
+
+Removing a person is a soft deletion. Their data is marked as removed and
+is not erased at once.
+
 ## When the server is down
 
 A device keeps working from its cache. Server data is read-only until the
@@ -46,7 +51,6 @@ connection returns.
 
 - How the log handles household data that several people can see.
 - How long history is kept, and how old events are trimmed.
-- What happens to a person's data when they are removed.
 - How search stays fast over years of history. This is research still to
   do.
 - Whether there is any data to bring over from the earlier voice

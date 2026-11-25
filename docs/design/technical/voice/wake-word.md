@@ -8,6 +8,12 @@ Status: draft. The detector is not chosen.
 ## Design
 
 - Each assistant has a wake word, such as "Hey Jeff".
+- **Listening for a wake word is a setting of the device.** It is switched
+  on for a device, and that device then listens for the wake words of the
+  [assistants](assistants.md) assigned to it.
+- A device with its own settings screen, such as the desktop client, sets
+  this itself. A device without one, such as a tablet in kiosk mode, is set
+  in the [admin panel](../clients/web-admin.md).
 - Detection is the first step of [summoning](summoning.md).
 - Where detection runs depends on the device:
 

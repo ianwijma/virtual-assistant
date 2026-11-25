@@ -61,3 +61,16 @@ are 25 November 2026.
 | 41 | Keyboard shortcuts are per device, kept on that device, not server-wide | [desktop](design/technical/clients/desktop.md) |
 | 42 | A new feature is built into the system first; a module then adds the tools for it | [modules](design/technical/modules/README.md) |
 | 43 | An action that needs the server, including one started by a shortcut, talks to the server and shows a loader or a similar sign while it waits | [clients](design/technical/clients/README.md), [desktop](design/technical/clients/desktop.md) |
+| 44 | Every person has an account on the server and signs in with an email address and a password | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 45 | Once a household device recognises a person's voice, it can give that person their own information | [identity and sharing](design/technical/server/identity-and-sharing.md), [speaker identification](design/technical/voice/speaker-identification.md) |
+| 46 | Listening for a wake word is a setting of the device; a device without its own settings is set in the admin panel | [wake word](design/technical/voice/wake-word.md) |
+| 47 | Assistants are assigned to chosen devices or to all devices, and people can create their own assistants | [assistants](design/technical/voice/assistants.md) |
+| 48 | An assistant can act on or send to another device; the other person does not have to accept for now | [assistants](design/technical/voice/assistants.md) |
+| 49 | The phone and tablet app is one app; at install it is set up as a personal device or as a household device, each with its own sign-in flow | [mobile](design/technical/clients/mobile.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 50 | A computer can hold several accounts, switched with a short passcode | [identity and sharing](design/technical/server/identity-and-sharing.md), [desktop](design/technical/clients/desktop.md) |
+| 51 | What guests, children and unrecognised voices may do is configurable; the starting point is things that touch nobody's private data | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 52 | Household things, such as a shopping list, are shared across the household by default; a share can be to named people or to the household | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 53 | An assistant acting for a person can read what others have shared with that person | [identity and sharing](design/technical/server/identity-and-sharing.md), [assistants](design/technical/voice/assistants.md) |
+| 54 | One server per household; another household or a workplace is a separate server, and a person has an account on each; linking servers is not needed for now | [server](design/technical/server/README.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 55 | Removing a person is a soft deletion | [data and sync](design/technical/server/data-and-sync.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 56 | `docs/open-questions.md` is the full list of open questions; a new question raised by an answer is added there, not asked in conversation | [design](design/README.md) |

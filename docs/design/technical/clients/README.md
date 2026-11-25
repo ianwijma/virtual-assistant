@@ -10,7 +10,7 @@ Status: draft.
 | Client | Document | Kind of device | First release |
 |---|---|---|---|
 | Desktop client | [desktop.md](desktop.md) | Personal | Linux; macOS and Windows after |
-| Phone and tablet app | [mobile.md](mobile.md) | Personal, or household in kiosk mode | Android; iOS after, planned for |
+| Phone and tablet app | [mobile.md](mobile.md) | One app, set up as personal or as household | Android; iOS after, planned for |
 | Admin panel | [web-admin.md](web-admin.md) | A web application | Yes |
 | Voice page | [web-voice.md](web-voice.md) | A light web page | Yes |
 
@@ -47,5 +47,4 @@ system features are untouched.
 
 ## Open questions
 
-- Is the phone and tablet app one app with a household mode, or two apps?
 - Which features of each client must work with no server at all.

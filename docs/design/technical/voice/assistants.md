@@ -16,9 +16,20 @@ device. A household can have several, each a distinct character.
 | Abilities | The [modules](../modules/README.md) it has. A module is a set of tools, and the same module can be given to several assistants |
 | Scope | The whole household, or one person |
 
+- **Assistants are assigned to devices:** to chosen devices, or to all of
+  them. A device answers only for the assistants assigned to it.
+- **People can create their own assistants,** and configure them as they
+  like.
+- **An assistant can act on another device,** such as "show it on my
+  desktop" or "send this to my partner's phone". The other person does not
+  have to accept for now; that can be added later.
 - An assistant always acts with the permissions of the person it is
   talking to. See [summoning](summoning.md).
-- An unrecognised voice gets guest abilities only.
+- An unrecognised voice gets guest abilities only. What those are is
+  configurable. See
+  [identity and sharing](../server/identity-and-sharing.md).
+- An assistant acting for a person can read what others have shared with
+  that person.
 - On a device with a screen, an assistant can answer with a screen. On a
   device without one, it answers by voice. See [A2UI](../a2ui.md).
 - The visual side of an assistant belongs to
@@ -32,13 +43,9 @@ designed fresh in [summoning](summoning.md).
 
 ## Open questions
 
-- Does a wake word belong to an assistant everywhere, or can a device
-  choose which assistants it listens for?
-- Is there always a household assistant, and can each person also have
-  personal ones?
-- Does a personal assistant follow its person to a household device once
-  their voice is recognised?
+- Is there always a household assistant?
 - Does each person have a private memory with an assistant?
-- Can an assistant act on a device other than the one spoken to, such as
-  "show it on my desktop" or "send this to my partner's phone"? Must the
-  other person accept?
+- Who may assign an assistant to a device: can a person put their own
+  assistant on a household device, or only an admin?
+- Which devices an assistant may act on: only the speaker's own, or any
+  device in the household?

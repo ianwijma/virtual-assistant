@@ -13,6 +13,10 @@ is planned for from the start.
 | Personal | A person's phone | Their notifications, shared clipboard and assistants. It also receives household events, such as a broadcast, and can be targeted directly |
 | Household | A tablet in a room, in kiosk mode | A voice device for everyone, with a screen |
 
+It is one app. When it is installed, the person chooses to set it up as a
+personal device or as a household device, and each choice has its own
+sign-in flow.
+
 A second-hand tablet is the intended household device: an iPad or an
 Android tablet, set up once and left running.
 
@@ -29,6 +33,8 @@ Android tablet, set up once and left running.
 
 ## Personal use
 
+- A person signs in with their email address and password. See
+  [identity and sharing](../server/identity-and-sharing.md).
 - The phone cannot read the clipboard in the background. It uses a share
   action, a shortcut or a keyboard. See
   [clipboard](../server/clipboard.md).
@@ -43,11 +49,7 @@ exist for both.
 
 ## Open questions
 
-- One app with a household mode, or two apps: a household app and a
-  personal app?
-- Who may turn a device into a household device.
-- How a person signs in on their phone. See
-  [identity and sharing](../server/identity-and-sharing.md).
+- What the household set-up flow asks for, and who may complete it.
 - How notifications reach a phone when the app is closed, without a cloud
   push service.
 - Building and publishing for iOS needs a Mac and an Apple developer

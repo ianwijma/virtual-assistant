@@ -32,6 +32,12 @@ and tablet app, the admin panel and the voice page.
 | Modules: the sets of tools given to assistants | [../modules/README.md](../modules/README.md) |
 | Screens sent to devices | [../a2ui.md](../a2ui.md) |
 
+## One server per household
+
+A household has one server. Another household, or a workplace, runs its
+own separate server, and a person has an account on each. Linking servers
+together is not needed for now.
+
 ## Rules for the server
 
 - **It is the default home for data.** See
@@ -52,6 +58,4 @@ and tablet app, the admin panel and the voice page.
 - How it is installed and updated: a single binary, a container image, a
   package?
 - How backups are made and restored.
-- Whether a household has exactly one server, and whether a person can
-  belong to more than one household.
 - Which database the server uses.

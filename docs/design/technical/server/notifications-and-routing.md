@@ -35,7 +35,8 @@ Status: draft.
 
 A household device says only who a personal notification is for, such as
 "Ian, you have a new email". The content stays on the person's own
-devices. Household notifications, such as a broadcast, go to household
+devices. When that person is recognised and asks, the device can give
+them the content. Household notifications, such as a broadcast, go to household
 devices and to personal devices.
 
 ## When the server is down

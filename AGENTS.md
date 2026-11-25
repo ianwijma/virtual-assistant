@@ -9,8 +9,12 @@ This project is in planning. There is no code yet.
 - This is a clean rewrite in Rust. The earlier voice assistant
   (`personal-voice-assistance`) is a reference only. Do not port its code or
   copy its summoning rules.
-- Do not decide open questions on your own. Each design file ends with its
-  open questions, and `docs/open-questions.md` is the index; ask the owner.
+- Do not decide open questions on your own. `docs/open-questions.md` is
+  the full list the owner answers from, and each question also sits at the
+  end of its design file. Keep the two in step.
+- When an answer raises a new question, or you had to interpret it, add
+  the question to `docs/open-questions.md` and its design file. Do not ask
+  the owner to clarify in conversation.
 - Keep one subject per file. Split a file that grows past one subject, and
   add new files to their folder's `README.md`.
 - What a design file states is decided. When the owner decides something,

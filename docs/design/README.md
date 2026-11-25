@@ -62,8 +62,10 @@ Apple ecosystem, but local and self-owned, and installable on any device.
   list of its files.
 - **Each file has the same shape:** what it covers, the design, then
   "Verified and assumed" where it applies, then "Open questions".
-- **Open questions live in the file they belong to.**
-  [../open-questions.md](../open-questions.md) is the index of them.
+- **Open questions sit at the end of the file they belong to,** and all of
+  them are listed in [../open-questions.md](../open-questions.md), which is
+  the document the owner answers from. A new question raised by an answer
+  goes into both.
 - **Decisions live in the design.** What a document states is decided.
   What is not decided is under its "Open questions".
 - **Answering a question** means removing it from "Open questions",
