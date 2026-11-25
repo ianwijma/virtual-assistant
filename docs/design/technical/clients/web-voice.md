@@ -27,10 +27,15 @@ Assumed, needing a build to confirm:
 - Detecting the wake word on the server scales to several pages on a
   low-power box.
 
+## Personal or household
+
+When the page is opened, the person chooses to use it as a personal
+device or as a household device, as in the
+[phone app](mobile.md). Each choice follows the same flow as there: a
+personal page is signed in with an email address and a code, and a
+household page is added with an admin's invite and then approved. See
+[identity and sharing](../server/identity-and-sharing.md).
+
 ## Open questions
 
-- Is a voice page a household device, a personal one, or either,
-  depending on how it was opened?
-- Does it need a sign-in or pairing? In the earlier voice assistant the
-  voice page had no login at all.
 - Can it be typed to as well as spoken to?

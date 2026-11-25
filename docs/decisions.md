@@ -87,3 +87,7 @@ are 25 November 2026.
 | 67 | Only an admin adds a household device: a shareable invite code or QR code registers the device, and an admin then approves it | [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 68 | There are no passwords; a person signs in with their email address and a one-time code sent to it. This replaces the password in decision 44 | [identity and sharing](design/technical/server/identity-and-sharing.md), [mobile](design/technical/clients/mobile.md), [admin panel](design/technical/clients/web-admin.md) |
 | 69 | Every member manages their own settings, in the phone app first, and also in the desktop client and the admin panel; an admin also manages the household and the server | [admin panel](design/technical/clients/web-admin.md), [mobile](design/technical/clients/mobile.md) |
+| 70 | Sign-in codes are sent through a mail account the admin enters; a relay hosted by the project may come later | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 71 | Without internet, a new device is signed in with a code from an already signed-in device or one an admin issues; otherwise it is not possible | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 72 | First-run setup of a server is done in the admin panel | [admin panel](design/technical/clients/web-admin.md) |
+| 73 | A voice page is set up as personal or household when opened, with the same flows as the phone app | [voice page](design/technical/clients/web-voice.md) |

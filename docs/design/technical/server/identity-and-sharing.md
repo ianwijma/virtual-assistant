@@ -15,6 +15,15 @@ address, the server sends a one-time code to it, and they enter that code.
 The short passcode for switching accounts on a computer is a separate,
 local thing.
 
+- **The server sends the codes through a mail account the admin enters**
+  during first-run setup. A relay hosted by the project may come later; it
+  is not built first, because abuse could get it blocked for everyone.
+- **Without internet no email arrives.** A person can then sign in a new
+  device with a code from a device where they are already signed in, or
+  with a code an admin issues for them. If neither is available, they
+  cannot sign in until the internet is back. Devices that are already
+  signed in keep working.
+
 - **Admin:** manages people, devices and modules.
 - **Member:** an ordinary person in the household.
 - **Restricted:** for children and guests.
@@ -124,10 +133,6 @@ On a household device:
 
 ## Open questions
 
-- Sign-in codes go by email. How does the server send email: through a
-  mail account the admin enters during first-run setup? And how does a
-  person sign in when the server has no internet: with a code or QR code
-  from a device that is already signed in?
 - A household device invite: how long is it valid, for how many devices,
   and can it be withdrawn?
 - May an admin connect a source, such as a shared mailbox, for the whole

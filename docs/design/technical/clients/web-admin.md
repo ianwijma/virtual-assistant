@@ -37,6 +37,15 @@ it. The admin panel also holds
 the settings of devices that have no settings screen of their own, such as
 whether a tablet in kiosk mode listens for a wake word.
 
+## First-run setup
+
+A new server is set up here. Opening the server's address in a browser
+starts the setup. It creates the first admin, names the household, and
+sets the mail account for sign-in codes, the AI provider and speech.
+
+The first admin is created before any mail account exists, so this one
+account is made without an emailed code.
+
 ## How it is built
 
 Rust compiled to WebAssembly, using Leptos.
@@ -45,6 +54,5 @@ Browsers need HTTPS. See [networking](../server/networking.md).
 
 ## Open questions
 
-- Is first-run setup done here, and what does it cover?
 - Are settings screens generated from each feature's description, as in
   the earlier voice assistant?
