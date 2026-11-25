@@ -28,6 +28,7 @@ Steps 1 to 3 are [summoning](summoning.md).
 | [speaker-identification.md](speaker-identification.md) | Working out who is speaking |
 | [speech-to-text.md](speech-to-text.md) | Turning speech into words |
 | [text-to-speech.md](text-to-speech.md) | Speaking an answer |
+| [reply-tags.md](reply-tags.md) | Metadata in a reply: character expressions, and staying awake for an answer |
 
 ## Rules for voice
 

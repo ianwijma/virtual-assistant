@@ -24,6 +24,11 @@ Status: draft.
 ## Routing
 
 - Each person configures where their own notifications go.
+- **A rule can send to the person's own devices, to household devices and
+  to other people.**
+- **A household source has rules too.** A household email address, for
+  example, can be routed to every household device and to people's own
+  devices.
 - Routing can follow a schedule. For example: the home-office device
   during work hours, and the phone always.
 - An admin can view and change a person's routing, to help when
@@ -49,8 +54,6 @@ devices and to personal devices.
 
 - What a routing rule is made of: the kind of event, a schedule, the
   target devices?
-- Besides a person's own devices, can a rule target a household device or
-  another person?
 - What happens when no rule matches.
 - Do quiet hours and "do not disturb" exist per person, per device, or
   both?

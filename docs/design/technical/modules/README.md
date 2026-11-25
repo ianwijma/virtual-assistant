@@ -39,9 +39,13 @@ assistant  --has-->  modules  --contain-->  tools  --call-->  the system
 - **Adding a module must be easy.** It is a list of tools, each with a
   name, a description for the AI model, its inputs and the system call it
   makes.
-- **A new feature is built into the system first.** Timers or a shopping
-  list become part of the system, and a module then adds the tools for
-  them.
+- **A new feature is built into the system first, and its data lives on
+  the server.** Timers, a shopping list or a pantry become part of the
+  system, with their own screens, such as a bulk import of pantry items
+  or an import from a supermarket's order email. A module then exposes
+  that feature to an assistant as tools.
+- **Switching a module off loses nothing.** The data stays in the system,
+  and other modules keep working.
 - **Modules are not keyboard shortcuts.** Shortcuts belong to a device.
   See [desktop](../clients/desktop.md).
 - **Modules are internal.** People extend the system by forking the
@@ -107,9 +111,6 @@ its list of modules.
 
 ## Open questions
 
-- Where does a module's own data live, such as a kitchen module's pantry:
-  is the pantry a system feature that is built first, or data the module
-  keeps through the system's storage?
 - A lists module, for lists and things a person asks the assistant to
   remember: is it in the first release, and is a list private or shared
   with the household by default?

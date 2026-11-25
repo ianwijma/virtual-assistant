@@ -10,7 +10,9 @@ Status: draft. Nothing like this exists in the earlier voice assistant.
 - It is the second step of [summoning](summoning.md): after the wake word,
   the utterance is compared with enrolled voices.
 - The result decides whose permissions the assistant uses.
-- An unknown or uncertain voice is treated as a guest.
+- An unknown or uncertain voice is treated as unrecognised. There is no
+  "probably this person" level. If recognition is not good enough, it is
+  improved; it is kept as a part that can be replaced.
 - Once a household device recognises a person, it can give them their own
   information when they ask. It does this only for a request made with the
   wake word, and never unprompted.
@@ -34,7 +36,6 @@ Assumed, needing a build to confirm:
 
 ## Open questions
 
+- The level of certainty at which a voice counts as recognised.
 - How a person enrols their voice, and on which device.
-- How sure a match must be, and whether there is a "probably this person"
-  level between known and guest.
 - Where voice data is stored, and how it is removed.

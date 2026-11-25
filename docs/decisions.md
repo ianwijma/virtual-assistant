@@ -103,3 +103,8 @@ are 25 November 2026.
 | 83 | A guest assistant that recognises the speaker acts with that person's permissions | [identity and sharing](design/technical/server/identity-and-sharing.md), [assistants](design/technical/voice/assistants.md) |
 | 84 | A module is both a grouping of tools around a subject and the place where those tools are written; core features and shared parts stay in the system | [modules](design/technical/modules/README.md) |
 | 85 | When several devices hear the wake word, the one that heard it loudest and clearest answers; the choice is a replaceable step | [summoning](design/technical/voice/summoning.md) |
+| 86 | A feature's data lives on the server as a system feature; a module exposes it as tools, and switching a module off loses nothing | [modules](design/technical/modules/README.md) |
+| 87 | A reply can carry tags next to its words, for character expressions and for "keep listening"; tags are removed before speech | [reply tags](design/technical/voice/reply-tags.md) |
+| 88 | A follow-up without the wake word is possible only when the reply carried the "keep listening" tag | [reply tags](design/technical/voice/reply-tags.md), [summoning](design/technical/voice/summoning.md) |
+| 89 | A voice not matched with enough certainty counts as unrecognised; there is no in-between level and no PIN or phone fallback | [summoning](design/technical/voice/summoning.md), [speaker identification](design/technical/voice/speaker-identification.md) |
+| 90 | A routing rule can send to the person's own devices, household devices and other people; household sources have rules too | [notifications and routing](design/technical/server/notifications-and-routing.md) |

@@ -25,6 +25,13 @@ Summoning is one explicit state machine on the server:
    step, so that a weighting per device can be added later, for a device
    that hears well from a corner.
 
+A voice that is not matched with enough certainty counts as unrecognised.
+There is no in-between level and no fallback such as a PIN. If this goes
+wrong too often, speaker identification itself is improved.
+
+A follow-up without the wake word is possible only when the assistant's
+reply asked for it. See [reply tags](reply-tags.md).
+
 Every decision to wake or to ignore is logged with its reason and shown in
 the [admin panel](../clients/web-admin.md).
 
@@ -59,8 +66,5 @@ This leads to four rules:
 ## Open questions
 
 - The states and transitions themselves.
-- Whether a follow-up without the wake word is allowed, and for how long.
-- How sure speaker identification must be before personal data is spoken,
-  and what the fallback is: a PIN, or a confirmation on the phone?
 - Which words work without a wake word, such as "stop" while an alarm
   rings.
