@@ -36,6 +36,13 @@ personal page is signed in with an email address and a code, and a
 household page is added with an admin's invite and then approved. See
 [identity and sharing](../server/identity-and-sharing.md).
 
+## Voice and chat
+
+- By default the page is spoken to.
+- **A button opens the conversation as text.** It shows what has been said
+  so far and updates live while the person talks.
+- **A person can also chat by typing,** to keep things quiet. The
+  assistant then answers in text and does not speak.
+
 ## Open questions
 
-- Can it be typed to as well as spoken to?

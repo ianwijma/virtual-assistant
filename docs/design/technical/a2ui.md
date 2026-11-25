@@ -87,10 +87,20 @@ Assumed, needing a build to confirm:
 
 - Surface templates can be kept and reused with new data.
 
+## Who words the spoken form
+
+It depends on the content:
+
+- **A fixed sentence comes from the system feature,** with no AI model
+  involved, such as "Ian, you have a notification". The audio of a
+  sentence that does not change can be kept and reused. See
+  [text to speech](voice/text-to-speech.md).
+- **The AI model words it** when the content is raw data that has to be
+  turned into a sentence, when it needs the assistant's character, such
+  as a joke, or when a conversation may follow.
+
 ## Open questions
 
-- Who writes the spoken form of a screen: the system feature, or the AI
-  model?
 - Which screens are hand-built and which are described with A2UI.
 - Whether a generated surface can be saved and reused, and by whom.
 - What a generated surface may do when its content came from an untrusted

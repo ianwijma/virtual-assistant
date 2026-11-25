@@ -16,6 +16,8 @@ assistant, where this part works. It is to be confirmed in Rust.
 - **Speech is produced on the server only, for now.** Devices play the
   audio the server sends. Producing it on capable devices can be added
   later, and the design must not rule that out.
+- **Fixed sentences are kept.** When a system feature speaks a sentence
+  whose text does not change, the audio can be made once and reused.
 - An answer is always speakable. A device without a screen gets the answer
   by voice. See [A2UI](../a2ui.md).
 

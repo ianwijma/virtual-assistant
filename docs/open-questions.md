@@ -131,34 +131,44 @@ questions.
 - **Y.** "Remember this for me" is saved as a plain text entry.
   [lists]
 
+- **Z.** Email credentials are system secrets: the server must be able
+  to use them to fetch mail while every device is off. [vault]
+- **AA.** After a household device speaks a notification, it can listen
+  for a follow-up about it without the wake word, in the same way as
+  after a "keep listening" tag. [reply tags]
+- **AB.** The voice page has two views: a voice view with the live text
+  of the conversation, and a typed chat view that does not speak.
+  [voice page]
+
 ## 1. Now
 
-1. How far does clipboard encryption go? If only the person's own
-   devices can read their clipboard, the server cannot search it, an
-   assistant cannot use it, and an admin cannot read it. Which of these
-   is wanted? The same choice applies to other sensitive data. [clipboard]
-2. Is the vault only the system's own store of secrets, or also a
-   password manager that people put their own passwords in? And can an
-   admin read a person's secrets? [vault]
+1. Which data is a person's encrypted data, readable only by their own
+   devices, beyond the clipboard and passwords: email, notifications,
+   lists? Whatever is, the server cannot search it and an assistant
+   cannot use it without the person's device. [vault]
+2. The web clients run in a browser. Do the admin panel and the voice
+   page hold a person's keys, or do they simply not show encrypted data?
+   [vault]
+3. Is the password manager in the first release, and can passwords be
+   shared with the household? [vault]
+4. How does a person allow an assistant to use their clipboard: each
+   time it asks, or as a standing setting? [clipboard]
 
 ## 2. Next
 
 ### Voice
 
-3. The list of reply tags, and how they are written in a reply.
+5. The list of reply tags, and how they are written in a reply.
    [reply tags]
 
 
 ### Screens
 
-4. Who writes the spoken form of a screen: the system feature, or the AI
-    model? [a2ui]
-5. Which screens are hand-built and which are described with A2UI?
+6. Which screens are hand-built and which are described with A2UI?
     [a2ui]
-6. Can a generated surface be saved and reused, and by whom? [a2ui]
-7. Are settings screens generated from each feature's description, as in
+7. Can a generated surface be saved and reused, and by whom? [a2ui]
+8. Are settings screens generated from each feature's description, as in
     the earlier voice assistant? [admin panel]
-8. Can the voice page be typed to as well as spoken to? [voice page]
 9. What is the list of actions a shortcut can be bound to, and how does
     the shortcut system work? [desktop]
 
@@ -282,9 +292,12 @@ corrects it. They are sorted by how much depends on them.
      paired. [networking]
 64. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-65. How the vault is encrypted, and where the key is kept, so that a
-   stolen disk or a copied backup gives nothing away. [vault]
-66. Signing in with Google or Microsoft needs an application registered
+65. How a person's keys are made, how a new device of theirs gets them,
+   and how they are recovered when every device is lost. There are no
+   passwords to derive a key from. [vault]
+66. How system secrets are encrypted, and where that key is kept, so that
+   a stolen disk or a copied backup gives nothing away. [vault]
+67. Signing in with Google or Microsoft needs an application registered
    with each company, and Google reviews applications that read mail.
    Who registers them: the project, or each household's admin? [email]
 

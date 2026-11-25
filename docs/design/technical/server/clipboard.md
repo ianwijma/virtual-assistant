@@ -14,8 +14,14 @@ The clipboard is a feature of the system. A
   background.
 - **Shared between a person's devices, and on by default.** The newest
   item is pushed to their other devices.
-- **Clipboard content is sensitive, so it is encrypted** where it is
-  stored and while it travels between devices.
+- **Clipboard content is sensitive, so only the person's own devices can
+  read it.** It is encrypted on the device with the person's keys. The
+  server stores it and passes it on, but cannot read it. See
+  [vault](vault.md).
+- **An assistant cannot read the clipboard by default.** When the person
+  allows it, the content is sent from a device that holds the key.
+- **Search happens on the device,** in its local index, because the server
+  cannot read the content.
 - **History is kept forever by default.** A limit can be set. History and large items are fetched when needed.
 - **History is stored on the server.** The device keeps a local index for
   search.
@@ -34,9 +40,8 @@ The clipboard is a feature of the system. A
 
 ## Open questions
 
-- How far the encryption goes. If only the person's own devices can read
-  their clipboard, the server cannot search it, an assistant cannot use
-  it, and an admin cannot read it. Which of these is wanted?
+- How a person allows an assistant to use their clipboard: each time it
+  asks, or as a standing setting?
 - How large items, such as images and files, are handled.
 - How untrusted HTML is drawn safely.
 - How search stays fast over years of history.

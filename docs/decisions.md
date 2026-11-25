@@ -139,3 +139,8 @@ are 25 November 2026.
 | 119 | Credentials and other secrets are kept encrypted on the server in one vault, a system feature | [vault](design/technical/server/vault.md), [email](design/technical/server/email.md) |
 | 120 | Clipboard sync between a person's devices is on by default, and clipboard content is encrypted in storage and in transit | [clipboard](design/technical/server/clipboard.md) |
 | 121 | History is kept forever by default, with a limit that can be set per kind | [data and sync](design/technical/server/data-and-sync.md), [clipboard](design/technical/server/clipboard.md) |
+| 122 | The vault holds system secrets, which the server can use, and each person's encrypted data, which only that person's devices can read; the server, admins and assistants cannot | [vault](design/technical/server/vault.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 123 | Clipboard history is a person's encrypted data; an assistant cannot read it by default, and when allowed it is sent from a device that holds the key | [clipboard](design/technical/server/clipboard.md), [vault](design/technical/server/vault.md) |
+| 124 | The vault is also a password manager, using the same personal keys | [vault](design/technical/server/vault.md) |
+| 125 | A fixed spoken sentence comes from the system feature, with reusable audio; the AI model words anything that is raw data, needs character or may lead to conversation | [A2UI](design/technical/a2ui.md), [text to speech](design/technical/voice/text-to-speech.md) |
+| 126 | The voice page is spoken to by default, can show the conversation as live text, and can be chatted with by typing, without spoken answers | [voice page](design/technical/clients/web-voice.md) |
