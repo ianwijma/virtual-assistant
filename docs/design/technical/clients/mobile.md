@@ -33,7 +33,8 @@ Android tablet, set up once and left running.
 
 ## Personal use
 
-- A person signs in with their email address and password. See
+- A person signs in with their email address and a one-time code sent to
+  it. See
   [identity and sharing](../server/identity-and-sharing.md).
 - The phone cannot read the clipboard in the background. It uses a share
   action, a shortcut or a keyboard. See
@@ -47,9 +48,15 @@ Native shells (Jetpack Compose on Android, SwiftUI on iOS) over the shared
 Rust core, joined by generated bindings (UniFFI). Official A2UI renderers
 exist for both.
 
+## Settings
+
+The phone app is the main place where a person manages their own
+settings, because that is where people realistically do it. A household
+device is set up with an admin's invite and then approved by an admin. See
+[identity and sharing](../server/identity-and-sharing.md).
+
 ## Open questions
 
-- What the household set-up flow asks for, and who may complete it.
 - How notifications reach a phone when the app is closed, without a cloud
   push service.
 - Building and publishing for iOS needs a Mac and an Apple developer

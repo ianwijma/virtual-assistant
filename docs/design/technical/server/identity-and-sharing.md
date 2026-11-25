@@ -8,8 +8,12 @@ is designed from scratch.
 
 ## People and roles
 
-Every person has an account on the server and signs in with an email
-address and a password.
+Every person has an account on the server, named by their email address.
+
+**There are no passwords.** To sign in, a person enters their email
+address, the server sends a one-time code to it, and they enter that code.
+The short passcode for switching accounts on a computer is a separate,
+local thing.
 
 - **Admin:** manages people, devices and modules.
 - **Member:** an ordinary person in the household.
@@ -28,6 +32,11 @@ There are two kinds of device:
   set it up as a personal device or as a household device. Each choice has
   its own sign-in flow.
 - A personal device is paired to one person.
+- **Only an admin adds a household device,** in two steps. The admin
+  creates an invite, as a code or a QR code that can be saved and passed
+  on, for example in a group chat. Whoever sets up the device scans or
+  enters it, and the device registers with the server. The device does
+  nothing until an admin approves it.
 - **Several accounts on one device.** A computer can hold more than one
   account, and a person switches between them with a short passcode,
   possibly four to six digits. The accounts can be different people in one
@@ -115,12 +124,14 @@ On a household device:
 
 ## Open questions
 
+- Sign-in codes go by email. How does the server send email: through a
+  mail account the admin enters during first-run setup? And how does a
+  person sign in when the server has no internet: with a code or QR code
+  from a device that is already signed in?
+- A household device invite: how long is it valid, for how many devices,
+  and can it be withdrawn?
 - May an admin connect a source, such as a shared mailbox, for the whole
   household? It is written so for now.
-- What the sign-in flow of a household device is, and who may set one up:
-  any member, or only an admin?
-- Whether a new device can also be added without typing the password, such
-  as with a code from a device that is already signed in.
 - Account switching: is the passcode per account, how long is it, and is
   it also asked for when the computer wakes?
 - Which of the two ways to handle unrecognised voices is built, or both.

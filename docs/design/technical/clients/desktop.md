@@ -34,7 +34,7 @@ and a work server. See
 - **Assistant:** the desktop is a voice device by default. A person can
   summon an assistant by wake word, let it listen always, or type to it.
   Each person chooses. See [voice](../voice/README.md).
-- **Settings:** a macOS-style window, with groups on the left and the
+- **Settings:** a person's own settings can be changed here. A macOS-style window, with groups on the left and the
   selected group on the right.
 
 ## Requirements

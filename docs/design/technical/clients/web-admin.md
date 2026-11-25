@@ -23,7 +23,17 @@ fulfils "a screen for every setting".
 - The log of summoning decisions, with the reason for each.
 - The log of admin access to other people's data.
 
-A person signs in with their email address and password. It also holds
+## Who uses it
+
+- **Every member can sign in** and manage their own settings and their
+  own things.
+- **An admin** manages their own, and also the household and the server.
+- It is not the only place for personal settings. A person can change
+  them in the desktop client and in the phone app, and the phone app is
+  the main place. See [mobile](mobile.md).
+
+A person signs in with their email address and a one-time code sent to
+it. The admin panel also holds
 the settings of devices that have no settings screen of their own, such as
 whether a tablet in kiosk mode listens for a wake word.
 
@@ -35,8 +45,6 @@ Browsers need HTTPS. See [networking](../server/networking.md).
 
 ## Open questions
 
-- Is the admin panel only for admins, or does every member use it for
-  their own settings?
 - Is first-run setup done here, and what does it cover?
 - Are settings screens generated from each feature's description, as in
   the earlier voice assistant?

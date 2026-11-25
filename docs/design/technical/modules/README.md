@@ -74,6 +74,11 @@ overall system and these are in place.
 | Timers and reminders | Set, list and cancel timers, alarms and reminders |
 | Device control | Act on a device, such as showing something on its screen or opening an app |
 
+There is no Home Assistant integration. When smart-home control is
+added, the system talks to those devices and services itself. Home
+Assistant's code can serve as an example of how a given system is spoken
+to.
+
 The set may grow before the first release. Each of these needs its system
 feature to exist first.
 
@@ -102,4 +107,3 @@ its list of modules.
   grouping, or also where a tool is written?
 - Can an assistant be given a module with some of its tools switched off?
 - Which tools need confirmation before they act.
-- Whether Home Assistant integration is in the first release.
