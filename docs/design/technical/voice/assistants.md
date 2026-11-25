@@ -13,7 +13,7 @@ device. A household can have several, each a distinct character.
 |---|---|
 | Identity | Name, wake word, voice, visual and personality |
 | Brain | The [AI provider](../server/ai-providers.md) that answers |
-| Abilities | The [module](../modules/README.md) tools it may use |
+| Abilities | The [modules](../modules/README.md) it has. A module is a set of tools, and the same module can be given to several assistants |
 | Scope | The whole household, or one person |
 
 - An assistant always acts with the permissions of the person it is

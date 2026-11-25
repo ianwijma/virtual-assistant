@@ -31,7 +31,7 @@ Android tablet, set up once and left running.
 
 - The phone cannot read the clipboard in the background. It uses a share
   action, a shortcut or a keyboard. See
-  [clipboard](../modules/clipboard.md).
+  [clipboard](../server/clipboard.md).
 - Remote access uses the installed Tailscale app first. See
   [networking](../server/networking.md).
 

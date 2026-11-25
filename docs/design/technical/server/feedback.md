@@ -1,9 +1,11 @@
-# Feedback module
+# Feedback
 
 Reporting a bug or suggesting a feature from inside any app. Part of
-[the modules design](README.md).
+[the server design](README.md).
 
-Status: draft. This is among the first modules to be built.
+Status: draft. This is among the first features to be built. It is a
+feature of the system; a [module](../modules/README.md) gives assistants
+the tools to use it.
 
 ## Why it exists
 
@@ -23,7 +25,7 @@ release.
   repository is public, and logs can contain email subjects or clipboard
   text.
 - Reports queue on the server until there is internet.
-- The module has its own screen in the
+- Feedback has its own screen in the
   [admin panel](../clients/web-admin.md).
 
 ## What exists to draw on

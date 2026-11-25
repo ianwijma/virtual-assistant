@@ -26,7 +26,10 @@ and tablet app, the admin panel and the voice page.
 | The AI providers behind assistants | [ai-providers.md](ai-providers.md) |
 | Home network, remote access and certificates | [networking.md](networking.md) |
 | Assistants, summoning and speech | [../voice/README.md](../voice/README.md) |
-| The module system and each module | [../modules/README.md](../modules/README.md) |
+| Feedback: bug reports and feature suggestions | [feedback.md](feedback.md) |
+| Email | [email.md](email.md) |
+| Clipboard history and sharing | [clipboard.md](clipboard.md) |
+| Modules: the sets of tools given to assistants | [../modules/README.md](../modules/README.md) |
 | Screens sent to devices | [../a2ui.md](../a2ui.md) |
 
 ## Rules for the server
@@ -35,6 +38,9 @@ and tablet app, the admin panel and the voice page.
   [data-and-sync.md](data-and-sync.md).
 - **Devices never wait for it.** A device works from its local copy and
   syncs in the background.
+- **Features live here, not in modules.** Storage, settings, sync and
+  sign-ins to outside services are part of the system. A module only adds
+  tools an AI agent can call.
 - **Every setting has a screen** in the
   [admin panel](../clients/web-admin.md). There are no configuration files
   for users.

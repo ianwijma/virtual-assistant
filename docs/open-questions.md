@@ -36,10 +36,10 @@ These five shape the most other answers.
 | Which detector, custom wake words | [wake word](design/technical/voice/wake-word.md) |
 | Enrolment, certainty, voice data | [speaker identification](design/technical/voice/speaker-identification.md) |
 | Models, providers, languages | [speech to text](design/technical/voice/speech-to-text.md), [text to speech](design/technical/voice/text-to-speech.md) |
-| Which modules, the module contract | [modules](design/technical/modules/README.md) |
-| GitHub sign-in, review before sending | [feedback](design/technical/modules/feedback.md) |
-| Providers, credentials, safe HTML | [email](design/technical/modules/email.md) |
-| Sync defaults, large items | [clipboard](design/technical/modules/clipboard.md) |
+| Which modules, how tools and modules relate | [modules](design/technical/modules/README.md) |
+| GitHub sign-in, review before sending | [feedback](design/technical/server/feedback.md) |
+| Providers, credentials, safe HTML | [email](design/technical/server/email.md) |
+| Sync defaults, large items | [clipboard](design/technical/server/clipboard.md) |
 | Offline features, Linux desktop integration, "snappy" | [desktop](design/technical/clients/desktop.md) |
 | One app or two, push without a cloud | [mobile](design/technical/clients/mobile.md) |
 | Who uses it, first-run setup | [admin panel](design/technical/clients/web-admin.md) |

@@ -16,8 +16,9 @@ fulfils "a screen for every setting".
 - People, roles and devices.
 - Assistants: their identity, brain and abilities.
 - The household AI configuration and the speech providers.
-- A page for each [module](../modules/README.md), including the
-  [feedback](../modules/feedback.md) reports.
+- A page for each feature of the system, including the
+  [feedback](../server/feedback.md) reports.
+- Which [modules](../modules/README.md) each assistant has.
 - Each person's notification routing, which an admin can view and change.
 - The log of summoning decisions, with the reason for each.
 - The log of admin access to other people's data.
@@ -34,5 +35,5 @@ Browsers need HTTPS. See [networking](../server/networking.md).
   their own settings?
 - Is first-run setup done here, and what does it cover?
 - How a person signs in to it.
-- Are settings screens generated from each module's description, as in
+- Are settings screens generated from each feature's description, as in
   the earlier voice assistant?

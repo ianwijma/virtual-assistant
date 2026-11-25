@@ -1,11 +1,14 @@
-# Clipboard module
+# Clipboard
 
 Clipboard history on a device, and a clipboard shared between a person's
-devices. Part of [the modules design](README.md).
+devices. Part of [the server design](README.md).
 
 Status: draft.
 
 ## Design
+
+The clipboard is a feature of the system. A
+[module](../modules/README.md) can give assistants tools to use it.
 
 - **Capture and paste are local and instant.** Sync follows in the
   background.

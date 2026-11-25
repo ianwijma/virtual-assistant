@@ -39,9 +39,10 @@ Apple ecosystem, but local and self-owned, and installable on any device.
 4. **Rust first.** Another language is allowed only for UI and platform
    glue, when an integration is impossible or clearly worse from Rust. Each
    such choice is recorded in the document of the client it concerns.
-5. **Modular.** Adding a module must be easy. People extend the system by
-   forking and adding modules; there is no plugin system. Providers for
-   speech and AI are swappable in the same spirit.
+5. **Modular.** A module is a set of tools an AI agent can call, and
+   adding one must be easy. People extend the system by forking and adding
+   modules; there is no plugin system. Providers for speech and AI are
+   swappable in the same spirit.
 6. **Decide, then build.** No open-ended prototyping. Risky choices sit
    behind boundaries, so a wrong one is a contained rewrite.
 7. **Build on established technology.** The exceptions are A2UI and young

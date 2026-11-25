@@ -1,21 +1,24 @@
-# Email module
+# Email
 
 Reading email in the system and reacting to its arrival. Part of
-[the modules design](README.md).
+[the server design](README.md).
 
 Status: draft. Nothing like this exists in the earlier voice assistant.
 
 ## Design
+
+Email is a feature of the system. A [module](../modules/README.md) gives
+assistants the tools to use it.
 
 - Email accounts are held by the server, and the server fetches the mail.
   It is always on, so an arriving email can be announced even when the
   desktop is off.
 - Each account belongs to one person and is private by default. Its owner
   can share one email, a rule (such as a sender or a label), or the whole
-  inbox. See [identity and sharing](../server/identity-and-sharing.md).
+  inbox. See [identity and sharing](identity-and-sharing.md).
 - A new email is an event. It becomes a notification that is routed like
   any other. See
-  [notifications and routing](../server/notifications-and-routing.md).
+  [notifications and routing](notifications-and-routing.md).
 - Clients read and search from a local cache.
 - The system is for reading. Anything more opens the person's own email
   application.

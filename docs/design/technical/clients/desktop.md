@@ -16,13 +16,13 @@ person and is an extension of the rest of the household's system.
 - **Launcher:** start applications and reach everything else.
 - **Window control:** control the windows of other applications.
 - **Clipboard:** history, search and sync. See
-  [clipboard](../modules/clipboard.md).
+  [clipboard](../server/clipboard.md).
 - **Notifications:** see and act on notifications. The desktop is the
   notification service of the machine: it shows local notifications at
   once and forwards them to the server. See
   [notifications and routing](../server/notifications-and-routing.md).
 - **Email reading:** from the local cache. See
-  [email](../modules/email.md).
+  [email](../server/email.md).
 - **Assistant:** the desktop is a voice device by default. A person can
   summon an assistant by wake word, let it listen always, or type to it.
   Each person chooses. See [voice](../voice/README.md).
@@ -36,8 +36,11 @@ person and is an extension of the rest of the household's system.
   longer. "Snappy" is to be defined in numbers, with tests that stop the
   application getting slower.
 - **Scale.** Lists of hundreds of thousands of items, with fast search.
-- **Shortcuts.** A person can assign keyboard shortcuts to actions inside
-  modules.
+- **Shortcuts.** A person can assign keyboard shortcuts to actions.
+  Shortcuts are per device: they are set on that device and kept there,
+  not on the server, so each computer has its own. A shortcut can start
+  an action that needs the server. The action then talks to the server
+  and shows a loader, or a similar sign that it is waiting.
 - **Setup.** A light first-run setup that infers as much as possible from
   the machine.
 - **Platforms.** Linux first, on most desktops, on both X11 and Wayland.
@@ -48,7 +51,7 @@ person and is an extension of the rest of the household's system.
 
 | Data | Lives |
 |---|---|
-| Launcher index, hotkeys, window control | On the desktop |
+| Launcher index, keyboard shortcuts, window control | On the desktop |
 | Clipboard | Captured locally, stored on the server, indexed locally |
 | Notifications, email, settings | On the server, cached locally |
 
@@ -75,5 +78,6 @@ Assumed, needing a build to confirm:
   work across Linux desktops on X11 and Wayland. This is research still to
   do, and the limits on Wayland are a known risk.
 - The numbers that define "snappy", and the tests for them.
-- How the shortcut system works.
+- The list of actions a shortcut can be bound to, and how the shortcut
+  system works.
 - Whether several people can use one computer.

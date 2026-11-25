@@ -20,14 +20,17 @@ Status: draft.
   up and offers abilities down. See [protocol](../server/protocol.md).
 - **It is never blocked by the server.** It writes locally first and syncs
   in the background. See [data and sync](../server/data-and-sync.md).
+- **An action that needs the server shows that it is waiting.** It talks
+  to the server and shows a loader or a similar sign until the answer
+  arrives. The rest of the client stays usable meanwhile.
 - **It shares one Rust core** with the other clients: protocol, sync,
-  storage, module logic and voice.
+  storage, system features and voice.
 - **The UI layer is chosen per platform,** for the best integration with
   that platform and for speed.
 - **It has the same look** as the others. See
   [the visual design](../../visual/README.md).
 - **It has "Report a bug" and "Suggest a feature".** See
-  [feedback](../modules/feedback.md).
+  [feedback](../server/feedback.md).
 - **It can be a voice device.** See [voice](../voice/README.md).
 
 ## Toolkits
@@ -40,7 +43,7 @@ Status: draft.
 | Voice page | A small web page | It only relays audio |
 
 A wrong toolkit choice affects the UI layer only. The core and the
-modules are untouched.
+system features are untouched.
 
 ## Open questions
 

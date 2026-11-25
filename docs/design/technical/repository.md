@@ -12,8 +12,8 @@ One monorepo, with one shared Rust core used by every binary:
 ```text
 crates/
   protocol/   # events, device messages, shared types
-  core/       # users, shares, routing rules, event log
-  modules/    # email, clipboard, feedback, ...
+  core/       # users, shares, routing, event log, system features
+  modules/    # sets of tools given to assistants
   voice/      # wake word, speaker identification, speech, voices
   ai/         # provider layer
   tailnet/    # remote access backends

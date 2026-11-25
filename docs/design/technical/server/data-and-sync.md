@@ -16,7 +16,7 @@ only if it is tied to that machine or must respond within a frame.
 | Notifications | Server | A desktop is a source and a display |
 | Email | Server | Devices keep a cache for reading and search |
 | Clipboard | Captured on the device, stored on the server | The device keeps a local index |
-| Launcher index, hotkeys, window control | Desktop | Tied to the machine |
+| Launcher index, keyboard shortcuts, window control | Desktop | Tied to the machine; shortcuts are per device |
 
 ## Local first, then sync
 

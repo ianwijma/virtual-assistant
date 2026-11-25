@@ -11,7 +11,7 @@ A2UI (<https://a2ui.org/>) lets an agent, or our own code, describe a
 screen that a device then draws with its native components. It is a core
 part of the system, for two purposes:
 
-- **Building screens quickly.** New screens and modules do not each need
+- **Building screens quickly.** New screens and features do not each need
   hand-written UI on every platform.
 - **Screens made by AI.** An assistant can create a screen on the fly,
   such as a view that answers a request.
@@ -51,8 +51,8 @@ form the device can present.
   component, so that its description is not sent every time.
 - A generated surface is kept by the server as a template. Next time only
   the new data is sent.
-- We add our own catalog on top of A2UI's basic one, and each
-  [module](modules/README.md) can add components to it.
+- We add our own catalog on top of A2UI's basic one. The catalog belongs
+  to the system, not to [modules](modules/README.md).
 - Catalog components use the [design tokens](../visual/README.md), so a
   generated screen matches the rest.
 
@@ -89,7 +89,8 @@ Assumed, needing a build to confirm:
 
 ## Open questions
 
-- Who writes the spoken form of a screen: the module, or the AI model?
+- Who writes the spoken form of a screen: the system feature, or the AI
+  model?
 - Which screens are hand-built and which are described with A2UI.
 - Whether a generated surface can be saved and reused, and by whom.
 - What a generated surface may do when its content came from an untrusted
