@@ -112,6 +112,4 @@ its list of modules.
 
 ## Open questions
 
-- Timers, alarms and reminders are a system feature with no design
-  document yet. What do they cover, and where do they ring?
 - Can an assistant be given a module with some of its tools switched off?

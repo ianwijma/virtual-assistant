@@ -19,7 +19,9 @@ device. A household can have several, each a distinct character.
 - **There is a default household assistant.** First-run setup creates
   it. It is used by everyone and on every device, personal devices
   included, until someone customises it or makes their own. It is a
-  starting point, with a set of modules already switched on.
+  starting point, with a set of modules already switched on. It can be
+  removed, provided other assistants cover what it did, such as answering
+  guests.
 - **Assistants are assigned to devices:** to chosen devices, or to all of
   them. A device answers only for the assistants assigned to it.
 - **Only an admin assigns an assistant to a household device.** A person
@@ -66,6 +68,5 @@ designed fresh in [summoning](summoning.md).
 
 ## Open questions
 
-- The default assistant: can it be removed, and does it start with every
-  module switched on or only a few?
+- Which modules the default assistant starts with: all, or a few?
 - How long a pause ends a conversation.

@@ -39,6 +39,13 @@ Status: draft.
 - **A household source has rules too.** A household email address, for
   example, can be routed to every household device and to people's own
   devices.
+- **There is always a fallback.** A notification that matches no rule is
+  never lost. A personal one goes to its owner's phone. A household one
+  goes to the admin's phone and into the history.
+- **Quiet hours exist per person and per device.** A person's quiet hours
+  hold back their notifications everywhere. A device can also be set
+  quiet, such as a bedroom tablet at night, whoever the notification is
+  for.
 - Routing can follow a schedule. For example: the home-office device
   during work hours, and the phone always.
 - An admin can view and change a person's routing, to help when
@@ -62,9 +69,6 @@ devices and to personal devices.
 
 ## Open questions
 
-- What happens when no rule matches.
-- Do quiet hours and "do not disturb" exist per person, per device, or
-  both?
 - Which actions can be taken on a notification from another device
   (dismiss, reply, open), and what if the source device is off?
 - How the "copy the login code" behaviour works: on the server, on the

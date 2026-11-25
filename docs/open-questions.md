@@ -86,8 +86,10 @@ questions.
 
 - **J.** A guest assistant is an ordinary assistant with a "guest"
   setting, not a separate kind of thing. [assistants]
-- **K.** The default household assistant is not a guest assistant: it
-  needs a recognised voice. [assistants]
+- **K.** The default household assistant is also a guest assistant at
+  first: it answers anyone, at guest level when it does not recognise the
+  voice. That is why it can only be removed when another assistant
+  answers guests. [assistants]
 
 - **L.** A tool is written in one module and belongs to that module
   only. [modules]
@@ -115,6 +117,11 @@ questions.
   not needed to make a wake word work. Whether a detector can do this is
   part of the detector research. [wake word]
 
+- **U.** The last remaining assistant cannot be removed. [assistants]
+- **V.** A personal notification whose owner has no phone falls back to
+  the history only. With several admins, a household notification falls
+  back to all of them. [notifications]
+
 ## 1. Now
 
 Nothing is waiting here at the moment.
@@ -128,118 +135,118 @@ Nothing is waiting here at the moment.
 
 ### Modules and timers
 
-2. Lists: what can a list hold: plain items, amounts, check marks,
+2. Timers, alarms and reminders: how do the three differ, and is a
+   reminder a notification at a set time, routed like any other? Do they
+   repeat, such as an alarm on every weekday? [timers]
+3. What happens when the device that should ring is off or unreachable?
+   [timers]
+4. Lists: what can a list hold: plain items, amounts, check marks,
    notes? And is "remember this" a list like any other, or a separate
    kind of note? [lists]
-3. The default assistant: can it be removed, and does it start with
-   every module switched on or only a few? [assistants]
-4. Timers, alarms and reminders are a system feature with no design
-   document yet. What do they cover, and where do they ring? [modules]
 
 ### Notifications
 
-5. What happens when no routing rule matches? [notifications]
-6. Do quiet hours and "do not disturb" exist per person, per device, or
-    both? [notifications]
-7. Which actions can be taken on a notification from another device
+5. Which actions can be taken on a notification from another device
     (dismiss, reply, open), and what if the source device is off?
     [notifications]
 
 ### Modules and system features
 
-8. Can an assistant be given a module with some of its tools switched
+6. Can an assistant be given a module with some of its tools switched
     off? [modules]
-9. Feedback: how does the server sign in to GitHub: a token the admin
+7. Feedback: how does the server sign in to GitHub: a token the admin
     enters, a relay the project hosts, or a prefilled link only?
     [feedback]
-10. Feedback: is a report always reviewed by a person before it is sent,
+8. Feedback: is a report always reviewed by a person before it is sent,
     and by whom: the reporter, or an admin? [feedback]
-11. Feedback: may any member file a report, including by voice?
+9. Feedback: may any member file a report, including by voice?
     [feedback]
-12. Email: which providers: any IMAP server, Gmail, Outlook? [email]
-13. Email: how does a person sign in to their account, and where is the
+10. Email: which providers: any IMAP server, Gmail, Outlook? [email]
+11. Email: how does a person sign in to their account, and where is the
     credential kept? [email]
-14. Clipboard: is sync on by default, and between which devices?
+12. Clipboard: is sync on by default, and between which devices?
     [clipboard]
-15. How long is history kept, for the clipboard and for events in
+13. How long is history kept, for the clipboard and for events in
     general, and how are old events trimmed? [clipboard], [data]
 
 ### Screens
 
-16. Who writes the spoken form of a screen: the system feature, or the AI
+14. Who writes the spoken form of a screen: the system feature, or the AI
     model? [a2ui]
-17. Which screens are hand-built and which are described with A2UI?
+15. Which screens are hand-built and which are described with A2UI?
     [a2ui]
-18. Can a generated surface be saved and reused, and by whom? [a2ui]
-19. Are settings screens generated from each feature's description, as in
+16. Can a generated surface be saved and reused, and by whom? [a2ui]
+17. Are settings screens generated from each feature's description, as in
     the earlier voice assistant? [admin panel]
-20. Can the voice page be typed to as well as spoken to? [voice page]
-21. What is the list of actions a shortcut can be bound to, and how does
+18. Can the voice page be typed to as well as spoken to? [voice page]
+19. What is the list of actions a shortcut can be bound to, and how does
     the shortcut system work? [desktop]
 
 ### Server
 
-22. How is the server installed and updated: a single binary, a container
+20. How is the server installed and updated: a single binary, a container
     image, a package? [server]
-23. How are backups made and restored? [server]
-24. Is there any data to bring over from the earlier voice assistant?
+21. How are backups made and restored? [server]
+22. Is there any data to bring over from the earlier voice assistant?
     [data]
 
 ### Look
 
-25. Three or four words for how it should feel, and products whose look
+23. Three or four words for how it should feel, and products whose look
     you admire. [visual]
-26. Do the existing characters and the amber and mint colour language
+24. Do the existing characters and the amber and mint colour language
     carry over, or does the identity start fresh? [visual]
-27. Can a person choose a different theme, and how far may it differ?
+25. Can a person choose a different theme, and how far may it differ?
     [visual]
-28. Light and dark: both, and which is the default? [visual]
+26. Light and dark: both, and which is the default? [visual]
 
 ### Working method
 
-29. How is work reviewed and tested? The earlier project suffered from
+27. How is work reviewed and tested? The earlier project suffered from
     long review rounds, heavy tests and documents used as changelogs. It
     is already decided that implementation favours speed to a first
     working product over thorough testing. [repository]
-30. Which machines are used to test the desktop client, the Android app
+28. Which machines are used to test the desktop client, the Android app
     and voice hardware? [repository]
 
 ## 3. Later
 
-31. How many voice recordings are needed, and whether a new wake word
+29. Which modules the default assistant starts with: all, or a few?
+   [assistants]
+30. How many voice recordings are needed, and whether a new wake word
    means recording again. [speaker identification]
-32. Where lists are shown and edited in each client. [lists]
-33. The number of seconds a device keeps listening after a "keep
+31. Where lists are shown and edited in each client. [lists]
+32. The number of seconds a device keeps listening after a "keep
    listening" tag. [reply tags]
-34. What a restricted role for children may do, once it is added.
+33. What a restricted role for children may do, once it is added.
    [identity]
-35. The level of certainty at which a voice counts as recognised.
+34. The level of certainty at which a voice counts as recognised.
    [speaker identification]
-36. How long a pause ends a conversation. [assistants]
-37. The build order of the parts. There is no roadmap yet; it is decided
+35. How long a pause ends a conversation. [assistants]
+36. The build order of the parts. There is no roadmap yet; it is decided
     after the technical details are clear. [repository]
-38. Whether to create the Cargo workspace and CI before planning is
+37. Whether to create the Cargo workspace and CI before planning is
     finished. For now the answer is no. [repository]
-39. Building and publishing for iOS needs a Mac and an Apple developer
+38. Building and publishing for iOS needs a Mac and an Apple developer
     account, and the App Store has friction with the GPL. How is that
     handled? [mobile]
-40. Is preinstalling a vendor's AI command-line tool on hardware ever
+39. Is preinstalling a vendor's AI command-line tool on hardware ever
     wanted? It would need that vendor's commercial terms. [licensing]
-41. The silence timings, and whether a person can tune them.
+40. The silence timings, and whether a person can tune them.
     [speech to text]
-42. How another language is added, for transcribing and for speaking.
+41. How another language is added, for transcribing and for speaking.
     [speech to text], [text to speech]
-43. The numbers that define "snappy" on the desktop, and the tests for
+42. The numbers that define "snappy" on the desktop, and the tests for
     them. [desktop]
-44. The numbers for a fast voice turn, and how they are tested. [voice]
-45. How false wakes and missed wakes are measured. [wake word]
-46. Feedback: how duplicates are avoided. [feedback]
-47. Email: how much mail is kept on the server and in each client's
+43. The numbers for a fast voice turn, and how they are tested. [voice]
+44. How false wakes and missed wakes are measured. [wake word]
+45. Feedback: how duplicates are avoided. [feedback]
+46. Email: how much mail is kept on the server and in each client's
     cache. [email]
-48. Clipboard: how large items, such as images and files, are handled.
+47. Clipboard: how large items, such as images and files, are handled.
     [clipboard]
-49. The contents of our A2UI catalog. [a2ui]
-50. The full list of capabilities, and how a catalog version is
+48. The contents of our A2UI catalog. [a2ui]
+49. The full list of capabilities, and how a catalog version is
     expressed. [protocol]
 
 ## 4. To research or propose
@@ -248,50 +255,50 @@ These need investigation or a worked-out proposal. An agent does the work
 and writes the outcome into the design; the owner then agrees or
 corrects it. They are sorted by how much depends on them.
 
-51. The summoning states and transitions themselves. [summoning]
-52. Which database the server uses. [server]
-53. How the event log handles household data that several people can
+50. The summoning states and transitions themselves. [summoning]
+51. Which database the server uses. [server]
+52. How the event log handles household data that several people can
     see. [data]
-54. The full list of protocol messages, and how the protocol is
+53. The full list of protocol messages, and how the protocol is
     versioned. [protocol]
-55. The exact pairing steps for a personal device and for a household
+54. The exact pairing steps for a personal device and for a household
     device. [protocol], [identity]
-56. How audio travels: on the device's connection or a separate one.
+55. How audio travels: on the device's connection or a separate one.
     [protocol], [voice]
-57. How notifications, clipboard access, global hotkeys and window
+56. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-58. How notifications reach a phone when the app is closed, without a
+57. How notifications reach a phone when the app is closed, without a
     cloud push service. [mobile]
-59. Which wake word detector to use, and whether a detection is confirmed
+58. Which wake word detector to use, and whether a detection is confirmed
     by transcribing the same audio. [wake word]
-60. Where the desktop client detects the wake word. [wake word],
+59. Where the desktop client detects the wake word. [wake word],
     [desktop]
-61. Which local speech-to-text model is the default, given accuracy,
+60. Which local speech-to-text model is the default, given accuracy,
     speed on low-power hardware and licence. [speech to text]
-62. Which local voices are offered, given quality and licence.
+61. Which local voices are offered, given quality and licence.
     [text to speech]
-63. Which speech models and voices have licences that allow selling
+62. Which speech models and voices have licences that allow selling
     hardware. [licensing]
-64. Echo: how a device avoids hearing its own answer. [voice]
-65. How each AI provider produces A2UI screens, including through a
+63. Echo: how a device avoids hearing its own answer. [voice]
+64. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-66. Whether any Rust implementation of A2UI exists, and whether the A2UI
+65. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-67. Whether A2UI suits screens our own code defines locally, and what it
+66. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-68. What a generated surface may do when its content came from an
+67. What a generated surface may do when its content came from an
     untrusted source, such as an email. [a2ui]
-69. How copied HTML and email HTML are drawn safely. [email],
+68. How copied HTML and email HTML are drawn safely. [email],
     [clipboard]
-70. How search stays fast over years of history. [data], [clipboard]
-71. How the "copy the login code" behaviour works: where it runs, and how
+69. How search stays fast over years of history. [data], [clipboard]
+70. How the "copy the login code" behaviour works: where it runs, and how
      it finds a code in an email. [notifications], [email]
-72. How a non-technical person gets a browser to trust the server's
+71. How a non-technical person gets a browser to trust the server's
      certificate authority. [networking]
-73. How the server is found on the home network when a device is first
+72. How the server is found on the home network when a device is first
      paired. [networking]
-74. How a reply tag is lined up with the moment in the speech where it
+73. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
 
 [identity]: design/technical/server/identity-and-sharing.md
@@ -311,6 +318,7 @@ corrects it. They are sorted by how much depends on them.
 [email]: design/technical/server/email.md
 [clipboard]: design/technical/server/clipboard.md
 [lists]: design/technical/server/lists.md
+[timers]: design/technical/server/timers.md
 [data]: design/technical/server/data-and-sync.md
 [a2ui]: design/technical/a2ui.md
 [server]: design/technical/server/README.md

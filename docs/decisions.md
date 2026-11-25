@@ -124,3 +124,7 @@ are 25 November 2026.
 | 104 | Voice recordings and voiceprints stay on the server, and a person can delete their own | [speaker identification](design/technical/voice/speaker-identification.md) |
 | 105 | The first cloud speech providers are Deepgram for speech to text, and ElevenLabs and Cartesia for text to speech | [speech to text](design/technical/voice/speech-to-text.md), [text to speech](design/technical/voice/text-to-speech.md) |
 | 106 | Lists are a system feature with a module in the first release | [lists](design/technical/server/lists.md), [modules](design/technical/modules/README.md) |
+| 107 | The default assistant can be removed, provided other assistants cover what it did | [assistants](design/technical/voice/assistants.md) |
+| 108 | A timer or alarm rings where it was set, and can be asked to ring elsewhere | [timers](design/technical/server/timers.md) |
+| 109 | A notification that matches no rule falls back to its owner's phone; a household one goes to the admin's phone and the history | [notifications and routing](design/technical/server/notifications-and-routing.md) |
+| 110 | Quiet hours exist per person and per device | [notifications and routing](design/technical/server/notifications-and-routing.md) |
