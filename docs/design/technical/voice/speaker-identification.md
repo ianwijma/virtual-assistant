@@ -12,7 +12,10 @@ Status: draft. Nothing like this exists in the earlier voice assistant.
 - The result decides whose permissions the assistant uses.
 - An unknown or uncertain voice is treated as a guest.
 - Once a household device recognises a person, it can give them their own
-  information when they ask.
+  information when they ask. It does this only for a request made with the
+  wake word, and never unprompted.
+- A person's presence is known only at that moment. Nobody is tracked
+  through the home.
 - **It is a convenience, not security.** A voice can be recorded and
   replayed. It chooses whose calendar to read, but it is never the only
   check on a sensitive action. See

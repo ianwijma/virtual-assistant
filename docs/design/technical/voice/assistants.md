@@ -18,6 +18,9 @@ device. A household can have several, each a distinct character.
 
 - **Assistants are assigned to devices:** to chosen devices, or to all of
   them. A device answers only for the assistants assigned to it.
+- **An assistant does not follow its person.** A personal assistant is on
+  a household device only if it is assigned there. Nobody is tracked
+  through the home.
 - **People can create their own assistants,** and configure them as they
   like.
 - **An assistant can act on another device,** such as "show it on my

@@ -44,6 +44,10 @@ There are two kinds of device:
 - **Household things are shared by default.** A shopping list is one list
   for the whole household. Personal sources, such as email, stay private
   until shared.
+- **Who connected a source decides which it is.** A source a person
+  connects through their own account, such as their email or a chat
+  service, is private to them. A source an admin connects for the
+  household is a household thing.
 - A share can be to named people or to the whole household.
 - A person who is given a share can see it, and so can an assistant acting
   for that person.
@@ -100,11 +104,19 @@ On a household device:
 
 - **Unprompted, personal content is not spoken.** A notification says
   "Ian, you have a new email" and nothing more.
-- **Once it recognises a person's voice, it can give that person their own
-  information,** such as their calendar or their reminders, when they ask.
+- **Personal information is spoken only when its owner asks for it by
+  voice.** The person must have used the wake word and their voice must
+  have been recognised. That shows they want the information then and
+  there. Recognising someone is never a reason to start reading things
+  out.
+- **Nobody is tracked through the home.** The system knows a person is at
+  a device only at the moment they use the wake word and their voice is
+  recognised.
 
 ## Open questions
 
+- May an admin connect a source, such as a shared mailbox, for the whole
+  household? It is written so for now.
 - What the sign-in flow of a household device is, and who may set one up:
   any member, or only an admin?
 - Whether a new device can also be added without typing the password, such

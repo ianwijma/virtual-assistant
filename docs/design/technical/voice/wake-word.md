@@ -7,7 +7,11 @@ Status: draft. The detector is not chosen.
 
 ## Design
 
-- Each assistant has a wake word, such as "Hey Jeff".
+- **The wake word belongs to the assistant.** Each assistant has one, such
+  as "Hey Jeff", and it comes with the assistant to every device.
+- **A device can override it.** A device can use a different wake word for
+  an assistant. This is expected to be rare, so the setting sits in an
+  advanced section.
 - **Listening for a wake word is a setting of the device.** It is switched
   on for a device, and that device then listens for the wake words of the
   [assistants](assistants.md) assigned to it.
@@ -41,6 +45,8 @@ Assumed, needing a build to confirm:
 
 ## Open questions
 
+- Is a device's wake word override set per assistant on that device? It
+  is written so for now.
 - Which detector to use, and whether a detection is confirmed by
   transcribing the same audio.
 - Whether custom wake words can be created by the household, and how.
