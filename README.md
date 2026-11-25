@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icon.svg" alt="" width="128">
+</p>
+
 # Virtual Assistant
 
 > Working title. The product name is chosen together with the visual identity.
@@ -19,6 +23,8 @@ the design, which includes the decisions made so far.
 - [docs/reference/existing-voice-assistant.md](docs/reference/existing-voice-assistant.md):
   what we learned from the earlier voice assistant project.
 - [docs/README.md](docs/README.md): how the documents are organised.
+
+- [assets/](assets/README.md): the project icon.
 
 ## Licence
 
