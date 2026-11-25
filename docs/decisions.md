@@ -155,3 +155,7 @@ are 25 November 2026.
 | 135 | Every request for sealed data explains why it is needed and what will be done with it | [vault](design/technical/server/vault.md) |
 | 136 | A password can be shared with a limit on views and on time, as in 1Password | [vault](design/technical/server/vault.md) |
 | 137 | Recovery is by the person's recovery sheet, or by a sealed recovery copy that an admin can release | [vault](design/technical/server/vault.md) |
+| 138 | There are no groups of people and no shared vaults for now; a password is shared with named people or the household | [vault](design/technical/server/vault.md) |
+| 139 | A password is never spoken and never shown on a household device | [vault](design/technical/server/vault.md) |
+| 140 | The core of a client is hand-built; feature screens and everything an assistant shows are described with A2UI | [A2UI](design/technical/a2ui.md) |
+| 141 | Saving a generated screen for reuse is not in the first release | [A2UI](design/technical/a2ui.md) |

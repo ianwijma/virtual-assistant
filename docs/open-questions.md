@@ -160,92 +160,80 @@ Nothing is waiting here at the moment.
 1. The list of reply tags, and how they are written in a reply.
    [reply tags]
 
-
-### Passwords
-
-2. Shared vaults, or passwords shared with a group of people: are they
-   wanted, and are groups of people a thing in the system at all? [vault]
-3. Are there things an assistant may never do with a password, whatever
-   the approval says, such as saying it aloud on a household device?
-   [vault]
-
 ### Screens
 
-4. Which screens are hand-built and which are described with A2UI?
-    [a2ui]
-5. Can a generated surface be saved and reused, and by whom? [a2ui]
-6. Are settings screens generated from each feature's description, as in
+2. Are settings screens generated from each feature's description, as in
     the earlier voice assistant? [admin panel]
-7. What is the list of actions a shortcut can be bound to, and how does
+3. What is the list of actions a shortcut can be bound to, and how does
     the shortcut system work? [desktop]
 
 ### Server
 
-8. How is the server installed and updated: a single binary, a container
+4. How is the server installed and updated: a single binary, a container
     image, a package? [server]
-9. How are backups made and restored? [server]
-10. Is there any data to bring over from the earlier voice assistant?
+5. How are backups made and restored? [server]
+6. Is there any data to bring over from the earlier voice assistant?
     [data]
 
 ### Look
 
-11. Three or four words for how it should feel, and products whose look
+7. Three or four words for how it should feel, and products whose look
     you admire. [visual]
-12. Do the existing characters and the amber and mint colour language
+8. Do the existing characters and the amber and mint colour language
     carry over, or does the identity start fresh? [visual]
-13. Can a person choose a different theme, and how far may it differ?
+9. Can a person choose a different theme, and how far may it differ?
     [visual]
-14. Light and dark: both, and which is the default? [visual]
+10. Light and dark: both, and which is the default? [visual]
 
 ### Working method
 
-15. How is work reviewed and tested? The earlier project suffered from
+11. How is work reviewed and tested? The earlier project suffered from
     long review rounds, heavy tests and documents used as changelogs. It
     is already decided that implementation favours speed to a first
     working product over thorough testing. [repository]
-16. Which machines are used to test the desktop client, the Android app
+12. Which machines are used to test the desktop client, the Android app
     and voice hardware? [repository]
 
 ## 3. Later
 
-17. Which notifications can be replied to or opened from another device,
+13. Which notifications can be replied to or opened from another device,
    and what happens when the source device is off? [notifications]
-18. Which modules the default assistant starts with: all, or a few?
+14. Which modules the default assistant starts with: all, or a few?
    [assistants]
-19. How many voice recordings are needed, and whether a new wake word
+15. How many voice recordings are needed, and whether a new wake word
    means recording again. [speaker identification]
-20. Where lists are shown and edited in each client. [lists]
-21. The number of seconds a device keeps listening after a "keep
+16. Where lists are shown and edited in each client. [lists]
+17. The number of seconds a device keeps listening after a "keep
    listening" tag. [reply tags]
-22. What a restricted role for children may do, once it is added.
+18. What a restricted role for children may do, once it is added.
    [identity]
-23. The level of certainty at which a voice counts as recognised.
+19. The level of certainty at which a voice counts as recognised.
    [speaker identification]
-24. How long a pause ends a conversation. [assistants]
-25. The build order of the parts. There is no roadmap yet; it is decided
+20. How long a pause ends a conversation. [assistants]
+21. The build order of the parts. There is no roadmap yet; it is decided
     after the technical details are clear. [repository]
-26. Whether to create the Cargo workspace and CI before planning is
+22. Whether to create the Cargo workspace and CI before planning is
     finished. For now the answer is no. [repository]
-27. Building and publishing for iOS needs a Mac and an Apple developer
+23. Building and publishing for iOS needs a Mac and an Apple developer
     account, and the App Store has friction with the GPL. How is that
     handled? [mobile]
-28. Is preinstalling a vendor's AI command-line tool on hardware ever
+24. Is preinstalling a vendor's AI command-line tool on hardware ever
     wanted? It would need that vendor's commercial terms. [licensing]
-29. The silence timings, and whether a person can tune them.
+25. The silence timings, and whether a person can tune them.
     [speech to text]
-30. How another language is added, for transcribing and for speaking.
+26. How another language is added, for transcribing and for speaking.
     [speech to text], [text to speech]
-31. The numbers that define "snappy" on the desktop, and the tests for
+27. The numbers that define "snappy" on the desktop, and the tests for
     them. [desktop]
-32. The numbers for a fast voice turn, and how they are tested. [voice]
-33. How false wakes and missed wakes are measured. [wake word]
-34. Feedback: how duplicates are avoided. [feedback]
-35. Email: how much mail is kept on the server and in each client's
+28. The numbers for a fast voice turn, and how they are tested. [voice]
+29. How false wakes and missed wakes are measured. [wake word]
+30. Feedback: how duplicates are avoided. [feedback]
+31. Email: how much mail is kept on the server and in each client's
     cache. [email]
-36. Clipboard: how large items, such as images and files, are handled.
+32. Clipboard: how large items, such as images and files, are handled.
     [clipboard]
-37. The contents of our A2UI catalog. [a2ui]
-38. The full list of capabilities, and how a catalog version is
+33. The contents of our A2UI catalog. [a2ui]
+34. The full list of capabilities, and how a catalog version is
     expressed. [protocol]
 
 ## 4. To research or propose
@@ -254,57 +242,57 @@ These need investigation or a worked-out proposal. An agent does the work
 and writes the outcome into the design; the owner then agrees or
 corrects it. They are sorted by how much depends on them.
 
-39. The summoning states and transitions themselves. [summoning]
-40. Which database the server uses. [server]
-41. How the event log handles household data that several people can
+35. The summoning states and transitions themselves. [summoning]
+36. Which database the server uses. [server]
+37. How the event log handles household data that several people can
     see. [data]
-42. The full list of protocol messages, and how the protocol is
+38. The full list of protocol messages, and how the protocol is
     versioned. [protocol]
-43. The exact pairing steps for a personal device and for a household
+39. The exact pairing steps for a personal device and for a household
     device. [protocol], [identity]
-44. How audio travels: on the device's connection or a separate one.
+40. How audio travels: on the device's connection or a separate one.
     [protocol], [voice]
-45. How notifications, clipboard access, global hotkeys and window
+41. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-46. How notifications reach a phone when the app is closed, without a
+42. How notifications reach a phone when the app is closed, without a
     cloud push service. [mobile]
-47. Which wake word detector to use, and whether a detection is confirmed
+43. Which wake word detector to use, and whether a detection is confirmed
     by transcribing the same audio. [wake word]
-48. Where the desktop client detects the wake word. [wake word],
+44. Where the desktop client detects the wake word. [wake word],
     [desktop]
-49. Which local speech-to-text model is the default, given accuracy,
+45. Which local speech-to-text model is the default, given accuracy,
     speed on low-power hardware and licence. [speech to text]
-50. Which local voices are offered, given quality and licence.
+46. Which local voices are offered, given quality and licence.
     [text to speech]
-51. Which speech models and voices have licences that allow selling
+47. Which speech models and voices have licences that allow selling
     hardware. [licensing]
-52. Echo: how a device avoids hearing its own answer. [voice]
-53. How each AI provider produces A2UI screens, including through a
+48. Echo: how a device avoids hearing its own answer. [voice]
+49. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-54. Whether any Rust implementation of A2UI exists, and whether the A2UI
+50. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-55. Whether A2UI suits screens our own code defines locally, and what it
+51. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-56. What a generated surface may do when its content came from an
+52. What a generated surface may do when its content came from an
     untrusted source, such as an email. [a2ui]
-57. How copied HTML and email HTML are drawn safely. [email],
+53. How copied HTML and email HTML are drawn safely. [email],
     [clipboard]
-58. How search stays fast over years of history. [data], [clipboard]
-59. How the "copy the login code" behaviour works: where it runs, and how
+54. How search stays fast over years of history. [data], [clipboard]
+55. How the "copy the login code" behaviour works: where it runs, and how
      it finds a code in an email. [notifications], [email]
-60. How a non-technical person gets a browser to trust the server's
+56. How a non-technical person gets a browser to trust the server's
      certificate authority. [networking]
-61. How the server is found on the home network when a device is first
+57. How the server is found on the home network when a device is first
      paired. [networking]
-62. How a reply tag is lined up with the moment in the speech where it
+58. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-63. How a person's key is made, how a new device of theirs gets it, and
+59. How a person's key is made, how a new device of theirs gets it, and
    how the recovery copy is sealed so that releasing it takes an admin
    and cannot happen silently. [vault]
-64. How system secrets are encrypted, and where that key is kept, so that
+60. How system secrets are encrypted, and where that key is kept, so that
    a stolen disk or a copied backup gives nothing away. [vault]
-65. Signing in with Google or Microsoft needs an application registered
+61. Signing in with Google or Microsoft needs an application registered
    with each company, and Google reviews applications that read mail.
    Who registers them: the project, or each household's admin? [email]
 

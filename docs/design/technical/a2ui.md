@@ -99,10 +99,19 @@ It depends on the content:
   turned into a sentence, when it needs the assistant's character, such
   as a joke, or when a conversation may follow.
 
+## Hand-built and described screens
+
+- **The core of a client is hand-built:** whatever must be instant and
+  must work without the server. That is the launcher, the clipboard, the
+  notification centre, window control and sign-in.
+- **Feature screens are described with A2UI:** lists, timers, settings
+  pages and the like, and everything an assistant shows. A new feature
+  then needs no new release of each client.
+- A generated screen lives in the conversation it was made in. Saving one
+  for reuse is not in the first release.
+
 ## Open questions
 
-- Which screens are hand-built and which are described with A2UI.
-- Whether a generated surface can be saved and reused, and by whom.
 - What a generated surface may do when its content came from an untrusted
   source, such as an email.
 - Whether any Rust implementation of A2UI exists, and whether the A2UI

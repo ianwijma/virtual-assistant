@@ -53,6 +53,10 @@ person's approval, and only through one of their devices.
 - The vault is also a password manager, in the first release.
 - **A password can be shared, with limits,** as in 1Password: how many
   times it may be viewed, such as five, and for how long the share works.
+- A password is shared with named people or with the whole household.
+  There are no groups of people and no shared vaults, for now.
+- **A password is never spoken, and never shown on a household device,**
+  whatever was approved.
 
 ## Recovery
 
@@ -65,10 +69,6 @@ person's approval, and only through one of their devices.
 
 ## Open questions
 
-- Shared vaults, or passwords shared with a group of people: are they
-  wanted, and are groups of people a thing in the system at all?
-- Are there things an assistant may never do with a password, whatever
-  the approval says, such as saying it aloud on a household device?
 - How a person's key is made, how a new device of theirs gets it, and how
   the recovery copy is sealed so that releasing it takes an admin and
   cannot happen silently. This is research still to do.
