@@ -26,7 +26,10 @@ local thing.
 
 - **Admin:** manages people, devices and modules.
 - **Member:** an ordinary person in the household.
-- **Restricted:** for children and guests.
+
+The first release has these two roles only. A restricted role, for
+children, comes later. A guest is not a role: it is a voice the system
+does not recognise.
 
 ## Devices
 
@@ -70,7 +73,13 @@ There are two kinds of device:
   connects through their own account, such as their email or a chat
   service, is private to them. A source an admin connects for the
   household is a household thing.
+- **These are household things, shared with everyone by default:** lists
+  (such as a shopping list or the pantry), timers and alarms, household
+  devices and assistants, and announcements.
 - A share can be to named people or to the whole household.
+- **A shared item appears in two places** for the person it is shared
+  with: among their own items, marked with who shared it, and in a view
+  that lists only what is shared with them.
 - A person who is given a share can see it, and so can an assistant acting
   for that person.
 - The owner shares one item, a rule (such as a sender or a label), or a
@@ -105,8 +114,8 @@ bug report or a suggestion. See
 
 ## Removing a person
 
-Removing a person is a soft deletion: their data is marked as removed, not
-erased at once.
+Removing a person is a soft deletion: their data is marked as removed. It
+is never erased, and the person can always be restored.
 
 ## Admin access
 
@@ -141,11 +150,6 @@ On a household device:
 
 ## Open questions
 
+- What a restricted role for children may do, once it is added.
 - May an admin connect a source, such as a shared mailbox, for the whole
   household? It is written so for now.
-- What a child's restricted role may do, as distinct from a guest.
-- Does a shared item appear in the other person's own views, or in a
-  separate "shared with me" place?
-- Which things count as household things and are shared by default.
-- When a soft-deleted person's data is erased for good, and whether it can
-  be restored.

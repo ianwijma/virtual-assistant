@@ -112,3 +112,7 @@ are 25 November 2026.
 | 92 | Every client has our own look; nothing mimics the host desktop, not even as a theme | [visual](design/visual/README.md) |
 | 93 | A household device invite can be limited in number of devices and in time, per invite; both are unlimited by default | [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 94 | The account passcode is asked for when switching account, when the client starts and when the computer is unlocked | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 95 | The first release has two roles, admin and member; a restricted role for children comes later | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 96 | A shared item appears among the receiver's own items, marked, and in a "shared with me" view | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 97 | Lists, timers and alarms, household devices and assistants, and announcements are household things by default | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 98 | A removed person's data is never erased and can always be restored | [identity and sharing](design/technical/server/identity-and-sharing.md) |
