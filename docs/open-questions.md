@@ -4,14 +4,35 @@ Every open question, in one list. This is the document the owner answers
 from. Each question also sits at the end of the design document it belongs
 to, which is linked in its heading.
 
-How this list is kept:
+## The flow
 
-- When a question is answered, it is removed here and from its design
-  document, the answer is written into the design, and a line is added to
-  [decisions.md](decisions.md).
-- When an answer raises a new question, or leaves a point to confirm, it is
-  added here and to its design document. It is not asked separately.
-- Numbers are for answering by number. They change when the list changes.
+This is how a question moves from open to decided.
+
+1. **The owner answers** one or more questions from this list, by number,
+   in any order and as loosely as they like.
+2. **The answer is written into the design.** It goes into the design
+   document the question belongs to, as part of the design itself.
+3. **The question is removed** from this list and from the "Open
+   questions" section of that design document.
+4. **A line is added to [decisions.md](decisions.md),** naming the design
+   document the decision is written into.
+5. **Follow-ups are added here.** If the answer raises a new question, it
+   is added to this list and to its design document. If the answer had to
+   be interpreted, the reading goes under "To confirm".
+6. **Nothing is asked in conversation.** The owner is not asked to clarify
+   an answer. They find follow-ups in this list the next time they answer.
+7. **The change is committed** as one change: the design, this list and
+   the decisions log together.
+
+Rules that go with the flow:
+
+- A question is never decided by anyone but the owner.
+- A reading under "To confirm" stands as written in the design until the
+  owner corrects it. No reply means it is accepted.
+- A question that needs investigation, not an opinion, stays in the list
+  until the research is done and the owner has agreed to the outcome.
+- Numbers are for answering by number. They change when the list changes,
+  so answer against the current list.
 
 Planning order: the technical details first, then modules. The roadmap
 comes after that.
