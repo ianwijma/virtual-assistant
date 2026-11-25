@@ -62,7 +62,8 @@ questions.
 - **B.** An admin can connect a source, such as a shared mailbox, for the
   whole household, and it is then a household thing. A source a person
   connects themselves is private to them. [identity]
-- **C.** The switching passcode is four to six digits. [identity]
+- **C.** The account passcode is four to six digits, and each account
+  has its own. [identity]
 - **D.** There is no Home Assistant integration in any release, not only
   the first. Smart-home systems are integrated directly. [modules]
 - **E.** A person's own settings exist in three places: the phone app as
@@ -96,165 +97,156 @@ questions.
 - **N.** A household source's routing rules are set by an admin.
   [notifications]
 
+- **O.** An admin can withdraw a household device invite at any time.
+  [identity]
+- **P.** In routing rules, the order is set by the person, and the first
+  matching rule is the only one used. [notifications]
+
 ## 1. Now
 
-### Notifications
-
-1. What is a routing rule made of: the kind of event, a schedule, the
-    target devices? [notifications]
-
-### Look
-
-2. Does our own identity replace "mimic the host desktop" as the default
-    look? The desktop brief asked for mimicry by default; the later
-    decision for one recognisable look points the other way. If so,
-    mimicry could remain as an optional theme. [visual]
+Nothing is waiting here at the moment.
 
 ## 2. Next
 
 ### People and sharing
 
-3. A household device invite: how long is it valid, for how many
-   devices, and can it be withdrawn? [identity]
-4. Account switching: is the passcode per account, and is it also asked
-    for when the computer wakes? [identity]
-5. What may a child's restricted role do, as distinct from a guest?
+1. What may a child's restricted role do, as distinct from a guest?
     [identity]
-6. Does a shared item appear in the other person's own views, or in a
+2. Does a shared item appear in the other person's own views, or in a
     separate "shared with me" place? [identity]
-7. Which things count as household things and are shared by default?
+3. Which things count as household things and are shared by default?
     [identity]
-8. When is a soft-deleted person's data erased for good, and can it be
+4. When is a soft-deleted person's data erased for good, and can it be
     restored? [identity]
 
 ### Voice
 
-9. The list of reply tags, and how they are written in a reply.
+5. The list of reply tags, and how they are written in a reply.
    [reply tags]
-10. How long does a device keep listening after a "keep listening" tag,
+6. How long does a device keep listening after a "keep listening" tag,
    and may only the same person's voice answer? [reply tags]
-11. Are reply tags also used on a device that only shows text?
+7. Are reply tags also used on a device that only shows text?
    [reply tags]
-12. Which words work without a wake word, such as "stop" while an alarm
+8. Which words work without a wake word, such as "stop" while an alarm
     rings? [summoning]
-13. Can custom wake words be created by the household, and how?
+9. Can custom wake words be created by the household, and how?
     [wake word]
-14. How does a person enrol their voice, and on which device?
+10. How does a person enrol their voice, and on which device?
     [speaker identification]
-15. Where is voice data stored, and how is it removed?
+11. Where is voice data stored, and how is it removed?
     [speaker identification]
-16. Which cloud speech-to-text providers are supported first, beyond
+12. Which cloud speech-to-text providers are supported first, beyond
     Deepgram? [speech to text]
-17. Which cloud text-to-speech providers are supported first?
+13. Which cloud text-to-speech providers are supported first?
     [text to speech]
 
 ### Modules and timers
 
-18. A lists module, for lists and things a person asks the assistant to
+14. A lists module, for lists and things a person asks the assistant to
    remember: is it in the first release, and is a list private or shared
    with the household by default? [modules]
-19. The default assistant: can it be removed, and does it start with
+15. The default assistant: can it be removed, and does it start with
    every module switched on or only a few? [assistants]
-20. Timers, alarms and reminders are a system feature with no design
+16. Timers, alarms and reminders are a system feature with no design
    document yet. What do they cover, and where do they ring? [modules]
 
 ### Notifications
 
-21. What happens when no routing rule matches? [notifications]
-22. Do quiet hours and "do not disturb" exist per person, per device, or
+17. What happens when no routing rule matches? [notifications]
+18. Do quiet hours and "do not disturb" exist per person, per device, or
     both? [notifications]
-23. Which actions can be taken on a notification from another device
+19. Which actions can be taken on a notification from another device
     (dismiss, reply, open), and what if the source device is off?
     [notifications]
 
 ### Modules and system features
 
-24. Can an assistant be given a module with some of its tools switched
+20. Can an assistant be given a module with some of its tools switched
     off? [modules]
-25. Feedback: how does the server sign in to GitHub: a token the admin
+21. Feedback: how does the server sign in to GitHub: a token the admin
     enters, a relay the project hosts, or a prefilled link only?
     [feedback]
-26. Feedback: is a report always reviewed by a person before it is sent,
+22. Feedback: is a report always reviewed by a person before it is sent,
     and by whom: the reporter, or an admin? [feedback]
-27. Feedback: may any member file a report, including by voice?
+23. Feedback: may any member file a report, including by voice?
     [feedback]
-28. Email: which providers: any IMAP server, Gmail, Outlook? [email]
-29. Email: how does a person sign in to their account, and where is the
+24. Email: which providers: any IMAP server, Gmail, Outlook? [email]
+25. Email: how does a person sign in to their account, and where is the
     credential kept? [email]
-30. Clipboard: is sync on by default, and between which devices?
+26. Clipboard: is sync on by default, and between which devices?
     [clipboard]
-31. How long is history kept, for the clipboard and for events in
+27. How long is history kept, for the clipboard and for events in
     general, and how are old events trimmed? [clipboard], [data]
 
 ### Screens
 
-32. Who writes the spoken form of a screen: the system feature, or the AI
+28. Who writes the spoken form of a screen: the system feature, or the AI
     model? [a2ui]
-33. Which screens are hand-built and which are described with A2UI?
+29. Which screens are hand-built and which are described with A2UI?
     [a2ui]
-34. Can a generated surface be saved and reused, and by whom? [a2ui]
-35. Are settings screens generated from each feature's description, as in
+30. Can a generated surface be saved and reused, and by whom? [a2ui]
+31. Are settings screens generated from each feature's description, as in
     the earlier voice assistant? [admin panel]
-36. Can the voice page be typed to as well as spoken to? [voice page]
-37. What is the list of actions a shortcut can be bound to, and how does
+32. Can the voice page be typed to as well as spoken to? [voice page]
+33. What is the list of actions a shortcut can be bound to, and how does
     the shortcut system work? [desktop]
 
 ### Server
 
-38. How is the server installed and updated: a single binary, a container
+34. How is the server installed and updated: a single binary, a container
     image, a package? [server]
-39. How are backups made and restored? [server]
-40. Is there any data to bring over from the earlier voice assistant?
+35. How are backups made and restored? [server]
+36. Is there any data to bring over from the earlier voice assistant?
     [data]
 
 ### Look
 
-41. Three or four words for how it should feel, and products whose look
+37. Three or four words for how it should feel, and products whose look
     you admire. [visual]
-42. Do the existing characters and the amber and mint colour language
+38. Do the existing characters and the amber and mint colour language
     carry over, or does the identity start fresh? [visual]
-43. Can a person choose a different theme, and how far may it differ?
+39. Can a person choose a different theme, and how far may it differ?
     [visual]
-44. Light and dark: both, and which is the default? [visual]
+40. Light and dark: both, and which is the default? [visual]
 
 ### Working method
 
-45. How is work reviewed and tested? The earlier project suffered from
+41. How is work reviewed and tested? The earlier project suffered from
     long review rounds, heavy tests and documents used as changelogs. It
     is already decided that implementation favours speed to a first
     working product over thorough testing. [repository]
-46. Which machines are used to test the desktop client, the Android app
+42. Which machines are used to test the desktop client, the Android app
     and voice hardware? [repository]
 
 ## 3. Later
 
-47. The level of certainty at which a voice counts as recognised.
+43. The level of certainty at which a voice counts as recognised.
    [speaker identification]
-48. How long a pause ends a conversation. [assistants]
-49. The build order of the parts. There is no roadmap yet; it is decided
+44. How long a pause ends a conversation. [assistants]
+45. The build order of the parts. There is no roadmap yet; it is decided
     after the technical details are clear. [repository]
-50. Whether to create the Cargo workspace and CI before planning is
+46. Whether to create the Cargo workspace and CI before planning is
     finished. For now the answer is no. [repository]
-51. Building and publishing for iOS needs a Mac and an Apple developer
+47. Building and publishing for iOS needs a Mac and an Apple developer
     account, and the App Store has friction with the GPL. How is that
     handled? [mobile]
-52. Is preinstalling a vendor's AI command-line tool on hardware ever
+48. Is preinstalling a vendor's AI command-line tool on hardware ever
     wanted? It would need that vendor's commercial terms. [licensing]
-53. The silence timings, and whether a person can tune them.
+49. The silence timings, and whether a person can tune them.
     [speech to text]
-54. How another language is added, for transcribing and for speaking.
+50. How another language is added, for transcribing and for speaking.
     [speech to text], [text to speech]
-55. The numbers that define "snappy" on the desktop, and the tests for
+51. The numbers that define "snappy" on the desktop, and the tests for
     them. [desktop]
-56. The numbers for a fast voice turn, and how they are tested. [voice]
-57. How false wakes and missed wakes are measured. [wake word]
-58. Feedback: how duplicates are avoided. [feedback]
-59. Email: how much mail is kept on the server and in each client's
+52. The numbers for a fast voice turn, and how they are tested. [voice]
+53. How false wakes and missed wakes are measured. [wake word]
+54. Feedback: how duplicates are avoided. [feedback]
+55. Email: how much mail is kept on the server and in each client's
     cache. [email]
-60. Clipboard: how large items, such as images and files, are handled.
+56. Clipboard: how large items, such as images and files, are handled.
     [clipboard]
-61. The contents of our A2UI catalog. [a2ui]
-62. The full list of capabilities, and how a catalog version is
+57. The contents of our A2UI catalog. [a2ui]
+58. The full list of capabilities, and how a catalog version is
     expressed. [protocol]
 
 ## 4. To research or propose
@@ -263,50 +255,50 @@ These need investigation or a worked-out proposal. An agent does the work
 and writes the outcome into the design; the owner then agrees or
 corrects it. They are sorted by how much depends on them.
 
-63. The summoning states and transitions themselves. [summoning]
-64. Which database the server uses. [server]
-65. How the event log handles household data that several people can
+59. The summoning states and transitions themselves. [summoning]
+60. Which database the server uses. [server]
+61. How the event log handles household data that several people can
     see. [data]
-66. The full list of protocol messages, and how the protocol is
+62. The full list of protocol messages, and how the protocol is
     versioned. [protocol]
-67. The exact pairing steps for a personal device and for a household
+63. The exact pairing steps for a personal device and for a household
     device. [protocol], [identity]
-68. How audio travels: on the device's connection or a separate one.
+64. How audio travels: on the device's connection or a separate one.
     [protocol], [voice]
-69. How notifications, clipboard access, global hotkeys and window
+65. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-70. How notifications reach a phone when the app is closed, without a
+66. How notifications reach a phone when the app is closed, without a
     cloud push service. [mobile]
-71. Which wake word detector to use, and whether a detection is confirmed
+67. Which wake word detector to use, and whether a detection is confirmed
     by transcribing the same audio. [wake word]
-72. Where the desktop client detects the wake word. [wake word],
+68. Where the desktop client detects the wake word. [wake word],
     [desktop]
-73. Which local speech-to-text model is the default, given accuracy,
+69. Which local speech-to-text model is the default, given accuracy,
     speed on low-power hardware and licence. [speech to text]
-74. Which local voices are offered, given quality and licence.
+70. Which local voices are offered, given quality and licence.
     [text to speech]
-75. Which speech models and voices have licences that allow selling
+71. Which speech models and voices have licences that allow selling
     hardware. [licensing]
-76. Echo: how a device avoids hearing its own answer. [voice]
-77. How each AI provider produces A2UI screens, including through a
+72. Echo: how a device avoids hearing its own answer. [voice]
+73. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-78. Whether any Rust implementation of A2UI exists, and whether the A2UI
+74. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-79. Whether A2UI suits screens our own code defines locally, and what it
+75. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-80. What a generated surface may do when its content came from an
+76. What a generated surface may do when its content came from an
     untrusted source, such as an email. [a2ui]
-81. How copied HTML and email HTML are drawn safely. [email],
+77. How copied HTML and email HTML are drawn safely. [email],
     [clipboard]
-82. How search stays fast over years of history. [data], [clipboard]
-83. How the "copy the login code" behaviour works: where it runs, and how
+78. How search stays fast over years of history. [data], [clipboard]
+79. How the "copy the login code" behaviour works: where it runs, and how
      it finds a code in an email. [notifications], [email]
-84. How a non-technical person gets a browser to trust the server's
+80. How a non-technical person gets a browser to trust the server's
      certificate authority. [networking]
-85. How the server is found on the home network when a device is first
+81. How the server is found on the home network when a device is first
      paired. [networking]
-86. How a reply tag is lined up with the moment in the speech where it
+82. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
 
 [identity]: design/technical/server/identity-and-sharing.md

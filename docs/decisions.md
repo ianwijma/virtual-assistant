@@ -108,3 +108,7 @@ are 25 November 2026.
 | 88 | A follow-up without the wake word is possible only when the reply carried the "keep listening" tag | [reply tags](design/technical/voice/reply-tags.md), [summoning](design/technical/voice/summoning.md) |
 | 89 | A voice not matched with enough certainty counts as unrecognised; there is no in-between level and no PIN or phone fallback | [summoning](design/technical/voice/summoning.md), [speaker identification](design/technical/voice/speaker-identification.md) |
 | 90 | A routing rule can send to the person's own devices, household devices and other people; household sources have rules too | [notifications and routing](design/technical/server/notifications-and-routing.md) |
+| 91 | A routing rule has four parts: what, when, where and how it arrives; the first matching rule is used | [notifications and routing](design/technical/server/notifications-and-routing.md) |
+| 92 | Every client has our own look; nothing mimics the host desktop, not even as a theme | [visual](design/visual/README.md) |
+| 93 | A household device invite can be limited in number of devices and in time, per invite; both are unlimited by default | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 94 | The account passcode is asked for when switching account, when the client starts and when the computer is unlocked | [identity and sharing](design/technical/server/identity-and-sharing.md) |

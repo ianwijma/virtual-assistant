@@ -24,6 +24,16 @@ Status: draft.
 ## Routing
 
 - Each person configures where their own notifications go.
+- **A rule has four parts:**
+
+  | Part | Meaning | Example |
+  |---|---|---|
+  | What | The kind of notification: a source, or everything | Email |
+  | When | Always, or a schedule | Work hours |
+  | Where | The targets | The home-office desktop |
+  | How | How it arrives | Silently, with a sound, or spoken aloud |
+
+  Rules are checked in order, and the first one that matches is used.
 - **A rule can send to the person's own devices, to household devices and
   to other people.**
 - **A household source has rules too.** A household email address, for
@@ -52,8 +62,6 @@ devices and to personal devices.
 
 ## Open questions
 
-- What a routing rule is made of: the kind of event, a schedule, the
-  target devices?
 - What happens when no rule matches.
 - Do quiet hours and "do not disturb" exist per person, per device, or
   both?

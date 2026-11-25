@@ -45,10 +45,14 @@ There are two kinds of device:
   creates an invite, as a code or a QR code that can be saved and passed
   on, for example in a group chat. Whoever sets up the device scans or
   enters it, and the device registers with the server. The device does
-  nothing until an admin approves it.
+  nothing until an admin approves it. For each invite the admin can set
+  how many devices it may add and how long it is valid. Both are
+  unlimited unless set.
 - **Several accounts on one device.** A computer can hold more than one
   account, and a person switches between them with a short passcode,
-  possibly four to six digits. The accounts can be different people in one
+  possibly four to six digits. The passcode is asked for when switching
+  to an account, when the client starts, and when the computer is
+  unlocked. The accounts can be different people in one
   household, or one person's accounts on different servers.
 - A personal device still receives household events, such as a "dinner is
   ready" broadcast.
@@ -137,12 +141,8 @@ On a household device:
 
 ## Open questions
 
-- A household device invite: how long is it valid, for how many devices,
-  and can it be withdrawn?
 - May an admin connect a source, such as a shared mailbox, for the whole
   household? It is written so for now.
-- Account switching: is the passcode per account, how long is it, and is
-  it also asked for when the computer wakes?
 - What a child's restricted role may do, as distinct from a guest.
 - Does a shared item appear in the other person's own views, or in a
   separate "shared with me" place?

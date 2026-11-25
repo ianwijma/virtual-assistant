@@ -45,14 +45,16 @@ The earlier voice assistant has a look that can be reused or replaced:
 
 See [the reference](../../reference/existing-voice-assistant.md).
 
+## Our own look, everywhere
+
+Every client has our own look. No client imitates the look of the desktop
+or the phone it runs on, and there is no theme that does. This replaces
+the desktop brief's request to mimic the host desktop by default.
+
 ## Open questions
 
 - Three or four words for how it should feel, and products whose look you
   admire.
-- Does our own identity replace "mimic the host desktop" as the default
-  look? The desktop brief asked for mimicry by default; the later decision
-  for one recognisable look points the other way. If so, mimicry could
-  remain as an optional theme.
 - Do the existing characters and the amber and mint colour language carry
   over, or does the identity start fresh?
 - Can a person choose a different theme, and how far may it differ?
