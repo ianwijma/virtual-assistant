@@ -15,8 +15,14 @@ Status: draft.
     rolling its eyes, or laughing after a joke;
   - "keep listening", when the model expects the person to answer.
 - **The model is told which tags exist,** so it can use them.
-- **Tags are never spoken.** They are removed before the text goes to
-  [text to speech](text-to-speech.md).
+- **Tags are never spoken and never shown.** They are removed before the
+  text goes to [text to speech](text-to-speech.md), and from an answer
+  that is shown as text.
+- **Character tags depend on the device.** Whether a device shows the
+  assistant's character is one of its
+  [capabilities](../server/protocol.md). When it does not, as on a
+  voice-only device or in a plain chat, the model is not told about the
+  character tags. If it sends one anyway, the tag is removed.
 - **A tag takes effect where it stands.** An expression placed in the
   middle of a reply happens when the speech reaches that point, so the
   character's movement lines up with what it says.
@@ -25,15 +31,15 @@ Status: draft.
 
 A person can answer without the wake word only when the reply carried the
 "keep listening" tag. The device then stays awake and listens for the
-answer. This is the explicit follow-up state of
+answer for a few seconds. Anyone may give that answer, not only the
+person who started. This is the explicit follow-up state of
 [summoning](summoning.md): it is entered for a stated reason and has a
 visible end.
 
 ## Open questions
 
+- The number of seconds a device keeps listening after a "keep
+  listening" tag.
 - The list of tags, and how they are written in a reply.
 - How a tag is lined up with the moment in the speech where it stands.
   This is research still to do.
-- How long a device keeps listening after a "keep listening" tag, and
-  whether only the same person's voice may answer.
-- Whether tags are also used on a device that only shows text.

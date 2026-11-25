@@ -25,7 +25,8 @@ The server keeps a record of what each device can do.
 - A device states its capabilities when it is registered, and again
   whenever it is updated or they change.
 - Examples: it has a screen, it can draw A2UI and which catalog it
-  supports, it has a microphone, it has a speaker, it can play media, it
+  supports, it shows the assistant's character, it has a microphone, it has a
+  speaker, it can play media, it
   can control windows.
 - The capabilities of the device in use are sent to the AI model with a
   request, so the reply fits the device. For example, the model composes

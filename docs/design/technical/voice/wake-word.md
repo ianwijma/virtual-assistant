@@ -7,8 +7,14 @@ Status: draft. The detector is not chosen.
 
 ## Design
 
-- **The wake word belongs to the assistant.** Each assistant has one, such
-  as "Hey Jeff", and it comes with the assistant to every device.
+- **The wake words belong to the assistant.** Each assistant has a list
+  of them, such as "Hey Jeff", and the list comes with the assistant to
+  every device. The household chooses the words.
+- **The list can hold other spellings of the same word,** for when an
+  accent makes the usual one fail.
+- **People can record themselves saying the wake words.** The recordings
+  are used to recognise who is speaking. See
+  [speaker identification](speaker-identification.md).
 - **A device can override it.** A device can use a different wake word for
   an assistant. This is expected to be rare, so the setting sits in an
   advanced section.
@@ -49,6 +55,5 @@ Assumed, needing a build to confirm:
   is written so for now.
 - Which detector to use, and whether a detection is confirmed by
   transcribing the same audio.
-- Whether custom wake words can be created by the household, and how.
 - Where the desktop client detects the wake word.
 - How false wakes and missed wakes are measured.

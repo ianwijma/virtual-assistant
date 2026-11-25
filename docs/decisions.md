@@ -116,3 +116,7 @@ are 25 November 2026.
 | 96 | A shared item appears among the receiver's own items, marked, and in a "shared with me" view | [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 97 | Lists, timers and alarms, household devices and assistants, and announcements are household things by default | [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 98 | A removed person's data is never erased and can always be restored | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 99 | After a "keep listening" tag, anyone may answer without the wake word, for a few seconds | [reply tags](design/technical/voice/reply-tags.md) |
+| 100 | Tags are never shown or spoken; whether a device shows a character is a capability, and without it character tags are not offered to the model and are removed if returned | [reply tags](design/technical/voice/reply-tags.md), [protocol](design/technical/server/protocol.md) |
+| 101 | "Stop" while something rings or while the assistant speaks, and "snooze" on an alarm, work without the wake word | [summoning](design/technical/voice/summoning.md) |
+| 102 | An assistant has a list of wake words chosen by the household, with room for other spellings; people record the wake words, and the recordings are used to recognise them | [wake word](design/technical/voice/wake-word.md), [speaker identification](design/technical/voice/speaker-identification.md) |

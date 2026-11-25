@@ -29,6 +29,14 @@ A voice that is not matched with enough certainty counts as unrecognised.
 There is no in-between level and no fallback such as a PIN. If this goes
 wrong too often, speaker identification itself is improved.
 
+Three words work without the wake word, each only in its own situation:
+
+| Word | When |
+|---|---|
+| "Stop" | While a timer or an alarm rings on that device |
+| "Stop" | While the assistant is speaking |
+| "Snooze" | While an alarm rings on that device |
+
 A follow-up without the wake word is possible only when the assistant's
 reply asked for it. See [reply tags](reply-tags.md).
 
@@ -66,5 +74,3 @@ This leads to four rules:
 ## Open questions
 
 - The states and transitions themselves.
-- Which words work without a wake word, such as "stop" while an alarm
-  rings.

@@ -10,6 +10,8 @@ Status: draft. Nothing like this exists in the earlier voice assistant.
 - It is the second step of [summoning](summoning.md): after the wake word,
   the utterance is compared with enrolled voices.
 - The result decides whose permissions the assistant uses.
+- **A person enrols by recording the wake words** of the assistants they
+  use. See [wake word](wake-word.md).
 - An unknown or uncertain voice is treated as unrecognised. There is no
   "probably this person" level. If recognition is not good enough, it is
   improved; it is kept as a part that can be replaced.
@@ -36,6 +38,7 @@ Assumed, needing a build to confirm:
 
 ## Open questions
 
+- On which device a person records the wake words, how many recordings
+  are needed, and whether a new wake word means recording again.
 - The level of certainty at which a voice counts as recognised.
-- How a person enrols their voice, and on which device.
 - Where voice data is stored, and how it is removed.
