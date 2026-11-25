@@ -46,6 +46,4 @@ for a tablet and plain words for a device that only speaks.
 - What an assistant may do without asking, and what needs confirmation.
   The earlier project's risk classes (read, change, message, money,
   security) are a candidate.
-- Does each person have a private memory with an assistant, separate from
-  household memory?
 - How each provider produces A2UI screens. See [A2UI](../a2ui.md).

@@ -16,16 +16,32 @@ device. A household can have several, each a distinct character.
 | Abilities | The [modules](../modules/README.md) it has. A module is a set of tools, and the same module can be given to several assistants |
 | Scope | The whole household, or one person |
 
+- **There is a default household assistant.** First-run setup creates
+  it. It is used by everyone and on every device, personal devices
+  included, until someone customises it or makes their own. It is a
+  starting point, with a set of modules already switched on.
 - **Assistants are assigned to devices:** to chosen devices, or to all of
   them. A device answers only for the assistants assigned to it.
+- **Only an admin assigns an assistant to a household device.** A person
+  puts their own assistant on their own devices.
 - **An assistant does not follow its person.** A personal assistant is on
   a household device only if it is assigned there. Nobody is tracked
   through the home.
 - **People can create their own assistants,** and configure them as they
   like.
 - **An assistant can act on another device,** such as "show it on my
-  desktop" or "send this to my partner's phone". The other person does not
-  have to accept for now; that can be added later.
+  desktop" or "send this to my partner's phone". It may act on the
+  speaker's own devices, on household devices and on other people's
+  devices. The other person does not have to accept for now; that can be
+  added later.
+- **A conversation is remembered for a short time only.** A person can
+  carry on a conversation for a little while. After a short pause, of a
+  minute or a few, the assistant starts fresh. There is no memory across
+  conversations for now. This is kept simple on purpose and will be
+  reworked, so it must stay easy to change.
+- **Remembering on request is a tool, not conversation memory.** "Remember
+  this for me" would be handled by a lists module, which keeps lists and
+  notes a person asks for.
 - An assistant always acts with the permissions of the person it is
   talking to. See [summoning](summoning.md).
 - An unrecognised voice gets guest abilities only. What those are is
@@ -46,9 +62,6 @@ designed fresh in [summoning](summoning.md).
 
 ## Open questions
 
-- Is there always a household assistant?
-- Does each person have a private memory with an assistant?
-- Who may assign an assistant to a device: can a person put their own
-  assistant on a household device, or only an admin?
-- Which devices an assistant may act on: only the speaker's own, or any
-  device in the household?
+- The default assistant: can it be removed, and does it start with every
+  module switched on or only a few?
+- How long a pause ends a conversation.

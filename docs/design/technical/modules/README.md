@@ -101,6 +101,9 @@ its list of modules.
 
 ## Open questions
 
+- A lists module, for lists and things a person asks the assistant to
+  remember: is it in the first release, and is a list private or shared
+  with the household by default?
 - Timers, alarms and reminders are a system feature with no design
   document yet. What do they cover, and where do they ring?
 - Can one tool belong to several modules, and is a module only a

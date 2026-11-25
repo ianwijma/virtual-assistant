@@ -91,3 +91,7 @@ are 25 November 2026.
 | 71 | Without internet, a new device is signed in with a code from an already signed-in device or one an admin issues; otherwise it is not possible | [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 72 | First-run setup of a server is done in the admin panel | [admin panel](design/technical/clients/web-admin.md) |
 | 73 | A voice page is set up as personal or household when opened, with the same flows as the phone app | [voice page](design/technical/clients/web-voice.md) |
+| 74 | First-run setup creates a default household assistant, used by everyone on every device until customised | [assistants](design/technical/voice/assistants.md) |
+| 75 | A conversation is remembered for a short time and then starts fresh; there is no memory across conversations for now, and remembering on request is a tool of a lists module | [assistants](design/technical/voice/assistants.md), [modules](design/technical/modules/README.md) |
+| 76 | Only an admin assigns an assistant to a household device; a person puts their own assistant on their own devices | [assistants](design/technical/voice/assistants.md) |
+| 77 | An assistant may act on the speaker's own devices, household devices and other people's devices | [assistants](design/technical/voice/assistants.md) |
