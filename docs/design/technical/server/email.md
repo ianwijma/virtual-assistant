@@ -10,6 +10,10 @@ Status: draft. Nothing like this exists in the earlier voice assistant.
 Email is a feature of the system. A [module](../modules/README.md) gives
 assistants the tools to use it.
 
+- **Three ways to connect an account from the start:** any IMAP server,
+  "Sign in with Google" and "Sign in with Microsoft".
+- **The credential is kept on the server, encrypted, in the
+  [vault](vault.md).** Devices never hold it.
 - Email accounts are held by the server, and the server fetches the mail.
   It is always on, so an arriving email can be announced even when the
   desktop is off.
@@ -26,9 +30,10 @@ assistants the tools to use it.
 
 ## Open questions
 
-- Which providers: any IMAP server, Gmail, Outlook?
-- How a person signs in to their account, and where the credential is
-  kept.
+- Signing in with Google or Microsoft needs an application registered
+  with each company, and Google reviews applications that read mail. Who
+  registers them: the project, or each household's admin? This is
+  research still to do.
 - How much mail is kept on the server and in each client's cache.
 - How copied HTML and email HTML are drawn safely.
 - How the "copy the login code" behaviour finds a code in an email.

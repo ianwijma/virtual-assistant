@@ -135,3 +135,7 @@ are 25 November 2026.
 | 115 | A timer or alarm whose device is off falls back like a notification: to the setter's phone, or to other household devices | [timers](design/technical/server/timers.md) |
 | 116 | A list entry is like a Google Keep note: a list of items to tick off, or plain text | [lists](design/technical/server/lists.md) |
 | 117 | Anyone may file feedback, including an unrecognised voice through a guest assistant | [feedback](design/technical/server/feedback.md) |
+| 118 | Email accounts connect through any IMAP server, Google sign-in or Microsoft sign-in from the start | [email](design/technical/server/email.md) |
+| 119 | Credentials and other secrets are kept encrypted on the server in one vault, a system feature | [vault](design/technical/server/vault.md), [email](design/technical/server/email.md) |
+| 120 | Clipboard sync between a person's devices is on by default, and clipboard content is encrypted in storage and in transit | [clipboard](design/technical/server/clipboard.md) |
+| 121 | History is kept forever by default, with a limit that can be set per kind | [data and sync](design/technical/server/data-and-sync.md), [clipboard](design/technical/server/clipboard.md) |

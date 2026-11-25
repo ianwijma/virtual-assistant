@@ -12,8 +12,11 @@ The clipboard is a feature of the system. A
 
 - **Capture and paste are local and instant.** Sync follows in the
   background.
-- **Shared between a person's devices.** The newest item is pushed to
-  their other devices. History and large items are fetched when needed.
+- **Shared between a person's devices, and on by default.** The newest
+  item is pushed to their other devices.
+- **Clipboard content is sensitive, so it is encrypted** where it is
+  stored and while it travels between devices.
+- **History is kept forever by default.** A limit can be set. History and large items are fetched when needed.
 - **History is stored on the server.** The device keeps a local index for
   search.
 - **Password-manager copies are not synced** by default.
@@ -31,8 +34,9 @@ The clipboard is a feature of the system. A
 
 ## Open questions
 
-- Is clipboard sync on by default, and between which devices?
+- How far the encryption goes. If only the person's own devices can read
+  their clipboard, the server cannot search it, an assistant cannot use
+  it, and an admin cannot read it. Which of these is wanted?
 - How large items, such as images and files, are handled.
 - How untrusted HTML is drawn safely.
 - How search stays fast over years of history.
-- How long history is kept.

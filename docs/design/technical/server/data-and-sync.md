@@ -47,10 +47,15 @@ is not erased at once.
 A device keeps working from its cache. Server data is read-only until the
 connection returns.
 
+## How long history is kept
+
+History is kept forever by default: clipboard items, notifications and
+other events. A person or an admin can set a limit per kind, such as 90
+days for the clipboard.
+
 ## Open questions
 
 - How the log handles household data that several people can see.
-- How long history is kept, and how old events are trimmed.
 - How search stays fast over years of history. This is research still to
   do.
 - Whether there is any data to bring over from the earlier voice
