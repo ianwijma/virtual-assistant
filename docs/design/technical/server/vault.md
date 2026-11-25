@@ -1,63 +1,77 @@
 # Vault
 
 The one place where sensitive data is kept: the system's own secrets, and
-each person's most sensitive data. Part of [the server design](README.md).
+each person's sealed data. Part of [the server design](README.md).
 
-Status: draft. The outline is decided. Who can read a person's sensitive
-data, and the cryptography, are not.
+Status: draft. The outline is decided; the cryptography is not.
 
-## Design
+## Two kinds of content
 
-The vault holds two kinds of thing. Both are stored on the server, and
-both are encrypted.
+Both are stored on the server, and both are encrypted. They differ in who
+can read them.
 
-| Kind | Examples |
-|---|---|
-| System secrets | Keys and sign-ins of the [AI providers](ai-providers.md) and cloud speech providers, the mail account for sign-in codes, an admin's GitHub token, [email](email.md) credentials |
-| A person's sensitive data | Their [clipboard](clipboard.md) history, their passwords |
+| Kind | Examples | Who can read it |
+|---|---|---|
+| System secrets | Keys and sign-ins of the [AI providers](ai-providers.md) and cloud speech providers, the mail account for sign-in codes, an admin's GitHub token, [email](email.md) credentials | The server, which uses them when needed |
+| A person's sealed data | Their [clipboard](clipboard.md) history, their passwords | Only that person's devices |
 
-- **The server uses system secrets when it needs them.**
-- **Only the clipboard and passwords are a person's sensitive data.**
-  Anything an assistant must read on its own, such as email,
-  notifications and lists, is not, because the server has to read it.
-- **The vault is also a password manager,** in the first release.
-  Passwords can be shared with the household.
-- **An assistant can use the clipboard and passwords, but only with the
-  person's approval:**
-
-  | Data | Approval |
-  |---|---|
-  | Clipboard | The assistant first asks whether it may search the clipboard |
-  | Passwords | Two steps: it asks whether it may search the passwords, and then asks again before a password is decrypted |
-
-  These are the first actions that need a confirmation. Other tools do
-  not ask, for now. See [AI providers](ai-providers.md).
-- **Each person gets a recovery sheet:** a PDF with their key and the
-  other details needed to get back in, like the emergency kit of
-  1Password.
-- **An admin should be able to help a person recover their key.**
-- **Browsers do not get at a person's sensitive data in the first
-  release.** The admin panel and the voice page do not show clipboard
-  history or passwords; the desktop client and the phone app do.
+- **Only the clipboard and passwords are sealed.** Anything an assistant
+  must read by itself, such as email, notifications and lists, is not,
+  because the server has to read it.
 - Every part of the system that needs a secret keeps it here, and nowhere
   else.
 
+## Sealed data
+
+- **It is encrypted and decrypted on the person's devices,** with a key
+  only those devices hold. The server stores it and never holds the key.
+  So the server cannot read it, and neither can an admin.
+- **Browsers do not get at it in the first release.** The admin panel and
+  the voice page do not show clipboard history or passwords; the desktop
+  client and the phone app do.
+
+## How an assistant uses sealed data
+
+An assistant can use the clipboard and passwords, but only with the
+person's approval, and only through one of their devices.
+
+| Data | Approval |
+|---|---|
+| Clipboard | One step: it asks whether it may search the clipboard |
+| Passwords | Two steps: it asks whether it may search the passwords, and asks again before a password is unsealed |
+
+- **Every request explains itself.** The assistant says why it needs the
+  access and what it will do with the result. This holds for each step.
+- **The approval is given on a device of that person that holds the
+  key.** That device then decrypts only what was asked for and hands it
+  over. It needs one of the person's devices to be on.
+- These are the first actions that need a confirmation. Other tools do
+  not ask, for now. See [AI providers](ai-providers.md).
+
+## Passwords
+
+- The vault is also a password manager, in the first release.
+- **A password can be shared, with limits,** as in 1Password: how many
+  times it may be viewed, such as five, and for how long the share works.
+
+## Recovery
+
+- **Each person gets a recovery sheet:** a PDF with their key and the
+  other details needed to get back in, like the emergency kit of
+  1Password.
+- **An admin can release a recovery copy.** A sealed copy of a person's
+  key is kept for recovery. An admin can release it to that person, for
+  when both their devices and their sheet are lost.
+
 ## Open questions
 
-- Can the server read a person's sensitive data? Three wishes pull in
-  different directions: the server should not know the content,
-  assistants should be able to use it, and an admin should be able to
-  recover it. The answer may differ for the clipboard and for passwords.
-- Where the person gives an approval: by voice to the device they are
-  talking to, or on one of their own devices?
-- What an assistant may do with a password: say it, fill it in on a
-  device, or use it to sign in somewhere by itself?
-- How passwords are shared with the household: one shared vault, or
-  sharing item by item?
-- How a person's keys are made, how a new device of theirs gets them, and
-  how recovery works. There are no account passwords to derive a key
-  from. This is research still to do, and it depends on the first
-  question.
+- Shared vaults, or passwords shared with a group of people: are they
+  wanted, and are groups of people a thing in the system at all?
+- Are there things an assistant may never do with a password, whatever
+  the approval says, such as saying it aloud on a household device?
+- How a person's key is made, how a new device of theirs gets it, and how
+  the recovery copy is sealed so that releasing it takes an admin and
+  cannot happen silently. This is research still to do.
 - How system secrets are encrypted, and where that key is kept, so that a
   stolen disk or a copied backup gives nothing away. This is research
   still to do.

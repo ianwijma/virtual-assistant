@@ -14,11 +14,14 @@ The clipboard is a feature of the system. A
   background.
 - **Shared between a person's devices, and on by default.** The newest
   item is pushed to their other devices.
-- **Clipboard content is sensitive, so it is encrypted.** It is one of a
-  person's two kinds of sensitive data in the [vault](vault.md).
-- **An assistant can use it, after asking.** It first asks the person
-  whether it may search the clipboard. Whether the server can read the
-  content, or a device supplies it, is open. See [vault](vault.md).
+- **Clipboard content is sealed.** It is encrypted on the person's
+  devices, and only they can read it. The server stores it and passes it
+  on. See [vault](vault.md).
+- **An assistant can use it, after asking.** It asks whether it may
+  search the clipboard and explains why. The person approves on one of
+  their devices, which then supplies the content.
+- **Search happens on the device,** in its local index, because the server
+  cannot read the content.
 - **History is kept forever by default.** A limit can be set. History and large items are fetched when needed.
 - **History is stored on the server.** The device keeps a local index for
   search.

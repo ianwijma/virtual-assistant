@@ -150,3 +150,8 @@ are 25 November 2026.
 | 130 | Browsers do not get at a person's sensitive data in the first release | [vault](design/technical/server/vault.md) |
 | 131 | Assistants should be able to use the clipboard and passwords. This reopens decisions 122 and 123: whether the server can read a person's sensitive data is an open question again | [vault](design/technical/server/vault.md), [clipboard](design/technical/server/clipboard.md) |
 | 132 | An assistant asks before searching a person's clipboard; for passwords it asks twice, once to search and once before a password is decrypted | [vault](design/technical/server/vault.md), [clipboard](design/technical/server/clipboard.md), [AI providers](design/technical/server/ai-providers.md) |
+| 133 | A person's clipboard history and passwords are sealed: only their devices hold the key, and the server, admins and assistants cannot read them. This settles the question reopened in 131 | [vault](design/technical/server/vault.md), [clipboard](design/technical/server/clipboard.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 134 | An approval for sealed data is given on a device of that person that holds the key; that device decrypts what was asked for | [vault](design/technical/server/vault.md) |
+| 135 | Every request for sealed data explains why it is needed and what will be done with it | [vault](design/technical/server/vault.md) |
+| 136 | A password can be shared with a limit on views and on time, as in 1Password | [vault](design/technical/server/vault.md) |
+| 137 | Recovery is by the person's recovery sheet, or by a sealed recovery copy that an admin can release | [vault](design/technical/server/vault.md) |

@@ -119,8 +119,8 @@ is never erased, and the person can always be restored.
 
 ## Admin access
 
-- An admin can read all data for now. Whether that includes a person's
-  clipboard history and passwords is open. See [vault](vault.md). The person who deploys the system
+- An admin can read all data for now, except a person's sealed data:
+  their clipboard history and their passwords. See [vault](vault.md). The person who deploys the system
   owns the box and the network.
 - This is a server setting that can be tightened later.
 - Admin access to other people's data is logged.
