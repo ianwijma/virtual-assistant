@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Virtual Assistant</title>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#21211c"/>
+      <stop offset="1" stop-color="#0e0f0c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.62" r="0.42">
+      <stop offset="0" stop-color="#f2af48" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#f2af48" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#tile)"/>
+  <rect width="512" height="512" rx="112" fill="url(#glow)"/>
+  <!-- the home -->
+  <path d="M256 104 L408 224 V376 a32 32 0 0 1 -32 32 H136 a32 32 0 0 1 -32 -32 V224 Z"
+        fill="none" stroke="#ebe8dd" stroke-width="30" stroke-linejoin="round"/>
+  <!-- the voice: amber is the assistant -->
+  <g stroke="#f2af48" stroke-width="26" stroke-linecap="round">
+    <line x1="176" y1="292" x2="176" y2="324"/>
+    <line x1="216" y1="264" x2="216" y2="352"/>
+    <line x1="256" y1="240" x2="256" y2="376"/>
+    <line x1="296" y1="264" x2="296" y2="352"/>
+  </g>
+  <!-- mint is the person -->
+  <line x1="336" y1="292" x2="336" y2="324" stroke="#82dbc9" stroke-width="26" stroke-linecap="round"/>
+</svg>
