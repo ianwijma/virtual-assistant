@@ -95,3 +95,7 @@ are 25 November 2026.
 | 75 | A conversation is remembered for a short time and then starts fresh; there is no memory across conversations for now, and remembering on request is a tool of a lists module | [assistants](design/technical/voice/assistants.md), [modules](design/technical/modules/README.md) |
 | 76 | Only an admin assigns an assistant to a household device; a person puts their own assistant on their own devices | [assistants](design/technical/voice/assistants.md) |
 | 77 | An assistant may act on the speaker's own devices, household devices and other people's devices | [assistants](design/technical/voice/assistants.md) |
+| 78 | An assistant does not ask for confirmation before acting, for now; confirmation is added when a tool needs it | [AI providers](design/technical/server/ai-providers.md) |
+| 79 | Unrecognised voices are served by guest assistants: assistants marked to answer anyone, with guest-level tools; there can be several | [identity and sharing](design/technical/server/identity-and-sharing.md), [assistants](design/technical/voice/assistants.md) |
+| 80 | Several AI providers can be configured, and each assistant uses exactly one; nobody overrides it per person. This replaces the single household configuration | [AI providers](design/technical/server/ai-providers.md) |
+| 81 | A subscription's command-line tool runs on the server | [AI providers](design/technical/server/ai-providers.md) |

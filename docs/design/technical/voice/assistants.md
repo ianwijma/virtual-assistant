@@ -44,9 +44,12 @@ device. A household can have several, each a distinct character.
   notes a person asks for.
 - An assistant always acts with the permissions of the person it is
   talking to. See [summoning](summoning.md).
-- An unrecognised voice gets guest abilities only. What those are is
-  configurable. See
+- **A guest assistant answers anyone.** An assistant can be marked as a
+  guest assistant. It needs no recognised voice and has only guest-level
+  tools. There can be several, each with its own wake word. See
   [identity and sharing](../server/identity-and-sharing.md).
+- **Each assistant has one AI provider,** chosen from those configured on
+  the server. See [AI providers](../server/ai-providers.md).
 - An assistant acting for a person can read what others have shared with
   that person.
 - On a device with a screen, an assistant can answer with a screen. On a

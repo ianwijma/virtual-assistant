@@ -27,23 +27,33 @@ came from: whether it has a screen, whether it can draw A2UI, whether it
 can speak. The model shapes its reply to fit, such as a described screen
 for a tablet and plain words for a device that only speaks.
 
-## One configuration for the household
+## Providers and assistants
 
-- There is one AI configuration for the whole household. It can be any of
-  the four providers.
+- **Several providers can be configured** on the server, by an admin.
+- **Each assistant uses exactly one of them.** It is chosen when the
+  assistant is set up, to match what the assistant must do. An assistant
+  with demanding tools, such as coding, gets a strong model.
+- **Nobody overrides it per person or per request.** That would let a weak
+  model be put behind tools it cannot handle, with unintended results.
 - The step that decides which provider serves a request is kept as one
-  replaceable step. If needed later, it can choose a subscription by the
-  recognised voice.
+  replaceable step.
 - Ollama is the likely brain of a future hardware box, so the system must
   be fully usable with a local model only.
 
+## Where a subscription runs
+
+A Claude or Codex subscription is used through its command-line tool. The
+tool runs on the server, where an admin installs it and signs in once.
+Every device can then use it, and nothing depends on a desktop being on.
+
+## Confirmation
+
+An assistant does not ask for confirmation before it acts, for now. The
+first tools carry no real risk: nothing buys anything, and a message or a
+broadcast to the household goes out directly. Confirmation is added when
+a tool arrives that needs it, or when use shows that one does. The gateway
+every tool call passes is where it would be added.
+
 ## Open questions
 
-- Can an assistant or a person override the household configuration with
-  their own provider?
-- Where a subscription's command-line tool runs: on the server, or on a
-  person's desktop?
-- What an assistant may do without asking, and what needs confirmation.
-  The earlier project's risk classes (read, change, message, money,
-  security) are a candidate.
 - How each provider produces A2UI screens. See [A2UI](../a2ui.md).

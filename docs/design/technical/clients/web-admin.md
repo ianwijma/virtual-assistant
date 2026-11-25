@@ -15,7 +15,7 @@ fulfils "a screen for every setting".
 
 - People, roles and devices.
 - Assistants: their identity, brain and abilities.
-- The household AI configuration and the speech providers.
+- The AI providers and the speech providers.
 - A page for each feature of the system, including the
   [feedback](../server/feedback.md) reports.
 - Which [modules](../modules/README.md) each assistant has.

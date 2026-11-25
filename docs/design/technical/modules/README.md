@@ -109,4 +109,3 @@ its list of modules.
 - Can one tool belong to several modules, and is a module only a
   grouping, or also where a tool is written?
 - Can an assistant be given a module with some of its tools switched off?
-- Which tools need confirmation before they act.

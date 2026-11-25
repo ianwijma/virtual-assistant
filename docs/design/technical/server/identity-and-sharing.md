@@ -79,12 +79,13 @@ What they may do is configurable. As a starting point, an unrecognised
 voice can do things that touch nobody's private data: set a timer, ask a
 general question, ask for a joke.
 
-Two ways to set this up are being considered, and both may be offered:
-
-- a separate assistant for people who are not recognised, with its own
-  modules;
-- one assistant for everyone that acts on personal things only when it
-  recognises the person.
+This is done with **guest assistants**. An assistant can be marked as a
+guest assistant: it answers anyone, recognised or not, and has only
+guest-level tools. There can be several, each with its own wake word and
+its own modules. Examples are a "Hey Home" assistant for the house, and
+one whose wake word is "report feedback" and whose only job is to take a
+bug report or a suggestion. See
+[assistants](../voice/assistants.md).
 
 ## Households and servers
 
@@ -133,13 +134,16 @@ On a household device:
 
 ## Open questions
 
+- When an unrecognised voice uses the wake word of an assistant that is
+  not a guest assistant, what happens: no answer, or a short refusal?
+- When a recognised person talks to a guest assistant, does it stay at
+  guest level, or act with that person's permissions?
 - A household device invite: how long is it valid, for how many devices,
   and can it be withdrawn?
 - May an admin connect a source, such as a shared mailbox, for the whole
   household? It is written so for now.
 - Account switching: is the passcode per account, how long is it, and is
   it also asked for when the computer wakes?
-- Which of the two ways to handle unrecognised voices is built, or both.
 - What a child's restricted role may do, as distinct from a guest.
 - Does a shared item appear in the other person's own views, or in a
   separate "shared with me" place?
