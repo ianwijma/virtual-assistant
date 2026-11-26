@@ -83,4 +83,3 @@ Assumed, needing a build to confirm:
 - Which local model is the default, given accuracy, speed on low-power
   hardware and licence.
 - The silence timings, and whether a person can tune them.
-- How another language is added.

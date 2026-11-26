@@ -14,7 +14,6 @@ only if it is tied to that machine or must respond within a frame.
 |---|---|---|
 | People, roles, shares, routing, credentials, settings | Server | Devices keep a read-only copy |
 | Notifications | Server | A desktop is a source and a display |
-| Email | Server | Devices keep a cache for reading and search |
 | Clipboard | Captured on the device, stored on the server | The device keeps a local index |
 | Launcher index, keyboard shortcuts, window control | Desktop | Tied to the machine; shortcuts are per device |
 
@@ -33,7 +32,7 @@ the fast path:
 
 - One append-only event log per person, with sequence numbers.
 - Each device remembers how far it has read and catches up from there.
-- Most data is only ever added (clipboard items, notifications, emails),
+- Most data is only ever added (clipboard items, notifications),
   so there are few conflicts.
 - Settings use last-writer-wins.
 

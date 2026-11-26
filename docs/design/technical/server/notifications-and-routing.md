@@ -79,5 +79,3 @@ devices and to personal devices.
 
 - Which notifications can be replied to or opened from another device,
   and what happens when the source device is off.
-- How the "copy the login code" behaviour works: on the server, on the
-  desktop, or both.

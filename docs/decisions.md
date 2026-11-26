@@ -169,3 +169,7 @@ are 25 November 2026.
 | 149 | Testing happens on the development virtual machine only, which should run an Android emulator and virtual machines of its own | [repository](design/technical/repository.md) |
 | 150 | Every settings change is kept in an audit log, which an admin uses to roll a person back. This replaces the daily snapshots of decision 143 | [server](design/technical/server/README.md) |
 | 151 | The default household assistant starts with every module switched on | [assistants](design/technical/voice/assistants.md) |
+| 152 | Everything the launcher can do is a named command, and any command can be bound to a global shortcut on that device | [desktop](design/technical/clients/desktop.md) |
+| 153 | Clipboard text syncs at once; a large item is uploaded sealed and fetched when needed, and above a size limit it stays on its device | [clipboard](design/technical/server/clipboard.md) |
+| 154 | The email feature only notifies that new mail has arrived; mail is not stored, and the system is not an email reader | [email](design/technical/server/email.md), [desktop](design/technical/clients/desktop.md) |
+| 155 | Each assistant has a language, which selects its speech models, voice and wake words; English only at first | [assistants](design/technical/voice/assistants.md) |

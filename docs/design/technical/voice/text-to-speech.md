@@ -67,4 +67,3 @@ Assumed, needing a build to confirm:
 ## Open questions
 
 - Which local voices are offered, given quality and licence.
-- How another language is added.

@@ -22,6 +22,10 @@ The clipboard is a feature of the system. A
   their devices, which then supplies the content.
 - **Search happens on the device,** in its local index, because the server
   cannot read the content.
+- **Text syncs at once; a large item is fetched when needed.** An image
+  or a file is sealed and uploaded in the background. Another device
+  downloads it only when the person picks it. An item above a size limit,
+  such as 50 MB, stays on the device it was copied on.
 - **History is kept forever by default.** A limit can be set. History and large items are fetched when needed.
 - **History is stored on the server.** The device keeps a local index for
   search.
@@ -40,6 +44,5 @@ The clipboard is a feature of the system. A
 
 ## Open questions
 
-- How large items, such as images and files, are handled.
 - How untrusted HTML is drawn safely.
 - How search stays fast over years of history.

@@ -29,8 +29,6 @@ and a work server. See
   notification service of the machine: it shows local notifications at
   once and forwards them to the server. See
   [notifications and routing](../server/notifications-and-routing.md).
-- **Email reading:** from the local cache. See
-  [email](../server/email.md).
 - **Assistant:** the desktop is a voice device by default. A person can
   summon an assistant by wake word, let it listen always, or type to it.
   Each person chooses. See [voice](../voice/README.md).
@@ -44,7 +42,11 @@ and a work server. See
   longer. "Snappy" is to be defined in numbers, with tests that stop the
   application getting slower.
 - **Scale.** Lists of hundreds of thousands of items, with fast search.
-- **Shortcuts.** A person can assign keyboard shortcuts to actions.
+- **Shortcuts.** Everything the launcher can do is a named command: open
+  a view, start an application, a window action, talk to the assistant,
+  paste a clipboard item. A person can bind any command to a global
+  keyboard shortcut. A new feature adds commands, and they can be bound
+  at once.
   Shortcuts are per device: they are set on that device and kept there,
   not on the server, so each computer has its own. A shortcut can start
   an action that needs the server. The action then talks to the server
@@ -68,7 +70,7 @@ waiting.
 |---|---|
 | Launcher index, keyboard shortcuts, window control | On the desktop |
 | Clipboard | Captured locally, stored on the server, indexed locally |
-| Notifications, email, settings | On the server, cached locally |
+| Notifications, settings | On the server, cached locally |
 
 With the server down, it keeps working from its cache, read-only for
 server data.
@@ -92,5 +94,3 @@ Assumed, needing a build to confirm:
   work across Linux desktops on X11 and Wayland. This is research still to
   do, and the limits on Wayland are a known risk.
 - The numbers that define "snappy", and the tests for them.
-- The list of actions a shortcut can be bound to, and how the shortcut
-  system works.

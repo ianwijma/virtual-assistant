@@ -51,6 +51,9 @@ device. A household can have several, each a distinct character.
   for an unrecognised voice, and with the person's own permissions when
   it recognises them. Any other assistant refuses an unrecognised voice. There can be several, each with its own wake word. See
   [identity and sharing](../server/identity-and-sharing.md).
+- **Each assistant has a language.** It selects the speech-to-text model,
+  the voice and the wake words that fit. Only English exists in the first
+  release, but the setting is there from the start.
 - **Each assistant has one AI provider,** chosen from those configured on
   the server. See [AI providers](../server/ai-providers.md).
 - An assistant acting for a person can read what others have shared with
