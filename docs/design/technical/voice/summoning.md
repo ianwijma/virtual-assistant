@@ -72,6 +72,50 @@ This leads to four rules:
 - **Settings stay shallow.** The effective behaviour of a device can be
   shown on one screen.
 
+## Proposal: the states
+
+This section is proposed and waits for the owner's review.
+
+Each device that can listen is in exactly one state. The server holds
+the state and is the only thing that changes it.
+
+| State | What happens | Leaves when |
+|---|---|---|
+| Idle | The device listens only for wake words | A wake word is heard |
+| Choosing a device | The server waits a short moment, about 200 ms, for other devices that heard the same wake word, and picks the one that heard it best | A device is picked; the others go back to idle |
+| Identifying | The voice is compared with enrolled voices | It is a known person, or unrecognised |
+| Refusing | A non-guest assistant tells an unrecognised voice it cannot help | The refusal has been spoken |
+| Listening | The request is turned into text | The person stops talking, or says nothing for a few seconds |
+| Thinking | The AI provider works and may call tools | An answer is ready, or it fails |
+| Speaking | The answer is spoken and any screen is shown | It finishes, or the person says "stop" or talks over it |
+| Follow-up | The device listens without the wake word for a short time | Someone speaks, or the time runs out |
+| Ringing | A timer or an alarm rings; only "stop" and "snooze" are heard | It is stopped or snoozed |
+
+```text
+Idle -> Choosing a device -> Identifying -> Listening -> Thinking -> Speaking -> Idle
+                                  |                                      |
+                                  v                                      v
+                              Refusing -> Idle                       Follow-up -> Listening
+                                                                         |
+                                                                         v
+                                                                        Idle
+```
+
+- **Follow-up** is entered after a reply with the "keep listening" tag,
+  and after a household device has spoken a notification.
+- **Typing** enters at Thinking. The device's owner is known, so the
+  first three states are skipped.
+- **A conversation** is the chain of turns that follow each other. Its
+  context is kept until the pause that ends a conversation has passed.
+- **Every change of state is logged,** with the device, the assistant,
+  the person if known, and the reason. A wake that ends in Listening with
+  nothing said is logged as a false wake.
+- **A device that is not picked** logs "another device answered".
+
+Still to be thought through: a desktop set to listen always has no wake
+word. How it knows that it is being spoken to is not covered here.
+
 ## Open questions
 
-- The states and transitions themselves.
+- Agree to the proposed states, or correct them.
+- How a desktop that listens always knows it is being spoken to.

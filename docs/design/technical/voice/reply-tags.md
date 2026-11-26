@@ -48,8 +48,28 @@ When a household device speaks a notification, it listens for a moment
 for a follow-up about it, without the wake word, in the same way as after
 a "keep listening" tag.
 
+## Proposal: how tags are written, and the first list
+
+This section is proposed and waits for the owner's review.
+
+A tag is written in double square brackets, such as `[[laugh]]`. A tag
+with a value has a colon, such as `[[pause:500]]`. This form does not occur
+in normal speech and is easy to cut out of text that is still arriving.
+
+| Tag | What it does | Offered when |
+|---|---|---|
+| `[[listen]]` | Keep listening for an answer | Always |
+| `[[pause:ms]]` | A silence of that length | The device speaks |
+| `[[smile]]`, `[[laugh]]`, `[[think]]`, `[[surprised]]`, `[[sad]]`, `[[wink]]`, `[[eye-roll]]`, `[[nod]]`, `[[shake]]` | An expression of the character | The device shows a character |
+
+- A tag the system does not know is removed and logged.
+- The list of expressions is settled together with the visual design of
+  the characters.
+- **Timing:** speech is produced clause by clause. A tag takes effect
+  when the clause after it starts to play on the device.
+
 ## Open questions
 
-- The list of tags, and how they are written in a reply.
+- Agree to the proposed form and list of tags, or correct them.
 - How a tag is lined up with the moment in the speech where it stands.
   This is research still to do.

@@ -116,6 +116,26 @@ Content from an untrusted source, such as the text of an email, is only
 ever shown as plain text. It cannot add buttons or links that act, and an
 assistant does not follow instructions found in it.
 
+## Proposal: our catalog
+
+This section is proposed and waits for the owner's review.
+
+These are the components we add on top of A2UI's basic catalog for the
+first release. Each has a spoken form.
+
+| Component | Used for |
+|---|---|
+| Timer card, alarm card | Timers and alarms, with stop and snooze |
+| Checklist, note | [Lists](server/lists.md) |
+| Notification card | A notification with its actions |
+| Email card | The plain text of a new email, with its actions |
+| Approval prompt | Yes or no to a stated request, such as searching the clipboard or sending a reply |
+| Device picker, person picker | Choosing where or to whom something goes |
+| Settings fields | A group of settings |
+| Feedback preview | A report as it will be sent |
+| Media player | Audio and video |
+| Character | The assistant's character, driven by [reply tags](voice/reply-tags.md) |
+
 ## Open questions
 
 - Whether any Rust implementation of A2UI exists, and whether the A2UI
@@ -124,4 +144,4 @@ assistant does not follow instructions found in it.
   costs in latency.
 - How each AI provider produces A2UI, including through a command-line
   tool.
-- The contents of our catalog.
+- Agree to the proposed catalog, or correct it.

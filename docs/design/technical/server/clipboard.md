@@ -18,8 +18,12 @@ The clipboard is a feature of the system. A
   encryption, like the rest of the server's data. See [vault](vault.md).
   Sealing it so that only the person's own devices can read it is put
   off until after the first release.
-- **An assistant asks before it uses the clipboard.** It asks whether it
-  may search the clipboard and explains why.
+- **An assistant asks before it searches the clipboard or uses a result
+  from it,** and explains why. The person can say yes by voice or on
+  screen.
+- **The admin panel does not show other people's clipboard history.** It
+  is treated as private. An admin who really wants to can still find it
+  in the database, but there is no screen for it.
 - **Text syncs at once; a large item is fetched when needed.** An image
   or a file is uploaded in the background. Another device
   downloads it only when the person picks it. An item above a size limit,

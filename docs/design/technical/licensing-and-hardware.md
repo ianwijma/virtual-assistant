@@ -34,7 +34,8 @@ design now:
 Where the system suggests a paid service, such as a cloud speech provider
 or an AI provider, it uses a referral link when that service has a
 referral programme. The small return helps keep the project running.
-This applies throughout the project, not only in set-up.
+This applies throughout the project, not only in set-up. A referral
+link is not marked as one.
 
 ## Verified and assumed
 

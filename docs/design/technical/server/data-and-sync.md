@@ -58,8 +58,33 @@ days for the clipboard.
 The system starts empty. No data is brought over from the earlier voice
 assistant.
 
+## Proposal: data that several people can see
+
+This section is proposed and waits for the owner's review.
+
+- Besides one log per person, there is **one log for the household**.
+- **Every event belongs to exactly one log:** its owner's, or the
+  household's. A shopping list lives in the household log. A person's
+  notification lives in theirs.
+- **A share does not copy anything.** When a person shares an item with
+  someone, the events stay in the owner's log, and a share record says
+  who else may read them.
+- **A device follows several logs,** each with its own position:
+
+  | Device | Follows |
+  |---|---|
+  | A personal device | Its person's log, the household log, and what is shared with that person |
+  | A household device | The household log only |
+
+- **Ending a share** tells the other person's devices to drop what they
+  held of it.
+- A household device gets a person's own data only for the length of a
+  request that person made with a recognised voice. It does not keep it.
+
 ## Open questions
 
-- How the log handles household data that several people can see.
+- Agree to the proposal for data that several people can see, or correct
+  it. Whether following several logs is simple enough is checked together
+  with the choice of database.
 - How search stays fast over years of history. This is research still to
   do.

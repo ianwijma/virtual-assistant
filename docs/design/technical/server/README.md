@@ -20,6 +20,7 @@ and tablet app, the admin panel and the voice page.
 | Responsibility | Document |
 |---|---|
 | The connection to every device and the messages on it | [protocol.md](protocol.md) |
+| How a device finds the server and joins it | [pairing.md](pairing.md) |
 | Storing data and syncing it to devices | [data-and-sync.md](data-and-sync.md) |
 | People, devices, roles and sharing | [identity-and-sharing.md](identity-and-sharing.md) |
 | The notification centre and its routing | [notifications-and-routing.md](notifications-and-routing.md) |

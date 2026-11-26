@@ -70,6 +70,8 @@ Apple ecosystem, but local and self-owned, and installable on any device.
   goes into both.
 - **Decisions live in the design.** What a document states is decided.
   What is not decided is under its "Open questions".
+- **A section headed "Proposal"** is not decided yet. It waits for the
+  owner's review.
 - **Answering a question** means removing it from "Open questions",
   writing the answer into the design, and adding a line to
   [../decisions.md](../decisions.md), in the same change.

@@ -129,7 +129,8 @@ way to erase it from inside the system.
 
 ## Admin access
 
-- An admin can read all data for now. The person who deploys the system
+- An admin can read all data for now. Clipboard history is the
+  exception: the admin panel has no screen for other people's. The person who deploys the system
   owns the box and the network.
 - This is a server setting that can be tightened later.
 - Admin access to other people's data is logged.

@@ -56,5 +56,3 @@ Assumed, needing a build to confirm:
   the person's own certificates, accepting the browser's warning at
   first, and the server's own certificate authority. This is research
   still to do.
-- How the server is found on the home network when a device is first
-  paired.

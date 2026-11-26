@@ -16,8 +16,12 @@ reader, and it does not mirror a mailbox.
   change this.
 - **Only the text is kept:** the subject, who it is from and to, the
   date, and the text of the message. Styling, images and attachments are
-  not kept and not processed. The text is there so that it can be shown
+  not kept and not processed. That an email has attachments is
+  remembered, so the person can be told, for example, "this email has
+  two attachments". The text is there so that it can be shown
   plainly and so that information can be taken from it.
+- **The text can be shown as plain text** on the person's own devices,
+  from the notification.
 - **The email is never shown with its formatting.** To see the real
   thing, the person is pointed to their own email application.
 - **What can be done with a new email:**

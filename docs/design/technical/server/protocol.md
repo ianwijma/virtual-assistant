@@ -39,19 +39,65 @@ The server keeps a record of what each device can do.
 
 ## Pairing
 
-- A native app pins the server's key when it is paired.
-- A device remembers the server's home-network address and its remote
-  address, and tries the home network first. See
-  [networking.md](networking.md).
+See [pairing](pairing.md).
 
-The earlier voice assistant paired its voice boxes with a one-time code,
-after which the server stored only a hash of the device's credential. That
-flow is a candidate here.
+## Proposal: the messages
+
+This section is proposed and waits for the owner's review.
+
+One WebSocket connection per device carries everything. Control
+messages are JSON text, which is easy to read while the system is young.
+Audio travels on the same connection as binary frames.
+
+| Group | From device to server | From server to device |
+|---|---|---|
+| Session | Hello, with protocol version, device and capabilities | Welcome, or "update needed" |
+| Sync | Events from the outbox; how far it has read | New events; confirmation of received events |
+| Notifications | A local notification; an action on a notification | A notification to show or speak; a change of its state |
+| Commands | The result of a command | A command to carry out, such as "play this" or "open this" |
+| Voice | A wake word report with how well it was heard; audio; "stopped talking" | The device's new state; speech audio; tag events |
+| Screens | What the person did on a described screen | A screen to show; new data for it |
+| Sign-in | Email address, code, invite | Credential; "waiting for approval" |
+| Health | Ping | Pong |
+
+Every command carries a number, and its result carries the same number.
+
+## Proposal: versions
+
+- The hello message carries one protocol version number.
+- Adding a message or a field does not change the number. Devices ignore
+  what they do not know.
+- A change that breaks older devices raises the number. The server speaks
+  the current number and the one before it.
+- A device that is too old is told to update, and shows that.
+
+## Proposal: the list of capabilities
+
+| Capability | Meaning |
+|---|---|
+| Screen | It can show things |
+| A2UI | It can draw described screens, with the catalog version it knows |
+| Character | It shows the assistant's character |
+| Text input | It can be typed to |
+| Microphone | It can hear |
+| Speaker | It can speak and ring |
+| Wake word on the device | It detects the wake word itself; otherwise it streams audio |
+| Media | It can play audio and video |
+| Notifications: source | It forwards notifications from local applications |
+| Notifications: actions | It can carry out a reply or an "open" for its own notifications |
+| Clipboard | It captures and restores clipboard items |
+| Window control | It can control other applications' windows |
+| Start applications | It can open an application or a link |
+| Always on | It is expected to stay on, such as a tablet in kiosk mode |
+
+The catalog version is one number. The server sends a device only
+components that its version knows.
 
 ## Open questions
 
-- The full list of messages, and how the protocol is versioned.
-- How audio travels: on the same connection or a separate one.
-- The exact pairing steps for a personal device and for a household
-  device. See [identity-and-sharing.md](identity-and-sharing.md).
-- The full list of capabilities, and how a catalog version is expressed.
+- Agree to the proposed messages, versions and capabilities, or correct
+  them.
+- Whether audio on the same connection is fast enough, or needs its own.
+  To be measured when the first voice device exists.
+- Whether JSON is fast enough for sync of large histories, or a compact
+  format is needed.

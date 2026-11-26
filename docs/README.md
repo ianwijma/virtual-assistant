@@ -17,5 +17,8 @@
 - Answering a question means removing it from "Open questions", writing
   the answer into the design, and adding a line to `decisions.md`, in the
   same change.
+- A section whose heading starts with "Proposal" is not decided yet. It
+  was written for the owner to review, and its file lists "agree to the
+  proposal" under "Open questions".
 - Say what is verified and what is assumed.
 - The plan lives here as Markdown for now, not in GitHub issues.

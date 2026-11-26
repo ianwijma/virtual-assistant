@@ -14,8 +14,9 @@ once here.
 | [1. Now](#1-now) | Questions that shape the data, the protocol, who may do what, or what the first release contains. A late answer means rework | The owner |
 | [2. Next](#2-next) | Questions that shape one part. Each is needed before that part is designed in detail | The owner |
 | [3. Later](#3-later) | Details and numbers that can be settled while building | The owner |
-| [4. To research or propose](#4-to-research-or-propose) | Questions that need investigation or a worked-out proposal, not an opinion | An agent proposes, the owner agrees |
-| [5. Visual design](#5-visual-design) | Questions about the look and feel | The owner, in a separate thread |
+| [4. Proposals to review](#4-proposals-to-review) | High-level designs written as proposals | The owner agrees or corrects |
+| [5. To research](#5-to-research) | Questions that need investigation, not an opinion | An agent researches, the owner agrees |
+| [6. Visual design](#6-visual-design) | Questions about the look and feel | The owner, in a separate thread |
 
 A new question is placed in the part it fits, not at the end.
 
@@ -58,18 +59,7 @@ These are readings of earlier answers. Each stands as written in the design
 unless corrected. They are lettered so that the numbers below stay for the
 questions.
 
-- **AP.** With sealing put off, an assistant still asks before it
-  searches the clipboard, and the person can say yes by voice or on
-  screen. An admin can read clipboard history like other data, and
-  clipboard search can also run on the server. [clipboard]
-- **AQ.** A reply made while the source device is off waits and is sent
-  when that device is back; it is never dropped. [notifications]
-- **AR.** A referral link is shown as one: the person can see that the
-  project earns from it. [licensing]
-- **AN.** The kept text of an email can be shown as plain text on the
-  person's own devices, from its notification. [email]
-- **AO.** Attachments are ignored entirely: not kept, not listed, not
-  summarised. [email]
+None at the moment.
 
 ## 1. Now
 
@@ -94,15 +84,27 @@ Nothing is waiting here at the moment.
    recovery copy. The earlier answers on this are decisions 122 to 139.
    [vault]
 
-5. How the research and write-up threads are run after the merge: one
-   thread that starts several others by area, each raising a pull
-   request? And are the design write-ups (protocol, pairing, summoning
-   states) written before building starts, or by whoever builds each
-   part? [repository]
+5. How the research threads are run after the merge: one thread that
+   starts several others by area, each raising a pull request?
+   [repository]
 
-## 4. To research or propose
+## 4. Proposals to review
 
-These need investigation or a worked-out proposal. An agent does the work
+These were written as sections headed "Proposal" in the design files. The
+owner reads them and agrees or corrects.
+
+6. The summoning states, and how a desktop that listens always knows it
+   is being spoken to. [summoning]
+7. The protocol messages, versions and list of capabilities. [protocol]
+8. The pairing steps for a personal device, a household device and a
+   voice page, and finding the server. [pairing]
+9. How data that several people can see is kept and synced. [data]
+10. How reply tags are written, and the first list of them. [reply tags]
+11. Our A2UI catalog. [a2ui]
+
+## 5. To research
+
+These need investigation. An agent does the work
 and writes the outcome into the design; the owner then agrees or
 corrects it. They are sorted by how much depends on them.
 
@@ -119,58 +121,47 @@ documentation and other projects. A small prototype is made only when a
 question cannot be settled otherwise. The aim is a quick first working
 product, not a complete study.
 
-6. The summoning states and transitions themselves. [summoning]
-7. Which database the server uses, and how search stays fast over years
+12. Which database the server uses, and how search stays fast over years
    of history. The owner leans towards PostgreSQL, for being open source
    and for its extensions such as time series, unless there is a strong
    case for SQLite. [server], [data], [clipboard]
-8. How the event log handles household data that several people can
-    see. [data]
-9. The full list of protocol messages, and how the protocol is
-    versioned. [protocol]
-10. The exact pairing steps for a personal device and for a household
-    device. [protocol], [identity]
-11. How audio travels: on the device's connection or a separate one.
-    [protocol], [voice]
-12. How notifications, clipboard access, global hotkeys and window
+13. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-13. How notifications reach a phone when the app is closed. To compare:
+14. How notifications reach a phone when the app is closed. To compare:
    what works on Android without Google's push service, what iOS allows,
    and simply accepting Google's and Apple's push services with a small
    relay if one is needed. Include what happens when the connection is
    lost. [mobile]
-14. Which wake word detector to use, and whether a detection is confirmed
+15. Which wake word detector to use, and whether a detection is confirmed
    by transcribing the same audio. Wake words are typed in freely, so
    the detector must accept any word. Finding the wake word in the
    transcript is the fallback, though transcripts can get the word
    wrong. Also: whether training a device per person, from several
    places in the room, improves detection. [wake word]
-15. Which small local speech-to-text model and small local voice are the
+16. Which small local speech-to-text model and small local voice are the
    defaults, which better ones are suggested in set-up, and which of
    them have licences that allow selling hardware. [speech to text],
    [text to speech], [licensing]
-16. Which of the services the system suggests have a referral programme,
+17. Which of the services the system suggests have a referral programme,
    and on what terms. [licensing]
-17. Echo: how a device ignores its own voice while it speaks and still
+18. Echo: how a device ignores its own voice while it speaks and still
    hears another voice, so that "stop" works. [voice]
-18. How each AI provider produces A2UI screens, including through a
+19. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-19. Whether any Rust implementation of A2UI exists, and whether the A2UI
+20. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-20. Whether A2UI suits screens our own code defines locally, and what it
+21. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-21. How copied HTML is drawn with its formatting, safely, on each
+22. How copied HTML is drawn with its formatting, safely, on each
    platform: a sandboxed frame in a browser, and whatever the Rust
    desktop client and the phone apps can use. [clipboard]
-22. How the admin panel and the voice page get HTTPS that a browser
+23. How the admin panel and the voice page get HTTPS that a browser
    trusts, for a non-technical person. To compare: certificates through
    Tailscale, a proxy domain per installation that the project provides,
    the person's own certificates, accepting the browser's warning at
    first, and any other way found. An AI assistant could also walk a
    person through the set-up. [networking]
-23. How the server is found on the home network when a device is first
-     paired. [networking]
 24. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
 25. Signing in with Google or Microsoft for email, after the first
@@ -182,26 +173,28 @@ product, not a complete study.
    either. [repository]
 27. How a vendor's command-line tool is installed and signed in to from
    the admin panel, including inside a container. [ai providers]
-28. The list of reply tags, and how they are written in a reply.
-   [reply tags]
-29. The contents of our A2UI catalog. [a2ui]
-30. The full list of capabilities, and how a catalog version is
-    expressed. [protocol]
-31. Whether a notification can open the email in the person's own email
+28. Whether a notification can open the email in the person's own email
    application, on a phone and on a desktop. [email]
-32. How the vault encrypts its secrets, so that control of the running
+29. How the vault encrypts its secrets, so that control of the running
    server does not expose them, and where that key is kept. Kept small;
    if it slows the work, the first release relies on disk encryption.
    [vault]
 
-## 5. Visual design
+30. Whether finding the server by mDNS works reliably from the Android
+   and iOS apps, and on home networks that separate Wi-Fi clients.
+   [pairing]
+31. Whether audio on the device's connection is fast enough, and whether
+   JSON is fast enough for syncing large histories. To be measured when
+   the first devices exist. [protocol]
+
+## 6. Visual design
 
 These are not asked in the technical planning thread. The owner works on
 the look and feel in a separate thread.
 
-33. Three or four words for how it should feel, and products whose look
+32. Three or four words for how it should feel, and products whose look
    you admire. [visual]
-34. Are settings screens generated from each feature's description, so
+33. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? This is decided once there are visual designs of the app
    and the admin panel. [visual]
@@ -230,6 +223,7 @@ the look and feel in a separate thread.
 [server]: design/technical/server/README.md
 [networking]: design/technical/server/networking.md
 [protocol]: design/technical/server/protocol.md
+[pairing]: design/technical/server/pairing.md
 [voice]: design/technical/voice/README.md
 [reply tags]: design/technical/voice/reply-tags.md
 [speech to text]: design/technical/voice/speech-to-text.md

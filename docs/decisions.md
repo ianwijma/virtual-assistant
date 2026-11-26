@@ -211,3 +211,7 @@ are 25 November 2026.
 | 191 | A person can train a specific device on their voice from the phone app, saying the wake words from several places in the room | [wake word](design/technical/voice/wake-word.md) |
 | 192 | We prefer public crates and contribute back to them; what does not exist and we build is published as a crate | [design](design/README.md) |
 | 193 | Data on disk is protected by the operating system's disk encryption, also on sold hardware; whether the vault also encrypts its secrets is researched, and the vault is built so that this can be added later | [vault](design/technical/server/vault.md) |
+| 194 | The text of an email can be shown as plain text on the person's own devices; attachments are not kept, but their presence is remembered and mentioned | [email](design/technical/server/email.md) |
+| 195 | An assistant asks before searching the clipboard or using a result; the admin panel has no screen for other people's clipboard history | [clipboard](design/technical/server/clipboard.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 196 | Referral links are not marked as such | [licensing and hardware](design/technical/licensing-and-hardware.md) |
+| 197 | High-level proposals for how the systems work are written now, as sections marked "Proposal", for the owner to review; research is still done where a proposal needs it | [documentation](README.md) |

@@ -93,4 +93,3 @@ These are targets to tune against, not gates.
 - Echo: how a device ignores its own voice while it speaks and still
   hears another voice, so that "stop" works. This is research still to
   do.
-- Whether audio shares the device's connection or has its own.
