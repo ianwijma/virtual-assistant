@@ -64,8 +64,8 @@ home servers and mini PCs.
 ## Installing and updating
 
 The server comes in two forms: a single self-contained program that runs
-as a service, and the same thing as a container image. Updates are
-started from the [admin panel](../clients/web-admin.md).
+as a service, and the same thing as a container image. The server finds new versions on the project's GitHub releases page, and
+updates are started from the [admin panel](../clients/web-admin.md).
 
 ## Backups and the audit log
 

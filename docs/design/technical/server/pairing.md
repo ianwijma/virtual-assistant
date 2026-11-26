@@ -3,11 +3,10 @@
 How a device finds the server and becomes one of its devices. Part of
 [the server design](README.md).
 
-Status: proposal. The rules it builds on are decided in
-[identity and sharing](identity-and-sharing.md). The steps below are
-proposed and wait for the owner's review.
+Status: draft. The rules it builds on are in
+[identity and sharing](identity-and-sharing.md).
 
-## Proposal: finding the server
+## Finding the server
 
 1. The server announces itself on the home network (mDNS). An app lists
    the servers it finds, by household name.
@@ -19,7 +18,7 @@ proposed and wait for the owner's review.
 A QR code or an invite carries the server's address and the fingerprint
 of its key, so the device knows it is talking to the right server.
 
-## Proposal: a personal device
+## A personal device
 
 1. The app finds the server and shows its name. It remembers the server's
    key from now on.
@@ -33,17 +32,23 @@ Steps 2 and 3 can be replaced by a code or QR code from a device where the
 person is already signed in, or by a code an admin issues. Both also work
 without internet.
 
-## Proposal: a household device
+## A household device
 
-1. An admin creates an invite in the admin panel. It is a code and a QR
-   code, and can be passed on.
-2. The person setting up the device chooses "household device" and scans
-   or enters the invite.
-3. The device registers with a name and its capabilities. Its state is
-   "waiting for approval", and it can do nothing yet.
+It follows the personal flow as closely as it can. The difference is that
+it ends by waiting for an admin's approval.
+
+1. The app finds the server on the home network and shows its name, as
+   for a personal device.
+2. The person chooses "household device". The device announces itself to
+   the server with a name and its capabilities: "I am here".
+3. Its state is "waiting for approval", and it can do nothing yet.
 4. Every admin is notified. One of them approves it in the admin panel,
    and can then name its room and assign assistants to it.
 5. The server gives the device its credential, as for a personal device.
+
+An invite, as a code or a QR code, is the other way to do steps 1 and 2.
+It carries the server's address, so it also works when the server is not
+found on the network. Approval is needed either way.
 
 ## Proposal: a voice page
 
@@ -63,7 +68,8 @@ without internet.
 
 ## Open questions
 
-- Agree to these proposals, or correct them.
+- Agree to the proposals for a voice page and for removing a device, or
+  correct them.
 - Whether finding the server by mDNS works reliably from an Android app
   and an iOS app, and on home networks that separate Wi-Fi clients. This
   is research still to do.

@@ -219,3 +219,7 @@ are 25 November 2026.
 | 199 | A desktop can be woken by wake word, by a shortcut or launcher action, by listening always, or by typing; a shortcut mutes the microphone for the assistant | [summoning](design/technical/voice/summoning.md), [desktop](design/technical/clients/desktop.md) |
 | 200 | One connection per device carries everything, with JSON control messages and binary audio; the message groups are agreed | [protocol](design/technical/server/protocol.md) |
 | 201 | Every request has a timeline of how long each step took, shown in the admin panel; it records timings, not content | [voice](design/technical/voice/README.md), [admin panel](design/technical/clients/web-admin.md) |
+| 202 | The protocol stays backwards and forwards compatible; breaking changes only at a major version; both sides support several versions, and on a mismatch the older side is asked to update | [protocol](design/technical/server/protocol.md) |
+| 203 | The list of device capabilities and the pairing steps of a personal device are agreed | [protocol](design/technical/server/protocol.md), [pairing](design/technical/server/pairing.md) |
+| 204 | A household device pairs like a personal one: it finds the server, announces itself and waits for an admin's approval; an invite code or QR code is the other way in | [pairing](design/technical/server/pairing.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 205 | The server finds new versions on the project's GitHub releases page | [server](design/technical/server/README.md) |

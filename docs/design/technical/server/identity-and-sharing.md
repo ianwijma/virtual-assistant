@@ -50,10 +50,10 @@ There are two kinds of device:
   set it up as a personal device or as a household device. Each choice has
   its own sign-in flow.
 - A personal device is paired to one person.
-- **Only an admin adds a household device,** in two steps. The admin
-  creates an invite, as a code or a QR code that can be saved and passed
-  on, for example in a group chat. Whoever sets up the device scans or
-  enters it, and the device registers with the server. The device does
+- **Only an admin adds a household device.** A device announces itself to
+  the server it finds on the network, or is set up with an invite the
+  admin created: a code or a QR code that can be saved and passed on, for
+  example in a group chat. See [pairing](pairing.md). The device does
   nothing until an admin approves it. For each invite the admin can set
   how many devices it may add and how long it is valid. Both are
   unlimited unless set. An admin can withdraw an invite at any time.

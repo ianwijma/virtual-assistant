@@ -60,16 +60,23 @@ Audio travels on the same connection as binary frames.
 
 Every command carries a number, and its result carries the same number.
 
-## Proposal: versions
+## Versions
 
-- The hello message carries one protocol version number.
-- Adding a message or a field does not change the number. Devices ignore
-  what they do not know.
-- A change that breaks older devices raises the number. The server speaks
-  the current number and the one before it.
-- A device that is too old is told to update, and shows that.
+- **The aim is to stay compatible, backwards and forwards.** Adding a
+  message or a field never breaks anything; a device or a server ignores
+  what it does not know.
+- **A breaking change happens only at a major version.**
+- **Both sides support several versions at once.** The server speaks to
+  older apps, and an app speaks to an older server, across a major
+  version change.
+- **The hello message carries the version,** so each side knows what the
+  other speaks.
+- **On a mismatch that cannot be bridged, the older side is asked to
+  update:** the app says "update this app", or "the server needs an
+  update", whichever is behind.
+- **Updating the server warns first** when it will need newer apps.
 
-## Proposal: the list of capabilities
+## The list of capabilities
 
 | Capability | Meaning |
 |---|---|
@@ -93,7 +100,6 @@ components that its version knows.
 
 ## Open questions
 
-- Agree to the proposed versions and capabilities, or correct them.
 - Whether audio on the same connection is fast enough, or needs its own.
   To be measured when the first voice device exists.
 - Whether JSON is fast enough for sync of large histories, or a compact
