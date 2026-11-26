@@ -30,6 +30,7 @@ release.
 - **The admin creates the issue,** and it is filed under their own GitHub
   account. Each admin enters their own GitHub token for this. No app
   carries a GitHub credential.
+- Duplicate reports are not detected. They are sorted out on GitHub.
 - **The admin panel explains how** to make a GitHub account and a token.
 - Attached automatically: app version, platform, device type and recent
   logs.
@@ -50,4 +51,4 @@ Its repository name is hard-coded, which this design should avoid.
 
 ## Open questions
 
-- How duplicates are avoided.
+None at the moment.

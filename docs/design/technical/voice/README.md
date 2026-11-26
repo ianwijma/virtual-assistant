@@ -79,8 +79,16 @@ Not taken over:
 - The earlier project's pipeline was never run with a real microphone,
   speaker or small computer. Its numbers come from recorded audio.
 
+## Speed targets
+
+These are targets to tune against, not gates.
+
+| From the end of the person's speech to the first sound of the answer | Target |
+|---|---|
+| With cloud speech and a cloud model | 1.5 seconds |
+| With local speech and a local model on low-power hardware | 3 seconds |
+
 ## Open questions
 
 - Echo: how a device avoids hearing its own answer.
 - Whether audio shares the device's connection or has its own.
-- What the numbers for a fast voice turn are, and how they are tested.

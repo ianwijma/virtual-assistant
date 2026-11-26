@@ -49,6 +49,14 @@ Assumed, needing a build to confirm:
 - Detection on the server scales to several devices on a low-power ARM
   box.
 
+## Measuring wakes
+
+- A false wake is counted from the [summoning](summoning.md) log: a wake
+  after which nothing was said, or which the person cancelled.
+- A missed wake cannot be seen by the system. A person reports one with
+  "that should have woken you" in [feedback](../server/feedback.md).
+- The target is less than one false wake per device per day.
+
 ## Open questions
 
 - Is a device's wake word override set per assistant on that device? It
@@ -56,4 +64,3 @@ Assumed, needing a build to confirm:
 - Which detector to use, and whether a detection is confirmed by
   transcribing the same audio.
 - Where the desktop client detects the wake word.
-- How false wakes and missed wakes are measured.

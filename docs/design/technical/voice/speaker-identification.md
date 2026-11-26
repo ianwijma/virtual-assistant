@@ -41,8 +41,11 @@ Assumed, needing a build to confirm:
 - Accuracy in a real home, with several people, background noise and
   children's voices.
 
+## Settings
+
+The timings and thresholds of this part are settings of an assistant,
+with defaults. See [assistants](assistants.md).
+
 ## Open questions
 
-- How many recordings are needed, and whether a new wake word means
-  recording again.
-- The level of certainty at which a voice counts as recognised.
+None at the moment.

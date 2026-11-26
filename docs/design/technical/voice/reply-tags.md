@@ -36,10 +36,13 @@ person who started. This is the explicit follow-up state of
 [summoning](summoning.md): it is entered for a stated reason and has a
 visible end.
 
+## Settings
+
+The timings and thresholds of this part are settings of an assistant,
+with defaults. See [assistants](assistants.md).
+
 ## Open questions
 
-- The number of seconds a device keeps listening after a "keep
-  listening" tag.
 - The list of tags, and how they are written in a reply.
 - How a tag is lined up with the moment in the speech where it stands.
   This is research still to do.

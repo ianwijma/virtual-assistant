@@ -87,10 +87,20 @@ Assumed, needing a build to confirm:
 
 - Slint meets the speed target with 100,000 items.
 
+## Speed targets
+
+These are targets to tune against, measured with a simple benchmark. They
+are not gates.
+
+| Moment | Target |
+|---|---|
+| The launcher appears after its shortcut | 100 ms |
+| Results update after a key press, over 100,000 items | 50 ms |
+| Cold start of the client | 1 second |
+
 ## Open questions
 
 - Where the wake word is detected on a desktop.
 - How notifications, clipboard access, global hotkeys and window control
   work across Linux desktops on X11 and Wayland. This is research still to
   do, and the limits on Wayland are a known risk.
-- The numbers that define "snappy", and the tests for them.

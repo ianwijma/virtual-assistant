@@ -69,6 +69,21 @@ The character idea is kept: an assistant with a personality, a voice and a
 look. Its rules for when an assistant answers are not kept. They are
 designed fresh in [summoning](summoning.md).
 
+## Settings of an assistant
+
+These values are starting points. Each can be changed per assistant, in a
+settings screen, and the defaults themselves can be revised as the system
+is used.
+
+| Setting | Default |
+|---|---|
+| How long a device listens after a "keep listening" tag | 8 seconds |
+| The pause that ends a conversation | 2 minutes |
+| The silence that suggests the person has finished, so an answer can be prepared early | 250 ms |
+| The silence that ends the person's turn | 600 ms |
+| How strict voice recognition is | Strict: when in doubt, the voice is unrecognised |
+| Recordings of each wake word when a person enrols | 5; a new wake word asks for new recordings |
+
 ## Open questions
 
-- How long a pause ends a conversation.
+None at the moment.

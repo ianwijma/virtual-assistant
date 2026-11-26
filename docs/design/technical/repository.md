@@ -59,6 +59,11 @@ Testing happens on the development virtual machine only, for now. It
 should run an Android emulator, to test the app including sound, and
 virtual machines of its own, to test other things such as Linux desktops.
 
+## No code before planning is finished
+
+The Cargo workspace and CI are created when planning is finished, not
+before.
+
 ## Open questions
 
 - Can the development virtual machine run an Android emulator with sound
@@ -67,5 +72,3 @@ virtual machines of its own, to test other things such as Linux desktops.
   This is research still to do.
 - The build order of the parts. There is no roadmap yet; it is decided
   after the technical details are clear.
-- Whether to create the Cargo workspace and CI before planning is finished.
-  For now the answer is no.

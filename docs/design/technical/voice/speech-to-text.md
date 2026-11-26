@@ -78,8 +78,12 @@ Assumed, needing a build to confirm:
 - The same models run fast enough through sherpa-onnx's Rust interface on
   a low-power ARM box.
 
+## Settings
+
+The timings and thresholds of this part are settings of an assistant,
+with defaults. See [assistants](assistants.md).
+
 ## Open questions
 
 - Which local model is the default, given accuracy, speed on low-power
   hardware and licence.
-- The silence timings, and whether a person can tune them.

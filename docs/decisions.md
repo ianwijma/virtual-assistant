@@ -177,3 +177,7 @@ are 25 November 2026.
 | 157 | A notification can be replied to or opened on its source device from another device, in the first release | [notifications and routing](design/technical/server/notifications-and-routing.md) |
 | 158 | iOS and macOS are built after the first release; the project publishes its own builds, and forks publish theirs | [mobile](design/technical/clients/mobile.md) |
 | 159 | A vendor's AI command-line tool is never preinstalled; the admin panel installs it on request and carries its sign-in | [AI providers](design/technical/server/ai-providers.md) |
+| 160 | Timings and thresholds have default values and are configurable per assistant: listening after "keep listening", the pause that ends a conversation, the silence timings, recognition strictness and enrolment recordings | [assistants](design/technical/voice/assistants.md) |
+| 161 | Speed targets for the desktop and for a voice turn, and the way wakes are measured, are set as targets to tune, not gates | [desktop](design/technical/clients/desktop.md), [voice](design/technical/voice/README.md), [wake word](design/technical/voice/wake-word.md) |
+| 162 | Duplicate feedback reports are not detected; they are sorted out on GitHub | [feedback](design/technical/server/feedback.md) |
+| 163 | Research and proposals are done in separate threads, after the planning pull request is merged | [open questions](open-questions.md) |
