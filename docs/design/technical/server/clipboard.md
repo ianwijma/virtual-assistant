@@ -14,8 +14,8 @@ The clipboard is a feature of the system. A
   background.
 - **Shared between a person's devices, and on by default.** The newest
   item is pushed to their other devices.
-- **Clipboard content is sensitive.** It is protected by disk encryption, like the
-  rest of the server's data. See [vault](vault.md).
+- **Clipboard content is sensitive.** It is protected by disk
+  encryption, like the rest of the server's data. See [vault](vault.md).
   Sealing it so that only the person's own devices can read it is put
   off until after the first release.
 - **An assistant asks before it uses the clipboard.** It asks whether it
@@ -24,9 +24,9 @@ The clipboard is a feature of the system. A
   or a file is uploaded in the background. Another device
   downloads it only when the person picks it. An item above a size limit,
   such as 50 MB, stays on the device it was copied on.
-- **History is kept forever by default.** A limit can be set. History and large items are fetched when needed.
+- **History is kept forever by default.** A limit can be set.
 - **History is stored on the server.** The device keeps a local index for
-  search.
+  search, and the server can search it too.
 - **Password-manager copies are not synced** by default.
 - **Phones** cannot read the clipboard in the background. They use a share
   action, a shortcut or a keyboard.

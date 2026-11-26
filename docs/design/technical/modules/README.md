@@ -3,7 +3,8 @@
 What a module is, and the list of modules. Part of
 [the technical design](../README.md).
 
-Status: draft. The list of modules for the first release is not decided.
+Status: draft. The first modules are named; none is designed in detail
+yet.
 
 ## What a module is
 
@@ -28,10 +29,9 @@ written.
   through the assistants assigned to it.
 - **A module is given whole.** An assistant has all of a module's tools or
   none of them, for now. Switching single tools off may come later.
-- **Modules are given to assistants.** Each
-  [assistant](../voice/assistants.md) has the modules it may use, and the
-  same module can be given to several assistants. This is how assistants
-  with different purposes are made, as in the earlier voice assistant.
+- **The same module can be given to several assistants.** This is how
+  assistants with different purposes are made, as in the earlier voice
+  assistant. See [assistants](../voice/assistants.md).
 
 ```text
 assistant  --has-->  modules  --contain-->  tools  --call-->  the system
@@ -63,19 +63,6 @@ assistant  --has-->  modules  --contain-->  tools  --call-->  the system
   or spoken.
 - **Each module has its own document** in this folder once it is
   designed: its tools, and the part of the system each one uses.
-
-## Modules
-
-None are designed yet. The system features that modules will expose first:
-
-| System feature | Document | Example tools |
-|---|---|---|
-| Notifications | [notifications and routing](../server/notifications-and-routing.md) | Send a notification to a device; read out unread notifications |
-| Feedback | [feedback](../server/feedback.md) | File a bug report; suggest a feature |
-| Email | [email](../server/email.md) | Summarise new email; read an email |
-| Clipboard | [clipboard](../server/clipboard.md) | Send this to my other device |
-
-The example tools are illustrations, not decisions.
 
 ## First release
 
@@ -118,3 +105,4 @@ its list of modules.
 
 ## Open questions
 
+None at the moment.

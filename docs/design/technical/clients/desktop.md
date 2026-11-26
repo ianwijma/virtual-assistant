@@ -14,7 +14,8 @@ person and is an extension of the rest of the household's system.
 ## Accounts
 
 A computer can hold more than one account. A person switches between them
-with a short passcode. The accounts can belong to different people in the
+with a passcode, which is also asked for when the client starts and when
+the computer is unlocked. The accounts can belong to different people in the
 household, or to one person on different servers, such as a home server
 and a work server. See
 [identity and sharing](../server/identity-and-sharing.md).
@@ -31,6 +32,8 @@ and a work server. See
   [notifications and routing](../server/notifications-and-routing.md).
 - **Assistant:** the desktop is a voice device by default. A person can
   summon an assistant by wake word, let it listen always, or type to it.
+  The wake word is detected on the server, so the desktop streams its
+  microphone while listening is on.
   Each person chooses. See [voice](../voice/README.md).
 - **Settings:** the settings of this device, in a macOS-style window with
   groups on the left and the selected group on the right. A person's own
@@ -41,15 +44,13 @@ and a work server. See
 
 - **Speed is the key property.** It starts fast, and everything we control
   feels instant. Only AI, background work and outside services may take
-  longer. "Snappy" is to be defined in numbers, with tests that stop the
-  application getting slower.
+  longer. See the speed targets below.
 - **Scale.** Lists of hundreds of thousands of items, with fast search.
 - **Shortcuts.** Everything the launcher can do is a named command: open
   a view, start an application, a window action, talk to the assistant,
   paste a clipboard item. A person can bind any command to a global
   keyboard shortcut. A new feature adds commands, and they can be bound
-  at once.
-  Shortcuts are per device: they are set on that device and kept there,
+  at once. Shortcuts are per device: they are set on that device and kept there,
   not on the server, so each computer has its own. A shortcut can start
   an action that needs the server. The action then talks to the server
   and shows a loader, or a similar sign that it is waiting.

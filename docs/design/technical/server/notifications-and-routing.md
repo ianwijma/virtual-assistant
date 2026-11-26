@@ -14,7 +14,7 @@ Status: draft.
 
 ## Sources
 
-- **On the server:** email, reminders, calendar and the assistants. These
+- **On the server:** email, reminders and the assistants. These
   reach a device only when delivered.
 - **On a desktop:** local applications, such as a chat program or a
   finished build. The desktop is the notification service of that machine,
@@ -52,8 +52,8 @@ Status: draft.
   ways at once.
 - **A rule can send to the person's own devices, to household devices and
   to other people.**
-- **A household source has rules too,** set by an admin. A household email address, for
-  example, can be routed to every household device and to people's own
+- **A household source has rules too,** set by an admin. A household
+  email address, for example, can be routed to every household device and to people's own
   devices.
 - **There is always a fallback.** A notification that matches no rule is
   never lost. A personal one goes to its owner's phone, or only into
@@ -74,10 +74,16 @@ Status: draft.
 
 A household device says only who a personal notification is for, such as
 "Ian, you have a new email". The content stays on the person's own
-devices. The device gives that person the content only when they ask for
-it with the wake word and their voice is recognised. It never reads the
-content out unprompted, even when it knows the person is there. Household notifications, such as a broadcast, go to household
-devices and to personal devices.
+devices, unless that person has allowed the device to say more. The
+device gives that person the content when they ask for it with the wake
+word and their voice is recognised. It never reads content out
+unprompted because it knows the person is there.
+
+After it speaks a notification, the device listens for a moment for a
+follow-up. See [reply tags](../voice/reply-tags.md).
+
+Household notifications, such as a broadcast, go to household devices and
+to personal devices.
 
 ## When the server is down
 

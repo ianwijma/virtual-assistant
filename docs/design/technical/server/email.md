@@ -33,7 +33,7 @@ reader, and it does not mirror a mailbox.
 - **An account is connected through IMAP in the first release.** Gmail
   and Outlook work that way with an app password. "Sign in with Google"
   and "Sign in with Microsoft" are added later.
-- **The credential is kept on the server, encrypted, in the
+- **The credential is kept on the server, in the
   [vault](vault.md).** Devices never hold it.
 - The server watches the account. It is always on, so an arriving email
   can be announced even when the desktop is off.
@@ -60,7 +60,6 @@ reader, and it does not mirror a mailbox.
 
 - Whether a notification can open the email in the person's own email
   application, on a phone and on a desktop. This is research still to do.
-- Signing in with Google or Microsoft needs an application registered
-  with each company, and Google reviews applications that read mail. Who
-  registers them: the project, or each household's admin? This is
-  research still to do.
+- Signing in with Google or Microsoft, after the first release: who
+  registers the application with each company, and what Google's review
+  of applications that read mail involves. This is research still to do.

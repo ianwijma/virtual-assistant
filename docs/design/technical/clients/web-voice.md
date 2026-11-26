@@ -51,3 +51,4 @@ The page has two views: a voice view, and a typed chat view.
 
 ## Open questions
 
+None at the moment.

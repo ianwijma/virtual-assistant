@@ -47,8 +47,7 @@ tool runs on the server. It is not installed by default, in any form of
 the server: the program, the container image or a sold box. The
 [admin panel](../clients/web-admin.md) has a button that downloads and
 installs it when wanted, and it carries the tool's sign-in, so an admin
-never needs a terminal.
-Every device can then use it, and nothing depends on a desktop being on.
+never needs a terminal. Every device can then use it, and nothing depends on a desktop being on.
 
 ## Confirmation
 

@@ -40,7 +40,7 @@ the fast path:
 ## Removing data
 
 Removing a person is a soft deletion. Their data is marked as removed and
-is not erased at once.
+is never erased. See [identity and sharing](identity-and-sharing.md).
 
 ## When the server is down
 

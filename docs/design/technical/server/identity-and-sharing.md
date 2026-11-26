@@ -10,6 +10,17 @@ is designed from scratch.
 
 Every person has an account on the server, named by their email address.
 
+| Role | What it is |
+|---|---|
+| Admin | Manages people, devices, assistants and the server |
+| Member | An ordinary person in the household |
+
+The first release has these two roles only. A restricted role, for
+children, comes later. A guest is not a role: it is a voice the system
+does not recognise.
+
+## Signing in
+
 **There are no passwords.** To sign in, a person enters their email
 address, the server sends a one-time code to it, and they enter that code.
 The short passcode for switching accounts on a computer is a separate,
@@ -23,13 +34,8 @@ local thing.
   with a code an admin issues for them. If neither is available, they
   cannot sign in until the internet is back. Devices that are already
   signed in keep working.
-
-- **Admin:** manages people, devices and modules.
-- **Member:** an ordinary person in the household.
-
-The first release has these two roles only. A restricted role, for
-children, comes later. A guest is not a role: it is a voice the system
-does not recognise.
+- A code from a device that is already signed in also works when there is
+  internet, as a quick way to add a device.
 
 ## Devices
 
@@ -52,11 +58,10 @@ There are two kinds of device:
   how many devices it may add and how long it is valid. Both are
   unlimited unless set. An admin can withdraw an invite at any time.
 - **Several accounts on one device.** A computer can hold more than one
-  account, and a person switches between them with a short passcode,
-  of four to six digits. Each account has its own. The passcode is asked for when switching
-  to an account, when the client starts, and when the computer is
-  unlocked. The accounts can be different people in one
-  household, or one person's accounts on different servers.
+  account. Each account has its own passcode of four to six digits. It is
+  asked for when switching to that account, when the client starts, and
+  when the computer is unlocked. The accounts can be different people in
+  one household, or one person's accounts on different servers.
 - A personal device still receives household events, such as a "dinner is
   ready" broadcast.
 - A personal device can be a direct target, such as a call to one person's
@@ -82,26 +87,30 @@ There are two kinds of device:
   that lists only what is shared with them.
 - A person who is given a share can see it, and so can an assistant acting
   for that person.
-- The owner shares one item, a rule (such as a sender or a label), or a
-  whole source. For example, a person shares most of an inbox with a
-  partner and keeps a birthday present private.
+- The owner shares one item or a whole source.
 
-## Guests, children and unrecognised voices
+## Guests and unrecognised voices
 
-What they may do is configurable. As a starting point, an unrecognised
-voice can do things that touch nobody's private data: set a timer, ask a
-general question, ask for a joke.
+What an unrecognised voice may do is configurable. As a starting point it
+can do things that touch nobody's private data: set a timer, ask a
+general question, ask for a joke, report a bug.
 
-This is done with **guest assistants**. An assistant can be marked as a
-guest assistant: it answers anyone, recognised or not. For an unrecognised
-voice it has only guest-level tools. When it recognises the speaker, it
-acts with that person's permissions, so it can answer "what is my name?".
-An assistant that is not a guest assistant gives an unrecognised voice a
-short refusal. There can be several, each with its own wake word and
-its own modules. Examples are a "Hey Home" assistant for the house, and
-one whose wake word is "report feedback" and whose only job is to take a
-bug report or a suggestion. See
-[assistants](../voice/assistants.md).
+This is done with **guest assistants**. "Guest" is a setting of an
+assistant:
+
+- A guest assistant answers anyone, recognised or not. For an
+  unrecognised voice it has only guest-level tools. When it recognises
+  the speaker, it acts with that person's permissions, so it can answer
+  "what is my name?".
+- An assistant that is not a guest assistant gives an unrecognised voice
+  a short refusal.
+- There can be several guest assistants, each with its own wake words and
+  modules. Examples are a "Hey Home" assistant for the house, and one
+  whose wake word is "report feedback" and whose only job is to take a
+  bug report or a suggestion.
+- The default household assistant starts as a guest assistant.
+
+See [assistants](../voice/assistants.md).
 
 ## Households and servers
 
@@ -133,13 +142,16 @@ This is worked out in layers, cheapest first:
 2. **Speaker identification,** on household devices. It is a convenience,
    not security, because a voice can be recorded and replayed. See
    [speaker identification](../voice/speaker-identification.md).
-3. **A confirmation** on the person's own device, or a PIN, for sensitive
-   actions.
+
+There is no PIN and no confirmation on a phone as a third layer. A voice
+that is not recognised with enough certainty is simply unrecognised. See
+[summoning](../voice/summoning.md).
 
 On a household device:
 
 - **Unprompted, personal content is not spoken.** A notification says
-  "Ian, you have a new email" and nothing more.
+  "Ian, you have a new email" and nothing more, unless that person has
+  allowed the device to say more. See [email](email.md).
 - **Personal information is spoken only when its owner asks for it by
   voice.** The person must have used the wake word and their voice must
   have been recognised. That shows they want the information then and

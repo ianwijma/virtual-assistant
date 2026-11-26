@@ -38,7 +38,8 @@ Three words work without the wake word, each only in its own situation:
 | "Snooze" | While an alarm rings on that device |
 
 A follow-up without the wake word is possible only when the assistant's
-reply asked for it. See [reply tags](reply-tags.md).
+reply asked for it, or just after a household device has spoken a
+notification. See [reply tags](reply-tags.md).
 
 Every decision to wake or to ignore is logged with its reason and shown in
 the [admin panel](../clients/web-admin.md).

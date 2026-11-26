@@ -22,6 +22,9 @@ fulfils "a screen for every setting".
 - Each person's notification routing, which an admin can view and change.
 - The log of summoning decisions, with the reason for each.
 - The log of admin access to other people's data.
+- The audit log of settings changes, from which a change can be undone.
+- The household device invites, and the devices waiting for approval.
+- The installing of, and signing in to, a vendor's AI command-line tool.
 
 ## Who uses it
 
@@ -35,8 +38,7 @@ fulfils "a screen for every setting".
   shortcuts, stay on that device.
 
 A person signs in with their email address and a one-time code sent to
-it. The admin panel also holds
-the settings of devices that have no settings screen of their own, such as
+it. The admin panel also holds the settings of devices that have no settings screen of their own, such as
 whether a tablet in kiosk mode listens for a wake word.
 
 ## First-run setup

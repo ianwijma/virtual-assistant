@@ -9,8 +9,8 @@ Status: draft. The detector is not chosen.
 
 - **The wake words belong to the assistant.** Each assistant has a list
   of them, such as "Hey Jeff", and the list comes with the assistant to
-  every device. The household chooses the words and types them in; any word
-  can be used.
+  every device. The household chooses the words and types them in;
+  any word can be used.
 - **The list can hold other spellings of the same word,** for when an
   accent makes the usual one fail.
 - **People can record themselves saying the wake words.** The recordings

@@ -37,20 +37,21 @@ device. A household can have several, each a distinct character.
   devices. The other person does not have to accept for now; that can be
   added later.
 - **A conversation is remembered for a short time only.** A person can
-  carry on a conversation for a little while. After a short pause, of a
-  minute or a few, the assistant starts fresh. There is no memory across
+  carry on a conversation for a little while. After a pause, two minutes
+  by default, the assistant starts fresh. There is no memory across
   conversations for now. This is kept simple on purpose and will be
   reworked, so it must stay easy to change.
 - **Remembering on request is a tool, not conversation memory.** "Remember
-  this for me" would be handled by a lists module, which keeps lists and
-  notes a person asks for.
+  this for me" is handled by the lists module. See
+  [lists](../server/lists.md).
 - An assistant always acts with the permissions of the person it is
   talking to. See [summoning](summoning.md).
 - **A guest assistant answers anyone.** "Guest" is a setting of an
   ordinary assistant, and the default household assistant starts with it
-  on. It needs no recognised voice. It works at guest level
-  for an unrecognised voice, and with the person's own permissions when
-  it recognises them. Any other assistant refuses an unrecognised voice. There can be several, each with its own wake word. See
+  on. A guest assistant works at guest level for an unrecognised voice,
+  and with the person's own permissions when it recognises them. Any
+  other assistant refuses an unrecognised voice. There can be several
+  guest assistants. See
   [identity and sharing](../server/identity-and-sharing.md).
 - **Each assistant has a language.** It selects the speech-to-text model,
   the voice and the wake words that fit. Only English exists in the first
