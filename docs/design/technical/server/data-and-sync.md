@@ -14,7 +14,7 @@ only if it is tied to that machine or must respond within a frame.
 |---|---|---|
 | People, roles, shares, routing, credentials, settings | Server | Devices keep a read-only copy |
 | Notifications | Server | A desktop is a source and a display |
-| Clipboard | Captured on the device, stored on the server, sealed | The device keeps a local index |
+| Clipboard | Captured on the device, stored on the server | The device keeps a local index |
 | New email | Server | Kept for a week by default |
 | Launcher index, keyboard shortcuts, window control | Desktop | Tied to the machine; shortcuts are per device |
 

@@ -21,7 +21,8 @@ reader, and it does not mirror a mailbox.
 - **The email is never shown with its formatting.** To see the real
   thing, the person is pointed to their own email application.
 - **What can be done with a new email:**
-  - copy a login code it contains;
+  - copy a login code it contains. A simple pattern finds the usual
+    forms; the AI model is asked only when that finds nothing clear;
   - have it summarised;
   - ask an assistant questions about it;
   - reply to it. The reply is typed, dictated, or drafted by an
@@ -58,7 +59,6 @@ reader, and it does not mirror a mailbox.
 
 - Whether a notification can open the email in the person's own email
   application, on a phone and on a desktop. This is research still to do.
-- How a login code is found in an email. This is research still to do.
 - Signing in with Google or Microsoft needs an application registered
   with each company, and Google reviews applications that read mail. Who
   registers them: the project, or each household's admin? This is

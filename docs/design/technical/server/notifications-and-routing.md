@@ -30,7 +30,11 @@ Status: draft.
   them. It is one system, not a set of separate inboxes.
 - **A notification can be acted on from another device,** in the first
   release: replied to, such as a chat message that arrived on the
-  desktop, or opened on the device it came from.
+  desktop, or opened on the device it came from. The action always
+  reaches the right place. Where the server can carry it out itself, such
+  as a reply to an email, it does. Where only the source device can, such
+  as a reply in a chat program on a desktop, the action waits until that
+  device is back, and the person is told it is waiting.
 
 ## Routing
 
@@ -82,5 +86,4 @@ devices and to personal devices.
 
 ## Open questions
 
-- What happens to a reply or an "open" when the device the notification
-  came from is off.
+None at the moment.

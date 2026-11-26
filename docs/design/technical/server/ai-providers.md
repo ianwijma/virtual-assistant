@@ -53,8 +53,8 @@ Every device can then use it, and nothing depends on a desktop being on.
 ## Confirmation
 
 An assistant does not ask for confirmation before it acts, for now, with
-one exception: using a person's clipboard or passwords needs their
-approval (see [vault](vault.md)), and a reply to an email is sent only
+two exceptions: it asks before it searches a person's clipboard (see
+[clipboard](clipboard.md)), and a reply to an email is sent only
 after the person has seen or heard it (see [email](email.md)). The
 first tools carry no real risk: nothing buys anything, and a message or a
 broadcast to the household goes out directly. Confirmation is added when
