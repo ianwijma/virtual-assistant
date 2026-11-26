@@ -123,9 +123,6 @@ questions.
   the history only. With several admins, a household notification falls
   back to all of them. [notifications]
 
-- **W.** "Controlled from anywhere" means, for the first release, seeing
-  and dismissing. Replying to a notification or opening it on its source
-  device is added later, per kind of notification. [notifications]
 - **X.** An admin without a GitHub token can still read reports in the
   admin panel, but cannot send them on. [feedback]
 
@@ -157,9 +154,13 @@ questions.
   also mentioned five rounds; two is what is written. [repository]
 
 - **AH.** Because mail is not stored, these are dropped for now: reading
-  and searching mail in the desktop client, an assistant summarising or
-  reading out an email, sharing single emails, and "copy the login code"
-  from an email. [email]
+  and searching mail in the desktop client, sharing single emails, and
+  "copy the login code" from an email. An AI summary exists only as part
+  of the new-mail notification. [email]
+- **AI.** The person chooses the level of their new-mail notification,
+  per account. The fuller levels are shown or spoken on their own
+  devices; a household device keeps to "Ian, you have a new email".
+  [email]
 
 ## 1. Now
 
@@ -172,13 +173,11 @@ Nothing is waiting here at the moment.
 1. The list of reply tags, and how they are written in a reply.
    [reply tags]
 
-### Screens
-
-
 ## 3. Later
 
-2. Which notifications can be replied to or opened from another device,
-   and what happens when the source device is off? [notifications]
+2. The App Store's terms conflict with the GPL. How is the project's
+   own iOS build published? To be worked out before iOS is built.
+   [mobile]
 3. How many voice recordings are needed, and whether a new wake word
    means recording again. [speaker identification]
 4. Where lists are shown and edited in each client. [lists]
@@ -193,20 +192,15 @@ Nothing is waiting here at the moment.
     after the technical details are clear. [repository]
 10. Whether to create the Cargo workspace and CI before planning is
     finished. For now the answer is no. [repository]
-11. Building and publishing for iOS needs a Mac and an Apple developer
-    account, and the App Store has friction with the GPL. How is that
-    handled? [mobile]
-12. Is preinstalling a vendor's AI command-line tool on hardware ever
-    wanted? It would need that vendor's commercial terms. [licensing]
-13. The silence timings, and whether a person can tune them.
+11. The silence timings, and whether a person can tune them.
     [speech to text]
-14. The numbers that define "snappy" on the desktop, and the tests for
+12. The numbers that define "snappy" on the desktop, and the tests for
     them. [desktop]
-15. The numbers for a fast voice turn, and how they are tested. [voice]
-16. How false wakes and missed wakes are measured. [wake word]
-17. Feedback: how duplicates are avoided. [feedback]
-18. The contents of our A2UI catalog. [a2ui]
-19. The full list of capabilities, and how a catalog version is
+13. The numbers for a fast voice turn, and how they are tested. [voice]
+14. How false wakes and missed wakes are measured. [wake word]
+15. Feedback: how duplicates are avoided. [feedback]
+16. The contents of our A2UI catalog. [a2ui]
+17. The full list of capabilities, and how a catalog version is
     expressed. [protocol]
 
 ## 4. To research or propose
@@ -215,60 +209,64 @@ These need investigation or a worked-out proposal. An agent does the work
 and writes the outcome into the design; the owner then agrees or
 corrects it. They are sorted by how much depends on them.
 
-20. The summoning states and transitions themselves. [summoning]
-21. Which database the server uses. [server]
-22. How the event log handles household data that several people can
+18. The summoning states and transitions themselves. [summoning]
+19. Which database the server uses. [server]
+20. How the event log handles household data that several people can
     see. [data]
-23. The full list of protocol messages, and how the protocol is
+21. The full list of protocol messages, and how the protocol is
     versioned. [protocol]
-24. The exact pairing steps for a personal device and for a household
+22. The exact pairing steps for a personal device and for a household
     device. [protocol], [identity]
-25. How audio travels: on the device's connection or a separate one.
+23. How audio travels: on the device's connection or a separate one.
     [protocol], [voice]
-26. How notifications, clipboard access, global hotkeys and window
+24. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-27. How notifications reach a phone when the app is closed, without a
+25. How notifications reach a phone when the app is closed, without a
     cloud push service. [mobile]
-28. Which wake word detector to use, and whether a detection is confirmed
+26. Which wake word detector to use, and whether a detection is confirmed
     by transcribing the same audio. [wake word]
-29. Where the desktop client detects the wake word. [wake word],
+27. Where the desktop client detects the wake word. [wake word],
     [desktop]
-30. Which local speech-to-text model is the default, given accuracy,
+28. Which local speech-to-text model is the default, given accuracy,
     speed on low-power hardware and licence. [speech to text]
-31. Which local voices are offered, given quality and licence.
+29. Which local voices are offered, given quality and licence.
     [text to speech]
-32. Which speech models and voices have licences that allow selling
+30. Which speech models and voices have licences that allow selling
     hardware. [licensing]
-33. Echo: how a device avoids hearing its own answer. [voice]
-34. How each AI provider produces A2UI screens, including through a
+31. Echo: how a device avoids hearing its own answer. [voice]
+32. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-35. Whether any Rust implementation of A2UI exists, and whether the A2UI
+33. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-36. Whether A2UI suits screens our own code defines locally, and what it
+34. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-37. What a generated surface may do when its content came from an
+35. What a generated surface may do when its content came from an
     untrusted source, such as an email. [a2ui]
-38. How copied HTML is drawn safely. [clipboard]
-39. How search stays fast over years of history. [data], [clipboard]
-40. How a non-technical person gets a browser to trust the server's
+36. How copied HTML is drawn safely. [clipboard]
+37. How search stays fast over years of history. [data], [clipboard]
+38. How a non-technical person gets a browser to trust the server's
      certificate authority. [networking]
-41. How the server is found on the home network when a device is first
+39. How the server is found on the home network when a device is first
      paired. [networking]
-42. How a reply tag is lined up with the moment in the speech where it
+40. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-43. How a person's key is made, how a new device of theirs gets it, and
+41. How a person's key is made, how a new device of theirs gets it, and
    how the recovery copy is sealed so that releasing it takes an admin
    and cannot happen silently. [vault]
-44. How system secrets are encrypted, and where that key is kept, so that
+42. How system secrets are encrypted, and where that key is kept, so that
    a stolen disk or a copied backup gives nothing away. [vault]
-45. Signing in with Google or Microsoft needs an application registered
+43. Signing in with Google or Microsoft needs an application registered
    with each company, and Google reviews applications that read mail.
    Who registers them: the project, or each household's admin? [email]
-46. Can the development virtual machine run an Android emulator with
+44. Can the development virtual machine run an Android emulator with
    sound and virtual machines inside it? Both need virtualisation inside
    a virtual machine. The Rust toolchain is not installed on it yet
    either. [repository]
+45. What happens to a reply or an "open" when the device the notification
+   came from is off. [notifications]
+46. How a vendor's command-line tool is installed and signed in to from
+   the admin panel, including inside a container. [ai providers]
 
 ## 5. Visual design
 
