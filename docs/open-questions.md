@@ -101,10 +101,16 @@ corrects it. They are sorted by how much depends on them.
 This work is done in separate threads, after the planning pull request is
 merged. It is not started from the planning thread.
 
+Research is kept as small as possible. It is done online, from
+documentation and other projects. A small prototype is made only when a
+question cannot be settled otherwise. The aim is a quick first working
+product, not a complete study.
+
 5. The summoning states and transitions themselves. [summoning]
-6. Which database the server uses. The owner leans towards PostgreSQL, for
-   being open source and for its extensions such as time series, unless
-   there is a strong case for SQLite. [server]
+6. Which database the server uses, and how search stays fast over years
+   of history. The owner leans towards PostgreSQL, for being open source
+   and for its extensions such as time series, unless there is a strong
+   case for SQLite. [server], [data], [clipboard]
 7. How the event log handles household data that several people can
     see. [data]
 8. The full list of protocol messages, and how the protocol is
@@ -116,8 +122,11 @@ merged. It is not started from the planning thread.
 11. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-12. How notifications reach a phone when the app is closed, without a
-    cloud push service. [mobile]
+12. How notifications reach a phone when the app is closed. To compare:
+   what works on Android without Google's push service, what iOS allows,
+   and simply accepting Google's and Apple's push services with a small
+   relay if one is needed. Include what happens when the connection is
+   lost. [mobile]
 13. Which wake word detector to use, and whether a detection is confirmed
     by transcribing the same audio. [wake word]
 14. Which local speech-to-text model is the default, given accuracy,
@@ -136,30 +145,33 @@ merged. It is not started from the planning thread.
 21. How copied HTML is drawn with its formatting, safely, on each
    platform: a sandboxed frame in a browser, and whatever the Rust
    desktop client and the phone apps can use. [clipboard]
-22. How search stays fast over years of history. [data], [clipboard]
-23. How a non-technical person gets a browser to trust the server's
-     certificate authority. [networking]
-24. How the server is found on the home network when a device is first
+22. How the admin panel and the voice page get HTTPS that a browser
+   trusts, for a non-technical person. To compare: certificates through
+   Tailscale, a proxy domain per installation that the project provides,
+   the person's own certificates, accepting the browser's warning at
+   first, and any other way found. An AI assistant could also walk a
+   person through the set-up. [networking]
+23. How the server is found on the home network when a device is first
      paired. [networking]
-25. How a reply tag is lined up with the moment in the speech where it
+24. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-26. Signing in with Google or Microsoft needs an application registered
-   with each company, and Google reviews applications that read mail.
-   Who registers them: the project, or each household's admin? [email]
-27. Can the development virtual machine run an Android emulator with
+25. Signing in with Google or Microsoft for email, after the first
+   release: who registers the application with each company, and what
+   Google's review of applications that read mail involves. [email]
+26. Can the development virtual machine run an Android emulator with
    sound and virtual machines inside it? Both need virtualisation inside
    a virtual machine. The Rust toolchain is not installed on it yet
    either. [repository]
-28. How a vendor's command-line tool is installed and signed in to from
+27. How a vendor's command-line tool is installed and signed in to from
    the admin panel, including inside a container. [ai providers]
-29. The list of reply tags, and how they are written in a reply.
+28. The list of reply tags, and how they are written in a reply.
    [reply tags]
-30. The contents of our A2UI catalog. [a2ui]
-31. The full list of capabilities, and how a catalog version is
+29. The contents of our A2UI catalog. [a2ui]
+30. The full list of capabilities, and how a catalog version is
     expressed. [protocol]
-32. Whether a notification can open the email in the person's own email
+31. Whether a notification can open the email in the person's own email
    application, on a phone and on a desktop. [email]
-33. How the server's data and its secrets are encrypted, and where the
+32. How the server's data and its secrets are encrypted, and where the
    key is kept, so that a stolen disk or a copied backup gives nothing
    away. [vault]
 
@@ -168,9 +180,9 @@ merged. It is not started from the planning thread.
 These are not asked in the technical planning thread. The owner works on
 the look and feel in a separate thread.
 
-34. Three or four words for how it should feel, and products whose look
+33. Three or four words for how it should feel, and products whose look
    you admire. [visual]
-35. Are settings screens generated from each feature's description, so
+34. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? This is decided once there are visual designs of the app
    and the admin panel. [visual]

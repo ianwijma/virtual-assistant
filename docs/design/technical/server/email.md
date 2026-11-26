@@ -30,8 +30,9 @@ reader, and it does not mirror a mailbox.
     and it is sent only after they say so, because an email leaves the
     house under their name and cannot be recalled.
 - For anything else, a person opens their own email application.
-- **Three ways to connect an account from the start:** any IMAP server,
-  "Sign in with Google" and "Sign in with Microsoft".
+- **An account is connected through IMAP in the first release.** Gmail
+  and Outlook work that way with an app password. "Sign in with Google"
+  and "Sign in with Microsoft" are added later.
 - **The credential is kept on the server, encrypted, in the
   [vault](vault.md).** Devices never hold it.
 - The server watches the account. It is always on, so an arriving email
