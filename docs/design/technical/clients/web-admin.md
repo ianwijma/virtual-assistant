@@ -49,6 +49,11 @@ The mail account is set first. The first admin then confirms their email
 address with a code sent to it, like everyone else, which also proves the
 mail account works.
 
+Set-up starts small: a small local speech model and a small local voice,
+so the system runs on modest hardware straight away. It then suggests
+better options, local or cloud, and the cloud ones can be configured
+there and then.
+
 ## How it is built
 
 Rust compiled to WebAssembly, using Leptos.

@@ -11,6 +11,9 @@ assistant, where this part works. It is to be confirmed in Rust.
 - Providers are modular and configurable: local models and cloud ones
   behind one interface, chosen in settings.
 - A local model must be enough for the system to work.
+- **The default is a small local model.** A small footprint makes the
+  system easy to adopt, even if accuracy is modest. Set-up then suggests
+  something better: a larger local model, or a cloud provider.
 - The first cloud provider is Deepgram.
 - English first, built so that other languages can be added.
 - **It runs on the server only, for now.** Devices send audio to the

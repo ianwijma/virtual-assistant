@@ -29,6 +29,13 @@ design now:
 - A local AI model (through Ollama) is the likely brain of a box, so the
   system must be fully usable without any cloud provider.
 
+## Referral links
+
+Where the system suggests a paid service, such as a cloud speech provider
+or an AI provider, it uses a referral link when that service has a
+referral programme. The small return helps keep the project running.
+This applies throughout the project, not only in set-up.
+
 ## Verified and assumed
 
 Verified:
@@ -44,5 +51,7 @@ Known traps, from the earlier voice assistant:
 
 ## Open questions
 
+- Which of the services the system suggests have a referral programme,
+  and on what terms. This is research still to do.
 - Which speech models and voices have licences that allow selling
   hardware. See [voice](voice/README.md).

@@ -64,6 +64,8 @@ questions.
   clipboard search can also run on the server. [clipboard]
 - **AQ.** A reply made while the source device is off waits and is sent
   when that device is back; it is never dropped. [notifications]
+- **AR.** A referral link is shown as one: the person can see that the
+  project earns from it. [licensing]
 - **AN.** The kept text of an email can be shown as plain text on the
   person's own devices, from its notification. [email]
 - **AO.** Attachments are ignored entirely: not kept, not listed, not
@@ -128,50 +130,55 @@ product, not a complete study.
    relay if one is needed. Include what happens when the connection is
    lost. [mobile]
 13. Which wake word detector to use, and whether a detection is confirmed
-    by transcribing the same audio. [wake word]
-14. Which local speech-to-text model is the default, given accuracy,
-    speed on low-power hardware and licence. [speech to text]
-15. Which local voices are offered, given quality and licence.
-    [text to speech]
-16. Which speech models and voices have licences that allow selling
-    hardware. [licensing]
-17. Echo: how a device avoids hearing its own answer. [voice]
-18. How each AI provider produces A2UI screens, including through a
+   by transcribing the same audio. Wake words are typed in freely, so
+   the detector must accept any word. Finding the wake word in the
+   transcript is the fallback, though transcripts can get the word
+   wrong. Also: whether training a device per person, from several
+   places in the room, improves detection. [wake word]
+14. Which small local speech-to-text model and small local voice are the
+   defaults, which better ones are suggested in set-up, and which of
+   them have licences that allow selling hardware. [speech to text],
+   [text to speech], [licensing]
+15. Which of the services the system suggests have a referral programme,
+   and on what terms. [licensing]
+16. Echo: how a device ignores its own voice while it speaks and still
+   hears another voice, so that "stop" works. [voice]
+17. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-19. Whether any Rust implementation of A2UI exists, and whether the A2UI
+18. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-20. Whether A2UI suits screens our own code defines locally, and what it
+19. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-21. How copied HTML is drawn with its formatting, safely, on each
+20. How copied HTML is drawn with its formatting, safely, on each
    platform: a sandboxed frame in a browser, and whatever the Rust
    desktop client and the phone apps can use. [clipboard]
-22. How the admin panel and the voice page get HTTPS that a browser
+21. How the admin panel and the voice page get HTTPS that a browser
    trusts, for a non-technical person. To compare: certificates through
    Tailscale, a proxy domain per installation that the project provides,
    the person's own certificates, accepting the browser's warning at
    first, and any other way found. An AI assistant could also walk a
    person through the set-up. [networking]
-23. How the server is found on the home network when a device is first
+22. How the server is found on the home network when a device is first
      paired. [networking]
-24. How a reply tag is lined up with the moment in the speech where it
+23. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-25. Signing in with Google or Microsoft for email, after the first
+24. Signing in with Google or Microsoft for email, after the first
    release: who registers the application with each company, and what
    Google's review of applications that read mail involves. [email]
-26. Can the development virtual machine run an Android emulator with
+25. Can the development virtual machine run an Android emulator with
    sound and virtual machines inside it? Both need virtualisation inside
    a virtual machine. The Rust toolchain is not installed on it yet
    either. [repository]
-27. How a vendor's command-line tool is installed and signed in to from
+26. How a vendor's command-line tool is installed and signed in to from
    the admin panel, including inside a container. [ai providers]
-28. The list of reply tags, and how they are written in a reply.
+27. The list of reply tags, and how they are written in a reply.
    [reply tags]
-29. The contents of our A2UI catalog. [a2ui]
-30. The full list of capabilities, and how a catalog version is
+28. The contents of our A2UI catalog. [a2ui]
+29. The full list of capabilities, and how a catalog version is
     expressed. [protocol]
-31. Whether a notification can open the email in the person's own email
+30. Whether a notification can open the email in the person's own email
    application, on a phone and on a desktop. [email]
-32. How the server's data and its secrets are encrypted, and where the
+31. How the server's data and its secrets are encrypted, and where the
    key is kept, so that a stolen disk or a copied backup gives nothing
    away. [vault]
 
@@ -180,9 +187,9 @@ product, not a complete study.
 These are not asked in the technical planning thread. The owner works on
 the look and feel in a separate thread.
 
-33. Three or four words for how it should feel, and products whose look
+32. Three or four words for how it should feel, and products whose look
    you admire. [visual]
-34. Are settings screens generated from each feature's description, so
+33. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? This is decided once there are visual designs of the app
    and the admin panel. [visual]

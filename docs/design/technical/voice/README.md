@@ -90,5 +90,7 @@ These are targets to tune against, not gates.
 
 ## Open questions
 
-- Echo: how a device avoids hearing its own answer.
+- Echo: how a device ignores its own voice while it speaks and still
+  hears another voice, so that "stop" works. This is research still to
+  do.
 - Whether audio shares the device's connection or has its own.

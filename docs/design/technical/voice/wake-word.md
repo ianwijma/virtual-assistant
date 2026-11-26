@@ -51,6 +51,12 @@ Assumed, needing a build to confirm:
 - Detection on the server scales to several devices on a low-power ARM
   box.
 
+## Training a device
+
+A person can train one device on their own voice. From the phone app,
+they choose the device, stand in several places in the room, and say the
+wake words. This helps where a device does not pick a person up well.
+
 ## Measuring wakes
 
 - A false wake is counted from the [summoning](summoning.md) log: a wake

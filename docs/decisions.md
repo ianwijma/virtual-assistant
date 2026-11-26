@@ -206,3 +206,6 @@ are 25 November 2026.
 | 186 | A login code in an email is found by a simple pattern, with the AI model as backup | [email](design/technical/server/email.md) |
 | 187 | Email accounts connect through IMAP only in the first release; Google and Microsoft sign-in come later. This corrects decision 118 | [email](design/technical/server/email.md) |
 | 188 | Research is kept as small as possible and is done online; a small prototype is made only when a question cannot be settled otherwise. The aim is a quick first working product | [open questions](open-questions.md) |
+| 189 | The default speech model and voice are small local ones, for a small footprint; set-up suggests better local or cloud options | [speech to text](design/technical/voice/speech-to-text.md), [text to speech](design/technical/voice/text-to-speech.md), [admin panel](design/technical/clients/web-admin.md) |
+| 190 | Where the system suggests a paid service it uses a referral link when one exists, throughout the project | [licensing and hardware](design/technical/licensing-and-hardware.md) |
+| 191 | A person can train a specific device on their voice from the phone app, saying the wake words from several places in the room | [wake word](design/technical/voice/wake-word.md) |
