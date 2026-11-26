@@ -116,9 +116,7 @@ Content from an untrusted source, such as the text of an email, is only
 ever shown as plain text. It cannot add buttons or links that act, and an
 assistant does not follow instructions found in it.
 
-## Proposal: our catalog
-
-This section is proposed and waits for the owner's review.
+## Our catalog
 
 These are the components we add on top of A2UI's basic catalog for the
 first release. Each has a spoken form.
@@ -136,6 +134,14 @@ first release. Each has a spoken form.
 | Media player | Audio and video |
 | Character | The assistant's character, driven by [reply tags](voice/reply-tags.md) |
 
+- **The catalog is modular.** A larger component, such as the media
+  player, is one thing everywhere, so it looks and behaves the same on
+  every device.
+- **Smaller parts exist too,** such as buttons and choice boxes, to
+  compose a screen from where no larger component fits. They come from
+  A2UI's basic catalog where it has them, and are added by us where it
+  does not. They are added as the need shows.
+
 ## Open questions
 
 - Whether any Rust implementation of A2UI exists, and whether the A2UI
@@ -144,4 +150,3 @@ first release. Each has a spoken form.
   costs in latency.
 - How each AI provider produces A2UI, including through a command-line
   tool.
-- Agree to the proposed catalog, or correct it.

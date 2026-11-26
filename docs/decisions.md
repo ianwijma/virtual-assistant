@@ -223,3 +223,7 @@ are 25 November 2026.
 | 203 | The list of device capabilities and the pairing steps of a personal device are agreed | [protocol](design/technical/server/protocol.md), [pairing](design/technical/server/pairing.md) |
 | 204 | A household device pairs like a personal one: it finds the server, announces itself and waits for an admin's approval; an invite code or QR code is the other way in | [pairing](design/technical/server/pairing.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 205 | The server finds new versions on the project's GitHub releases page | [server](design/technical/server/README.md) |
+| 206 | The steps for a voice page and for removing a device are agreed | [pairing](design/technical/server/pairing.md) |
+| 207 | Data that several people can see: one log per person and one for the household, each item in exactly one; a share copies nothing | [data and sync](design/technical/server/data-and-sync.md) |
+| 208 | Reply tags are written in double square brackets; the first list is agreed, with an added tag that ends the conversation and stops listening | [reply tags](design/technical/voice/reply-tags.md) |
+| 209 | The starting A2UI catalog is agreed; it is modular, with smaller parts such as buttons to compose from | [A2UI](design/technical/a2ui.md) |

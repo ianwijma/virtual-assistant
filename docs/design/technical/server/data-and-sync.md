@@ -58,9 +58,7 @@ days for the clipboard.
 The system starts empty. No data is brought over from the earlier voice
 assistant.
 
-## Proposal: data that several people can see
-
-This section is proposed and waits for the owner's review.
+## Data that several people can see
 
 - Besides one log per person, there is **one log for the household**.
 - **Every event belongs to exactly one log:** its owner's, or the
@@ -83,8 +81,7 @@ This section is proposed and waits for the owner's review.
 
 ## Open questions
 
-- Agree to the proposal for data that several people can see, or correct
-  it. Whether following several logs is simple enough is checked together
-  with the choice of database.
+- Whether following several logs is simple enough. This is checked
+  together with the choice of database.
 - How search stays fast over years of history. This is research still to
   do.

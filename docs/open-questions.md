@@ -94,13 +94,8 @@ Nothing is waiting here at the moment.
 
 ## 4. Proposals to review
 
-These were written as sections headed "Proposal" in the design files. The
-owner reads them and agrees or corrects.
-
-6. The steps for a voice page and for removing a device. [pairing]
-7. How data that several people can see is kept and synced. [data]
-8. How reply tags are written, and the first list of them. [reply tags]
-9. Our A2UI catalog. [a2ui]
+None at the moment. A proposal is a section headed "Proposal" in a design
+file, written for the owner to agree to or correct.
 
 ## 5. To research
 
@@ -121,72 +116,72 @@ documentation and other projects. A small prototype is made only when a
 question cannot be settled otherwise. The aim is a quick first working
 product, not a complete study.
 
-10. Which database the server uses, and how search stays fast over years
+6. Which database the server uses, and how search stays fast over years
    of history. The owner leans towards PostgreSQL, for being open source
    and for its extensions such as time series, unless there is a strong
    case for SQLite. [server], [data], [clipboard]
-11. How notifications, clipboard access, global hotkeys and window
+7. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-12. How notifications reach a phone when the app is closed. To compare:
+8. How notifications reach a phone when the app is closed. To compare:
    what works on Android without Google's push service, what iOS allows,
    and simply accepting Google's and Apple's push services with a small
    relay if one is needed. Include what happens when the connection is
    lost. [mobile]
-13. Which wake word detector to use, and whether a detection is confirmed
+9. Which wake word detector to use, and whether a detection is confirmed
    by transcribing the same audio. Wake words are typed in freely, so
    the detector must accept any word. Finding the wake word in the
    transcript is the fallback, though transcripts can get the word
    wrong. Also: whether training a device per person, from several
    places in the room, improves detection. [wake word]
-14. Which small local speech-to-text model and small local voice are the
+10. Which small local speech-to-text model and small local voice are the
    defaults, which better ones are suggested in set-up, and which of
    them have licences that allow selling hardware. [speech to text],
    [text to speech], [licensing]
-15. Which of the services the system suggests have a referral programme,
+11. Which of the services the system suggests have a referral programme,
    and on what terms. [licensing]
-16. Echo: how a device ignores its own voice while it speaks and still
+12. Echo: how a device ignores its own voice while it speaks and still
    hears another voice, so that "stop" works. [voice]
-17. How each AI provider produces A2UI screens, including through a
+13. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-18. Whether any Rust implementation of A2UI exists, and whether the A2UI
+14. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-19. Whether A2UI suits screens our own code defines locally, and what it
+15. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-20. How copied HTML is drawn with its formatting, safely, on each
+16. How copied HTML is drawn with its formatting, safely, on each
    platform: a sandboxed frame in a browser, and whatever the Rust
    desktop client and the phone apps can use. [clipboard]
-21. How the admin panel and the voice page get HTTPS that a browser
+17. How the admin panel and the voice page get HTTPS that a browser
    trusts, for a non-technical person. To compare: certificates through
    Tailscale, a proxy domain per installation that the project provides,
    the person's own certificates, accepting the browser's warning at
    first, and any other way found. An AI assistant could also walk a
    person through the set-up. [networking]
-22. How a reply tag is lined up with the moment in the speech where it
+18. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-23. Signing in with Google or Microsoft for email, after the first
+19. Signing in with Google or Microsoft for email, after the first
    release: who registers the application with each company, and what
    Google's review of applications that read mail involves. [email]
-24. Can the development virtual machine run an Android emulator with
+20. Can the development virtual machine run an Android emulator with
    sound and virtual machines inside it? Both need virtualisation inside
    a virtual machine. The Rust toolchain is not installed on it yet
    either. [repository]
-25. How a vendor's command-line tool is installed and signed in to from
+21. How a vendor's command-line tool is installed and signed in to from
    the admin panel, including inside a container. [ai providers]
-26. Whether a notification can open the email in the person's own email
+22. Whether a notification can open the email in the person's own email
    application, on a phone and on a desktop. [email]
-27. How the vault encrypts its secrets, so that control of the running
+23. How the vault encrypts its secrets, so that control of the running
    server does not expose them, and where that key is kept. Kept small;
    if it slows the work, the first release relies on disk encryption.
    [vault]
 
-28. Whether finding the server by mDNS works reliably from the Android
+24. Whether finding the server by mDNS works reliably from the Android
    and iOS apps, and on home networks that separate Wi-Fi clients.
    [pairing]
-29. Whether audio on the device's connection is fast enough, and whether
+25. Whether audio on the device's connection is fast enough, and whether
    JSON is fast enough for syncing large histories. To be measured when
    the first devices exist. [protocol]
-30. How a desktop that listens always knows that it is being spoken to,
+26. How a desktop that listens always knows that it is being spoken to,
    and not a colleague or a call. [summoning]
 
 ## 6. Visual design
@@ -194,9 +189,9 @@ product, not a complete study.
 These are not asked in the technical planning thread. The owner works on
 the look and feel in a separate thread.
 
-31. Three or four words for how it should feel, and products whose look
+27. Three or four words for how it should feel, and products whose look
    you admire. [visual]
-32. Are settings screens generated from each feature's description, so
+28. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? This is decided once there are visual designs of the app
    and the admin panel. [visual]

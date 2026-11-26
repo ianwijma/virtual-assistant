@@ -50,17 +50,17 @@ An invite, as a code or a QR code, is the other way to do steps 1 and 2.
 It carries the server's address, so it also works when the server is not
 found on the network. Approval is needed either way.
 
-## Proposal: a voice page
+## A voice page
 
 1. The page is opened by its address. Without anything further it can
    talk to guest assistants.
 2. The person chooses personal or household.
 3. Personal follows steps 2 to 5 of a personal device. The credential is
    kept in the browser's storage.
-4. Household follows steps 2 to 5 of a household device, with the invite
-   typed in.
+4. Household follows steps 2 to 5 of a household device, or uses an
+   invite that is typed in.
 
-## Proposal: removing a device
+## Removing a device
 
 - A person can remove their own devices. An admin can remove any device.
 - Removing a device cancels its credential at once. The device returns to
@@ -68,8 +68,6 @@ found on the network. Approval is needed either way.
 
 ## Open questions
 
-- Agree to the proposals for a voice page and for removing a device, or
-  correct them.
 - Whether finding the server by mDNS works reliably from an Android app
   and an iOS app, and on home networks that separate Wi-Fi clients. This
   is research still to do.
