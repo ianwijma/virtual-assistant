@@ -110,10 +110,14 @@ It depends on the content:
 - A generated screen lives in the conversation it was made in. Saving one
   for reuse is not in the first release.
 
+## Untrusted content
+
+Content from an untrusted source, such as the text of an email, is only
+ever shown as plain text. It cannot add buttons or links that act, and an
+assistant does not follow instructions found in it.
+
 ## Open questions
 
-- What a generated surface may do when its content came from an untrusted
-  source, such as an email.
 - Whether any Rust implementation of A2UI exists, and whether the A2UI
   project would accept or list one.
 - Whether A2UI suits screens our own code defines locally, and what it

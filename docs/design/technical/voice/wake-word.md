@@ -34,7 +34,7 @@ Status: draft. The detector is not chosen.
 | Voice page in a browser | On the server. The page streams audio, so it stays small and works on old tablets. This costs server processing per device |
 | Android tablet or phone | On the device. The app can keep listening with the screen off |
 | iPad or iPhone | On the device, while the app is open in the foreground |
-| Desktop client | Not decided |
+| Desktop client | On the server. While listening is switched on, the desktop streams its microphone to the server |
 
 ## Verified and assumed
 
@@ -63,4 +63,3 @@ Assumed, needing a build to confirm:
 
 - Which detector to use, and whether a detection is confirmed by
   transcribing the same audio.
-- Where the desktop client detects the wake word.

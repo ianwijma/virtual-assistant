@@ -107,54 +107,52 @@ merged. It is not started from the planning thread.
     cloud push service. [mobile]
 12. Which wake word detector to use, and whether a detection is confirmed
     by transcribing the same audio. [wake word]
-13. Where the desktop client detects the wake word. [wake word],
-    [desktop]
-14. Which local speech-to-text model is the default, given accuracy,
+13. Which local speech-to-text model is the default, given accuracy,
     speed on low-power hardware and licence. [speech to text]
-15. Which local voices are offered, given quality and licence.
+14. Which local voices are offered, given quality and licence.
     [text to speech]
-16. Which speech models and voices have licences that allow selling
+15. Which speech models and voices have licences that allow selling
     hardware. [licensing]
-17. Echo: how a device avoids hearing its own answer. [voice]
-18. How each AI provider produces A2UI screens, including through a
+16. Echo: how a device avoids hearing its own answer. [voice]
+17. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-19. Whether any Rust implementation of A2UI exists, and whether the A2UI
+18. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-20. Whether A2UI suits screens our own code defines locally, and what it
+19. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-21. What a generated surface may do when its content came from an
-    untrusted source, such as an email. [a2ui]
-22. How copied HTML is drawn safely. [clipboard]
-23. How search stays fast over years of history. [data], [clipboard]
-24. How a non-technical person gets a browser to trust the server's
+20. How copied HTML is drawn with its formatting, safely, on each
+   platform: a sandboxed frame in a browser, and whatever the Rust
+   desktop client and the phone apps can use. [clipboard]
+21. How search stays fast over years of history. [data], [clipboard]
+22. How a non-technical person gets a browser to trust the server's
      certificate authority. [networking]
-25. How the server is found on the home network when a device is first
+23. How the server is found on the home network when a device is first
      paired. [networking]
-26. How a reply tag is lined up with the moment in the speech where it
+24. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-27. How a person's key is made, how a new device of theirs gets it, and
+25. How a person's key is made, how a new device of theirs gets it, and
    how the recovery copy is sealed so that releasing it takes an admin
    and cannot happen silently. [vault]
-28. How system secrets are encrypted, and where that key is kept, so that
+26. How system secrets are encrypted, and where that key is kept, so that
    a stolen disk or a copied backup gives nothing away. [vault]
-29. Signing in with Google or Microsoft needs an application registered
+27. Signing in with Google or Microsoft needs an application registered
    with each company, and Google reviews applications that read mail.
    Who registers them: the project, or each household's admin? [email]
-30. Can the development virtual machine run an Android emulator with
+28. Can the development virtual machine run an Android emulator with
    sound and virtual machines inside it? Both need virtualisation inside
    a virtual machine. The Rust toolchain is not installed on it yet
    either. [repository]
-31. What happens to a reply or an "open" when the device the notification
+29. What happens to a reply or an "open" when the device the notification
    came from is off. [notifications]
-32. How a vendor's command-line tool is installed and signed in to from
+30. How a vendor's command-line tool is installed and signed in to from
    the admin panel, including inside a container. [ai providers]
-33. The list of reply tags, and how they are written in a reply.
+31. The list of reply tags, and how they are written in a reply.
    [reply tags]
-34. The contents of our A2UI catalog. [a2ui]
-35. The full list of capabilities, and how a catalog version is
+32. The contents of our A2UI catalog. [a2ui]
+33. The full list of capabilities, and how a catalog version is
     expressed. [protocol]
-36. How a login code is found in an email. [email]
-37. Whether a notification can open the email in the person's own email
+34. How a login code is found in an email. [email]
+35. Whether a notification can open the email in the person's own email
    application, on a phone and on a desktop. [email]
 
 ## 5. Visual design
@@ -162,9 +160,9 @@ merged. It is not started from the planning thread.
 These are not asked in the technical planning thread. The owner works on
 the look and feel in a separate thread.
 
-38. Three or four words for how it should feel, and products whose look
+36. Three or four words for how it should feel, and products whose look
    you admire. [visual]
-39. Are settings screens generated from each feature's description, so
+37. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? This is decided once there are visual designs of the app
    and the admin panel. [visual]

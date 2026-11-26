@@ -198,3 +198,6 @@ are 25 November 2026.
 | 178 | Confirmed: the proposed defaults and speed targets stand as starting points; lists are in every client; only the voice page has guest use before sign-in; the quick link into the admin panel is for members and admins | [assistants](design/technical/voice/assistants.md), [voice page](design/technical/clients/web-voice.md), [admin panel](design/technical/clients/web-admin.md) |
 | 179 | Only the text of a new email is kept: subject, sender, recipients, date and message text; no styling, images or attachments, and it is never shown with formatting | [email](design/technical/server/email.md) |
 | 180 | A reply to an email is always shown or read back first and sent only after the person says so | [email](design/technical/server/email.md), [AI providers](design/technical/server/ai-providers.md) |
+| 181 | The desktop client's wake word is detected on the server; the desktop streams its microphone while listening is on | [wake word](design/technical/voice/wake-word.md) |
+| 182 | Untrusted content in a generated screen is shown as plain text only and is never acted on | [A2UI](design/technical/a2ui.md) |
+| 183 | Copied HTML is to be drawn with its formatting, isolated so that it is safe; how to do that on each platform is research | [clipboard](design/technical/server/clipboard.md) |

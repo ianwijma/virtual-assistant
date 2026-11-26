@@ -44,5 +44,8 @@ The clipboard is a feature of the system. A
 
 ## Open questions
 
-- How untrusted HTML is drawn safely.
+- How copied HTML is drawn with its formatting, safely, on each platform.
+  A browser can isolate it in a sandboxed frame; what the Rust desktop
+  client and the phone apps can use has to be found out. This is research
+  still to do.
 - How search stays fast over years of history.

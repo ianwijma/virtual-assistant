@@ -102,7 +102,6 @@ are not gates.
 
 ## Open questions
 
-- Where the wake word is detected on a desktop.
 - How notifications, clipboard access, global hotkeys and window control
   work across Linux desktops on X11 and Wayland. This is research still to
   do, and the limits on Wayland are a known risk.
