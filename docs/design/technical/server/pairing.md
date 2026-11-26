@@ -50,6 +50,10 @@ An invite, as a code or a QR code, is the other way to do steps 1 and 2.
 It carries the server's address, so it also works when the server is not
 found on the network. Approval is needed either way.
 
+An admin can switch off announcing without an invite, so that only
+invited devices can ask to join. That suits a network with strangers on
+it.
+
 ## A voice page
 
 1. The page is opened by its address. Without anything further it can

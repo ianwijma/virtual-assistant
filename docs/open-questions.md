@@ -59,11 +59,7 @@ These are readings of earlier answers. Each stands as written in the design
 unless corrected. They are lettered so that the numbers below stay for the
 questions.
 
-- **AS.** The server only finds updates by itself; an admin still starts
-  each update. It does not install one unasked. [server]
-- **AT.** Any device on the home network can ask to join as a household
-  device without an invite. Nothing happens until an admin approves.
-  [pairing]
+None at the moment.
 
 ## 1. Now
 
@@ -183,15 +179,17 @@ product, not a complete study.
    the first devices exist. [protocol]
 26. How a desktop that listens always knows that it is being spoken to,
    and not a colleague or a call. [summoning]
+27. How the server program replaces itself and restarts safely, and how
+   it is rolled back when a new version fails to start. [server]
 
 ## 6. Visual design
 
 These are not asked in the technical planning thread. The owner works on
 the look and feel in a separate thread.
 
-27. Three or four words for how it should feel, and products whose look
+28. Three or four words for how it should feel, and products whose look
    you admire. [visual]
-28. Are settings screens generated from each feature's description, so
+29. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? This is decided once there are visual designs of the app
    and the admin panel. [visual]

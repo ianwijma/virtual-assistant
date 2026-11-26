@@ -64,8 +64,28 @@ home servers and mini PCs.
 ## Installing and updating
 
 The server comes in two forms: a single self-contained program that runs
-as a service, and the same thing as a container image. The server finds new versions on the project's GitHub releases page, and
-updates are started from the [admin panel](../clients/web-admin.md).
+as a service, and the same thing as a container image.
+
+- **The server finds new versions** on the project's GitHub releases
+  page, and tells the admins.
+- **The admin decides.** They choose when to update and to which version;
+  the newest is suggested. Nothing is installed unasked. This leaves room
+  to make a backup first.
+- **An admin can silence the notice for one release.** The next release
+  is announced again.
+- **How the update is carried out depends on how the server runs:**
+
+  | Form | How it updates |
+  |---|---|
+  | The program | It can replace itself with the chosen version and restart |
+  | A container | It does not update itself. The container is updated with the admin's own container tools |
+
+- **An update can be started by a script,** not only from the
+  [admin panel](../clients/web-admin.md). An admin can then script "back
+  up the machine, then update", for example with a call to Proxmox or a
+  hosting provider first.
+- **Updating the server warns first** when it will need newer apps. See
+  [protocol](protocol.md).
 
 ## Backups and the audit log
 
@@ -81,6 +101,9 @@ updates are started from the [admin panel](../clients/web-admin.md).
 
 ## Open questions
 
+- How the program replaces itself and restarts safely, and how it is
+  rolled back when a new version fails to start. This is research still
+  to do.
 - Which database the server uses. The owner leans towards PostgreSQL,
   for being open source and for its extensions, unless there is a strong
   case for SQLite. This is research still to do.
