@@ -58,44 +58,6 @@ These are readings of earlier answers. Each stands as written in the design
 unless corrected. They are lettered so that the numbers below stay for the
 questions.
 
-- **J.** A guest assistant is an ordinary assistant with a "guest"
-  setting, not a separate kind of thing. [assistants]
-- **K.** The default household assistant is also a guest assistant at
-  first: it answers anyone, at guest level when it does not recognise the
-  voice. That is why it can only be removed when another assistant
-  answers guests. [assistants]
-
-- **L.** A tool is written in one module and belongs to that module
-  only. [modules]
-
-- **M.** Modules are switched on per assistant, not per device. A device
-  gets them through the assistants assigned to it. [modules]
-- **N.** A household source's routing rules are set by an admin.
-  [notifications]
-
-- **O.** An admin can withdraw a household device invite at any time.
-  [identity]
-- **P.** In routing rules, the order is set by the person, and the first
-  matching rule is the only one used. [notifications]
-
-- **Q.** "Never erased" also means an admin has no button to erase a
-  removed person's data. [identity]
-- **R.** A person can make one of their lists private; it is then not a
-  household thing. [identity]
-
-- **S.** An answer given by someone else during "keep listening" is
-  handled with the permissions of the person who started the
-  conversation. [reply tags]
-- **T.** Wake words are typed in as text, and any word can be used. The
-  recordings are per person and serve to recognise that person; they are
-  not needed to make a wake word work. Whether a detector can do this is
-  part of the detector research. [wake word]
-
-- **U.** The last remaining assistant cannot be removed. [assistants]
-- **V.** A personal notification whose owner has no phone falls back to
-  the history only. With several admins, a household notification falls
-  back to all of them. [notifications]
-
 - **X.** An admin without a GitHub token can still read reports in the
   admin panel, but cannot send them on. [feedback]
 

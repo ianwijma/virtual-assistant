@@ -32,7 +32,8 @@ Status: draft.
 A person can answer without the wake word only when the reply carried the
 "keep listening" tag. The device then stays awake and listens for the
 answer for a few seconds. Anyone may give that answer, not only the
-person who started. This is the explicit follow-up state of
+person who started. It is handled with the permissions of the person who
+started the conversation, whoever gives it. This is the explicit follow-up state of
 [summoning](summoning.md): it is entered for a stated reason and has a
 visible end.
 

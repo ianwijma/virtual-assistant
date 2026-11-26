@@ -23,6 +23,9 @@ written.
 - **The shared, complicated parts stay in the system:** storage, settings
   and their screens, sync, routing, permissions and sign-ins to outside
   services. A module uses these; it does not build its own.
+- **A tool is written in one module** and belongs to that module only.
+- **Modules belong to assistants, not to devices.** A device gets them
+  through the assistants assigned to it.
 - **A module is given whole.** An assistant has all of a module's tools or
   none of them, for now. Switching single tools off may come later.
 - **Modules are given to assistants.** Each

@@ -44,15 +44,17 @@ Status: draft.
   | Where | The targets | The home-office desktop |
   | How | How it arrives | Silently, with a sound, or spoken aloud |
 
-  Rules are checked in order, and the first one that matches is used.
+  Every rule that matches is used, so one notification can go several
+  ways at once.
 - **A rule can send to the person's own devices, to household devices and
   to other people.**
-- **A household source has rules too.** A household email address, for
+- **A household source has rules too,** set by an admin. A household email address, for
   example, can be routed to every household device and to people's own
   devices.
 - **There is always a fallback.** A notification that matches no rule is
-  never lost. A personal one goes to its owner's phone. A household one
-  goes to the admin's phone and into the history.
+  never lost. A personal one goes to its owner's phone, or only into
+  the history when they have no phone. A household one goes to the phone
+  of every admin and into the history.
 - **Quiet hours exist per person and per device.** A person's quiet hours
   hold back their notifications everywhere. A device can also be set
   quiet, such as a bedroom tablet at night, whoever the notification is

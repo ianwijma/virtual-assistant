@@ -21,7 +21,7 @@ device. A household can have several, each a distinct character.
   included, until someone customises it or makes their own. It is a
   starting point, with every module switched on. It can be
   removed, provided other assistants cover what it did, such as answering
-  guests.
+  guests. The last remaining assistant cannot be removed.
 - **Assistants are assigned to devices:** to chosen devices, or to all of
   them. A device answers only for the assistants assigned to it.
 - **Only an admin assigns an assistant to a household device.** A person
@@ -46,8 +46,9 @@ device. A household can have several, each a distinct character.
   notes a person asks for.
 - An assistant always acts with the permissions of the person it is
   talking to. See [summoning](summoning.md).
-- **A guest assistant answers anyone.** An assistant can be marked as a
-  guest assistant. It needs no recognised voice. It works at guest level
+- **A guest assistant answers anyone.** "Guest" is a setting of an
+  ordinary assistant, and the default household assistant starts with it
+  on. It needs no recognised voice. It works at guest level
   for an unrecognised voice, and with the person's own permissions when
   it recognises them. Any other assistant refuses an unrecognised voice. There can be several, each with its own wake word. See
   [identity and sharing](../server/identity-and-sharing.md).

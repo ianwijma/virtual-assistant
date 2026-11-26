@@ -50,7 +50,7 @@ There are two kinds of device:
   enters it, and the device registers with the server. The device does
   nothing until an admin approves it. For each invite the admin can set
   how many devices it may add and how long it is valid. Both are
-  unlimited unless set.
+  unlimited unless set. An admin can withdraw an invite at any time.
 - **Several accounts on one device.** A computer can hold more than one
   account, and a person switches between them with a short passcode,
   of four to six digits. Each account has its own. The passcode is asked for when switching
@@ -115,7 +115,8 @@ bug report or a suggestion. See
 ## Removing a person
 
 Removing a person is a soft deletion: their data is marked as removed. It
-is never erased, and the person can always be restored.
+is never erased, and the person can always be restored. An admin has no
+way to erase it from inside the system.
 
 ## Admin access
 

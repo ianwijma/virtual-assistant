@@ -9,11 +9,13 @@ Status: draft. The detector is not chosen.
 
 - **The wake words belong to the assistant.** Each assistant has a list
   of them, such as "Hey Jeff", and the list comes with the assistant to
-  every device. The household chooses the words.
+  every device. The household chooses the words and types them in; any word
+  can be used.
 - **The list can hold other spellings of the same word,** for when an
   accent makes the usual one fail.
 - **People can record themselves saying the wake words.** The recordings
-  are used to recognise who is speaking. See
+  are used to recognise who is speaking. They are not needed to make a
+  wake word work. See
   [speaker identification](speaker-identification.md).
 - **A device can override it.** A device can use a different wake word for
   an assistant. This is expected to be rare, so the setting sits in an
