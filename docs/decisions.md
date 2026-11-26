@@ -215,3 +215,7 @@ are 25 November 2026.
 | 195 | An assistant asks before searching the clipboard or using a result; the admin panel has no screen for other people's clipboard history | [clipboard](design/technical/server/clipboard.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
 | 196 | Referral links are not marked as such | [licensing and hardware](design/technical/licensing-and-hardware.md) |
 | 197 | High-level proposals for how the systems work are written now, as sections marked "Proposal", for the owner to review; research is still done where a proposal needs it | [documentation](README.md) |
+| 198 | The summoning states are agreed, with the voice identified while the request is listened to; the steps are separate parts that can be changed | [summoning](design/technical/voice/summoning.md) |
+| 199 | A desktop can be woken by wake word, by a shortcut or launcher action, by listening always, or by typing; a shortcut mutes the microphone for the assistant | [summoning](design/technical/voice/summoning.md), [desktop](design/technical/clients/desktop.md) |
+| 200 | One connection per device carries everything, with JSON control messages and binary audio; the message groups are agreed | [protocol](design/technical/server/protocol.md) |
+| 201 | Every request has a timeline of how long each step took, shown in the admin panel; it records timings, not content | [voice](design/technical/voice/README.md), [admin panel](design/technical/clients/web-admin.md) |

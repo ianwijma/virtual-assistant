@@ -41,9 +41,7 @@ The server keeps a record of what each device can do.
 
 See [pairing](pairing.md).
 
-## Proposal: the messages
-
-This section is proposed and waits for the owner's review.
+## The messages
 
 One WebSocket connection per device carries everything. Control
 messages are JSON text, which is easy to read while the system is young.
@@ -95,8 +93,7 @@ components that its version knows.
 
 ## Open questions
 
-- Agree to the proposed messages, versions and capabilities, or correct
-  them.
+- Agree to the proposed versions and capabilities, or correct them.
 - Whether audio on the same connection is fast enough, or needs its own.
   To be measured when the first voice device exists.
 - Whether JSON is fast enough for sync of large histories, or a compact

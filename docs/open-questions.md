@@ -93,14 +93,12 @@ Nothing is waiting here at the moment.
 These were written as sections headed "Proposal" in the design files. The
 owner reads them and agrees or corrects.
 
-6. The summoning states, and how a desktop that listens always knows it
-   is being spoken to. [summoning]
-7. The protocol messages, versions and list of capabilities. [protocol]
-8. The pairing steps for a personal device, a household device and a
+6. The protocol versions and the list of capabilities. [protocol]
+7. The pairing steps for a personal device, a household device and a
    voice page, and finding the server. [pairing]
-9. How data that several people can see is kept and synced. [data]
-10. How reply tags are written, and the first list of them. [reply tags]
-11. Our A2UI catalog. [a2ui]
+8. How data that several people can see is kept and synced. [data]
+9. How reply tags are written, and the first list of them. [reply tags]
+10. Our A2UI catalog. [a2ui]
 
 ## 5. To research
 
@@ -121,71 +119,73 @@ documentation and other projects. A small prototype is made only when a
 question cannot be settled otherwise. The aim is a quick first working
 product, not a complete study.
 
-12. Which database the server uses, and how search stays fast over years
+11. Which database the server uses, and how search stays fast over years
    of history. The owner leans towards PostgreSQL, for being open source
    and for its extensions such as time series, unless there is a strong
    case for SQLite. [server], [data], [clipboard]
-13. How notifications, clipboard access, global hotkeys and window
+12. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-14. How notifications reach a phone when the app is closed. To compare:
+13. How notifications reach a phone when the app is closed. To compare:
    what works on Android without Google's push service, what iOS allows,
    and simply accepting Google's and Apple's push services with a small
    relay if one is needed. Include what happens when the connection is
    lost. [mobile]
-15. Which wake word detector to use, and whether a detection is confirmed
+14. Which wake word detector to use, and whether a detection is confirmed
    by transcribing the same audio. Wake words are typed in freely, so
    the detector must accept any word. Finding the wake word in the
    transcript is the fallback, though transcripts can get the word
    wrong. Also: whether training a device per person, from several
    places in the room, improves detection. [wake word]
-16. Which small local speech-to-text model and small local voice are the
+15. Which small local speech-to-text model and small local voice are the
    defaults, which better ones are suggested in set-up, and which of
    them have licences that allow selling hardware. [speech to text],
    [text to speech], [licensing]
-17. Which of the services the system suggests have a referral programme,
+16. Which of the services the system suggests have a referral programme,
    and on what terms. [licensing]
-18. Echo: how a device ignores its own voice while it speaks and still
+17. Echo: how a device ignores its own voice while it speaks and still
    hears another voice, so that "stop" works. [voice]
-19. How each AI provider produces A2UI screens, including through a
+18. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-20. Whether any Rust implementation of A2UI exists, and whether the A2UI
+19. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-21. Whether A2UI suits screens our own code defines locally, and what it
+20. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-22. How copied HTML is drawn with its formatting, safely, on each
+21. How copied HTML is drawn with its formatting, safely, on each
    platform: a sandboxed frame in a browser, and whatever the Rust
    desktop client and the phone apps can use. [clipboard]
-23. How the admin panel and the voice page get HTTPS that a browser
+22. How the admin panel and the voice page get HTTPS that a browser
    trusts, for a non-technical person. To compare: certificates through
    Tailscale, a proxy domain per installation that the project provides,
    the person's own certificates, accepting the browser's warning at
    first, and any other way found. An AI assistant could also walk a
    person through the set-up. [networking]
-24. How a reply tag is lined up with the moment in the speech where it
+23. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-25. Signing in with Google or Microsoft for email, after the first
+24. Signing in with Google or Microsoft for email, after the first
    release: who registers the application with each company, and what
    Google's review of applications that read mail involves. [email]
-26. Can the development virtual machine run an Android emulator with
+25. Can the development virtual machine run an Android emulator with
    sound and virtual machines inside it? Both need virtualisation inside
    a virtual machine. The Rust toolchain is not installed on it yet
    either. [repository]
-27. How a vendor's command-line tool is installed and signed in to from
+26. How a vendor's command-line tool is installed and signed in to from
    the admin panel, including inside a container. [ai providers]
-28. Whether a notification can open the email in the person's own email
+27. Whether a notification can open the email in the person's own email
    application, on a phone and on a desktop. [email]
-29. How the vault encrypts its secrets, so that control of the running
+28. How the vault encrypts its secrets, so that control of the running
    server does not expose them, and where that key is kept. Kept small;
    if it slows the work, the first release relies on disk encryption.
    [vault]
 
-30. Whether finding the server by mDNS works reliably from the Android
+29. Whether finding the server by mDNS works reliably from the Android
    and iOS apps, and on home networks that separate Wi-Fi clients.
    [pairing]
-31. Whether audio on the device's connection is fast enough, and whether
+30. Whether audio on the device's connection is fast enough, and whether
    JSON is fast enough for syncing large histories. To be measured when
    the first devices exist. [protocol]
+31. How a desktop that listens always knows that it is being spoken to,
+   and not a colleague or a call. [summoning]
 
 ## 6. Visual design
 

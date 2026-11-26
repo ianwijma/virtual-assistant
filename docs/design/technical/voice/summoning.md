@@ -44,8 +44,8 @@ notification. See [reply tags](reply-tags.md).
 Every decision to wake or to ignore is logged with its reason and shown in
 the [admin panel](../clients/web-admin.md).
 
-A desktop client can also be set to listen always, and any client can be
-typed to. Typing skips steps 1 and 2, because the device's owner is known.
+Any client can be typed to. Typing skips steps 1 and 2, because the
+device's owner is known.
 
 ## Why it is designed this way
 
@@ -72,9 +72,7 @@ This leads to four rules:
 - **Settings stay shallow.** The effective behaviour of a device can be
   shown on one screen.
 
-## Proposal: the states
-
-This section is proposed and waits for the owner's review.
+## The states
 
 Each device that can listen is in exactly one state. The server holds
 the state and is the only thing that changes it.
@@ -83,19 +81,18 @@ the state and is the only thing that changes it.
 |---|---|---|
 | Idle | The device listens only for wake words | A wake word is heard |
 | Choosing a device | The server waits a short moment, about 200 ms, for other devices that heard the same wake word, and picks the one that heard it best | A device is picked; the others go back to idle |
-| Identifying | The voice is compared with enrolled voices | It is a known person, or unrecognised |
-| Refusing | A non-guest assistant tells an unrecognised voice it cannot help | The refusal has been spoken |
-| Listening | The request is turned into text | The person stops talking, or says nothing for a few seconds |
+| Refusing | After listening, a non-guest assistant tells an unrecognised voice it cannot help | The refusal has been spoken |
+| Listening | The request is turned into text. At the same time the voice is compared with enrolled voices, using the wake word and the request together, so that identifying does not delay the answer | The person stops talking, or says nothing for a few seconds |
 | Thinking | The AI provider works and may call tools | An answer is ready, or it fails |
 | Speaking | The answer is spoken and any screen is shown | It finishes, or the person says "stop" or talks over it |
 | Follow-up | The device listens without the wake word for a short time | Someone speaks, or the time runs out |
 | Ringing | A timer or an alarm rings; only "stop" and "snooze" are heard | It is stopped or snoozed |
 
 ```text
-Idle -> Choosing a device -> Identifying -> Listening -> Thinking -> Speaking -> Idle
-                                  |                                      |
-                                  v                                      v
-                              Refusing -> Idle                       Follow-up -> Listening
+Idle -> Choosing a device -> Listening and identifying -> Thinking -> Speaking -> Idle
+                                       |                                 |
+                                       v                                 v
+                                   Refusing -> Idle                  Follow-up -> Listening
                                                                          |
                                                                          v
                                                                         Idle
@@ -103,8 +100,9 @@ Idle -> Choosing a device -> Identifying -> Listening -> Thinking -> Speaking ->
 
 - **Follow-up** is entered after a reply with the "keep listening" tag,
   and after a household device has spoken a notification.
-- **Typing** enters at Thinking. The device's owner is known, so the
-  first three states are skipped.
+- **Typing** enters at Thinking. The device's owner is known.
+- **The steps are separate parts.** Each can be changed, replaced or
+  reordered without rewriting the others, so the pipeline can be tuned.
 - **A conversation** is the chain of turns that follow each other. Its
   context is kept until the pause that ends a conversation has passed.
 - **Every change of state is logged,** with the device, the assistant,
@@ -112,10 +110,20 @@ Idle -> Choosing a device -> Identifying -> Listening -> Thinking -> Speaking ->
   nothing said is logged as a false wake.
 - **A device that is not picked** logs "another device answered".
 
-Still to be thought through: a desktop set to listen always has no wake
-word. How it knows that it is being spoken to is not covered here.
+## Ways to start talking on a desktop
+
+A desktop offers several ways, and a person uses whichever suits:
+
+| Way | How |
+|---|---|
+| Wake word | As on any device |
+| A shortcut or a launcher action | Wakes the assistant and makes it listen, with no wake word |
+| Listening always | The desktop listens while the person works, and the assistant answers when it is spoken to |
+| Typing | In the launcher |
+
+A shortcut also mutes the microphone for the assistant.
 
 ## Open questions
 
-- Agree to the proposed states, or correct them.
-- How a desktop that listens always knows it is being spoken to.
+- How a desktop that listens always knows that it is being spoken to,
+  and not a colleague or a call. This is research still to do.

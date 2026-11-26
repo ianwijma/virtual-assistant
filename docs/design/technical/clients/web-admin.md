@@ -21,6 +21,7 @@ fulfils "a screen for every setting".
 - Which [modules](../modules/README.md) each assistant has.
 - Each person's notification routing, which an admin can view and change.
 - The log of summoning decisions, with the reason for each.
+- The timeline of each request, with how long every step took.
 - The log of admin access to other people's data.
 - The audit log of settings changes, from which a change can be undone.
 - The household device invites, and the devices waiting for approval.

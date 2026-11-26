@@ -31,7 +31,9 @@ and a work server. See
   once and forwards them to the server. See
   [notifications and routing](../server/notifications-and-routing.md).
 - **Assistant:** the desktop is a voice device by default. A person can
-  summon an assistant by wake word, let it listen always, or type to it.
+  summon an assistant by wake word, by a shortcut or a launcher action,
+  let it listen always, or type to it. A shortcut mutes the microphone
+  for the assistant.
   The wake word is detected on the server, so the desktop streams its
   microphone while listening is on.
   Each person chooses. See [voice](../voice/README.md).

@@ -79,6 +79,16 @@ Not taken over:
 - The earlier project's pipeline was never run with a real microphone,
   speaker or small computer. Its numbers come from recorded audio.
 
+## A timeline of every request
+
+Every request has a timeline that shows how long each step took: when
+the person started and stopped speaking, when each call to a provider or
+a tool was made and when its answer came back, how long a cloud voice
+took to arrive, and when the first sound was played. It is shown per
+request in the [admin panel](../clients/web-admin.md), as in the earlier
+voice assistant. It records timings, and does not need to record what was
+said. It is how latency is understood and improved.
+
 ## Speed targets
 
 These are targets to tune against, not gates.
