@@ -1,18 +1,25 @@
 # Email
 
-Telling a person that new email has arrived. Part of
+Telling a person that new email has arrived, and acting on it. Part of
 [the server design](README.md).
 
 Status: draft. Nothing like this exists in the earlier voice assistant.
 
 ## Design
 
-The system does one thing with email: it notices that a new one has
-arrived and notifies the person. It is not an email reader.
+The system is built around new email: it notices that one has arrived,
+notifies the person, and lets them act on it. It is not a full email
+reader, and it does not mirror a mailbox.
 
-- **Mail is not stored.** The server does not keep a copy of anyone's
-  mail, and clients have no mail cache. To read an email, a person opens
-  their own email application.
+- **New emails are kept for a while,** so that something can be done with
+  them. By default the emails of the last week are kept. The person can
+  change this.
+- **What can be done with a new email:**
+  - copy a login code it contains;
+  - have it summarised;
+  - ask an assistant questions about it;
+  - reply to it.
+- For anything else, a person opens their own email application.
 - **Three ways to connect an account from the start:** any IMAP server,
   "Sign in with Google" and "Sign in with Microsoft".
 - **The credential is kept on the server, encrypted, in the
@@ -31,14 +38,20 @@ arrived and notifies the person. It is not an email reader.
   | With the title | Who it is from and its subject |
   | With a summary | A summary of the content, made by AI |
 
-  For the higher levels the server reads the email as it arrives. It
-  still does not keep it.
+  The person chooses the level, per account. The fuller levels are shown
+  or spoken on their own devices. A household device keeps to the least,
+  unless the person allows it to say more.
 - A new email is an event. It becomes a notification that is routed like
   any other. See
   [notifications and routing](notifications-and-routing.md).
 
 ## Open questions
 
+- How a login code is found in an email. This is research still to do.
+- Whether an email is ever shown in full in a client, and if so how its
+  HTML is drawn safely.
+- How a reply is written and sent: typed, dictated or drafted by an
+  assistant, and whether it is checked before it goes out.
 - Signing in with Google or Microsoft needs an application registered
   with each company, and Google reviews applications that read mail. Who
   registers them: the project, or each household's admin? This is

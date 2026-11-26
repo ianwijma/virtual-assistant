@@ -58,29 +58,15 @@ These are readings of earlier answers. Each stands as written in the design
 unless corrected. They are lettered so that the numbers below stay for the
 questions.
 
-- **AH.** Because mail is not stored, these are dropped for now: reading
-  and searching mail in the desktop client, sharing single emails, and
-  "copy the login code" from an email. An AI summary exists only as part
-  of the new-mail notification. [email]
-- **AI.** The person chooses the level of their new-mail notification,
-  per account. The fuller levels are shown or spoken on their own
-  devices; a household device keeps to "Ian, you have a new email".
-  [email]
-
-- **AJ.** The defaults in [assistants], and the speed targets in
-  [desktop] and [voice], are my proposals. Each can be changed.
-- **AK.** Lists are shown and edited in every client.
-  [lists]
-
-- **AL.** Guest use before sign-in applies to the voice page only. The
-  phone app does nothing until it is signed in or approved. [voice page]
-- **AM.** The quick link from an app into the admin panel works for
-  members and admins alike, and shows each what they may manage.
-  [admin panel]
+None at the moment.
 
 ## 1. Now
 
-Nothing is waiting here at the moment.
+1. Is a kept email ever shown in full in a client, or is it only acted
+   on through its notification and the assistant? [email]
+2. How is a reply to an email written and sent: typed, dictated or
+   drafted by an assistant? And is it shown to the person before it goes
+   out? Other tools do not ask for confirmation, for now. [email]
 
 ## 2. Next
 
@@ -88,12 +74,12 @@ Nothing is waiting here at the moment.
 
 ## 3. Later
 
-1. The App Store's terms conflict with the GPL. How is the project's
+3. The App Store's terms conflict with the GPL. How is the project's
    own iOS build published? To be worked out before iOS is built.
    [mobile]
-2. What a restricted role for children may do, once it is added.
+4. What a restricted role for children may do, once it is added.
    [identity]
-3. The build order of the parts. There is no roadmap yet; it is decided
+5. The build order of the parts. There is no roadmap yet; it is decided
     after the technical details are clear. [repository]
 
 ## 4. To research or propose
@@ -105,78 +91,79 @@ corrects it. They are sorted by how much depends on them.
 This work is done in separate threads, after the planning pull request is
 merged. It is not started from the planning thread.
 
-4. The summoning states and transitions themselves. [summoning]
-5. Which database the server uses. [server]
-6. How the event log handles household data that several people can
+6. The summoning states and transitions themselves. [summoning]
+7. Which database the server uses. [server]
+8. How the event log handles household data that several people can
     see. [data]
-7. The full list of protocol messages, and how the protocol is
+9. The full list of protocol messages, and how the protocol is
     versioned. [protocol]
-8. The exact pairing steps for a personal device and for a household
+10. The exact pairing steps for a personal device and for a household
     device. [protocol], [identity]
-9. How audio travels: on the device's connection or a separate one.
+11. How audio travels: on the device's connection or a separate one.
     [protocol], [voice]
-10. How notifications, clipboard access, global hotkeys and window
+12. How notifications, clipboard access, global hotkeys and window
     control work across Linux desktops on X11 and Wayland. The limits on
     Wayland are a known risk. [desktop]
-11. How notifications reach a phone when the app is closed, without a
+13. How notifications reach a phone when the app is closed, without a
     cloud push service. [mobile]
-12. Which wake word detector to use, and whether a detection is confirmed
+14. Which wake word detector to use, and whether a detection is confirmed
     by transcribing the same audio. [wake word]
-13. Where the desktop client detects the wake word. [wake word],
+15. Where the desktop client detects the wake word. [wake word],
     [desktop]
-14. Which local speech-to-text model is the default, given accuracy,
+16. Which local speech-to-text model is the default, given accuracy,
     speed on low-power hardware and licence. [speech to text]
-15. Which local voices are offered, given quality and licence.
+17. Which local voices are offered, given quality and licence.
     [text to speech]
-16. Which speech models and voices have licences that allow selling
+18. Which speech models and voices have licences that allow selling
     hardware. [licensing]
-17. Echo: how a device avoids hearing its own answer. [voice]
-18. How each AI provider produces A2UI screens, including through a
+19. Echo: how a device avoids hearing its own answer. [voice]
+20. How each AI provider produces A2UI screens, including through a
     command-line tool. [ai providers], [a2ui]
-19. Whether any Rust implementation of A2UI exists, and whether the A2UI
+21. Whether any Rust implementation of A2UI exists, and whether the A2UI
     project would accept or list one. [a2ui]
-20. Whether A2UI suits screens our own code defines locally, and what it
+22. Whether A2UI suits screens our own code defines locally, and what it
     costs in latency. [a2ui]
-21. What a generated surface may do when its content came from an
+23. What a generated surface may do when its content came from an
     untrusted source, such as an email. [a2ui]
-22. How copied HTML is drawn safely. [clipboard]
-23. How search stays fast over years of history. [data], [clipboard]
-24. How a non-technical person gets a browser to trust the server's
+24. How copied HTML is drawn safely. [clipboard]
+25. How search stays fast over years of history. [data], [clipboard]
+26. How a non-technical person gets a browser to trust the server's
      certificate authority. [networking]
-25. How the server is found on the home network when a device is first
+27. How the server is found on the home network when a device is first
      paired. [networking]
-26. How a reply tag is lined up with the moment in the speech where it
+28. How a reply tag is lined up with the moment in the speech where it
    stands. [reply tags]
-27. How a person's key is made, how a new device of theirs gets it, and
+29. How a person's key is made, how a new device of theirs gets it, and
    how the recovery copy is sealed so that releasing it takes an admin
    and cannot happen silently. [vault]
-28. How system secrets are encrypted, and where that key is kept, so that
+30. How system secrets are encrypted, and where that key is kept, so that
    a stolen disk or a copied backup gives nothing away. [vault]
-29. Signing in with Google or Microsoft needs an application registered
+31. Signing in with Google or Microsoft needs an application registered
    with each company, and Google reviews applications that read mail.
    Who registers them: the project, or each household's admin? [email]
-30. Can the development virtual machine run an Android emulator with
+32. Can the development virtual machine run an Android emulator with
    sound and virtual machines inside it? Both need virtualisation inside
    a virtual machine. The Rust toolchain is not installed on it yet
    either. [repository]
-31. What happens to a reply or an "open" when the device the notification
+33. What happens to a reply or an "open" when the device the notification
    came from is off. [notifications]
-32. How a vendor's command-line tool is installed and signed in to from
+34. How a vendor's command-line tool is installed and signed in to from
    the admin panel, including inside a container. [ai providers]
-33. The list of reply tags, and how they are written in a reply.
+35. The list of reply tags, and how they are written in a reply.
    [reply tags]
-34. The contents of our A2UI catalog. [a2ui]
-35. The full list of capabilities, and how a catalog version is
+36. The contents of our A2UI catalog. [a2ui]
+37. The full list of capabilities, and how a catalog version is
     expressed. [protocol]
+38. How a login code is found in an email. [email]
 
 ## 5. Visual design
 
 These are not asked in the technical planning thread. The owner works on
 the look and feel in a separate thread.
 
-36. Three or four words for how it should feel, and products whose look
+39. Three or four words for how it should feel, and products whose look
    you admire. [visual]
-37. Are settings screens generated from each feature's description, so
+40. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? This is decided once there are visual designs of the app
    and the admin panel. [visual]
