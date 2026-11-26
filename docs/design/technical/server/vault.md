@@ -45,6 +45,8 @@ person's approval, and only through one of their devices.
 - **The approval is given on a device of that person that holds the
   key.** That device then decrypts only what was asked for and hands it
   over. It needs one of the person's devices to be on.
+- What the assistant then does with the result is what its request said
+  and the person approved.
 - These are the first actions that need a confirmation. Other tools do
   not ask, for now. See [AI providers](ai-providers.md).
 
@@ -65,7 +67,9 @@ person's approval, and only through one of their devices.
   1Password.
 - **An admin can release a recovery copy.** A sealed copy of a person's
   key is kept for recovery. An admin can release it to that person, for
-  when both their devices and their sheet are lost.
+  when both their devices and their sheet are lost. Releasing it gives
+  the key back to that person; it does not let the admin read their
+  data.
 
 ## Open questions
 

@@ -41,6 +41,8 @@ assistants, at guest level. See
 
 ## Voice and chat
 
+The page has two views: a voice view, and a typed chat view.
+
 - By default the page is spoken to.
 - **A button opens the conversation as text.** It shows what has been said
   so far and updates live while the person talks.

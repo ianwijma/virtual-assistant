@@ -58,36 +58,6 @@ These are readings of earlier answers. Each stands as written in the design
 unless corrected. They are lettered so that the numbers below stay for the
 questions.
 
-- **X.** An admin without a GitHub token can still read reports in the
-  admin panel, but cannot send them on. [feedback]
-
-- **Y.** "Remember this for me" is saved as a plain text entry.
-  [lists]
-
-- **Z.** Email credentials are system secrets: the server must be able
-  to use them to fetch mail while every device is off. [vault]
-- **AA.** After a household device speaks a notification, it can listen
-  for a follow-up about it without the wake word, in the same way as
-  after a "keep listening" tag. [reply tags]
-- **AB.** The voice page has two views: a voice view with the live text
-  of the conversation, and a typed chat view that does not speak.
-  [voice page]
-
-- **AC.** Passwords follow the same rule as the clipboard: approval and
-  decryption happen only on a device of that person that holds the key.
-  [vault]
-- **AD.** What an assistant may do with an unsealed password is whatever
-  its request said and the person approved. There is no fixed list.
-  [vault]
-- **AE.** An admin releasing a recovery copy gives the key back to that
-  person; it does not let the admin read their data. [vault]
-
-- **AF.** The audit log covers every settings change, made from any
-  client and by anyone, not only changes made in the admin panel. An
-  admin can undo a single change from it. [server]
-- **AG.** "At most two rounds" is the limit for a review. Your answer
-  also mentioned five rounds; two is what is written. [repository]
-
 - **AH.** Because mail is not stored, these are dropped for now: reading
   and searching mail in the desktop client, sharing single emails, and
   "copy the login code" from an email. An AI summary exists only as part

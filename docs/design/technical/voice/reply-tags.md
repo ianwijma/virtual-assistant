@@ -42,6 +42,12 @@ visible end.
 The timings and thresholds of this part are settings of an assistant,
 with defaults. See [assistants](assistants.md).
 
+## After a spoken notification
+
+When a household device speaks a notification, it listens for a moment
+for a follow-up about it, without the wake word, in the same way as after
+a "keep listening" tag.
+
 ## Open questions
 
 - The list of tags, and how they are written in a reply.

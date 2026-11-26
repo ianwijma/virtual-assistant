@@ -28,7 +28,8 @@ release.
   GitHub issue exactly as it will be created. The repository is public,
   and logs can contain email subjects or clipboard text.
 - **The admin creates the issue,** and it is filed under their own GitHub
-  account. Each admin enters their own GitHub token for this. No app
+  account. Each admin enters their own GitHub token for this. An
+  admin without a token can read reports but cannot send them on. No app
   carries a GitHub credential.
 - Duplicate reports are not detected. They are sorted out on GitHub.
 - **The admin panel explains how** to make a GitHub account and a token.

@@ -74,7 +74,9 @@ started from the [admin panel](../clients/web-admin.md).
 - **There are no snapshots. Every change to a setting is in an audit
   log:** who changed what, when, and from what to what. When someone
   breaks their settings or an assistant, an admin uses the log to put
-  things back, for that one person.
+  things back, for that one person. The log covers changes made from any
+  client and by anyone. A single change can be undone from it, by an
+  admin, or by the person themselves for their own changes.
 
 ## Open questions
 
