@@ -16,9 +16,15 @@ Status: draft. Only the outline is decided.
   - each admin's GitHub token, for [feedback](feedback.md);
   - people's [email](email.md) credentials.
 - The server uses these when it needs them.
-- **The server's data is encrypted where it is stored.** That protects
-  everything on it, the clipboard history included, against a stolen disk
-  or a copied backup.
+- **Data on disk is protected by the operating system's disk
+  encryption.** The server does not encrypt its data itself. Hardware
+  that is sold ships with disk encryption switched on.
+- **Secrets deserve more than that.** Disk encryption does not help when
+  someone gains control of the running server, and the API keys should
+  not then lie open. Whether the vault encrypts its secrets itself is
+  being researched. If that would slow the work down, the first release
+  relies on disk encryption alone. Either way the vault is built so that
+  encryption can be added later without a painful migration.
 
 ## Not in the first release
 
@@ -33,6 +39,6 @@ without sealed data.
 
 ## Open questions
 
-- How the server's data and its secrets are encrypted, and where the key
-  is kept, so that a stolen disk or a copied backup gives nothing away.
-  This is research still to do.
+- How the vault encrypts its secrets, so that control of the running
+  server does not expose them, and where that key is kept. This is
+  research still to do, kept small.

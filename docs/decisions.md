@@ -209,3 +209,5 @@ are 25 November 2026.
 | 189 | The default speech model and voice are small local ones, for a small footprint; set-up suggests better local or cloud options | [speech to text](design/technical/voice/speech-to-text.md), [text to speech](design/technical/voice/text-to-speech.md), [admin panel](design/technical/clients/web-admin.md) |
 | 190 | Where the system suggests a paid service it uses a referral link when one exists, throughout the project | [licensing and hardware](design/technical/licensing-and-hardware.md) |
 | 191 | A person can train a specific device on their voice from the phone app, saying the wake words from several places in the room | [wake word](design/technical/voice/wake-word.md) |
+| 192 | We prefer public crates and contribute back to them; what does not exist and we build is published as a crate | [design](design/README.md) |
+| 193 | Data on disk is protected by the operating system's disk encryption, also on sold hardware; whether the vault also encrypts its secrets is researched, and the vault is built so that this can be added later | [vault](design/technical/server/vault.md) |

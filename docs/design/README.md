@@ -46,8 +46,10 @@ Apple ecosystem, but local and self-owned, and installable on any device.
 6. **Decide, then build.** No open-ended prototyping. Risky choices sit
    behind boundaries, so a wrong one is a contained rewrite.
 7. **Build on established technology.** The exceptions are A2UI and young
-   Rust libraries for new technologies. Contribute to an existing library
-   before creating a new one.
+   Rust libraries for new technologies. Depend on public crates, and
+   contribute to an existing one before creating a new one. When
+   something does not exist yet and we build it, we publish it as a crate
+   so that others can use it.
 8. **A screen for every setting.** No configuration files for users.
 9. **One look.** Every app is recognisable as ours.
 10. **A clean rewrite.** The earlier voice assistant is a

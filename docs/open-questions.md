@@ -103,6 +103,11 @@ corrects it. They are sorted by how much depends on them.
 This work is done in separate threads, after the planning pull request is
 merged. It is not started from the planning thread.
 
+How the threads are run is not settled. The likely form: one thread
+starts several others, by area. Each does its research or writes its
+proposal, raises a pull request that updates the design, and puts
+anything that needs the owner's answer into this list.
+
 Research is kept as small as possible. It is done online, from
 documentation and other projects. A small prototype is made only when a
 question cannot be settled otherwise. The aim is a quick first working
@@ -178,9 +183,10 @@ product, not a complete study.
     expressed. [protocol]
 30. Whether a notification can open the email in the person's own email
    application, on a phone and on a desktop. [email]
-31. How the server's data and its secrets are encrypted, and where the
-   key is kept, so that a stolen disk or a copied backup gives nothing
-   away. [vault]
+31. How the vault encrypts its secrets, so that control of the running
+   server does not expose them, and where that key is kept. Kept small;
+   if it slows the work, the first release relies on disk encryption.
+   [vault]
 
 ## 5. Visual design
 

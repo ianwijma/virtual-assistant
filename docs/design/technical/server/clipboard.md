@@ -14,8 +14,8 @@ The clipboard is a feature of the system. A
   background.
 - **Shared between a person's devices, and on by default.** The newest
   item is pushed to their other devices.
-- **Clipboard content is sensitive.** It is encrypted where the server
-  stores it, like the rest of the server's data. See [vault](vault.md).
+- **Clipboard content is sensitive.** It is protected by disk encryption, like the
+  rest of the server's data. See [vault](vault.md).
   Sealing it so that only the person's own devices can read it is put
   off until after the first release.
 - **An assistant asks before it uses the clipboard.** It asks whether it
