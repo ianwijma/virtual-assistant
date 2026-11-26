@@ -28,9 +28,11 @@ fulfils "a screen for every setting".
 - **Every member can sign in** and manage their own settings and their
   own things.
 - **An admin** manages their own, and also the household and the server.
-- It is not the only place for personal settings. A person can change
-  them in the desktop client and in the phone app, and the phone app is
-  the main place. See [mobile](mobile.md).
+- **At first it is the one place for a person's settings.** The phone
+  app and the desktop client have a quick link that opens the admin panel
+  already signed in, using the app's own sign-in, so nobody signs in
+  twice. Settings that belong to one device, such as its keyboard
+  shortcuts, stay on that device.
 
 A person signs in with their email address and a one-time code sent to
 it. The admin panel also holds
@@ -43,8 +45,9 @@ A new server is set up here. Opening the server's address in a browser
 starts the setup. It creates the first admin, names the household, and
 sets the mail account for sign-in codes, the AI provider and speech.
 
-The first admin is created before any mail account exists, so this one
-account is made without an emailed code.
+The mail account is set first. The first admin then confirms their email
+address with a code sent to it, like everyone else, which also proves the
+mail account works.
 
 ## How it is built
 

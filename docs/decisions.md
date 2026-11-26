@@ -181,3 +181,9 @@ are 25 November 2026.
 | 161 | Speed targets for the desktop and for a voice turn, and the way wakes are measured, are set as targets to tune, not gates | [desktop](design/technical/clients/desktop.md), [voice](design/technical/voice/README.md), [wake word](design/technical/voice/wake-word.md) |
 | 162 | Duplicate feedback reports are not detected; they are sorted out on GitHub | [feedback](design/technical/server/feedback.md) |
 | 163 | Research and proposals are done in separate threads, after the planning pull request is merged | [open questions](open-questions.md) |
+| 164 | Confirmed: the wake word override is per assistant per device; an admin can connect household sources; the account passcode is four to six digits, one per account | [wake word](design/technical/voice/wake-word.md), [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 165 | Home Assistant is left out of the first release only and may be reconsidered later. This corrects decision 66 | [modules](design/technical/modules/README.md) |
+| 166 | At first a person's settings live in the admin panel; the apps link into it already signed in. Device settings stay on the device. This corrects decision 69 | [admin panel](design/technical/clients/web-admin.md), [mobile](design/technical/clients/mobile.md), [desktop](design/technical/clients/desktop.md) |
+| 167 | Confirmed: both offline sign-in ways are built, and emailed codes replace passwords everywhere | [identity and sharing](design/technical/server/identity-and-sharing.md) |
+| 168 | In first-run setup the mail account is set first, and the first admin confirms their address with an emailed code | [admin panel](design/technical/clients/web-admin.md) |
+| 169 | A voice page that is not yet signed in or approved can already talk to guest assistants | [voice page](design/technical/clients/web-voice.md) |

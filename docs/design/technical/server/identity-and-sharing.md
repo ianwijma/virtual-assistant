@@ -53,7 +53,7 @@ There are two kinds of device:
   unlimited unless set.
 - **Several accounts on one device.** A computer can hold more than one
   account, and a person switches between them with a short passcode,
-  possibly four to six digits. The passcode is asked for when switching
+  of four to six digits. Each account has its own. The passcode is asked for when switching
   to an account, when the client starts, and when the computer is
   unlocked. The accounts can be different people in one
   household, or one person's accounts on different servers.
@@ -152,5 +152,3 @@ On a household device:
 ## Open questions
 
 - What a restricted role for children may do, once it is added.
-- May an admin connect a source, such as a shared mailbox, for the whole
-  household? It is written so for now.

@@ -59,8 +59,6 @@ Assumed, needing a build to confirm:
 
 ## Open questions
 
-- Is a device's wake word override set per assistant on that device? It
-  is written so for now.
 - Which detector to use, and whether a detection is confirmed by
   transcribing the same audio.
 - Where the desktop client detects the wake word.

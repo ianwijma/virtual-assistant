@@ -87,7 +87,8 @@ overall system and these are in place.
 | Lists | Add to, read and change lists; remember something on request |
 | Device control | Act on a device, such as showing something on its screen or opening an app |
 
-There is no Home Assistant integration. When smart-home control is
+There is no Home Assistant integration in the first release. It may be
+reconsidered later. The preference is that, when smart-home control is
 added, the system talks to those devices and services itself. Home
 Assistant's code can serve as an example of how a given system is spoken
 to.

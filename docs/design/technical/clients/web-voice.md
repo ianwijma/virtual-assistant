@@ -33,7 +33,10 @@ When the page is opened, the person chooses to use it as a personal
 device or as a household device, as in the
 [phone app](mobile.md). Each choice follows the same flow as there: a
 personal page is signed in with an email address and a code, and a
-household page is added with an admin's invite and then approved. See
+household page is added with an admin's invite and then approved.
+
+Before that, the page is not useless: it can already talk to guest
+assistants, at guest level. See
 [identity and sharing](../server/identity-and-sharing.md).
 
 ## Voice and chat

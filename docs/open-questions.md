@@ -58,33 +58,6 @@ These are readings of earlier answers. Each stands as written in the design
 unless corrected. They are lettered so that the numbers below stay for the
 questions.
 
-- **A.** A device's wake word override is set per assistant on that
-  device, in an advanced section. [wake word]
-- **B.** An admin can connect a source, such as a shared mailbox, for the
-  whole household, and it is then a household thing. A source a person
-  connects themselves is private to them. [identity]
-- **C.** The account passcode is four to six digits, and each account
-  has its own. [identity]
-- **D.** There is no Home Assistant integration in any release, not only
-  the first. Smart-home systems are integrated directly. [modules]
-- **E.** A person's own settings exist in three places: the phone app as
-  the main one, the desktop client, and the admin panel. [admin panel],
-  [mobile]
-- **F.** Sign-in with an emailed code replaces passwords everywhere. The
-  passcode for switching accounts on a computer stays. [identity]
-
-- **G.** Both offline sign-in ways are built: a code from a device where
-  the person is already signed in, and a code an admin issues. The first
-  also works when there is internet, as a quick way to add a device.
-  [identity]
-- **H.** First-run setup covers: the first admin, the household's name,
-  the mail account, the AI provider and speech. The first admin is created
-  without an emailed code, because no mail account exists yet.
-  [admin panel]
-- **I.** A voice page does nothing until it is signed in as personal, or
-  added and approved as household. It is not usable as a household device
-  before that. [voice page]
-
 - **J.** A guest assistant is an ordinary assistant with a "guest"
   setting, not a separate kind of thing. [assistants]
 - **K.** The default household assistant is also a guest assistant at
@@ -166,6 +139,12 @@ questions.
   [desktop] and [voice], are my proposals. Each can be changed.
 - **AK.** Lists are shown and edited in every client.
   [lists]
+
+- **AL.** Guest use before sign-in applies to the voice page only. The
+  phone app does nothing until it is signed in or approved. [voice page]
+- **AM.** The quick link from an app into the admin panel works for
+  members and admins alike, and shows each what they may manage.
+  [admin panel]
 
 ## 1. Now
 

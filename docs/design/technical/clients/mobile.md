@@ -50,8 +50,9 @@ exist for both.
 
 ## Settings
 
-The phone app is the main place where a person manages their own
-settings, because that is where people realistically do it. A household
+At first, a person's settings live in the
+[admin panel](web-admin.md). The app has a quick link that opens it
+already signed in, using the app's own sign-in. A household
 device is set up with an admin's invite and then approved by an admin. See
 [identity and sharing](../server/identity-and-sharing.md).
 
