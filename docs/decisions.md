@@ -173,3 +173,7 @@ are 25 November 2026.
 | 153 | Clipboard text syncs at once; a large item is uploaded sealed and fetched when needed, and above a size limit it stays on its device | [clipboard](design/technical/server/clipboard.md) |
 | 154 | The email feature only notifies that new mail has arrived; mail is not stored, and the system is not an email reader | [email](design/technical/server/email.md), [desktop](design/technical/clients/desktop.md) |
 | 155 | Each assistant has a language, which selects its speech models, voice and wake words; English only at first | [assistants](design/technical/voice/assistants.md) |
+| 156 | What a new-mail notification says is configurable: the least, with the title, or with an AI summary; the email is read as it arrives but still not stored | [email](design/technical/server/email.md) |
+| 157 | A notification can be replied to or opened on its source device from another device, in the first release | [notifications and routing](design/technical/server/notifications-and-routing.md) |
+| 158 | iOS and macOS are built after the first release; the project publishes its own builds, and forks publish theirs | [mobile](design/technical/clients/mobile.md) |
+| 159 | A vendor's AI command-line tool is never preinstalled; the admin panel installs it on request and carries its sign-in | [AI providers](design/technical/server/ai-providers.md) |

@@ -55,9 +55,16 @@ settings, because that is where people realistically do it. A household
 device is set up with an admin's invite and then approved by an admin. See
 [identity and sharing](../server/identity-and-sharing.md).
 
+## iOS and macOS
+
+iOS and macOS are built after the first release. A Mac is planned to be
+available by then; until then a macOS build can be made in GitHub's CI.
+The project publishes its own builds for each platform. Someone who
+builds their own version publishes it themselves.
+
 ## Open questions
 
+- The App Store's terms conflict with the GPL. How the project's own iOS
+  build is published is still to be worked out, before iOS is built.
 - How notifications reach a phone when the app is closed, without a cloud
   push service.
-- Building and publishing for iOS needs a Mac and an Apple developer
-  account, and the App Store has friction with the GPL.

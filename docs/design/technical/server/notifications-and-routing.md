@@ -28,6 +28,9 @@ Status: draft.
 - **Notifications are controlled from anywhere.** What a person does to a
   notification on one device, such as dismissing it, holds on all of
   them. It is one system, not a set of separate inboxes.
+- **A notification can be acted on from another device,** in the first
+  release: replied to, such as a chat message that arrived on the
+  desktop, or opened on the device it came from.
 
 ## Routing
 
@@ -77,5 +80,5 @@ devices and to personal devices.
 
 ## Open questions
 
-- Which notifications can be replied to or opened from another device,
-  and what happens when the source device is off.
+- What happens to a reply or an "open" when the device the notification
+  came from is off.

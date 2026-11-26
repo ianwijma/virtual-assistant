@@ -46,5 +46,3 @@ Known traps, from the earlier voice assistant:
 
 - Which speech models and voices have licences that allow selling
   hardware. See [voice](voice/README.md).
-- Whether preinstalling a vendor's AI command-line tool on hardware is
-  ever wanted. It would need that vendor's commercial terms.
