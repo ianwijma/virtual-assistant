@@ -27,6 +27,9 @@ This project is in planning. There is no code yet.
   change needs to be trusted, and no more. Do not add broad test suites,
   extra validation passes or polish that slows the path to a working
   product.
+- Review during implementation: the few tests run in CI and must pass,
+  and an agent reviews each pull request in at most two rounds. File what
+  remains as a GitHub issue and merge.
 - `docs/sources/` is never edited.
 - Work goes through pull requests into `develop`. `main` receives releases.
 - The licence is GPLv3. Every dependency, model and voice must allow use in

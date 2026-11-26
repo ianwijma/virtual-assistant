@@ -66,17 +66,16 @@ The server comes in two forms: a single self-contained program that runs
 as a service, and the same thing as a container image. Updates are
 started from the [admin panel](../clients/web-admin.md).
 
-## Backups and snapshots
+## Backups and the audit log
 
 - **A full backup of the system is made outside it,** with whatever the
   admin already uses to back up a machine. The server does not make one
   itself.
-- **The server keeps daily snapshots of certain things,** such as a
-  person's settings and assistants. If someone breaks their settings or
-  an assistant, an admin can roll that one person back, without touching
-  anyone else.
+- **There are no snapshots. Every change to a setting is in an audit
+  log:** who changed what, when, and from what to what. When someone
+  breaks their settings or an assistant, an admin uses the log to put
+  things back, for that one person.
 
 ## Open questions
 
-- Snapshots: which things are in them, and how many days are kept.
 - Which database the server uses.

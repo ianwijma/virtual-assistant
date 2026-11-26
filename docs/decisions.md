@@ -165,3 +165,7 @@ are 25 November 2026.
 | 145 | The visual identity starts fresh; nothing visual is reused from the earlier voice assistant | [visual](design/visual/README.md) |
 | 146 | There is one look, light and dark, following the device; a person cannot choose a theme | [visual](design/visual/README.md) |
 | 147 | Visual design questions are worked on in a separate thread; the planning thread covers the technical design and how the systems work together | [visual](design/visual/README.md) |
+| 148 | The few tests run in CI and must pass; an agent reviews each pull request in at most two rounds, and what remains is filed as a GitHub issue | [repository](design/technical/repository.md) |
+| 149 | Testing happens on the development virtual machine only, which should run an Android emulator and virtual machines of its own | [repository](design/technical/repository.md) |
+| 150 | Every settings change is kept in an audit log, which an admin uses to roll a person back. This replaces the daily snapshots of decision 143 | [server](design/technical/server/README.md) |
+| 151 | The default household assistant starts with every module switched on | [assistants](design/technical/voice/assistants.md) |
