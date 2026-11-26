@@ -14,11 +14,20 @@ reader, and it does not mirror a mailbox.
 - **New emails are kept for a while,** so that something can be done with
   them. By default the emails of the last week are kept. The person can
   change this.
+- **Only the text is kept:** the subject, who it is from and to, the
+  date, and the text of the message. Styling, images and attachments are
+  not kept and not processed. The text is there so that it can be shown
+  plainly and so that information can be taken from it.
+- **The email is never shown with its formatting.** To see the real
+  thing, the person is pointed to their own email application.
 - **What can be done with a new email:**
   - copy a login code it contains;
   - have it summarised;
   - ask an assistant questions about it;
-  - reply to it.
+  - reply to it. The reply is typed, dictated, or drafted by an
+    assistant. The final text is always shown or read back to the person,
+    and it is sent only after they say so, because an email leaves the
+    house under their name and cannot be recalled.
 - For anything else, a person opens their own email application.
 - **Three ways to connect an account from the start:** any IMAP server,
   "Sign in with Google" and "Sign in with Microsoft".
@@ -47,11 +56,9 @@ reader, and it does not mirror a mailbox.
 
 ## Open questions
 
+- Whether a notification can open the email in the person's own email
+  application, on a phone and on a desktop. This is research still to do.
 - How a login code is found in an email. This is research still to do.
-- Whether an email is ever shown in full in a client, and if so how its
-  HTML is drawn safely.
-- How a reply is written and sent: typed, dictated or drafted by an
-  assistant, and whether it is checked before it goes out.
 - Signing in with Google or Microsoft needs an application registered
   with each company, and Google reviews applications that read mail. Who
   registers them: the project, or each household's admin? This is

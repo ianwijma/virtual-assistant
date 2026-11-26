@@ -54,7 +54,8 @@ Every device can then use it, and nothing depends on a desktop being on.
 
 An assistant does not ask for confirmation before it acts, for now, with
 one exception: using a person's clipboard or passwords needs their
-approval. See [vault](vault.md). The
+approval (see [vault](vault.md)), and a reply to an email is sent only
+after the person has seen or heard it (see [email](email.md)). The
 first tools carry no real risk: nothing buys anything, and a message or a
 broadcast to the household goes out directly. Confirmation is added when
 a tool arrives that needs it, or when use shows that one does. The gateway
