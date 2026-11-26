@@ -67,5 +67,7 @@ builds their own version publishes it themselves.
 
 - The App Store's terms conflict with the GPL. How the project's own iOS
   build is published is still to be worked out, before iOS is built.
-- How notifications reach a phone when the app is closed, without a cloud
-  push service.
+- How notifications reach a phone when the app is closed. To compare:
+  what works on Android without Google's push service, what iOS allows,
+  and accepting Google's and Apple's push services with a small relay if
+  one is needed. This is research still to do.

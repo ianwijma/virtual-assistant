@@ -66,6 +66,9 @@ before.
 
 ## Open questions
 
+- How the research and write-up threads are run after the merge, and
+  whether the design write-ups are written before building starts or by
+  whoever builds each part.
 - Can the development virtual machine run an Android emulator with sound
   and virtual machines inside it? Both need virtualisation inside a
   virtual machine. The Rust toolchain is not installed on it yet either.

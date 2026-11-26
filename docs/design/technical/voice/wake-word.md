@@ -68,4 +68,6 @@ wake words. This helps where a device does not pick a person up well.
 ## Open questions
 
 - Which detector to use, and whether a detection is confirmed by
-  transcribing the same audio.
+  transcribing the same audio. It must accept any typed word. Finding the
+  wake word in the transcript is the fallback. Also whether training a
+  device per person improves detection. This is research still to do.

@@ -29,9 +29,10 @@ address at pairing, and tries the home network first.
 
 - **Native apps** need no web certificate. They pin the server's key at
   pairing.
-- **Browsers** need HTTPS to use the microphone. The server runs its own
-  certificate authority, which each browser device trusts once. This needs
-  no internet.
+- **Browsers** need HTTPS to use the microphone. The server running its own
+  certificate authority, which each browser device trusts once, needs no
+  internet and is the starting idea. Which way is used is being
+  researched.
 - **Alternatives:** a real certificate from the household's own domain, or
   from Tailscale.
 
@@ -49,7 +50,11 @@ Assumed, needing a build to confirm:
 
 ## Open questions
 
-- How a non-technical person gets a browser to trust the server's
-  certificate authority.
+- How the admin panel and the voice page get HTTPS that a browser trusts,
+  for a non-technical person. To compare: certificates through
+  Tailscale, a proxy domain per installation that the project provides,
+  the person's own certificates, accepting the browser's warning at
+  first, and the server's own certificate authority. This is research
+  still to do.
 - How the server is found on the home network when a device is first
   paired.

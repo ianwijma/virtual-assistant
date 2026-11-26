@@ -80,4 +80,6 @@ started from the [admin panel](../clients/web-admin.md).
 
 ## Open questions
 
-- Which database the server uses.
+- Which database the server uses. The owner leans towards PostgreSQL,
+  for being open source and for its extensions, unless there is a strong
+  case for SQLite. This is research still to do.
