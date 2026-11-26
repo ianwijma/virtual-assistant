@@ -78,12 +78,10 @@ Nothing is waiting here at the moment.
    [identity]
 3. The build order of the parts. There is no roadmap yet; it is decided
     after the technical details are clear. [repository]
-
 4. Sealed data and a password manager, after the first release: data
    only a person's own devices can read, with a recovery sheet and a
    recovery copy. The earlier answers on this are decisions 122 to 139.
    [vault]
-
 5. How the research threads are run after the merge: one thread that
    starts several others by area, each raising a pull request?
    [repository]
@@ -103,8 +101,7 @@ This work is done in separate threads, after the planning pull request is
 merged. It is not started from the planning thread.
 
 How the threads are run is not settled. The likely form: one thread
-starts several others, by area. Each does its research or writes its
-proposal, raises a pull request that updates the design, and puts
+starts several others, by area. Each does its research, raises a pull request that updates the design, and puts
 anything that needs the owner's answer into this list.
 
 Research is kept as small as possible. It is done online, from
@@ -170,7 +167,6 @@ product, not a complete study.
    server does not expose them, and where that key is kept. Kept small;
    if it slows the work, the first release relies on disk encryption.
    [vault]
-
 24. Whether finding the server by mDNS works reliably from the Android
    and iOS apps, and on home networks that separate Wi-Fi clients.
    [pairing]
