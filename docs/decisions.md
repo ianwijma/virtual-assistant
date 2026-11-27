@@ -250,3 +250,7 @@ are 25 November 2026 unless a section says otherwise.
 | 223 | The feel is calm, warm, precise and playful | [identity](design/visual/identity.md) |
 | 224 | One typeface is shipped with every client, and text follows the text size set on the device | [typography](design/visual/typography.md) |
 | 225 | There are two densities, compact and roomy, and icons come from an open icon set | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 226 | The typeface is Inter, shipped with every client | [typography](design/visual/typography.md) |
+| 227 | An assistant's character is an illustrated figure | [assistant visuals](design/visual/assistant-visuals.md) |
+| 228 | Motion is fluid and springy, following Apple's design, with a reduced-motion mode that also keeps old devices fast | [motion](design/visual/motion.md) |
+| 229 | The desktop launcher appears with a very short animation that does not delay input | [motion](design/visual/motion.md) |

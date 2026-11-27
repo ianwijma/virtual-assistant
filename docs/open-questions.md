@@ -78,12 +78,19 @@ F. On a household device, a recognised person's accent shows for the
 G. The glass and the base colours are neutral, and colour comes from the
    accent. Our own backdrop takes the accent. [glass] [colour]
 H. In the second review, the ticks are read as agreement: one shipped
-   typeface, two densities and an open icon set are agreed. "The launcher
-   appears with no animation" was not ticked, so it is an open question
-   again. [typography] [shape] [motion]
+   typeface, two densities and an open icon set are agreed. [typography]
+   [shape]
 I. A character shows seven states: idle, listening, thinking, speaking,
    muted, waiting and not recognised. This was decided by the agent and
    has not been reviewed. [assistant visuals]
+J. "Two modes" of motion is read as: reduced motion follows the device's
+   setting, can also be switched on per device in our settings, and is
+   used on a device too slow for full motion. [motion]
+K. One typeface family is used for everything; headings have no typeface
+   of their own. This was decided by the agent. [typography]
+L. The first values of the tokens were chosen by the agent: the greys,
+   the five accents, the status colours, the type scale, the spacing, the
+   corners and the timings. [tokens]
 
 ## 1. Now
 
@@ -255,62 +262,72 @@ detail.
 
 ### Typography
 
-43. Which character should the typeface have: neutral (such as Inter or
-   Geist), geometric and friendly (such as Manrope or Figtree), or
-   rounded (such as Nunito)? [typography]
-44. Do headings get their own typeface, or is one family used for
-   everything? [typography]
-45. Which languages and scripts must the typeface cover later?
-   [typography]
+43. Which monospace typeface is shipped for logs and timelines?
+   JetBrains Mono is a candidate with a fitting licence. [typography]
+44. Which languages and scripts must be covered later, beyond what Inter
+   covers? [typography]
 
 ### Shape, spacing and icons
 
-46. Are icons outlined or filled, and which open set is used: Lucide,
+45. Are icons outlined or filled, and which open set is used: Lucide,
    Phosphor, Tabler or another? [shape]
-47. Is there an illustration style, for empty screens and first-run
+46. Is there an illustration style, for empty screens and first-run
    setup? [shape]
 
 ### Motion and sound
 
-48. Does the desktop launcher appear with no animation at all, or with a
-   very short one? It must be usable within 100 ms of its shortcut. See
-   [desktop](../technical/clients/desktop.md). [motion]
-49. How much does the interface move where it is allowed to: fluid and
-   springy as in Apple's design, or quick and plain? [motion]
-50. Are sounds part of the identity, such as a tone when an assistant
+47. Are sounds part of the identity, such as a tone when an assistant
    starts listening or a timer ends? [motion]
-51. Does the phone use vibration as part of the feel? [motion]
+48. Does the phone use vibration as part of the feel? [motion]
+49. How is a device found to be too slow for full motion: measured by
+   the client, or switched by hand only? [motion]
+
+### Tokens and components
+
+50. In which format is the source of the tokens kept in the repository,
+   and which tool generates the four themes from it? The Design Tokens
+   format of the W3C community group is a candidate. This is research
+   still to do. [tokens]
+51. Agree to the first values, after seeing them in the example
+   components and the mockups. [tokens]
+52. Agree to the example components as the base for the rest.
+   [components]
+53. Which components come next? The proposal is the ones the mockups
+   need: the launcher's search and results, a sheet, a menu, the tab bar
+   and the side bar, a table for logs, the chat, and each card of the
+   A2UI catalog. [components]
 
 ### Assistant visuals
 
-52. What is a character: an abstract shape such as an orb or a wave, a
-   simple face, or a full illustrated figure? The reply tags include a
-   wink, an eye roll, a nod and a shake of the head, which need eyes and
-   a head. [assistant visuals]
-53. How do two assistants differ: by colour only, by shape, or as fully
-   different characters? [assistant visuals]
-54. How does a person give their own assistant a look: by choosing from
-   a set, by adjusting parts such as colour and eyes, or by supplying an
-   image? [assistant visuals]
-55. How playful is the default household assistant: cute, friendly, or
-   calm and abstract? [assistant visuals]
-56. How large is the character on each screen: the whole screen on the
+54. In which style are the figures drawn: flat and simple, soft and
+   three-dimensional, or hand-drawn? Examples of each are to be made
+   before this is answered. [assistant visuals]
+55. Who draws the figures, and how many are there in the first release?
+   [assistant visuals]
+56. How does a person give their own assistant a look: by choosing from
+   a set of figures, by adjusting parts such as colour and clothing, or
+   by supplying their own drawing? [assistant visuals]
+57. How playful is the default household assistant: cute, friendly, or
+   calm? [assistant visuals]
+58. How large is the character on each screen: the whole screen on the
    tablet, a small part of the launcher on the desktop? [assistant
    visuals]
+59. Does a figure have a colour of its own, apart from the accent?
+   [assistant visuals]
 
 ### The clients
 
-57. What does a tablet in a room show when nobody is using it: the
+60. What does a tablet in a room show when nobody is using it: the
    character, a clock, running timers, or nothing? [visual]
-58. Does the admin panel use glass as much as the other clients, or is
+61. Does the admin panel use glass as much as the other clients, or is
    it plainer because it holds dense tables and logs? [visual]
-59. Should a screen that an assistant composed look different from a
+62. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-60. Which client is drawn first as a mockup, and which screens of it
+63. Which client is drawn first as a mockup, and which screens of it
    matter most? [visual]
-61. Which devices are the references for the mockups: which phone, which
+64. Which devices are the references for the mockups: which phone, which
    tablet, which monitor size? [visual]
-62. Are settings screens generated from each feature's description, so
+65. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
@@ -320,11 +337,11 @@ detail.
 
 An agent does this work and the owner agrees to the outcome.
 
-63. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+66. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
    each draw: blur behind a surface, and at what speed. [glass]
-64. Whether the launcher window can show the blurred desktop behind it
+67. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
-65. How each character is animated so that it runs in Slint, Jetpack
+68. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
@@ -366,3 +383,5 @@ An agent does this work and the owner agrees to the outcome.
 [shape]: design/visual/shape-and-spacing.md
 [motion]: design/visual/motion.md
 [assistant visuals]: design/visual/assistant-visuals.md
+[tokens]: design/visual/tokens.md
+[components]: design/visual/components.md

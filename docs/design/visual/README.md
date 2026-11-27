@@ -64,7 +64,7 @@ is our own, and it is the same on Linux, Android and the web.
    done; the candidates were on
    [the direction board](examples/direction-board.html).
 2. **The design language:** colour, type, shape, spacing and motion,
-   written as tokens. This is the current step.
+   written as [tokens](tokens.md). A first set exists.
 3. **Example components:** a few components that show the language in use.
 4. **Low-fidelity mockups** of each client. They show layout and content,
    not polish, so that an agent can combine them with the design language.
@@ -76,18 +76,18 @@ is our own, and it is the same on Linux, Android and the web.
 | [identity.md](identity.md) | The name, the feel, and what makes it recognisable | Started |
 | [glass.md](glass.md) | The frosted glass material and where it is used | Started |
 | [colour.md](colour.md) | The colours, in light and dark | Started |
-| [typography.md](typography.md) | The typefaces and the type scale | Started |
+| [typography.md](typography.md) | The typeface and the type scale | Started |
 | [shape-and-spacing.md](shape-and-spacing.md) | Corners, density, spacing and icons | Started |
 | [motion.md](motion.md) | How things move, and sound | Started |
 | [assistant-visuals.md](assistant-visuals.md) | How an assistant appears and reacts to speech | Started |
-| [examples/](examples/direction-board.html) | Pages to open in a browser that show the candidates | First board |
+| [tokens.md](tokens.md) | The full set of tokens | A first set |
+| [components.md](components.md) | The shared components and how they behave | Started |
+| [examples/](examples/) | Pages to open in a browser: the [direction board](examples/direction-board.html), the [typeface board](examples/typeface-board.html) and the [example components](examples/components.html), with the tokens as CSS | |
 
 Planned, each made when work on it starts:
 
 | Document | Covers |
 |---|---|
-| `tokens.md` | The full set of tokens and how each platform's theme is generated |
-| `components.md` | The shared components and how they behave |
 | One file per client | How the look applies to the desktop, phone, tablet, admin panel and voice page |
 | `mockups/` | The low-fidelity mockups of each client |
 

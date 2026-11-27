@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typeface board</title>
+<!-- Four candidate typefaces, all under the SIL Open Font License. Nothing here is decided.
+     The fonts are loaded from Google Fonts, so this page needs the internet. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap">
+<style>
+:root{color-scheme:light dark} body{margin:0;font-family:Inter,system-ui,sans-serif}
+.board{max-width:1000px;margin:0 auto;display:grid;gap:12px}
+section{border-radius:20px;padding:16px 18px;color:#f3f5f8;
+ background:radial-gradient(60% 80% at 8% 10%,#3b4a7a 0,transparent 70%),radial-gradient(60% 80% at 95% 90%,#1d5a63 0,transparent 70%),#14171d}
+section:nth-child(even){color:#15181d;background:radial-gradient(60% 80% at 8% 10%,#b9c8ff 0,transparent 70%),radial-gradient(60% 80% at 95% 90%,#a6e6dc 0,transparent 70%),#eef1f5}
+header{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+header b{font-size:15px;font-weight:700} header span{font-size:12px;opacity:.7}
+.spec{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+@media(max-width:560px){.spec{grid-template-columns:1fr}}
+.col{border-radius:18px;padding:14px 16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+ -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+section:nth-child(even) .col{background:rgba(255,255,255,.45);border-color:rgba(255,255,255,.8)}
+.big{font-size:30px;font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.body{font-size:15px;line-height:1.45;margin:8px 0 10px;opacity:.9}
+.small{font-size:11px;font-weight:600;letter-spacing:.06em;opacity:.6}
+.num{font-size:40px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1}
+.row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:7px 0;border-top:1px solid rgba(128,128,128,.25)}
+.row:first-of-type{margin-top:10px}
+kbd{font:inherit;font-size:11px;opacity:.65}
+.btns{display:flex;gap:8px;margin-top:8px}
+.b{flex:1;text-align:center;font-size:13px;font-weight:600;padding:8px;border-radius:11px;background:rgba(128,128,128,.22)}
+.b.p{background:#f3f5f8;color:#15181d} section:nth-child(even) .b.p{background:#1b1d21;color:#fff}
+</style></head><body><div class="board"><section style="font-family:'Inter',sans-serif">
+  <header><b>A. Inter</b><span>Neutral and precise. The closest to Apple's own typeface. Covers Latin, Greek, Cyrillic and Vietnamese.</span></header>
+  <div class="spec">
+    <div class="col">
+      <div class="big">Good evening</div>
+      <div class="body">The pasta timer has 7 minutes left. Shall I remind you when the oven is warm?</div>
+      <div class="small">KITCHEN TABLET · LISTENING</div>
+    </div>
+    <div class="col r">
+      <div class="num">07:42</div>
+      <div class="row"><span>Clipboard history</span><kbd>Ctrl ⇧ V</kbd></div>
+      <div class="row"><span>Notifications</span><kbd>Ctrl ⇧ N</kbd></div>
+      <div class="btns"><span class="b p">Stop timer</span><span class="b">Snooze</span></div>
+    </div>
+  </div>
+</section><section style="font-family:'Figtree',sans-serif">
+  <header><b>B. Figtree</b><span>Geometric and friendly, still clean. Latin only.</span></header>
+  <div class="spec">
+    <div class="col">
+      <div class="big">Good evening</div>
+      <div class="body">The pasta timer has 7 minutes left. Shall I remind you when the oven is warm?</div>
+      <div class="small">KITCHEN TABLET · LISTENING</div>
+    </div>
+    <div class="col r">
+      <div class="num">07:42</div>
+      <div class="row"><span>Clipboard history</span><kbd>Ctrl ⇧ V</kbd></div>
+      <div class="row"><span>Notifications</span><kbd>Ctrl ⇧ N</kbd></div>
+      <div class="btns"><span class="b p">Stop timer</span><span class="b">Snooze</span></div>
+    </div>
+  </div>
+</section><section style="font-family:'Manrope',sans-serif">
+  <header><b>C. Manrope</b><span>Geometric and modern, a little wider. Latin, Greek and Cyrillic.</span></header>
+  <div class="spec">
+    <div class="col">
+      <div class="big">Good evening</div>
+      <div class="body">The pasta timer has 7 minutes left. Shall I remind you when the oven is warm?</div>
+      <div class="small">KITCHEN TABLET · LISTENING</div>
+    </div>
+    <div class="col r">
+      <div class="num">07:42</div>
+      <div class="row"><span>Clipboard history</span><kbd>Ctrl ⇧ V</kbd></div>
+      <div class="row"><span>Notifications</span><kbd>Ctrl ⇧ N</kbd></div>
+      <div class="btns"><span class="b p">Stop timer</span><span class="b">Snooze</span></div>
+    </div>
+  </div>
+</section><section style="font-family:'Nunito',sans-serif">
+  <header><b>D. Nunito</b><span>Rounded and soft. The warmest and most playful. Latin, Cyrillic and Vietnamese.</span></header>
+  <div class="spec">
+    <div class="col">
+      <div class="big">Good evening</div>
+      <div class="body">The pasta timer has 7 minutes left. Shall I remind you when the oven is warm?</div>
+      <div class="small">KITCHEN TABLET · LISTENING</div>
+    </div>
+    <div class="col r">
+      <div class="num">07:42</div>
+      <div class="row"><span>Clipboard history</span><kbd>Ctrl ⇧ V</kbd></div>
+      <div class="row"><span>Notifications</span><kbd>Ctrl ⇧ N</kbd></div>
+      <div class="btns"><span class="b p">Stop timer</span><span class="b">Snooze</span></div>
+    </div>
+  </div>
+</section></div></body></html>

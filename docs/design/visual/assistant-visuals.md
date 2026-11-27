@@ -4,12 +4,18 @@ How an assistant appears and reacts to speech. Part of
 [the visual design](README.md). What an assistant is, is in
 [assistants](../technical/voice/assistants.md).
 
-Status: started. What a character looks like is not chosen yet.
+Status: started. A character is an illustrated figure. Its style is not
+chosen yet.
 
 ## Design
 
 - **Each assistant is a character with its own look,** the same on every
   device that shows it.
+- **A character is an illustrated figure.** Each assistant has its own
+  drawn figure, with eyes and a head, so that it can wink, roll its eyes,
+  nod and shake its head.
+- **The examples and mockups show a placeholder,** a simple shape with
+  two eyes, until the figures are drawn.
 - **A character shows expressions.** They are driven by the
   [reply tags](../technical/voice/reply-tags.md): smile, laugh, think,
   surprised, sad, wink, eye roll, nod and shake.
@@ -27,19 +33,19 @@ Status: started. What a character looks like is not chosen yet.
 
 ## Open questions
 
-- What is a character: an abstract shape such as an orb or a wave, a
-  simple face, or a full illustrated figure? The reply tags include a
-  wink, an eye roll, a nod and a shake of the head, which need eyes and a
-  head.
-- How do two assistants differ: by colour only, by shape, or as fully
-  different characters?
+- In which style are the figures drawn: flat and simple, soft and
+  three-dimensional, or hand-drawn? Examples of each are to be made
+  before this is answered.
+- Who draws the figures, and how many are there in the first release?
 - How does a person give their own assistant a look: by choosing from a
-  set, by adjusting parts such as colour and eyes, or by supplying an
-  image?
+  set of figures, by adjusting parts such as colour and clothing, or by
+  supplying their own drawing?
 - How playful is the default household assistant: cute, friendly, or
-  calm and abstract?
+  calm?
 - How large is the character on each screen: the whole screen on the
   tablet, a small part of the launcher on the desktop?
+- Does a figure have a colour of its own, apart from the
+  [accent](colour.md)?
 
 To research:
 
