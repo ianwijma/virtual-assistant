@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card board, third round</title>
+<!--
+  Third round of the card board. The owner likes small pills in a row or a
+  list, and "Lifts into a sheet" for opening. Four ways to draw the closed
+  pills and the sheet they lift into, with the same five cards and the same
+  opened card (the shopping list). Nothing here is decided.
+  See ../components.md and card-board-2.html.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .grid { display: grid; grid-template-columns: 600px 600px; gap: 0 24px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); min-height: 54px; }
+  .tile { width: 600px; border-radius: 20px; overflow: hidden; box-sizing: border-box; padding: 10px;
+    display: grid; grid-template-columns: 285px 285px; gap: 10px; }
+  .colwrap .cap { display: block; height: 18px; margin-bottom: 4px; }
+  .col { position: relative; height: 548px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; }
+  .col > * { flex: none; }
+  .ctx { padding: 2px 4px 6px; }
+  .ctx .g { font: var(--type-heading); display: block; }
+  .ctx .n { font: var(--type-caption); color: var(--text-2); display: block; }
+
+  /* shared pieces */
+  .sq { width: 36px; height: 36px; border-radius: var(--r-md); background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+  .tx { flex: 1; min-width: 0; }
+  .t1 { font: var(--type-strong); font-size: 13px; line-height: 16px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .t2 { font: var(--type-caption); color: var(--text-2); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bt { display: flex; gap: 4px; flex: none; }
+  .bt .btn { height: 28px; padding: 0 10px; font-size: 13px; }
+  .chev { color: var(--text-3); font-size: 20px; line-height: 1; width: 20px; text-align: center; flex: none; }
+  .rw { display: flex; align-items: center; gap: 8px; height: 54px; padding: 0 8px; box-sizing: border-box; min-width: 0; }
+  .check { display: flex; align-items: center; gap: var(--s-2); font: var(--type-label); }
+  .box { width: 18px; height: 18px; border-radius: var(--r-xs); border: 1.5px solid var(--text-3); flex: none; display: grid; place-items: center; font-size: 12px; line-height: 1; }
+  .box.on { background: var(--accent); border-color: transparent; color: var(--on-accent); }
+  .done { text-decoration: line-through; color: var(--text-3); }
+  .add { color: var(--text-3); }
+  .add .box { border-style: dashed; }
+  .dim { display: flex; flex-direction: column; gap: 6px; filter: blur(2px); opacity: .5; }
+  .ghost { height: 54px; border-radius: var(--r-lg); border: 1.5px dashed var(--line); box-sizing: border-box; }
+
+  /* sheet content */
+  .sheet { position: absolute; padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; }
+  .sheet .hd { display: flex; align-items: center; gap: 8px; }
+  .sheet .big { display: flex; flex-direction: column; }
+  .sheet .big .check { height: 38px; font: var(--type-body); border-top: 1px solid var(--line); gap: 12px; }
+  .sheet .big .check:first-child { border-top: 0; }
+  .sheet .box { width: 22px; height: 22px; font-size: 14px; }
+  .sheet .acts { display: flex; gap: 8px; }
+  .sheet .acts .btn { flex: 1; height: 44px; }
+
+  /* A */
+  .sheet.a { left: 4px; right: 4px; top: 120px; }
+
+  /* B and C pills */
+  .pill { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px 0 8px; box-sizing: border-box; border-radius: var(--r-full); font: var(--type-strong); font-size: 13px; white-space: nowrap; flex: none; }
+  .pill .ico { width: 18px; height: 18px; }
+  .pill .character { flex: none; }
+  .pill.hot { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+  .pill.hot .ico { background: var(--on-accent); opacity: .85; }
+  .shade .pill:not(.hot) { opacity: .45; }
+  .prow { height: 36px; overflow: hidden; position: relative; margin: 0 -10px; padding: 0 10px; }
+  .track { display: flex; gap: 6px; }
+  .plain { display: flex; flex-direction: column; gap: 6px; margin-top: 70px; }
+  .plain span { height: 44px; border-radius: var(--r-md); background: color-mix(in srgb, var(--text) 7%, transparent); }
+  .sheet.b { left: 0; right: 0; top: 98px; }
+  .notch { position: absolute; top: -7px; width: 14px; height: 14px; transform: rotate(45deg); border-radius: 3px 0 0 0; margin-left: -7px; }
+
+  /* C */
+  .wrapp { display: flex; flex-wrap: wrap; gap: 8px 6px; }
+  .sheet.c { left: 0; right: 0; bottom: 0; height: 330px; border-radius: var(--r-xl) var(--r-xl) 0 0; padding-top: 8px; }
+  .grab { width: 36px; height: 5px; border-radius: var(--r-full); background: var(--text-3); align-self: center; flex: none; opacity: .7; }
+
+  /* D */
+  .tg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tl { height: 72px; box-sizing: border-box; padding: 8px 10px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+  .tl .ico { width: 16px; height: 16px; }
+  .tl .v { font: var(--type-strong); font-size: 17px; line-height: 20px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tl .l { font: var(--type-caption); color: var(--text-2); font-size: 12px; line-height: 14px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tl.span { grid-column: 1 / 3; flex-direction: row; align-items: center; gap: 8px; }
+  .tl.hot { background: var(--accent-soft); }
+  .sheet.d { inset: 10px; padding: 16px; gap: 12px; }
+  .sheet.d .hd { align-items: flex-start; }
+  .sheet.d .big { flex: 1; }
+  .sheet.d .big .check { height: 48px; font-size: 17px; }
+  .sheet.d .sub { font: var(--type-label); color: var(--text-2); display: block; }
+  .sheet.d .acts .btn { height: 48px; }
+  .btn.sm { height: 30px; padding: 0 14px; font-size: 13px; flex: none; }
+</style>
+</head>
+<body class="va">
+<div class="page"><div class="grid" id="page"></div></div>
+<script>
+  var ico = '<span class="ico"></span>';
+  function chk(label, on) { return '<div class="check"><span class="box' + (on ? ' on' : '') + '">' + (on ? '&#10003;' : '') + '</span><span class="' + (on ? 'done' : '') + '">' + label + '</span></div>'; }
+  var items = chk('Bread', true) + chk('Milk') + chk('Eggs') + '<div class="check add"><span class="box">+</span>Add an item</div>';
+  var ctx = '<div class="ctx"><span class="g">Good morning, Alex</span><span class="n">Now</span></div>';
+  var acts = '<div class="acts"><span class="btn">Clear ticked</span><span class="btn btn-primary">Add an item</span></div>';
+  function col(cap, html, cls) { return '<div class="colwrap"><span class="t-caption cap">' + cap + '</span><div class="col ' + (cls || '') + '">' + html + '</div></div>'; }
+  function sheetHd(close) {
+    return '<div class="hd"><span class="sq">' + ico + '</span><span class="tx"><span class="t1">Shopping</span><span class="t2">2 left of 3</span></span>' + close + '</div>';
+  }
+  var X = '<span class="btn btn-quiet btn-icon">&times;</span>';
+
+  /* A: rows */
+  function rw(lead, t, s, btns, cls) {
+    return '<div class="rw ' + (cls === undefined ? 'glass' : cls) + '"><span class="sq">' + lead + '</span><span class="tx"><span class="t1">' + t + '</span><span class="t2">' + s + '</span></span>' + (btns ? '<span class="bt">' + btns + '</span>' : '') + '</div>';
+  }
+  var ch36 = '<span class="character" style="--size:36px"></span>';
+  var chev = '<span class="chev">&#8250;</span>';
+  var rows = [
+    rw(ico, '<span class="num">07:42</span>', 'Pasta timer', '<span class="btn btn-primary">Stop</span>'),
+    rw(ico, 'Parcel arrives tomorrow', 'Email &middot; 2 min ago', chev),
+    rw(ico, 'Shopping', '2 left of 3', chev),
+    rw(ch36, 'Send this to Sam&rsquo;s phone?', 'Juno asks', '<span class="btn btn-primary">Yes</span><span class="btn">No</span>'),
+    rw(ico, 'Bins go out tonight', 'Reminder &middot; 19:00', '')
+  ];
+  function A() {
+    var ghosted = rows.slice(); ghosted[2] = '<div class="ghost"></div>';
+    var sheet = '<div class="glass-thick sheet a">' + sheetHd(X) + '<div class="big">' + items + '</div>' + acts + '</div>';
+    return [col('Closed', ctx + rows.join('')), col('Opened', '<div class="dim">' + ctx + ghosted.join('') + '</div>' + sheet)];
+  }
+
+  /* pills */
+  var ch18 = '<span class="character" style="--size:22px"></span>';
+  var pills = [
+    ['<span class="ico"></span>', '<span class="num">07:42</span> Pasta'],
+    [ico, 'Parcel tomorrow'],
+    [ico, 'Shopping &middot; 2 left'],
+    [ch18, 'Juno asks'],
+    [ico, 'Bins tonight']
+  ];
+  function pill(i, hot) { return '<span class="pill glass' + (hot ? ' hot' : '') + '">' + pills[i][0] + pills[i][1] + '</span>'; }
+
+  /* B */
+  function B() {
+    var closed = ctx + '<div class="prow"><div class="track">' + [0, 1, 2, 3, 4].map(function (i) { return pill(i); }).join('') + '</div></div>' +
+      '<div class="plain"><span></span><span></span><span></span></div>';
+    var opened = ctx + '<div class="prow"><div class="track" style="transform:translateX(-150px)">' + [0, 1, 2, 3, 4].map(function (i) { return pill(i, i === 2); }).join('') + '</div></div>' +
+      '<div class="plain"><span></span><span></span><span></span></div>' +
+      '<div class="glass-thick sheet b"><span class="notch glass-thick" id="notch"></span>' + sheetHd(X) + '<div class="big">' + items + '</div>' + acts + '</div>';
+    return [col('Closed', closed), col('Opened', opened, 'shade')];
+  }
+
+  /* C */
+  function C() {
+    var wrap = function (hot) { return '<div class="wrapp">' + [0, 1, 2, 3, 4].map(function (i) { return pill(i, hot === i); }).join('') + '</div>'; };
+    var sheet = '<div class="glass-thick sheet c"><span class="grab"></span>' + sheetHd(X) + '<div class="big">' + items + '</div>' + acts + '</div>';
+    return [col('Closed', ctx + wrap()), col('Opened', ctx + wrap(2) + sheet, 'shade')];
+  }
+
+  /* D */
+  function tl(lead, v, l, cls) { return '<div class="glass tl ' + (cls || '') + '">' + lead + '<span><span class="v">' + v + '</span><span class="l">' + l + '</span></span></div>'; }
+  function grid(hot) {
+    return '<div class="tg">' + tl(ico, '<span class="num">07:42</span>', 'Pasta timer') + tl(ico, 'Parcel tomorrow', 'Email &middot; 2 min ago') +
+      tl(ico, 'Shopping', '2 left of 3', hot ? 'hot' : '') + tl(ico, 'Bins tonight', 'Reminder &middot; 19:00') +
+      '<div class="glass tl span"><span class="character" style="--size:36px"></span><span class="tx"><span class="v" style="font-size:13px;line-height:16px">Send this to Sam&rsquo;s phone?</span><span class="l">Juno asks</span></span><span class="bt"><span class="btn btn-primary">Yes</span><span class="btn">No</span></span></div></div>';
+  }
+  function D() {
+    var sheet = '<div class="glass-thick sheet d"><div class="hd"><span class="tx"><span class="t-display" style="display:block">Shopping</span><span class="sub">2 left of 3</span></span><span class="btn btn-primary sm" style="background:var(--control);color:var(--text);border:0;box-shadow:none">Done</span></div>' +
+      '<div class="big">' + items + '</div>' + acts + '</div>';
+    return [col('Closed', ctx + grid()), col('Opened', '<div class="dim">' + ctx + grid(true) + '</div>' + sheet)];
+  }
+
+  var DESIGNS = [
+    ['v-a', 'A. List of rows, sheet in the middle', 'tide', 'dark', A,
+      'Gains a clear source, since the row leaves a dashed outline where it was, and a familiar modal; costs the most closed room (five rows) and a sheet that hides most of the list, and it works well with a mouse but less well on the tablet shelf.'],
+    ['v-b', 'B. Pills in a row, sheet grows from the pill', 'ember', 'light', B,
+      'Gains the smallest closed cards, one slim row that leaves the screen to ordinary content, and the clearest link between pill and sheet; costs hidden pills that need a sideways scroll, and it suits the tablet shelf and a mouse well.'],
+    ['v-c', 'C. Pills that wrap, sheet from the bottom', 'aurora', 'dark', C,
+      'Gains every pill in view with no scrolling and a sheet that is easy to reach with a thumb; costs two or three lines of pills, a sheet that covers most of the screen, and a looser link to its pill, and it is awkward with a mouse.'],
+    ['v-d', 'D. Two-column tiles, sheet takes the screen', 'moss', 'light', D,
+      'Gains tiles that show a value at a glance and a sheet with the most room and the largest buttons; costs a tall closed block, a sheet that hides almost everything, and a weaker sense of where it came from, but it fits the tablet and the desktop.']
+  ];
+  var h = '';
+  DESIGNS.forEach(function (d) {
+    h += '<div class="arr" id="' + d[0] + '"><h2>' + d[1] + '</h2><p class="d">' + d[5] + '</p>' +
+      '<div class="tile backdrop accent-' + d[2] + ' ' + d[3] + '">' + d[4]().join('') + '</div></div>';
+  });
+  document.getElementById('page').innerHTML = h;
+  var hot = document.querySelector('#v-b .pill.hot'), nt = document.getElementById('notch');
+  if (hot && nt) { var r = hot.getBoundingClientRect(), s = nt.parentNode.getBoundingClientRect(); nt.style.left = (r.left + r.width / 2 - s.left) + 'px'; }
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin panel layout board, third round</title>
+<!--
+  Four designs that build on "Mac System Settings" and "Three columns", each drawn
+  twice: Assistants (light) and Juno one step in (dark). Nothing here is decided.
+  See ../admin-panel.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 410px; border-radius: 14px; overflow: hidden; }
+  .in { position: absolute; left: 0; top: 0; width: 750px; height: 512px; zoom: .8; }
+  .in > * { position: absolute; }
+  .grow { flex: 1; min-width: 0; }
+  .ell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ico.ic { border: 0; opacity: 1; background: var(--accent-soft); }
+  .nav.on .ico.ic { background: var(--accent); }
+  .nav { display: flex; align-items: center; gap: var(--s-2); height: 24px; padding: 0 var(--s-2); border-radius: var(--r-sm); font: var(--type-label); color: var(--text); white-space: nowrap; }
+  .nav.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .cap { padding: var(--s-2) var(--s-2) 2px; }
+  .col { display: flex; flex-direction: column; gap: var(--s-2); overflow: hidden; }
+  .grp { display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; padding: 2px; }
+  .grp .row { min-height: 34px; border-radius: var(--r-md); }
+  .grp.nv { padding: 2px; }
+  .row .val { max-width: 52%; color: var(--text-2); }
+  .row.res { min-height: 42px; padding-top: 3px; padding-bottom: 3px; }
+  .row.res .sub { font-size: 11px; }
+  .chev { color: var(--text-3); font-weight: 600; flex: none; }
+  mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; padding: 0 1px; }
+  .person { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-2); border-radius: var(--r-lg); }
+  .person .avatar { width: 30px; height: 30px; }
+  .caret { display: inline-block; width: 1.5px; height: 15px; background: var(--accent); margin-left: 1px; }
+  .fld { height: 28px; flex: none; }
+  .head { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; padding: var(--s-1) 0 var(--s-2); }
+  .head.left { flex-direction: row; text-align: left; gap: var(--s-3); padding: 0 var(--s-1); }
+  .bar2 { display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-3); }
+  .back { color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .gcap { padding: 2px var(--s-3) 0; }
+  .btn { height: 28px; }
+  .behind > * { position: absolute; }
+  .behind { inset: 0; opacity: .5; filter: blur(1.5px); }
+  .big { min-height: 54px; padding-top: 4px; padding-bottom: 4px; border-radius: var(--r-md); }
+  .big .sub { font-size: 11px; }
+  .rail { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: var(--s-2) 0; overflow: hidden; }
+  .rail .ico { width: 24px; height: 24px; border-radius: 7px; }
+  .rail .avatar { width: 28px; height: 28px; margin-bottom: 4px; }
+  .card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: var(--s-4) var(--s-3); border-radius: var(--r-xl); }
+  .x { width: 24px; height: 24px; border-radius: var(--r-full); display: inline-flex; align-items: center; justify-content: center; background: var(--control-hover); color: var(--text-2); font-weight: 600; flex: none; }
+  .path { color: var(--text-2); padding: 0 var(--s-1); }
+  .empty { align-items: center; justify-content: center; text-align: center; gap: var(--s-2); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="board"></div>
+<script>
+(function () {
+  var G = [['Household', ['People', 'Devices', 'Assistants']], ['System', ['AI providers', 'Speech', 'Modules', 'Features']], ['Logs', ['Summoning', 'Requests', 'Admin access', 'Audit']], ['Feedback', ['Feedback']]];
+  var IC = '<span class="ico ic"></span>';
+  var LENS = '<span class="ico"></span>';
+  function at(s) { return ' style="' + s + '"'; }
+  function ab(s) { return at(s) + '>'; }
+  function ch(size, cls) { return '<span class="character' + (cls ? ' ' + cls : '') + '" style="--size:' + size + 'px"></span>'; }
+  function nav(n, on) { return '<div class="nav' + (on ? ' on' : '') + '">' + IC + n + '</div>'; }
+  function person() { return '<div class="person"><span class="avatar">A</span><div><div class="t-label" style="font-weight:600">Alex &middot; Admin</div></div></div>'; }
+  function navGroups() {
+    return G.map(function (g) {
+      return (g[0] === 'Feedback' ? '<div style="height:6px"></div>' : '<div class="t-caption cap">' + g[0] + '</div>') + g[1].map(function (n) { return nav(n, n === 'Assistants'); }).join('');
+    }).join('');
+  }
+  function sfield(w) { return '<div class="field fld"' + (w ? at('width:' + w + 'px') : '') + '>' + LENS + '<span class="ph grow">Search settings</span></div>'; }
+  function side(pos) { return '<aside class="glass col"' + ab(pos + ';padding:var(--s-2);gap:0') + sfield() + '<div style="height:6px"></div>' + person() + navGroups() + '</aside>'; }
+  function rail() {
+    var n = []; G.forEach(function (g) { g[1].forEach(function (x) { n.push(x); }); });
+    return '<aside class="glass rail"' + ab('left:10px;top:10px;bottom:10px;width:52px') + '<span class="avatar">A</span>' + LENS +
+      n.map(function (x) { return '<span class="ico ic"' + (x === 'Assistants' ? at('background:var(--accent)') : '') + '></span>'; }).join('') + '</aside>';
+  }
+
+  function row(label, val, o) {
+    o = o || {};
+    return '<div class="row"><span class="ico ic"></span><div class="grow ell">' + label + '</div>' + (val ? '<span class="val ell">' + val + '</span>' : '') + (o.toggle ? '<span class="toggle on"></span>' : '<span class="chev">&rsaquo;</span>') + '</div>';
+  }
+  function grp(rows) { return '<div class="grp surface">' + rows.join('') + '</div>'; }
+  function groups1() { return grp([row('Identity', 'Juno &middot; Warm, calm voice'), row('Brain', 'Local model, small'), row('Abilities', '3 of 5 on')]) + grp([row('Scope', 'Household'), row('Guests', 'Answers guests', { toggle: 1 }), row('Devices', '3 devices')]); }
+  function head(size, left) { return '<div class="head' + (left ? ' left' : '') + '">' + ch(size) + '<div><div class="t-title"' + (left ? '' : at('margin-top:4px')) + '>Juno</div><div class="t-label t-2">Say: Hey Juno</div></div></div>'; }
+  var AS = [['Juno', 'Household assistant &middot; 3 devices', ''], ['Sage', 'Sam&rsquo;s assistant &middot; 1 device', 'accent-ember']];
+  function bigRow(a, sel, chev) { return '<div class="row big' + (sel ? ' is-selected' : '') + '">' + ch(36, a[2]) + '<div class="grow"><div class="t-strong ell">' + a[0] + '</div><div class="sub ell">' + a[1] + '</div></div>' + (chev === 0 ? '' : '<span class="chev">&rsaquo;</span>') + '</div>'; }
+  function addBtn() { return '<span class="btn">Add an assistant</span>'; }
+  function paneList() {
+    return '<div class="t-title" style="padding:0 var(--s-1)">Assistants</div>' + grp(AS.map(function (a) { return bigRow(a); })) + '<div>' + addBtn() + '</div>';
+  }
+
+  /* A: drill in the pane */
+  var PANE = 'left:230px;right:10px;top:14px;bottom:10px;padding:0 var(--s-3);gap:var(--s-3)';
+  function A1() { return side('left:10px;top:10px;bottom:10px;width:200px') + '<main class="col"' + ab(PANE) + paneList() + '</main>'; }
+  function A2() { return side('left:10px;top:10px;bottom:10px;width:200px') + '<main class="col"' + ab(PANE) + '<span class="back">&lsaquo; Assistants</span>' + head(64) + groups1() + '</main>'; }
+
+  /* B: side bar folds to a rail */
+  function B1() { return A1(); }
+  function B2() {
+    return rail() +
+      '<section class="surface col"' + ab('left:72px;top:10px;bottom:10px;width:170px;padding:var(--s-2);gap:2px;border-radius:var(--r-lg)') +
+        '<div class="t-heading" style="padding:var(--s-1) var(--s-2) var(--s-2)">Assistants</div>' +
+        '<div class="row is-selected">' + ch(26) + '<div class="grow">Juno</div></div><div class="row">' + ch(26, 'accent-ember') + '<div class="grow">Sage</div></div>' +
+        '<div class="grow"></div>' + addBtn() + '</section>' +
+      '<main class="col"' + ab('left:254px;right:10px;top:14px;bottom:10px;padding:0 var(--s-1);gap:var(--s-3)') + head(64, 1) + groups1() + '</main>';
+  }
+
+  /* C: inspector from the right */
+  function cards() {
+    return AS.map(function (a) { return '<div class="glass card">' + ch(72, a[2]) + '<div class="t-heading" style="margin-top:4px">' + a[0] + '</div><div class="t-label t-2">' + a[1] + '</div></div>'; }).join('');
+  }
+  function paneCards() { return '<div class="t-title" style="padding:0 var(--s-1)">Assistants</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3)">' + cards() + '</div><div>' + addBtn() + '</div>'; }
+  function C1() { return side('left:10px;top:10px;bottom:10px;width:200px') + '<main class="col"' + ab(PANE) + paneCards() + '</main>'; }
+  function C2() {
+    return '<div class="behind">' + side('left:10px;top:10px;bottom:10px;width:200px') + '<main class="col"' + ab(PANE) + paneCards() + '</main></div>' +
+      '<aside class="glass-thick col"' + ab('right:10px;top:10px;bottom:10px;width:412px;padding:var(--s-3);gap:var(--s-3);border-radius:var(--r-xl)') +
+        '<div style="display:flex;align-items:center"><span class="t-label t-2 grow">Assistants</span><span class="x">&times;</span></div>' + head(64, 1) + groups1() + '</aside>';
+  }
+
+  /* D: three columns, calmer */
+  function D_side() { return side('left:10px;top:10px;bottom:10px;width:170px'); }
+  function D_list(sel) {
+    return '<section class="col"' + ab('left:190px;top:10px;bottom:10px;width:200px;gap:2px') +
+      '<div class="t-heading" style="padding:var(--s-1) var(--s-2) var(--s-2)">Assistants</div>' + AS.map(function (a, i) { return bigRow(a, sel && i === 0, 0); }).join('') +
+      '<div class="grow"></div>' + addBtn() + '</section>';
+  }
+  function D1() {
+    return D_side() + D_list(0) + '<main class="col empty"' + ab('left:400px;right:10px;top:10px;bottom:10px') + '<span class="character muted" style="--size:60px"></span><div class="t-heading">Choose an assistant</div><div class="t-label t-2">2 assistants &middot; 4 devices</div></main>';
+  }
+  function D2() {
+    return D_side() + D_list(1) + '<main class="col"' + ab('left:400px;right:10px;top:14px;bottom:10px;padding:0 var(--s-1);gap:var(--s-3)') +
+      '<div class="t-label path">Assistants &rsaquo; Juno</div>' + head(56, 1) + groups1() + '</main>';
+  }
+
+  function frame(light, cls, inner) { return '<div class="frame backdrop compact ' + cls + ' ' + (light ? 'light' : 'dark') + '"><div class="in">' + inner + '</div></div>'; }
+  var DS = [
+    ['v-a', 'A. Mac settings, drill in the pane', 'The most familiar form and the side bar never moves, but the way back is only the small link in the pane, and on a phone the side bar would become a full list that the pane drills in from.', A1, A2],
+    ['v-b', 'B. Side bar folds to a rail', 'The page keeps its width and the way back stays in view as a list, but the side bar changes shape on opening an item, and a phone would show one of the three columns at a time.', B1, B2],
+    ['v-c', 'C. Inspector from the right', 'The list stays in view and closing is one tap, but the inspector covers more than half the width and a phone would show it as a full-screen sheet.', C1, C2],
+    ['v-d', 'D. Three columns, calmer', 'Every step stays in view with larger, quieter rows, but the page gets the least width and a phone would drill from the side bar to the list to the page.', D1, D2]
+  ];
+  document.getElementById('board').innerHTML = DS.map(function (a) {
+    var caps = ['1 &middot; Light &middot; Assistants', '2 &middot; Dark &middot; Juno'];
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[2] + '</p><div class="pair">' +
+      [a[3], a[4]].map(function (fn, i) { return '<div class="cell"><span class="t-caption">' + caps[i] + '</span>' + frame(i === 0, 'accent-tide', fn()) + '</div>'; }).join('') + '</div></section>';
+  }).join('');
+})();
+</script>
+</body>
+</html>
