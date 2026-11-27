@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin panel settings page board</title>
+<!--
+  Four arrangements of one settings page of the admin panel, "Edit the
+  assistant Juno". The page decides how every settings page is arranged.
+  Only the page is drawn: no side bar. Each is shown in light and in dark.
+  Nothing here is decided. See ../admin-panel.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 430px; border-radius: 14px; overflow: hidden; }
+  .in { position: relative; width: 750px; height: 537.5px; zoom: .8; }
+  .in > * { position: absolute; }
+  .topbar { left: 10px; right: 10px; top: 10px; height: 44px; display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-3); }
+  .topbar .grow { flex: 1; }
+  .main { top: 64px; bottom: 10px; overflow: hidden; }
+  .sec { margin-bottom: var(--s-4); }
+  .sec > .t-heading { margin-bottom: var(--s-2); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+  .span2 { grid-column: 1 / -1; }
+  .field.ta { height: auto; align-items: flex-start; padding: var(--s-2) var(--s-3); }
+  .stack { display: flex; flex-direction: column; gap: var(--s-2); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+  .between { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+  .tg { display: flex; flex-direction: column; }
+  .tg .row { padding: 0; }
+  .tg .row + .row { border-top: 0; }
+  .center { text-align: center; }
+
+  /* A */
+  .a-prev { left: 10px; top: 64px; width: 200px; padding: var(--s-5) var(--s-3); display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
+  .a-form { left: 220px; right: 10px; padding: var(--s-4); }
+  /* B */
+  .b-cols { left: 10px; right: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3); align-items: start; }
+  .b-col { display: flex; flex-direction: column; gap: var(--s-3); }
+  .b-card { padding: var(--s-3); }
+  .b-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--s-2); gap: var(--s-2); }
+  .b-id { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+  /* C */
+  .c-nav { left: 10px; top: 64px; width: 150px; padding: var(--s-2); }
+  .c-main { left: 170px; right: 10px; bottom: 74px; padding: var(--s-5); }
+  .c-bar { left: 10px; right: 10px; bottom: 10px; height: 52px; display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-3); }
+  .c-bar .grow { flex: 1; }
+  .c-head { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-5); }
+  /* D */
+  .d-banner { left: 10px; right: 10px; top: 64px; height: 156px; display: flex; align-items: center; gap: var(--s-5); padding: 0 var(--s-6); }
+  .d-banner .mid { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--s-3); align-items: flex-start; }
+  .d-title { font: 700 40px/44px var(--font-sans); letter-spacing: -.02em; border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+  .d-cols { left: 10px; right: 10px; top: 230px; bottom: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); align-items: start; overflow: hidden; }
+  .d-col { display: flex; flex-direction: column; gap: var(--s-3); }
+  .grp > .t-caption { display: block; margin: 0 var(--s-2) var(--s-1); color: var(--text-2); text-transform: uppercase; letter-spacing: .04em; }
+  .grp .row { gap: var(--s-3); justify-content: space-between; }
+  .grp .row .v { color: var(--text-2); text-align: right; font: var(--type-body); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  function ch(size, cls) { return '<span class="character ' + (cls || '') + '" style="--size:' + size + 'px"></span>'; }
+  function fld(label, val, extra) { return '<div class="' + (extra || '') + '"><span class="field-label">' + label + '</span><div class="field">' + val + '</div></div>'; }
+  function para(label, extra) { return '<div class="' + (extra || '') + '"><span class="field-label">' + label + '</span><div class="field ta">Friendly and brief. Light humour.</div></div>'; }
+  function tg(on) { return '<span class="toggle' + (on ? ' on' : '') + '"></span>'; }
+  var ABIL = [['Lists', 1], ['Timers', 1], ['Notifications', 1], ['Clipboard', 0], ['Email', 0]];
+  function abil() { return '<div class="tg">' + ABIL.map(function (a) { return '<div class="row"><span class="grow">' + a[0] + '</span>' + tg(a[1]) + '</div>'; }).join('') + '</div>'; }
+  var SCOPE = '<div class="segmented"><span class="on">Household</span><span>One person</span></div>';
+  var GUEST = '<div class="row" style="padding:0"><span class="grow">Answers guests</span>' + tg(1) + '</div>';
+  var DEVS = '<div class="chips"><span class="chip">Kitchen tablet</span><span class="chip">Lounge voice page</span><span class="chip">Alex\'s phone</span><span class="chip accent">+ Add a device</span></div>';
+  function sec(title, body) { return '<div class="sec"><div class="t-heading">' + title + '</div>' + body + '</div>'; }
+  function bar(btns) { return '<div class="glass topbar"><div class="t-heading grow"><span class="t-2">Assistants /</span> Juno</div>' + btns + '</div>'; }
+  function frame(mode, inner) { return '<div class="frame backdrop compact accent-aurora ' + mode + '"><div class="in">' + inner + '</div></div>'; }
+  function pair(id, title, desc, fn) {
+    return '<section class="arr" id="' + id + '"><h2>' + title + '</h2><p class="d">' + desc + '</p><div class="pair">' +
+      ['light', 'dark'].map(function (m) { return '<div class="cell"><span class="t-caption t-2">' + (m === 'light' ? 'Light' : 'Dark') + '</span>' + frame(m, fn()) + '</div>'; }).join('') + '</div></section>';
+  }
+
+  function A() {
+    return bar('<span class="btn btn-quiet">Discard</span><span class="btn btn-primary">Save</span>') +
+      '<aside class="glass a-prev main">' + ch(110, 'listening') + '<div class="t-heading">Juno</div><div class="t-label t-2">Say: Hey Juno</div><span class="chip accent">Household assistant</span></aside>' +
+      '<div class="surface a-form main">' +
+      sec('Identity', '<div class="grid2">' + fld('Name', 'Juno') + fld('Wake words', 'Hey Juno') + fld('Voice', 'Warm, calm (local)') + fld('Language', 'English (UK)') + para('Personality', 'span2') + '</div>') +
+      '<div class="grid2"><div>' + sec('Brain', fld('AI provider', 'Local model (small)')) + '</div><div>' + sec('Scope', SCOPE + '<div style="margin-top:var(--s-3)">' + GUEST + '</div>') + '</div></div>' +
+      sec('Abilities', abil()) + sec('Devices it is on', DEVS) +
+      '</div>';
+  }
+
+  function card(title, body, saved) {
+    return '<div class="glass b-card"><div class="b-head"><span class="t-heading">' + title + '</span>' + (saved ? '<span class="chip success"><span class="dot"></span>Saved</span>' : '') + '</div>' + body + '</div>';
+  }
+  function B() {
+    var id = '<div class="glass b-card"><div class="b-id">' + ch(56) + '<div><div class="t-heading">Juno</div><div class="t-label t-2">Hey Juno</div></div><span class="chip success" style="margin-left:auto"><span class="dot"></span>Saved</span></div>' +
+      '<div class="stack">' + fld('Name', 'Juno') + fld('Wake words', 'Hey Juno') + fld('Voice', 'Warm, calm (local)') + fld('Language', 'English (UK)') + para('Personality') + '</div></div>';
+    return bar('<span class="btn btn-quiet">Remove</span>') +
+      '<div class="b-cols main">' +
+      '<div class="b-col">' + id + card('Devices it is on', DEVS) + '</div>' +
+      '<div class="b-col">' + card('Brain', fld('AI provider', 'Local model (small)')) + card('Abilities', abil(), 1) + '</div>' +
+      '<div class="b-col">' + card('Scope', SCOPE) + card('Guest', GUEST) + '</div>' +
+      '</div>';
+  }
+
+  function C() {
+    var names = ['Identity', 'Brain', 'Abilities', 'Scope', 'Guest', 'Devices'];
+    return bar('<span class="btn btn-quiet">Remove</span>') +
+      '<nav class="surface c-nav main"><div class="list">' + names.map(function (n, i) { return '<div class="row' + (i ? '' : ' is-selected') + '"><span class="grow">' + n + '</span></div>'; }).join('') + '</div></nav>' +
+      '<div class="surface c-main main"><div class="c-head">' + ch(44) + '<div><div class="t-title">Juno</div><div class="t-label t-2">Identity</div></div></div>' +
+      '<div class="grid2">' + fld('Name', 'Juno') + fld('Wake words', 'Hey Juno') + fld('Voice', 'Warm, calm (local)') + fld('Language', 'English (UK)') + para('Personality', 'span2') + '</div></div>' +
+      '<div class="glass c-bar"><span class="dot" style="color:var(--warning)"></span><span class="t-strong grow">2 unsaved changes</span><span class="btn">Discard</span><span class="btn btn-primary">Save</span></div>';
+  }
+
+  function grp(title, rows) { return '<div class="grp"><span class="t-caption">' + title + '</span><div class="surface"><div class="list">' + rows + '</div></div></div>'; }
+  function rw(l, v) { return '<div class="row"><span>' + l + '</span><span class="v">' + v + '</span></div>'; }
+  function D() {
+    return bar('<span class="btn btn-quiet">Remove</span>') +
+      '<div class="glass d-banner">' + ch(120, 'listening') +
+      '<div class="mid"><div class="d-title">Juno</div><div class="chips"><span class="chip accent">Hey Juno</span><span class="chip">Warm, calm (local)</span><span class="chip">Household assistant</span></div><span class="btn"><span class="ico"></span>Hear the voice</span></div></div>' +
+      '<div class="d-cols">' +
+      '<div class="d-col">' + grp('Identity', rw('Language', 'English (UK)') + rw('Personality', 'Friendly and brief. Light humour.')) +
+      grp('Brain', rw('AI provider', 'Local model (small)')) + grp('Scope', '<div class="row"><span>Who it serves</span>' + SCOPE + '</div>') + '</div>' +
+      '<div class="d-col">' + grp('Abilities', ABIL.map(function (a) { return '<div class="row"><span>' + a[0] + '</span>' + tg(a[1]) + '</div>'; }).join('')) +
+      grp('Guest', '<div class="row"><span>Answers guests</span>' + tg(1) + '</div>') +
+      grp('Devices it is on', '<div class="row"><div class="chips" style="justify-content:flex-start;padding:var(--s-2) 0"><span class="chip">Kitchen tablet</span><span class="chip">Lounge voice page</span><span class="chip">Alex\'s phone</span><span class="chip accent">+ Add a device</span></div></div>') + '</div>' +
+      '</div>';
+  }
+
+  document.getElementById('page').innerHTML =
+    pair('v-a', 'A. Preview and form', 'The character stays in view while you edit and one Save button covers the page, but the page is one long form and the preview takes a fifth of the width.', A) +
+    pair('v-b', 'B. Glass cards per section', 'Each section is its own card that saves by itself, so there is no unsaved state to lose, but there is no single Save to trust and the grid is busy.', B) +
+    pair('v-c', 'C. Sections with a jump list', 'One roomy section at a time with a clear unsaved-changes bar, but you need a click to see the other sections.', C) +
+    pair('v-d', 'D. Character sheet', 'The assistant looks like a character first and settings second, and changes apply at once, but long values and many fields sit awkwardly in phone-style rows.', D);
+</script>
+</body>
+</html>

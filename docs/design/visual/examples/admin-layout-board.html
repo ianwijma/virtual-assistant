@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin panel layout board</title>
+<!--
+  Five arrangements of the whole admin panel, each showing the same page,
+  "Devices", in light and in dark. Nothing here is decided.
+  See ../glass.md and ../../technical/clients/web-admin.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 400px; border-radius: 14px; overflow: hidden; }
+  .in { position: absolute; left: 0; top: 0; width: 750px; height: 500px; zoom: .8; }
+  .in > * { position: absolute; }
+  .grow { flex: 1; min-width: 0; }
+  .bar { display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-3); }
+  .logo { width: 22px; height: 22px; border-radius: 7px; background: var(--accent); flex: none; }
+  .nav { display: flex; align-items: center; gap: var(--s-2); height: 24px; padding: 0 var(--s-2); border-radius: var(--r-sm); font: var(--type-label); color: var(--text-2); white-space: nowrap; }
+  .nav.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .nav-cap { padding: var(--s-2) var(--s-2) 2px; }
+  .me { display: flex; align-items: center; gap: var(--s-2); }
+  .me .avatar { width: 28px; height: 28px; }
+  .pad { padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); overflow: hidden; }
+  .head { display: flex; align-items: center; gap: var(--s-3); }
+  .head .field { width: 140px; flex: none; }
+  .sec-h { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+  .wait { border: 1px solid var(--line); border-radius: var(--r-md); min-height: 44px; }
+  .tbl .row { display: grid; grid-template-columns: var(--cols); gap: var(--s-2); min-height: 32px; align-items: center; }
+  .tbl .row .t-strong, .tbl .row > span { font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tbl .row.hd { min-height: 26px; font: var(--type-caption); text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+  .tbl .row.hd + .row { border-top: 1px solid var(--line); }
+  .wait .sub { white-space: nowrap; }
+  .wait .btn, .head .btn, .bar .btn { height: 28px; padding: 0 var(--s-3); white-space: nowrap; }
+  .field { height: 28px; }
+  .rail { display: flex; flex-direction: column; align-items: center; gap: var(--s-2); padding: var(--s-2) 0; }
+  .rail .ri { width: 34px; height: 34px; border-radius: var(--r-md); display: grid; place-items: center; color: var(--text-2); }
+  .rail .ri.on { background: var(--accent-soft); color: var(--accent); }
+  .rail .ri .ico { width: 18px; height: 18px; }
+  .tabs2 { display: flex; gap: var(--s-1); }
+  .tabs2 .tab { height: 28px; padding: 0 var(--s-4); display: flex; align-items: center; border-radius: var(--r-full); font: var(--type-label); color: var(--text-2); }
+  .tabs2 .tab.on { background: var(--glass-solid); color: var(--text); box-shadow: var(--shadow-1); font-weight: 600; }
+  .grp { display: flex; flex-direction: column; padding: 2px; border-radius: var(--r-lg); }
+  .grp .nav { height: 24px; border-radius: var(--r-md); }
+  .tile { padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
+  .tile .num { font: 600 28px/32px var(--font-sans); letter-spacing: -.02em; margin-top: auto; }
+  .tile .ico { width: 20px; height: 20px; color: var(--accent); opacity: 1; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: var(--s-3); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="board"></div>
+<script>
+(function () {
+  var G = [['Household', ['People', 'Devices', 'Assistants']], ['System', ['AI providers', 'Speech', 'Modules', 'Features']], ['Logs', ['Summoning', 'Requests', 'Admin access', 'Audit']], ['Feedback', ['Feedback']]];
+  var ICO = '<span class="ico"></span>';
+  var ROWS = [['Alex’s laptop', 'Desktop', 'Alex', 1, 'Now'], ['Alex’s phone', 'Phone', 'Alex', 1, '2 min ago'], ['Sam’s phone', 'Phone', 'Sam', 0, 'Yesterday'], ['Kitchen tablet', 'Household tablet', 'Household', 1, 'Now'], ['Lounge voice page', 'Voice page', 'Household', 1, '10 min ago']];
+  function nav(n, on) { return '<div class="nav' + (on ? ' on' : '') + '">' + ICO + n + '</div>'; }
+  function me() { return '<div class="me"><span class="avatar">A</span><div><div class="t-label" style="font-weight:600">Alex</div><div class="t-caption" style="text-transform:none;letter-spacing:0">Admin</div></div></div>'; }
+  var search = '<div class="field">' + ICO + '<span class="ph">Search</span></div>';
+  var prim = '<button class="btn btn-primary">Invite a household device</button>';
+  function wait() {
+    return '<div class="wait row">' + ICO + '<div class="grow"><span class="t-strong">Bedroom tablet</span><span class="sub">Household tablet</span></div><span class="chip warning"><i class="dot"></i>Waiting for approval</span><button class="btn btn-primary btn-sm">Approve</button><button class="btn btn-sm">Reject</button></div>';
+  }
+  function chip(on) { return on ? '<span class="chip success"><i class="dot"></i>Online</span>' : '<span class="chip"><i class="dot"></i>Offline</span>'; }
+  function table(cols) {
+    return '<div class="tbl list" style="--cols:' + cols + '"><div class="row hd"><span>Name</span><span>Kind</span><span>Owner</span><span>Status</span><span>Last seen</span></div>' +
+      ROWS.map(function (r) { return '<div class="row"><span class="t-strong">' + r[0] + '</span><span>' + r[1] + '</span><span class="t-2">' + r[2] + '</span><span>' + chip(r[3]) + '</span><span class="t-2">' + r[4] + '</span></div>'; }).join('') + '</div>';
+  }
+  function sec(t, c) { return '<div class="sec-h"><div class="t-heading">' + t + '</div><span class="t-label t-2">' + c + '</span></div>'; }
+  function waitBlock() { return '<div>' + sec('Waiting for approval', '1 device') + wait() + '</div>'; }
+  function devBlock(cols) { return '<div>' + sec('All devices', '5 devices') + table(cols) + '</div>'; }
+  function head(extra) { return '<div class="head"><div class="t-heading grow">Devices</div>' + search + prim + '</div>'; }
+  var COLS = '1.65fr 1.35fr .85fr 80px .85fr';
+  function at(s) { return ' style="' + s + '"'; }
+
+  function A() {
+    var side = '<aside class="glass pad"' + at('left:10px;top:10px;bottom:10px;width:190px;padding:var(--s-3);gap:0') + '><div class="me" style="margin-bottom:4px"><span class="logo"></span><div><div class="t-strong">Home</div><div class="t-label t-2">Admin panel</div></div></div>' +
+      G.map(function (g) { return (g[0] === 'Feedback' ? '<div style="height:8px"></div>' : '<div class="t-caption nav-cap">' + g[0] + '</div>') + g[1].map(function (n) { return nav(n, n === 'Devices'); }).join(''); }).join('') +
+      '<div class="grow"></div><div class="me" style="padding:var(--s-2)"><span class="avatar">A</span><div class="t-label" style="font-weight:600">Alex, Admin</div></div></aside>';
+    return side + '<header class="glass bar"' + at('left:210px;right:10px;top:10px;height:48px') + '><div class="t-heading grow">Devices</div>' + search + prim + '</header>' +
+      '<main class="surface pad"' + at('left:210px;right:10px;top:68px;bottom:10px') + '>' + waitBlock() + devBlock(COLS) + '</main>';
+  }
+  function B() {
+    var mark = '<span class="logo"></span><span class="t-strong">Hearth</span><span style="width:8px"></span>';
+    var items = G.map(function (g) { return '<div class="nav' + (g[0] === 'Household' ? ' on' : '') + '" style="height:30px;padding:0 var(--s-3)">' + g[0] + (g[0] !== 'Feedback' ? ' ▾' : '') + '</div>'; }).join('');
+    return '<header class="glass bar"' + at('left:10px;right:10px;top:10px;height:46px') + '>' + mark + items + '<div class="grow"></div>' + me().replace(/<div><div class="t-label.*<\/div><\/div><\/div>$/, '').replace('<div class="me">', '<div class="me">') + '</header>' +
+      '<div class="tabs2"' + at('left:14px;top:66px') + '><span class="tab">People</span><span class="tab on">Devices</span><span class="tab">Assistants</span></div>' +
+      '<main class="surface pad"' + at('left:10px;right:10px;top:104px;bottom:10px') + '>' + head() + waitBlock() + devBlock('1.6fr 1.4fr 1fr 92px 1fr') + '</main>';
+  }
+  function C() {
+    var icons = G.map(function (g, i) { return '<div class="ri' + (i === 0 ? ' on' : '') + '">' + ICO + '</div>'; }).join('');
+    return '<nav class="glass rail"' + at('left:10px;top:10px;bottom:10px;width:48px') + '><span class="logo" style="margin:4px 0 6px"></span>' + icons + '<div class="grow"></div><span class="avatar" style="width:28px;height:28px">A</span></nav>' +
+      '<aside class="surface pad"' + at('left:66px;top:10px;bottom:10px;width:150px;padding:var(--s-3);gap:2px') + '><div class="t-caption nav-cap" style="padding-left:var(--s-2)">Household</div>' + nav('People') + nav('Devices', 1) + nav('Assistants') + '<div class="grow"></div><div class="t-label" style="padding:var(--s-2);font-weight:600">Alex, Admin</div></aside>' +
+      '<main class="surface pad"' + at('left:224px;right:10px;top:10px;bottom:10px') + '>' + head() + waitBlock() + devBlock('1.65fr 1.35fr .85fr 80px .85fr') + '</main>';
+  }
+  function D() {
+    var groups = G.map(function (g) {
+      return '<div><div class="t-caption" style="padding:0 var(--s-3) 3px">' + (g[0] === 'Feedback' ? '&nbsp;' : g[0]) + '</div><div class="grp surface">' + g[1].map(function (n) { return nav(n, n === 'Devices'); }).join('') + '</div></div>';
+    }).join('');
+    return '<aside' + at('left:10px;top:10px;bottom:10px;width:210px;display:flex;flex-direction:column;gap:var(--s-2)') + '><div class="grp surface" style="padding:var(--s-2) var(--s-3)"><div class="me"><span class="avatar">A</span><div class="t-label" style="font-weight:600">Alex, Admin</div></div></div><div class="field">' + ICO + '<span class="ph">Search settings</span></div>' + groups.replace(/<div class="t-caption" style="padding:0 var\(--s-3\) 3px">&nbsp;<\/div>/, '') + '</aside>' +
+      '<div class="head"' + at('left:236px;right:14px;top:12px;height:30px') + '><div class="t-title grow">Devices</div>' + search + prim + '</div>' +
+      '<section class="glass pad"' + at('left:230px;right:10px;top:54px;height:92px;padding:var(--s-3) var(--s-4)') + '>' + sec('Waiting for approval', '1 device') + wait() + '</section>' +
+      '<section class="glass pad"' + at('left:230px;right:10px;top:156px;bottom:10px') + '>' + sec('Devices', '5 devices') + table('1.65fr 1.35fr .85fr 80px .85fr') + '</section>';
+  }
+  var tiles = [['People', 'Household', '4', 'people'], ['Devices', 'Household', '6', '1 waiting'], ['Assistants', 'Household', '2', 'assistants'], ['AI providers', 'System', '2', 'in use'], ['Speech', 'System', '2', 'models'], ['Modules', 'System', '9', 'installed'], ['Features', 'System', '7', 'on'], ['Summoning', 'Logs', '12', 'today'], ['Requests', 'Logs', '38', 'today'], ['Admin access', 'Logs', '3', 'this week'], ['Audit', 'Logs', '5', 'changes today'], ['Feedback', '', '1', 'new']];
+  function E1() {
+    return '<header class="glass bar"' + at('left:10px;right:10px;top:10px;height:46px') + '><span class="logo"></span><div class="t-strong grow">Home</div>' + me().replace(/<div><div class="t-label.*<\/div><\/div><\/div>$/, '') + '</header>' +
+      '<div class="tiles"' + at('left:10px;right:10px;top:66px;bottom:10px') + '>' + tiles.map(function (t) {
+        return '<div class="glass tile"><div class="t-caption">' + (t[1] || '&nbsp;') + '</div><div class="me">' + ICO + '<span class="t-strong">' + t[0] + '</span></div><div class="num">' + t[2] + ' <span class="t-label t-2" style="font-weight:500">' + t[3] + '</span></div></div>';
+      }).join('') + '</div>';
+  }
+  function E2() {
+    return '<header class="glass bar"' + at('left:10px;right:10px;top:10px;height:40px') + '><button class="btn btn-quiet btn-icon" style="height:28px;width:28px">←</button><div class="t-label t-2">Home /</div><div class="t-strong grow">Devices</div>' + search + prim + '<span class="avatar" style="width:26px;height:26px">A</span></header>' +
+      '<main class="surface pad"' + at('left:10px;right:10px;top:60px;bottom:10px') + '>' + waitBlock() + devBlock('1.6fr 1.4fr 1fr 92px 1fr') + '</main>';
+  }
+  function frame(light, cls, inner) { return '<div class="frame backdrop compact ' + cls + ' ' + (light ? 'light' : 'dark') + '"><div class="in">' + inner + '</div></div>'; }
+  var D_ = [
+    ['v-a', 'A. Floating glass side bar', 'accent-tide', 'The side bar keeps every destination in view and the page is one calm surface, but it takes a third of the width.', A, A],
+    ['v-b', 'B. Top navigation', 'accent-ember', 'The page gets the full width, but the groups hide their pages until one is open and a second row of tabs is needed.', B, B],
+    ['v-c', 'C. Icon rail and list', 'accent-aurora', 'Groups stay one tap away and the pages of a group read like a list, but three columns leave the least room for the page.', C, C],
+    ['v-d', 'D. Settings style, two panes', 'accent-moss', 'It feels familiar and every destination is searchable, but cards on glass make the table less plain.', D, D],
+    ['v-e', 'E. Home of tiles, then pages', 'accent-graphite', 'The home shows live numbers and each page has all the room, but moving between pages always goes through Home.', E1, E2]
+  ];
+  var caps = [['Light', 'Dark'], ['Light', 'Dark'], ['Light', 'Dark'], ['Light', 'Dark'], ['Light · the home', 'Dark · Devices opened from a tile']];
+  document.getElementById('board').innerHTML = D_.map(function (a, k) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[3] + '</p><div class="pair">' +
+      [a[4], a[5]].map(function (fn, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + caps[k][i] + '</span>' + frame(i === 0, a[2], fn()) + '</div>'; }).join('') + '</div></section>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

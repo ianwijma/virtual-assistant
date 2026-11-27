@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launcher layout board</title>
+<!--
+  Five shapes and layouts of the desktop launcher, over a busy desktop, each drawn
+  empty and while typing "tim". The glass is clear glass, as decided; only the
+  layout differs. Nothing here is decided. See ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .page h1 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .page p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 400px; border-radius: 14px; overflow: hidden; color: var(--text); }
+  .frame > .p { position: absolute; }
+
+  /* Shared parts of the launcher */
+  .fl { display: flex; align-items: center; gap: var(--s-3); }
+  .sf { flex: 1; min-width: 0; display: flex; align-items: center; gap: var(--s-3); }
+  .sf .tx { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .caret { width: 2px; height: 16px; background: var(--accent); flex: none; margin-left: 1px; }
+  .typed { display: inline-flex; align-items: center; }
+  .head { flex: none; display: flex; align-items: center; gap: var(--s-3); height: 48px; padding: 0 var(--pad); }
+  .foot { flex: none; height: 36px; padding: 0 var(--pad); display: flex; align-items: center; gap: var(--s-3); border-top: 1px solid var(--line); }
+  .foot .sp { flex: 1; }
+  .hint { display: inline-flex; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); white-space: nowrap; }
+  .avatar.sm { width: 22px; height: 22px; font: var(--type-caption); }
+  .cap { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); padding: 6px var(--pad) 2px; }
+  .body { flex: 1; min-height: 0; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+  .cut .nm, .cut .sub { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .row .nm { display: block; }
+  .row.tight { gap: var(--s-2); }
+  .kbds { display: flex; gap: var(--s-1); }
+  .av { position: relative; flex: none; display: inline-flex; }
+  .av .st { position: absolute; right: -2px; bottom: -2px; width: 9px; height: 9px; color: var(--success); border: 2px solid var(--bg); box-sizing: content-box; }
+
+  /* Stand-in applications: hard-coded neutral colours on purpose. */
+  .app { position: absolute; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+  .app .tb { height: 18px; background: #3a3d42; }
+  .ed { left: 8px; top: 10px; width: 330px; height: 250px; background: #f4f4f2; }
+  .ed .ln { height: 5px; margin: 7px 10px; border-radius: 3px; background: #8d9096; }
+  .ed .ln.k { background: #2f6fbd; } .ed .ln.g { background: #3d9a5b; } .ed .ln.o { background: #c9792a; }
+  .br { left: 270px; top: 70px; width: 320px; height: 300px; background: #ffffff; }
+  .br .tb { background: #d8dadd; }
+  .br .blocks { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 8px; }
+  .br .blocks i { height: 44px; border-radius: 4px; }
+  .br .photo { margin: 0 8px; height: 90px; border-radius: 6px; background: linear-gradient(135deg, #ff8a3d, #d6336c 45%, #3b5bdb); }
+  .te { left: 30px; top: 230px; width: 300px; height: 160px; background: #14161a; }
+  .te .tb { background: #2a2d33; }
+  .te .ln { height: 5px; margin: 7px 10px; border-radius: 3px; background: #d9dde3; }
+  .te .ln.p { background: #6ee7a0; }
+
+  /* A. Classic window */
+  .a-win { left: 40px; top: 40px; width: 520px; height: 320px; display: flex; flex-direction: column; overflow: hidden; }
+  .a-win .head { height: 52px; }
+  /* B. Bar that grows */
+  .b-bar { left: 40px; top: 64px; width: 520px; height: 56px; display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-4); }
+  .b-list { left: 40px; top: 128px; width: 520px; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; }
+  /* C. Wide with a preview */
+  .c-win { left: 10px; top: 40px; width: 580px; height: 320px; display: flex; flex-direction: column; overflow: hidden; }
+  .c-mid { flex: 1; min-height: 0; display: flex; border-top: 1px solid var(--line); }
+  .c-list { flex: none; width: 45%; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+  .c-prev { flex: 1; min-width: 0; border-left: 1px solid var(--line); padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
+  .big { font: 600 56px/1 var(--font-sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .chips { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+  .note-box { padding: var(--s-3); border-radius: var(--r-sm); background: var(--control); }
+  /* D. Bottom palette */
+  .d-bar { left: 20px; top: 328px; width: 560px; height: 52px; display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-3) 0 var(--s-4); }
+  .d-list { left: 20px; bottom: 80px; width: 560px; padding: var(--s-2); display: flex; flex-direction: column-reverse; gap: 2px; }
+  .d-bar .chips { flex: none; flex-wrap: nowrap; gap: 4px; }
+  .d-bar .chip { padding: 0 8px; }
+  .d-bar { gap: var(--s-2); }
+  /* E. Side panel */
+  .e-panel { right: 6px; top: 6px; bottom: 6px; width: 250px; display: flex; flex-direction: column; overflow: hidden; }
+  .e-panel .head { height: 40px; padding: 0 var(--s-3); gap: var(--s-2); }
+  .e-panel .sf { gap: var(--s-2); }
+  .e-panel .ph2 { font: var(--type-caption); color: var(--text-3); line-height: 14px; }
+  .e-list { padding: var(--s-1); display: flex; flex-direction: column; gap: 1px; }
+  .e-list .row { min-height: 30px; padding: 0 var(--s-2); gap: var(--s-2); }
+  .e-list .row .nm { font: var(--type-label); font-weight: 600; line-height: 15px; }
+  .e-list .row .sub { font: var(--type-caption); letter-spacing: 0; line-height: 13px; }
+  .e-list .kbd { padding: 1px 4px; }
+  .e-now { flex: 1; min-height: 0; border-top: 1px solid var(--line); padding: 6px var(--s-3); display: flex; flex-direction: column; gap: 2px; }
+  .e-now .top { display: flex; align-items: center; gap: var(--s-2); }
+  .e-now .cap { padding: 0; }
+  .e-now .nl { font: var(--type-caption); line-height: 14px; letter-spacing: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-2); }
+  .e-now .tm { display: flex; align-items: baseline; gap: var(--s-2); font: var(--type-label); }
+  .e-now .tm b { font: 600 17px/20px var(--font-sans); font-variant-numeric: tabular-nums; }
+  .e-juno { display: flex; align-items: center; gap: var(--s-2); margin-top: auto; padding-top: var(--s-1); font: var(--type-label); font-weight: 600; }
+  .e-panel .foot { padding: 0 var(--s-3); gap: var(--s-2); height: 32px; }
+  .e-panel .hint { font: var(--type-caption); gap: 4px; }
+  .e-panel .kbd { padding: 1px 4px; }
+  .e-panel .chip { padding: 0 8px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var lines = function (n, cls) { var s = ''; for (var i = 0; i < n; i++) s += '<div class="ln ' + (cls[i % cls.length]) + '" style="width:' + (30 + (i * 37) % 60) + '%"></div>'; return s; };
+  var desktop =
+    '<div class="app ed"><div class="tb"></div>' + lines(26, ['', 'k', '', 'g', '', '', 'o']) + '</div>' +
+    '<div class="app br"><div class="tb"></div><div class="blocks"><i style="background:#e03131"></i><i style="background:#2f9e44"></i><i style="background:#1971c2"></i><i style="background:#f08c00"></i><i style="background:#7048e8"></i><i style="background:#0c8599"></i></div><div class="photo"></div><div class="blocks"><i style="background:#212529"></i><i style="background:#adb5bd"></i><i style="background:#e64980"></i></div></div>' +
+    '<div class="app te"><div class="tb"></div>' + lines(12, ['p', '', '', 'p', '']) + '</div>';
+
+  var PH = 'Search commands, views and applications';
+  var sugg = [
+    ['Clipboard history', 'Search what you copied', 'Ctrl ⇧ V'],
+    ['Ask Juno', 'Type or speak a request', 'Tab'],
+    ['Set a timer', 'Start a countdown', ''],
+    ['Notifications', '3 new', ''],
+    ['Firefox', 'Application', '']
+  ];
+  var res = [
+    ['Set a timer', 'Command', ''],
+    ['Timers', 'View · 1 running', ''],
+    ['Timeshift', 'Application', '']
+  ];
+  var ICO = '<span class="ico"></span>';
+  var avatar = '<span class="avatar sm">A</span>';
+  var online = '<span class="chip success"><span class="dot"></span>Online</span>';
+  var hints = '<span class="hint"><span class="kbd">↵</span>Open</span><span class="hint"><span class="kbd">Ctrl K</span>Actions</span>';
+  var field = function (typed) {
+    return typed
+      ? '<span class="typed t-strong">tim<span class="caret"></span></span>'
+      : '<span class="caret"></span><span class="t-3 tx">' + PH + '</span>';
+  };
+  // One row. sel = selected; keys = show the key hints instead of the shortcut; cls = extra row classes.
+  var row = function (d, sel, keys, cls) {
+    var k = keys && sel
+      ? '<span class="kbds"><span class="kbd">↵ Open</span><span class="kbd">Ctrl K Actions</span></span>'
+      : (d[2] ? '<span class="kbd">' + d[2] + '</span>' : '');
+    return '<div class="row ' + (cls || '') + (sel ? ' is-selected' : '') + '">' + ICO +
+      '<span class="grow cut"><span class="nm">' + d[0] + '</span><span class="sub">' + d[1] + '</span></span>' + k + '</div>';
+  };
+  var rows = function (list, selFirst, keys, cls) {
+    return list.map(function (d, i) { return row(d, selFirst && i === 0, keys, cls); }).join('');
+  };
+  var P = function (cls, inner) { return '<div class="p ' + cls + '">' + inner + '</div>'; };
+
+  // A. Classic window
+  var A = function (typed) {
+    var a = [['Set a timer', 'Start a countdown', ''], ['Timers', '1 running', ''], ['Timeshift', 'Application', '']];
+    var body = typed
+      ? '<div class="cap">Commands</div>' + row(a[0], true) + '<div class="cap">Views</div>' + row(a[1]) + '<div class="cap">Applications</div>' + row(a[2])
+      : '<div class="cap">Suggestions</div>' + rows(sugg);
+    return P('a-win glass-thick',
+      '<div class="head">' + ICO + '<span class="sf">' + field(typed) + '</span></div><hr class="divider">' +
+      '<div class="body">' + body + '</div>' +
+      '<div class="foot">' + avatar + online + '<span class="sp"></span>' + hints + '</div>');
+  };
+  // B. Bar that grows
+  var B = function (typed) {
+    var bar = P('b-bar glass-thick', ICO + '<span class="sf t-heading">' + field(typed) + '</span>' + online + avatar.replace('sm', 'sm'));
+    return typed ? bar + P('b-list glass-thick', rows(res, true, true)) : bar;
+  };
+  // C. Wide with a preview
+  var C = function (typed) {
+    var list = typed ? rows(res, true, false, 'tight') : rows(sugg, true, false, 'tight');
+    var prev = typed
+      ? '<div class="t-caption">Command</div><div class="t-heading">Set a timer</div>' +
+        '<div class="t-label t-2">Start a countdown. Say how long, or pick a time, and choose where it rings.</div>' +
+        '<div class="t-caption" style="margin-top:var(--s-2)">Suggested</div><div class="big">08:00</div>' +
+        '<div class="chips"><span class="chip accent">Here</span><span class="chip">Kitchen tablet</span></div>'
+      : '<div class="t-caption">Now</div>' +
+        '<div class="note-box"><div class="fl" style="justify-content:space-between"><span class="t-strong">Pasta</span><span class="chip success"><span class="dot"></span>Running</span></div><div class="big" style="margin-top:var(--s-1)">07:42</div></div>' +
+        '<div class="t-caption" style="margin-top:var(--s-2)">Latest notification</div>' +
+        '<div class="note-box"><div class="t-strong">New email</div><div class="t-label t-2">From Sam: “Dinner at seven?”</div></div>';
+    return P('c-win glass-thick',
+      '<div class="head" style="height:52px">' + ICO + '<span class="sf">' + field(typed) + '</span></div>' +
+      '<div class="c-mid"><div class="c-list">' + list + '</div><div class="c-prev">' + prev + '</div></div>' +
+      '<div class="foot">' + avatar + online + '<span class="sp"></span>' + hints + '</div>');
+  };
+  // D. Bottom palette
+  var D = function (typed) {
+    var right = typed
+      ? hints
+      : '<span class="chips"><span class="chip">Clipboard</span><span class="chip">Ask Juno</span><span class="chip">Timer</span></span>';
+    var bar = P('d-bar glass-thick', ICO + '<span class="sf">' + field(typed) + '</span>' + right +
+      '<span class="av">' + avatar + '<i class="dot st"></i></span>');
+    return typed ? P('d-list glass-thick', rows(res, true, true)) + bar : bar;
+  };
+  // E. Side panel
+  var E = function (typed) {
+    var list = typed ? rows(res, true) : rows(sugg, true);
+    var now = typed ? '' :
+      '<div class="e-now"><div class="top"><span class="cap">Now</span><span class="chip success"><span class="dot"></span>Pasta</span><b class="num t-strong" style="margin-left:auto">07:42</b></div>' +
+      '<div class="nl">Sam: Dinner at seven?</div><div class="nl">Jo added Milk to Shopping</div><div class="nl">Front door opened</div>' +
+      '<div class="e-juno"><span class="character" style="--size:36px"></span>Ask Juno<span class="kbd" style="margin-left:auto">Tab</span></div></div>';
+    return P('e-panel glass-thick',
+      '<div class="head">' + ICO + '<span class="sf"><span class="ph2">' + (typed ? '' : PH) + '</span>' + (typed ? field(true) : '') + '</span>' + avatar + '</div><hr class="divider">' +
+      '<div class="e-list">' + list + '</div>' +
+      (typed ? '<div class="e-now" style="border-top:0"></div>' : now) +
+      '<div class="foot">' + online + '<span class="sp"></span>' + hints + '</div>');
+  };
+
+  var ds = [
+    ['v-a', 'A. Classic window', 'dark', A, 'The familiar shape and the easiest to learn, with room for the footer; it covers the most of the desktop and hides it all while open.'],
+    ['v-b', 'B. Bar that grows', 'light', B, 'Nearly invisible when empty, so the desktop stays in view; it shows no suggestions until the person types, and has no footer.'],
+    ['v-c', 'C. Wide with a preview', 'dark', C, 'The preview shows what a row will do before it runs; it needs the widest window, and the list gets narrow.'],
+    ['v-d', 'D. Bottom palette', 'light', D, 'Out of the way at the bottom of the screen and close to a hand on the keyboard; the unusual place needs learning, and the status is only a dot.'],
+    ['v-e', 'E. Side panel', 'dark', E, 'Can stay open beside other windows and shows what is running at a glance; it is narrow, so the text is small and the rows are tight.']
+  ];
+  document.getElementById('page').innerHTML = '<h1>Launcher layout board</h1><p class="d">Five layouts of the desktop launcher in clear glass over a busy desktop, each empty and while typing “tim”. Only the layout changes. Nothing is decided.</p>' +
+    ds.map(function (d) {
+      var f = function (title, typed) {
+        return '<div class="cell"><span class="t-caption">' + title + '</span><div class="frame wallpaper compact ' + d[2] + '">' + desktop + d[3](typed) + '</div></div>';
+      };
+      return '<section class="arr" id="' + d[0] + '"><h2>' + d[1] + '</h2><p class="d">' + d[4] + '</p><div class="pair">' +
+        f('Empty', false) + f('Typing “tim”', true) + '</div></section>';
+    }).join('');
+</script>
+</body>
+</html>
