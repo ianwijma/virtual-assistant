@@ -276,3 +276,9 @@ are 25 November 2026 unless a section says otherwise.
 | 249 | The phone call has two buttons, Chat and End, and folds into the chat: the figure shrinks into a header above the live conversation and the call goes on | [phone](design/visual/phone.md) |
 | 250 | The admin panel has three columns: a glass side bar of destinations with search, a list of the destination's items, and the item's page | [admin panel](design/visual/admin-panel.md) |
 | 251 | Closed cards are a list of rows, and the sheet floats over the middle of the dimmed list | [components](design/visual/components.md) |
+| 252 | A design is reused across clients wherever two clients do the same thing; the voice page reuses the phone app's call | [visual design](design/visual/README.md), [voice page](design/visual/voice-page.md) |
+| 253 | The first figures are simple and easy to animate from the reply tags, possibly three-dimensional, and are redesigned in full later | [assistant visuals](design/visual/assistant-visuals.md) |
+| 254 | The logo mark is the glass drop, as a candidate | [identity](design/visual/identity.md) |
+| 255 | A notification appears at the top right of the desktop, and several stack downward | [desktop](design/visual/desktop.md) |
+| 256 | The list of requests shows a small strip of steps in each row, and one request shows its steps as bars in time | [admin panel](design/visual/admin-panel.md) |
+| 257 | The first-run setup has its steps across the top and takes Apple's first setup as its example | [admin panel](design/visual/admin-panel.md) |

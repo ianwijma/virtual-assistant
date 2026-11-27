@@ -15,6 +15,11 @@ Status: started. The feel is set. The name is open.
   it suits a home. It is both a tool and a thing for the home.
 - **The look is inspired by Apple's Liquid Glass, and is not a copy of
   it.** See [glass](glass.md). What sets it apart is a question below.
+- **The logo mark is the glass drop:** a speech bubble that is also a
+  head, with two eyes, drawn as clear glass with a bright edge and a glow
+  inside. This is "D2. Glass drop" on
+  [the second logo board](examples/logo-board-2.html). It is a candidate
+  like the name, to be drawn properly once the name is settled.
 - **The name and the logo are chosen together with this work.** "Virtual
   Assistant" is a working title. Candidates are on
   [the name and logo board](examples/name-and-logo-board.html).
@@ -45,10 +50,9 @@ combined.
 - Is the name "Hearth"? It is the one name the owner chose from the
   board. It is not yet checked for existing products, trade marks and
   web addresses, and the working title stays until it is.
-- Which logo? Four variants each of "Glass pane with eyes" and "Speech
-  drop" are on [the second logo board](examples/logo-board-2.html).
-  "House with a voice", "Hearth glow" and "Orbiting dots" stay in the
-  running.
+- The glass drop is the faintest of the marks at the size of a small
+  icon. Is it made bolder at small sizes, or does a solid form of it
+  stand in there?
 
 To research:
 

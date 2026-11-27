@@ -232,9 +232,9 @@ detail.
    board. It is not yet checked for existing products, trade marks and
    web addresses, and the working title stays until it is. [visual
    identity]
-32. Which logo? Four variants each of "Glass pane with eyes" and "Speech
-   drop" are on the second logo board. "House with a voice", "Hearth
-   glow" and "Orbiting dots" stay in the running. [visual identity]
+32. The glass drop is the faintest of the marks at the size of a small
+   icon. Is it made bolder at small sizes, or does a solid form of it
+   stand in there? [visual identity]
 
 ### The glass
 
@@ -310,8 +310,8 @@ detail.
 
 ### Assistant visuals
 
-58. In which style are the figures drawn? Five styles are on the figure
-   style board. [assistant visuals]
+58. In which style are the full figures drawn, when they are redesigned
+   later? Five styles are on the figure style board. [assistant visuals]
 59. Does a figure have a mouth, or do the eyes alone carry its
    expressions? [assistant visuals]
 60. Who draws the figures, and how many are there in the first release?
@@ -349,8 +349,8 @@ detail.
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-73. How does a notification appear on the desktop, outside the launcher?
-   Five designs are on the desktop notification board. [visual desktop]
+73. Can a notification on the desktop be answered from the keyboard?
+   [visual desktop]
 74. Does a question from an assistant stay on screen until it is
    answered? [visual desktop]
 75. Which views of the launcher have a preview, and which are a list
@@ -376,55 +376,58 @@ detail.
    tablet then show only the clock? [visual tablet]
 85. After how long without speech does the stage close and the idle
    screen return? [visual tablet]
-86. How is the timeline of a request shown? Four designs are on the
-   admin log board. [visual admin panel]
-87. How does the first-run setup look? Four designs are on the setup
-   board. [visual admin panel]
-88. What does a destination with no list of items show, such as Speech
+86. How does the first-run setup look in detail? Designs after Apple's
+   setup are on the second setup board. [visual admin panel]
+87. What does a destination with no list of items show, such as Speech
    or Feedback: two columns, or a second column of its sections? [visual
    admin panel]
-89. Where do search results appear in three columns? [visual admin
+88. Where do search results appear in three columns? [visual admin
    panel]
-90. Does a settings page save as you go, or with one Save button?
+89. Does a settings page save as you go, or with one Save button?
    [visual admin panel]
-91. At phone width, what does the list of destinations become? [visual
+90. At phone width, what does the list of destinations become? [visual
    admin panel]
-92. Which accent does the admin panel show: that of the person signed
+91. Which accent does the admin panel show: that of the person signed
    in, or the household's? [visual admin panel]
-93. Which design does the page have? Four are on the voice page board.
-   [visual voice page]
-94. Do the set-up choices stay visible while a guest talks? [visual
+92. Where on the phone app's call design do the two set-up choices and
+   the note for guests go? Ideas are on the voice page board. [visual
    voice page]
+93. On a wide screen, such as a tablet on its side, is the page arranged
+   like the phone or like the tablet's stage? [visual voice page]
 
 ### The mockups
 
-95. Agree to each mockup, or say what to change in it. They were drawn
+94. Agree to each mockup, or say what to change in it. They were drawn
    before the designs of each client were chosen and are to be redrawn
    from the client documents. [mockups]
-96. Desktop: how does a person go from searching to talking to the
+95. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-97. Desktop: does the launcher open on the screen that holds the
+96. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-98. Desktop: is the settings window opened from the launcher only, or
+97. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-99. Admin panel: the request timeline shows the first words a person
+98. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-100. Admin panel: is "Undo" offered for every change in the audit log,
-   or only for changes that can be reversed safely? [mockups]
-101. Voice page: does the page remember on that browser that it was set
+99. Admin panel: is "Undo" offered for every change in the audit log, or
+   only for changes that can be reversed safely? [mockups]
+100. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-102. Whether the chosen name is free to use: existing products, trade
+101. Whether the chosen name is free to use: existing products, trade
    marks and web addresses. [visual identity]
-103. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+102. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
    each draw: blur behind a surface, and at what speed. [glass]
-104. Whether the launcher window can show the blurred desktop behind it
+103. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
+104. Whether a simple three-dimensional figure can be drawn and moved by
+   the reply tags in Slint, Jetpack Compose, SwiftUI and a browser, on
+   an old tablet as well, and from which kind of source file. [assistant
+   visuals]
 105. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 

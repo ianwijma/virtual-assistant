@@ -25,6 +25,10 @@ One look for every screen the system has:
 - **One look everywhere.** The experience is the same across the desktop
   client, the phone and tablet app, the admin panel and the voice page,
   and in any screen added later.
+- **A design is reused across clients.** Where two clients do the same
+  thing, they use the same design and the same controls. The voice page
+  talks to an assistant the way the phone app does, and a card is the
+  same card everywhere.
 - **Recognisable as ours.** The design is distinctive, so that anyone can
   tell it is this product.
 - **Frosted glass is the design language.** Apple's Liquid Glass is the
@@ -132,12 +136,13 @@ The boards in `examples/`:
 | [phone-talk-board-3.html](examples/phone-talk-board-3.html) | Talking to an assistant as a call, in several designs | Chosen from |
 | [admin-layout-board-3.html](examples/admin-layout-board-3.html) | The admin panel between the Mac's Settings and three columns | Chosen from |
 | [card-board-3.html](examples/card-board-3.html) | Closed cards as rows or pills, lifting into a sheet | Chosen from |
-| [figure-style-board.html](examples/figure-style-board.html) | The assistant's figure in five drawing styles | To choose from |
-| [logo-board-2.html](examples/logo-board-2.html) | Four variants each of two logo marks, with the name Hearth and as app icons | To choose from |
-| [voice-page-board.html](examples/voice-page-board.html) | Four designs of the voice page for a guest | To choose from |
-| [desktop-notification-board.html](examples/desktop-notification-board.html) | Five ways a notification appears on the desktop | To choose from |
-| [admin-log-board.html](examples/admin-log-board.html) | Four designs of the request timeline in the admin panel | To choose from |
-| [setup-board.html](examples/setup-board.html) | Four designs of the first-run setup | To choose from |
+| [figure-style-board.html](examples/figure-style-board.html) | The assistant's figure in five drawing styles | Chosen from |
+| [logo-board-2.html](examples/logo-board-2.html) | Four variants each of two logo marks, with the name Hearth and as app icons | Chosen from |
+| [voice-page-board.html](examples/voice-page-board.html) | Four designs of the voice page for a guest | Chosen from |
+| [desktop-notification-board.html](examples/desktop-notification-board.html) | Five ways a notification appears on the desktop | Chosen from |
+| [admin-log-board.html](examples/admin-log-board.html) | Four designs of the request timeline in the admin panel | Chosen from |
+| [setup-board.html](examples/setup-board.html) | Four designs of the first-run setup | Chosen from; a second round follows |
+| [setup-board-2.html](examples/setup-board-2.html) | The first-run setup after Apple's, with the steps on top | To choose from |
 
 Boards still to make, each with several designs of one thing:
 

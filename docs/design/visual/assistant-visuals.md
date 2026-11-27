@@ -25,6 +25,11 @@ chosen yet.
   else is shown. A glass column on the right holds what was said and any
   card the assistant shows. This is "Full figure on a stage" on
   [the tablet board](examples/tablet-board.html).
+- **The first figures are simple.** They are made to be easy to animate
+  from the [reply tags](../technical/voice/reply-tags.md), not to be
+  final. A simple three-dimensional figure is the form the owner has in
+  mind, if research shows it can be drawn in every client. The figures
+  are redesigned in full later.
 - **A figure can grow over time.** It may start as a head only. Later it
   can be a whole figure that moves across the screen. A plain form, such
   as a sound wave, is possible for an assistant without a figure.
@@ -47,7 +52,8 @@ chosen yet.
 
 ## Open questions
 
-- In which style are the figures drawn? Five styles are on
+- In which style are the full figures drawn, when they are redesigned
+  later? Five styles are on
   [the figure style board](examples/figure-style-board.html).
 - Does a figure have a mouth, or do the eyes alone carry its
   expressions?
@@ -75,5 +81,8 @@ chosen yet.
 
 To research:
 
+- Whether a simple three-dimensional figure can be drawn and moved by
+  the reply tags in Slint, Jetpack Compose, SwiftUI and a browser, on an
+  old tablet as well, and from which kind of source file.
 - How each character is animated so that it runs in Slint, Jetpack
   Compose, SwiftUI and a browser from one source.

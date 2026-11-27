@@ -16,15 +16,17 @@ Status: started. The launcher's glass and shape are set.
   it does not, as in a plain search for actions, the window is a list
   only. These are "Wide with a preview" and "Classic window" on
   [the launcher layout board](examples/launcher-layout-board.html).
+- **A notification appears at the top right of the desktop,** outside
+  the launcher, as a clear glass card. Several stack downward with the
+  newest on top. This is "Top-right stack" on
+  [the desktop notification board](examples/desktop-notification-board.html).
 - **It appears with a very short animation.** See [motion](motion.md).
 - **It uses the compact density.** See
   [shape and spacing](shape-and-spacing.md).
 
 ## Open questions
 
-- How does a notification appear on the desktop, outside the launcher?
-  Five designs are on
-  [the desktop notification board](examples/desktop-notification-board.html).
+- Can a notification on the desktop be answered from the keyboard?
 - Does a question from an assistant stay on screen until it is answered?
 - Which views of the launcher have a preview, and which are a list only?
 - Does the launcher show suggestions before anything is typed? With a

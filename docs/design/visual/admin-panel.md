@@ -25,15 +25,21 @@ Status: started. The principle and the layout are set.
 - **The page of an assistant shows the character beside its settings,**
   as in "Preview and form" on
   [the admin form board](examples/admin-form-board.html).
+- **The list of requests shows a small strip in each row,** made of the
+  steps of that request, so that a slow request stands out in the list.
+- **The page of one request shows each step as a bar,** placed where it
+  fell in time. Steps can run at the same time, and bars show that. These
+  are the list of "One strip" and the page of "Bars" on
+  [the admin log board](examples/admin-log-board.html).
+- **The first-run setup has its steps across the top** and takes Apple's
+  first setup of a device as its example.
 - It uses the compact density. See
   [shape and spacing](shape-and-spacing.md).
 
 ## Open questions
 
-- How is the timeline of a request shown? Four designs are on
-  [the admin log board](examples/admin-log-board.html).
-- How does the first-run setup look? Four designs are on
-  [the setup board](examples/setup-board.html).
+- How does the first-run setup look in detail? Designs after Apple's
+  setup are on [the second setup board](examples/setup-board-2.html).
 - What does a destination with no list of items show, such as Speech or
   Feedback: two columns, or a second column of its sections?
 - Where do search results appear in three columns?
