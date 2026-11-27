@@ -229,3 +229,4 @@ are 25 November 2026.
 | 209 | The starting A2UI catalog is agreed; it is modular, with smaller parts such as buttons to compose from | [A2UI](design/technical/a2ui.md) |
 | 210 | An admin decides when the server updates and to which version, can silence the notice for one release, and can start an update from a script; the program updates itself, a container is updated with container tools | [server](design/technical/server/README.md) |
 | 211 | A device can ask to join as a household device without an invite, pending approval; an admin can switch this off | [pairing](design/technical/server/pairing.md) |
+| 212 | The server will also run on macOS after the first release, so that it can run on a person's work computer | [server](design/technical/server/README.md) |

@@ -61,6 +61,10 @@ For the first release the server runs on Linux, on both ARM and x86
 processors. That covers small boards such as a Raspberry Pi, and ordinary
 home servers and mini PCs.
 
+macOS follows after the first release, so that a person can run the
+server on the computer they work on. Nothing in the server may be built
+in a way that only works on Linux.
+
 ## Installing and updating
 
 The server comes in two forms: a single self-contained program that runs

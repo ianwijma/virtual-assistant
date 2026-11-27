@@ -45,7 +45,7 @@ How the system looks is in [the visual design](../visual/README.md).
 
 | Piece | First release | After it |
 |---|---|---|
-| Server | Yes | |
+| Server | Linux, on ARM and x86 | macOS, to run it on a work computer |
 | Admin panel | Yes | |
 | Voice page | Yes | |
 | Desktop client | Linux, on X11 and Wayland | macOS, then Windows |
