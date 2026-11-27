@@ -142,7 +142,7 @@ The boards in `examples/`:
 | [desktop-notification-board.html](examples/desktop-notification-board.html) | Five ways a notification appears on the desktop | Chosen from |
 | [admin-log-board.html](examples/admin-log-board.html) | Four designs of the request timeline in the admin panel | Chosen from |
 | [setup-board.html](examples/setup-board.html) | Four designs of the first-run setup | Chosen from; a second round follows |
-| [setup-board-2.html](examples/setup-board-2.html) | The first-run setup after Apple's, with the steps on top | To choose from |
+| [setup-board-2.html](examples/setup-board-2.html) | The first-run setup after Apple's, with the steps on top | Chosen from |
 
 Boards still to make, each with several designs of one thing:
 

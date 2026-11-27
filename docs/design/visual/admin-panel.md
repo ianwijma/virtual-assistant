@@ -31,15 +31,23 @@ Status: started. The principle and the layout are set.
   fell in time. Steps can run at the same time, and bars show that. These
   are the list of "One strip" and the page of "Bars" on
   [the admin log board](examples/admin-log-board.html).
-- **The first-run setup has its steps across the top** and takes Apple's
-  first setup of a device as its example.
+- **The first-run setup follows Apple's first setup of a device.** It
+  opens with a welcome that says "Hello". Each step is then one calm
+  pane, centred on the backdrop: a round symbol, a large title, a short
+  sentence, the few fields or choices, a quiet link for the alternative,
+  and one wide Continue button at the bottom. Five dots across the top
+  show the steps, with a back arrow at the top left. This is "Apple
+  pane, dots on top" on
+  [the second setup board](examples/setup-board-2.html).
 - It uses the compact density. See
   [shape and spacing](shape-and-spacing.md).
 
 ## Open questions
 
-- How does the first-run setup look in detail? Designs after Apple's
-  setup are on [the second setup board](examples/setup-board-2.html).
+- Does the welcome of the setup show the assistant's figure, or only
+  "Hello"?
+- Is the setup of a new device, such as a phone or a tablet, drawn in
+  the same way?
 - What does a destination with no list of items show, such as Speech or
   Feedback: two columns, or a second column of its sections?
 - Where do search results appear in three columns?

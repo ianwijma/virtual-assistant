@@ -282,3 +282,4 @@ are 25 November 2026 unless a section says otherwise.
 | 255 | A notification appears at the top right of the desktop, and several stack downward | [desktop](design/visual/desktop.md) |
 | 256 | The list of requests shows a small strip of steps in each row, and one request shows its steps as bars in time | [admin panel](design/visual/admin-panel.md) |
 | 257 | The first-run setup has its steps across the top and takes Apple's first setup as its example | [admin panel](design/visual/admin-panel.md) |
+| 258 | The first-run setup is a welcome and then one centred pane per step, after Apple's setup, with five dots across the top | [admin panel](design/visual/admin-panel.md) |

@@ -376,59 +376,61 @@ detail.
    tablet then show only the clock? [visual tablet]
 85. After how long without speech does the stage close and the idle
    screen return? [visual tablet]
-86. How does the first-run setup look in detail? Designs after Apple's
-   setup are on the second setup board. [visual admin panel]
-87. What does a destination with no list of items show, such as Speech
+86. Does the welcome of the setup show the assistant's figure, or only
+   "Hello"? [visual admin panel]
+87. Is the setup of a new device, such as a phone or a tablet, drawn in
+   the same way? [visual admin panel]
+88. What does a destination with no list of items show, such as Speech
    or Feedback: two columns, or a second column of its sections? [visual
    admin panel]
-88. Where do search results appear in three columns? [visual admin
+89. Where do search results appear in three columns? [visual admin
    panel]
-89. Does a settings page save as you go, or with one Save button?
+90. Does a settings page save as you go, or with one Save button?
    [visual admin panel]
-90. At phone width, what does the list of destinations become? [visual
+91. At phone width, what does the list of destinations become? [visual
    admin panel]
-91. Which accent does the admin panel show: that of the person signed
+92. Which accent does the admin panel show: that of the person signed
    in, or the household's? [visual admin panel]
-92. Where on the phone app's call design do the two set-up choices and
+93. Where on the phone app's call design do the two set-up choices and
    the note for guests go? Ideas are on the voice page board. [visual
    voice page]
-93. On a wide screen, such as a tablet on its side, is the page arranged
+94. On a wide screen, such as a tablet on its side, is the page arranged
    like the phone or like the tablet's stage? [visual voice page]
 
 ### The mockups
 
-94. Agree to each mockup, or say what to change in it. They were drawn
+95. Agree to each mockup, or say what to change in it. They were drawn
    before the designs of each client were chosen and are to be redrawn
    from the client documents. [mockups]
-95. Desktop: how does a person go from searching to talking to the
+96. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-96. Desktop: does the launcher open on the screen that holds the
+97. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-97. Desktop: is the settings window opened from the launcher only, or
+98. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-98. Admin panel: the request timeline shows the first words a person
+99. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-99. Admin panel: is "Undo" offered for every change in the audit log, or
-   only for changes that can be reversed safely? [mockups]
-100. Voice page: does the page remember on that browser that it was set
+100. Admin panel: is "Undo" offered for every change in the audit log,
+   or only for changes that can be reversed safely? [mockups]
+101. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-101. Whether the chosen name is free to use: existing products, trade
+102. Whether the chosen name is free to use: existing products, trade
    marks and web addresses. [visual identity]
-102. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+103. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
    each draw: blur behind a surface, and at what speed. [glass]
-103. Whether the launcher window can show the blurred desktop behind it
+104. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
-104. Whether a simple three-dimensional figure can be drawn and moved by
+105. Whether a simple three-dimensional figure can be drawn and moved by
    the reply tags in Slint, Jetpack Compose, SwiftUI and a browser, on
    an old tablet as well, and from which kind of source file. [assistant
    visuals]
-105. How each character is animated so that it runs in Slint, Jetpack
+106. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
