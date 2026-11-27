@@ -52,6 +52,12 @@ chosen yet.
   calm?
 - How is the screen arranged around the character on a tablet? Several
   designs are on [the tablet board](examples/tablet-board.html).
+- May a card cover part of the character, or does it always sit clear
+  of the head?
+- Does a whole figure move across the screen only while nothing else is
+  shown, and stand still once a card appears?
+- What does an assistant without a figure show: a sound wave, as on the
+  tablet board, or something else?
 - How large is the character where the assistant is not the subject,
   such as in the desktop launcher and on the phone's home screen?
 - May a person bring their own figure, such as a character they like

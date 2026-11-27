@@ -97,7 +97,19 @@ is our own, and it is the same on Linux, Android and the web.
 | [tokens.md](tokens.md) | The full set of tokens | A first set |
 | [components.md](components.md) | The shared components and how they behave | Started |
 | [mockups/](mockups/README.md) | The low-fidelity mockups of each client | A first set, as proposals |
-| [examples/](examples/) | Pages to open in a browser: the [direction board](examples/direction-board.html), the [typeface board](examples/typeface-board.html) and the [example components](examples/components.html), with the tokens as CSS | |
+| [examples/](examples/) | The boards, to open in a browser. See the list below | |
+
+The boards in `examples/`:
+
+| Board | Shows | State |
+|---|---|---|
+| [direction-board.html](examples/direction-board.html) | Colour directions, glass strengths, backdrops and corners | Chosen from |
+| [typeface-board.html](examples/typeface-board.html) | Four typefaces | Chosen from |
+| [components.html](examples/components.html) | The example components, from [tokens.css](examples/tokens.css) and [components.css](examples/components.css) | To review |
+| [material-board.html](examples/material-board.html) | Four designs of the material: as first drawn, more glass, calmer, closer to Apple | To choose from |
+| [launcher-board.html](examples/launcher-board.html) | The desktop launcher at four levels of see-through | To choose from |
+| [tablet-board.html](examples/tablet-board.html) | Five arrangements of the tablet around the character, and one without a figure | To choose from |
+| [name-and-logo-board.html](examples/name-and-logo-board.html) | Six name directions and six logo marks | To choose from |
 
 Planned, each made when work on it starts:
 
