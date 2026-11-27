@@ -96,6 +96,10 @@ is our own, and it is the same on Linux, Android and the web.
 | [assistant-visuals.md](assistant-visuals.md) | How an assistant appears and reacts to speech | Started |
 | [tokens.md](tokens.md) | The full set of tokens | A first set |
 | [components.md](components.md) | The shared components and how they behave | Started |
+| [desktop.md](desktop.md) | The desktop client | Started |
+| [phone.md](phone.md) | The phone app | Started |
+| [tablet.md](tablet.md) | The household tablet | Started |
+| [admin-panel.md](admin-panel.md) | The admin panel | Started |
 | [mockups/](mockups/README.md) | The low-fidelity mockups of each client | A first set, as proposals |
 | [examples/](examples/) | The boards, to open in a browser. See the list below | |
 
@@ -110,13 +114,18 @@ The boards in `examples/`:
 | [launcher-board.html](examples/launcher-board.html) | The desktop launcher at four levels of see-through | Chosen from |
 | [tablet-board.html](examples/tablet-board.html) | Five arrangements of the tablet around the character, and one without a figure | Chosen from |
 | [name-and-logo-board.html](examples/name-and-logo-board.html) | Six name directions and six logo marks | "Hearth" chosen as candidate; logo to a second round |
-| [tablet-idle-board.html](examples/tablet-idle-board.html) | Five designs of the tablet while nobody is using it | To choose from |
-| [phone-home-board.html](examples/phone-home-board.html) | Five designs of the first screen of the phone app | To choose from |
-| [phone-talk-board.html](examples/phone-talk-board.html) | Five designs of the phone while talking to an assistant | To choose from |
-| [admin-layout-board.html](examples/admin-layout-board.html) | Five layouts of the admin panel, each on the Devices page | To choose from |
-| [admin-form-board.html](examples/admin-form-board.html) | Four designs of a settings page, each editing an assistant | To choose from |
-| [launcher-layout-board.html](examples/launcher-layout-board.html) | Five shapes of the desktop launcher | To choose from |
-| [card-board.html](examples/card-board.html) | Four designs of the card an assistant shows | To choose from |
+| [tablet-idle-board.html](examples/tablet-idle-board.html) | Five designs of the tablet while nobody is using it | Chosen from; a second round follows |
+| [phone-home-board.html](examples/phone-home-board.html) | Five designs of the first screen of the phone app | Chosen from; a second round follows |
+| [phone-talk-board.html](examples/phone-talk-board.html) | Five designs of the phone while talking to an assistant | Chosen from; a second round follows |
+| [admin-layout-board.html](examples/admin-layout-board.html) | Five layouts of the admin panel, each on the Devices page | Chosen from; a second round follows |
+| [admin-form-board.html](examples/admin-form-board.html) | Four designs of a settings page, each editing an assistant | Chosen from |
+| [launcher-layout-board.html](examples/launcher-layout-board.html) | Five shapes of the desktop launcher | Chosen from |
+| [card-board.html](examples/card-board.html) | Four designs of the card an assistant shows | Chosen from; a second round follows |
+| [tablet-idle-board-2.html](examples/tablet-idle-board-2.html) | The idle tablet with glance bars and the figure, in several arrangements | To choose from |
+| [phone-screens-board.html](examples/phone-screens-board.html) | Several ways to join the main screens of the phone app | To choose from |
+| [phone-talk-board-2.html](examples/phone-talk-board-2.html) | The figure, the pop-up sheet and the switch to chat, in several designs | To choose from |
+| [admin-layout-board-2.html](examples/admin-layout-board-2.html) | Several forms of the Settings layout for the admin panel, with search | To choose from |
+| [card-board-2.html](examples/card-board-2.html) | Several ways for a row card to open | To choose from |
 
 Boards still to make, each with several designs of one thing:
 
@@ -137,33 +146,15 @@ Planned, each made when work on it starts:
 
 | Document | Covers |
 |---|---|
-| One file per client | How the look applies to the desktop, phone, tablet, admin panel and voice page, once its mockup is agreed |
+| `voice-page.md` | How the look applies to the voice page |
 
 ## Open questions
 
-Each subject's questions are in its own document. The questions below are
-about the clients, whose documents are not started yet.
+Each subject's questions are in its own document.
 
-- What does a tablet in a room show when nobody is using it? Several
-  designs are on [the tablet idle board](examples/tablet-idle-board.html).
-- Which layout does the admin panel have? Five are on
-  [the admin layout board](examples/admin-layout-board.html).
-- How is a settings page arranged, and does it save as you go or with
-  one Save button? Four designs are on
-  [the admin form board](examples/admin-form-board.html).
-- Which design does the first screen of the phone app have? Five are on
-  [the phone home board](examples/phone-home-board.html).
-- Which design does the phone have while a person talks to an
-  assistant? Five are on
-  [the phone conversation board](examples/phone-talk-board.html).
-- Which shape does the desktop launcher have? Five are on
-  [the launcher layout board](examples/launcher-layout-board.html).
-- Does the launcher show suggestions before anything is typed?
 - Should a screen that an assistant composed look different from a
   built-in screen, so that a person can tell?
-- Which client's mockup is worked out in detail first, and which screens
-  of it matter most?
-- Which devices are the references for the mockups: which phone, which
+- Which devices are the references for the designs: which phone, which
   tablet, which monitor size?
 - Are settings screens generated from each feature's description, so
   that one definition serves the phone app, the desktop client and the

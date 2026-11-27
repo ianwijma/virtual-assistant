@@ -37,9 +37,9 @@ The frames the screens are drawn in are in [mockup.css](mockup.css).
 
 ## Open questions
 
-- Agree to each mockup, or say what to change in it. The tablet mockup
-  still shows the first arrangement, a panel from the bottom, and is to
-  be redrawn with the figure on a stage.
+- Agree to each mockup, or say what to change in it. They were drawn
+  before the designs of each client were chosen and are to be redrawn
+  from the client documents.
 - Desktop: how does a person go from searching to talking to the
   assistant: the Tab key, a prefix, or a shortcut of its own? The mockup
   shows Tab and a shortcut.
@@ -47,18 +47,6 @@ The frames the screens are drawn in are in [mockup.css](mockup.css).
   or on the main screen?
 - Desktop: is the settings window opened from the launcher only, or also
   from an icon in the system tray?
-- Phone: the tab bar has five tabs: Home, Alerts, Clipboard, Lists and
-  More. Are these the right five, and may "Notifications" be shortened
-  to "Alerts" to fit?
-- Phone: what does a touch on a clipboard item do: copy it to this
-  phone, or open it?
-- Tablet: does the clock on the idle screen move now and then, to
-  protect the screen?
-- Tablet: after how long without speech does the listening panel close?
-- Admin panel: at phone width the side bar becomes a tab bar with
-  People, Devices, Assistants and More. Is that the right choice?
-- Admin panel: which accent does the admin panel show: that of the
-  person signed in, or the household's?
 - Admin panel: the request timeline shows the first words a person
   said. Who may see them?
 - Admin panel: is "Undo" offered for every change in the audit log, or

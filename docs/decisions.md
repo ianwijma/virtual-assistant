@@ -262,3 +262,9 @@ are 25 November 2026 unless a section says otherwise.
 | 235 | On a household tablet an active assistant stands as a whole figure on a stage, with a glass column for text and cards | [assistant visuals](design/visual/assistant-visuals.md) |
 | 236 | Of the logo marks, "Glass pane with eyes" and "Speech drop" are worked out further and "Overlapping panes" is dropped | [identity](design/visual/identity.md) |
 | 237 | "Hearth" is the candidate for the product name, until it is checked for existing products and trade marks | [identity](design/visual/identity.md) |
+| 238 | The idle tablet shows the wallpaper with a large clock, small glance bars and the assistant's figure with a hint of how to call it | [tablet](design/visual/tablet.md) |
+| 239 | The phone app has four main screens (overview, assistant, timeline and chat) and a person chooses which one it opens on | [phone](design/visual/phone.md) |
+| 240 | On the phone, talking to an assistant shows the whole figure by default; what it shows pops up as a sheet; a person can switch to a live chat view and back | [phone](design/visual/phone.md) |
+| 241 | The admin panel follows the layout of Apple's Settings, shows little at once with detail one step further in, and has a search for settings | [admin panel](design/visual/admin-panel.md) |
+| 242 | The desktop launcher has a list layout and a wide layout with a preview, and the content decides which | [desktop](design/visual/desktop.md) |
+| 243 | A card is a compact row by default and opens on a touch to show more | [components](design/visual/components.md) |

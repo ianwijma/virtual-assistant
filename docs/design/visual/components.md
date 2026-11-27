@@ -16,6 +16,13 @@ mockups.
 - **Glass is for components that float:** cards over a backdrop, bars,
   sheets and menus. Lists and other content are plain. See
   [glass](glass.md).
+- **A card is a row by default.** A card is what an assistant or the
+  system shows for one thing: a timer, a notification, a list, a question
+  to approve. It is a compact row with an icon or the character, two
+  lines of text and one or two small buttons, so that several stack in a
+  list. A touch on a card opens it to show more, such as the items of a
+  list. This is "Row cards" on
+  [the card board](examples/card-board.html).
 - **A screen has one primary action,** in the accent. Other actions are
   quiet.
 - **Focus is always visible,** as a ring in the accent, since the desktop
@@ -43,9 +50,10 @@ light and dark, built from [components.css](examples/components.css).
 ## Open questions
 
 - Agree to the example components as the base for the rest.
-- Which design does a card have? Four are on
-  [the card board](examples/card-board.html). May the phone use another
-  card design than the tablet and the desktop?
+- How does a row card open? Several designs are on
+  [the second card board](examples/card-board-2.html).
+- On a tablet read from across a room, is a card shown open and large
+  from the start?
 - Which components come next? The proposal is the ones the mockups need:
   the launcher's search and results, a sheet, a menu, the tab bar and the
   side bar, a table for logs, the chat, and each card of the A2UI

@@ -300,115 +300,119 @@ detail.
    components and the mockups. [tokens]
 54. Agree to the example components as the base for the rest.
    [components]
-55. Which design does a card have? Four are on the card board. May the
-   phone use another card design than the tablet and the desktop?
-   [components]
-56. Which components come next? The proposal is the ones the mockups
+55. How does a row card open? Several designs are on the second card
+   board. [components]
+56. On a tablet read from across a room, is a card shown open and large
+   from the start? [components]
+57. Which components come next? The proposal is the ones the mockups
    need: the launcher's search and results, a sheet, a menu, the tab bar
    and the side bar, a table for logs, the chat, and each card of the
    A2UI catalog. [components]
 
 ### Assistant visuals
 
-57. In which style are the figures drawn: flat and simple, soft and
+58. In which style are the figures drawn: flat and simple, soft and
    three-dimensional, or hand-drawn? Examples of each are to be made
    before this is answered. [assistant visuals]
-58. Who draws the figures, and how many are there in the first release?
+59. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-59. How does a person give their own assistant a look: by choosing from
+60. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-60. How playful is the default household assistant: cute, friendly, or
+61. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-61. Is the voice page arranged like the tablet, with the figure on a
+62. Is the voice page arranged like the tablet, with the figure on a
    stage? [assistant visuals]
-62. May a card cover part of the character, or does it always sit clear
+63. May a card cover part of the character, or does it always sit clear
    of the head? [assistant visuals]
-63. Does a whole figure move across the screen only while nothing else
+64. Does a whole figure move across the screen only while nothing else
    is shown, and stand still once a card appears? [assistant visuals]
-64. What does an assistant without a figure show: a sound wave, as on
+65. What does an assistant without a figure show: a sound wave, as on
    the tablet board, or something else? [assistant visuals]
-65. How large is the character where the assistant is not the subject,
+66. How large is the character where the assistant is not the subject,
    such as in the desktop launcher and on the phone's home screen?
    [assistant visuals]
-66. May a person bring their own figure, such as a character they like
+67. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-67. Does a figure have a colour of its own, apart from the accent?
+68. Does a figure have a colour of its own, apart from the accent?
    [assistant visuals]
 
 ### The clients
 
-68. What does a tablet in a room show when nobody is using it? Several
-   designs are on the tablet idle board. [visual]
-69. Which layout does the admin panel have? Five are on the admin layout
-   board. [visual]
-70. How is a settings page arranged, and does it save as you go or with
-   one Save button? Four designs are on the admin form board. [visual]
-71. Which design does the first screen of the phone app have? Five are
-   on the phone home board. [visual]
-72. Which design does the phone have while a person talks to an
-   assistant? Five are on the phone conversation board. [visual]
-73. Which shape does the desktop launcher have? Five are on the launcher
-   layout board. [visual]
-74. Does the launcher show suggestions before anything is typed?
-   [visual]
-75. Should a screen that an assistant composed look different from a
+69. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-76. Which client's mockup is worked out in detail first, and which
-   screens of it matter most? [visual]
-77. Which devices are the references for the mockups: which phone, which
+70. Which devices are the references for the designs: which phone, which
    tablet, which monitor size? [visual]
-78. Are settings screens generated from each feature's description, so
+71. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
+72. Which views of the launcher have a preview, and which are a list
+   only? [visual desktop]
+73. Does the launcher show suggestions before anything is typed? With a
+   preview, the empty launcher can show what is running now. [visual
+   desktop]
+74. Does the window change size when it goes from a list to a list with
+   a preview, or is it always the wide size? [visual desktop]
+75. How are the main screens joined: a tab bar, pages to swipe between,
+   or something else? Several designs are on the phone screens board.
+   [visual phone]
+76. How does a person switch between the figure and the chat? Several
+   designs are on the second phone conversation board. [visual phone]
+77. Where is the first screen chosen: in the app's own settings, or in
+   the admin panel with a person's other settings? [visual phone]
+78. What does a touch on a clipboard item do: copy it to this phone, or
+   open it? [visual phone]
+79. How are the clock, the glance bars and the figure arranged on the
+   idle screen? Several designs are on the second tablet idle board.
+   [visual tablet]
+80. Does the clock move now and then, to protect the screen? [visual
+   tablet]
+81. Is the figure on the idle screen at night as well, or does the
+   tablet then show only the clock? [visual tablet]
+82. After how long without speech does the stage close and the idle
+   screen return? [visual tablet]
+83. Which form of the Settings layout? Several designs are on the second
+   admin layout board. [visual admin panel]
+84. Does a settings page save as you go, or with one Save button?
+   [visual admin panel]
+85. At phone width, what does the list of destinations become? [visual
+   admin panel]
+86. Which accent does the admin panel show: that of the person signed
+   in, or the household's? [visual admin panel]
 
 ### The mockups
 
-79. Agree to each mockup, or say what to change in it. The tablet mockup
-   still shows the first arrangement, a panel from the bottom, and is to
-   be redrawn with the figure on a stage. [mockups]
-80. Desktop: how does a person go from searching to talking to the
+87. Agree to each mockup, or say what to change in it. They were drawn
+   before the designs of each client were chosen and are to be redrawn
+   from the client documents. [mockups]
+88. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-81. Desktop: does the launcher open on the screen that holds the
+89. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-82. Desktop: is the settings window opened from the launcher only, or
+90. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-83. Phone: the tab bar has five tabs: Home, Alerts, Clipboard, Lists and
-   More. Are these the right five, and may "Notifications" be shortened
-   to "Alerts" to fit? [mockups]
-84. Phone: what does a touch on a clipboard item do: copy it to this
-   phone, or open it? [mockups]
-85. Tablet: does the clock on the idle screen move now and then, to
-   protect the screen? [mockups]
-86. Tablet: after how long without speech does the listening panel
-   close? [mockups]
-87. Admin panel: at phone width the side bar becomes a tab bar with
-   People, Devices, Assistants and More. Is that the right choice?
-   [mockups]
-88. Admin panel: which accent does the admin panel show: that of the
-   person signed in, or the household's? [mockups]
-89. Admin panel: the request timeline shows the first words a person
+91. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-90. Admin panel: is "Undo" offered for every change in the audit log, or
+92. Admin panel: is "Undo" offered for every change in the audit log, or
    only for changes that can be reversed safely? [mockups]
-91. Voice page: does the page remember on that browser that it was set
+93. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-92. Whether the chosen name is free to use: existing products, trade
+94. Whether the chosen name is free to use: existing products, trade
    marks and web addresses. [visual identity]
-93. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+95. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
    each draw: blur behind a surface, and at what speed. [glass]
-94. Whether the launcher window can show the blurred desktop behind it
+96. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
-95. How each character is animated so that it runs in Slint, Jetpack
+97. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
@@ -453,3 +457,7 @@ An agent does this work and the owner agrees to the outcome.
 [tokens]: design/visual/tokens.md
 [components]: design/visual/components.md
 [mockups]: design/visual/mockups/README.md
+[visual desktop]: design/visual/desktop.md
+[visual phone]: design/visual/phone.md
+[visual tablet]: design/visual/tablet.md
+[visual admin panel]: design/visual/admin-panel.md
