@@ -74,85 +74,27 @@ is our own, and it is the same on Linux, Android and the web.
 | Document | Covers | Status |
 |---|---|---|
 | [identity.md](identity.md) | The name, the feel, and what makes it recognisable | Questions only |
-| [glass.md](glass.md) | The frosted glass material and where it is used | Direction set |
+| [glass.md](glass.md) | The frosted glass material and where it is used | Started |
 | [colour.md](colour.md) | The colours, in light and dark | Candidates to choose from |
+| [typography.md](typography.md) | The typefaces and the type scale | Started |
+| [shape-and-spacing.md](shape-and-spacing.md) | Corners, density, spacing and icons | Started |
+| [motion.md](motion.md) | How things move, and sound | Started |
+| [assistant-visuals.md](assistant-visuals.md) | How an assistant appears and reacts to speech | Started |
 | [examples/](examples/direction-board.html) | Pages to open in a browser that show the candidates | First board |
 
 Planned, each made when work on it starts:
 
 | Document | Covers |
 |---|---|
-| `typography.md` | The typefaces and the type scale |
-| `shape-and-spacing.md` | Corners, borders, depth, spacing and icons |
-| `motion.md` | How things move, and sound |
 | `tokens.md` | The full set of tokens and how each platform's theme is generated |
 | `components.md` | The shared components and how they behave |
-| `assistant-visuals.md` | How an assistant appears and reacts to speech |
 | One file per client | How the look applies to the desktop, phone, tablet, admin panel and voice page |
 | `mockups/` | The low-fidelity mockups of each client |
 
 ## Open questions
 
-Questions about the feel, the glass and the colours are in
-[identity](identity.md), [glass](glass.md) and [colour](colour.md). The
-questions below belong to documents that are not started yet.
-
-Typography:
-
-- Is one typeface shipped with every client, so that text looks the same
-  everywhere? The other choice is each platform's own font, which is
-  lighter but looks different per device. Apple's San Francisco cannot be
-  used outside Apple's devices.
-- Which character should the typeface have: neutral (such as Inter or
-  Geist), geometric and friendly (such as Manrope or Figtree), or rounded
-  (such as Nunito)? Every candidate must have a licence that allows sold
-  hardware.
-- Do headings get their own typeface, or is one family used for
-  everything?
-- Which languages and scripts must the typeface cover later?
-- Does text follow the text size set on the device?
-
-Shape, spacing and icons:
-
-- How round are corners: slightly (about 8 to 12), clearly (about 16 to
-  24), or pill-shaped controls as in Apple's design? The direction board
-  shows the three.
-- Is there one density, or a compact one for the desktop and the admin
-  panel and a roomy one for touch and for the tablet across a room?
-- Are icons outlined or filled, and is an open icon set used (such as
-  Lucide, Phosphor or Tabler) or do we draw our own? Apple's symbols
-  cannot be used.
-- Is there an illustration style, for empty screens and first-run setup?
-
-Motion and sound:
-
-- How much does the interface move: fluid and springy as in Apple's
-  design, or quick and plain? The desktop must appear within 100 ms, so
-  does the launcher appear with no animation at all?
-- Are sounds part of the identity, such as a tone when an assistant
-  starts listening or a timer ends?
-- Does the phone use vibration as part of the feel?
-
-Assistant visuals:
-
-- What is a character: an abstract shape such as an orb or a wave, a
-  simple face, or a full illustrated figure? The
-  [reply tags](../technical/voice/reply-tags.md) include a wink, an eye
-  roll, a nod and a shake of the head, which need eyes and a head.
-- How do two assistants differ: by colour only, by shape, or as fully
-  different characters?
-- How does a person give their own assistant a look: by choosing from a
-  set, by adjusting parts such as colour and eyes, or by supplying an
-  image?
-- How playful is the default household assistant: cute, friendly, or
-  calm and abstract?
-- Which states must a character show? The proposal is idle, listening,
-  thinking, speaking, muted, waiting for the server, and voice not
-  recognised.
-- How large is the character on each screen: the whole screen on the
-  tablet, a small part of the launcher on the desktop?
-
-The clients:
+Each subject's questions are in its own document. The questions below are
+about the clients, whose documents are not started yet.
 
 - What does a tablet in a room show when nobody is using it: the
   character, a clock, running timers, or nothing?
@@ -169,8 +111,3 @@ The clients:
   admin panel? A2UI makes this possible, but one solution may not suit
   every device. This is decided once there are visual designs of the app
   and the admin panel.
-
-To research:
-
-- How each character is animated so that it runs in Slint, Jetpack
-  Compose, SwiftUI and a browser from one source.

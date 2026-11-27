@@ -9,14 +9,23 @@ Status: candidates to choose from. No colour is chosen yet.
 
 - **There is a light and a dark form,** and each client follows the
   setting of the device it runs on.
-- **A person cannot choose a theme.**
+- **A person cannot choose a theme.** There is no switch for light and
+  dark in our own settings, and no accent colour to choose. There is one
+  accent colour for everyone.
+- **Dark is a dark grey with a slight tint, not black.** Glass needs
+  something behind it, and on black it disappears. Only the low-power
+  screen of a tablet is true black.
+- **Status colours are the usual ones:** green for success, amber for a
+  warning, red for danger. A status is never shown by colour alone; it
+  also has an icon or a word.
+- **Text is readable on every surface it is on,** glass included: a
+  contrast of at least 4.5 to 1 for normal text and 3 to 1 for large
+  text, measured against the least favourable backdrop.
 - **The colours are tokens.** Every client and every
   [described screen](../technical/a2ui.md) takes them from the one set of
   design tokens.
 
-## Proposal: the parts of the palette
-
-Whatever the colours become, the palette has these parts:
+## The parts of the palette
 
 | Part | Used for |
 |---|---|
@@ -46,23 +55,12 @@ values.
 
 - Which direction, A to E, or which mix of them? See the direction
   board.
-- Agree to the parts of the palette in the proposal above.
-- Is there one accent colour for everyone, or may a person choose their
-  own accent? A theme cannot be chosen; is an accent a theme?
 - Does each assistant have its own colour, and does the screen take that
   colour while the assistant is active?
 - Does each person have a colour, to show whose account is active on a
   shared computer, or who added an item to a shared list?
-- Is dark a true black, which saves power on a tablet with an OLED
-  screen, or a dark grey with a slight tint?
 - Is light a pure white, or a slightly tinted, softer white?
-- Are the status colours the usual green, amber and red?
-- How readable must text be: the common standard of a contrast of 4.5 to
-  1 for normal text, or stricter?
 - Are there colours to avoid, and is anyone in the household
   colour-blind?
 - A tablet in a room has its light or dark setting fixed by whoever set
   it up. Should a household tablet go dark at night by itself?
-- "Follows the device" means there is no switch for light and dark in
-  our own settings. Is that right, or should a person be able to
-  override it per device?

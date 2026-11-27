@@ -146,19 +146,19 @@
     ['d', 'D. Moss', 'sage green, natural grey. Quiet and natural.'],
     ['e', 'E. Clear', 'no colour of its own. All colour comes from the assistant.']
   ];
-  var h = '<h2>1. Colour direction</h2><p class="lead">Five candidates, each in light and dark. The values are rough: choose a direction, not a shade. Question 43.</p>';
+  var h = '<h2>1. Colour direction</h2><p class="lead">Five candidates, each in light and dark. The values are rough: choose a direction, not a shade. Question 39.</p>';
   dirs.forEach(function (d) {
     h += '<h3>' + d[1] + ' <span>— ' + d[2] + '</span></h3><div class="grid g2">' +
       scene(d[0] + ' light', 'Light') + scene(d[0] + ' dark', 'Dark') + '</div>';
   });
-  h += '<h2>2. How far the glass goes</h2><p class="lead">The same panel at three strengths. Question 36.</p><div class="grid g3">';
+  h += '<h2>2. How far the glass goes</h2><p class="lead">The same panel at three strengths. Question 35.</p><div class="grid g3">';
   [['frost', 'Frost'], ['', 'Glass'], ['liquid', 'Liquid']].forEach(function (s) { h += scene('a light ' + s[0], s[1], true); });
   [['frost', 'Frost'], ['', 'Glass'], ['liquid', 'Liquid']].forEach(function (s) { h += scene('c dark ' + s[0], s[1], true); });
   h += '</div><p class="note"><b>Frost</b> is heavy blur and nearly solid: the easiest to read and to draw. <b>Glass</b> is a clear blur with a bright edge. <b>Liquid</b> is nearly clear with bent light at the edges: the most like Apple, the hardest to read and to draw. A browser can only hint at the bent light.</p>';
-  h += '<h2>3. What is behind the glass</h2><p class="lead">Glass needs something behind it. Question 37.</p><div class="grid g3">' +
+  h += '<h2>3. What is behind the glass</h2><p class="lead">Glass needs something behind it. Question 36.</p><div class="grid g3">' +
     scene('a light plain', 'A plain page', true) + scene('a light', 'Our own backdrop', true) + scene('e light', "The assistant's colour", true) +
     '</div><p class="note">On a <b>plain page</b> glass is only a white card. <b>Our own backdrop</b> is the same soft colour on every device. With <b>the assistant\'s colour</b> the screen shows who is listening.</p>';
-  h += '<h2>4. Corners</h2><p class="lead">Question 60.</p><div class="grid g3">' +
+  h += '<h2>4. Corners</h2><p class="lead">Question 48.</p><div class="grid g3">' +
     scene('d dark r-soft', 'Slightly round', true) + scene('d dark r-round', 'Clearly round', true) + scene('d dark r-pill', 'Pill-shaped', true) + '</div>';
   document.getElementById('board').innerHTML = h;
 </script>
