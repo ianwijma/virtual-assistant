@@ -121,11 +121,15 @@ The boards in `examples/`:
 | [admin-form-board.html](examples/admin-form-board.html) | Four designs of a settings page, each editing an assistant | Chosen from |
 | [launcher-layout-board.html](examples/launcher-layout-board.html) | Five shapes of the desktop launcher | Chosen from |
 | [card-board.html](examples/card-board.html) | Four designs of the card an assistant shows | Chosen from; a second round follows |
-| [tablet-idle-board-2.html](examples/tablet-idle-board-2.html) | The idle tablet with glance bars and the figure, in several arrangements | To choose from |
-| [phone-screens-board.html](examples/phone-screens-board.html) | Several ways to join the main screens of the phone app | To choose from |
-| [phone-talk-board-2.html](examples/phone-talk-board-2.html) | The figure, the pop-up sheet and the switch to chat, in several designs | To choose from |
-| [admin-layout-board-2.html](examples/admin-layout-board-2.html) | Several forms of the Settings layout for the admin panel, with search | To choose from |
-| [card-board-2.html](examples/card-board-2.html) | Several ways for a row card to open | To choose from |
+| [tablet-idle-board-2.html](examples/tablet-idle-board-2.html) | The idle tablet with glance bars and the figure, in several arrangements | Chosen from |
+| [phone-screens-board.html](examples/phone-screens-board.html) | Several ways to join the main screens of the phone app | Chosen from |
+| [phone-talk-board-2.html](examples/phone-talk-board-2.html) | The figure, the pop-up sheet and the switch to chat, in several designs | Chosen from |
+| [admin-layout-board-2.html](examples/admin-layout-board-2.html) | Several forms of the Settings layout for the admin panel, with search | Chosen from |
+| [card-board-2.html](examples/card-board-2.html) | Several ways for a row card to open | Chosen from; a third round follows |
+| [tablet-idle-board-3.html](examples/tablet-idle-board-3.html) | The idle tablet with a bottom shelf, in several arrangements | To choose from |
+| [phone-talk-board-3.html](examples/phone-talk-board-3.html) | Talking to an assistant as a call, in several designs | To choose from |
+| [admin-layout-board-3.html](examples/admin-layout-board-3.html) | The admin panel between the Mac's Settings and three columns | To choose from |
+| [card-board-3.html](examples/card-board-3.html) | Closed cards as rows or pills, lifting into a sheet | To choose from |
 
 Boards still to make, each with several designs of one thing:
 

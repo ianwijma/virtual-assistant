@@ -268,3 +268,7 @@ are 25 November 2026 unless a section says otherwise.
 | 241 | The admin panel follows the layout of Apple's Settings, shows little at once with detail one step further in, and has a search for settings | [admin panel](design/visual/admin-panel.md) |
 | 242 | The desktop launcher has a list layout and a wide layout with a preview, and the content decides which | [desktop](design/visual/desktop.md) |
 | 243 | A card is a compact row by default and opens on a touch to show more | [components](design/visual/components.md) |
+| 244 | A floating glass tab bar joins the four main screens of the phone app | [phone](design/visual/phone.md) |
+| 245 | The idle tablet has a slim glass shelf along the bottom that holds the glance bars and on which the figure stands; there is no written hint of the wake word | [tablet](design/visual/tablet.md) |
+| 246 | Talking to an assistant on the phone is like a call, as in the ChatGPT app: the figure full screen, a few simple buttons, and a switch to chat or an end to the call | [phone](design/visual/phone.md) |
+| 247 | A touch on a card lifts it into a sheet over the dimmed screen, like a modal | [components](design/visual/components.md) |

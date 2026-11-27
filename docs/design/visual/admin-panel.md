@@ -23,8 +23,11 @@ Status: started. The principle is set. The layout is being chosen.
 
 ## Open questions
 
-- Which form of the Settings layout? Several designs are on
-  [the second admin layout board](examples/admin-layout-board-2.html).
+- Which form of the Settings layout? The owner likes two on
+  [the second admin layout board](examples/admin-layout-board-2.html):
+  "Mac System Settings" and "Three columns". Designs that build on both
+  are on
+  [the third admin layout board](examples/admin-layout-board-3.html).
 - Does a settings page save as you go, or with one Save button?
 - At phone width, what does the list of destinations become?
 - Which accent does the admin panel show: that of the person signed in,

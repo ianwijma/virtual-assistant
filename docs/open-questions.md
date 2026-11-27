@@ -300,7 +300,8 @@ detail.
    components and the mockups. [tokens]
 54. Agree to the example components as the base for the rest.
    [components]
-55. How does a row card open? Several designs are on the second card
+55. How are closed cards laid out, in a list or as pills in a row, and
+   where does the sheet appear? Several designs are on the third card
    board. [components]
 56. On a tablet read from across a room, is a card shown open and large
    from the start? [components]
@@ -356,26 +357,28 @@ detail.
    desktop]
 74. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-75. How are the main screens joined: a tab bar, pages to swipe between,
-   or something else? Several designs are on the phone screens board.
-   [visual phone]
-76. How does a person switch between the figure and the chat? Several
-   designs are on the second phone conversation board. [visual phone]
-77. Where is the first screen chosen: in the app's own settings, or in
+75. Which buttons does the call have, and what happens to the call while
+   the chat is open? Several designs are on the third phone conversation
+   board. [visual phone]
+76. Where is the first screen chosen: in the app's own settings, or in
    the admin panel with a person's other settings? [visual phone]
-78. What does a touch on a clipboard item do: copy it to this phone, or
+77. What does a touch on a clipboard item do: copy it to this phone, or
    open it? [visual phone]
-79. How are the clock, the glance bars and the figure arranged on the
-   idle screen? Several designs are on the second tablet idle board.
+78. How are the clock, the glance bars and the figure arranged around
+   the shelf? Several designs are on the third tablet idle board.
    [visual tablet]
+79. When a tablet has several assistants, are all their figures on the
+   idle screen, or one? [visual tablet]
 80. Does the clock move now and then, to protect the screen? [visual
    tablet]
 81. Is the figure on the idle screen at night as well, or does the
    tablet then show only the clock? [visual tablet]
 82. After how long without speech does the stage close and the idle
    screen return? [visual tablet]
-83. Which form of the Settings layout? Several designs are on the second
-   admin layout board. [visual admin panel]
+83. Which form of the Settings layout? The owner likes two on the second
+   admin layout board: "Mac System Settings" and "Three columns".
+   Designs that build on both are on the third admin layout board.
+   [visual admin panel]
 84. Does a settings page save as you go, or with one Save button?
    [visual admin panel]
 85. At phone width, what does the list of destinations become? [visual
