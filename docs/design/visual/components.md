@@ -43,6 +43,9 @@ light and dark, built from [components.css](examples/components.css).
 ## Open questions
 
 - Agree to the example components as the base for the rest.
+- Which design does a card have? Four are on
+  [the card board](examples/card-board.html). May the phone use another
+  card design than the tablet and the desktop?
 - Which components come next? The proposal is the ones the mockups need:
   the launcher's search and results, a sheet, a menu, the tab bar and the
   side bar, a table for logs, the chat, and each card of the A2UI

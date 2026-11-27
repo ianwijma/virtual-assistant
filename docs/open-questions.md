@@ -300,53 +300,66 @@ detail.
    components and the mockups. [tokens]
 54. Agree to the example components as the base for the rest.
    [components]
-55. Which components come next? The proposal is the ones the mockups
+55. Which design does a card have? Four are on the card board. May the
+   phone use another card design than the tablet and the desktop?
+   [components]
+56. Which components come next? The proposal is the ones the mockups
    need: the launcher's search and results, a sheet, a menu, the tab bar
    and the side bar, a table for logs, the chat, and each card of the
    A2UI catalog. [components]
 
 ### Assistant visuals
 
-56. In which style are the figures drawn: flat and simple, soft and
+57. In which style are the figures drawn: flat and simple, soft and
    three-dimensional, or hand-drawn? Examples of each are to be made
    before this is answered. [assistant visuals]
-57. Who draws the figures, and how many are there in the first release?
+58. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-58. How does a person give their own assistant a look: by choosing from
+59. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-59. How playful is the default household assistant: cute, friendly, or
+60. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-60. Is the voice page arranged like the tablet, with the figure on a
+61. Is the voice page arranged like the tablet, with the figure on a
    stage? [assistant visuals]
-61. May a card cover part of the character, or does it always sit clear
+62. May a card cover part of the character, or does it always sit clear
    of the head? [assistant visuals]
-62. Does a whole figure move across the screen only while nothing else
+63. Does a whole figure move across the screen only while nothing else
    is shown, and stand still once a card appears? [assistant visuals]
-63. What does an assistant without a figure show: a sound wave, as on
+64. What does an assistant without a figure show: a sound wave, as on
    the tablet board, or something else? [assistant visuals]
-64. How large is the character where the assistant is not the subject,
+65. How large is the character where the assistant is not the subject,
    such as in the desktop launcher and on the phone's home screen?
    [assistant visuals]
-65. May a person bring their own figure, such as a character they like
+66. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-66. Does a figure have a colour of its own, apart from the accent?
+67. Does a figure have a colour of its own, apart from the accent?
    [assistant visuals]
 
 ### The clients
 
-67. What does a tablet in a room show when nobody is using it? Several
+68. What does a tablet in a room show when nobody is using it? Several
    designs are on the tablet idle board. [visual]
-68. Does the admin panel use glass as much as the other clients, or is
-   it plainer because it holds dense tables and logs? [visual]
-69. Should a screen that an assistant composed look different from a
+69. Which layout does the admin panel have? Five are on the admin layout
+   board. [visual]
+70. How is a settings page arranged, and does it save as you go or with
+   one Save button? Four designs are on the admin form board. [visual]
+71. Which design does the first screen of the phone app have? Five are
+   on the phone home board. [visual]
+72. Which design does the phone have while a person talks to an
+   assistant? Five are on the phone conversation board. [visual]
+73. Which shape does the desktop launcher have? Five are on the launcher
+   layout board. [visual]
+74. Does the launcher show suggestions before anything is typed?
+   [visual]
+75. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-70. Which client's mockup is worked out in detail first, and which
+76. Which client's mockup is worked out in detail first, and which
    screens of it matter most? [visual]
-71. Which devices are the references for the mockups: which phone, which
+77. Which devices are the references for the mockups: which phone, which
    tablet, which monitor size? [visual]
-72. Are settings screens generated from each feature's description, so
+78. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
@@ -354,48 +367,48 @@ detail.
 
 ### The mockups
 
-73. Agree to each mockup, or say what to change in it. The tablet mockup
+79. Agree to each mockup, or say what to change in it. The tablet mockup
    still shows the first arrangement, a panel from the bottom, and is to
    be redrawn with the figure on a stage. [mockups]
-74. Desktop: how does a person go from searching to talking to the
+80. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-75. Desktop: does the launcher open on the screen that holds the
+81. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-76. Desktop: is the settings window opened from the launcher only, or
+82. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-77. Phone: the tab bar has five tabs: Home, Alerts, Clipboard, Lists and
+83. Phone: the tab bar has five tabs: Home, Alerts, Clipboard, Lists and
    More. Are these the right five, and may "Notifications" be shortened
    to "Alerts" to fit? [mockups]
-78. Phone: what does a touch on a clipboard item do: copy it to this
+84. Phone: what does a touch on a clipboard item do: copy it to this
    phone, or open it? [mockups]
-79. Tablet: does the clock on the idle screen move now and then, to
+85. Tablet: does the clock on the idle screen move now and then, to
    protect the screen? [mockups]
-80. Tablet: after how long without speech does the listening panel
+86. Tablet: after how long without speech does the listening panel
    close? [mockups]
-81. Admin panel: at phone width the side bar becomes a tab bar with
+87. Admin panel: at phone width the side bar becomes a tab bar with
    People, Devices, Assistants and More. Is that the right choice?
    [mockups]
-82. Admin panel: which accent does the admin panel show: that of the
+88. Admin panel: which accent does the admin panel show: that of the
    person signed in, or the household's? [mockups]
-83. Admin panel: the request timeline shows the first words a person
+89. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-84. Admin panel: is "Undo" offered for every change in the audit log, or
+90. Admin panel: is "Undo" offered for every change in the audit log, or
    only for changes that can be reversed safely? [mockups]
-85. Voice page: does the page remember on that browser that it was set
+91. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-86. Whether the chosen name is free to use: existing products, trade
+92. Whether the chosen name is free to use: existing products, trade
    marks and web addresses. [visual identity]
-87. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+93. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
    each draw: blur behind a surface, and at what speed. [glass]
-88. Whether the launcher window can show the blurred desktop behind it
+94. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
-89. How each character is animated so that it runs in Slint, Jetpack
+95. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

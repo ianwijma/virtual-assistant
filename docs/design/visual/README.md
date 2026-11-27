@@ -111,6 +111,27 @@ The boards in `examples/`:
 | [tablet-board.html](examples/tablet-board.html) | Five arrangements of the tablet around the character, and one without a figure | Chosen from |
 | [name-and-logo-board.html](examples/name-and-logo-board.html) | Six name directions and six logo marks | "Hearth" chosen as candidate; logo to a second round |
 | [tablet-idle-board.html](examples/tablet-idle-board.html) | Five designs of the tablet while nobody is using it | To choose from |
+| [phone-home-board.html](examples/phone-home-board.html) | Five designs of the first screen of the phone app | To choose from |
+| [phone-talk-board.html](examples/phone-talk-board.html) | Five designs of the phone while talking to an assistant | To choose from |
+| [admin-layout-board.html](examples/admin-layout-board.html) | Five layouts of the admin panel, each on the Devices page | To choose from |
+| [admin-form-board.html](examples/admin-form-board.html) | Four designs of a settings page, each editing an assistant | To choose from |
+| [launcher-layout-board.html](examples/launcher-layout-board.html) | Five shapes of the desktop launcher | To choose from |
+| [card-board.html](examples/card-board.html) | Four designs of the card an assistant shows | To choose from |
+
+Boards still to make, each with several designs of one thing:
+
+| Board | Shows |
+|---|---|
+| Figure styles | The assistant's figure in several drawing styles, on the tablet stage |
+| Logo, second round | "Glass pane with eyes" and "Speech drop" worked out, with app icons |
+| Voice page | The page in a browser, before and after sign-in |
+| Desktop notification | A notification that appears on the desktop outside the launcher |
+| Desktop settings window | The settings of a device |
+| Admin panel logs | The request timeline and the audit log |
+| First-run setup | Setting up a new server, and a new device |
+| Phone navigation | How the areas of the phone app are reached, once its home is chosen |
+| Waiting and empty states | A screen that waits for the server, and a screen with nothing in it |
+| Motion | How a sheet, a card and the character move, as a page that moves |
 
 Planned, each made when work on it starts:
 
@@ -125,8 +146,19 @@ about the clients, whose documents are not started yet.
 
 - What does a tablet in a room show when nobody is using it? Several
   designs are on [the tablet idle board](examples/tablet-idle-board.html).
-- Does the admin panel use glass as much as the other clients, or is it
-  plainer because it holds dense tables and logs?
+- Which layout does the admin panel have? Five are on
+  [the admin layout board](examples/admin-layout-board.html).
+- How is a settings page arranged, and does it save as you go or with
+  one Save button? Four designs are on
+  [the admin form board](examples/admin-form-board.html).
+- Which design does the first screen of the phone app have? Five are on
+  [the phone home board](examples/phone-home-board.html).
+- Which design does the phone have while a person talks to an
+  assistant? Five are on
+  [the phone conversation board](examples/phone-talk-board.html).
+- Which shape does the desktop launcher have? Five are on
+  [the launcher layout board](examples/launcher-layout-board.html).
+- Does the launcher show suggestions before anything is typed?
 - Should a screen that an assistant composed look different from a
   built-in screen, so that a person can tell?
 - Which client's mockup is worked out in detail first, and which screens
