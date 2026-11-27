@@ -14,6 +14,14 @@ chosen yet.
 - **A character is an illustrated figure.** Each assistant has its own
   drawn figure, with eyes and a head, so that it can wink, roll its eyes,
   nod and shake its head.
+- **The character gets most of the screen** wherever the assistant is the
+  subject, as on a household tablet and on the voice page. It stands in
+  the middle and the rest of the screen is arranged around it. The
+  earlier voice assistant did this, and its arrangement is the reference;
+  its look is not reused.
+- **A figure can grow over time.** It may start as a head only. Later it
+  can be a whole figure that moves across the screen. A plain form, such
+  as a sound wave, is possible for an assistant without a figure.
 - **The examples and mockups show a placeholder,** a simple shape with
   two eyes, until the figures are drawn.
 - **A character shows expressions.** They are driven by the
@@ -42,8 +50,13 @@ chosen yet.
   supplying their own drawing?
 - How playful is the default household assistant: cute, friendly, or
   calm?
-- How large is the character on each screen: the whole screen on the
-  tablet, a small part of the launcher on the desktop?
+- How is the screen arranged around the character on a tablet? Several
+  designs are on [the tablet board](examples/tablet-board.html).
+- How large is the character where the assistant is not the subject,
+  such as in the desktop launcher and on the phone's home screen?
+- May a person bring their own figure, such as a character they like
+  from elsewhere? The project cannot ship characters that belong to
+  others.
 - Does a figure have a colour of its own, apart from the
   [accent](colour.md)?
 

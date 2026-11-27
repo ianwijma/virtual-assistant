@@ -3,7 +3,9 @@
 The low-fidelity mockups of each client. Part of
 [the visual design](../README.md).
 
-Status: a first set, as proposals. None is agreed yet.
+Status: a first rough set, as proposals. None is agreed yet. It was drawn
+before the look of each part was chosen from several designs, so it shows
+which screens exist and what is on them, not their final arrangement.
 
 ## What a mockup is
 

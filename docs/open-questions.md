@@ -228,106 +228,116 @@ detail.
    whole household at a tablet, guests and children included? When a
    dense screen and a friendly screen conflict, which wins? [visual
    identity]
-31. Are there candidates for the product name? Does the visual work go
-   on under the working title until there is one? [visual identity]
-32. When are a logo and an app icon needed: now, or after the design
-   language is settled? [visual identity]
+31. Which name, and which logo? See the name and logo board. The names
+   on it are not checked for existing products or trade marks. [visual
+   identity]
 
 ### The glass
 
-33. Who sets the wallpaper of a household tablet: an admin, in the admin
+32. Who sets the wallpaper of a household tablet: an admin, in the admin
    panel? Is it one picture, or several that change? [glass]
-34. Can a wallpaper also be set on a personal phone, in the settings
+33. Can a wallpaper also be set on a personal phone, in the settings
    window of the desktop client, or in the admin panel, or do those
    always show our own backdrop? [glass]
-35. Does our own backdrop move slowly, or is it still? [glass]
+34. Does our own backdrop move slowly, or is it still? [glass]
+35. How see-through is the desktop launcher? Several strengths are on
+   the launcher board. [glass]
+36. Can a person set how see-through the glass is? The owner named this
+   as a possibility. [glass]
+37. Which of the designs on the material board is the look: as first
+   drawn, more glass, calmer, or closer to Apple's? [glass]
 
 ### The colours
 
-36. Which accent does a new household start with? [colour]
-37. Should the set have more accents, such as a pink or a red, and how
+38. Which accent does a new household start with? [colour]
+39. Should the set have more accents, such as a pink or a red, and how
    many is enough? [colour]
-38. Does each assistant have its own colour? If so, which one shows
+40. Does each assistant have its own colour? If so, which one shows
    while an assistant is active on a household device: the assistant's,
    or the accent of the person it recognised? [colour]
-39. Is a person's accent also the colour that marks them elsewhere, such
+41. Is a person's accent also the colour that marks them elsewhere, such
    as on the account switch of a shared computer, or beside an item they
    added to a shared list? [colour]
-40. Is light a pure white, or a slightly tinted, softer white? [colour]
-41. Are there colours to avoid, and is anyone in the household colour-
+42. Is light a pure white, or a slightly tinted, softer white? [colour]
+43. Are there colours to avoid, and is anyone in the household colour-
    blind? [colour]
-42. A tablet in a room has its light or dark setting fixed by whoever
+44. A tablet in a room has its light or dark setting fixed by whoever
    set it up. Should a household tablet go dark at night by itself?
    [colour]
 
 ### Typography
 
-43. Which monospace typeface is shipped for logs and timelines?
+45. Which monospace typeface is shipped for logs and timelines?
    JetBrains Mono is a candidate with a fitting licence. [typography]
-44. Which languages and scripts must be covered later, beyond what Inter
+46. Which languages and scripts must be covered later, beyond what Inter
    covers? [typography]
 
 ### Shape, spacing and icons
 
-45. Are icons outlined or filled, and which open set is used: Lucide,
+47. Are icons outlined or filled, and which open set is used: Lucide,
    Phosphor, Tabler or another? [shape]
-46. Is there an illustration style, for empty screens and first-run
+48. Is there an illustration style, for empty screens and first-run
    setup? [shape]
 
 ### Motion and sound
 
-47. Are sounds part of the identity, such as a tone when an assistant
+49. Are sounds part of the identity, such as a tone when an assistant
    starts listening or a timer ends? [motion]
-48. Does the phone use vibration as part of the feel? [motion]
-49. How is a device found to be too slow for full motion: measured by
+50. Does the phone use vibration as part of the feel? [motion]
+51. How is a device found to be too slow for full motion: measured by
    the client, or switched by hand only? [motion]
 
 ### Tokens and components
 
-50. In which format is the source of the tokens kept in the repository,
+52. In which format is the source of the tokens kept in the repository,
    and which tool generates the four themes from it? The Design Tokens
    format of the W3C community group is a candidate. This is research
    still to do. [tokens]
-51. Agree to the first values, after seeing them in the example
+53. Agree to the first values, after seeing them in the example
    components and the mockups. [tokens]
-52. Agree to the example components as the base for the rest.
+54. Agree to the example components as the base for the rest.
    [components]
-53. Which components come next? The proposal is the ones the mockups
+55. Which components come next? The proposal is the ones the mockups
    need: the launcher's search and results, a sheet, a menu, the tab bar
    and the side bar, a table for logs, the chat, and each card of the
    A2UI catalog. [components]
 
 ### Assistant visuals
 
-54. In which style are the figures drawn: flat and simple, soft and
+56. In which style are the figures drawn: flat and simple, soft and
    three-dimensional, or hand-drawn? Examples of each are to be made
    before this is answered. [assistant visuals]
-55. Who draws the figures, and how many are there in the first release?
+57. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-56. How does a person give their own assistant a look: by choosing from
+58. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-57. How playful is the default household assistant: cute, friendly, or
+59. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-58. How large is the character on each screen: the whole screen on the
-   tablet, a small part of the launcher on the desktop? [assistant
-   visuals]
-59. Does a figure have a colour of its own, apart from the accent?
+60. How is the screen arranged around the character on a tablet? Several
+   designs are on the tablet board. [assistant visuals]
+61. How large is the character where the assistant is not the subject,
+   such as in the desktop launcher and on the phone's home screen?
+   [assistant visuals]
+62. May a person bring their own figure, such as a character they like
+   from elsewhere? The project cannot ship characters that belong to
+   others. [assistant visuals]
+63. Does a figure have a colour of its own, apart from the accent?
    [assistant visuals]
 
 ### The clients
 
-60. What does a tablet in a room show when nobody is using it: the
+64. What does a tablet in a room show when nobody is using it: the
    character, a clock, running timers, or nothing? [visual]
-61. Does the admin panel use glass as much as the other clients, or is
+65. Does the admin panel use glass as much as the other clients, or is
    it plainer because it holds dense tables and logs? [visual]
-62. Should a screen that an assistant composed look different from a
+66. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-63. Which client's mockup is worked out in detail first, and which
+67. Which client's mockup is worked out in detail first, and which
    screens of it matter most? [visual]
-64. Which devices are the references for the mockups: which phone, which
+68. Which devices are the references for the mockups: which phone, which
    tablet, which monitor size? [visual]
-65. Are settings screens generated from each feature's description, so
+69. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
@@ -335,44 +345,46 @@ detail.
 
 ### The mockups
 
-66. Agree to each mockup, or say what to change in it. [mockups]
-67. Desktop: how does a person go from searching to talking to the
+70. Agree to each mockup, or say what to change in it. [mockups]
+71. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-68. Desktop: does the launcher open on the screen that holds the
+72. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-69. Desktop: is the settings window opened from the launcher only, or
+73. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-70. Phone: the tab bar has five tabs: Home, Alerts, Clipboard, Lists and
+74. Phone: the tab bar has five tabs: Home, Alerts, Clipboard, Lists and
    More. Are these the right five, and may "Notifications" be shortened
    to "Alerts" to fit? [mockups]
-71. Phone: what does a touch on a clipboard item do: copy it to this
+75. Phone: what does a touch on a clipboard item do: copy it to this
    phone, or open it? [mockups]
-72. Tablet: does the clock on the idle screen move now and then, to
+76. Tablet: does the clock on the idle screen move now and then, to
    protect the screen? [mockups]
-73. Tablet: after how long without speech does the listening panel
+77. Tablet: after how long without speech does the listening panel
    close? [mockups]
-74. Admin panel: at phone width the side bar becomes a tab bar with
+78. Admin panel: at phone width the side bar becomes a tab bar with
    People, Devices, Assistants and More. Is that the right choice?
    [mockups]
-75. Admin panel: which accent does the admin panel show: that of the
+79. Admin panel: which accent does the admin panel show: that of the
    person signed in, or the household's? [mockups]
-76. Admin panel: the request timeline shows the first words a person
+80. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-77. Admin panel: is "Undo" offered for every change in the audit log, or
+81. Admin panel: is "Undo" offered for every change in the audit log, or
    only for changes that can be reversed safely? [mockups]
-78. Voice page: does the page remember on that browser that it was set
+82. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-79. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+83. Whether the chosen name is free to use: existing products, trade
+   marks and web addresses. [visual identity]
+84. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
    each draw: blur behind a surface, and at what speed. [glass]
-80. Whether the launcher window can show the blurred desktop behind it
+85. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
-81. How each character is animated so that it runs in Slint, Jetpack
+86. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

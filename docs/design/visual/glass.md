@@ -82,6 +82,13 @@ Assumed, needing research to confirm:
   of the desktop client, or in the admin panel, or do those always show
   our own backdrop?
 - Does our own backdrop move slowly, or is it still?
+- How see-through is the desktop launcher? Several strengths are on
+  [the launcher board](examples/launcher-board.html).
+- Can a person set how see-through the glass is? The owner named this as
+  a possibility.
+- Which of the designs on
+  [the material board](examples/material-board.html) is the look: as
+  first drawn, more glass, calmer, or closer to Apple's?
 
 To research:
 

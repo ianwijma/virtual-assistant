@@ -15,8 +15,9 @@ Status: started. The feel is set. The name is open.
   it suits a home. It is both a tool and a thing for the home.
 - **The look is inspired by Apple's Liquid Glass, and is not a copy of
   it.** See [glass](glass.md). What sets it apart is a question below.
-- **The name is chosen together with this work.** "Virtual Assistant" is a
-  working title.
+- **The name and the logo are chosen together with this work.** "Virtual
+  Assistant" is a working title. Candidates are on
+  [the name and logo board](examples/name-and-logo-board.html).
 
 ## What could make it ours
 
@@ -41,7 +42,10 @@ combined.
 - Who is the design for first: the power user at the desktop, or the
   whole household at a tablet, guests and children included? When a dense
   screen and a friendly screen conflict, which wins?
-- Are there candidates for the product name? Does the visual work go on
-  under the working title until there is one?
-- When are a logo and an app icon needed: now, or after the design
-  language is settled?
+- Which name, and which logo? See the name and logo board. The names on
+  it are not checked for existing products or trade marks.
+
+To research:
+
+- Whether the chosen name is free to use: existing products, trade marks
+  and web addresses.

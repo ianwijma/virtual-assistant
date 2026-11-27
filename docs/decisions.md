@@ -254,3 +254,6 @@ are 25 November 2026 unless a section says otherwise.
 | 227 | An assistant's character is an illustrated figure | [assistant visuals](design/visual/assistant-visuals.md) |
 | 228 | Motion is fluid and springy, following Apple's design, with a reduced-motion mode that also keeps old devices fast | [motion](design/visual/motion.md) |
 | 229 | The desktop launcher appears with a very short animation that does not delay input | [motion](design/visual/motion.md) |
+| 230 | Several designs of one thing are drawn and chosen from before many screens are drawn; every design question comes with an example | [visual design](design/visual/README.md) |
+| 231 | The character gets most of the screen where the assistant is the subject, and a figure can grow from a head to a whole moving figure | [assistant visuals](design/visual/assistant-visuals.md) |
+| 232 | The name and the logo are worked on now, from several candidates | [identity](design/visual/identity.md) |

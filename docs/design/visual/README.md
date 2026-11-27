@@ -71,6 +71,18 @@ is our own, and it is the same on Linux, Android and the web.
    not polish, so that an agent can combine them with the design language.
    A first set exists, as proposals. See [mockups](mockups/README.md).
 
+## How the work is done
+
+- **Several designs of one thing come first.** Before many screens are
+  drawn, one thing is drawn in several different ways, such as more
+  glass, less glass and calmer, and the owner chooses. Only then are more
+  screens drawn in the chosen way.
+- **Every design question comes with an example** that shows what each
+  answer would look like.
+- **An example is shown one screen at a time,** so that nothing is cut
+  off.
+- The boards with these designs are in [examples/](examples/).
+
 ## Map of the documents
 
 | Document | Covers | Status |

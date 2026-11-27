@@ -32,6 +32,8 @@
   --glass-thick: light-dark(rgba(255,255,255,.74), rgba(30,33,40,.72));  /* launcher, sheets, menus */
   --glass-solid: light-dark(#FFFFFF, #23262E);   /* reduced transparency, or no blur */
   --glass-edge: light-dark(rgba(255,255,255,.85), rgba(255,255,255,.14));
+  --backdrop-1: 46%;   /* how strongly our backdrop takes the accent */
+  --backdrop-2: 26%;
   --glass-blur: 24px;
   --glass-saturate: 170%;
   --control: light-dark(rgba(20,22,26,.06), rgba(255,255,255,.09));        /* a control resting on glass */
