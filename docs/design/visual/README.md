@@ -3,8 +3,8 @@
 How the system looks and feels. The vision and principles are in
 [the overarching design](../README.md).
 
-Status: started. The direction is set and the high-level choices are open.
-No colour, typeface or component is chosen yet.
+Status: started. The high-level choices are made. The design language is
+being written.
 
 ## What is being designed
 
@@ -60,11 +60,11 @@ is our own, and it is the same on Linux, Android and the web.
 
 ## The order of the work
 
-1. **The high level:** the feel, the glass, and the colours. This is the
-   current step. The owner chooses from
+1. **The high level:** the feel, the glass, and the colours. This is
+   done; the candidates were on
    [the direction board](examples/direction-board.html).
 2. **The design language:** colour, type, shape, spacing and motion,
-   written as tokens.
+   written as tokens. This is the current step.
 3. **Example components:** a few components that show the language in use.
 4. **Low-fidelity mockups** of each client. They show layout and content,
    not polish, so that an agent can combine them with the design language.
@@ -73,9 +73,9 @@ is our own, and it is the same on Linux, Android and the web.
 
 | Document | Covers | Status |
 |---|---|---|
-| [identity.md](identity.md) | The name, the feel, and what makes it recognisable | Questions only |
+| [identity.md](identity.md) | The name, the feel, and what makes it recognisable | Started |
 | [glass.md](glass.md) | The frosted glass material and where it is used | Started |
-| [colour.md](colour.md) | The colours, in light and dark | Candidates to choose from |
+| [colour.md](colour.md) | The colours, in light and dark | Started |
 | [typography.md](typography.md) | The typefaces and the type scale | Started |
 | [shape-and-spacing.md](shape-and-spacing.md) | Corners, density, spacing and icons | Started |
 | [motion.md](motion.md) | How things move, and sound | Started |

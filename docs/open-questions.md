@@ -67,37 +67,23 @@ B. "Heavy inspiration" is read as: the look is inspired by Apple's and
 C. Low-fidelity mockups and examples are kept as web pages in
    `docs/design/visual/`, which a person opens in a browser and an agent
    can read. [visual]
-
-The readings below were decided by the agent, at the owner's request,
-where one answer was nearly certain. Each is written into the design and
-waits for the owner's review.
-
-D. Glass is used only for what floats above the content: bars, the
-   launcher, sheets, menus, cards and controls. The content is plain.
-   [glass]
-E. A device too slow for the blur shows a flat translucent tint in the
-   same colour and shape. [glass]
-F. The device's settings for reduced transparency, increased contrast
-   and reduced motion are followed. [glass] [motion]
-G. The low-power screen of a tablet is true black and has no glass.
-   Dark itself is a dark grey with a slight tint, not black. [glass]
-   [colour]
-H. The palette has six parts: backdrop, glass, text, accent, status and
-   assistant colours. [colour]
-I. There is one accent colour for everyone, and no switch for light and
-   dark in our own settings. [colour]
-J. Status colours are green, amber and red, never shown by colour alone.
-   Text has a contrast of at least 4.5 to 1, and 3 to 1 when large.
-   [colour]
-K. One typeface is shipped with every client, and text follows the text
-   size set on the device. [typography]
-L. There are two densities: compact for the desktop and the admin panel,
-   roomy for touch. [shape]
-M. Icons come from an open icon set; we do not draw our own. [shape]
-N. The desktop launcher appears with no animation, and motion never
-   blocks input. [motion]
-O. A character shows seven states: idle, listening, thinking, speaking,
-   muted, waiting and not recognised. [assistant visuals]
+D. All four feelings were chosen: calm, warm, precise and playful. This
+   is read as: the interface is calm and precise, and the assistants are
+   warm and playful. [visual identity]
+E. The accent is chosen from a fixed set, not from any colour, so that
+   each one can be checked for readable text. [colour]
+F. On a household device, a recognised person's accent shows for the
+   length of the conversation, and then the device's or the household's
+   accent returns. [colour]
+G. The glass and the base colours are neutral, and colour comes from the
+   accent. Our own backdrop takes the accent. [glass] [colour]
+H. In the second review, the ticks are read as agreement: one shipped
+   typeface, two densities and an open icon set are agreed. "The launcher
+   appears with no animation" was not ticked, so it is an open question
+   again. [typography] [shape] [motion]
+I. A character shows seven states: idle, listening, thinking, speaking,
+   muted, waiting and not recognised. This was decided by the agent and
+   has not been reviewed. [assistant visuals]
 
 ## 1. Now
 
@@ -221,118 +207,110 @@ product, not a complete study.
 These are answered in the visual design thread. The candidates that
 several of them refer to are on
 [the direction board](design/visual/examples/direction-board.html), a page
-to open in a browser. The first three groups are the current step; the
-rest are needed before their part is designed.
+to open in a browser. Each group is needed before its part is designed in
+detail.
 
-### The feel
+### The feel and the name
 
-28. Three or four words for how it should feel. Some to choose from:
-   calm, warm, friendly, playful, quiet, precise, technical, fast, soft,
-   bold. [visual identity]
-29. Which products do you admire the look of, besides Apple's? [visual
+28. Which products do you admire the look of, besides Apple's? [visual
    identity]
-30. What should set the look apart from Apple's, so that it is
+29. What should set the look apart from Apple's, so that it is
    recognisable as ours: the colour, the backdrop, the assistants, the
    shape, or something else? See the table above. [visual identity]
-31. Who is the design for first: the power user at the desktop, or the
+30. Who is the design for first: the power user at the desktop, or the
    whole household at a tablet, guests and children included? When a
    dense screen and a friendly screen conflict, which wins? [visual
    identity]
-32. Should it feel like a thing for the home, warm and soft, or like a
-   tool, cool and sharp? [visual identity]
-33. Are there candidates for the product name? Does the visual work go
+31. Are there candidates for the product name? Does the visual work go
    on under the working title until there is one? [visual identity]
-34. When are a logo and an app icon needed: now, or after the design
+32. When are a logo and an app icon needed: now, or after the design
    language is settled? [visual identity]
 
 ### The glass
 
-35. How far does the glass go: a plain frosted blur, or the full effect
-   with bent light at the edges and moving highlights? The full effect
-   is the most recognisable as Apple's, and the most work to draw
-   outside Apple's devices. The direction board shows three strengths.
-   [glass]
-36. What is behind the glass: our own soft colour backdrop, a wallpaper
-   the person chooses, the colour of the active assistant, or the real
-   desktop behind the launcher? These can differ per client. [glass]
-37. May a person choose the backdrop? A theme cannot be chosen; is a
-   wallpaper a theme? [glass]
-38. Is the glass clear and neutral, or does it carry a tint of the
-   accent colour? [glass]
+33. Who sets the wallpaper of a household tablet: an admin, in the admin
+   panel? Is it one picture, or several that change? [glass]
+34. Can a wallpaper also be set on a personal phone, in the settings
+   window of the desktop client, or in the admin panel, or do those
+   always show our own backdrop? [glass]
+35. Does our own backdrop move slowly, or is it still? [glass]
 
 ### The colours
 
-39. Which direction, A to E, or which mix of them? See the direction
-   board. [colour]
-40. Does each assistant have its own colour, and does the screen take
-   that colour while the assistant is active? [colour]
-41. Does each person have a colour, to show whose account is active on a
-   shared computer, or who added an item to a shared list? [colour]
-42. Is light a pure white, or a slightly tinted, softer white? [colour]
-43. Are there colours to avoid, and is anyone in the household colour-
+36. Which accent does a new household start with? [colour]
+37. Should the set have more accents, such as a pink or a red, and how
+   many is enough? [colour]
+38. Does each assistant have its own colour? If so, which one shows
+   while an assistant is active on a household device: the assistant's,
+   or the accent of the person it recognised? [colour]
+39. Is a person's accent also the colour that marks them elsewhere, such
+   as on the account switch of a shared computer, or beside an item they
+   added to a shared list? [colour]
+40. Is light a pure white, or a slightly tinted, softer white? [colour]
+41. Are there colours to avoid, and is anyone in the household colour-
    blind? [colour]
-44. A tablet in a room has its light or dark setting fixed by whoever
+42. A tablet in a room has its light or dark setting fixed by whoever
    set it up. Should a household tablet go dark at night by itself?
    [colour]
 
 ### Typography
 
-45. Which character should the typeface have: neutral (such as Inter or
+43. Which character should the typeface have: neutral (such as Inter or
    Geist), geometric and friendly (such as Manrope or Figtree), or
    rounded (such as Nunito)? [typography]
-46. Do headings get their own typeface, or is one family used for
+44. Do headings get their own typeface, or is one family used for
    everything? [typography]
-47. Which languages and scripts must the typeface cover later?
+45. Which languages and scripts must the typeface cover later?
    [typography]
 
 ### Shape, spacing and icons
 
-48. How round are corners: slightly (about 8 to 12), clearly (about 16
-   to 24), or pill-shaped controls as in Apple's design? The [direction
-   board](examples/direction-board.html) shows the three. [shape]
-49. Are icons outlined or filled, and which open set is used: Lucide,
+46. Are icons outlined or filled, and which open set is used: Lucide,
    Phosphor, Tabler or another? [shape]
-50. Is there an illustration style, for empty screens and first-run
+47. Is there an illustration style, for empty screens and first-run
    setup? [shape]
 
 ### Motion and sound
 
-51. How much does the interface move where it is allowed to: fluid and
+48. Does the desktop launcher appear with no animation at all, or with a
+   very short one? It must be usable within 100 ms of its shortcut. See
+   [desktop](../technical/clients/desktop.md). [motion]
+49. How much does the interface move where it is allowed to: fluid and
    springy as in Apple's design, or quick and plain? [motion]
-52. Are sounds part of the identity, such as a tone when an assistant
+50. Are sounds part of the identity, such as a tone when an assistant
    starts listening or a timer ends? [motion]
-53. Does the phone use vibration as part of the feel? [motion]
+51. Does the phone use vibration as part of the feel? [motion]
 
 ### Assistant visuals
 
-54. What is a character: an abstract shape such as an orb or a wave, a
+52. What is a character: an abstract shape such as an orb or a wave, a
    simple face, or a full illustrated figure? The reply tags include a
    wink, an eye roll, a nod and a shake of the head, which need eyes and
    a head. [assistant visuals]
-55. How do two assistants differ: by colour only, by shape, or as fully
+53. How do two assistants differ: by colour only, by shape, or as fully
    different characters? [assistant visuals]
-56. How does a person give their own assistant a look: by choosing from
+54. How does a person give their own assistant a look: by choosing from
    a set, by adjusting parts such as colour and eyes, or by supplying an
    image? [assistant visuals]
-57. How playful is the default household assistant: cute, friendly, or
+55. How playful is the default household assistant: cute, friendly, or
    calm and abstract? [assistant visuals]
-58. How large is the character on each screen: the whole screen on the
+56. How large is the character on each screen: the whole screen on the
    tablet, a small part of the launcher on the desktop? [assistant
    visuals]
 
 ### The clients
 
-59. What does a tablet in a room show when nobody is using it: the
+57. What does a tablet in a room show when nobody is using it: the
    character, a clock, running timers, or nothing? [visual]
-60. Does the admin panel use glass as much as the other clients, or is
+58. Does the admin panel use glass as much as the other clients, or is
    it plainer because it holds dense tables and logs? [visual]
-61. Should a screen that an assistant composed look different from a
+59. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-62. Which client is drawn first as a mockup, and which screens of it
+60. Which client is drawn first as a mockup, and which screens of it
    matter most? [visual]
-63. Which devices are the references for the mockups: which phone, which
+61. Which devices are the references for the mockups: which phone, which
    tablet, which monitor size? [visual]
-64. Are settings screens generated from each feature's description, so
+62. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
@@ -342,12 +320,11 @@ rest are needed before their part is designed.
 
 An agent does this work and the owner agrees to the outcome.
 
-65. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
-   each draw: blur behind a surface, bent light, and at what speed.
-   [glass]
-66. Whether the launcher window can show the blurred desktop behind it
+63. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+   each draw: blur behind a surface, and at what speed. [glass]
+64. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
-67. How each character is animated so that it runs in Slint, Jetpack
+65. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

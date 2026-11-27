@@ -3,15 +3,18 @@
 The name, the feel, and what makes the product recognisable. Part of
 [the visual design](README.md).
 
-Status: questions only. Nothing about the identity is chosen yet beyond
-what the visual design's overview states.
+Status: started. The feel is set. The name is open.
 
 ## Design
 
 - **The product is recognisable as ours,** on every device.
+- **It feels calm, warm, precise and playful.** The interface is the calm
+  and precise part: quiet, clean and fast, so that it suits a power user
+  at a desktop. The assistants are the warm and playful part: the
+  characters, their expressions and their voices bring the life, so that
+  it suits a home. It is both a tool and a thing for the home.
 - **The look is inspired by Apple's Liquid Glass, and is not a copy of
-  it.** See [glass](glass.md). What sets it apart is still to be chosen,
-  and is the first question below.
+  it.** See [glass](glass.md). What sets it apart is a question below.
 - **The name is chosen together with this work.** "Virtual Assistant" is a
   working title.
 
@@ -31,8 +34,6 @@ combined.
 
 ## Open questions
 
-- Three or four words for how it should feel. Some to choose from: calm,
-  warm, friendly, playful, quiet, precise, technical, fast, soft, bold.
 - Which products do you admire the look of, besides Apple's?
 - What should set the look apart from Apple's, so that it is recognisable
   as ours: the colour, the backdrop, the assistants, the shape, or
@@ -40,8 +41,6 @@ combined.
 - Who is the design for first: the power user at the desktop, or the
   whole household at a tablet, guests and children included? When a dense
   screen and a friendly screen conflict, which wins?
-- Should it feel like a thing for the home, warm and soft, or like a
-  tool, cool and sharp?
 - Are there candidates for the product name? Does the visual work go on
   under the working title until there is one?
 - When are a logo and an app icon needed: now, or after the design

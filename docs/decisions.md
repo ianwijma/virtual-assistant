@@ -239,3 +239,14 @@ are 25 November 2026 unless a section says otherwise.
 |---|---|---|
 | 213 | Frosted glass is the design language, with Apple's Liquid Glass as the main inspiration | [glass](design/visual/glass.md) |
 | 214 | The visual design is made in this order: the feel, glass and colours first, then the design language as tokens, then example components, then low-fidelity mockups of each client | [visual design](design/visual/README.md) |
+| 215 | The glass is a clear blur with a bright edge, without bent light or moving highlights, and is neutral in colour | [glass](design/visual/glass.md) |
+| 216 | Behind the glass: the real desktop behind the desktop launcher, a wallpaper on a household tablet that shows in full while no assistant is active, and our own backdrop everywhere else | [glass](design/visual/glass.md) |
+| 217 | Glass is only for what floats above the content; the content is plain | [glass](design/visual/glass.md) |
+| 218 | A device too slow for the blur shows a flat translucent tint; the device's settings for reduced transparency, increased contrast and reduced motion are followed | [glass](design/visual/glass.md), [motion](design/visual/motion.md) |
+| 219 | Dark is a tinted dark grey, not black; the low-power screen of a tablet is true black and has no glass | [colour](design/visual/colour.md), [glass](design/visual/glass.md) |
+| 220 | The base is neutral and a person can choose an accent; it is set per household, per device and per person, and the most specific wins; a household device takes a person's accent when it recognises their voice | [colour](design/visual/colour.md) |
+| 221 | The palette has six parts; status colours are green, amber and red; text has a contrast of at least 4.5 to 1 | [colour](design/visual/colour.md) |
+| 222 | Corners are clearly round, and controls are not pill-shaped | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 223 | The feel is calm, warm, precise and playful | [identity](design/visual/identity.md) |
+| 224 | One typeface is shipped with every client, and text follows the text size set on the device | [typography](design/visual/typography.md) |
+| 225 | There are two densities, compact and roomy, and icons come from an open icon set | [shape and spacing](design/visual/shape-and-spacing.md) |

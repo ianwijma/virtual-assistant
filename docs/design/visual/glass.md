@@ -3,8 +3,8 @@
 The frosted glass material and where it is used. Part of
 [the visual design](README.md).
 
-Status: started. The direction and where glass is used are set. How
-strong the effect is, and what is behind it, are open.
+Status: started. The material, where it is used and what is behind it are
+set. What each toolkit can draw is still to be researched.
 
 ## Design
 
@@ -16,6 +16,15 @@ strong the effect is, and what is behind it, are open.
   web, where the platform does not provide the material and we draw it
   ourselves.
 - **It has a light and a dark form.**
+- **The strength is a clear blur with a bright edge.** What is behind a
+  surface is blurred and its colour shows through. A thin light edge and
+  a soft shadow lift the surface. There is no bent light at the edges and
+  there are no moving highlights. This is "Glass" on
+  [the direction board](examples/direction-board.html), between "Frost"
+  and "Liquid".
+- **The glass itself is neutral.** It has no colour of its own. Colour
+  comes from what is behind it and from the
+  [accent](colour.md).
 - **Glass is for what floats above the content:** bars, the launcher,
   sheets, menus, cards and controls. The content itself, such as a long
   list, a log or a page of text, is plain. This keeps text readable and
@@ -30,13 +39,16 @@ strong the effect is, and what is behind it, are open.
   dim content on it. See
   [phone and tablet app](../technical/clients/mobile.md).
 
-## What glass needs
+## What is behind the glass
 
 Glass only looks like glass when there is something behind it. A glass
-panel over a plain white page looks like a plain white panel. So the
-material comes with a second choice: what is behind it. The candidates
-are in the questions below and on
-[the direction board](examples/direction-board.html).
+panel over a plain white page looks like a plain white panel.
+
+| Where | What is behind the glass |
+|---|---|
+| The desktop launcher | Whatever is behind its window: the person's desktop and open applications, blurred. Where a desktop cannot provide this, our own backdrop |
+| A household tablet | A wallpaper, such as a family photo. It is shown in full while no assistant is active. When an assistant is active, the glass surfaces appear over it |
+| Everywhere else | Our own backdrop: a soft field of colour that takes the [accent](colour.md), the same on every device |
 
 ## What it costs
 
@@ -64,21 +76,16 @@ Assumed, needing research to confirm:
 
 ## Open questions
 
-- How far does the glass go: a plain frosted blur, or the full effect
-  with bent light at the edges and moving highlights? The full effect is
-  the most recognisable as Apple's, and the most work to draw outside
-  Apple's devices. The direction board shows three strengths.
-- What is behind the glass: our own soft colour backdrop, a wallpaper
-  the person chooses, the colour of the active assistant, or the real
-  desktop behind the launcher? These can differ per client.
-- May a person choose the backdrop? A theme cannot be chosen; is a
-  wallpaper a theme?
-- Is the glass clear and neutral, or does it carry a tint of the accent
-  colour?
+- Who sets the wallpaper of a household tablet: an admin, in the admin
+  panel? Is it one picture, or several that change?
+- Can a wallpaper also be set on a personal phone, in the settings window
+  of the desktop client, or in the admin panel, or do those always show
+  our own backdrop?
+- Does our own backdrop move slowly, or is it still?
 
 To research:
 
 - What Slint, Jetpack Compose on older Android, SwiftUI and CSS can each
-  draw: blur behind a surface, bent light, and at what speed.
+  draw: blur behind a surface, and at what speed.
 - Whether the launcher window can show the blurred desktop behind it on
   Linux, on X11 and on Wayland.
