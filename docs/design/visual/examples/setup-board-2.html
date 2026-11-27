@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First-run setup board, second round</title>
+<!--
+  Four designs of the first-run setup that follow Apple's Setup Assistant (a
+  "Hello" welcome, then one calm pane per step) and keep the five steps at the
+  top. Each is drawn three times: the welcome, step 1 (mail account) and step 4
+  (AI provider). Nothing here is decided. See ../../technical/clients/web-admin.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .trio { display: grid; grid-template-columns: repeat(3, 390px); gap: var(--s-4); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 390px; height: 400px; border-radius: 14px; overflow: hidden; }
+  .in { position: absolute; left: 0; top: 0; width: 542px; height: 556px; zoom: .72; }
+  .in > * { position: absolute; }
+  .grow { flex: 1; min-width: 0; }
+  .col { display: flex; flex-direction: column; }
+  .mid { align-items: center; text-align: center; }
+  .fgrid { display: grid; grid-template-columns: 1fr 84px; gap: var(--s-2) var(--s-3); text-align: left; width: 100%; }
+  .fgrid .full { grid-column: 1 / -1; }
+  .fl { display: flex; flex-direction: column; min-width: 0; }
+  .sym { width: 56px; height: 56px; border-radius: var(--r-full); background: var(--accent-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+  .sym .ico { width: 26px; height: 26px; }
+  .radio { width: 18px; height: 18px; border-radius: var(--r-full); border: 2px solid var(--line); flex: none; box-sizing: border-box; }
+  .is-selected .radio { border: 5px solid var(--accent); }
+  .choices { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; }
+  .choices .row { border-radius: var(--r-md); min-height: 46px; border-top: 0; }
+  .big { height: 48px; font-size: 17px; border-radius: var(--r-lg); width: 100%; box-sizing: border-box; }
+  .link { color: var(--accent); font: var(--type-label); }
+  .dots { display: flex; gap: 8px; align-items: center; justify-content: center; }
+  .dots i { display: block; width: 8px; height: 8px; border-radius: var(--r-full); border: 1.5px solid var(--text-3); box-sizing: border-box; }
+  .dots i.done { background: var(--accent); border-color: var(--accent); }
+  .dots i.now { width: 22px; background: var(--accent); border-color: var(--accent); }
+  .back { font-size: 24px; line-height: 1; color: var(--accent); }
+  .tick { width: 22px; height: 22px; border-radius: var(--r-full); display: inline-flex; align-items: center; justify-content: center; flex: none; font: var(--type-caption); font-weight: 600; background: var(--control); color: var(--text-2); box-sizing: border-box; }
+  .tick.done { background: var(--accent); color: var(--on-accent); }
+  .tick.now { background: var(--accent-soft); color: var(--accent); border: 2px solid var(--accent); }
+  .snames { display: flex; justify-content: space-between; position: relative; }
+  .snames::before { content: ""; position: absolute; left: 30px; right: 30px; top: 11px; height: 1px; background: var(--line); }
+  .snames > div { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 60px; position: relative; color: var(--text-2); }
+  .snames > div.now { color: var(--accent); font-weight: 600; }
+  .bar { display: flex; align-items: center; justify-content: space-between; padding: 0 var(--s-4); border-radius: var(--r-full); overflow: hidden; }
+  .bar .pr { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--accent); }
+  .bar .tr { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--line); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="board"></div>
+<script>
+(function () {
+  var STEPS = ['Mail', 'You', 'Household', 'AI', 'Speech'];
+  var SEP = ' <span class="t-3">&middot;</span> ';
+  function ab(s) { return ' style="' + s + '">'; }
+  function ch(size, cls, st) { return '<span class="character' + (cls ? ' ' + cls : '') + '" style="--size:' + size + 'px;' + (st || '') + '"></span>'; }
+  function fig(size, cls) { return '<span class="figure" style="--size:' + size + 'px"><span class="character' + (cls ? ' ' + cls : '') + '" style="--size:' + size + 'px"></span></span>'; }
+  function sym() { return '<span class="sym"><span class="ico"></span></span>'; }
+  function fld(label, val, cls) { return '<div class="fl' + (cls ? ' ' + cls : '') + '"><span class="field-label">' + label + '</span><div class="field">' + val + '</div></div>'; }
+  function mail() {
+    return '<div class="fgrid">' + fld('Mail server', 'mail.example.org') + fld('Port', '587') +
+      fld('User name', 'home@example.org', 'full') + fld('Password', '&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;', 'full') + '</div>';
+  }
+  var CH = [['A local model', 'On this server, private, slower', 1], ['Claude Code', 'Cloud, needs your account', 0], ['Codex', 'Cloud, needs your account', 0], ['OpenRouter', 'Cloud, many models, needs a key', 0]];
+  function choices() {
+    return '<div class="choices">' + CH.map(function (c) {
+      return '<div class="row' + (c[2] ? ' is-selected' : '') + '"><span class="radio"></span><div class="grow"><div class="t-strong">' + c[0] + '</div><div class="sub">' + c[1] + '</div></div></div>';
+    }).join('') + '</div>';
+  }
+  /* content of each pane: [title, sentence, body, quiet link] */
+  var P = {
+    1: ['Mail account', 'Hearth sends sign-in codes from this account.', mail(), 'Why is this needed?'],
+    4: ['Who should do the thinking?', 'You can change this later.', choices(), 'Set up later']
+  };
+  function dots(n) {
+    return '<div class="dots">' + [1, 2, 3, 4, 5].map(function (i) { return '<i class="' + (i < n ? 'done' : (i === n ? 'now' : '')) + '"></i>'; }).join('') + '</div>';
+  }
+  function hello(fg) {
+    return '<div class="t-display-xl" style="font-size:64px;line-height:1">Hello</div>' +
+      '<div class="t-heading t-2" style="font-weight:400">Let&rsquo;s set up Hearth for your household.</div>' + fg;
+  }
+
+  /* A: Apple pane, dots on top */
+  function A(n) {
+    if (!n) return '<div' + ab('left:0;right:0;top:22px') + dots(0) + '</div>' +
+      '<div class="col mid"' + ab('left:121px;width:300px;top:70px;gap:var(--s-3)') + hello('<div style="margin-top:var(--s-3)">' + fig(110) + '</div>') + '</div>' +
+      '<span class="btn btn-primary big"' + ab('left:121px;width:300px;bottom:18px') + 'Get started</span>';
+    var p = P[n];
+    return '<div' + ab('left:0;right:0;top:22px') + dots(n) + '</div><span class="back"' + ab('left:24px;top:14px') + '&lsaquo;</span>' +
+      '<div class="col mid"' + ab('left:121px;width:300px;top:54px;gap:var(--s-2)') + sym() +
+      '<div class="t-title" style="font-size:26px;line-height:1.15;font-weight:700">' + p[0] + '</div><div class="t-label t-2" style="margin-bottom:var(--s-2)">' + p[1] + '</div>' + p[2] +
+      '<span class="link" style="margin-top:var(--s-2)">' + p[3] + '</span></div>' +
+      '<span class="btn btn-primary big"' + ab('left:121px;width:300px;bottom:18px') + 'Continue</span>';
+  }
+
+  /* B: glass sheet with named steps */
+  function B(n) {
+    var names = '<div class="snames">' + STEPS.map(function (s, i) {
+      var k = i + 1 < n ? 'done' : (i + 1 === n ? 'now' : '');
+      return '<div class="' + k + '"><span class="tick ' + k + '">' + (k === 'done' ? '&#10003;' : i + 1) + '</span><span class="t-caption">' + s + '</span></div>';
+    }).join('') + '</div>';
+    var inner;
+    if (!n) inner = '<div class="grow"></div><div class="col mid" style="gap:var(--s-2)">' + hello('<div style="margin-top:var(--s-3)">' + fig(100) + '</div>') + '</div><div class="grow"></div><span class="btn btn-primary big">Get started</span>';
+    else { var p = P[n];
+      inner = '<div class="col mid" style="gap:var(--s-2);margin-top:var(--s-1)">' + sym() +
+        '<div class="t-title" style="font-size:24px;line-height:1.15;font-weight:700">' + p[0] + '</div><div class="t-label t-2">' + p[1] + '</div>' + p[2] +
+        '<span class="link">' + p[3] + '</span></div><div class="grow"></div><span class="btn btn-primary big">Continue</span>'; }
+    return '<div class="glass col"' + ab('left:101px;width:340px;top:10px;bottom:10px;padding:var(--s-3) var(--s-4);gap:var(--s-2);box-sizing:border-box;border-radius:var(--r-xl)') +
+      names + inner + '</div>';
+  }
+
+  /* C: progress bar with a step name */
+  function C(n) {
+    if (!n) return '<div class="col mid"' + ab('left:121px;width:300px;top:70px;gap:var(--s-3)') + hello('<div style="margin-top:var(--s-3)">' + fig(110) + '</div>') + '</div>' +
+      '<span class="btn btn-primary big"' + ab('left:121px;width:300px;bottom:18px') + 'Get started</span>';
+    var p = P[n];
+    return '<div class="glass bar"' + ab('left:16px;right:16px;top:14px;height:40px') + '<span class="back">&lsaquo;</span>' +
+      '<span class="t-label" style="font-weight:600">Step ' + n + ' of 5' + SEP + ['', 'Mail account', '', '', 'AI provider'][n] + '</span><span style="width:12px"></span>' +
+      '<span class="tr"></span><span class="pr" style="width:' + (n * 20) + '%"></span></div>' +
+      '<div class="col mid"' + ab('left:121px;width:300px;top:76px;gap:var(--s-2)') + sym() +
+      '<div class="t-title" style="font-size:26px;line-height:1.15;font-weight:700">' + p[0] + '</div><div class="t-label t-2" style="margin-bottom:var(--s-2)">' + p[1] + '</div>' + p[2] +
+      '<span class="link" style="margin-top:var(--s-2)">' + p[3] + '</span></div>' +
+      '<span class="btn btn-primary big"' + ab('left:121px;width:300px;bottom:18px') + 'Continue</span>';
+  }
+
+  /* D: the assistant wakes up */
+  function D(n) {
+    var head = n === 0 ? ch(96, 'muted', 'opacity:.85;display:block') : (n === 1 ? ch(72, 'muted', 'filter:grayscale(.6);opacity:.85') : ch(72, 'listening'));
+    var wake = ['Juno is asleep until you finish.', 'Juno is starting to wake up.', 'Juno is almost awake.'];
+    if (!n) return '<div' + ab('left:0;right:0;top:22px') + dots(0) + '</div>' +
+      '<div class="col mid"' + ab('left:121px;width:300px;top:70px;gap:var(--s-3)') + '<div class="t-display-xl" style="font-size:64px;line-height:1">Hello</div>' +
+      '<div class="t-heading t-2" style="font-weight:400">Let&rsquo;s set up Hearth for your household.</div><div class="t-label t-2">' + wake[0] + '</div><div style="margin-top:var(--s-2);height:96px">' + head + '</div></div>' +
+      '<span class="btn btn-primary big"' + ab('left:121px;width:300px;bottom:18px') + 'Get started</span>';
+    var p = P[n];
+    return '<div' + ab('left:0;right:0;top:22px') + dots(n) + '</div><span class="back"' + ab('left:24px;top:14px') + '&lsaquo;</span>' +
+      '<div class="col mid"' + ab('left:121px;width:300px;top:48px;gap:var(--s-2)') + head +
+      '<div class="t-title" style="font-size:26px;line-height:1.15;font-weight:700">' + p[0] + '</div><div class="t-label t-2" style="margin-bottom:var(--s-2)">' + p[1] + ' ' + wake[n === 1 ? 1 : 2] + '</div>' + p[2] +
+      '<span class="link" style="margin-top:var(--s-2)">' + p[3] + '</span></div>' +
+      '<span class="btn btn-primary big"' + ab('left:121px;width:300px;bottom:18px') + 'Continue</span>';
+  }
+
+  function frame(light, inner) { return '<div class="frame backdrop accent-tide ' + (light ? 'light' : 'dark') + '"><div class="in">' + inner + '</div></div>'; }
+  var DS = [
+    ['v-a', 'A. Apple pane, dots on top', true, A, 'Feels most like Apple’s setup and is the calmest, but five unnamed dots say only roughly where you are and what is still to come.'],
+    ['v-b', 'B. Glass sheet with named steps', false, B, 'Names every step and shows the ticks, so you always know where you are, but the sheet is the least like Apple’s bare pane and a step with many fields makes it tight.'],
+    ['v-c', 'C. Progress bar with a step name', true, C, 'Says plainly “Step 1 of 5” and gives the back arrow a home, with a bare, Apple-like welcome, but the bar hides the steps ahead and the later steps are only a length of line.'],
+    ['v-d', 'D. The assistant wakes up', false, D, 'The most welcoming, as the assistant gains colour with each step, but it needs a few more words in every sentence and the head takes room from a step with many fields.']
+  ];
+  var CAP = ['Welcome', 'Step 1, mail account', 'Step 4, AI provider'];
+  document.getElementById('board').innerHTML = DS.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[4] + '</p><div class="trio">' +
+      [0, 1, 4].map(function (n, i) { return '<div class="cell"><span class="t-caption">' + CAP[i] + '</span>' + frame(a[2], a[3](n)) + '</div>'; }).join('') + '</div></section>';
+  }).join('');
+})();
+</script>
+</body>
+</html>
