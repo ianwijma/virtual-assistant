@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice page board</title>
+<!--
+  Four arrangements of the voice page as a guest first opens it, and while
+  the guest talks to Juno. Each is drawn twice, in landscape. Nothing here is
+  decided. See ../../technical/clients/web-voice.md and ../assistant-visuals.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-6); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 400px; border-radius: 20px; overflow: hidden; }
+  .frame > * { position: absolute; }
+  .state { font: 600 28px/34px var(--font-sans); letter-spacing: -.01em; }
+  .say { font: 500 26px/32px var(--font-sans); }
+  .small { font: var(--type-caption); color: var(--text-2); }
+  .center { left: 0; right: 0; text-align: center; }
+  .floor { border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.45), transparent); height: 18px; }
+  .mic { border-radius: 50%; padding: 0; width: var(--mic, 64px); height: var(--mic, 64px); }
+  .mic .ico { width: calc(var(--mic, 64px) * .36); height: calc(var(--mic, 64px) * .36); border-radius: 40%; opacity: 1; }
+  .links { display: flex; flex-direction: column; gap: 2px; }
+  .links a { font: var(--type-label); color: var(--text); }
+  .btnrow { display: flex; gap: var(--s-2); }
+
+  /* A */
+  .a-col { left: 250px; right: var(--s-4); top: var(--s-4); bottom: var(--s-4); padding: var(--s-4) var(--s-5); display: flex; flex-direction: column; gap: var(--s-2); }
+  .a-col .rows { margin-top: auto; display: flex; flex-direction: column; }
+  .a-col .rows .row { min-height: 38px; padding: 0 var(--s-2); font: var(--type-label); }
+  .a-col .mid { display: flex; align-items: center; gap: var(--s-4); margin: var(--s-2) 0; }
+  .a-col .btnrow .btn { flex: 1; }
+  /* B */
+  .b-pills { right: 14px; top: 14px; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+  .b-pill { padding: 5px 12px; border-radius: var(--r-full); font: var(--type-caption); font-weight: 600; }
+  .b-bar { left: 0; right: 0; bottom: 18px; margin: 0 auto; width: max-content; display: flex; align-items: center; gap: var(--s-2); padding: 6px 8px; border-radius: var(--r-full); }
+  .b-bar .btn { border-radius: var(--r-full); }
+  .b-bubble { left: 270px; right: 24px; top: 40px; padding: var(--s-3) var(--s-4); }
+  /* C */
+  .c-left { left: 0; top: 0; bottom: 0; width: 300px; }
+  .c-left > * { position: absolute; }
+  .c-right { left: 300px; top: 0; bottom: 0; right: 0; border-radius: 0; border-width: 0 0 0 1px; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
+  .c-card { padding: var(--s-3) var(--s-4); display: flex; flex-direction: column; gap: 4px; }
+  .c-card .btn { margin-top: var(--s-2); }
+  .c-chat { display: flex; flex-direction: column; gap: var(--s-2); flex: 1; }
+  /* D */
+  .d-shelf { left: var(--s-3); right: var(--s-3); bottom: var(--s-3); height: 72px; display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-4) 0 100px; }
+  .d-shelf .grow { flex: 1; min-width: 0; }
+  .d-shelf .links { align-items: flex-end; }
+  .d-say { left: 200px; right: 32px; top: 70px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  function fig(size, style, listening) {
+    return '<span class="figure" style="--size:' + size + 'px;' + (style || '') + '"><span class="character' + (listening ? ' listening' : '') + '" style="--size:' + size + 'px"></span></span>';
+  }
+  function mic(size, extra) { return '<span class="btn btn-primary mic" style="--mic:' + size + 'px;' + (extra || '') + '"><span class="ico"></span></span>'; }
+  function frame(cls, inner) { return '<div class="frame backdrop ' + cls + '">' + inner + '</div>'; }
+  var SAY = 'What is on the shopping list?';
+  var GUEST = 'Guests get limited answers.';
+
+  var A = [
+    frame('dark accent-tide',
+      '<div class="floor" style="left:40px;width:190px;bottom:18px"></div>' + fig(130, 'left:70px;bottom:28px') +
+      '<div class="glass a-col"><div class="t-caption">Juno &middot; Guest</div><div class="t-title">Talk to Juno</div>' +
+      '<div class="mid">' + mic(84) + '<div class="small">Tap, or just start talking.<br>' + GUEST + '</div></div>' +
+      '<div class="rows list"><div class="row"><span class="grow">Use as a personal device</span><span class="t-2">&rsaquo;</span></div><div class="row"><span class="grow">Use as a household device</span><span class="t-2">&rsaquo;</span></div></div></div>'),
+    frame('dark accent-tide',
+      '<div class="floor" style="left:40px;width:190px;bottom:18px"></div>' + fig(130, 'left:70px;bottom:28px', true) +
+      '<div class="glass a-col"><div class="t-caption">Juno &middot; Guest</div><div class="state">Listening</div><div class="say" style="margin-top:var(--s-2)">' + SAY + '</div>' +
+      '<div style="margin-top:auto"><div class="small" style="margin-bottom:var(--s-2)">' + GUEST + '</div><div class="btnrow"><span class="btn">Show as text</span><span class="btn btn-primary">End</span></div></div></div>')
+  ];
+
+  var B = [
+    frame('light accent-ember',
+      '<div class="b-pills"><span class="glass b-pill">Use as a personal device</span><span class="glass b-pill">Use as a household device</span></div>' +
+      '<div class="floor" style="left:215px;width:170px;top:224px"></div>' + fig(110, 'left:245px;top:26px') +
+      '<div class="center t-title" style="top:236px">Hello. Tap or just talk.</div>' +
+      mic(60, 'left:270px;top:282px') +
+      '<div class="center small" style="top:354px">' + GUEST + '</div>'),
+    frame('light accent-ember',
+      '<div class="floor" style="left:70px;width:170px;top:216px"></div>' + fig(110, 'left:100px;top:20px', true) +
+      '<div class="glass b-bubble"><div class="t-caption">Listening</div><div class="say">' + SAY + '</div></div>' +
+      '<div class="center small" style="bottom:84px">' + GUEST + '</div>' +
+      '<div class="glass b-bar"><span class="btn btn-quiet">Mute</span><span class="btn">Show as text</span><span class="btn btn-primary">End</span></div>')
+  ];
+
+  var C = [
+    frame('dark accent-aurora',
+      '<div class="c-left"><div class="floor" style="left:60px;width:180px;top:236px"></div>' + fig(110, 'left:95px;top:34px') +
+      '<div class="center t-heading" style="top:258px">Juno</div>' +
+      '<span class="btn btn-primary" style="left:50px;right:50px;top:296px;height:48px">Talk as a guest</span>' +
+      '<div class="center small" style="top:356px">' + GUEST + '</div></div>' +
+      '<div class="surface c-right"><div class="t-heading">Set up this device</div>' +
+      '<div class="glass c-card"><div class="t-strong">Use as a personal device</div><div class="small">Your own assistants, on this device.</div><span class="btn">Sign in with your email</span></div>' +
+      '<div class="glass c-card"><div class="t-strong">Use as a household device</div><div class="small">A shared device for a room at Home.</div><span class="btn">Enter an invite</span></div></div>'),
+    frame('dark accent-aurora',
+      '<div class="c-left"><div class="floor" style="left:60px;width:180px;top:236px"></div>' + fig(110, 'left:95px;top:34px', true) +
+      '<div class="center t-heading" style="top:258px">Listening</div>' +
+      '<div class="btnrow" style="left:24px;right:24px;top:296px"><span class="btn" style="flex:1">Show as text</span><span class="btn btn-primary" style="flex:1">End</span></div>' +
+      '<div class="center small" style="top:356px">' + GUEST + '</div></div>' +
+      '<div class="surface c-right"><div class="t-heading">Conversation</div><div class="c-chat">' +
+      '<div class="bubble me">' + SAY + '</div><div class="bubble t-2">Listening&hellip;</div></div>' +
+      '<div class="field"><span class="ph">Type a message</span></div>' +
+      '<div class="small">Not signed in &middot; Set up this device</div></div>')
+  ];
+
+  var D = [
+    frame('light accent-moss',
+      '<div class="glass d-shelf"><span class="btn btn-primary mic" style="--mic:48px"><span class="ico"></span></span>' +
+      '<div class="grow"><div class="t-strong">Talk to Juno</div><div class="small">' + GUEST + '</div></div>' +
+      '<div class="links"><a>Use as a personal device</a><a>Use as a household device</a></div></div>' +
+      fig(70, 'left:34px;bottom:78px')),
+    frame('light accent-moss',
+      '<div class="d-say"><div class="t-caption">Listening</div><div class="say" style="font-size:36px;line-height:42px">' + SAY + '</div></div>' +
+      '<div class="glass d-shelf"><span class="btn">Mute</span><span class="btn">Show as text</span><span class="btn btn-primary">End</span>' +
+      '<div class="grow small" style="text-align:right">' + GUEST + '</div></div>' +
+      fig(140, 'left:26px;bottom:78px', true))
+  ];
+
+  var arr = [
+    ['v-a', 'A. Stage, like the tablet', ['Just opened', 'Talking'], A,
+      'Gains a figure that is fully present and a layout that matches the household tablet; costs a crowded column on a phone-sized browser, and the set-up choices sit low as quiet rows.'],
+    ['v-b', 'B. Greeter in the middle', ['Just opened', 'Talking'], B,
+      'Gains the plainest invitation to just talk, with a large figure like a host at a door; costs the set-up choices, which are small pills in a corner that are easy to miss, and a figure that takes the centre from the transcript.'],
+    ['v-c', 'C. Split welcome', ['Just opened', 'Talking'], C,
+      'Gains set-up choices explained in full and voice and text seen together; costs a smaller figure, and a page that asks for a decision at the same moment as an invitation to talk, which suits a wide tablet and crowds a phone.'],
+    ['v-d', 'D. Quiet page', ['Just opened', 'Talking'], D,
+      'Gains a calm page that never gets in a guest’s way and the same look as the idle tablet; costs a small figure and a quieter invitation to talk, with set-up as text links that fit a tablet and are tight on a phone.']
+  ];
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[4] + '</p><div class="pair">' +
+      a[3].map(function (f, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + a[2][i] + '</span>' + f + '</div>'; }).join('') +
+      '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

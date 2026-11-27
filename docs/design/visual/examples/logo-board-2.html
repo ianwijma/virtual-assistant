@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo board, second round</title>
+<!--
+  Two chosen marks, four variants each, for the candidate name "Hearth".
+  Nothing here is decided. The name is not checked for existing products,
+  trade marks or web addresses.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .page h2 { font: var(--type-title); margin: var(--s-4) 0 var(--s-1); }
+  .page > section:first-child h2 { margin-top: 0; }
+  .page p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-3); max-width: 90ch; }
+  .page p.fine { font: var(--type-caption); color: var(--text-2); margin: var(--s-2) 0 0; }
+  .tile { border-radius: var(--r-xl); padding: var(--s-4); }
+  .tile + .tile { margin-top: var(--s-3); }
+  .four { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-3); }
+  .mark-card { padding: var(--s-4); display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-2); }
+  .mark-card svg.big { width: 96px; height: 96px; display: block; }
+  .mark-card .lab { font: var(--type-heading); }
+  .mark-card .idea { font: var(--type-label); color: var(--text-2); }
+  .lock { display: flex; align-items: center; gap: var(--s-2); font: 650 20px/24px var(--font-sans); letter-spacing: -0.02em; white-space: nowrap; }
+  .lock svg { width: 24px; height: 24px; flex: none; }
+  .icon { width: 64px; height: 64px; border-radius: 15px; flex: none; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow-2); }
+  .icon svg { width: 44px; height: 44px; display: block; }
+  .row-icons { display: flex; align-items: center; gap: var(--s-3); }
+  .cap { font: var(--type-caption); color: var(--text-2); }
+  .scale { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-3); }
+  .scale .glass { padding: var(--s-5); display: flex; align-items: flex-end; justify-content: space-around; gap: var(--s-4); }
+  .hlock { display: flex; align-items: center; gap: var(--s-3); font: 650 44px/48px var(--font-sans); letter-spacing: -0.04em; }
+  .hlock svg { width: 56px; height: 56px; flex: none; }
+  .slock { display: flex; flex-direction: column; align-items: center; gap: var(--s-2); font: 650 44px/48px var(--font-sans); letter-spacing: -0.04em; }
+  .slock svg { width: 72px; height: 72px; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+  <section id="pane">
+    <h2>Part 1. Glass pane with eyes</h2>
+    <p class="d">You are choosing how the pane of glass with eyes should be drawn.</p>
+    <div id="pane-tiles"></div>
+  </section>
+  <section id="drop">
+    <h2>Part 2. Speech drop</h2>
+    <p class="d">You are choosing how the speech bubble that is also a head should be drawn.</p>
+    <div id="drop-tiles"></div>
+  </section>
+  <section id="lockups">
+    <h2>Part 3. The logo at scale</h2>
+    <p class="d">You are seeing how a finished logo would sit, using the two variants that read best.</p>
+    <div id="lock-tiles"></div>
+    <p class="fine">For scale only: any variant can take this place. The name is not checked for existing products, trade marks or web addresses.</p>
+  </section>
+</div>
+<script>
+  var W = '#fff';
+  function lg(id, op) {
+    var e = op ? ' stop-opacity="' + op + '"' : '';
+    return '<linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"' + e + '/><stop offset="1" stop-color="var(--accent-2)"' + e + '/></linearGradient>';
+  }
+  function rg(id, a, b, oa, ob) {
+    return '<radialGradient id="' + id + '"><stop offset="0" stop-color="' + a + '" stop-opacity="' + oa + '"/><stop offset="1" stop-color="' + b + '" stop-opacity="' + ob + '"/></radialGradient>';
+  }
+  function eyes(cx1, cx2, cy, rx, ry, fill) {
+    return '<ellipse cx="' + cx1 + '" cy="' + cy + '" rx="' + rx + '" ry="' + ry + '" fill="' + fill + '"/><ellipse cx="' + cx2 + '" cy="' + cy + '" rx="' + rx + '" ry="' + ry + '" fill="' + fill + '"/>';
+  }
+  var ONA = 'var(--on-accent)', TXT = 'var(--text)';
+  // each mark: function (id, ic) -> svg body; ic is true inside the app icon
+  var panes = [
+    ['P1. Pane', 'A soft pane with a bright edge and two upright eyes.', function (id, ic) {
+      var ink = ic ? ONA : TXT;
+      return '<defs>' + lg(id, '.6') + '</defs>' +
+        '<rect x="10" y="10" width="76" height="76" rx="24" fill="' + (ic ? ONA : 'url(#' + id + ')') + '" fill-opacity="' + (ic ? '.28' : '1') + '" stroke="' + (ic ? ONA : W) + '" stroke-opacity="' + (ic ? '.9' : '.85') + '" stroke-width="3"/>' +
+        eyes(36, 60, 46, 6, 11, ink);
+    }],
+    ['P2. Pane with a glow', 'A clear pane with the hearth fire glowing through its lower half.', function (id, ic) {
+      var ink = ic ? ONA : TXT;
+      return '<defs>' + rg(id, 'var(--accent-2)', 'var(--accent)', 1, 1) + '</defs>' +
+        '<rect x="10" y="10" width="76" height="76" rx="24" fill="' + (ic ? ONA : W) + '" fill-opacity="' + (ic ? '.14' : '.16') + '" stroke="' + (ic ? ONA : TXT) + '" stroke-opacity="' + (ic ? '.9' : '.4') + '" stroke-width="3"/>' +
+        '<circle cx="48" cy="66" r="19" fill="' + (ic ? ONA : 'var(--accent-2)') + '" fill-opacity=".3"/>' +
+        '<circle cx="48" cy="66" r="11" fill="' + (ic ? ONA : 'url(#' + id + ')') + '"/>' +
+        eyes(34, 62, 32, 5.5, 10, ink);
+    }],
+    ['P3. Two panes', 'A second sheet behind the first: the devices of one household.', function (id, ic) {
+      var ink = ic ? ONA : TXT;
+      return '<defs>' + lg(id, '.6') + '</defs>' +
+        '<rect x="28" y="6" width="58" height="58" rx="19" fill="' + (ic ? ONA : 'var(--accent-2)') + '" fill-opacity="' + (ic ? '.22' : '.4') + '" stroke="' + (ic ? ONA : W) + '" stroke-opacity=".7" stroke-width="2.5"/>' +
+        '<rect x="8" y="24" width="64" height="64" rx="21" fill="' + (ic ? ONA : 'url(#' + id + ')') + '" fill-opacity="' + (ic ? '.4' : '1') + '" stroke="' + (ic ? ONA : W) + '" stroke-opacity=".9" stroke-width="3"/>' +
+        eyes(28, 52, 55, 5.5, 10, ink);
+    }],
+    ['P4. Arched pane', 'A fireplace opening: flat bottom, rounded top, with the eyes inside.', function (id, ic) {
+      var ink = ic ? ONA : TXT;
+      return '<defs>' + lg(id, '.6') + '</defs>' +
+        '<path d="M12 80 V46 A36 36 0 0 1 84 46 V80 Q84 88 76 88 H20 Q12 88 12 80 Z" fill="' + (ic ? ONA : 'url(#' + id + ')') + '" fill-opacity="' + (ic ? '.28' : '1') + '" stroke="' + (ic ? ONA : W) + '" stroke-opacity="' + (ic ? '.9' : '.85') + '" stroke-width="3" stroke-linejoin="round"/>' +
+        eyes(35, 61, 54, 6, 11, ink);
+    }]
+  ];
+  var drops = [
+    ['D1. Drop', 'A soft rounded bubble, a small tail at the bottom-left, two eyes.', function (id, ic) {
+      var body = ic ? ONA : 'url(#' + id + ')', tail = ic ? ONA : 'var(--accent)';
+      return '<defs>' + lg(id) + '</defs>' +
+        '<rect x="10" y="12" width="76" height="60" rx="29" fill="' + body + '"/>' +
+        '<path d="M26 62 L20 86 L46 70 Z" fill="' + tail + '" stroke="' + tail + '" stroke-width="4" stroke-linejoin="round"/>' +
+        eyes(36, 60, 40, 5.5, 9.5, ic ? 'var(--accent)' : ONA);
+    }],
+    ['D2. Glass drop', 'A clear glass bubble with a bright edge, a glow inside and solid eyes.', function (id, ic) {
+      var d = 'M38 12 H58 A28 28 0 0 1 86 40 V44 A28 28 0 0 1 58 72 H42 L18 88 L26 67 A28 28 0 0 1 10 44 V40 A28 28 0 0 1 38 12 Z';
+      return '<defs>' + rg(id, 'var(--accent-2)', 'var(--accent)', .9, .15) + '</defs>' +
+        '<path d="' + d + '" fill="' + (ic ? ONA : W) + '" fill-opacity="' + (ic ? '.22' : '.18') + '" stroke="' + (ic ? ONA : 'var(--accent)') + '" stroke-opacity=".9" stroke-width="3" stroke-linejoin="round"/>' +
+        '<ellipse cx="48" cy="54" rx="30" ry="17" fill="' + (ic ? ONA : 'url(#' + id + ')') + '" fill-opacity="' + (ic ? '.25' : '1') + '"/>' +
+        eyes(36, 60, 38, 5.5, 9.5, ic ? ONA : TXT);
+    }],
+    ['D3. Flame drop', 'The top rises into a soft point: a bubble, a flame and a head at once.', function (id, ic) {
+      return '<defs>' + lg(id) + '</defs>' +
+        '<path d="M50 6 C56 26 86 32 86 56 C86 72 72 80 58 80 H46 L22 91 L30 76 C16 71 10 63 10 54 C10 32 42 26 50 6 Z" fill="' + (ic ? ONA : 'url(#' + id + ')') + '" stroke-linejoin="round"/>' +
+        eyes(36, 60, 56, 5.5, 9.5, ic ? 'var(--accent)' : ONA);
+    }],
+    ['D4. Round drop', 'A near-perfect circle, a very small tail, eyes set wide: boldest when tiny.', function (id, ic) {
+      var tail = ic ? ONA : 'var(--accent)';
+      return '<defs>' + lg(id) + '</defs>' +
+        '<circle cx="48" cy="44" r="38" fill="' + (ic ? ONA : 'url(#' + id + ')') + '"/>' +
+        '<path d="M24 72 L20 90 L40 80 Z" fill="' + tail + '" stroke="' + tail + '" stroke-width="3" stroke-linejoin="round"/>' +
+        eyes(32, 64, 44, 6.5, 11, ic ? 'var(--accent)' : ONA);
+    }]
+  ];
+  var n = 0;
+  function svg(m, cls, ic) { n++; return '<svg class="' + cls + '" viewBox="0 0 96 96" aria-hidden="true">' + m[2]('m' + n, ic) + '</svg>'; }
+  function tiles(list, id) {
+    document.getElementById(id).innerHTML = [['light', 'accent-ember'], ['dark', 'accent-tide']].map(function (t) {
+      return '<div class="tile backdrop ' + t[0] + ' ' + t[1] + '"><div class="four">' + list.map(function (m) {
+        return '<div class="glass mark-card">' + svg(m, 'big') + '<div class="lab">' + m[0] + '</div><div class="idea">' + m[1] + '</div>' +
+          '<div class="row-icons"><div class="lock">' + svg(m, '') + 'Hearth</div>' +
+          '<div class="icon">' + svg(m, '', true) + '</div></div></div>';
+      }).join('') + '</div></div>';
+    }).join('');
+  }
+  tiles(panes, 'pane-tiles');
+  tiles(drops, 'drop-tiles');
+  var best = [panes[0], drops[2]];
+  document.getElementById('lock-tiles').innerHTML = '<div class="tile backdrop light accent-aurora"><div class="scale">' +
+    best.map(function (m) {
+      return '<div class="glass"><div><div class="cap">' + m[0] + ', horizontal</div><div class="hlock">' + svg(m, '') + 'Hearth</div></div>' +
+        '<div><div class="cap">stacked</div><div class="slock">' + svg(m, '') + 'Hearth</div></div></div>';
+    }).join('') + '</div></div>';
+</script>
+</body>
+</html>

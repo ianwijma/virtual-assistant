@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First-run setup board</title>
+<!--
+  Four designs of the first-run setup in the admin panel, each drawn twice: step 1
+  (the mail account, light or dark) and step 4 (the AI provider). Nothing here is
+  decided. See ../../technical/clients/web-admin.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 410px; border-radius: 14px; overflow: hidden; }
+  .in { position: absolute; left: 0; top: 0; width: 750px; height: 512px; zoom: .8; }
+  .in > * { position: absolute; }
+  .grow { flex: 1; min-width: 0; }
+  .col { display: flex; flex-direction: column; }
+  .fgrid { display: grid; grid-template-columns: 1fr 96px; gap: var(--s-3); }
+  .fgrid .full { grid-column: 1 / -1; }
+  .fl { display: flex; flex-direction: column; min-width: 0; }
+  .btns { display: flex; align-items: center; justify-content: flex-end; gap: var(--s-2); }
+  .tick { width: 22px; height: 22px; border-radius: var(--r-full); display: inline-flex; align-items: center; justify-content: center; flex: none; font: var(--type-caption); font-weight: 600; background: var(--control); color: var(--text-2); }
+  .tick.done { background: var(--accent-soft); color: var(--accent); }
+  .tick.now { background: var(--accent); color: var(--on-accent); }
+  .steps { display: flex; justify-content: space-between; }
+  .steps > div { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 72px; text-align: center; color: var(--text-2); }
+  .steps > .now { color: var(--text); font-weight: 600; }
+  .radio { width: 18px; height: 18px; border-radius: var(--r-full); border: 2px solid var(--line); flex: none; box-sizing: border-box; }
+  .is-selected .radio { border: 5px solid var(--accent); }
+  .choices { display: flex; flex-direction: column; gap: 2px; }
+  .choices .row { border-radius: var(--r-md); min-height: 46px; border-top: 0; }
+  .side { display: flex; flex-direction: column; gap: 2px; }
+  .side .st { display: flex; align-items: center; gap: var(--s-2); height: 38px; padding: 0 var(--s-2); border-radius: var(--r-md); }
+  .side .st.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .side .st.later { color: var(--text-3); }
+  .side .st .s { font: var(--type-caption); color: var(--text-2); }
+  .side .st.on .s { color: var(--accent); }
+  .bub { padding: var(--s-3) var(--s-4); border-radius: var(--r-xl); }
+  .prog { left: 0; top: 0; height: 3px; background: var(--accent); border-radius: 0 3px 3px 0; }
+  .track { left: 0; top: 0; right: 0; height: 3px; background: var(--line); }
+  .back { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="board"></div>
+<script>
+(function () {
+  var STEPS = ['Mail account', 'Your account', 'Household', 'AI provider', 'Speech'];
+  function at(s) { return ' style="' + s + '"'; }
+  function ab(s) { return at(s) + '>'; }
+  function ch(size, cls) { return '<span class="character' + (cls ? ' ' + cls : '') + '" style="--size:' + size + 'px"></span>'; }
+  function fig(size, cls) { return '<span class="figure" style="--size:' + size + 'px"><span class="character' + (cls ? ' ' + cls : '') + '" style="--size:' + size + 'px"></span></span>'; }
+  function fld(label, val, cls) { return '<div class="fl' + (cls ? ' ' + cls : '') + '"><span class="field-label">' + label + '</span><div class="field">' + val + '</div></div>'; }
+  function mailFields() {
+    return '<div class="fgrid">' + fld('Mail server', 'mail.example.org') + fld('Port', '587') +
+      fld('User name', 'home@example.org', 'full') + fld('Password', '&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;', 'full') + '</div>';
+  }
+  var CH = [['A local model', 'Runs on this server, private, slower', 1], ['Claude Code', 'Cloud, needs your account', 0], ['Codex', 'Cloud, needs your account', 0], ['OpenRouter', 'Cloud, many models, needs a key', 0]];
+  function choices() {
+    return '<div class="choices">' + CH.map(function (c) {
+      return '<div class="row' + (c[2] ? ' is-selected' : '') + '"><span class="radio"></span><div class="grow"><div class="t-strong">' + c[0] + '</div><div class="sub">' + c[1] + '</div></div></div>';
+    }).join('') + '</div>';
+  }
+  function body(n) { return n === 1 ? mailFields() : choices(); }
+  function btns(n, big) { return '<div class="btns">' + (n === 4 ? '<span class="btn btn-quiet">Back</span>' : '') + '<span class="btn btn-primary">Continue</span></div>'; }
+  var TITLE = { 1: 'Mail account', 4: 'AI provider' };
+  var WHY = { 1: 'This is the account that sends sign-in codes to your household.', 4: 'Who should do the thinking? You can change this later.' };
+
+  /* A: one sheet with steps on top */
+  function A(n) {
+    var dots = '<div class="steps">' + STEPS.map(function (s, i) {
+      var k = i + 1 < n ? 'done' : (i + 1 === n ? 'now' : '');
+      return '<div class="' + k + '"><span class="tick ' + k + '">' + (k === 'done' ? '&#10003;' : i + 1) + '</span><span class="t-caption">' + s + '</span></div>';
+    }).join('') + '</div>';
+    return '<div class="glass col"' + ab('left:135px;top:18px;bottom:18px;width:480px;padding:var(--s-4) var(--s-5);gap:var(--s-3);border-radius:var(--r-xl)') +
+      dots + '<div style="height:1px;background:var(--line)"></div>' +
+      '<div><div class="t-title">' + TITLE[n] + '</div><div class="t-label t-2" style="margin-top:2px">' + WHY[n] + '</div></div>' +
+      body(n) + '<div class="grow"></div>' + btns(n) + '</div>';
+  }
+
+  /* B: guided by the assistant */
+  function B(n) {
+    var say = n === 1 ? 'First I need a mail account, so I can send sign-in codes. I am grey for now, because I only get my voice at the Speech step.' : 'Who should do the thinking? You can change this later.';
+    return '<div class="glass bub"' + ab('left:20px;top:26px;width:236px') + '<div class="t-strong" style="font-weight:500">' + say + '</div></div>' +
+      '<div' + ab('left:20px;width:236px;bottom:12px;display:flex;justify-content:center') + fig(100, n === 1 ? 'muted' : '') + '</div>' +
+      '<div class="glass col"' + ab('left:282px;right:20px;top:22px;padding:var(--s-4);gap:var(--s-3);border-radius:var(--r-xl)') +
+        '<div class="t-title">' + TITLE[n] + '</div>' + body(n) + btns(n) + '</div>' +
+      '<div class="t-caption t-2"' + ab('left:282px;right:20px;bottom:18px;text-align:center') + 'Step ' + n + ' of 5</div>';
+  }
+
+  /* C: steps at the side */
+  function C(n) {
+    var side = '<aside class="glass side"' + ab('left:10px;top:10px;bottom:10px;width:210px;padding:var(--s-3) var(--s-2);border-radius:var(--r-xl)') +
+      '<div class="t-strong" style="padding:var(--s-1) var(--s-2) var(--s-3)">Set up Hearth</div>' +
+      STEPS.map(function (s, i) {
+        var k = i + 1 < n ? 'done' : (i + 1 === n ? 'now' : 'later');
+        var w = k === 'done' ? 'Done' : (k === 'now' ? 'Now' : 'Later');
+        return '<div class="st' + (k === 'now' ? ' on' : '') + (k === 'later' ? ' later' : '') + '"><span class="tick ' + (k === 'later' ? '' : k) + '">' + (k === 'done' ? '&#10003;' : i + 1) + '</span><span class="t-label grow">' + s + '</span><span class="s">' + w + '</span></div>';
+      }).join('') + '</aside>';
+    return side + '<main class="col"' + ab('left:244px;right:24px;top:30px;bottom:22px;gap:var(--s-3)') +
+      '<div><div class="t-caption t-2">Step ' + n + ' of 5</div><div class="t-title" style="margin-top:2px">' + TITLE[n] + '</div><div class="t-label t-2" style="margin-top:2px">' + WHY[n] + '</div></div>' +
+      body(n) + '<div class="grow"></div>' + btns(n) + '</main>';
+  }
+
+  /* D: one question at a time */
+  function D(n) {
+    var q = n === 1 ? 'Which mail account sends the sign-in codes?' : 'Who should do the thinking?';
+    var inner = n === 1 ? '<div class="fgrid">' + fld('Mail server', 'mail.example.org') + fld('Port', '587') + fld('User name', 'home@example.org', 'full') + fld('Password', '&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;', 'full') + '</div>' : choices();
+    return '<div class="track"></div><div class="prog"' + ab('width:' + (n * 20) + '%') + '</div>' +
+      (n === 4 ? '<span class="back"' + ab('left:24px;top:20px') + '&lsaquo; Back</span>' : '') +
+      '<div class="col"' + ab('left:0;right:0;top:' + (n === 1 ? 20 : 26) + 'px;align-items:center;gap:var(--s-3)') +
+        '<div class="t-display" style="text-align:center;width:560px;font-size:30px;line-height:1.15">' + q + '</div>' +
+        '<div class="glass" style="width:400px;padding:var(--s-3) var(--s-4);border-radius:var(--r-xl);box-sizing:border-box">' + inner + '</div>' +
+        '<span class="btn btn-primary" style="height:48px;width:400px;font-size:17px;border-radius:var(--r-lg)">Continue</span></div>' +
+      '<div' + ab('left:16px;bottom:14px;display:flex') + ch(44) + '</div>';
+  }
+
+  function frame(light, inner) { return '<div class="frame backdrop accent-tide ' + (light ? 'light' : 'dark') + '"><div class="in">' + inner + '</div></div>'; }
+  var DS = [
+    ['v-a', 'A. One sheet with steps on top', true, A, 'Gains a clear row of five steps and a familiar form, but it is the least welcoming and the sheet gets tall once a step has many fields.'],
+    ['v-b', 'B. Guided by the assistant', false, B, 'Gains the warmest welcome, with the assistant saying each step and showing by its colour that it has no voice yet, but progress is only a quiet line and the card holds fewer fields.'],
+    ['v-c', 'C. Steps at the side', true, C, 'Gains the same two panes as the admin panel that follows, a clear list of every step and room for steps with many fields, but it is the plainest first look.'],
+    ['v-d', 'D. One question at a time', false, D, 'Gains the calmest and most welcoming first look, but progress is only a thin line, the steps cannot be seen ahead, and a step with many fields makes a tall card.']
+  ];
+  var CAP = ['Step 1, the mail account', 'Step 4, the AI provider'];
+  document.getElementById('board').innerHTML = DS.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[4] + '</p><div class="pair">' +
+      [1, 4].map(function (n, i) { return '<div class="cell"><span class="t-caption">' + CAP[i] + '</span>' + frame(a[2], a[3](n)) + '</div>'; }).join('') + '</div></section>';
+  }).join('');
+})();
+</script>
+</body>
+</html>
