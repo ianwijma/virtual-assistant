@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Household tablet, kiosk</title>
+<link rel="stylesheet" href="../examples/tokens.css">
+<link rel="stylesheet" href="../examples/components.css">
+<link rel="stylesheet" href="mockup.css">
+<style>
+  /* Layout only. */
+  .corner { position: absolute; left: var(--s-8); bottom: var(--s-8); padding: var(--s-4) var(--s-8); display: flex; flex-direction: column; gap: var(--s-1); }
+  .tr { position: absolute; right: var(--s-8); top: var(--s-8); }
+  .rise { position: absolute; left: var(--s-12); right: var(--s-12); bottom: var(--s-8); padding: var(--s-8); display: flex; align-items: center; gap: var(--s-8); }
+  .rise.tall { top: auto; min-height: 280px; }
+  .grow1 { flex: 1; min-width: 0; }
+  .bigbtn { height: 72px; padding: 0 var(--s-10); font-size: 22px; border-radius: var(--r-md); }
+  .timer { flex: 1; padding: var(--s-6) var(--s-8); display: flex; flex-direction: column; gap: var(--s-2); }
+  .timer .actions { margin-top: var(--s-4); gap: var(--s-4); }
+  .sheet { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 560px; padding: var(--s-10); display: flex; flex-direction: column; align-items: center; gap: var(--s-6); text-align: center; }
+  .sheet .actions { width: 100%; gap: var(--s-4); }
+  .codes { display: flex; gap: var(--s-3); }
+  .codes > span { width: 72px; height: 88px; display: grid; place-items: center; border-radius: var(--r-md); background: var(--control); border: 1px solid var(--line); }
+  .codes > span.cur { outline: 2px solid var(--accent); }
+  .ctr { align-items: center; justify-content: center; }
+  .li { display: flex; gap: var(--s-3); align-items: center; }
+</style>
+</head>
+<body class="va">
+<div class="mock-page">
+<header>
+  <h1>Household tablet, kiosk</h1>
+  <p>A tablet in a room, left running as a voice device for everyone. Landscape, roomy density, readable from across a room.</p>
+</header>
+
+<!-- 1 -->
+<figure class="screen">
+  <figcaption><h2>1. Idle</h2><p>The tablet is a photo frame until someone speaks. Nothing else is on screen.</p></figcaption>
+  <div class="frames">
+    <div class="frame tablet wallpaper">
+      <div class="tr"><span class="glass chip" style="height:32px;padding:0 var(--s-4);font:var(--type-label)"><span class="dot"></span>Pasta 07:42</span></div>
+      <div class="glass corner">
+        <span class="t-display-xl num">9:41</span>
+        <span class="t-heading t-2">Saturday 28 November</span>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note">The wallpaper (a family photo, here a stand-in) fills the whole screen and is never covered, except by the small plate in the bottom left corner.</div>
+    <div class="note">Plate (glass): the time in display-xl and the date beneath. It is the only large element. It may move to another corner every few minutes to avoid burn-in.</div>
+    <div class="note">Top right: a tiny chip per running timer, hidden when none. Tapping it, or the screen, does nothing; the tablet is woken by voice, and by touch only to open the screen shown in 3.</div>
+  </div>
+</figure>
+
+<!-- 2 -->
+<figure class="screen">
+  <figcaption><h2>2. Summoned and listening</h2><p>The wake word was heard. A panel rises from the bottom third and shows that the assistant is listening.</p></figcaption>
+  <div class="frames">
+    <div class="frame tablet wallpaper">
+      <div class="glass-thick rise" style="height:260px">
+        <span class="character listening" style="--size:160px"></span>
+        <div class="grow1 col" style="gap:var(--s-3)">
+          <span class="t-caption">Juno</span>
+          <span class="t-display">Listening…</span>
+          <span class="t-heading t-2" style="font-weight:500">“What is the weather like tomorrow”</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note">The panel (thick glass) rises over about 300 ms from the bottom edge and covers the bottom third only. The photo stays visible above it.</div>
+    <div class="note">Left: the character at 160px, breathing while it listens. Right: the assistant's name as a caption, the state word in display size and the live transcript in heading size, growing word by word, at most two lines.</div>
+    <div class="note">There are no buttons. Silence for a few seconds, or "never mind", lowers the panel again. A touch on the panel ends the listening early.</div>
+  </div>
+</figure>
+
+<!-- 3 -->
+<figure class="screen">
+  <figcaption><h2>3. Answer with a described screen</h2><p>The assistant answers aloud and shows a card. Here, a timer.</p></figcaption>
+  <div class="frames">
+    <div class="frame tablet wallpaper">
+      <div class="glass-thick rise" style="height:360px">
+        <span class="character" style="--size:72px;align-self:flex-start"></span>
+        <div class="glass timer">
+          <span class="t-caption">Pasta timer</span>
+          <span class="t-display-xl num">10:00</span>
+          <span class="t-label t-2">Started 9:41 · Kitchen</span>
+          <div class="actions"><span class="btn btn-primary bigbtn">Stop</span><span class="btn bigbtn">Snooze 1 min</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note">Panel (thick glass) grows upward to fit the card. The character shrinks to 72px at the left and shows the speaking state. The timer card inside the panel is glass over the panel, as in the A2UI timer card.</div>
+    <div class="note">The card has a caption (the timer name), the time in display-xl and a line of detail. The time counts down live.</div>
+    <div class="note">Stop is the single primary button and Snooze is secondary. Both are 72px high, sized for touch from arm's length.</div>
+    <div class="note">The spoken form is said aloud too ("Your pasta timer is set for ten minutes"), so the screen is never the only way to get the answer. The panel lowers a few seconds after the speech ends unless someone touches it.</div>
+  </div>
+</figure>
+
+<!-- 4 -->
+<figure class="screen">
+  <figcaption><h2>4. Recognised person</h2><p>When the voice is recognised, the screen takes that person's accent colour for the conversation.</p></figcaption>
+  <div class="frames">
+    <div class="frame tablet wallpaper accent-ember">
+      <div class="glass-thick rise" style="height:360px">
+        <span class="character" style="--size:72px;align-self:flex-start"></span>
+        <div class="glass timer">
+          <div class="hstack" style="gap:var(--s-3)"><span class="t-caption" style="flex:1">Pasta timer</span><span class="chip accent" style="height:36px;padding:0 var(--s-3) 0 var(--s-1)"><span class="avatar" style="width:28px;height:28px">A</span>Alex</span></div>
+          <span class="t-display-xl num">10:00</span>
+          <span class="t-label t-2">Started 9:41 · Kitchen</span>
+          <div class="actions"><span class="btn btn-primary bigbtn">Stop</span><span class="btn bigbtn">Snooze 1 min</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note">Same layout as screen 3. The frame uses Alex's accent (Ember here), so the primary button, the character and the chips change colour.</div>
+    <div class="note">A small chip with an avatar and the name shows who the assistant thinks is speaking, so a wrong match is easy to spot. Saying "I am not Alex" or touching the chip clears it.</div>
+    <div class="note">When the conversation ends, the accent returns to the household accent over about 400 ms, and the chip goes. The accent is never kept between conversations.</div>
+  </div>
+</figure>
+
+<!-- 5 -->
+<figure class="screen">
+  <figcaption><h2>5. Approval prompt</h2><p>Before a sensitive action the assistant asks, and waits for a yes or no.</p></figcaption>
+  <div class="frames">
+    <div class="frame tablet wallpaper accent-ember">
+      <div class="glass-thick sheet">
+        <span class="character" style="--size:72px"></span>
+        <span class="t-display">Send this to Sam’s phone?</span>
+        <span class="t-heading t-2" style="font-weight:500">The shopping list, 3 items</span>
+        <div class="actions"><span class="btn btn-primary bigbtn">Yes</span><span class="btn bigbtn">No</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note">A centred thick glass sheet, 560px wide, over the wallpaper. Question in display size, what is affected beneath it in heading size. The photo behind is not dimmed; the glass does the separating.</div>
+    <div class="note">Yes is primary, No is plain, both 72px high and equal width. "Yes" and "no" spoken aloud do the same. Only a recognised person can approve a sensitive action.</div>
+    <div class="note">With no answer in 30 seconds the sheet closes and counts as No. The assistant reads the question aloud when the sheet opens.</div>
+  </div>
+</figure>
+
+<!-- 6 -->
+<figure class="screen">
+  <figcaption><h2>6. Unrecognised voice</h2><p>The assistant does not know who is speaking and says so, and offers what a guest can still do.</p></figcaption>
+  <div class="frames">
+    <div class="frame tablet wallpaper">
+      <div class="glass-thick rise" style="height:300px">
+        <span class="character muted" style="--size:120px"></span>
+        <div class="grow1 col" style="gap:var(--s-3)">
+          <span class="t-display">I don’t recognise your voice</span>
+          <span class="t-heading t-2" style="font-weight:500">As a guest you can ask for the time, the weather and timers. Anything personal needs a household member.</span>
+          <div class="actions" style="justify-content:flex-start"><span class="btn bigbtn" style="flex:none">Carry on as a guest</span><span class="btn btn-quiet bigbtn" style="flex:none">Cancel</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note">The character is grey and slightly larger (120px) and does not breathe, to show a neutral state. The household accent is used; no personal accent is applied.</div>
+    <div class="note">Title in display size, then one sentence of what a guest can do, in heading size. The list of what a guest may do comes from the admin's settings.</div>
+    <div class="note">Carry on as a guest continues the same request with guest rights. Cancel, or silence for 15 seconds, lowers the panel. Neither is primary, because there is no safe default.</div>
+  </div>
+</figure>
+
+<!-- 7 -->
+<figure class="screen">
+  <figcaption><h2>7. Low-power screen</h2><p>After a long quiet the screen goes black at minimum brightness and waits for voice or touch.</p></figcaption>
+  <div class="frames">
+    <div class="frame tablet lowpower ctr" style="display:flex">
+      <span class="t-display-xl num">9:41</span>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note">True black, no wallpaper, no glass, no chips and no animation. Only the time, in display-xl at about a third of the usual brightness.</div>
+    <div class="note">Any voice or a touch wakes the tablet to the idle screen (1) and, if it was a wake word, to the listening panel (2). Running timers still sound at their time.</div>
+    <div class="note">On OLED this saves power; on other screens it mainly stops the glare at night.</div>
+  </div>
+</figure>
+
+<!-- 8 -->
+<figure class="screen">
+  <figcaption><h2>8. Set-up as a household device</h2><p>The tablet is joined to the household with an admin's invite code, then waits for approval.</p></figcaption>
+  <div class="frames">
+    <div class="frame tablet backdrop">
+      <div class="glass-thick sheet" style="width:620px">
+        <span class="t-display">Enter the invite code</span>
+        <span class="t-heading t-2" style="font-weight:500">An admin can make one in the admin panel.</span>
+        <div class="codes"><span class="t-display">K</span><span class="t-display">7</span><span class="t-display">M</span><span class="t-display">2</span><span class="t-display cur"></span><span class="t-display"></span></div>
+        <span class="btn btn-primary bigbtn" style="width:100%">Join</span>
+      </div>
+    </div>
+    <div class="frame tablet backdrop">
+      <div class="glass-thick sheet" style="width:620px">
+        <span class="character" style="--size:96px"></span>
+        <span class="t-display">Waiting for an admin to approve this device</span>
+        <div class="li"><span class="loader"></span><span class="t-heading t-2" style="font-weight:500">Kitchen tablet · code K7M2QH</span></div>
+        <span class="btn btn-quiet">Cancel</span>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div class="note">Left: a centred sheet over the backdrop with six large code boxes, an on-screen keyboard below (not drawn) and Join as the only primary button.</div>
+    <div class="note">Right: after a valid code, the sheet explains that an admin must approve. The loader spins while the app polls the server. The device name is the one the admin gave the invite.</div>
+    <div class="note">When approved the screen changes to the idle screen (1) by itself. If the invite is refused or expires, the sheet shows the reason and a button to try another code.</div>
+  </div>
+</figure>
+</div>
+</body>
+</html>
