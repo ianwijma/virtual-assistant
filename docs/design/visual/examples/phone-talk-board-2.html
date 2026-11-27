@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone conversation board, second round</title>
+<!--
+  Four ways to join the figure view, the pop-up sheet and the chat view on the
+  phone, and to switch between them. Each is drawn three times: the figure
+  listens, a card pops up, the chat view. A and C are dark; B and D are light.
+  Roomy density. Nothing here is decided. See ../phone.md and
+  ../assistant-visuals.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .row3 { display: grid; grid-template-columns: repeat(3, 250px); gap: 28px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 250px; height: 520px; border-radius: 32px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-3); background-color: var(--bg); color: var(--text); }
+  .frame > * { position: absolute; }
+  .frame .bubble { font: 14px/20px var(--font-sans); max-width: 86%; }
+  .glow { border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 55%, transparent), transparent); }
+  .cx { left: 0; right: 0; margin: 0 auto; width: max-content; }
+  .center { left: 0; right: 0; text-align: center; }
+  .state { font: 600 20px/26px var(--font-sans); letter-spacing: -.01em; }
+  .say { font: 500 16px/22px var(--font-sans); padding: 0 24px; }
+  .say.sm { font-size: 15px; line-height: 20px; padding: 0; }
+
+  .pill { height: 30px; padding: 0 var(--s-3); border-radius: var(--r-full); display: inline-flex; align-items: center; gap: 6px; font: var(--type-label); white-space: nowrap; }
+  .pill.danger { color: var(--danger); }
+  .rb { border-radius: 50%; display: grid; place-items: center; position: relative; flex: none; }
+  .rb.danger { color: var(--danger); }
+  .ctl { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .cap { font: var(--type-caption); color: var(--text-2); }
+  .ctls { display: flex; justify-content: center; gap: 40px; }
+  .badge { position: absolute; top: -3px; right: -3px; min-width: 18px; height: 18px; border-radius: var(--r-full); background: var(--accent); color: var(--on-accent); font: 600 11px/18px var(--font-sans); text-align: center; }
+  .handle { width: 36px; height: 5px; border-radius: var(--r-full); background: var(--line); border: 1px solid var(--text-3); box-sizing: border-box; flex: none; align-self: center; }
+  .sheet { display: flex; flex-direction: column; gap: 8px; padding: 8px var(--s-4) 0; }
+  .th { display: flex; flex-direction: column; gap: 8px; }
+  .caret { display: inline-block; width: 2px; height: 1em; vertical-align: -2px; margin-left: 2px; background: var(--on-accent); }
+  .cl .row { min-height: 32px; padding: 0 var(--s-1); font: 14px/20px var(--font-sans); }
+  .cl-t { font: var(--type-body-strong); margin-bottom: 2px; }
+  .card-in { padding: var(--s-2) var(--s-3); }
+  .bar { display: flex; align-items: center; gap: var(--s-2); padding: 0 10px; border-radius: var(--r-xl); }
+  .bar .field .ph { white-space: nowrap; }
+  .bar .field { flex: 1; min-width: 0; height: 38px; font-size: 14px; padding: 0 var(--s-3); }
+  .nm { font: var(--type-body-strong); }
+  .st { display: flex; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
+  .st .dot { color: var(--accent); }
+
+  /* A */
+  .a-seg { top: 40px; padding: 3px; border-radius: var(--r-full); }
+  .a-seg .segmented { background: transparent; }
+  .a-sheet { left: 0; right: 0; bottom: 0; border-radius: var(--r-xl) var(--r-xl) 0 0; }
+  /* B */
+  .b-top { top: 44px; left: 14px; right: 14px; height: 30px; }
+  .b-top > * { position: absolute; top: 0; }
+  .b-drawer { left: 0; right: 0; bottom: 0; border-radius: var(--r-xl) var(--r-xl) 0 0; padding: 8px var(--s-4); display: flex; flex-direction: column; gap: 8px; }
+  .b-prev { display: flex; align-items: center; gap: var(--s-2); font: 14px/20px var(--font-sans); }
+  .b-prev .grow { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* C */
+  .c-panel { left: 0; right: 0; top: 208px; bottom: 0; border-radius: var(--r-xl) var(--r-xl) 0 0; }
+  .c-th { left: 14px; right: 14px; top: 224px; bottom: 76px; justify-content: flex-end; overflow: hidden; }
+  .c-th.up { justify-content: flex-start; -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent); mask-image: linear-gradient(to bottom, black 78%, transparent); }
+  .c-hint { align-self: flex-end; font: var(--type-caption); color: var(--text-2); }
+  .c-in { left: 12px; right: 12px; bottom: 14px; height: 54px; }
+  /* D */
+  .d-head { left: 16px; top: 46px; }
+  .d-ctls { left: 12px; right: 12px; bottom: 22px; display: flex; justify-content: space-around; }
+  .d-tile { right: 12px; top: 40px; width: 84px; height: 110px; border-radius: 20px; overflow: hidden; }
+  .d-tile > * { position: absolute; }
+  .d-th { left: 14px; right: 14px; top: 166px; bottom: 76px; justify-content: flex-end; gap: 6px; }
+  .d-th .cl .row { min-height: 28px; }
+  .d-th .bubble { max-width: 90%; }
+  .d-bar { left: 12px; right: 12px; bottom: 14px; height: 56px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var SAY = 'Put milk and eggs on the shopping list';
+  var REPLY = 'Done. I added milk and eggs.';
+  function ch(size, listening, style) {
+    return '<span class="character' + (listening ? ' listening' : '') + '" style="--size:' + size + 'px;' + (style || '') + '"></span>';
+  }
+  function fig(size, top, listening, extra) {
+    return '<span class="figure cx" style="--size:' + size + 'px;top:' + top + 'px;' + (extra || '') + '"><span class="character' + (listening ? ' listening' : '') + '" style="--size:' + size + 'px"></span></span>';
+  }
+  function glow(size, style) { return '<div class="glow" style="width:' + size + 'px;height:' + size + 'px;' + style + '"></div>'; }
+  function rb(label, danger, size, cap, badge) {
+    return '<span class="ctl"><span class="glass rb' + (danger ? ' danger' : '') + '" style="width:' + size + 'px;height:' + size + 'px"><i class="ico"></i>' +
+      (badge ? '<span class="badge">' + badge + '</span>' : '') + '</span>' + (cap ? '<span class="cap">' + label + '</span>' : '') + '</span>';
+  }
+  function pill(label, cls, style) { return '<span class="glass pill ' + (cls || '') + '" style="' + (style || '') + '">' + label + '</span>'; }
+  function items() {
+    return [['Bread', 0], ['Milk', 1], ['Eggs', 1]].map(function (r) {
+      return '<div class="row"><i class="ico"></i><span class="grow">' + r[0] + '</span>' + (r[1] ? '<span class="chip accent">New</span>' : '') + '</div>';
+    }).join('');
+  }
+  function list() { return '<div class="cl"><div class="cl-t">Shopping</div><div class="list">' + items() + '</div></div>'; }
+  function frame(accent, mode, inner) { return '<div class="frame backdrop ' + mode + ' ' + accent + '">' + inner + '</div>'; }
+  function hi() { return '<div class="bubble">Hi Alex. What can I do?</div>'; }
+  function me(caret) { return '<div class="bubble me">' + (caret ? 'Put milk and eggs on the shopping' + '<span class="caret"></span>' : SAY) + '</div>'; }
+  function reply() { return '<div class="bubble">' + REPLY + '</div>'; }
+  function cardIn() { return '<div class="surface card-in">' + list() + '</div>'; }
+  function full() { return hi() + me() + reply() + cardIn(); }
+  function inputBar(cls, lead, trail) {
+    return '<div class="glass bar ' + cls + '">' + (lead || '') + '<span class="field"><span class="ph">Message Juno</span></span>' + (trail || '') + '</div>';
+  }
+  function send() { return '<span class="btn btn-primary btn-icon" style="width:36px;height:36px;border-radius:50%;flex:none"><i class="ico"></i></span>'; }
+
+  /* A: two modes with a switch on top */
+  function aSeg(on) {
+    return '<div class="glass a-seg cx"><div class="segmented"><span class="' + (on === 0 ? 'on' : '') + '">Juno</span><span class="' + (on === 1 ? 'on' : '') + '">Chat</span></div></div>';
+  }
+  var A = [
+    frame('accent-tide', 'dark',
+      glow(300, 'left:-25px;top:60px') + aSeg(0) + fig(120, 90, true) +
+      '<div class="center" style="top:322px"><div class="state">Listening</div><div class="say">' + SAY + '</div></div>' +
+      '<div class="ctls" style="left:0;right:0;bottom:26px">' + rb('Mute', 0, 52, 1) + rb('End', 1, 52, 1) + '</div>'),
+    frame('accent-tide', 'dark',
+      glow(280, 'left:-15px;top:40px') + aSeg(0) + fig(96, 84, false) +
+      '<div class="glass-thick a-sheet sheet" style="top:268px"><span class="handle"></span><div class="say sm">' + REPLY + '</div>' + list() +
+      '<div class="ctls" style="margin-top:auto;padding-bottom:22px">' + rb('Mute', 0, 44) + rb('End', 1, 44) + '</div></div>'),
+    frame('accent-tide', 'dark',
+      glow(260, 'left:-5px;top:-60px') + aSeg(1) + ch(34, false, 'left:14px;top:46px') + pill('End', 'danger', 'right:14px;top:46px') +
+      '<div class="th" style="left:14px;right:14px;top:100px;bottom:84px;justify-content:flex-end">' + full() + '</div>' +
+      '<div class="glass bar" style="bottom:14px;left:12px;right:12px;height:56px">' + rb('Mute', 0, 36) + '<span class="field"><span class="ph">Message</span></span>' + send() + '</div>')
+  ];
+
+  /* B: chat slides up from below */
+  function bTop(state) {
+    return '<div class="b-top">' + pill('Mute', '', 'left:0') + pill('<span class="dot"></span>' + state, '', 'left:0;right:0;margin:0 auto;width:max-content;background:transparent;box-shadow:none;border:0') + pill('End', 'danger', 'right:0') + '</div>';
+  }
+  function drawer(line, preview) {
+    return '<div class="glass-thick b-drawer" style="top:428px"><span class="handle"></span>' +
+      '<div class="b-prev"><span class="grow">' + line + '</span>' + preview + '</div><div class="cap" style="text-align:center">Pull up for the chat</div></div>';
+  }
+  var B = [
+    frame('accent-ember', 'light',
+      glow(320, 'left:-35px;top:60px') + bTop('Listening') + fig(140, 94, true) +
+      '<div class="center" style="top:352px"><div class="say">' + SAY + '</div></div>' +
+      drawer('<b>You:</b> Put milk and eggs on…', '<span class="chip accent">Chat</span>')),
+    frame('accent-ember', 'light',
+      glow(300, 'left:-25px;top:40px') + bTop('Speaking') + fig(70, 84, false) +
+      '<div class="glass-thick sheet" style="left:12px;right:12px;top:200px;height:222px;border-radius:var(--r-xl)"><span class="handle"></span><div class="say sm">' + REPLY + '</div>' + list() + '</div>' +
+      drawer('<b>Juno:</b> Done. I added milk and…', '<span class="chip accent">Chat</span>')),
+    frame('accent-ember', 'light',
+      glow(260, 'left:-5px;top:-50px') + bTop('Speaking') + ch(48, false, 'left:101px;top:76px') +
+      '<div class="glass-thick" style="left:0;right:0;top:108px;bottom:0;border-radius:var(--r-xl) var(--r-xl) 0 0"></div>' +
+      '<div class="handle" style="left:107px;top:116px"></div>' +
+      '<div class="th" style="left:14px;right:14px;top:134px;bottom:78px;justify-content:flex-end">' + full() + '</div>' +
+      '<div class="bar" style="left:12px;right:12px;bottom:14px;height:54px;padding:0 6px"><span class="field"><span class="ph">Message Juno</span></span>' + send() + '</div>')
+  ];
+
+  /* C: figure on top, chat beneath */
+  function stage(fsize, listening, state) {
+    return glow(240, 'left:5px;top:-10px') + fig(fsize, 52, listening) +
+      pill('Mute', '', 'left:12px;top:44px') + pill('End', 'danger', 'right:12px;top:44px') +
+      pill(state, '', 'left:12px;top:172px') + pill('Expand', '', 'right:12px;top:172px');
+  }
+  var C = [
+    frame('accent-aurora', 'dark',
+      stage(80, true, '<span class="dot"></span>Listening') +
+      '<div class="glass-thick c-panel"></div>' +
+      '<div class="th c-th">' + hi() + me(1) + '<div class="c-hint">Hearing you…</div></div>' +
+      inputBar('c-in', '', send()).replace('<span class="field">', '<span class="field" style="height:38px">')),
+    frame('accent-aurora', 'dark',
+      glow(300, 'left:-25px;top:30px') + fig(110, 84, false) +
+      pill('Mute', '', 'left:12px;top:44px') + pill('Collapse', '', 'left:0;right:0;margin:0 auto;width:max-content;top:44px') + pill('End', 'danger', 'right:12px;top:44px') +
+      '<div class="glass-thick sheet" style="left:0;right:0;top:296px;bottom:0;border-radius:var(--r-xl) var(--r-xl) 0 0"><span class="handle"></span><div class="say sm">' + REPLY + '</div>' + list() + '</div>'),
+    frame('accent-aurora', 'dark',
+      stage(80, false, '<span class="dot"></span>Speaking') +
+      '<div class="glass-thick c-panel"></div>' +
+      '<div class="th c-th up">' + full() + '</div>' +
+      pill('Latest', '', 'right:20px;top:392px') +
+      inputBar('c-in', '', send()))
+  ];
+
+  /* D: like a call */
+  function dHead(state) {
+    return '<div class="d-head"><div class="nm">Juno</div><div class="st"><span class="dot"></span>' + state + ' &middot; 02:14</div></div>';
+  }
+  function dCtls(badge) {
+    return '<div class="d-ctls">' + rb('Mute', 0, 46, 1) + rb('Chat', 0, 46, 1, badge) + rb('Speaker', 0, 46, 1) + rb('End', 1, 46, 1) + '</div>';
+  }
+  var D = [
+    frame('accent-moss', 'light',
+      glow(380, 'left:-65px;top:30px') + dHead('Listening') + fig(180, 92, true) +
+      '<div class="glass" style="left:16px;right:16px;top:352px;padding:8px 14px;border-radius:var(--r-lg);text-align:center;font:500 14px/20px var(--font-sans)">' + SAY + '</div>' +
+      dCtls('')),
+    frame('accent-moss', 'light',
+      glow(300, 'left:-25px;top:30px') + dHead('Speaking') + fig(66, 92, false) +
+      '<div class="glass-thick sheet" style="left:12px;right:12px;top:214px;height:216px;border-radius:var(--r-xl)"><span class="handle"></span><div class="say sm">' + REPLY + '</div>' + list() + '</div>' +
+      dCtls('1')),
+    frame('accent-moss', 'light',
+      glow(260, 'left:-5px;top:-50px') + dHead('Speaking') +
+      '<div class="glass d-tile"><div class="glow" style="width:120px;height:120px;left:-18px;top:-6px"></div>' + fig(44, 16, false) + '<span class="cap" style="left:0;right:0;bottom:8px;text-align:center">Juno</span></div>' +
+      '<div class="th d-th">' + full().replace('class="surface card-in"', 'class="surface card-in" style="padding:6px 12px"') + '</div>' +
+      '<div class="glass bar d-bar">' + rb('Mute', 0, 36) + '<span class="field"><span class="ph">Message</span></span>' + rb('End', 1, 36) + '</div>')
+  ];
+
+  var arr = [
+    ['v-a', 'A. Two modes with a switch on top', ['Talking', 'A card pops up', 'Chat'], A,
+      'Gains a figure that has the screen and a clear, always-in-the-same-place switch; costs a touch to reach the text and the two views are never both on screen.'],
+    ['v-b', 'B. Chat slides up from below', ['Talking', 'A card pops up', 'Chat'], B,
+      'Gains the last line always in sight and text one pull away; costs a busier lower edge, a card squeezed above the drawer and a tiny head once the chat is open.'],
+    ['v-c', 'C. Figure on top, chat beneath', ['Talking', 'A card pops up (full screen)', 'Chat (scrolled up)'], C,
+      'Gains figure and text on screen at once with no switching; costs a small head and a crowded screen, and the full-screen figure needs its own button.'],
+    ['v-d', 'D. Like a call', ['Talking', 'A card pops up', 'Chat'], D,
+      'Gains the largest figure and a call layout everyone knows, with the figure kept as a tile over the chat; costs a row of four buttons and a tile that covers part of the thread.']
+  ];
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[4] + '</p><div class="row3">' +
+      a[3].map(function (f, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + a[2][i] + '</span>' + f + '</div>'; }).join('') +
+      '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

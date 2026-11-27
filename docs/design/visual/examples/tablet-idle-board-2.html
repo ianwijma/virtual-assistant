@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tablet idle board, second round</title>
+<!--
+  Four mash-ups of the photo with a large clock (first round, B) and the
+  resident figure (first round, D), with small flat glance bars. Drawn by
+  day and by night. Nothing here is decided. See ../tablet.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-6); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 400px; border-radius: 20px; overflow: hidden; }
+  .frame > * { position: absolute; }
+  .night { inset: 0; background: color-mix(in srgb, var(--bg) 45%, transparent); }
+  .time { line-height: 1; }
+  .shadow { text-shadow: 0 2px 18px var(--bg), 0 0 4px var(--bg); }
+  .clock .t-strong { margin-top: 6px; }
+
+  /* A glance bar: small, flat, one line. */
+  .gb { display: flex; align-items: center; gap: 6px; width: 156px; height: 36px; padding: 0 var(--s-2);
+    border-radius: var(--r-sm); font-size: 12px; line-height: 16px; font-weight: 600; white-space: nowrap; }
+  .gb .ico { width: 14px; height: 14px; }
+  .shelf .gb { width: 148px; height: 36px; background: var(--control); border-color: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  /* The hint chip. */
+  .say { padding: 6px var(--s-3); border-radius: var(--r-md); font: var(--type-label); font-weight: 600; white-space: nowrap; }
+  .stack { display: flex; flex-direction: column; gap: var(--s-2); }
+  .hrow { display: flex; gap: 6px; }
+
+  /* A */
+  .a-clock { left: var(--s-6); bottom: var(--s-5); }
+  .a-bars { left: var(--s-6); bottom: 148px; }
+  .a-fig { right: 56px; bottom: 0; }
+  .a-say { right: 28px; bottom: 212px; }
+  /* B */
+  .b-fig { left: 10px; bottom: 0; }
+  .b-say { left: 108px; bottom: 112px; }
+  .b-clock { right: var(--s-6); top: var(--s-5); text-align: right; }
+  .b-bars { right: 8px; bottom: var(--s-4); }
+  .b-bars .gb { width: 154px; }
+  /* C */
+  .c-clock { left: var(--s-6); top: var(--s-4); }
+  .c-clock .t-display-xl { font-size: 88px; }
+  .c-fig { left: 28px; bottom: 68px; }
+  .c-say { left: 20px; top: 146px; }
+  .c-shelf { left: 12px; right: 12px; bottom: 12px; height: 56px; border-radius: var(--r-lg); }
+  .c-bars { left: 126px; bottom: 22px; }
+  /* D */
+  .d-clock { left: 0; right: 0; top: var(--s-4); text-align: center; }
+  .d-fig { left: 245px; bottom: 0; }
+  .d-say { left: 50%; transform: translateX(-50%); bottom: 212px; }
+  .d-l { left: var(--s-5); bottom: 70px; }
+  .d-r { right: var(--s-5); bottom: 70px; }
+  .d-r .gb, .d-l .gb { width: 170px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var DATE = 'Saturday 28 November';
+  var FACTS = ['Pasta timer &middot; 07:42', 'Bins go out tonight', 'Shopping &middot; 3 items'];
+  function bar(i) { return '<div class="glass gb"><span class="ico"></span><span>' + FACTS[i] + '</span></div>'; }
+  function bars(cls, ids) { return '<div class="' + cls + '">' + ids.map(bar).join('') + '</div>'; }
+  function clock(cls, size) {
+    return '<div class="clock ' + cls + '"><div class="t-display-xl num time shadow">9:41</div><div class="t-strong shadow">' + DATE + '</div></div>';
+  }
+  function fig(size, cls) { return '<div class="' + cls + '"><span class="figure" style="--size:' + size + 'px"><span class="character" style="--size:' + size + 'px"></span></span></div>'; }
+  function say(cls) { return '<div class="glass say ' + cls + '">Say “Hey Juno”</div>'; }
+  function frame(mode, inner) {
+    return '<div class="frame ' + mode + ' wallpaper">' + (mode === 'dark' ? '<div class="night"></div>' : '') + inner + '</div>';
+  }
+  function both(build) { return [frame('light', build()), frame('dark', build())]; }
+
+  var A = both(function () {
+    return clock('a-clock') + bars('stack a-bars', [0, 1, 2]) + fig(90, 'a-fig') + say('a-say');
+  });
+  var B = both(function () {
+    return fig(90, 'b-fig') + say('b-say') + clock('b-clock') + bars('hrow b-bars', [0, 1, 2]);
+  });
+  var C = both(function () {
+    return clock('c-clock') + '<div class="glass c-shelf shelf"></div>' + fig(80, 'c-fig') + say('c-say') +
+      '<div class="shelf hrow c-bars">' + [0, 1, 2].map(bar).join('') + '</div>';
+  });
+  var D = both(function () {
+    return clock('d-clock') + fig(110, 'd-fig') + say('d-say') + bars('stack d-l', [0]) + bars('stack d-r d-bars', [1, 2]);
+  });
+
+  var arr = [
+    ['v-a', 'A. Clock left, bars under it, figure right', A, 'Gains the clock and the facts in one tidy block that reads well from across a room and leaves the top and the middle of the photo clear; costs the lower left, and the figure is a little apart from the facts.'],
+    ['v-b', 'B. Figure left, everything else right', B, 'Gains a figure that is clearly present, with its hint like a speech bubble, and a clock at the top that leaves the photo’s middle open; costs the whole bottom strip of the photo, and the bars are far from the clock.'],
+    ['v-c', 'C. Bottom shelf', C, 'Gains the most of the photo, since everything but the clock sits on one slim shelf, and the figure stands on something; costs facts that are small and low on the screen, which is hardest to read from far away.'],
+    ['v-d', 'D. Figure in the middle', D, 'Gains the most present assistant, holding up the facts like things it is showing you; costs the centre of the photo, where a family photo most often has its subject.']
+  ];
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[3] + '</p><div class="pair">' +
+      a[2].map(function (f, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + (i ? 'Night' : 'Day') + '</span>' + f + '</div>'; }).join('') +
+      '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

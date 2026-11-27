@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone screens board</title>
+<!--
+  Four ways to join the four main screens of the phone app: Overview,
+  Assistant, Timeline and Chat. Each design shows three of the screens so the
+  navigation is seen on each. Clipboard, Lists and Settings stay reachable.
+  The last block shows the setting that chooses the first screen. Nothing
+  here is decided. See ../phone.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; display: grid; grid-template-columns: 800px 280px; column-gap: 40px; align-items: start; }
+  .arr { grid-column: 1 / -1; }
+  #v-d { grid-column: 1; grid-row: 4; }
+  #v-setting { grid-column: 2; grid-row: 4; }
+  .arr { margin-bottom: var(--s-3); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); max-width: 780px; }
+  .trio { display: grid; grid-template-columns: repeat(3, 250px); gap: 10px; }
+  .last { display: flex; gap: 40px; align-items: flex-start; }
+  .cell .t-caption { display: block; height: 18px; }
+  .phone { position: relative; width: 250px; height: 520px; border-radius: 32px; overflow: hidden; }
+  .phone > * { position: absolute; }
+  .sb { top: 11px; left: 24px; right: 24px; display: flex; justify-content: space-between; font: var(--type-label); font-weight: 600; font-size: 12px; }
+  .scr { overflow: hidden; }
+  .stack { display: flex; flex-direction: column; }
+  .grow { flex: 1; min-width: 0; }
+  .ell { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sub { font: var(--type-caption); color: var(--text-2); display: block; }
+  .when { font: var(--type-caption); color: var(--text-3); flex: none; }
+  .timernum { font: var(--type-heading); font-size: 15px; font-variant-numeric: tabular-nums; color: var(--accent); flex: none; }
+  .lab { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); margin: var(--s-3) 4px var(--s-1); }
+  .mic { width: 9px; height: 15px; border: 2px solid currentColor; border-radius: var(--r-full); display: block; }
+  .ico.s { width: 18px; height: 18px; }
+  .card { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-3); margin-top: var(--s-2); }
+  .nrow { display: flex; align-items: center; gap: var(--s-2); padding: 7px var(--s-3); }
+  .nrow + .nrow { border-top: 1px solid var(--line); }
+  .nrow .t-label { font-size: 13px; }
+  .center { align-items: center; justify-content: center; text-align: center; }
+  .rbtn { border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .tl { display: flex; gap: var(--s-2); }
+  .tl .t { width: 32px; flex: none; font: var(--type-caption); color: var(--text-2); padding-top: 2px; font-variant-numeric: tabular-nums; }
+  .tl .rail { width: 12px; flex: none; position: relative; }
+  .tl .rail::before { content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+  .tl .rail i { position: absolute; left: 1px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--text-3); }
+  .tl.now .rail i { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .tl .body { flex: 1; min-width: 0; padding: 0 0 var(--s-2); }
+  .tl .t-label { font-size: 13px; }
+
+  /* A */
+  .a-top { top: 34px; left: 16px; right: 12px; display: flex; align-items: center; gap: var(--s-2); }
+  .a-scr { top: 82px; left: 14px; right: 14px; bottom: 84px; }
+  .a-bar { left: 10px; right: 10px; bottom: 10px; }
+  .a-bar.tabbar > * { flex: 1; min-width: 0; padding: 6px 2px; font-size: 11px; }
+  /* B */
+  .b-dots { top: 34px; left: 0; right: 0; display: flex; justify-content: center; gap: 0; }
+  .b-dots > div { width: 56px; display: flex; flex-direction: column; align-items: center; gap: 3px; font: var(--type-caption); font-size: 9.5px; color: var(--text-3); }
+  .b-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); opacity: .5; display: block; }
+  .b-dots .on { color: var(--text); font-weight: 700; }
+  .b-dots .on i { background: var(--accent); opacity: 1; width: 16px; border-radius: var(--r-full); }
+  .b-scr { top: 78px; left: 22px; right: 22px; bottom: 84px; }
+  .b-scr .t-title { font-size: 20px; line-height: 24px; }
+  .b-scr .lab { margin-top: var(--s-2); }
+  .b-peek { top: 100px; bottom: 110px; width: 14px; }
+  .b-peek.l { left: 0; border-radius: 0 14px 14px 0; }
+  .b-peek.r { right: 0; border-radius: 14px 0 0 14px; }
+  .b-dock { left: 0; right: 0; bottom: 8px; display: flex; justify-content: center; gap: var(--s-5); }
+  .b-dock > div { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 64px; }
+  .b-dock .rbtn { width: 42px; height: 42px; }
+  .b-dock .t-caption { font-size: 10px; }
+  /* C */
+  .c-top { top: 34px; left: 16px; right: 16px; }
+  .c-scr { top: 66px; left: 14px; right: 14px; bottom: 96px; }
+  .c-bar { left: 8px; right: 8px; bottom: 12px; height: 58px; border-radius: var(--r-full); display: flex; align-items: center; padding: 0 6px; }
+  .c-bar .it { width: 40px; display: flex; flex-direction: column; align-items: center; gap: 2px; font: var(--type-caption); font-size: 9px; letter-spacing: -.01em; color: var(--text-2); padding: 5px 0; border-radius: var(--r-lg); }
+  .c-bar .it.on { background: var(--accent-soft); color: var(--accent); }
+  .c-bar .gap { width: 58px; flex: none; }
+  .c-big { left: 0; right: 0; margin: 0 auto; bottom: 28px; width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; box-shadow: var(--shadow-3); background: var(--accent); border: 3px solid var(--glass-solid); }
+  .c-big .character { box-shadow: none; }
+  .c-big.end { background: var(--danger); color: var(--on-accent); font: var(--type-label); font-weight: 700; }
+  /* D */
+  .d-top { top: 32px; left: 10px; right: 10px; display: flex; align-items: center; gap: var(--s-2); }
+  .d-seg { flex: 1; min-width: 0; border-radius: var(--r-full); padding: 3px; display: flex; }
+  .d-seg > div { flex: 1; text-align: center; font: var(--type-label); font-size: 11px; font-weight: 600; padding: 7px 0; border-radius: var(--r-full); color: var(--text-2); white-space: nowrap; }
+  .d-seg > .on { background: var(--accent-soft); color: var(--accent); }
+  .d-scr { top: 82px; left: 14px; right: 14px; bottom: 82px; }
+  .d-bar { left: 10px; right: 10px; bottom: 12px; height: 56px; border-radius: var(--r-full); display: flex; align-items: center; gap: var(--s-2); padding: 0 8px 0 var(--s-4); }
+  /* setting */
+  .set-scr { top: 40px; left: 14px; right: 14px; }
+  .thumb { width: 26px; height: 36px; border-radius: 7px; background: var(--control); border: 1px solid var(--line); flex: none; position: relative; overflow: hidden; }
+  .thumb i { position: absolute; display: block; background: var(--text-3); opacity: .55; border-radius: 2px; }
+  .tick { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); flex: none; position: relative; }
+  .tick::after { content: ""; position: absolute; left: 7px; top: 3px; width: 5px; height: 10px; border: solid var(--on-accent); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .srow { display: flex; align-items: center; gap: var(--s-3); padding: 8px var(--s-3); }
+  .srow + .srow { border-top: 1px solid var(--line); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var accents = { a: 'accent-tide', b: 'accent-ember', c: 'accent-aurora', d: 'accent-moss', s: 'accent-tide' };
+  var N = [
+    ['Parcel arrives tomorrow', 'Email', '8:10'],
+    ['Sam added milk to Shopping', 'Lists', '7:54'],
+    ['Bins go out tonight', 'Reminder', '7:30']
+  ];
+  var ico = '<span class="ico"></span>';
+  var icos = '<span class="ico s"></span>';
+  var mic = '<span class="mic"></span>';
+  var sb = '<div class="sb"><span>8:12</span><span>&#9679;&#9679;&#9679;</span></div>';
+  function ch(size, cls) { return '<span class="character ' + (cls || '') + '" style="--size:' + size + 'px"></span>'; }
+  function fig(size) { return '<span class="figure" style="--size:' + size + 'px"><span class="character listening" style="--size:' + size + 'px"></span></span>'; }
+  function av(s) { return '<span class="avatar" style="width:' + s + 'px;height:' + s + 'px">A</span>'; }
+
+  /* The three screens, as flowing content. */
+  var S = {
+    overview: function () {
+      return '<div class="t-caption">Tuesday</div><div class="t-title">Good morning, Alex</div>' +
+        '<div class="glass card">' + ch(40, 'listening') + '<div class="grow"><div class="t-strong">Talk to Juno</div><span class="sub">Tap or say &ldquo;Hey Juno&rdquo;</span></div></div>' +
+        '<div class="glass card"><span class="dot" style="color:var(--accent)"></span><div class="grow"><span class="ell t-strong">Pasta timer</span></div><span class="timernum">07:42</span></div>' +
+        '<div class="lab">Recent</div>' +
+        '<div class="surface">' + N.map(function (n) {
+          return '<div class="nrow"><div class="grow"><div class="ell t-label">' + n[0] + '</div><span class="sub">' + n[1] + ' &middot; ' + n[2] + '</span></div></div>';
+        }).join('') + '</div>';
+    },
+    assistant: function () {
+      return '<div class="stack center" style="height:100%">' + fig(130) +
+        '<div class="t-heading" style="margin-top:var(--s-4)">Juno</div>' +
+        '<div class="t-strong" style="margin-top:var(--s-2)">Tap or say &ldquo;Hey Juno&rdquo;</div>' +
+        '<span class="chip" style="margin-top:var(--s-3)">Listening</span></div>';
+    },
+    timeline: function () {
+      var items = [
+        ['now', 'Now', '<div class="surface card" style="margin:0"><div class="grow"><span class="t-strong" style="white-space:nowrap;font-size:13px">Pasta timer</span><span class="sub">Running</span></div><span class="timernum">07:42</span></div>'],
+        ['', '8:10', '<div class="t-label ell">' + N[0][0] + '</div><span class="sub">Email</span>'],
+        ['', '7:54', '<div class="t-label ell">' + N[1][0] + '</div><span class="sub">Lists</span>'],
+        ['', '7:30', '<div class="t-label ell">' + N[2][0] + '</div><span class="sub">Reminder</span>'],
+        ['', '7:15', '<div class="t-label ell">Jo copied a link</div><span class="sub">Clipboard</span>'],
+        ['', '6:30', '<div class="t-label ell">Wake-up alarm rang</div><span class="sub">Alarm</span>']
+      ];
+      return '<div class="t-title" style="margin-bottom:var(--s-2)">Today</div>' + items.map(function (it) {
+        return '<div class="tl ' + it[0] + '"><span class="t">' + it[1] + '</span><span class="rail"><i></i></span><div class="body">' + it[2] + '</div></div>';
+      }).join('');
+    }
+  };
+  var KEYS = ['overview', 'assistant', 'timeline'];
+
+  /* A: tab bar */
+  function A(k) {
+    var names = ['Overview', 'Juno', 'Timeline', 'Chat'];
+    var idx = { overview: 0, assistant: 1, timeline: 2 }[k];
+    return sb +
+      '<div class="a-top"><div class="grow t-caption">' + names[idx] + '</div>' + av(34) + '</div>' +
+      '<div class="scr a-scr">' + S[k]() + '</div>' +
+      '<div class="glass-thick tabbar a-bar">' + names.map(function (n, i) {
+        return '<div class="' + (i === idx ? 'on' : '') + '">' + icos + '<span>' + n + '</span></div>';
+      }).join('') + '</div>';
+  }
+
+  /* B: swipe between pages */
+  function B(k) {
+    var names = ['Overview', 'Juno', 'Timeline', 'Chat'];
+    var idx = { overview: 0, assistant: 1, timeline: 2 }[k];
+    var dock = ['Clipboard', 'Lists', 'Settings'].map(function (n) {
+      return '<div><span class="glass rbtn">' + ico + '</span><span class="t-caption">' + n + '</span></div>';
+    }).join('');
+    return sb +
+      '<div class="b-dots">' + names.map(function (n, i) { return '<div class="' + (i === idx ? 'on' : '') + '"><i></i>' + n + '</div>'; }).join('') + '</div>' +
+      (idx > 0 ? '<div class="glass b-peek l"></div>' : '') +
+      '<div class="glass b-peek r"></div>' +
+      '<div class="scr b-scr">' + S[k]() + '</div>' +
+      '<div class="b-dock">' + dock + '</div>';
+  }
+
+  /* C: Juno in the middle of the bar */
+  function C(k) {
+    var idx = { overview: 0, assistant: 1, timeline: 2 }[k];
+    var on = { overview: 0, assistant: -1, timeline: 1 }[k];
+    var items = ['Overview', 'Timeline', 'Chat', 'More'];
+    var html = items.map(function (n, i) {
+      var cell = '<div class="it ' + (i === on ? 'on' : '') + '">' + icos + '<span>' + n + '</span></div>';
+      return (i === 2 ? '<div class="gap"></div>' : '') + cell;
+    }).join('');
+    var big = k === 'assistant'
+      ? '<span class="c-big end">End</span>'
+      : '<span class="c-big">' + ch(54, 'listening') + '</span>';
+    return sb +
+      '<div class="scr c-scr">' + S[k]() + '</div>' +
+      '<div class="glass-thick c-bar">' + html + '</div>' + big;
+  }
+
+  /* D: switcher at the top */
+  function D(k) {
+    var names = ['Overview', 'Juno', 'Timeline', 'Chat'];
+    var idx = { overview: 0, assistant: 1, timeline: 2 }[k];
+    return sb +
+      '<div class="d-top"><div class="glass d-seg">' + names.map(function (n, i) {
+        return '<div class="' + (i === idx ? 'on' : '') + '">' + n + '</div>';
+      }).join('') + '</div>' + av(36) + '</div>' +
+      '<div class="scr d-scr">' + S[k]() + '</div>' +
+      '<div class="glass-thick d-bar"><span class="grow t-body" style="color:var(--text-3)">Ask Juno&hellip;</span><span class="btn btn-primary btn-icon rbtn" style="width:40px;height:40px;padding:0">' + mic + '</span></div>';
+  }
+
+  var arr = [
+    ['v-a', 'a', true, 'A. Tab bar', A,
+      'Gains the familiar layout, any screen one touch away and the assistant a tab of its own; costs the bottom strip of every screen, and the areas behind the avatar take two touches.'],
+    ['v-b', 'b', false, 'B. Swipe between pages', B,
+      'Gains a full screen for content and a feel of one moving surface; costs discoverability (the dots and the peeking edge are the only hint) and up to three swipes to cross the pages.'],
+    ['v-c', 'c', true, 'C. Juno in the middle of the bar', C,
+      'Gains the assistant one touch from anywhere, which is the product&rsquo;s centre, and a recognisable bar; costs a taller bar, with Chat and the areas sharing small labels and More taking two touches.'],
+    ['v-d', 'd', false, 'D. Switcher at the top', D,
+      'Gains a bottom that is always a place to type or speak, and a clear switch in thumb-far reach; costs the top and bottom of the screen both, and the far reach to the top for every change of screen.']
+  ];
+  function phone(light, key, inner) {
+    return '<div class="phone backdrop ' + accents[key] + ' ' + (light ? 'light' : 'dark') + '">' + inner + '</div>';
+  }
+  var caps = ['Overview', 'Assistant', 'Timeline'];
+  var html = arr.map(function (a) {
+    var cells = KEYS.map(function (k, i) {
+      return '<div class="cell"><span class="t-caption">' + caps[i] + '</span>' + phone(a[2], a[1], a[4](k)) + '</div>';
+    }).join('');
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[3] + '</h2><p class="d">' + a[5] + '</p><div class="trio">' + cells + '</div></section>';
+  }).join('');
+
+  /* The setting. */
+  var rows = [
+    ['Overview', true, '<i style="left:3px;right:3px;top:5px;height:4px"></i><i style="left:3px;right:3px;top:12px;height:8px"></i><i style="left:3px;right:3px;top:23px;height:8px"></i>'],
+    ['Assistant', false, '<i style="left:8px;top:6px;width:10px;height:10px;border-radius:50%"></i><i style="left:6px;right:6px;top:18px;height:14px"></i>'],
+    ['Timeline', false, '<i style="left:5px;top:4px;width:2px;bottom:4px"></i><i style="left:10px;right:3px;top:6px;height:5px"></i><i style="left:10px;right:3px;top:15px;height:5px"></i><i style="left:10px;right:3px;top:24px;height:5px"></i>'],
+    ['Chat', false, '<i style="left:3px;width:14px;top:6px;height:7px"></i><i style="right:3px;width:14px;top:16px;height:7px"></i><i style="left:3px;width:10px;top:26px;height:5px"></i>']
+  ];
+  var setting = sb +
+    '<div class="scr set-scr">' +
+      '<div class="t-caption">Settings</div><div class="t-title">First screen</div>' +
+      '<div class="lab">The app opens on</div>' +
+      '<div class="surface">' + rows.map(function (r) {
+        return '<div class="srow"><span class="thumb">' + r[2] + '</span><div class="grow t-strong">' + r[0] + '</div>' + (r[1] ? '<span class="tick"></span>' : '') + '</div>';
+      }).join('') + '</div>' +
+      '<div class="surface" style="margin-top:var(--s-4)"><div class="srow"><div class="grow t-label">Return to this screen after 5 minutes away</div><span class="toggle on"></span></div></div>' +
+    '</div>';
+  html += '<section class="arr" id="v-setting"><h2>Choosing the first screen</h2>' +
+    '<p class="d">Whichever way the screens are joined, the app opens on the one a person picks, and can return to it after the phone has been left alone.</p>' +
+    '<div class="cell" style="width:250px"><span class="t-caption">Settings</span>' + phone(true, 's', setting) + '</div></section>';
+  document.getElementById('page').innerHTML = html;
+</script>
+</body>
+</html>
