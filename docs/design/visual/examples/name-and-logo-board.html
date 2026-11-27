@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Name and logo board</title>
+<!--
+  Six name directions and six logo marks, to choose from.
+  Nothing here is decided. Names are not checked for existing products,
+  trade marks or web addresses.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .page h2 { font: var(--type-title); margin: var(--s-4) 0 var(--s-1); }
+  .page > section:first-child h2 { margin-top: 0; }
+  .page p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-3); max-width: 90ch; }
+  .page p.fine { font: var(--type-caption); color: var(--text-2); margin: var(--s-2) 0 0; }
+  .tile { border-radius: var(--r-xl); padding: var(--s-4); }
+  .names { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-3); }
+  .names .tile { display: flex; }
+  .names .glass { flex: 1; padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-2); }
+  .word { font: 700 34px/40px var(--font-sans); letter-spacing: -0.03em; }
+  .mean { font: var(--type-body); }
+  .says { font: var(--type-label); color: var(--text-2); }
+  .says b { color: var(--text); font-weight: 600; }
+  .marks { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-3); }
+  .marks + .tile, .tile + .tile { margin-top: var(--s-3); }
+  .mark-card { padding: var(--s-4); display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-2); }
+  .mark-card svg.big { width: 96px; height: 96px; display: block; }
+  .mark-card .lab { font: var(--type-heading); }
+  .mark-card .idea { font: var(--type-label); color: var(--text-2); flex: 1; }
+  .small { display: flex; align-items: center; gap: var(--s-2); font: var(--type-label); font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+  .small svg { width: 24px; height: 24px; flex: none; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+  <section id="names">
+    <h2>Part 1. Name directions</h2>
+    <p class="d">You are choosing which idea the product's name should come from.</p>
+    <div class="names" id="name-grid"></div>
+    <p class="fine">None of these names has been checked for existing products, trade marks or web addresses.</p>
+  </section>
+  <section id="logos">
+    <h2>Part 2. Logo marks</h2>
+    <p class="d">You are choosing which shape should stand for the product, shown large and at app-icon size, on light and dark.</p>
+    <div id="mark-tiles"></div>
+  </section>
+</div>
+<script>
+  var names = [
+    ['Hearth', 'The fireplace at the centre of a home.', 'warm, the centre of the household.', 'light', 'accent-ember'],
+    ['Lares', 'In ancient Rome, the guardian spirits of a household.', 'characters that live in and look after the home.', 'dark', 'accent-aurora'],
+    ['Familiar', 'A companion spirit, and the word for what you know well. It holds “family”.', 'a friendly presence that belongs to the family.', 'light', 'accent-tide'],
+    ['Pane', 'A sheet of glass in a window.', 'the glass look; quiet, clear, a window onto the home.', 'dark', 'accent-moss'],
+    ['Kin', 'Family.', 'for everyone in the household; short and easy to say aloud.', 'light', 'accent-graphite'],
+    ['Homestead', 'A home that provides for itself.', 'self-hosted and self-owned.', 'dark', 'accent-ember']
+  ];
+  document.getElementById('name-grid').innerHTML = names.map(function (n) {
+    return '<div class="tile backdrop ' + n[3] + ' ' + n[4] + '"><div class="glass">' +
+      '<div class="word">' + n[0] + '</div><div class="mean">' + n[1] + '</div>' +
+      '<div class="says"><b>Says:</b> ' + n[2] + '</div></div></div>';
+  }).join('');
+
+  function g(id, extra) {
+    return '<linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"' + (extra || '') + '/><stop offset="1" stop-color="var(--accent-2)"' + (extra || '') + '/></linearGradient>';
+  }
+  var marks = [
+    ['A. Glass pane with eyes', 'The glass and the character in one.', function (i) {
+      return '<defs>' + g('g' + i, ' stop-opacity=".45"') + '</defs>' +
+        '<rect x="10" y="10" width="76" height="76" rx="24" fill="url(#g' + i + ')" stroke="var(--text)" stroke-opacity=".35" stroke-width="2.5"/>' +
+        '<ellipse cx="36" cy="46" rx="6" ry="11" fill="var(--text)"/><ellipse cx="60" cy="46" rx="6" ry="11" fill="var(--text)"/>';
+    }],
+    ['B. House with a voice', 'A home whose window is a sound wave.', function (i) {
+      return '<path d="M16 48 L48 18 L80 48 V76 Q80 84 72 84 H24 Q16 84 16 76 Z" fill="var(--accent)" fill-opacity=".16" stroke="var(--accent)" stroke-width="6" stroke-linejoin="round"/>' +
+        '<rect x="33" y="56" width="8" height="14" rx="4" fill="var(--accent)"/><rect x="44" y="46" width="8" height="34" rx="4" fill="var(--accent)"/><rect x="55" y="56" width="8" height="14" rx="4" fill="var(--accent)"/>';
+    }],
+    ['C. Overlapping panes', 'Stacked sheets of glass: devices that belong together.', function (i) {
+      return '<defs>' + g('g' + i) + '</defs>' +
+        '<rect x="8" y="8" width="52" height="52" rx="16" fill="var(--accent)" fill-opacity=".35" stroke="var(--text)" stroke-opacity=".3" stroke-width="2"/>' +
+        '<rect x="22" y="22" width="52" height="52" rx="16" fill="var(--accent-2)" fill-opacity=".45" stroke="var(--text)" stroke-opacity=".3" stroke-width="2"/>' +
+        '<rect x="36" y="36" width="52" height="52" rx="16" fill="url(#g' + i + ')" fill-opacity=".85" stroke="var(--text)" stroke-opacity=".4" stroke-width="2"/>';
+    }],
+    ['D. Hearth glow', 'A doorway with a warm glow inside.', function (i) {
+      return '<defs><radialGradient id="g' + i + '"><stop offset="0" stop-color="var(--accent-2)"/><stop offset="1" stop-color="var(--accent)"/></radialGradient></defs>' +
+        '<path d="M18 86 V46 A30 30 0 0 1 78 46 V86 Z" fill="var(--accent)" fill-opacity=".22" stroke="var(--accent)" stroke-width="6" stroke-linejoin="round"/>' +
+        '<circle cx="48" cy="62" r="20" fill="var(--accent-2)" fill-opacity=".3"/><circle cx="48" cy="62" r="12" fill="url(#g' + i + ')"/>';
+    }],
+    ['E. Orbiting dots', 'The server at home, with devices around it.', function (i) {
+      return '<circle cx="46" cy="50" r="17" fill="var(--accent)"/>' +
+        '<circle cx="18" cy="22" r="8" fill="var(--accent-2)"/><circle cx="80" cy="30" r="6" fill="var(--text)" fill-opacity=".75"/><circle cx="70" cy="80" r="7" fill="var(--accent-2)" fill-opacity=".8"/>';
+    }],
+    ['F. Speech drop', 'A speech bubble that is also a head.', function (i) {
+      return '<defs>' + g('g' + i) + '</defs>' +
+        '<rect x="10" y="12" width="76" height="60" rx="28" fill="url(#g' + i + ')"/>' +
+        '<path d="M26 64 L20 86 L48 70 Z" fill="var(--accent)" stroke="var(--accent)" stroke-width="4" stroke-linejoin="round"/>' +
+        '<ellipse cx="36" cy="40" rx="5" ry="9" fill="var(--on-accent)"/><ellipse cx="60" cy="40" rx="5" ry="9" fill="var(--on-accent)"/>';
+    }]
+  ];
+  var n = 0;
+  function svg(m, cls) { n++; return '<svg class="' + cls + '" viewBox="0 0 96 96" aria-hidden="true">' + m[2](n) + '</svg>'; }
+  document.getElementById('mark-tiles').innerHTML = [['light', 'accent-tide'], ['dark', 'accent-aurora']].map(function (t) {
+    return '<div class="tile backdrop ' + t[0] + ' ' + t[1] + '"><div class="marks">' + marks.map(function (m) {
+      return '<div class="glass mark-card">' + svg(m, 'big') + '<div class="lab">' + m[0] + '</div><div class="idea">' + m[1] + '</div>' +
+        '<div class="small">' + svg(m, '') + 'Virtual Assistant</div></div>';
+    }).join('') + '</div></div>';
+  }).join('');
+</script>
+</body>
+</html>
