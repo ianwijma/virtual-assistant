@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction board</title>
+<!--
+  The first direction board of the visual design.
+  It shows candidates to choose from. Nothing on it is decided, and every
+  colour value is rough. The questions it belongs to are in
+  docs/open-questions.md, part 6.
+-->
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: Inter, "Segoe UI", system-ui, sans-serif; margin: 0; }
+  .board { max-width: 1100px; margin: 0 auto; }
+  h2 { font-size: 17px; margin: 28px 0 2px; letter-spacing: -0.01em; }
+  h2:first-child { margin-top: 4px; }
+  p.lead { margin: 0 0 12px; font-size: 13px; opacity: .7; line-height: 1.45; }
+  h3 { font-size: 13px; margin: 14px 0 6px; font-weight: 600; }
+  h3 span { font-weight: 400; opacity: .65; }
+  .grid { display: grid; gap: 10px; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 560px) { .g2, .g3 { grid-template-columns: 1fr; } }
+
+  /* A scene: a backdrop with one glass panel on it. */
+  .scene {
+    position: relative; overflow: hidden; border-radius: 18px;
+    padding: 30px 16px 18px; min-height: 236px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text);
+    background:
+      radial-gradient(60% 70% at 12% 18%, var(--b1) 0, transparent 70%),
+      radial-gradient(55% 65% at 92% 28%, var(--b2) 0, transparent 70%),
+      radial-gradient(70% 60% at 55% 105%, var(--b3) 0, transparent 70%),
+      var(--bg);
+  }
+  .scene .tag {
+    position: absolute; top: 9px; left: 13px; font-size: 11px;
+    font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    opacity: .55;
+  }
+  .light { --text: #15181d; --muted: rgba(21,24,29,.6);
+           --glass: rgba(255,255,255,.36); --edge: rgba(255,255,255,.8);
+           --line: rgba(20,24,30,.09); --shade: rgba(30,40,60,.16);
+           --field: rgba(255,255,255,.5); }
+  .dark  { --text: #f3f5f8; --muted: rgba(243,245,248,.62);
+           --glass: rgba(40,44,54,.42); --edge: rgba(255,255,255,.16);
+           --line: rgba(255,255,255,.1); --shade: rgba(0,0,0,.45);
+           --field: rgba(255,255,255,.1); }
+
+  /* The five colour directions. */
+  .a.light { --bg:#eef4f8; --b1:#6dbdff; --b2:#6fe6d2; --b3:#a3b9ff; --acc:#0a7fc4; --acc2:#14b3aa; --on:#fff; }
+  .a.dark  { --bg:#0a1016; --b1:#0d4f84; --b2:#0e6b66; --b3:#28387a; --acc:#3aa9f5; --acc2:#27cfc3; --on:#04121c; }
+  .b.light { --bg:#faf4ef; --b1:#ff9c75; --b2:#ffcf6b; --b3:#ffa9b6; --acc:#e4532f; --acc2:#f29a2e; --on:#fff; }
+  .b.dark  { --bg:#14100d; --b1:#84331c; --b2:#7a5412; --b3:#5c2238; --acc:#ff7d52; --acc2:#ffb347; --on:#1d0c05; }
+  .c.light { --bg:#f3f1fb; --b1:#a98cff; --b2:#74d8ff; --b3:#ff9be0; --acc:#6a4df0; --acc2:#1cb5dc; --on:#fff; }
+  .c.dark  { --bg:#0d0b17; --b1:#45269a; --b2:#0f5a78; --b3:#6b1f5c; --acc:#9a83ff; --acc2:#3fd0f2; --on:#0c0820; }
+  .d.light { --bg:#f3f4ee; --b1:#93cf8d; --b2:#d9d886; --b3:#8fcdbd; --acc:#3f7d4d; --acc2:#8fae5a; --on:#fff; }
+  .d.dark  { --bg:#0d110d; --b1:#235430; --b2:#4d4f1c; --b3:#1c4a44; --acc:#78c486; --acc2:#b9d67d; --on:#08140a; }
+  .e.light { --bg:#f1f2f4; --b1:#d9dce2; --b2:#ffffff; --b3:#cfd3da; --acc:#1b1d21; --acc2:#1b1d21; --on:#fff; --orb1:#f0468a; --orb2:#ff9d57; }
+  .e.dark  { --bg:#0b0c0e; --b1:#2b2e34; --b2:#17191d; --b3:#33363d; --acc:#f3f5f8; --acc2:#f3f5f8; --on:#0b0c0e; --orb1:#f0468a; --orb2:#ff9d57; }
+  .e.scene::before { content:""; position:absolute; width:150px; height:150px;
+    left:6%; top:14%; border-radius:50%; filter: blur(46px); opacity:.5;
+    background: linear-gradient(135deg, var(--orb1), var(--orb2)); }
+
+  /* The glass. Three strengths: frost, glass (the default here), liquid. */
+  .panel {
+    position: relative; width: 100%; max-width: 330px; box-sizing: border-box;
+    padding: 14px; border-radius: var(--r, 22px);
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    backdrop-filter: blur(22px) saturate(170%);
+    border: 1px solid var(--edge);
+    box-shadow: 0 10px 30px -8px var(--shade), inset 0 1px 0 var(--edge);
+  }
+  .frost .panel { -webkit-backdrop-filter: blur(40px) saturate(120%);
+    backdrop-filter: blur(40px) saturate(120%); box-shadow: 0 6px 20px -8px var(--shade); }
+  .frost.light { --glass: rgba(255,255,255,.72); }
+  .frost.dark  { --glass: rgba(30,33,40,.74); }
+  .liquid .panel { -webkit-backdrop-filter: blur(5px) saturate(190%) brightness(1.06);
+    backdrop-filter: blur(5px) saturate(190%) brightness(1.06);
+    border-color: transparent;
+    box-shadow: 0 14px 34px -10px var(--shade),
+      inset 0 1.5px 1px rgba(255,255,255,.85), inset 0 -1.5px 1px rgba(255,255,255,.3),
+      inset 1.5px 0 1px rgba(255,255,255,.35), inset -1.5px 0 1px rgba(255,255,255,.35),
+      inset 0 0 22px rgba(255,255,255,.22); }
+  .liquid.light { --glass: rgba(255,255,255,.2); }
+  .liquid.dark  { --glass: rgba(255,255,255,.07); }
+  .liquid.dark .panel { box-shadow: 0 14px 34px -10px var(--shade),
+      inset 0 1.5px 1px rgba(255,255,255,.5), inset 0 -1.5px 1px rgba(255,255,255,.14),
+      inset 1.5px 0 1px rgba(255,255,255,.16), inset -1.5px 0 1px rgba(255,255,255,.16),
+      inset 0 0 22px rgba(255,255,255,.07); }
+  .plain { background: var(--bg) !important; }
+  .plain.scene::before { display: none; }
+
+  .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .orb { width: 34px; height: 34px; border-radius: 50%; flex: none;
+    background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.9) 0, transparent 38%),
+                linear-gradient(135deg, var(--orb1, var(--acc)), var(--orb2, var(--acc2)));
+    box-shadow: 0 0 18px -2px var(--orb1, var(--acc)); }
+  .who { flex: 1; min-width: 0; line-height: 1.25; }
+  .who b { display: block; font-size: 14px; font-weight: 600; }
+  .who small { font-size: 12px; color: var(--muted); }
+  .chip { font-size: 11px; padding: 4px 9px; border-radius: 999px;
+    background: var(--field); border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .item { display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    font-size: 13px; padding: 9px 2px; border-top: 1px solid var(--line); }
+  .item .num { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .toggle { width: 34px; height: 20px; border-radius: 999px; flex: none; position: relative;
+    background: linear-gradient(135deg, var(--acc), var(--acc2)); }
+  .toggle::after { content:""; position:absolute; top:2px; right:2px; width:16px; height:16px;
+    border-radius:50%; background: var(--on); }
+  .light .toggle::after, .dark.e .toggle::after { box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+  .acts { display: flex; gap: 8px; margin-top: 10px; }
+  .btn { flex: 1; text-align: center; font-size: 13px; font-weight: 600; padding: 9px 8px;
+    border-radius: var(--rc, 999px); white-space: nowrap; }
+  .btn.pri { background: linear-gradient(135deg, var(--acc), var(--acc2)); color: var(--on); }
+  .btn.sec { background: var(--field); border: 1px solid var(--line); padding: 8px; }
+  .small .chip { display: none; }
+  .small.scene { padding-left: 10px; padding-right: 10px; }
+  .r-soft  { --r: 10px; --rc: 7px; }
+  .r-round { --r: 22px; --rc: 12px; }
+  .r-pill  { --r: 30px; --rc: 999px; }
+  .note { font-size: 12px; opacity: .65; margin: 6px 0 0; line-height: 1.45; }
+</style>
+</head>
+<body>
+<div class="board" id="board"></div>
+<script>
+  // One sample panel, drawn on every scene. "Juno" is a sample assistant name.
+  function scene(cls, tag, small) {
+    return '<div class="scene ' + cls + (small ? ' small' : '') + '"><span class="tag">' + tag + '</span>' +
+      '<div class="panel"><div class="head"><span class="orb"></span>' +
+      '<span class="who"><b>Juno</b><small>Listening…</small></span><span class="chip">Kitchen</span></div>' +
+      '<div class="item"><span>Pasta timer</span><span class="num">07:42</span></div>' +
+      '<div class="item"><span>Listen for the wake word</span><span class="toggle"></span></div>' +
+      '<div class="acts"><span class="btn pri">Stop timer</span><span class="btn sec">Snooze</span></div>' +
+      '</div></div>';
+  }
+  var dirs = [
+    ['a', 'A. Tide', 'blue to teal, cool grey. Calm and clean, the closest to Apple.'],
+    ['b', 'B. Ember', 'coral to amber, warm grey. Warm and homely.'],
+    ['c', 'C. Aurora', 'violet to cyan. Lively, the look many AI products have.'],
+    ['d', 'D. Moss', 'sage green, natural grey. Quiet and natural.'],
+    ['e', 'E. Clear', 'no colour of its own. All colour comes from the assistant.']
+  ];
+  var h = '<h2>1. Colour direction</h2><p class="lead">Five candidates, each in light and dark. The values are rough: choose a direction, not a shade. Question 43.</p>';
+  dirs.forEach(function (d) {
+    h += '<h3>' + d[1] + ' <span>— ' + d[2] + '</span></h3><div class="grid g2">' +
+      scene(d[0] + ' light', 'Light') + scene(d[0] + ' dark', 'Dark') + '</div>';
+  });
+  h += '<h2>2. How far the glass goes</h2><p class="lead">The same panel at three strengths. Question 36.</p><div class="grid g3">';
+  [['frost', 'Frost'], ['', 'Glass'], ['liquid', 'Liquid']].forEach(function (s) { h += scene('a light ' + s[0], s[1], true); });
+  [['frost', 'Frost'], ['', 'Glass'], ['liquid', 'Liquid']].forEach(function (s) { h += scene('c dark ' + s[0], s[1], true); });
+  h += '</div><p class="note"><b>Frost</b> is heavy blur and nearly solid: the easiest to read and to draw. <b>Glass</b> is a clear blur with a bright edge. <b>Liquid</b> is nearly clear with bent light at the edges: the most like Apple, the hardest to read and to draw. A browser can only hint at the bent light.</p>';
+  h += '<h2>3. What is behind the glass</h2><p class="lead">Glass needs something behind it. Question 37.</p><div class="grid g3">' +
+    scene('a light plain', 'A plain page', true) + scene('a light', 'Our own backdrop', true) + scene('e light', "The assistant's colour", true) +
+    '</div><p class="note">On a <b>plain page</b> glass is only a white card. <b>Our own backdrop</b> is the same soft colour on every device. With <b>the assistant\'s colour</b> the screen shows who is listening.</p>';
+  h += '<h2>4. Corners</h2><p class="lead">Question 60.</p><div class="grid g3">' +
+    scene('d dark r-soft', 'Slightly round', true) + scene('d dark r-round', 'Clearly round', true) + scene('d dark r-pill', 'Pill-shaped', true) + '</div>';
+  document.getElementById('board').innerHTML = h;
+</script>
+</body>
+</html>
