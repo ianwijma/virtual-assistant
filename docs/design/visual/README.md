@@ -106,10 +106,11 @@ The boards in `examples/`:
 | [direction-board.html](examples/direction-board.html) | Colour directions, glass strengths, backdrops and corners | Chosen from |
 | [typeface-board.html](examples/typeface-board.html) | Four typefaces | Chosen from |
 | [components.html](examples/components.html) | The example components, from [tokens.css](examples/tokens.css) and [components.css](examples/components.css) | To review |
-| [material-board.html](examples/material-board.html) | Four designs of the material: as first drawn, more glass, calmer, closer to Apple | To choose from |
-| [launcher-board.html](examples/launcher-board.html) | The desktop launcher at four levels of see-through | To choose from |
-| [tablet-board.html](examples/tablet-board.html) | Five arrangements of the tablet around the character, and one without a figure | To choose from |
-| [name-and-logo-board.html](examples/name-and-logo-board.html) | Six name directions and six logo marks | To choose from |
+| [material-board.html](examples/material-board.html) | Four designs of the material: as first drawn, more glass, calmer, closer to Apple | Chosen from |
+| [launcher-board.html](examples/launcher-board.html) | The desktop launcher at four levels of see-through | Chosen from |
+| [tablet-board.html](examples/tablet-board.html) | Five arrangements of the tablet around the character, and one without a figure | Chosen from |
+| [name-and-logo-board.html](examples/name-and-logo-board.html) | Six name directions and six logo marks | "Hearth" chosen as candidate; logo to a second round |
+| [tablet-idle-board.html](examples/tablet-idle-board.html) | Five designs of the tablet while nobody is using it | To choose from |
 
 Planned, each made when work on it starts:
 
@@ -122,8 +123,8 @@ Planned, each made when work on it starts:
 Each subject's questions are in its own document. The questions below are
 about the clients, whose documents are not started yet.
 
-- What does a tablet in a room show when nobody is using it: the
-  character, a clock, running timers, or nothing?
+- What does a tablet in a room show when nobody is using it? Several
+  designs are on [the tablet idle board](examples/tablet-idle-board.html).
 - Does the admin panel use glass as much as the other clients, or is it
   plainer because it holds dense tables and logs?
 - Should a screen that an assistant composed look different from a

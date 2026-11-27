@@ -261,3 +261,4 @@ are 25 November 2026 unless a section says otherwise.
 | 234 | The desktop launcher is clear glass, about half see-through | [glass](design/visual/glass.md) |
 | 235 | On a household tablet an active assistant stands as a whole figure on a stage, with a glass column for text and cards | [assistant visuals](design/visual/assistant-visuals.md) |
 | 236 | Of the logo marks, "Glass pane with eyes" and "Speech drop" are worked out further and "Overlapping panes" is dropped | [identity](design/visual/identity.md) |
+| 237 | "Hearth" is the candidate for the product name, until it is checked for existing products and trade marks | [identity](design/visual/identity.md) |

@@ -228,8 +228,10 @@ detail.
    whole household at a tablet, guests and children included? When a
    dense screen and a friendly screen conflict, which wins? [visual
    identity]
-31. Which name? See the name and logo board. The names on it are not
-   checked for existing products or trade marks. [visual identity]
+31. Is the name "Hearth"? It is the one name the owner chose from the
+   board. It is not yet checked for existing products, trade marks and
+   web addresses, and the working title stays until it is. [visual
+   identity]
 32. Which logo? "Glass pane with eyes" and "Speech drop" are to be
    worked out further. "House with a voice", "Hearth glow" and "Orbiting
    dots" stay in the running. "Overlapping panes" is dropped. [visual
@@ -334,8 +336,8 @@ detail.
 
 ### The clients
 
-67. What does a tablet in a room show when nobody is using it: the
-   character, a clock, running timers, or nothing? [visual]
+67. What does a tablet in a room show when nobody is using it? Several
+   designs are on the tablet idle board. [visual]
 68. Does the admin panel use glass as much as the other clients, or is
    it plainer because it holds dense tables and logs? [visual]
 69. Should a screen that an assistant composed look different from a
