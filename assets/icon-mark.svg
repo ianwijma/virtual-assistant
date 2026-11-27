@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Virtual Assistant</title>
+  <path d="M256 104 L408 224 V376 a32 32 0 0 1 -32 32 H136 a32 32 0 0 1 -32 -32 V224 Z"
+        fill="none" stroke="#2a2a24" stroke-width="30" stroke-linejoin="round"/>
+  <g stroke="#e09a2c" stroke-width="26" stroke-linecap="round">
+    <line x1="176" y1="292" x2="176" y2="324"/>
+    <line x1="216" y1="264" x2="216" y2="352"/>
+    <line x1="256" y1="240" x2="256" y2="376"/>
+    <line x1="296" y1="264" x2="296" y2="352"/>
+  </g>
+  <line x1="336" y1="292" x2="336" y2="324" stroke="#3fb8a2" stroke-width="26" stroke-linecap="round"/>
+</svg>

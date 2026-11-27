@@ -1,0 +1,53 @@
+# Clipboard
+
+Clipboard history on a device, and a clipboard shared between a person's
+devices. Part of [the server design](README.md).
+
+Status: draft.
+
+## Design
+
+The clipboard is a feature of the system. A
+[module](../modules/README.md) can give assistants tools to use it.
+
+- **Capture and paste are local and instant.** Sync follows in the
+  background.
+- **Shared between a person's devices, and on by default.** The newest
+  item is pushed to their other devices.
+- **Clipboard content is sensitive.** It is protected by disk
+  encryption, like the rest of the server's data. See [vault](vault.md).
+  Sealing it so that only the person's own devices can read it is put
+  off until after the first release.
+- **An assistant asks before it searches the clipboard or uses a result
+  from it,** and explains why. The person can say yes by voice or on
+  screen.
+- **The admin panel does not show other people's clipboard history.** It
+  is treated as private. An admin who really wants to can still find it
+  in the database, but there is no screen for it.
+- **Text syncs at once; a large item is fetched when needed.** An image
+  or a file is uploaded in the background. Another device
+  downloads it only when the person picks it. An item above a size limit,
+  such as 50 MB, stays on the device it was copied on.
+- **History is kept forever by default.** A limit can be set.
+- **History is stored on the server.** The device keeps a local index for
+  search, and the server can search it too.
+- **Password-manager copies are not synced** by default.
+- **Phones** cannot read the clipboard in the background. They use a share
+  action, a shortcut or a keyboard.
+
+## Requirements from the desktop brief
+
+- Each item has a rich representation of what was copied. Copied HTML is
+  drawn, in a safe way.
+- Hundreds of thousands of items, such as years of history, with search
+  that stays fast.
+- Restoring an item to the clipboard never blocks the application the
+  person is in, and the person is told when it is done.
+
+## Open questions
+
+- How copied HTML is drawn with its formatting, safely, on each platform.
+  A browser can isolate it in a sandboxed frame; what the Rust desktop
+  client and the phone apps can use has to be found out. This is research
+  still to do.
+- How search stays fast over years of history.

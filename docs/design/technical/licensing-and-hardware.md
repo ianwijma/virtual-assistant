@@ -1,0 +1,58 @@
+# Licensing and hardware
+
+The licence of the project and what the hardware goal requires of the
+design. Part of [the technical design](README.md).
+
+Status: draft.
+
+## Licence
+
+- The project is open source under GPLv3.
+- It earns money later by selling hardware, not software.
+- Every dependency, model and voice must allow use in hardware that is
+  sold.
+- Slint is used under its GPLv3 option, at no cost on any platform,
+  including hardware.
+- Buyers of hardware must be able to install modified software on it. This
+  fits "own your own assistant".
+- Apple's App Store terms conflict with the GPL. Publishing there needs a
+  contributor agreement for outside contributions.
+
+## Hardware goal
+
+Selling hardware is well beyond the first release, but it constrains the
+design now:
+
+- The server is one self-contained binary that runs on low-power ARM
+  boxes, with no cloud dependency and simple updates.
+- Pairing and first-run setup must work for a non-technical person.
+- A local AI model (through Ollama) is the likely brain of a box, so the
+  system must be fully usable without any cloud provider.
+
+## Referral links
+
+Where the system suggests a paid service, such as a cloud speech provider
+or an AI provider, it uses a referral link when that service has a
+referral programme. The small return helps keep the project running.
+This applies throughout the project, not only in set-up. A referral
+link is not marked as one.
+
+## Verified and assumed
+
+Verified:
+
+- Slint offers three licences: GPLv3, royalty-free with attribution (not
+  for embedded devices), and commercial.
+
+Known traps, from the earlier voice assistant:
+
+- Its default local voices are for non-commercial use only.
+- Some speech recognition models have no clear licence.
+- The free weather service it uses is for non-commercial use.
+
+## Open questions
+
+- Which of the services the system suggests have a referral programme,
+  and on what terms. This is research still to do.
+- Which speech models and voices have licences that allow selling
+  hardware. See [voice](voice/README.md).
