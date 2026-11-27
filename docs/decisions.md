@@ -6,8 +6,8 @@ The design is what to read to learn how the system works; this log shows
 what was decided and in what order.
 
 "Thread" means
-[the design conversation](sources/design-thread-2026-11-25.md). All dates
-are 25 November 2026.
+[the design conversation](sources/design-thread-2026-11-25.md). Dates
+are 25 November 2026 unless a section says otherwise.
 
 ## From the thread
 
@@ -230,3 +230,12 @@ are 25 November 2026.
 | 210 | An admin decides when the server updates and to which version, can silence the notice for one release, and can start an update from a script; the program updates itself, a container is updated with container tools | [server](design/technical/server/README.md) |
 | 211 | A device can ask to join as a household device without an invite, pending approval; an admin can switch this off | [pairing](design/technical/server/pairing.md) |
 | 212 | The server will also run on macOS after the first release, so that it can run on a person's work computer | [server](design/technical/server/README.md) |
+
+## From the visual design thread
+
+27 November 2026.
+
+| # | Decision | Written into |
+|---|---|---|
+| 213 | Frosted glass is the design language, with Apple's Liquid Glass as the main inspiration | [glass](design/visual/glass.md) |
+| 214 | The visual design is made in this order: the feel, glass and colours first, then the design language as tokens, then example components, then low-fidelity mockups of each client | [visual design](design/visual/README.md) |
