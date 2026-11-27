@@ -47,9 +47,10 @@ chosen yet.
 
 ## Open questions
 
-- In which style are the figures drawn: flat and simple, soft and
-  three-dimensional, or hand-drawn? Examples of each are to be made
-  before this is answered.
+- In which style are the figures drawn? Five styles are on
+  [the figure style board](examples/figure-style-board.html).
+- Does a figure have a mouth, or do the eyes alone carry its
+  expressions?
 - Who draws the figures, and how many are there in the first release?
 - How does a person give their own assistant a look: by choosing from a
   set of figures, by adjusting parts such as colour and clothing, or by

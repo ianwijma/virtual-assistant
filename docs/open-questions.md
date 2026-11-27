@@ -232,10 +232,9 @@ detail.
    board. It is not yet checked for existing products, trade marks and
    web addresses, and the working title stays until it is. [visual
    identity]
-32. Which logo? "Glass pane with eyes" and "Speech drop" are to be
-   worked out further. "House with a voice", "Hearth glow" and "Orbiting
-   dots" stay in the running. "Overlapping panes" is dropped. [visual
-   identity]
+32. Which logo? Four variants each of "Glass pane with eyes" and "Speech
+   drop" are on the second logo board. "House with a voice", "Hearth
+   glow" and "Orbiting dots" stay in the running. [visual identity]
 
 ### The glass
 
@@ -311,109 +310,122 @@ detail.
 
 ### Assistant visuals
 
-58. In which style are the figures drawn: flat and simple, soft and
-   three-dimensional, or hand-drawn? Examples of each are to be made
-   before this is answered. [assistant visuals]
-59. Who draws the figures, and how many are there in the first release?
+58. In which style are the figures drawn? Five styles are on the figure
+   style board. [assistant visuals]
+59. Does a figure have a mouth, or do the eyes alone carry its
+   expressions? [assistant visuals]
+60. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-60. How does a person give their own assistant a look: by choosing from
+61. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-61. How playful is the default household assistant: cute, friendly, or
+62. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-62. Is the voice page arranged like the tablet, with the figure on a
+63. Is the voice page arranged like the tablet, with the figure on a
    stage? [assistant visuals]
-63. May a card cover part of the character, or does it always sit clear
+64. May a card cover part of the character, or does it always sit clear
    of the head? [assistant visuals]
-64. Does a whole figure move across the screen only while nothing else
+65. Does a whole figure move across the screen only while nothing else
    is shown, and stand still once a card appears? [assistant visuals]
-65. What does an assistant without a figure show: a sound wave, as on
+66. What does an assistant without a figure show: a sound wave, as on
    the tablet board, or something else? [assistant visuals]
-66. How large is the character where the assistant is not the subject,
+67. How large is the character where the assistant is not the subject,
    such as in the desktop launcher and on the phone's home screen?
    [assistant visuals]
-67. May a person bring their own figure, such as a character they like
+68. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-68. Does a figure have a colour of its own, apart from the accent?
+69. Does a figure have a colour of its own, apart from the accent?
    [assistant visuals]
 
 ### The clients
 
-69. Should a screen that an assistant composed look different from a
+70. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-70. Which devices are the references for the designs: which phone, which
+71. Which devices are the references for the designs: which phone, which
    tablet, which monitor size? [visual]
-71. Are settings screens generated from each feature's description, so
+72. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-72. Which views of the launcher have a preview, and which are a list
+73. How does a notification appear on the desktop, outside the launcher?
+   Five designs are on the desktop notification board. [visual desktop]
+74. Does a question from an assistant stay on screen until it is
+   answered? [visual desktop]
+75. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-73. Does the launcher show suggestions before anything is typed? With a
+76. Does the launcher show suggestions before anything is typed? With a
    preview, the empty launcher can show what is running now. [visual
    desktop]
-74. Does the window change size when it goes from a list to a list with
+77. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-75. How is the microphone muted on the full call screen, which has only
+78. How is the microphone muted on the full call screen, which has only
    Chat and End? [visual phone]
-76. Is what is said also shown as a line of text on the full call
+79. Is what is said also shown as a line of text on the full call
    screen? [visual phone]
-77. Where is the first screen chosen: in the app's own settings, or in
+80. Where is the first screen chosen: in the app's own settings, or in
    the admin panel with a person's other settings? [visual phone]
-78. What does a touch on a clipboard item do: copy it to this phone, or
+81. What does a touch on a clipboard item do: copy it to this phone, or
    open it? [visual phone]
-79. When a tablet has several assistants, are all their figures on the
+82. When a tablet has several assistants, are all their figures on the
    idle screen, or one? [visual tablet]
-80. Does the clock move now and then, to protect the screen? [visual
+83. Does the clock move now and then, to protect the screen? [visual
    tablet]
-81. Is the figure on the idle screen at night as well, or does the
+84. Is the figure on the idle screen at night as well, or does the
    tablet then show only the clock? [visual tablet]
-82. After how long without speech does the stage close and the idle
+85. After how long without speech does the stage close and the idle
    screen return? [visual tablet]
-83. What does a destination with no list of items show, such as Speech
+86. How is the timeline of a request shown? Four designs are on the
+   admin log board. [visual admin panel]
+87. How does the first-run setup look? Four designs are on the setup
+   board. [visual admin panel]
+88. What does a destination with no list of items show, such as Speech
    or Feedback: two columns, or a second column of its sections? [visual
    admin panel]
-84. Where do search results appear in three columns? [visual admin
+89. Where do search results appear in three columns? [visual admin
    panel]
-85. Does a settings page save as you go, or with one Save button?
+90. Does a settings page save as you go, or with one Save button?
    [visual admin panel]
-86. At phone width, what does the list of destinations become? [visual
+91. At phone width, what does the list of destinations become? [visual
    admin panel]
-87. Which accent does the admin panel show: that of the person signed
+92. Which accent does the admin panel show: that of the person signed
    in, or the household's? [visual admin panel]
+93. Which design does the page have? Four are on the voice page board.
+   [visual voice page]
+94. Do the set-up choices stay visible while a guest talks? [visual
+   voice page]
 
 ### The mockups
 
-88. Agree to each mockup, or say what to change in it. They were drawn
+95. Agree to each mockup, or say what to change in it. They were drawn
    before the designs of each client were chosen and are to be redrawn
    from the client documents. [mockups]
-89. Desktop: how does a person go from searching to talking to the
+96. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-90. Desktop: does the launcher open on the screen that holds the
+97. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-91. Desktop: is the settings window opened from the launcher only, or
+98. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-92. Admin panel: the request timeline shows the first words a person
+99. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-93. Admin panel: is "Undo" offered for every change in the audit log, or
-   only for changes that can be reversed safely? [mockups]
-94. Voice page: does the page remember on that browser that it was set
+100. Admin panel: is "Undo" offered for every change in the audit log,
+   or only for changes that can be reversed safely? [mockups]
+101. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-95. Whether the chosen name is free to use: existing products, trade
+102. Whether the chosen name is free to use: existing products, trade
    marks and web addresses. [visual identity]
-96. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+103. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
    each draw: blur behind a surface, and at what speed. [glass]
-97. Whether the launcher window can show the blurred desktop behind it
+104. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
-98. How each character is animated so that it runs in Slint, Jetpack
+105. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
@@ -462,3 +474,4 @@ An agent does this work and the owner agrees to the outcome.
 [visual phone]: design/visual/phone.md
 [visual tablet]: design/visual/tablet.md
 [visual admin panel]: design/visual/admin-panel.md
+[visual voice page]: design/visual/voice-page.md

@@ -45,9 +45,10 @@ combined.
 - Is the name "Hearth"? It is the one name the owner chose from the
   board. It is not yet checked for existing products, trade marks and
   web addresses, and the working title stays until it is.
-- Which logo? "Glass pane with eyes" and "Speech drop" are to be worked
-  out further. "House with a voice", "Hearth glow" and "Orbiting dots"
-  stay in the running. "Overlapping panes" is dropped.
+- Which logo? Four variants each of "Glass pane with eyes" and "Speech
+  drop" are on [the second logo board](examples/logo-board-2.html).
+  "House with a voice", "Hearth glow" and "Orbiting dots" stay in the
+  running.
 
 To research:
 

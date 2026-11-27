@@ -101,6 +101,7 @@ is our own, and it is the same on Linux, Android and the web.
 | [phone.md](phone.md) | The phone app | Started |
 | [tablet.md](tablet.md) | The household tablet | Started |
 | [admin-panel.md](admin-panel.md) | The admin panel | Started |
+| [voice-page.md](voice-page.md) | The voice page | Started |
 | [mockups/](mockups/README.md) | The low-fidelity mockups of each client | A first set, as proposals |
 | [examples/](examples/) | The boards, to open in a browser. See the list below | |
 
@@ -131,27 +132,21 @@ The boards in `examples/`:
 | [phone-talk-board-3.html](examples/phone-talk-board-3.html) | Talking to an assistant as a call, in several designs | Chosen from |
 | [admin-layout-board-3.html](examples/admin-layout-board-3.html) | The admin panel between the Mac's Settings and three columns | Chosen from |
 | [card-board-3.html](examples/card-board-3.html) | Closed cards as rows or pills, lifting into a sheet | Chosen from |
+| [figure-style-board.html](examples/figure-style-board.html) | The assistant's figure in five drawing styles | To choose from |
+| [logo-board-2.html](examples/logo-board-2.html) | Four variants each of two logo marks, with the name Hearth and as app icons | To choose from |
+| [voice-page-board.html](examples/voice-page-board.html) | Four designs of the voice page for a guest | To choose from |
+| [desktop-notification-board.html](examples/desktop-notification-board.html) | Five ways a notification appears on the desktop | To choose from |
+| [admin-log-board.html](examples/admin-log-board.html) | Four designs of the request timeline in the admin panel | To choose from |
+| [setup-board.html](examples/setup-board.html) | Four designs of the first-run setup | To choose from |
 
 Boards still to make, each with several designs of one thing:
 
 | Board | Shows |
 |---|---|
-| Figure styles | The assistant's figure in several drawing styles, on the tablet stage |
-| Logo, second round | "Glass pane with eyes" and "Speech drop" worked out, with app icons |
-| Voice page | The page in a browser, before and after sign-in |
-| Desktop notification | A notification that appears on the desktop outside the launcher |
 | Desktop settings window | The settings of a device |
-| Admin panel logs | The request timeline and the audit log |
-| First-run setup | Setting up a new server, and a new device |
-| Phone navigation | How the areas of the phone app are reached, once its home is chosen |
+| Phone, the other areas | The clipboard, lists and settings of the phone app |
 | Waiting and empty states | A screen that waits for the server, and a screen with nothing in it |
 | Motion | How a sheet, a card and the character move, as a page that moves |
-
-Planned, each made when work on it starts:
-
-| Document | Covers |
-|---|---|
-| `voice-page.md` | How the look applies to the voice page |
 
 ## Open questions
 

@@ -22,6 +22,10 @@ Status: started. The launcher's glass and shape are set.
 
 ## Open questions
 
+- How does a notification appear on the desktop, outside the launcher?
+  Five designs are on
+  [the desktop notification board](examples/desktop-notification-board.html).
+- Does a question from an assistant stay on screen until it is answered?
 - Which views of the launcher have a preview, and which are a list only?
 - Does the launcher show suggestions before anything is typed? With a
   preview, the empty launcher can show what is running now.

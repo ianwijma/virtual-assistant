@@ -30,6 +30,10 @@ Status: started. The principle and the layout are set.
 
 ## Open questions
 
+- How is the timeline of a request shown? Four designs are on
+  [the admin log board](examples/admin-log-board.html).
+- How does the first-run setup look? Four designs are on
+  [the setup board](examples/setup-board.html).
 - What does a destination with no list of items show, such as Speech or
   Feedback: two columns, or a second column of its sections?
 - Where do search results appear in three columns?
