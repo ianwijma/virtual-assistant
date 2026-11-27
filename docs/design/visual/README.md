@@ -65,9 +65,11 @@ is our own, and it is the same on Linux, Android and the web.
    [the direction board](examples/direction-board.html).
 2. **The design language:** colour, type, shape, spacing and motion,
    written as [tokens](tokens.md). A first set exists.
-3. **Example components:** a few components that show the language in use.
+3. **Example components:** a few components that show the language in
+   use. See [components](components.md).
 4. **Low-fidelity mockups** of each client. They show layout and content,
    not polish, so that an agent can combine them with the design language.
+   A first set exists, as proposals. See [mockups](mockups/README.md).
 
 ## Map of the documents
 
@@ -82,14 +84,14 @@ is our own, and it is the same on Linux, Android and the web.
 | [assistant-visuals.md](assistant-visuals.md) | How an assistant appears and reacts to speech | Started |
 | [tokens.md](tokens.md) | The full set of tokens | A first set |
 | [components.md](components.md) | The shared components and how they behave | Started |
+| [mockups/](mockups/README.md) | The low-fidelity mockups of each client | A first set, as proposals |
 | [examples/](examples/) | Pages to open in a browser: the [direction board](examples/direction-board.html), the [typeface board](examples/typeface-board.html) and the [example components](examples/components.html), with the tokens as CSS | |
 
 Planned, each made when work on it starts:
 
 | Document | Covers |
 |---|---|
-| One file per client | How the look applies to the desktop, phone, tablet, admin panel and voice page |
-| `mockups/` | The low-fidelity mockups of each client |
+| One file per client | How the look applies to the desktop, phone, tablet, admin panel and voice page, once its mockup is agreed |
 
 ## Open questions
 
@@ -102,8 +104,8 @@ about the clients, whose documents are not started yet.
   plainer because it holds dense tables and logs?
 - Should a screen that an assistant composed look different from a
   built-in screen, so that a person can tell?
-- Which client is drawn first as a mockup, and which screens of it matter
-  most?
+- Which client's mockup is worked out in detail first, and which screens
+  of it matter most?
 - Which devices are the references for the mockups: which phone, which
   tablet, which monitor size?
 - Are settings screens generated from each feature's description, so

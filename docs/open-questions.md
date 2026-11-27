@@ -66,7 +66,7 @@ B. "Heavy inspiration" is read as: the look is inspired by Apple's and
    that it is recognisable as ours stands. [visual identity]
 C. Low-fidelity mockups and examples are kept as web pages in
    `docs/design/visual/`, which a person opens in a browser and an agent
-   can read. [visual]
+   can read. [mockups]
 D. All four feelings were chosen: calm, warm, precise and playful. This
    is read as: the interface is calm and precise, and the assistants are
    warm and playful. [visual identity]
@@ -323,8 +323,8 @@ detail.
    it plainer because it holds dense tables and logs? [visual]
 62. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-63. Which client is drawn first as a mockup, and which screens of it
-   matter most? [visual]
+63. Which client's mockup is worked out in detail first, and which
+   screens of it matter most? [visual]
 64. Which devices are the references for the mockups: which phone, which
    tablet, which monitor size? [visual]
 65. Are settings screens generated from each feature's description, so
@@ -333,15 +333,46 @@ detail.
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
 
+### The mockups
+
+66. Agree to each mockup, or say what to change in it. [mockups]
+67. Desktop: how does a person go from searching to talking to the
+   assistant: the Tab key, a prefix, or a shortcut of its own? The
+   mockup shows Tab and a shortcut. [mockups]
+68. Desktop: does the launcher open on the screen that holds the
+   pointer, or on the main screen? [mockups]
+69. Desktop: is the settings window opened from the launcher only, or
+   also from an icon in the system tray? [mockups]
+70. Phone: the tab bar has five tabs: Home, Alerts, Clipboard, Lists and
+   More. Are these the right five, and may "Notifications" be shortened
+   to "Alerts" to fit? [mockups]
+71. Phone: what does a touch on a clipboard item do: copy it to this
+   phone, or open it? [mockups]
+72. Tablet: does the clock on the idle screen move now and then, to
+   protect the screen? [mockups]
+73. Tablet: after how long without speech does the listening panel
+   close? [mockups]
+74. Admin panel: at phone width the side bar becomes a tab bar with
+   People, Devices, Assistants and More. Is that the right choice?
+   [mockups]
+75. Admin panel: which accent does the admin panel show: that of the
+   person signed in, or the household's? [mockups]
+76. Admin panel: the request timeline shows the first words a person
+   said. Who may see them? [mockups]
+77. Admin panel: is "Undo" offered for every change in the audit log, or
+   only for changes that can be reversed safely? [mockups]
+78. Voice page: does the page remember on that browser that it was set
+   up as a personal or a household device? [mockups]
+
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-66. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
+79. What Slint, Jetpack Compose on older Android, SwiftUI and CSS can
    each draw: blur behind a surface, and at what speed. [glass]
-67. Whether the launcher window can show the blurred desktop behind it
+80. Whether the launcher window can show the blurred desktop behind it
    on Linux, on X11 and on Wayland. [glass]
-68. How each character is animated so that it runs in Slint, Jetpack
+81. How each character is animated so that it runs in Slint, Jetpack
    Compose, SwiftUI and a browser from one source. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
@@ -385,3 +416,4 @@ An agent does this work and the owner agrees to the outcome.
 [assistant visuals]: design/visual/assistant-visuals.md
 [tokens]: design/visual/tokens.md
 [components]: design/visual/components.md
+[mockups]: design/visual/mockups/README.md
