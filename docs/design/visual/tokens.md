@@ -23,7 +23,7 @@ Status: a first set. The values are tried out in
 | Token | Light | Dark | Used for |
 |---|---|---|---|
 | `bg` | `#F4F5F7` | `#101216` | Behind everything, under the backdrop |
-| `surface` | `#FFFFFF` | `#17191E` | Plain content: lists, logs, text |
+| `surface` | White at 62% | `#17191E` at 55% | Plain content: lists, logs, text. It lets a little of the backdrop through and has no blur |
 | `surface-2` | `#F4F5F7` | `#1E2127` | A plain area inside plain content |
 | `text` | `#14161A` | `#F2F4F7` | Primary text |
 | `text-2` | `text` at 64% | `text` at 66% | Secondary text |
@@ -34,12 +34,14 @@ Status: a first set. The values are tried out in
 
 | Token | Light | Dark | Used for |
 |---|---|---|---|
-| `glass` | White at 58% | `#22252D` at 52% | Bars and cards |
-| `glass-thick` | White at 74% | `#1E2128` at 72% | The launcher, sheets and menus; also glass without blur |
+| `glass` | White at 32% | `#22252D` at 28% | Bars and cards |
+| `glass-thick` | White at 50% | `#1E2128` at 46% | The launcher, sheets and menus |
+| `glass-flat` | White at 80% | `#1E2128` at 80% | Glass on a device that cannot blur |
 | `glass-solid` | `#FFFFFF` | `#23262E` | Glass with reduced transparency |
 | `glass-edge` | White at 85% | White at 14% | The thin light edge |
-| `glass-blur` | 24 | 24 | The blur of what is behind |
-| `glass-saturate` | 170% | 170% | How much colour comes through |
+| `glass-blur` | 16 | 16 | The blur of what is behind |
+| `glass-saturate` | 200% | 200% | How much colour comes through |
+| `backdrop-1`, `backdrop-2` | 64%, 42% | 64%, 42% | How strongly our backdrop takes the accent |
 | `control` | Black at 6% | White at 9% | A control resting on glass |
 | `shadow-1`, `-2`, `-3` | Soft, dark blue-grey | Soft, black | A control, a card, a sheet |
 
@@ -115,8 +117,10 @@ Verified on 28 November 2026, by calculation:
 
 Assumed, needing a check on real screens:
 
-- Text on glass keeps that contrast over the strongest backdrop and over
-  a photo wallpaper.
+- Text on glass keeps that contrast over the strongest backdrop, over a
+  photo wallpaper, and in the launcher over a busy desktop. The chosen
+  glass is thin, so this needs measuring, and the glass may need to
+  thicken where text sits on it.
 
 ## Open questions
 

@@ -48,7 +48,7 @@
 }
 .glass-thick { background: var(--glass-thick); box-shadow: var(--shadow-3), inset 0 1px 0 var(--glass-edge); border-radius: var(--r-xl); }
 .no-blur .glass, .no-blur .glass-thick, .glass.no-blur {
-  -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--glass-thick); }
+  -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--glass-flat); }
 .solid .glass, .solid .glass-thick { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--glass-solid); border-color: var(--line); }
 
 /* Plain content surface. */

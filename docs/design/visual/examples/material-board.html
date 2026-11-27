@@ -22,7 +22,10 @@
   .scene .bar { grid-column: 1 / -1; }
   .scene .surface { align-self: start; }
 
-  /* B. More glass: thinner, clearer surfaces and a stronger backdrop. */
+  /* A. As first drawn: the first token values, kept here now that B is the look. */
+  .v-first { --glass: light-dark(rgba(255,255,255,.58), rgba(34,37,45,.52)); --glass-thick: light-dark(rgba(255,255,255,.74), rgba(30,33,40,.72));
+    --glass-blur: 24px; --glass-saturate: 170%; --backdrop-1: 46%; --backdrop-2: 26%; --surface: light-dark(#FFFFFF, #17191E); }
+  /* B. More glass (chosen): thinner, clearer surfaces and a stronger backdrop. */
   .v-glass { --glass: light-dark(rgba(255,255,255,.32), rgba(34,37,45,.28)); --glass-thick: light-dark(rgba(255,255,255,.5), rgba(30,33,40,.46));
     --glass-blur: 16px; --glass-saturate: 200%; --backdrop-1: 64%; --backdrop-2: 42%;
     --surface: light-dark(rgba(255,255,255,.62), rgba(23,25,30,.55)); }
@@ -56,8 +59,8 @@
     '<div class="row"><span class="ico"></span><span class="grow">Milk added to Shopping<span class="sub">Lists · 18 min ago</span></span></div>' +
     '<div class="row"><span class="ico"></span><span class="grow">Listen for the wake word</span><span class="toggle on"></span></div></div>';
   var vs = [
-    ['', 'A. As first drawn', 'A clear blur with a bright edge. Colour shows through softly; text is always easy to read.'],
-    ['v-glass', 'B. More glass', 'Thinner, clearer surfaces and a stronger backdrop. Even the list lets colour through. More striking, a little harder to read.'],
+    ['v-first', 'A. As first drawn', 'A clear blur with a bright edge. Colour shows through softly; text is always easy to read.'],
+    ['v-glass', 'B. More glass (chosen)', 'Thinner, clearer surfaces and a stronger backdrop. Even the list lets colour through. More striking, a little harder to read.'],
     ['v-calm', 'C. Calmer', 'Nearly solid surfaces over a faint backdrop. The quietest and the easiest to read and to draw; the least like glass.'],
     ['v-apple', 'D. Closer to Apple', 'Nearly clear glass with a bright edge that looks bent, and pill-shaped controls. The most like Liquid Glass; the hardest to read and to draw outside Apple\'s devices.']
   ];

@@ -228,24 +228,25 @@ detail.
    whole household at a tablet, guests and children included? When a
    dense screen and a friendly screen conflict, which wins? [visual
    identity]
-31. Which name, and which logo? See the name and logo board. The names
-   on it are not checked for existing products or trade marks. [visual
+31. Which name? See the name and logo board. The names on it are not
+   checked for existing products or trade marks. [visual identity]
+32. Which logo? "Glass pane with eyes" and "Speech drop" are to be
+   worked out further. "House with a voice", "Hearth glow" and "Orbiting
+   dots" stay in the running. "Overlapping panes" is dropped. [visual
    identity]
 
 ### The glass
 
-32. Who sets the wallpaper of a household tablet: an admin, in the admin
+33. Who sets the wallpaper of a household tablet: an admin, in the admin
    panel? Is it one picture, or several that change? [glass]
-33. Can a wallpaper also be set on a personal phone, in the settings
+34. Can a wallpaper also be set on a personal phone, in the settings
    window of the desktop client, or in the admin panel, or do those
    always show our own backdrop? [glass]
-34. Does our own backdrop move slowly, or is it still? [glass]
-35. How see-through is the desktop launcher? Several strengths are on
-   the launcher board. [glass]
+35. Does our own backdrop move slowly, or is it still? [glass]
 36. Can a person set how see-through the glass is? The owner named this
    as a possibility. [glass]
-37. Which of the designs on the material board is the look: as first
-   drawn, more glass, calmer, or closer to Apple's? [glass]
+37. Does glass become thicker where text sits on it and what is behind
+   it is busy, so that the text stays readable? [glass]
 
 ### The colours
 
@@ -314,8 +315,8 @@ detail.
    by supplying their own drawing? [assistant visuals]
 59. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-60. How is the screen arranged around the character on a tablet? Several
-   designs are on the tablet board. [assistant visuals]
+60. Is the voice page arranged like the tablet, with the figure on a
+   stage? [assistant visuals]
 61. May a card cover part of the character, or does it always sit clear
    of the head? [assistant visuals]
 62. Does a whole figure move across the screen only while nothing else
@@ -351,7 +352,9 @@ detail.
 
 ### The mockups
 
-73. Agree to each mockup, or say what to change in it. [mockups]
+73. Agree to each mockup, or say what to change in it. The tablet mockup
+   still shows the first arrangement, a panel from the bottom, and is to
+   be redrawn with the figure on a stage. [mockups]
 74. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]

@@ -37,7 +37,9 @@ The frames the screens are drawn in are in [mockup.css](mockup.css).
 
 ## Open questions
 
-- Agree to each mockup, or say what to change in it.
+- Agree to each mockup, or say what to change in it. The tablet mockup
+  still shows the first arrangement, a panel from the bottom, and is to
+  be redrawn with the figure on a stage.
 - Desktop: how does a person go from searching to talking to the
   assistant: the Tab key, a prefix, or a shortcut of its own? The mockup
   shows Tab and a shortcut.

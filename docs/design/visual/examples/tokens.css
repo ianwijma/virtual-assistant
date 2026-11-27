@@ -20,7 +20,7 @@
 :root {
   /* Neutral base */
   --bg: light-dark(#F4F5F7, #101216);            /* behind everything, under the backdrop */
-  --surface: light-dark(#FFFFFF, #17191E);       /* plain content: lists, logs, text */
+  --surface: light-dark(rgba(255,255,255,.62), rgba(23,25,30,.55)); /* plain content: lists, logs, text. No blur */
   --surface-2: light-dark(#F4F5F7, #1E2127);     /* a plain area inside plain content */
   --text: light-dark(#14161A, #F2F4F7);
   --text-2: light-dark(rgba(20,22,26,.64), rgba(242,244,247,.66));
@@ -28,14 +28,15 @@
   --line: light-dark(rgba(20,22,26,.10), rgba(255,255,255,.10));
 
   /* Glass */
-  --glass: light-dark(rgba(255,255,255,.58), rgba(34,37,45,.52));        /* bars, cards */
-  --glass-thick: light-dark(rgba(255,255,255,.74), rgba(30,33,40,.72));  /* launcher, sheets, menus */
+  --glass: light-dark(rgba(255,255,255,.32), rgba(34,37,45,.28));        /* bars, cards */
+  --glass-thick: light-dark(rgba(255,255,255,.50), rgba(30,33,40,.46));  /* launcher, sheets, menus */
+  --glass-flat: light-dark(rgba(255,255,255,.80), rgba(30,33,40,.80));   /* glass on a device that cannot blur */
   --glass-solid: light-dark(#FFFFFF, #23262E);   /* reduced transparency, or no blur */
   --glass-edge: light-dark(rgba(255,255,255,.85), rgba(255,255,255,.14));
-  --backdrop-1: 46%;   /* how strongly our backdrop takes the accent */
-  --backdrop-2: 26%;
-  --glass-blur: 24px;
-  --glass-saturate: 170%;
+  --backdrop-1: 64%;   /* how strongly our backdrop takes the accent */
+  --backdrop-2: 42%;
+  --glass-blur: 16px;
+  --glass-saturate: 200%;
   --control: light-dark(rgba(20,22,26,.06), rgba(255,255,255,.09));        /* a control resting on glass */
   --control-hover: light-dark(rgba(20,22,26,.10), rgba(255,255,255,.14));
   --shadow-1: 0 2px 8px -2px light-dark(rgba(15,20,30,.12), rgba(0,0,0,.40));

@@ -16,18 +16,23 @@ set. What each toolkit can draw is still to be researched.
   web, where the platform does not provide the material and we draw it
   ourselves.
 - **It has a light and a dark form.**
-- **The strength is a clear blur with a bright edge.** What is behind a
-  surface is blurred and its colour shows through. A thin light edge and
-  a soft shadow lift the surface. There is no bent light at the edges and
-  there are no moving highlights. This is "Glass" on
-  [the direction board](examples/direction-board.html), between "Frost"
-  and "Liquid".
+- **The glass is thin and clear, with a bright edge.** What is behind a
+  surface is blurred and its colour shows through strongly. A thin light
+  edge and a soft shadow lift the surface. There is no bent light at the
+  edges and there are no moving highlights. This is "More glass" on
+  [the material board](examples/material-board.html).
+- **Our own backdrop is strong in colour,** so that the glass has
+  something to show.
+- **The desktop launcher is clear glass:** about half see-through, so the
+  desktop behind it is clearly there. This is "Clear glass" on
+  [the launcher board](examples/launcher-board.html).
 - **The glass itself is neutral.** It has no colour of its own. Colour
   comes from what is behind it and from the
   [accent](colour.md).
 - **Glass is for what floats above the content:** bars, the launcher,
   sheets, menus, cards and controls. The content itself, such as a long
-  list, a log or a page of text, is plain. This keeps text readable and
+  list, a log or a page of text, is plain: it has no blur and lets only a
+  little of the backdrop's colour through. This keeps text readable and
   keeps long lists fast.
 - **A device that is too slow for the blur shows a simpler form:** a flat
   translucent tint in the same colour and shape, without the blur. It is
@@ -47,7 +52,7 @@ panel over a plain white page looks like a plain white panel.
 | Where | What is behind the glass |
 |---|---|
 | The desktop launcher | Whatever is behind its window: the person's desktop and open applications, blurred. Where a desktop cannot provide this, our own backdrop |
-| A household tablet | A wallpaper, such as a family photo. It is shown in full while no assistant is active. When an assistant is active, the glass surfaces appear over it |
+| A household tablet | A wallpaper, such as a family photo, shown in full while no assistant is active. When an assistant is active, our own backdrop takes its place as the stage for the character. See [assistant visuals](assistant-visuals.md) |
 | Everywhere else | Our own backdrop: a soft field of colour that takes the [accent](colour.md), the same on every device |
 
 ## What it costs
@@ -82,13 +87,10 @@ Assumed, needing research to confirm:
   of the desktop client, or in the admin panel, or do those always show
   our own backdrop?
 - Does our own backdrop move slowly, or is it still?
-- How see-through is the desktop launcher? Several strengths are on
-  [the launcher board](examples/launcher-board.html).
 - Can a person set how see-through the glass is? The owner named this as
   a possibility.
-- Which of the designs on
-  [the material board](examples/material-board.html) is the look: as
-  first drawn, more glass, calmer, or closer to Apple's?
+- Does glass become thicker where text sits on it and what is behind it
+  is busy, so that the text stays readable?
 
 To research:
 

@@ -42,8 +42,11 @@ combined.
 - Who is the design for first: the power user at the desktop, or the
   whole household at a tablet, guests and children included? When a dense
   screen and a friendly screen conflict, which wins?
-- Which name, and which logo? See the name and logo board. The names on
-  it are not checked for existing products or trade marks.
+- Which name? See the name and logo board. The names on it are not
+  checked for existing products or trade marks.
+- Which logo? "Glass pane with eyes" and "Speech drop" are to be worked
+  out further. "House with a voice", "Hearth glow" and "Orbiting dots"
+  stay in the running. "Overlapping panes" is dropped.
 
 To research:
 

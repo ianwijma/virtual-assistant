@@ -257,3 +257,7 @@ are 25 November 2026 unless a section says otherwise.
 | 230 | Several designs of one thing are drawn and chosen from before many screens are drawn; every design question comes with an example | [visual design](design/visual/README.md) |
 | 231 | The character gets most of the screen where the assistant is the subject, and a figure can grow from a head to a whole moving figure | [assistant visuals](design/visual/assistant-visuals.md) |
 | 232 | The name and the logo are worked on now, from several candidates | [identity](design/visual/identity.md) |
+| 233 | The material is the thin, clear glass over a strong backdrop ("More glass"), with content that lets a little colour through | [glass](design/visual/glass.md), [tokens](design/visual/tokens.md) |
+| 234 | The desktop launcher is clear glass, about half see-through | [glass](design/visual/glass.md) |
+| 235 | On a household tablet an active assistant stands as a whole figure on a stage, with a glass column for text and cards | [assistant visuals](design/visual/assistant-visuals.md) |
+| 236 | Of the logo marks, "Glass pane with eyes" and "Speech drop" are worked out further and "Overlapping panes" is dropped | [identity](design/visual/identity.md) |

@@ -19,6 +19,12 @@ chosen yet.
   the middle and the rest of the screen is arranged around it. The
   earlier voice assistant did this, and its arrangement is the reference;
   its look is not reused.
+- **On a household tablet the character stands on a stage.** When an
+  assistant is active, our own backdrop fills the screen. The whole
+  figure stands on the left and can walk across the screen while nothing
+  else is shown. A glass column on the right holds what was said and any
+  card the assistant shows. This is "Full figure on a stage" on
+  [the tablet board](examples/tablet-board.html).
 - **A figure can grow over time.** It may start as a head only. Later it
   can be a whole figure that moves across the screen. A plain form, such
   as a sound wave, is possible for an assistant without a figure.
@@ -50,8 +56,8 @@ chosen yet.
   supplying their own drawing?
 - How playful is the default household assistant: cute, friendly, or
   calm?
-- How is the screen arranged around the character on a tablet? Several
-  designs are on [the tablet board](examples/tablet-board.html).
+- Is the voice page arranged like the tablet, with the figure on a
+  stage?
 - May a card cover part of the character, or does it always sit clear
   of the head?
 - Does a whole figure move across the screen only while nothing else is
