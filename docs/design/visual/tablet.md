@@ -4,8 +4,7 @@ How the look applies to a tablet in a room, in kiosk mode. Part of
 [the visual design](README.md). What it does is in
 [the technical design](../technical/clients/mobile.md).
 
-Status: started. The idle screen and the active screen are set in
-outline.
+Status: started. The idle screen and the active screen are set.
 
 ## Design
 
@@ -13,9 +12,11 @@ outline.
   family photo, with three things on it: a large clock, a few small
   glance bars, and the assistant's figure.
 - **A slim glass shelf runs along the bottom of the screen.** The glance
-  bars sit in it and the figure stands on it. The rest of the photo
-  stays clear. This is "Bottom shelf" on
-  [the second tablet idle board](examples/tablet-idle-board-2.html).
+  bars sit in it and the figure stands on it. The bars are at
+  the right of the shelf and the figure stands on its left end. The clock
+  is large at the top left, on the photo. The rest of the photo stays
+  clear. This is "Shelf with bars, clock above" on
+  [the third tablet idle board](examples/tablet-idle-board-3.html).
 - **A glance bar is a small, flat rectangle** with one fact: a running
   timer, the next reminder, the number of items on the shopping list. It
   is a [card](components.md) in its closed form.
@@ -33,9 +34,6 @@ outline.
 
 ## Open questions
 
-- How are the clock, the glance bars and the figure arranged around the
-  shelf? Several designs are on
-  [the third tablet idle board](examples/tablet-idle-board-3.html).
 - When a tablet has several assistants, are all their figures on the
   idle screen, or one?
 - Does the clock move now and then, to protect the screen?

@@ -19,14 +19,17 @@ mockups.
 - **A card is a row by default.** A card is what an assistant or the
   system shows for one thing: a timer, a notification, a list, a question
   to approve. It is a compact row with an icon or the character, two
-  lines of text and one or two small buttons, so that several fit in a
-  list or side by side in a row. This is "Row cards" on
+  lines of text and one or two small buttons, and several are shown as a
+  list, one under another. This is "Row cards" on
   [the card board](examples/card-board.html).
 - **A touch on a card lifts it into a sheet.** The card rises out of its
   place into a larger glass card over the rest of the screen, which is
-  dimmed, like a modal. The sheet has room for the whole content, such as
-  every item of a list, and for larger buttons. This is "Lifts into a
-  sheet" on [the second card board](examples/card-board-2.html).
+  dimmed, like a modal. The sheet floats over the middle of the list and has a
+  button to close it. It has room for the whole content, such as every
+  item of a list, and for larger buttons. The row it came from leaves a
+  faint outline, so that it is clear where the sheet came from. This is
+  "List of rows, sheet in the middle" on
+  [the third card board](examples/card-board-3.html).
 - **A screen has one primary action,** in the accent. Other actions are
   quiet.
 - **Focus is always visible,** as a ring in the accent, since the desktop
@@ -54,9 +57,7 @@ light and dark, built from [components.css](examples/components.css).
 ## Open questions
 
 - Agree to the example components as the base for the rest.
-- How are closed cards laid out, in a list or as pills in a row, and
-  where does the sheet appear? Several designs are on
-  [the third card board](examples/card-board-3.html).
+- Does a sheet also close by a touch on the dimmed area around it?
 - On a tablet read from across a room, is a card shown open and large
   from the start?
 - Which components come next? The proposal is the ones the mockups need:

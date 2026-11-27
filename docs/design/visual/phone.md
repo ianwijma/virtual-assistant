@@ -4,8 +4,7 @@ How the look applies to the phone app in personal use. Part of
 [the visual design](README.md). What the app does is in
 [the technical design](../technical/clients/mobile.md).
 
-Status: started. The screens and how they are joined are set. The call is
-being designed.
+Status: started. The screens, how they are joined and the call are set.
 
 ## Design
 
@@ -29,10 +28,15 @@ being designed.
 - **What the assistant shows pops up as a sheet** over the lower part of
   the screen, such as a list, and the figure stays visible above it.
 - **Talking is like a call,** as in the ChatGPT app. The figure has the
-  whole screen and there are a few simple round buttons at the bottom.
-  From there a person can switch to the chat or end the call.
-- **The chat shows the same conversation as text,** live, while it is
-  spoken, and a person can switch back.
+  whole screen, and there are two round buttons at the bottom: Chat and
+  End.
+- **The call folds into the chat.** Switching to the chat does not leave
+  the call. The figure shrinks into a glass header at the top, with its
+  name, a sign of the sound level, and small buttons to mute and to end.
+  The rest of the screen is the conversation as text, live, with a field
+  to type in. A touch on the header returns to the full figure. This is
+  "The call folds into the chat" on
+  [the third phone conversation board](examples/phone-talk-board-3.html).
 - The designs these came from are on
   [the phone home board](examples/phone-home-board.html) and
   [the phone conversation board](examples/phone-talk-board.html).
@@ -41,9 +45,9 @@ being designed.
 
 ## Open questions
 
-- Which buttons does the call have, and what happens to the call while
-  the chat is open? Several designs are on
-  [the third phone conversation board](examples/phone-talk-board-3.html).
+- How is the microphone muted on the full call screen, which has only
+  Chat and End?
+- Is what is said also shown as a line of text on the full call screen?
 - Where is the first screen chosen: in the app's own settings, or in the
   admin panel with a person's other settings?
 - What does a touch on a clipboard item do: copy it to this phone, or

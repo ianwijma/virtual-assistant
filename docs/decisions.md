@@ -272,3 +272,7 @@ are 25 November 2026 unless a section says otherwise.
 | 245 | The idle tablet has a slim glass shelf along the bottom that holds the glance bars and on which the figure stands; there is no written hint of the wake word | [tablet](design/visual/tablet.md) |
 | 246 | Talking to an assistant on the phone is like a call, as in the ChatGPT app: the figure full screen, a few simple buttons, and a switch to chat or an end to the call | [phone](design/visual/phone.md) |
 | 247 | A touch on a card lifts it into a sheet over the dimmed screen, like a modal | [components](design/visual/components.md) |
+| 248 | On the idle tablet the bars are at the right of the shelf, the figure stands on its left end, and the clock is large at the top left | [tablet](design/visual/tablet.md) |
+| 249 | The phone call has two buttons, Chat and End, and folds into the chat: the figure shrinks into a header above the live conversation and the call goes on | [phone](design/visual/phone.md) |
+| 250 | The admin panel has three columns: a glass side bar of destinations with search, a list of the destination's items, and the item's page | [admin panel](design/visual/admin-panel.md) |
+| 251 | Closed cards are a list of rows, and the sheet floats over the middle of the dimmed list | [components](design/visual/components.md) |
