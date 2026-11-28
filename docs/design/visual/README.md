@@ -118,7 +118,8 @@ everywhere is written in the file of its subject, such as
 ## Light and dark, and no themes
 
 - There is one look, in a light and a dark form. Each client follows the
-  light or dark setting of the device it runs on.
+  light or dark setting of the device it runs on, unless the device is
+  set otherwise. See [colour](colour.md).
 - A person cannot choose a theme.
 
 ## The order of the work
