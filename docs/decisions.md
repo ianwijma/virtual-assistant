@@ -343,3 +343,7 @@ are 25 November 2026 unless a section says otherwise.
 | 316 | Members of the household will be able to add pictures to a gallery when the admin allows it | [glass](design/visual/glass.md) |
 | 317 | The glass has three levels of see-through, as a setting | [glass](design/visual/glass.md) |
 | 318 | The launcher's glass stays as designed over any desktop for now | [glass](design/visual/glass.md) |
+| 319 | On Linux the launcher blurs the real desktop where the desktop can, shows our own backdrop elsewhere, and has an option to be see-through | [glass](design/visual/glass.md) |
+| 320 | An Android tablet on Android 11 or earlier shows the flat tint | [glass](design/visual/glass.md) |
+| 321 | The tokens are kept in the W3C Design Tokens format, and our own build step in Rust generates the four themes | [tokens](design/visual/tokens.md) |
+| 322 | Logs and timelines use JetBrains Mono | [typography](design/visual/typography.md) |

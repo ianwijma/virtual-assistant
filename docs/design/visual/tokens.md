@@ -10,6 +10,10 @@ Status: a first set. The values are tried out in
 - **The tokens are the single source** of every colour, size, shape and
   timing. Each platform's theme is generated from them: Slint, SwiftUI,
   Jetpack Compose and CSS.
+- **The source is kept in the Design Tokens format** of the W3C
+  community group. A small build step of our own, written in Rust,
+  generates the four themes from it, since no existing tool writes
+  Slint.
 - **A component uses tokens only.** It never holds a colour or a size of
   its own.
 - **Every colour token has a light and a dark value.**
@@ -128,9 +132,5 @@ Assumed, needing a check on real screens:
 
 ## Open questions
 
-- From the research: the source of the tokens is kept in the Design
-  Tokens format of the W3C community group, and a small build step of our
-  own in Rust generates the four themes from it, since no existing tool
-  writes Slint. Agree?
 - Agree to the first values, after seeing them in
   [the example components](examples/components.html) and the mockups.

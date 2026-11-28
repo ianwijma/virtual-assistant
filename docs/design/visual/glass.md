@@ -31,6 +31,13 @@ set. What each toolkit can draw is still to be researched.
   gallery,** when the admin allows it. Guests cannot. This comes close
   to the first release.
 - **The glass has three levels of see-through,** as a setting.
+- **On Linux the launcher blurs the real desktop where the desktop can
+  do it,** through the Wayland protocol for it, with a small piece of
+  our own code. Where the desktop cannot blur, such as under Sway and on
+  most of X11, the launcher shows our own backdrop. There is also an
+  option to make it see-through without blur.
+- **An Android tablet on Android 11 or earlier shows the flat tint,**
+  not the blur.
 - **The launcher's glass stays as designed over any desktop.** Its text
   can be hard to read over some windows, and that is accepted for now.
   Thickening the glass by what is behind it is an idea for after the
@@ -144,12 +151,9 @@ Assumed:
 
 - With reduced motion, is the backdrop still, or does it drift slowly?
 - Does the backdrop also move on an old tablet and in low-power mode?
-- From the research: on Linux the launcher asks for the blurred desktop
-  through the new Wayland protocol with a small piece of our own code,
-  and shows our own backdrop wherever the desktop cannot blur, such as
-  under Sway and on most of X11. Agree?
-- From the research: an Android tablet on Android 11 or earlier shows the
-  flat tint, not the blur. Agree?
+- Where the desktop cannot blur, is the see-through launcher without
+  blur something a person switches on, with our own backdrop as the
+  default there?
 
 To research:
 

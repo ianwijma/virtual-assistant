@@ -12,7 +12,9 @@ Status: started. The typeface is chosen and a first scale is set.
   Vietnamese.
 - **It is shipped with every client,** so that text looks the same on
   every device. No client uses the font of the platform it runs on.
-- **One family is used for everything.** Headings differ by size and
+- **Logs and timelines use JetBrains Mono,** shipped with every client.
+  It is under the SIL Open Font License, which allows sold hardware.
+- **One family is used for everything else.** Headings differ by size and
   weight, not by typeface.
 - **Text follows the text size set on the device.** A person who has set
   larger text on their phone gets larger text in the app.
@@ -40,7 +42,5 @@ setting. The values are in [tokens](tokens.md).
 
 ## Open questions
 
-- Which monospace typeface is shipped for logs and timelines? JetBrains
-  Mono is a candidate with a fitting licence.
 - Which languages and scripts must be covered later, beyond what Inter
   covers?
