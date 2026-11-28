@@ -3,9 +3,9 @@
 The low-fidelity mockups of each client. Part of
 [the visual design](../README.md).
 
-Status: redrawn on 28 November 2026 from the decisions of that day, as
-proposals. None is agreed yet. What is not decided is drawn
-as plainly as possible, and its note says "Not decided".
+Status: redrawn on 28 November 2026 from the decisions of that day, and
+agreed by the owner. What is not decided is drawn as plainly as
+possible, and its note says "Not decided".
 
 ## What a mockup is
 
@@ -18,8 +18,8 @@ as plainly as possible, and its note says "Not decided".
 - **Each screen has notes** under it that say what each region is and how
   it behaves. They are written for whoever builds the screen, person or
   agent.
-- **A mockup is a proposal** until the owner agrees to it. What a mockup
-  shows is not decided by being drawn.
+- **The five mockups are agreed** as the layouts to build from. A part
+  whose note says "Not decided" is not agreed by being drawn.
 - **A mockup is a web page.** Open it in a browser. It needs the internet
   once, to load the typeface.
 
@@ -37,5 +37,4 @@ The frames the screens are drawn in are in [mockup.css](mockup.css).
 
 ## Open questions
 
-- Agree to each mockup, or say what to change in it.
 

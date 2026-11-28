@@ -184,7 +184,7 @@ everywhere is written in the file of its subject, such as
 | [tablet.md](tablet.md) | The household tablet | Started |
 | [admin-panel.md](admin-panel.md) | The admin panel | Started |
 | [voice-page.md](voice-page.md) | The voice page | Started |
-| [mockups/](mockups/README.md) | The low-fidelity mockups of each client | Redrawn from the chosen designs, as proposals |
+| [mockups/](mockups/README.md) | The low-fidelity mockups of each client | Agreed |
 | [examples/](examples/) | The boards, to open in a browser. See the list below | |
 
 The boards in `examples/`:

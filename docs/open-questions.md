@@ -344,22 +344,21 @@ detail.
 
 ### The mockups
 
-49. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-50. A search of the trade mark registers of the EU, the Benelux, the UK
+49. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-51. How fast the blur is on an old tablet and in the launcher, measured
+50. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-52. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+51. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-53. How much power a three-dimensional figure uses on an old tablet that
+52. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

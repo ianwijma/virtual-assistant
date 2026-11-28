@@ -435,3 +435,4 @@ are 25 November 2026 unless a section says otherwise.
 | 408 | The first values of the tokens are agreed as a start | [tokens](design/visual/tokens.md) |
 | 409 | The example components are agreed as the base for the rest | [components](design/visual/components.md) |
 | 410 | How long an asked-for card stays large, and whether the idle figure changes by itself, are set for the household, and a device can differ | [components](design/visual/components.md) |
+| 411 | The five mockups are agreed as the layouts to build from, apart from what their notes mark as not decided | [mockups](design/visual/mockups/README.md) |
