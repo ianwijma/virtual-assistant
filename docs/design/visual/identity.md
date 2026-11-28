@@ -19,7 +19,14 @@ Status: started. The feel is set. The name is open.
   has a strong default, and its density can be changed. See
   [shape and spacing](shape-and-spacing.md).
 - **The look is inspired by Apple's Liquid Glass, and is not a copy of
-  it.** See [glass](glass.md). What sets it apart is a question below.
+  it.** See [glass](glass.md).
+- **Four things set it apart, together:** the characters, the accent of
+  two colours, the backdrop that moves and reacts, and a shape of our
+  own. See the table below.
+- **Raycast and the Arc browser are also admired for their look.**
+- **The name is said either way,** "haym" or "heem". Where the name is
+  introduced in text, such as in the README, a line shows how it is
+  said.
 - **The logo mark is the glass drop:** a speech bubble that is also a
   head, with two eyes, drawn as clear glass with a bright edge and a glow
   inside. This is "D2. Glass drop" on
@@ -73,14 +80,9 @@ of four web addresses each:
 
 ## Open questions
 
-- Which products do you admire the look of, besides Apple's?
-- What should set the look apart from Apple's, so that it is recognisable
-  as ours: the colour, the backdrop, the assistants, the shape, or
-  something else? See the table above.
-- The web addresses heem.com, heem.app, heem.nl and heem.dev are taken.
-  Which address does the project use?
-- Is the name said the Dutch way or the English way when it is spoken,
-  such as in a video or by an assistant?
+- Which web address does the project use? heem.com, heem.app, heem.nl
+  and heem.dev are taken. A prefix is likely, such as getheem.com. This
+  is decided after the trade mark search.
 
 To research:
 

@@ -408,3 +408,6 @@ are 25 November 2026 unless a section says otherwise.
 | 381 | The language is chosen on the welcome | [admin panel](design/visual/admin-panel.md) |
 | 382 | A quiet link leads to the set-up where guests talk at once | [voice page](design/visual/voice-page.md) |
 | 383 | The voice page is the stage on a wide screen | [voice page](design/visual/voice-page.md) |
+| 384 | Four things set the look apart together: the characters, the two-colour accent, the living backdrop and our own shape | [identity](design/visual/identity.md) |
+| 385 | Raycast and the Arc browser are admired for their look, besides Apple's | [identity](design/visual/identity.md) |
+| 386 | The name is said either way, and a line of text shows how where it is introduced | [identity](design/visual/identity.md) |

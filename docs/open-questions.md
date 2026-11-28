@@ -274,124 +274,118 @@ detail.
 
 ### The feel and the name
 
-28. Which products do you admire the look of, besides Apple's? [visual
-   identity]
-29. What should set the look apart from Apple's, so that it is
-   recognisable as ours: the colour, the backdrop, the assistants, the
-   shape, or something else? See the table above. [visual identity]
-30. The web addresses heem.com, heem.app, heem.nl and heem.dev are
-   taken. Which address does the project use? [visual identity]
-31. Is the name said the Dutch way or the English way when it is spoken,
-   such as in a video or by an assistant? [visual identity]
+28. Which web address does the project use? heem.com, heem.app, heem.nl
+   and heem.dev are taken. A prefix is likely, such as getheem.com. This
+   is decided after the trade mark search. [visual identity]
 
 ### The glass
 
-32. Can the launcher find out how bright the windows behind it are? This
+29. Can the launcher find out how bright the windows behind it are? This
    is to be looked into for after the first release. [glass]
 
 ### The colours
 
-33. Does the wheel set only the hue, or also how light and how strong a
+30. Does the wheel set only the hue, or also how light and how strong a
    colour is? [colour]
-34. What happens when an assistant's colour and the person's accent are
+31. What happens when an assistant's colour and the person's accent are
    the same, or clash? [colour]
-35. Should the set have more built-in accents, such as a pink or a red?
+32. Should the set have more built-in accents, such as a pink or a red?
    [colour]
-36. Does Graphite return later as a built-in accent? [colour]
-37. Are there colours to avoid, and is anyone in the household colour-
+33. Does Graphite return later as a built-in accent? [colour]
+34. Are there colours to avoid, and is anyone in the household colour-
    blind? [colour]
 
 ### Typography
 
-38. Which languages and scripts must be covered later, beyond what Inter
+35. Which languages and scripts must be covered later, beyond what Inter
    covers? [typography]
 
 ### Shape, spacing and icons
 
-39. Is there an illustration style, for empty screens and first-run
+36. Is there an illustration style, for empty screens and first-run
    setup? [shape]
 
 ### Motion and sound
 
-40. Is the sound of a timer or an alarm that ends also off unless
+37. Is the sound of a timer or an alarm that ends also off unless
    switched on, or is it the one sound that is always on? [motion]
-41. Which sounds are in the set, and who makes them? [motion]
+38. Which sounds are in the set, and who makes them? [motion]
 
 ### Tokens and components
 
-42. Agree to the first values, after seeing them in the example
+39. Agree to the first values, after seeing them in the example
    components and the mockups. [tokens]
-43. Agree to the example components as the base for the rest.
+40. Agree to the example components as the base for the rest.
    [components]
-44. When two devices changed the same thing while one was out of reach,
+41. When two devices changed the same thing while one was out of reach,
    which change wins, and is the person told? [components]
 
 ### Assistant visuals
 
-45. In which style are the full figures drawn, when they are redesigned
+42. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-46. Does a figure have a mouth that moves when it talks, and arms? Both
+43. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-47. Is the figure of the first release a rendered three-dimensional one,
+44. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-48. How much more room does a screen keep for a later figure: how much
+45. How much more room does a screen keep for a later figure: how much
    wider and taller than the figure for now? [assistant visuals]
-49. Who draws the figures, and how many are there in the first release?
+46. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-50. How does a person give their own assistant a look: by choosing from
+47. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-51. How playful is the default household assistant: cute, friendly, or
+48. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-52. May a person bring their own figure, such as a character they like
+49. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-53. From the research: which of the three routes above do the first
+50. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-54. What makes one notification more important than another in the
+51. What makes one notification more important than another in the
    Overview's list: its kind, its age, or what a person set? [visual]
-55. In two columns, do the destinations become a rail of icons, as on
+52. In two columns, do the destinations become a rail of icons, as on
    the board? [visual]
-56. Which devices are the references for the designs: which phone, which
+53. Which devices are the references for the designs: which phone, which
    tablet, which monitor size? [visual]
-57. Are settings screens generated from each feature's description, so
+54. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-58. When the settings close by a click elsewhere with unsaved changes,
+55. When the settings close by a click elsewhere with unsaved changes,
    are they kept for when the launcher is opened again, or is the person
    asked? [visual desktop]
-59. Which views of the launcher have a preview, and which are a list
+56. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-60. Does the window change size when it goes from a list to a list with
+57. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-61. Does the line of text also show what the person says, or only what
+58. Does the line of text also show what the person says, or only what
    the assistant says? [visual phone]
-62. Which languages does the welcome show, and in which is the setup
+59. Which languages does the welcome show, and in which is the setup
    offered at first? [visual admin panel]
 
 ### The mockups
 
-63. Agree to each mockup, or say what to change in it. [mockups]
+60. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-64. A search of the trade mark registers of the EU, the Benelux, the UK
+61. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-65. How fast the blur is on an old tablet and in the launcher, measured
+62. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-66. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+63. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-67. How much power a three-dimensional figure uses on an old tablet that
+64. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
