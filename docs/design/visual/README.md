@@ -188,9 +188,9 @@ The boards in `examples/`:
 | [accent-start-board.html](examples/accent-start-board.html) | The phone's Overview in each of the five accents, light and dark | Chosen from |
 | [width-board.html](examples/width-board.html) | The settings laid out by the width of the screen, or by the kind of client | Chosen from |
 | [assistant-colour-board.html](examples/assistant-colour-board.html) | Whose colour a shared screen takes: the person's or the assistant's | Chosen from |
-| [accent-picker-board.html](examples/accent-picker-board.html) | Three designs for choosing an accent, with the preview on four devices | Waiting for a choice |
-| [saving-board.html](examples/saving-board.html) | A changed setting applied at once, with a Save button, or both | Waiting for a choice |
-| [offline-actions-board.html](examples/offline-actions-board.html) | Four ways to show what needs the server while home cannot be reached | Waiting for a choice |
+| [accent-picker-board.html](examples/accent-picker-board.html) | Three designs for choosing an accent, with the preview on four devices | Chosen from |
+| [saving-board.html](examples/saving-board.html) | A changed setting applied at once, with a Save button, or both | Chosen from |
+| [offline-actions-board.html](examples/offline-actions-board.html) | Four ways to show what needs the server while home cannot be reached | Chosen from |
 
 No board is waiting to be made. New ones are added here as subjects come
 up.

@@ -19,13 +19,12 @@ Status: started. The exact values are made with the design tokens.
   tablet start roomy.
 - **The icons are Phosphor's,** an open set under the MIT licence, which
   allows sold hardware. Where the set lacks an icon, we draw our own in
-  its style. Apple's symbols cannot be used. The sets it was chosen from
+  its style. Icons are always outlined; a chosen item is shown by the
+  accent and the highlight behind it, not by a filled icon. Apple's symbols cannot be used. The sets it was chosen from
   are on [the icon board](examples/icon-board.html).
 
 ## Open questions
 
-- Does the chosen item show its icon filled, as in "Phosphor, filled
-  when selected" on the icon board, or do icons always stay outlined?
 - Where is a device's density changed: in the admin panel, on the device
   itself, or both?
 - Is the density one setting for a whole device, or can it differ per

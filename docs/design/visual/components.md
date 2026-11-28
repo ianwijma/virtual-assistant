@@ -43,6 +43,20 @@ mockups.
 | Nothing in it | One sentence in secondary text where the content would be |
 | Home cannot be reached | A slim plain bar under the top bar that says so, with the time of the saved copy and a button to try again |
 
+- **A changed setting is saved with a Save button.** A changed field
+  carries a small dot in the accent. A bar at the bottom of the page
+  says how many changes are not saved, with Discard and Save. This holds
+  in the admin panel, the desktop settings and the app. This is "A Save
+  button" on [the saving board](examples/saving-board.html).
+- **The count of changes will open a list of them,** each with its value
+  before and after. This comes after the first designs, possibly before
+  the first release.
+- **What needs home looks as usual while home cannot be reached.** A
+  change is kept on the device and marked "Waiting to send", and the top
+  bar counts the changes that wait. A timer runs on the device and is
+  sent when home is back. An assistant that is opened says in one line
+  that it cannot reach home. This is "Usable, sent later" on
+  [the offline actions board](examples/offline-actions-board.html).
 - **The app stays usable while home cannot be reached.** It works from
   its saved copy. What needs the server does not work, and the rest does.
   This is "As quiet as possible" on
@@ -68,12 +82,16 @@ light and dark, built from [components.css](examples/components.css).
 ## Open questions
 
 - Agree to the example components as the base for the rest.
-- While home cannot be reached, how does a thing that needs the server
-  look: greyed out, hidden, or usable with the change sent later?
+- What happens to unsaved changes when a person leaves the page: are
+  they asked, or are the changes kept as a draft?
+- Does a dangerous action, such as removing an assistant, go through the
+  Save bar too, or does it ask and act at once?
+- When two devices changed the same thing while one was out of reach,
+  which change wins, and is the person told?
+- Is a person told when changes that waited have been sent, or does the
+  mark only disappear?
 - Does the waiting line show at once, or only after a wait of about a
   second, so that a brief wait shows nothing?
-- Does a changed setting apply at once, or after a Save button? The
-  answer holds for the admin panel, the desktop settings and the app.
 - Does a sheet also close by a touch on the dimmed area around it?
 - On a tablet read from across a room, is a card shown open and large
   from the start?

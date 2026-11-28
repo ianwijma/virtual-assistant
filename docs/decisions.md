@@ -302,3 +302,8 @@ are 25 November 2026 unless a section says otherwise.
 | 275 | The layout follows the width of the screen, and every screen is responsive | [visual](design/visual/README.md) |
 | 276 | An assistant's figure has its own colour, the screen around it follows the person's accent, and a recognised person is named in a chip | [colour](design/visual/colour.md) |
 | 277 | The simple figure with two eyes stays for now, the figures are designed in a thread of their own, and layouts leave room for a larger figure | [assistant visuals](design/visual/assistant-visuals.md) |
+| 278 | An own accent is picked from pairs of colours that go together, with a two-handle colour wheel for a free choice | [colour](design/visual/colour.md) |
+| 279 | A changed setting is saved with a Save button, with a dot on each changed field and a count of the changes | [components](design/visual/components.md) |
+| 280 | The count of unsaved changes will open a list of them with the value before and after | [components](design/visual/components.md) |
+| 281 | What needs home looks as usual while home cannot be reached, and changes wait to be sent | [components](design/visual/components.md) |
+| 282 | Icons are always outlined | [shape and spacing](design/visual/shape-and-spacing.md) |

@@ -40,8 +40,12 @@ focus. It also colours our own [backdrop](glass.md).
   checked for readable text in light and in dark. A new household starts
   with Tide. This is "Tide" on
   [the accent start board](examples/accent-start-board.html).
-- **A person can also make their own accent,** by picking two colours or
-  by having two picked at random.
+- **A person can also make their own accent.** Under the built-in
+  accents is a grid of pairs of colours that go well together, with a
+  button that brings a new set of pairs. A link leads to a free choice:
+  one colour wheel with two handles, one for each colour. These are
+  "Pairs that go together" and the wheel of "A two-handle colour wheel"
+  on [the accent picker board](examples/accent-picker-board.html).
 - **Choosing an accent shows a quick preview.** In the admin panel, the
   accent of the household is previewed on all four devices: the phone
   app, the tablet, the desktop and the admin panel. The accent of one
@@ -98,10 +102,9 @@ Graphite, a neutral accent, is drawn and is left out for now.
 - How is text kept readable with an accent a person made themselves:
   are the two colours adjusted by themselves until text on them can be
   read, or is a colour that fails refused?
-- Is a person's own accent picked from a colour wheel, from a larger
-  grid of colours, or by typing a value?
-- Does an accent picked at random come from any colour, or from pairs
-  that are known to go together?
+- Does the wheel set only the hue, or also how light and how strong a
+  colour is?
+- How is the wheel used with a keyboard, and can a value be typed?
 - Where can an accent be chosen besides the admin panel: on the device
   itself, in its own settings?
 - Is an assistant's colour chosen from the built-in accents, or can it
