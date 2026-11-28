@@ -75,7 +75,7 @@ E. An accent is read as two colours, a main one and a second one for
 F. On a household device, a recognised person's accent shows for the
    length of the conversation, and then the device's or the household's
    accent returns. [colour]
-G. The glass and the base colours are neutral, and colour comes from the
+G. The glass and the text are neutral, and colour comes from the
    accent. Our own backdrop takes the accent. [glass] [colour]
 H. In the second review, the ticks are read as agreement: one shipped
    typeface, two densities and an open icon set are agreed. [typography]
