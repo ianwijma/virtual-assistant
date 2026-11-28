@@ -23,7 +23,15 @@ Status: started. The principle and the layout are set.
   Detail is one step further in. Every setting can be reached, and none
   is hidden for good, but a person is not shown everything at once.
 - **Settings can be searched.** A search field finds any setting by its
-  name and leads to it.
+  name and leads to it. The results take the second and third columns as
+  one wide list.
+- **A destination without a list of items has two columns.** For
+  Speech or Feedback, the second column is left out and the page takes
+  the room.
+- **It shows the accent of the person signed in,** and the household's
+  before anyone is signed in.
+- **Only admins can open the request timeline,** which shows the first
+  words a person said.
 - **The page of an assistant shows the character beside its settings,**
   as in "Preview and form" on
   [the admin form board](examples/admin-form-board.html).
@@ -58,8 +66,3 @@ Status: started. The principle and the layout are set.
   offered at first?
 - Is the language chosen on the welcome itself, as the board shows, or
   in a step after it?
-- What does a destination with no list of items show, such as Speech or
-  Feedback: two columns, or a second column of its sections?
-- Where do search results appear in three columns?
-- Which accent does the admin panel show: that of the person signed in,
-  or the household's?

@@ -490,44 +490,35 @@ detail.
    offered at first? [visual admin panel]
 118. Is the language chosen on the welcome itself, as the board shows,
    or in a step after it? [visual admin panel]
-119. What does a destination with no list of items show, such as Speech
-   or Feedback: two columns, or a second column of its sections? [visual
-   admin panel]
-120. Where do search results appear in three columns? [visual admin
-   panel]
-121. Which accent does the admin panel show: that of the person signed
-   in, or the household's? [visual admin panel]
-122. Where on the phone app's call design do the two set-up choices and
+119. Where on the phone app's call design do the two set-up choices and
    the note for guests go? Ideas are on the voice page board. [visual
    voice page]
-123. On a wide screen, such as a tablet on its side, is the page
+120. On a wide screen, such as a tablet on its side, is the page
    arranged like the phone or like the tablet's stage? [visual voice
    page]
 
 ### The mockups
 
-124. Agree to each mockup, or say what to change in it. [mockups]
-125. Admin panel: the request timeline shows the first words a person
-   said. Who may see them? [mockups]
-126. Admin panel: is "Undo" offered for every change in the audit log,
+121. Agree to each mockup, or say what to change in it. [mockups]
+122. Admin panel: is "Undo" offered for every change in the audit log,
    or only for changes that can be reversed safely? [mockups]
-127. Voice page: does the page remember on that browser that it was set
+123. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-128. A search of the trade mark registers of the EU, the Benelux, the UK
+124. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-129. How fast the blur is on an old tablet and in the launcher, measured
+125. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-130. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+126. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-131. How much power a three-dimensional figure uses on an old tablet
+127. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

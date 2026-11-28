@@ -347,3 +347,7 @@ are 25 November 2026 unless a section says otherwise.
 | 320 | An Android tablet on Android 11 or earlier shows the flat tint | [glass](design/visual/glass.md) |
 | 321 | The tokens are kept in the W3C Design Tokens format, and our own build step in Rust generates the four themes | [tokens](design/visual/tokens.md) |
 | 322 | Logs and timelines use JetBrains Mono | [typography](design/visual/typography.md) |
+| 323 | The admin panel shows the accent of the person signed in | [admin panel](design/visual/admin-panel.md) |
+| 324 | Search results in the settings take the second and third columns as one list | [admin panel](design/visual/admin-panel.md) |
+| 325 | A destination without a list of items has two columns | [admin panel](design/visual/admin-panel.md) |
+| 326 | Only admins can open the request timeline | [admin panel](design/visual/admin-panel.md) |
