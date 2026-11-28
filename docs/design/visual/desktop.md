@@ -36,6 +36,9 @@ settings are set.
 - **The launcher remembers where it was.** Opened again within about a
   minute, it shows the view and the state it was closed in, such as the
   settings page that was open. After that it opens in its neutral state.
+- **For now only the clipboard has a preview.** The launcher keeps
+  several kinds of view, so that a later feature can use the one that
+  fits it.
 - **A notification appears at the top right of the desktop,** outside
   the launcher, as a clear glass card. Several stack downward with the
   newest on top. This is "Top-right stack" on
@@ -67,4 +70,3 @@ settings are set.
 
 ## Open questions
 
-- Which views of the launcher have a preview, and which are a list only?

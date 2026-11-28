@@ -425,3 +425,7 @@ are 25 November 2026 unless a section says otherwise.
 | 398 | The designs are drawn and checked at a phone of 390, a tablet of 1280 by 800, a laptop of 1440 by 900 and a monitor of 2560 by 1440 | [visual](design/visual/README.md) |
 | 399 | The desktop settings ask before closing with unsaved changes | [desktop](design/visual/desktop.md) |
 | 400 | The launcher window grows smoothly between a plain list and a list with a preview | [desktop](design/visual/desktop.md) |
+| 401 | For now only the clipboard has a preview in the launcher, which keeps several kinds of view for later features | [desktop](design/visual/desktop.md) |
+| 402 | The line of text on the call screen shows only what the assistant says | [phone](design/visual/phone.md) |
+| 403 | The welcome shows the greeting in a fixed handful of languages, for show | [admin panel](design/visual/admin-panel.md) |
+| 404 | Settings pages are made by hand, and a generated page is allowed | [visual](design/visual/README.md) |

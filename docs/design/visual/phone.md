@@ -56,7 +56,7 @@ Status: started. The screens, how they are joined and the call are set.
   [the call controls board](examples/call-controls-board.html).
 - **What is said can also be shown as text.** A person can switch on a
   line of text under the figure, with the words of the moment in full
-  strength. It is off unless switched on. This is the line of "Three
+  strength. It shows what the assistant says, not what the person says. It is off unless switched on. This is the line of "Three
   buttons and a line of text" on the same board.
 - **The call folds into the chat.** Switching to the chat does not leave
   the call. The figure shrinks into a glass header at the top, with its
@@ -77,5 +77,3 @@ Status: started. The screens, how they are joined and the call are set.
 
 ## Open questions
 
-- Does the line of text also show what the person says, or only what
-  the assistant says?

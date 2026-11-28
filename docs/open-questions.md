@@ -333,36 +333,25 @@ detail.
 
 ### The clients
 
-43. Are settings screens generated from each feature's description, so
-   that one definition serves the phone app, the desktop client and the
-   admin panel? A2UI makes this possible, but one solution may not suit
-   every device. This is decided once there are visual designs of the
-   app and the admin panel. [visual]
-44. Which views of the launcher have a preview, and which are a list
-   only? [visual desktop]
-45. Does the line of text also show what the person says, or only what
-   the assistant says? [visual phone]
-46. Which languages does the welcome show, and in which is the setup
-   offered at first? [visual admin panel]
 
 ### The mockups
 
-47. Agree to each mockup, or say what to change in it. [mockups]
+43. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-48. A search of the trade mark registers of the EU, the Benelux, the UK
+44. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-49. How fast the blur is on an old tablet and in the launcher, measured
+45. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-50. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+46. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-51. How much power a three-dimensional figure uses on an old tablet that
+47. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

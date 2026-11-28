@@ -74,6 +74,9 @@ One look for every screen the system has:
 - **The designs are drawn and checked at four sizes:** a phone of 390
   wide, a tablet of 1280 by 800 on its side, a laptop of 1440 by 900 and
   a monitor of 2560 by 1440.
+- **Settings pages are made by hand,** so that they belong together. A
+  page generated from a feature's description is allowed where making
+  one by hand is not worth it.
 - **Recognisable as ours.** The design is distinctive, so that anyone can
   tell it is this product.
 - **Frosted glass is the design language.** Apple's Liquid Glass is the
@@ -250,8 +253,3 @@ up.
 
 Each subject's questions are in its own document.
 
-- Are settings screens generated from each feature's description, so
-  that one definition serves the phone app, the desktop client and the
-  admin panel? A2UI makes this possible, but one solution may not suit
-  every device. This is decided once there are visual designs of the app
-  and the admin panel.
