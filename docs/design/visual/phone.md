@@ -26,6 +26,15 @@ Status: started. The screens, how they are joined and the call are set.
   is on the other side in a language read from right to left. The designs
   this came from are on
   [the phone areas board](examples/phone-areas-board.html).
+- **The overview of all areas is a sheet that grows from that button.**
+  It is a thick glass sheet over the lower part of the current screen,
+  with the areas as a grid of icons, and the screen stays visible above
+  it.
+- **The bar is changed in that sheet.** An Edit button turns the four
+  buttons of the bar into numbered slots. A touch on a slot selects it,
+  and a touch on an area puts it there. This is "A sheet that grows from
+  the button" on
+  [the second phone bar board](examples/phone-bar-board-2.html).
 - **A person chooses which screen the app opens on.**
 - **Talking to an assistant shows the whole figure by default.** The
   character stands on the screen, as on the tablet. See
@@ -50,8 +59,9 @@ Status: started. The screens, how they are joined and the call are set.
 
 ## Open questions
 
-- What does the overview of all areas look like, and how does a person
-  change the four buttons of the bar?
+- What does the sheet show when there are more areas than fit: does it
+  scroll, or grow taller?
+- Does the fixed button show a grid icon, the word "All", or both?
 - Which four are on the bar of a new person: Overview, the assistant,
   Timeline and Chat?
 - Can any area be put on the bar, a single list such as Shopping

@@ -24,18 +24,24 @@ settings are set.
 - **The settings of the device are a view of the launcher.** They are
   opened from the launcher, as in Raycast, and the launcher shows them in
   place of its list. There is no separate application for them.
-- **The settings are laid out like the admin panel:** a side bar of
-  groups with a search field, and the chosen group's page. See
-  [admin panel](admin-panel.md). The designs this came from are on
-  [the desktop settings board](examples/desktop-settings-board.html).
+- **The settings are laid out like the admin panel, in three columns:**
+  a side bar of groups with a search field, a list of the chosen group's
+  settings, and the chosen setting's page with its control and a
+  sentence that explains it. The window is larger than the launcher's
+  list. See [admin panel](admin-panel.md). This is "Three columns" on
+  [the second desktop settings board](examples/desktop-settings-board-2.html),
+  and the designs before it are on
+  [the first](examples/desktop-settings-board.html).
 - **It appears with a very short animation.** See [motion](motion.md).
 - **It uses the compact density.** See
   [shape and spacing](shape-and-spacing.md).
 
 ## Open questions
 
-- Does the launcher's window grow to hold the settings, and does it stay
-  open when the person clicks elsewhere, unlike the launcher's list?
+- Does the settings view stay open when the person clicks elsewhere,
+  unlike the launcher's list?
+- In the settings, does Esc first clear a search and only then return to
+  the list?
 - Does a changed setting apply at once, or after a Save button?
 - Can a notification on the desktop be answered from the keyboard?
 - Does a question from an assistant stay on screen until it is answered?

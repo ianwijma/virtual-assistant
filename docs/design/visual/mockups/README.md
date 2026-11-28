@@ -3,9 +3,9 @@
 The low-fidelity mockups of each client. Part of
 [the visual design](../README.md).
 
-Status: a first rough set, as proposals. None is agreed yet. It was drawn
-before the look of each part was chosen from several designs, so it shows
-which screens exist and what is on them, not their final arrangement.
+Status: redrawn on 28 November 2026 from the designs chosen on the
+boards, as proposals. None is agreed yet. What is not decided is drawn
+as plainly as possible, and its note says "Not decided".
 
 ## What a mockup is
 
@@ -27,19 +27,20 @@ which screens exist and what is on them, not their final arrangement.
 
 | Mockup | Client | Screens |
 |---|---|---|
-| [desktop.html](desktop.html) | [Desktop client](../../technical/clients/desktop.md) | Launcher, results while typing, clipboard, notifications, the assistant in the launcher, the settings window, the account switch |
-| [phone.html](phone.html) | [Phone app](../../technical/clients/mobile.md), personal | Set-up choice, sign-in, home, talking to an assistant, notifications, clipboard, settings, waiting for the server |
-| [tablet.html](tablet.html) | [Phone app](../../technical/clients/mobile.md), household | Idle with a wallpaper, listening, an answer with a described screen, a recognised person, an approval prompt, an unrecognised voice, low power, set-up |
-| [admin.html](admin.html) | [Admin panel](../../technical/clients/web-admin.md) | Devices, people, editing an assistant, appearance, the request timeline, the audit log, first-run setup, narrow width |
-| [voice.html](voice.html) | [Voice page](../../technical/clients/web-voice.md) | Before sign-in, listening, a described screen, chat, without blur, microphone blocked |
+| [desktop.html](desktop.html) | [Desktop client](../../technical/clients/desktop.md) | The empty launcher, results while typing, the clipboard, the assistant in the launcher, a card lifted into a sheet, notifications, the settings view, the account switch, home out of reach |
+| [phone.html](phone.html) | [Phone app](../../technical/clients/mobile.md), personal | Set-up choice, sign-in, Overview, the assistant, Timeline, Chat, the call, the call folded into the chat, a card lifted into a sheet, all areas, a list, the clipboard, settings, waiting, home out of reach |
+| [tablet.html](tablet.html) | [Phone app](../../technical/clients/mobile.md), household | Idle with a wallpaper, listening, an answer with card rows, a card lifted into a sheet, a recognised person, an approval prompt, an unrecognised voice, home out of reach, low power, set-up |
+| [admin.html](admin.html) | [Admin panel](../../technical/clients/web-admin.md) | Devices, people, editing an assistant, appearance, settings search, the request list, one request, the audit log, first-run setup, narrow width |
+| [voice.html](voice.html) | [Voice page](../../technical/clients/web-voice.md) | Before sign-in, the set-up choice, the call, a card as a sheet, the call folded into chat, without blur, microphone blocked, home out of reach |
 
 The frames the screens are drawn in are in [mockup.css](mockup.css).
 
 ## Open questions
 
-- Agree to each mockup, or say what to change in it. They were drawn
-  before the designs of each client were chosen and are to be redrawn
-  from the client documents.
+- Agree to each mockup, or say what to change in it.
+- The desktop and phone mockups were drawn before the second boards for
+  the settings view and the phone bar were chosen from. They show those
+  two screens plainly and are to be brought in step.
 - Desktop: how does a person go from searching to talking to the
   assistant: the Tab key, a prefix, or a shortcut of its own? The mockup
   shows Tab and a shortcut.

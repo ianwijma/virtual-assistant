@@ -106,7 +106,7 @@ is our own, and it is the same on Linux, Android and the web.
 | [tablet.md](tablet.md) | The household tablet | Started |
 | [admin-panel.md](admin-panel.md) | The admin panel | Started |
 | [voice-page.md](voice-page.md) | The voice page | Started |
-| [mockups/](mockups/README.md) | The low-fidelity mockups of each client | A first set, as proposals |
+| [mockups/](mockups/README.md) | The low-fidelity mockups of each client | Redrawn from the chosen designs, as proposals |
 | [examples/](examples/) | The boards, to open in a browser. See the list below | |
 
 The boards in `examples/`:
@@ -145,16 +145,14 @@ The boards in `examples/`:
 | [setup-board-2.html](examples/setup-board-2.html) | The first-run setup after Apple's, with the steps on top | Chosen from |
 | [readability-board.html](examples/readability-board.html) | The measured contrast of text on glass, and four ways to mend it | Chosen from |
 | [desktop-settings-board.html](examples/desktop-settings-board.html) | Four places for the settings of a device on the desktop | Chosen from; a second round follows |
+| [desktop-settings-board-2.html](examples/desktop-settings-board-2.html) | Four ways the launcher becomes the settings view | Chosen from |
 | [phone-areas-board.html](examples/phone-areas-board.html) | Four ways to reach the lists, the clipboard and the settings on the phone | Chosen from; a second round follows |
+| [phone-bar-board-2.html](examples/phone-bar-board-2.html) | Four designs of the overview of all areas and of changing the bar | Chosen from |
 | [states-board.html](examples/states-board.html) | Waiting, empty and out of reach, as four families | Chosen from |
 | [motion-board.html](examples/motion-board.html) | Three ways a row lifts into a sheet, as stills and as a live loop | Chosen from |
 
-Boards still to make, each with several designs of one thing:
-
-| Board | Shows |
-|---|---|
-| Desktop settings, second round | The settings as a view of the launcher, laid out like the admin panel |
-| Phone bar, second round | The overview of all areas, and how a person sets the four buttons of the bar |
+No board is waiting to be made. New ones are added here as subjects come
+up.
 
 ## Open questions
 

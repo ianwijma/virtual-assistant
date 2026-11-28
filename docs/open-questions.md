@@ -388,99 +388,103 @@ detail.
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-81. Does the launcher's window grow to hold the settings, and does it
-   stay open when the person clicks elsewhere, unlike the launcher's
-   list? [visual desktop]
-82. Does a changed setting apply at once, or after a Save button?
+81. Does the settings view stay open when the person clicks elsewhere,
+   unlike the launcher's list? [visual desktop]
+82. In the settings, does Esc first clear a search and only then return
+   to the list? [visual desktop]
+83. Does a changed setting apply at once, or after a Save button?
    [visual desktop]
-83. Can a notification on the desktop be answered from the keyboard?
+84. Can a notification on the desktop be answered from the keyboard?
    [visual desktop]
-84. Does a question from an assistant stay on screen until it is
+85. Does a question from an assistant stay on screen until it is
    answered? [visual desktop]
-85. Which views of the launcher have a preview, and which are a list
+86. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-86. Does the launcher show suggestions before anything is typed? With a
+87. Does the launcher show suggestions before anything is typed? With a
    preview, the empty launcher can show what is running now. [visual
    desktop]
-87. Does the window change size when it goes from a list to a list with
+88. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-88. What does the overview of all areas look like, and how does a person
-   change the four buttons of the bar? [visual phone]
-89. Which four are on the bar of a new person: Overview, the assistant,
+89. What does the sheet show when there are more areas than fit: does it
+   scroll, or grow taller? [visual phone]
+90. Does the fixed button show a grid icon, the word "All", or both?
+   [visual phone]
+91. Which four are on the bar of a new person: Overview, the assistant,
    Timeline and Chat? [visual phone]
-90. Can any area be put on the bar, a single list such as Shopping
+92. Can any area be put on the bar, a single list such as Shopping
    included? [visual phone]
-91. How is the microphone muted on the full call screen, which has only
+93. How is the microphone muted on the full call screen, which has only
    Chat and End? [visual phone]
-92. Is what is said also shown as a line of text on the full call
+94. Is what is said also shown as a line of text on the full call
    screen? [visual phone]
-93. Where is the first screen chosen: in the app's own settings, or in
+95. Where is the first screen chosen: in the app's own settings, or in
    the admin panel with a person's other settings? [visual phone]
-94. What does a touch on a clipboard item do: copy it to this phone, or
+96. What does a touch on a clipboard item do: copy it to this phone, or
    open it? [visual phone]
-95. When a tablet has several assistants, are all their figures on the
+97. When a tablet has several assistants, are all their figures on the
    idle screen, or one? [visual tablet]
-96. Does the clock move now and then, to protect the screen? [visual
+98. Does the clock move now and then, to protect the screen? [visual
    tablet]
-97. Is the figure on the idle screen at night as well, or does the
+99. Is the figure on the idle screen at night as well, or does the
    tablet then show only the clock? [visual tablet]
-98. After how long without speech does the stage close and the idle
+100. After how long without speech does the stage close and the idle
    screen return? [visual tablet]
-99. Does the welcome of the setup show the assistant's figure, or only
+101. Does the welcome of the setup show the assistant's figure, or only
    "Hello"? [visual admin panel]
-100. Is the setup of a new device, such as a phone or a tablet, drawn in
+102. Is the setup of a new device, such as a phone or a tablet, drawn in
    the same way? [visual admin panel]
-101. What does a destination with no list of items show, such as Speech
+103. What does a destination with no list of items show, such as Speech
    or Feedback: two columns, or a second column of its sections? [visual
    admin panel]
-102. Where do search results appear in three columns? [visual admin
+104. Where do search results appear in three columns? [visual admin
    panel]
-103. Does a settings page save as you go, or with one Save button?
+105. Does a settings page save as you go, or with one Save button?
    [visual admin panel]
-104. At phone width, what does the list of destinations become? [visual
+106. At phone width, what does the list of destinations become? [visual
    admin panel]
-105. Which accent does the admin panel show: that of the person signed
+107. Which accent does the admin panel show: that of the person signed
    in, or the household's? [visual admin panel]
-106. Where on the phone app's call design do the two set-up choices and
+108. Where on the phone app's call design do the two set-up choices and
    the note for guests go? Ideas are on the voice page board. [visual
    voice page]
-107. On a wide screen, such as a tablet on its side, is the page
+109. On a wide screen, such as a tablet on its side, is the page
    arranged like the phone or like the tablet's stage? [visual voice
    page]
 
 ### The mockups
 
-108. Agree to each mockup, or say what to change in it. They were drawn
-   before the designs of each client were chosen and are to be redrawn
-   from the client documents. [mockups]
-109. Desktop: how does a person go from searching to talking to the
+110. Agree to each mockup, or say what to change in it. [mockups]
+111. The desktop and phone mockups were drawn before the second boards
+   for the settings view and the phone bar were chosen from. They show
+   those two screens plainly and are to be brought in step. [mockups]
+112. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-110. Desktop: does the launcher open on the screen that holds the
+113. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-111. Desktop: is the settings window opened from the launcher only, or
+114. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-112. Admin panel: the request timeline shows the first words a person
+115. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-113. Admin panel: is "Undo" offered for every change in the audit log,
+116. Admin panel: is "Undo" offered for every change in the audit log,
    or only for changes that can be reversed safely? [mockups]
-114. Voice page: does the page remember on that browser that it was set
+117. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-115. A search of the trade mark registers of the EU, the Benelux, the UK
+118. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for the name that is chosen. The registers could not be
    reached in the first check, which used other sources. [visual
    identity]
-116. How fast the blur is on an old tablet and in the launcher, measured
+119. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-117. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+120. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-118. How much power a three-dimensional figure uses on an old tablet
+121. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

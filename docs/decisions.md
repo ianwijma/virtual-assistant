@@ -288,3 +288,5 @@ are 25 November 2026 unless a section says otherwise.
 | 261 | The phone's bar has four buttons a person sets and one fixed button at its end that opens an overview of every area | [phone](design/visual/phone.md) |
 | 262 | Waiting, empty and out of reach are shown as quietly as possible, and the app stays usable from its saved copy | [components](design/visual/components.md) |
 | 263 | What opens grows from what was touched, and what is on both screens stays and moves into place | [motion](design/visual/motion.md) |
+| 264 | The desktop settings view has three columns: groups with search, the group's settings, and the chosen setting's page | [desktop](design/visual/desktop.md) |
+| 265 | The overview of all areas on the phone is a sheet that grows from the bar's fixed button, and the bar is changed in that sheet | [phone](design/visual/phone.md) |
