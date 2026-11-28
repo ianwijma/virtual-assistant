@@ -6,8 +6,8 @@ The design is what to read to learn how the system works; this log shows
 what was decided and in what order.
 
 "Thread" means
-[the design conversation](sources/design-thread-2026-11-25.md). All dates
-are 25 November 2026.
+[the design conversation](sources/design-thread-2026-11-25.md). Dates
+are 25 November 2026 unless a section says otherwise.
 
 ## From the thread
 
@@ -230,3 +230,225 @@ are 25 November 2026.
 | 210 | An admin decides when the server updates and to which version, can silence the notice for one release, and can start an update from a script; the program updates itself, a container is updated with container tools | [server](design/technical/server/README.md) |
 | 211 | A device can ask to join as a household device without an invite, pending approval; an admin can switch this off | [pairing](design/technical/server/pairing.md) |
 | 212 | The server will also run on macOS after the first release, so that it can run on a person's work computer | [server](design/technical/server/README.md) |
+
+## From the visual design thread
+
+27 November 2026.
+
+| # | Decision | Written into |
+|---|---|---|
+| 213 | Frosted glass is the design language, with Apple's Liquid Glass as the main inspiration | [glass](design/visual/glass.md) |
+| 214 | The visual design is made in this order: the feel, glass and colours first, then the design language as tokens, then example components, then low-fidelity mockups of each client | [visual design](design/visual/README.md) |
+| 215 | The glass is a clear blur with a bright edge, without bent light or moving highlights, and is neutral in colour | [glass](design/visual/glass.md) |
+| 216 | Behind the glass: the real desktop behind the desktop launcher, a wallpaper on a household tablet that shows in full while no assistant is active, and our own backdrop everywhere else | [glass](design/visual/glass.md) |
+| 217 | Glass is only for what floats above the content; the content is plain | [glass](design/visual/glass.md) |
+| 218 | A device too slow for the blur shows a flat translucent tint; the device's settings for reduced transparency, increased contrast and reduced motion are followed | [glass](design/visual/glass.md), [motion](design/visual/motion.md) |
+| 219 | Dark is a tinted dark grey, not black; the low-power screen of a tablet is true black and has no glass | [colour](design/visual/colour.md), [glass](design/visual/glass.md) |
+| 220 | The base is neutral and a person can choose an accent; it is set per household, per device and per person, and the most specific wins; a household device takes a person's accent when it recognises their voice | [colour](design/visual/colour.md) |
+| 221 | The palette has six parts; status colours are green, amber and red; text has a contrast of at least 4.5 to 1 | [colour](design/visual/colour.md) |
+| 222 | Corners are clearly round, and controls are not pill-shaped | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 223 | The feel is calm, warm, precise and playful | [identity](design/visual/identity.md) |
+| 224 | One typeface is shipped with every client, and text follows the text size set on the device | [typography](design/visual/typography.md) |
+| 225 | There are two densities, compact and roomy, and icons come from an open icon set | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 226 | The typeface is Inter, shipped with every client | [typography](design/visual/typography.md) |
+| 227 | An assistant's character is an illustrated figure | [assistant visuals](design/visual/assistant-visuals.md) |
+| 228 | Motion is fluid and springy, following Apple's design, with a reduced-motion mode that also keeps old devices fast | [motion](design/visual/motion.md) |
+| 229 | The desktop launcher appears with a very short animation that does not delay input | [motion](design/visual/motion.md) |
+| 230 | Several designs of one thing are drawn and chosen from before many screens are drawn; every design question comes with an example | [visual design](design/visual/README.md) |
+| 231 | The character gets most of the screen where the assistant is the subject, and a figure can grow from a head to a whole moving figure | [assistant visuals](design/visual/assistant-visuals.md) |
+| 232 | The name and the logo are worked on now, from several candidates | [identity](design/visual/identity.md) |
+| 233 | The material is the thin, clear glass over a strong backdrop ("More glass"), with content that lets a little colour through | [glass](design/visual/glass.md), [tokens](design/visual/tokens.md) |
+| 234 | The desktop launcher is clear glass, about half see-through | [glass](design/visual/glass.md) |
+| 235 | On a household tablet an active assistant stands as a whole figure on a stage, with a glass column for text and cards | [assistant visuals](design/visual/assistant-visuals.md) |
+| 236 | Of the logo marks, "Glass pane with eyes" and "Speech drop" are worked out further and "Overlapping panes" is dropped | [identity](design/visual/identity.md) |
+| 237 | "Hearth" is the candidate for the product name, until it is checked for existing products and trade marks | [identity](design/visual/identity.md) |
+| 238 | The idle tablet shows the wallpaper with a large clock, small glance bars and the assistant's figure with a hint of how to call it | [tablet](design/visual/tablet.md) |
+| 239 | The phone app has four main screens (overview, assistant, timeline and chat) and a person chooses which one it opens on | [phone](design/visual/phone.md) |
+| 240 | On the phone, talking to an assistant shows the whole figure by default; what it shows pops up as a sheet; a person can switch to a live chat view and back | [phone](design/visual/phone.md) |
+| 241 | The admin panel follows the layout of Apple's Settings, shows little at once with detail one step further in, and has a search for settings | [admin panel](design/visual/admin-panel.md) |
+| 242 | The desktop launcher has a list layout and a wide layout with a preview, and the content decides which | [desktop](design/visual/desktop.md) |
+| 243 | A card is a compact row by default and opens on a touch to show more | [components](design/visual/components.md) |
+| 244 | A floating glass tab bar joins the four main screens of the phone app | [phone](design/visual/phone.md) |
+| 245 | The idle tablet has a slim glass shelf along the bottom that holds the glance bars and on which the figure stands; there is no written hint of the wake word | [tablet](design/visual/tablet.md) |
+| 246 | Talking to an assistant on the phone is like a call, as in the ChatGPT app: the figure full screen, a few simple buttons, and a switch to chat or an end to the call | [phone](design/visual/phone.md) |
+| 247 | A touch on a card lifts it into a sheet over the dimmed screen, like a modal | [components](design/visual/components.md) |
+| 248 | On the idle tablet the bars are at the right of the shelf, the figure stands on its left end, and the clock is large at the top left | [tablet](design/visual/tablet.md) |
+| 249 | The phone call has two buttons, Chat and End, and folds into the chat: the figure shrinks into a header above the live conversation and the call goes on | [phone](design/visual/phone.md) |
+| 250 | The admin panel has three columns: a glass side bar of destinations with search, a list of the destination's items, and the item's page | [admin panel](design/visual/admin-panel.md) |
+| 251 | Closed cards are a list of rows, and the sheet floats over the middle of the dimmed list | [components](design/visual/components.md) |
+| 252 | A design is reused across clients wherever two clients do the same thing; the voice page reuses the phone app's call | [visual design](design/visual/README.md), [voice page](design/visual/voice-page.md) |
+| 253 | The first figures are simple and easy to animate from the reply tags, possibly three-dimensional, and are redesigned in full later | [assistant visuals](design/visual/assistant-visuals.md) |
+| 254 | The logo mark is the glass drop, as a candidate | [identity](design/visual/identity.md) |
+| 255 | A notification appears at the top right of the desktop, and several stack downward | [desktop](design/visual/desktop.md) |
+| 256 | The list of requests shows a small strip of steps in each row, and one request shows its steps as bars in time | [admin panel](design/visual/admin-panel.md) |
+| 257 | The first-run setup has its steps across the top and takes Apple's first setup as its example | [admin panel](design/visual/admin-panel.md) |
+| 258 | The first-run setup is a welcome and then one centred pane per step, after Apple's setup, with five dots across the top | [admin panel](design/visual/admin-panel.md) |
+| 259 | Text on glass is kept readable with thin glass: firmer secondary text, coloured words in solid chips, and Graphite's backdrop from its grey | [glass](design/visual/glass.md) |
+| 260 | The settings of a desktop device are a view of the launcher, opened from it, and laid out like the admin panel | [desktop](design/visual/desktop.md) |
+| 261 | The phone's bar has four buttons a person sets and one fixed button at its end that opens an overview of every area | [phone](design/visual/phone.md) |
+| 262 | Waiting, empty and out of reach are shown as quietly as possible, and the app stays usable from its saved copy | [components](design/visual/components.md) |
+| 263 | What opens grows from what was touched, and what is on both screens stays and moves into place | [motion](design/visual/motion.md) |
+| 264 | The desktop settings view has three columns: groups with search, the group's settings, and the chosen setting's page | [desktop](design/visual/desktop.md) |
+| 265 | The overview of all areas on the phone is a sheet that grows from the bar's fixed button, and the bar is changed in that sheet | [phone](design/visual/phone.md) |
+| 266 | A design choice is made for every client at once, and a client differs only for a reason that lies in the device | [visual](design/visual/README.md) |
+| 267 | The setup of a new device is the same design as the first-run setup | [admin panel](design/visual/admin-panel.md) |
+| 268 | "Hearth" is not the name; the name is to mean or suggest home, homeliness or family, and may be Dutch | [identity](design/visual/identity.md) |
+| 269 | Who a screen is designed for depends on the device; each device has a default density that can be changed | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 270 | In dark our backdrop is about half as strong on a darker base, so that secondary text on glass is readable | [glass](design/visual/glass.md) |
+| 271 | The icons are Phosphor's, and we draw our own in its style where the set lacks one | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 272 | The name is "Heem", as the candidate until the trade mark registers are searched | [identity](design/visual/identity.md) |
+| 273 | Four accents are built in and a new household starts with Tide; a person can make their own accent from two colours; Graphite is left out for now | [colour](design/visual/colour.md) |
+| 274 | Choosing an accent shows a preview: all four devices for the household's accent, one for a device's | [colour](design/visual/colour.md) |
+| 275 | The layout follows the width of the screen, and every screen is responsive | [visual](design/visual/README.md) |
+| 276 | An assistant's figure has its own colour, the screen around it follows the person's accent, and a recognised person is named in a chip | [colour](design/visual/colour.md) |
+| 277 | The simple figure with two eyes stays for now, the figures are designed in a thread of their own, and layouts leave room for a larger figure | [assistant visuals](design/visual/assistant-visuals.md) |
+| 278 | An own accent is picked from pairs of colours that go together, with a two-handle colour wheel for a free choice | [colour](design/visual/colour.md) |
+| 279 | A changed setting is saved with a Save button, with a dot on each changed field and a count of the changes | [components](design/visual/components.md) |
+| 280 | The count of unsaved changes will open a list of them with the value before and after | [components](design/visual/components.md) |
+| 281 | What needs home looks as usual while home cannot be reached, and changes wait to be sent | [components](design/visual/components.md) |
+| 282 | Icons are always outlined | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 283 | Every area is listed in the side bar on a medium or wide screen with a person's four pinned on top; the bar with "All" is for a narrow screen; the launcher shows the four as chips | [visual](design/visual/README.md) |
+| 284 | A notification is a card at the top right on a wide screen, and enters the top of the Overview's list on a narrow one, ordered by importance | [visual](design/visual/README.md) |
+| 285 | Plain surfaces in light take a tint of both colours of the accent | [colour](design/visual/colour.md) |
+| 286 | The call and the stage both stay as drawn, and the figure gets more room on a wider screen | [assistant visuals](design/visual/assistant-visuals.md) |
+| 287 | The base carries 3% of the accent and each plain panel a soft run from 5% of its main colour to 5% of its second, in light and dark | [colour](design/visual/colour.md) |
+| 288 | The call screen has three buttons, Mute, Chat and End, and a line of text of what is said that can be switched on | [phone](design/visual/phone.md) |
+| 289 | A tablet with several assistants shows one figure at a time on its idle screen | [tablet](design/visual/tablet.md) |
+| 290 | The welcome of the setup has the figure saying "Hello", in several languages, with the choice of language | [admin panel](design/visual/admin-panel.md) |
+| 291 | Talking to an assistant is one design that folds: the call on a narrow screen opens out into the stage on a wide one | [visual](design/visual/README.md) |
+| 292 | In the dark a tablet follows the light in the room: the figure sleeps when it is a little dark, only a dim clock shows when it is fully dark, and this can be set | [tablet](design/visual/tablet.md) |
+| 293 | A household device shows the same controls of the call as a personal one | [visual](design/visual/README.md) |
+| 294 | An own accent that makes text hard to read gives a warning and is allowed | [colour](design/visual/colour.md) |
+| 295 | A person's four areas are set per device | [visual](design/visual/README.md) |
+| 296 | Leaving a page with unsaved changes asks first: Save, Discard or Stay | [components](design/visual/components.md) |
+| 297 | A character has its own configuration, and its colour is set there | [assistant visuals](design/visual/assistant-visuals.md) |
+| 298 | Before anything is typed the launcher lists what is running and then every action, ordered by use | [desktop](design/visual/desktop.md) |
+| 299 | A sheet also closes by a touch on the dimmed area around it | [components](design/visual/components.md) |
+| 300 | A screen that an assistant composed looks like any other; the chat's history and the request timeline record it | [components](design/visual/components.md) |
+| 301 | Our own backdrop drifts slowly and reacts to the assistant, and is calmer with reduced motion | [glass](design/visual/glass.md) |
+| 302 | A household tablet's light and dark is set per device: light, dark, by the time of day or by the light in the room | [colour](design/visual/colour.md) |
+| 303 | A person is marked by a photo of themselves in a ring of their accent, with their name | [colour](design/visual/colour.md) |
+| 304 | The waiting line shows only once a wait has lasted about half a second | [components](design/visual/components.md) |
+| 305 | The backdrop reacts to the assistant with a movement for each state and with the sound of the voice | [glass](design/visual/glass.md) |
+| 306 | A person without a photo shows their initial in the ring | [colour](design/visual/colour.md) |
+| 307 | Every device has a setting for light and dark, and a phone and a desktop start on following the device | [colour](design/visual/colour.md) |
+| 308 | Feedback is visual first; our own sounds and the phone's vibration exist and are off unless switched on | [motion](design/visual/motion.md) |
+| 309 | A card is small by default and shows large for a moment when it was asked for | [components](design/visual/components.md) |
+| 310 | A conversation on a household device closes after 20 to 30 seconds without speech, set for the server and possibly per device | [tablet](design/visual/tablet.md) |
+| 311 | Talking to the assistant is an action in the launcher that a person can give a shortcut; it has none at first, and Tab is not its key | [desktop](design/visual/desktop.md) |
+| 312 | The launcher opens on the screen that holds the pointer | [desktop](design/visual/desktop.md) |
+| 313 | The desktop settings are opened from the launcher and from an icon in the system tray | [desktop](design/visual/desktop.md) |
+| 314 | The launcher closes on a click elsewhere in every view, and opens again where it was for about a minute | [desktop](design/visual/desktop.md) |
+| 315 | A wallpaper comes from a gallery that an admin makes and assigns to household devices, and only household devices show one | [glass](design/visual/glass.md) |
+| 316 | Members of the household will be able to add pictures to a gallery when the admin allows it | [glass](design/visual/glass.md) |
+| 317 | The glass has three levels of see-through, as a setting | [glass](design/visual/glass.md) |
+| 318 | The launcher's glass stays as designed over any desktop for now | [glass](design/visual/glass.md) |
+| 319 | On Linux the launcher blurs the real desktop where the desktop can, shows our own backdrop elsewhere, and has an option to be see-through | [glass](design/visual/glass.md) |
+| 320 | An Android tablet on Android 11 or earlier shows the flat tint | [glass](design/visual/glass.md) |
+| 321 | The tokens are kept in the W3C Design Tokens format, and our own build step in Rust generates the four themes | [tokens](design/visual/tokens.md) |
+| 322 | Logs and timelines use JetBrains Mono | [typography](design/visual/typography.md) |
+| 323 | The admin panel shows the accent of the person signed in | [admin panel](design/visual/admin-panel.md) |
+| 324 | Search results in the settings take the second and third columns as one list | [admin panel](design/visual/admin-panel.md) |
+| 325 | A destination without a list of items has two columns | [admin panel](design/visual/admin-panel.md) |
+| 326 | Only admins can open the request timeline | [admin panel](design/visual/admin-panel.md) |
+| 327 | The audit log offers Undo only where a change can be put back safely | [admin panel](design/visual/admin-panel.md) |
+| 328 | The voice page remembers in the browser how it was set up | [voice page](design/visual/voice-page.md) |
+| 329 | The voice page is set up with the same choice screen as other devices | [voice page](design/visual/voice-page.md) |
+| 330 | A touch on a clipboard item copies it, and holding it opens it | [phone](design/visual/phone.md) |
+| 331 | The voice page is set up before it is used, unless the household allows any browser to reach its guest assistant | [voice page](design/visual/voice-page.md) |
+| 332 | A new person's four areas are Overview, the assistant, Timeline and Chat, and anything can be pinned as one of the four | [phone](design/visual/phone.md) |
+| 333 | The screen the app opens on is chosen in the app's settings on the device | [phone](design/visual/phone.md) |
+| 334 | At small sizes the logo has a solid form | [identity](design/visual/identity.md) |
+| 335 | The three levels of glass are clear, thicker and solid, set per device | [glass](design/visual/glass.md) |
+| 336 | The pictures of a gallery change by themselves every few minutes | [glass](design/visual/glass.md) |
+| 337 | With reduced motion the backdrop is still | [glass](design/visual/glass.md) |
+| 338 | The backdrop is still in low-power mode | [glass](design/visual/glass.md) |
+| 339 | Where the desktop cannot blur the launcher shows our backdrop unless see-through is switched on | [glass](design/visual/glass.md) |
+| 340 | The warning for a hard-to-read colour is under the picker | [colour](design/visual/colour.md) |
+| 341 | The colour wheel works with arrow keys, and has no field to type a value in | [colour](design/visual/colour.md) |
+| 342 | An accent can be chosen in the admin panel and on the device | [colour](design/visual/colour.md) |
+| 343 | A character's colour uses the accent's picker | [colour](design/visual/colour.md) |
+| 344 | A new household tablet follows the light in the room, or the time of day | [colour](design/visual/colour.md) |
+| 345 | Density is one setting per device, changed on the device or in the admin panel, tablets included | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 346 | Sounds and vibration are switched on per device | [motion](design/visual/motion.md) |
+| 347 | Where growing is not possible a sheet rises and a page fades | [motion](design/visual/motion.md) |
+| 348 | Only sheets and pressed things overshoot | [motion](design/visual/motion.md) |
+| 349 | Reduced motion is a setting only; a device is not measured | [motion](design/visual/motion.md) |
+| 350 | A dangerous action asks and acts at once, outside the Save bar | [components](design/visual/components.md) |
+| 351 | Sent changes lose their mark without a message | [components](design/visual/components.md) |
+| 352 | Composed screens and the tools that were used show in the chat's history only in an advanced mode | [components](design/visual/components.md) |
+| 353 | A sheet with unsaved input asks before closing | [components](design/visual/components.md) |
+| 354 | A card that was asked for stays large for 10 seconds, a time that can be set, as its sheet | [components](design/visual/components.md) |
+| 355 | The next components are the ones the mockups need | [components](design/visual/components.md) |
+| 356 | The voice page follows the folding call and stage design | [assistant visuals](design/visual/assistant-visuals.md) |
+| 357 | A card never covers the character's head | [assistant visuals](design/visual/assistant-visuals.md) |
+| 358 | A figure stands still once a card appears | [assistant visuals](design/visual/assistant-visuals.md) |
+| 359 | An assistant without a figure shows a sound wave | [assistant visuals](design/visual/assistant-visuals.md) |
+| 360 | Where the assistant is not the subject the character is a small head | [assistant visuals](design/visual/assistant-visuals.md) |
+| 361 | A new notification puts a dot on the Overview's button on a narrow screen | [visual](design/visual/README.md) |
+| 362 | The layout changes at widths of 600 and 1000, and notifications become cards from 600 | [visual](design/visual/README.md) |
+| 363 | The desktop launcher does not fold | [visual](design/visual/README.md) |
+| 364 | An admin sets the four areas of a household tablet | [visual](design/visual/README.md) |
+| 365 | The launcher returns to neutral after one minute | [desktop](design/visual/desktop.md) |
+| 366 | The tray menu holds the launcher, settings, connection state and quit | [desktop](design/visual/desktop.md) |
+| 367 | Esc clears a search before it leaves the settings | [desktop](design/visual/desktop.md) |
+| 368 | A notification is answered in the launcher's notification centre, not on the card on the desktop | [desktop](design/visual/desktop.md) |
+| 369 | An assistant's question stays until answered or dismissed | [desktop](design/visual/desktop.md) |
+| 370 | The launcher orders actions by the person's own use | [desktop](design/visual/desktop.md) |
+| 371 | The sheet of all areas scrolls | [phone](design/visual/phone.md) |
+| 372 | The fixed button shows a grid icon and the word All | [phone](design/visual/phone.md) |
+| 373 | The line of text is switched on from the call screen and remembered | [phone](design/visual/phone.md) |
+| 374 | The idle figure changes by a touch on the dots, and by itself every 10 to 15 minutes only when that is switched on | [tablet](design/visual/tablet.md) |
+| 375 | The idle clock shifts now and then | [tablet](design/visual/tablet.md) |
+| 376 | A tablet without a light sensor uses set hours | [tablet](design/visual/tablet.md) |
+| 377 | A tablet's dark settings hold the screen and the hours | [tablet](design/visual/tablet.md) |
+| 378 | A conversation closes after 30 seconds at first | [tablet](design/visual/tablet.md) |
+| 379 | The character winds down before a conversation closes | [tablet](design/visual/tablet.md) |
+| 380 | The default household assistant's figure greets in the welcome | [admin panel](design/visual/admin-panel.md) |
+| 381 | The language is chosen on the welcome | [admin panel](design/visual/admin-panel.md) |
+| 382 | A quiet link leads to the set-up where guests talk at once | [voice page](design/visual/voice-page.md) |
+| 383 | The voice page is the stage on a wide screen | [voice page](design/visual/voice-page.md) |
+| 384 | Four things set the look apart together: the characters, the two-colour accent, the living backdrop and our own shape | [identity](design/visual/identity.md) |
+| 385 | Raycast, the Arc browser and Things are admired for their look, besides Apple's | [identity](design/visual/identity.md) |
+| 386 | The name is said either way, and a line of text shows how where it is introduced | [identity](design/visual/identity.md) |
+| 387 | The colour wheel sets the colour only | [colour](design/visual/colour.md) |
+| 388 | A character has two colours of its own, which can be set to the same colour; nothing is done when they are like the person's accent | [colour](design/visual/colour.md) |
+| 389 | Seven accents are built in: Tide, Ember, Aurora, Moss, a pink, a red and Graphite | [colour](design/visual/colour.md) |
+| 390 | The sounds of a conversation are off unless switched on, and every other sound, such as a timer ending, is on unless switched off | [motion](design/visual/motion.md) |
+| 391 | No colour is avoided and no check for colour-blindness is made | [colour](design/visual/colour.md) |
+| 392 | There are no illustrations apart from the character | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 393 | English is the first language, and languages read from left to right come first | [typography](design/visual/typography.md) |
+| 394 | The sounds are plain tones for now and are replaced later | [motion](design/visual/motion.md) |
+| 395 | When two people changed the same thing the first change stands, and the second person gets an error | [components](design/visual/components.md) |
+| 396 | Notifications are ordered by kind and then by age | [visual](design/visual/README.md) |
+| 397 | The three levels are the same at every width, and a screen shows as many as fit, turning the first into a rail of icons when the third is entered | [visual](design/visual/README.md) |
+| 398 | The designs are drawn and checked at a phone of 390, a tablet of 1280 by 800, a laptop of 1440 by 900 and a monitor of 2560 by 1440 | [visual](design/visual/README.md) |
+| 399 | The desktop settings ask before closing with unsaved changes | [desktop](design/visual/desktop.md) |
+| 400 | The launcher window grows smoothly between a plain list and a list with a preview | [desktop](design/visual/desktop.md) |
+| 401 | For now only the clipboard has a preview in the launcher, which keeps several kinds of view for later features | [desktop](design/visual/desktop.md) |
+| 402 | The line of text on the call screen shows only what the assistant says | [phone](design/visual/phone.md) |
+| 403 | The welcome shows the greeting in a fixed handful of languages, for show | [admin panel](design/visual/admin-panel.md) |
+| 404 | Settings pages are made by hand, and a generated page is allowed | [visual](design/visual/README.md) |
+| 405 | The character is central to the experience and is designed in a thread of its own | [assistant visuals](design/visual/assistant-visuals.md) |
+| 406 | The whole screen is the character's canvas; the character walks into view and never jumps, and becomes smaller by walking away | [assistant visuals](design/visual/assistant-visuals.md) |
+| 407 | The built-in pink is Blossom and the built-in red is Cherry | [colour](design/visual/colour.md) |
+| 408 | The first values of the tokens are agreed as a start | [tokens](design/visual/tokens.md) |
+| 409 | The example components are agreed as the base for the rest | [components](design/visual/components.md) |
+| 410 | How long an asked-for card stays large, and whether the idle figure changes by itself, are set for the household, and a device can differ | [components](design/visual/components.md) |
+| 411 | The five mockups are agreed as the layouts to build from, apart from what their notes mark as not decided | [mockups](design/visual/mockups/README.md) |
+| 412 | A chip in the launcher opens its area, Tab moves between the chips, and an area can have a shortcut that opens the launcher in it | [desktop](design/visual/desktop.md) |
+| 413 | A shortcut is always two or more keys together, never a single letter | [desktop](design/visual/desktop.md) |
+| 414 | A highlighted row has one main action on Enter, and more actions open in a panel with Ctrl and K | [desktop](design/visual/desktop.md) |
+| 415 | The dark, the fully dark and the low-power state of a tablet are one screen that darkens, on which the clock is always shown | [tablet](design/visual/tablet.md) |
+| 416 | The notification centre has three sections: what needs attention, what is being worked on and what is settled; a notification can be snoozed | [desktop](design/visual/desktop.md) |
+| 417 | On a tablet the bar for home out of reach is across the top of the screen | [tablet](design/visual/tablet.md) |
+| 418 | Resetting an app or a device is in its settings, in a section for dangerous actions | [components](design/visual/components.md) |
+| 419 | Nothing marks a household tablet's pinned areas as set by an admin | [tablet](design/visual/tablet.md) |
+| 420 | On a wide screen the conversation column is shown at first, and Chat hides and shows it | [visual](design/visual/README.md) |
+| 421 | Enter opens a notification to read it, and a person can set it to acknowledge instead | [desktop](design/visual/desktop.md) |
+| 422 | A token made from the accent is worked out wherever the accent changes | [tokens](design/visual/tokens.md) |
+| 423 | The notification centre is the hub for everything that needs a person, and is called Notifications on every device | [visual](design/visual/README.md) |
+| 424 | On a narrow screen the Overview's list shows the three sections of Notifications | [visual](design/visual/README.md) |
+| 425 | The character is a system of its own, with behaviour that follows what happens; its states are settled in the character thread | [assistant visuals](design/visual/assistant-visuals.md) |
+| 426 | One typeface family is used for the interface, and JetBrains Mono for logs and technical text in the admin panel | [typography](design/visual/typography.md) |
+| 427 | Every action in the launcher has a key combination with Ctrl that means the same in every view, with a set of defaults that can be changed | [desktop](design/visual/desktop.md) |

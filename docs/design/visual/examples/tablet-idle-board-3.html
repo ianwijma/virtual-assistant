@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tablet idle board, third round</title>
+<!--
+  Five arrangements around the chosen bottom shelf, with no hint text
+  (a tablet can have several assistants, each with its own wake word).
+  Drawn by day and by night. Nothing here is decided. See ../tablet.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-6); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 400px; border-radius: 20px; overflow: hidden; }
+  .frame > * { position: absolute; }
+  .night { inset: 0; background: color-mix(in srgb, var(--bg) 45%, transparent); }
+  .time { line-height: 1; }
+  .shadow { text-shadow: 0 2px 18px var(--bg), 0 0 4px var(--bg); }
+  .clock .t-strong { margin-top: 6px; }
+  .clock.big .t-display-xl { font-size: 88px; }
+  .clock.mid .t-display-xl { font-size: 72px; }
+  .clock.sm .t-display-xl { font-size: 64px; }
+
+  /* A glance bar inside a shelf: flat, wraps to two lines when narrow. */
+  .bars { display: flex; gap: 6px; }
+  .sb { display: flex; align-items: center; gap: 6px; width: 148px; height: 40px; padding: 0 var(--s-2);
+    border-radius: var(--r-sm); background: var(--control); font-size: 12px; line-height: 14px; font-weight: 600; }
+  .sb .ico { width: 14px; height: 14px; flex: none; }
+  .bars.n .sb { width: 118px; }
+  .bars.nn .sb { width: 116px; height: 52px; }
+  .bars.d .sb { width: 130px; }
+  .cap { text-align: center; font-size: 11px; line-height: 14px; font-weight: 600; color: var(--text-2); width: 80px; }
+
+  /* A */
+  .a-shelf, .c-shelf, .e-shelf { left: 12px; right: 12px; bottom: 12px; height: 56px; border-radius: var(--r-lg); }
+  .a-clock { left: var(--s-6); top: var(--s-4); }
+  .a-fig { left: 28px; bottom: 68px; }
+  .a-bars { right: 28px; bottom: 20px; }
+  /* B */
+  .b-shelf { left: 12px; right: 12px; bottom: 12px; height: 100px; border-radius: var(--r-lg); }
+  .b-fig { left: 28px; bottom: 112px; }
+  .b-bars { left: 28px; bottom: 36px; }
+  .b-clock { right: 28px; bottom: 20px; text-align: right; }
+  /* C */
+  .c-shelf { height: 64px; }
+  .c-clock { left: 0; right: 0; top: var(--s-4); text-align: center; }
+  .c-f1 { left: 28px; bottom: 76px; }
+  .c-f2 { right: 28px; bottom: 76px; }
+  .c-n1 { left: 28px; bottom: 16px; }
+  .c-n2 { right: 28px; bottom: 16px; }
+  .c-bars { left: 119px; bottom: 22px; }
+  /* D */
+  .d-dock { left: 90px; width: 420px; bottom: 20px; height: 56px; border-radius: var(--r-full); }
+  .d-fig { left: 265px; bottom: 76px; }
+  .d-bars { left: 99px; bottom: 28px; }
+  .d-clock { left: var(--s-6); top: var(--s-4); }
+  /* E */
+  .e-clip { left: 0; bottom: 68px; width: 170px; height: 156px; overflow: hidden; }
+  .e-clip > .figure { position: absolute; left: 40px; top: 40px; }
+  .e-bars { right: 28px; bottom: 20px; }
+  .e-clock { right: 28px; bottom: 80px; text-align: right; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var DATE = 'Saturday 28 November';
+  var FACTS = ['Pasta timer &middot; 07:42', 'Bins go out tonight', 'Shopping &middot; 3 items'];
+  function bar(i) { return '<div class="sb"><span class="ico"></span><span>' + FACTS[i] + '</span></div>'; }
+  function bars(cls) { return '<div class="bars ' + cls + '">' + [0, 1, 2].map(bar).join('') + '</div>'; }
+  function clock(cls) {
+    return '<div class="clock ' + cls + '"><div class="t-display-xl num time shadow">9:41</div><div class="t-strong shadow">' + DATE + '</div></div>';
+  }
+  function fig(size, cls) { return '<div class="' + cls + '"><span class="figure" style="--size:' + size + 'px"><span class="character" style="--size:' + size + 'px"></span></span></div>'; }
+  function frame(mode, inner) {
+    return '<div class="frame ' + mode + ' wallpaper">' + (mode === 'dark' ? '<div class="night"></div>' : '') + inner + '</div>';
+  }
+  function both(build) { return [frame('light', build()), frame('dark', build())]; }
+
+  var A = both(function () {
+    return clock('big a-clock') + '<div class="glass a-shelf"></div>' + fig(80, 'a-fig') + bars('a-bars');
+  });
+  var B = both(function () {
+    return '<div class="glass b-shelf"></div>' + fig(90, 'b-fig') + bars('nn b-bars') + clock('sm b-clock');
+  });
+  var C = both(function () {
+    return clock('mid c-clock') + '<div class="glass c-shelf"></div>' +
+      fig(80, 'c-f1') + fig(80, 'c-f2 accent-ember') +
+      '<div class="cap c-n1">Juno</div><div class="cap c-n2">Sage</div>' + bars('n c-bars');
+  });
+  var D = both(function () {
+    return clock('big d-clock') + '<div class="glass d-dock"></div>' + fig(70, 'd-fig') + bars('d d-bars');
+  });
+  var E = both(function () {
+    return '<div class="e-clip"><span class="figure" style="--size:90px"><span class="character" style="--size:90px"></span></span></div>' +
+      '<div class="glass e-shelf"></div>' + bars('e-bars') + clock('mid e-clock');
+  });
+
+  var arr = [
+    ['v-a', 'A. Shelf with bars, clock above', A, 'Gains a clear photo apart from the clock at the top left and a figure that stands on something at the shelf’s end; costs facts that are small and low on the screen, which is hardest to read from far away.'],
+    ['v-b', 'B. Clock on the shelf', B, 'Gains a photo that is completely clear above the shelf and a clock that reads well from across the room; costs a taller shelf that takes a fifth of the screen, with bars that must wrap to fit.'],
+    ['v-c', 'C. Two assistants', C, 'Gains a shelf that shows both assistants as equals, each named, with the clock centred as on a mantel; costs the photo’s middle at the top and a shelf that is crowded by names and bars.'],
+    ['v-d', 'D. Short dock', D, 'Gains a lighter, floating look with more photo showing at the bottom corners and a figure that is the centre of attention; costs the bars becoming smaller, and a figure that hides part of the photo’s middle.'],
+    ['v-e', 'E. Figure behind the shelf', E, 'Gains an upper two-thirds of the photo that is entirely clear, since everything hugs the bottom; costs a figure that is only head and shoulders, so less present, and a clock that sits low.']
+  ];
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[3] + '</p><div class="pair">' +
+      a[2].map(function (f, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + (i ? 'Night' : 'Day') + '</span>' + f + '</div>'; }).join('') +
+      '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

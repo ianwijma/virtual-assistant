@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tablet board</title>
+<!--
+  Five arrangements of the same moment on the household tablet: the assistant
+  listens, then answers with a timer card. Each is drawn twice, in landscape,
+  in the dark (a tablet in a room is usually dim). Nothing here is decided.
+  See ../assistant-visuals.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-6); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 400px; border-radius: 20px; overflow: hidden; }
+  .frame > * { position: absolute; }
+  .state { font: 600 32px/38px var(--font-sans); letter-spacing: -.01em; }
+  .say { font: 500 28px/34px var(--font-sans); }
+  .timer { font: 600 72px/72px var(--font-sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .tcard { display: flex; align-items: center; gap: var(--s-5); padding: var(--s-4) var(--s-5); }
+  .tcard .btns { display: flex; flex-direction: column; gap: var(--s-2); }
+  .tcard .btns .btn { min-width: 110px; }
+  .row-btns { display: flex; gap: var(--s-2); margin-top: var(--s-3); }
+  .row-btns .btn { flex: 1; }
+  .glow { border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 55%, transparent), transparent); }
+  .center { left: 0; right: 0; text-align: center; }
+
+  /* A */
+  .a-panel { left: var(--s-4); right: var(--s-4); bottom: var(--s-4); height: 132px; display: flex; align-items: center; gap: var(--s-4); padding: 0 var(--s-5); }
+  .a-panel .tcard { padding: 0; flex: 1; justify-content: space-between; }
+  .a-panel .grow { flex: 1; }
+  /* B */
+  .b-dim { inset: 0; -webkit-backdrop-filter: blur(18px) saturate(110%); backdrop-filter: blur(18px) saturate(110%); background: color-mix(in srgb, var(--bg) 62%, transparent); }
+  .b-card { left: 90px; right: 90px; }
+  /* C */
+  .c-col { left: 250px; right: var(--s-4); top: var(--s-4); bottom: var(--s-4); padding: var(--s-5); display: flex; flex-direction: column; justify-content: center; gap: var(--s-3); }
+  .c-floor { left: 20px; width: 200px; bottom: 6px; height: 20px; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.5), transparent); }
+  .c-walk { left: var(--s-4); top: var(--s-4); width: 216px; }
+  /* D */
+  .d-pill { left: 0; right: 0; margin: 0 auto; width: max-content; max-width: 560px; bottom: var(--s-6); padding: var(--s-3) var(--s-6); border-radius: var(--r-full); }
+  .d-card { left: 0; right: 0; margin: 0 auto; width: max-content; bottom: var(--s-4); }
+  /* E */
+  .e-left { left: 0; top: 0; bottom: 0; width: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s-2); }
+  .e-right { left: 300px; right: 0; top: 0; bottom: 0; }
+  .e-card { position: absolute; left: var(--s-4); right: var(--s-4); top: 50%; transform: translateY(-50%); padding: var(--s-5); }
+  /* F */
+  .wave { display: flex; align-items: center; justify-content: center; gap: var(--s-3); height: 140px; left: 0; right: 0; top: 36px; }
+  .wave i { width: 16px; border-radius: var(--r-full); background: var(--accent); display: block; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  function ch(size, listening, style) {
+    return '<span class="character' + (listening ? ' listening' : '') + '" style="--size:' + size + 'px;' + (style || '') + '"></span>';
+  }
+  function fig(size, style) {
+    return '<span class="figure" style="--size:' + size + 'px;' + (style || '') + '"><span class="character" style="--size:' + size + 'px"></span></span>';
+  }
+  function glow(size, style) { return '<div class="glow" style="width:' + size + 'px;height:' + size + 'px;' + style + '"></div>'; }
+  var SAY = 'What is the weather like tomorrow?';
+  var btns = '<span class="btn btn-primary">Stop</span><span class="btn">Snooze</span>';
+  var timerBlock = '<div><div class="t-caption">Pasta timer</div><div class="timer">10:00</div></div>';
+  function cardSide(cls, style) { return '<div class="glass tcard ' + cls + '" style="' + style + '">' + timerBlock + '<div class="btns">' + btns + '</div></div>'; }
+  function cardStack() { return '<div class="t-caption">Pasta timer</div><div class="timer">10:00</div><div class="row-btns">' + btns + '</div>'; }
+  function frame(cls, inner) { return '<div class="frame dark ' + cls + '">' + inner + '</div>'; }
+
+  var A = [
+    frame('wallpaper',
+      '<div class="glass a-panel">' + ch(80, true) +
+      '<div class="grow"><div class="state">Listening</div><div class="t-body" style="font-size:22px;line-height:28px">' + SAY + '</div></div></div>'),
+    frame('wallpaper',
+      '<div class="glass a-panel">' + ch(80, false) +
+      '<div class="tcard">' + timerBlock + '<div class="btns">' + btns + '</div></div></div>')
+  ];
+  var B = [
+    frame('wallpaper',
+      '<div class="b-dim"></div>' + glow(380, 'left:110px;top:-66px') + ch(200, true, 'left:200px;top:24px') +
+      '<div class="center state" style="top:240px">Listening</div><div class="center say" style="top:286px;padding:0 20px">' + SAY + '</div>'),
+    frame('wallpaper',
+      '<div class="b-dim"></div>' + glow(300, 'left:150px;top:-40px') + ch(150, false, 'left:225px;top:16px') +
+      '<div class="center state" style="top:176px">Answering</div>' +
+      cardSide('b-card', 'top:226px;justify-content:center;left:80px;right:80px'))
+  ];
+  var C = [
+    frame('backdrop',
+      '<div class="c-floor"></div>' + fig(140, 'left:50px;bottom:22px') +
+      '<div class="c-walk t-label t-2">&#8592; Can walk across the screen when there is no card &#8594;</div>' +
+      '<div class="glass c-col"><div class="t-caption">Juno</div><div class="state">Listening</div><div class="say">' + SAY + '</div></div>'),
+    frame('backdrop',
+      '<div class="c-floor"></div>' + fig(140, 'left:50px;bottom:22px') +
+      '<div class="glass c-col"><div class="t-caption">Juno</div><div class="state">Answering</div><div>' + cardStack() + '</div></div>')
+  ];
+  var D = [
+    frame('backdrop',
+      glow(560, 'left:20px;top:-10px') + ch(340, true, 'left:130px;top:70px;opacity:.95') +
+      '<div class="center state" style="top:24px">Listening</div>' +
+      '<div class="glass d-pill say">' + SAY + '</div>'),
+    frame('backdrop',
+      glow(560, 'left:20px;top:-10px') + ch(340, false, 'left:130px;top:70px;opacity:.95') +
+      '<div class="center state" style="top:24px">Answering</div>' +
+      cardSide('d-card', ''))
+  ];
+  var E = [
+    frame('',
+      '<div class="e-left backdrop">' + ch(180, true) + '<div class="state" style="margin-top:12px">Juno</div><div class="t-title t-2" style="font-size:28px;line-height:34px">Listening</div></div>' +
+      '<div class="e-right wallpaper"><div class="glass e-card"><div class="t-caption">You said</div><div class="say" style="margin-top:6px">' + SAY + '</div></div></div>'),
+    frame('',
+      '<div class="e-left backdrop">' + ch(180, false) + '<div class="state" style="margin-top:12px">Juno</div><div class="t-title t-2" style="font-size:28px;line-height:34px">Answering</div></div>' +
+      '<div class="e-right wallpaper"><div class="glass e-card">' + cardStack() + '</div></div>')
+  ];
+  var bars = [30, 54, 80, 108, 132, 108, 80, 54, 30].map(function (h) { return '<i style="height:' + h + 'px"></i>'; }).join('');
+  var F = [
+    frame('wallpaper',
+      '<div class="b-dim"></div><div class="wave">' + bars + '</div>' +
+      '<div class="center state" style="top:240px">Listening</div><div class="center say" style="top:286px;padding:0 20px">' + SAY + '</div>')
+  ];
+
+  var arr = [
+    ['v-a', 'A. Panel from the bottom (as first drawn)', ['Listening', 'Answering with a card'], A,
+      'Gains the whole photo and a calm, familiar layout; costs the character, which stays small, and leaves the card only a strip, so it is the hardest to read from across a room.'],
+    ['v-b', 'B. Centre stage', ['Listening', 'Answering with a card'], B,
+      'Gains a character that dominates and large, centred text; costs most of the photo, which is dimmed and blurred, and the card must share the screen with the head.'],
+    ['v-c', 'C. Full figure on a stage', ['Listening', 'Answering with a card'], C,
+      'Gains a whole figure that can walk across and a generous column for the card; costs the photo, which is replaced by our backdrop, and the figure takes only the left side.'],
+    ['v-d', 'D. Character behind glass', ['Listening', 'Answering with a card'], D,
+      'Gains the largest character of all and a clear screen while listening; costs the photo and part of the character, which the card hides when it answers.'],
+    ['v-e', 'E. Split screen', ['Listening', 'Answering with a card'], E,
+      'Gains the photo on one half and a roomy card beside a named character; costs half the screen for the character, so it dominates least of the four.'],
+    ['v-f', 'Without a figure: B with a sound wave', ['Listening'], F,
+      'An assistant may have no figure, so the same centre stage uses nine moving bars in the accent colour; it keeps the large text and loses the personality.']
+  ];
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[4] + '</p><div class="pair">' +
+      a[3].map(function (f, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + a[2][i] + '</span>' + f + '</div>'; }).join('') +
+      '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

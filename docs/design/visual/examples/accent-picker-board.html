@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choosing an accent</title>
+<!--
+  Three designs of the accent picker, on the admin panel's page "Household · Accent".
+  Every row is in the same state: "Your own" is chosen, with a pink and a gold.
+  The four small previews take those two colours (set inline on each preview);
+  the page around them stays Tide. Nothing here is decided.
+  Icons: Phosphor (MIT) for the check; the dice and shuffle are simple stand-ins
+  because the icon board holds no Phosphor dice or shuffle.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-4); }
+  h1 { font: var(--type-title); }
+  .opt { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: var(--s-3); align-items: start; }
+  .big { width: 56px; height: 56px; border-radius: var(--r-lg); background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font: var(--type-display); font-weight: 700; }
+  .oh h2 { font: var(--type-heading); }
+  .oh p { font: var(--type-label); color: var(--text-2); }
+  .oh { margin-bottom: var(--s-2); min-height: 56px; display: flex; flex-direction: column; justify-content: center; }
+  .panel { padding: var(--s-4) var(--s-5); grid-column: 1 / -1; margin-top: calc(var(--s-1) * -1); }
+  .panel-in { display: grid; grid-template-columns: 1fr 1px 580px; column-gap: var(--s-5); align-items: stretch; margin-top: var(--s-3); }
+  .vline { background: var(--line); }
+  .crumb { font: var(--type-label); color: var(--text-2); }
+  .ptitle { font: var(--type-title); }
+  .ctl { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
+  .lab { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+  .swrow { display: flex; gap: var(--s-4); }
+  .swi { display: flex; flex-direction: column; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
+  .sw { position: relative; width: 44px; height: 44px; border-radius: 50%; flex: none;
+    background: linear-gradient(135deg, var(--accent) 50%, var(--accent-2) 50%); box-shadow: inset 0 0 0 1px var(--line); }
+  .sw.sm { width: 38px; height: 38px; }
+  .sw.sel { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .sw .tick { position: absolute; right: -6px; top: -6px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; }
+  .swi.sel { color: var(--text); font-weight: 600; }
+  .wells { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+  .well { display: flex; flex-direction: column; gap: 4px; }
+  .well .field { gap: var(--s-3); padding: 0 6px; }
+  .well .chipc { width: 22px; height: 22px; border-radius: var(--r-xs); box-shadow: inset 0 0 0 1px var(--line); flex: none; }
+  .note-ok { display: flex; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
+  .note-ok svg { color: var(--success); }
+  .acts { display: flex; align-items: center; gap: var(--s-3); }
+  svg.i { display: block; flex: none; }
+  .wheelwrap { display: flex; gap: var(--s-5); align-items: center; }
+  .wheel { position: relative; width: 200px; height: 200px; flex: none; }
+  .ring { position: absolute; inset: 0; border-radius: 50%;
+    background: conic-gradient(hsl(0 80% 55%), hsl(60 80% 50%), hsl(120 70% 45%), hsl(180 75% 45%), hsl(240 80% 60%), hsl(300 75% 55%), hsl(360 80% 55%));
+    -webkit-mask: radial-gradient(circle, transparent 62%, black 63%); mask: radial-gradient(circle, transparent 62%, black 63%); }
+  .hdl { position: absolute; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%; border: 3px solid var(--glass-solid); box-shadow: var(--shadow-2), 0 0 0 1px var(--line);
+    display: grid; place-items: center; font: var(--type-caption); font-weight: 700; color: var(--on-accent); letter-spacing: 0; }
+  .wc { position: absolute; inset: 0; display: grid; place-items: center; }
+  .wc .btn { height: 30px; padding: 0 10px; font-size: 12px; }
+  .reads { display: flex; flex-direction: column; gap: var(--s-3); }
+  .rd { display: flex; align-items: center; gap: var(--s-3); }
+  .rd .n { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: var(--type-caption); font-weight: 700; color: var(--on-accent); letter-spacing: 0; }
+  .rd .t-mono { color: var(--text-2); }
+  .hint { font: var(--type-label); color: var(--text-2); }
+  .pairs { display: grid; grid-template-columns: repeat(6, 38px); justify-content: start; gap: var(--s-4) var(--s-5); padding: 4px; }
+  .quiet-link { font: var(--type-label); color: var(--text-2); text-decoration: underline; text-underline-offset: 3px; }
+  /* previews */
+  .pvs { display: flex; flex-direction: column; justify-content: center; gap: var(--s-2); }
+  .pvrow { display: flex; align-items: flex-end; justify-content: space-between; }
+  .pvi { display: flex; flex-direction: column; gap: 5px; align-items: center; font: var(--type-caption); text-transform: none; letter-spacing: 0; color: var(--text-2); }
+  .pv { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 0 0 1px var(--line); }
+  .pv.phone { width: 90px; height: 164px; border-radius: 14px; }
+  .pv.tab { width: 150px; height: 104px; }
+  .pv.desk, .pv.adm { width: 150px; height: 104px; border-radius: 8px; }
+  .pv > * { position: absolute; }
+  .pv .glass, .pv .glass-thick { border-radius: 8px; box-shadow: var(--shadow-1), inset 0 1px 0 var(--glass-edge); }
+  .pv .ln { height: 4px; border-radius: 2px; background: var(--text-3); position: static; }
+  .pv .ln.s { width: 55%; } .pv .ln.m { width: 80%; }
+  .pv .ln.d { background: var(--text-2); }
+  .pv .pb { position: static; height: 13px; width: 38px; border-radius: 4px; }
+  .pv .stack { position: static; display: flex; flex-direction: column; gap: 5px; }
+  .pv .phone-card { left: 8px; right: 8px; top: 26px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .pv .phone-card .pb { width: 100%; }
+  .pv .clock { left: 12px; top: 10px; width: 36px; height: 10px; border-radius: 3px; background: var(--text); opacity: .75; }
+  .pv .tab-card { left: 12px; top: 30px; width: 70px; padding: 8px; display: flex; flex-direction: column; gap: 5px; }
+  .pv .tab-shelf { left: 10px; right: 10px; bottom: 8px; height: 14px; border-radius: 7px; }
+  .pv .win { left: 14px; right: 14px; top: 12px; bottom: 12px; padding: 6px 8px; display: flex; flex-direction: column; gap: 5px; border-radius: 8px; }
+  .pv .win .dots { display: flex; gap: 3px; position: static; }
+  .pv .win .dots i { width: 4px; height: 4px; border-radius: 50%; background: var(--text-3); }
+  .pv .sel-row { position: static; height: 10px; border-radius: 3px; background: var(--accent-soft); }
+  .pv .side { left: 4px; top: 4px; bottom: 4px; width: 32px; padding: 5px 4px; display: flex; flex-direction: column; gap: 4px; }
+  .pv .mid { left: 40px; top: 4px; bottom: 4px; width: 38px; padding: 5px 4px; display: flex; flex-direction: column; gap: 4px; border-radius: 6px; background: var(--surface); }
+  .pv .pg { left: 82px; right: 4px; top: 4px; bottom: 4px; padding: 6px; display: flex; flex-direction: column; gap: 5px; border-radius: 6px; background: var(--surface); }
+  .pv .pg .push { margin-top: auto; }
+  .pv .mid .sel-row { height: 8px; }
+</style>
+</head>
+<body class="va backdrop light accent-tide">
+<div class="page">
+  <h1>Choosing an accent</h1>
+  <div id="rows" style="display:contents"></div>
+</div>
+<script>
+  var CHECK = '<svg class="i" width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>';
+  var DICE = '<svg class="i" width="18" height="18" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M192,32H64A32,32,0,0,0,32,64V192a32,32,0,0,0,32,32H192a32,32,0,0,0,32-32V64A32,32,0,0,0,192,32Zm16,160a16,16,0,0,1-16,16H64a16,16,0,0,1-16-16V64A16,16,0,0,1,64,48H192a16,16,0,0,1,16,16Z"/><circle cx="92" cy="92" r="12"/><circle cx="164" cy="92" r="12"/><circle cx="128" cy="128" r="12"/><circle cx="92" cy="164" r="12"/><circle cx="164" cy="164" r="12"/></svg>';
+  var SHUF = '<svg class="i" width="18" height="18" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32,72h32c48,0,56,112,104,112h40"/><path d="M32,184h32c16,0,26-18,35-39"/><path d="M144,80c8-10,13-8,24-8h40"/><path d="M184,48l24,24-24,24"/><path d="M184,160l24,24-24,24"/></svg>';
+
+  var PINK = '#E0457B', GOLD = '#F2A93B';
+  var BUILT = [['Tide', 'accent-tide'], ['Ember', 'accent-ember'], ['Aurora', 'accent-aurora'], ['Moss', 'accent-moss']];
+  var PAIRS = [['#0F7B8A', '#F2C14E'], ['#3B4CCA', '#F28BB3'], ['#2E7D5B', '#E9D8A6'], ['#8E3B9E', '#FF9E7A'], [PINK, GOLD], ['#1D6FB8', '#6FD3C0'],
+               ['#B5472E', '#F0C987'], ['#4C5BD4', '#7FE0D0'], ['#D1495B', '#EDAE49'], ['#2A9D8F', '#E9C46A'], ['#5E4AE3', '#F08A5D'], ['#3A7D44', '#F4D35E']];
+  var VARS = '--accent:' + PINK + ';--accent-2:' + GOLD + ';--accent-soft:color-mix(in srgb,' + PINK + ' 14%,transparent);--on-accent:#fff;';
+
+  function two(a, b) { return 'style="background:linear-gradient(135deg,' + a + ' 50%,' + b + ' 50%)"'; }
+  function tick() { return '<span class="tick">' + CHECK.replace('width="14" height="14"', 'width="11" height="11"') + '</span>'; }
+  function built() {
+    return '<div class="swrow">' + BUILT.map(function (b) { return '<div class="swi"><span class="sw ' + b[1] + '"></span>' + b[0] + '</div>'; }).join('') +
+      '<div class="swi sel"><span class="sw sel" ' + two(PINK, GOLD) + '>' + tick() + '</span>Your own</div></div>';
+  }
+  function ok() { return '<div class="note-ok">' + CHECK + 'Checked: text stays readable</div>'; }
+
+  /* the four tiny devices */
+  function ln(c) { return '<i class="ln ' + c + '"></i>'; }
+  function pv() {
+    var card = function (cls) { return '<div class="glass ' + cls + '"><div class="stack">' + ln('d m') + ln('s') + '</div><span class="pb btn-primary"></span></div>'; };
+    var phone = '<div class="pv phone backdrop light" style="' + VARS + '">' + card('phone-card') + '</div>';
+    var tab = '<div class="pv tab backdrop light" style="' + VARS + '"><i class="clock"></i><div class="glass tab-card"><div class="stack">' + ln('d m') + ln('s') + '</div><span class="pb btn-primary"></span></div><div class="glass tab-shelf"></div></div>';
+    var desk = '<div class="pv desk wallpaper light" style="' + VARS + '"><div class="glass-thick win"><span class="dots"><i></i><i></i><i></i></span><span class="sel-row"></span>' + ln('d m') + ln('s') + '<span class="pb btn-primary" style="margin-top:auto"></span></div></div>';
+    var adm = '<div class="pv adm backdrop light" style="' + VARS + '"><div class="glass side"><span class="sel-row"></span>' + ln('s') + ln('s') + '</div><div class="mid"><span class="sel-row"></span>' + ln('m') + ln('m') + '</div><div class="pg">' + ln('d s') + ln('m') + '<span class="pb btn-primary push"></span></div></div>';
+    var cap = function (t) { return '<span>' + t + '</span>'; };
+    return '<div class="pvs"><div class="lab">Preview, on all four devices</div><div class="pvrow">' +
+      '<div class="pvi">' + phone + cap('Phone') + '</div><div class="pvi">' + tab + cap('Tablet') + '</div><div class="pvi">' + desk + cap('Desktop') + '</div><div class="pvi">' + adm + cap('Admin panel') + '</div></div></div>';
+  }
+
+  function panel(ctl) {
+    return '<div class="surface compact panel"><div class="crumb">Household</div><div class="ptitle">Accent</div>' +
+      '<div class="panel-in"><div class="ctl">' + ctl + '</div><div class="vline"></div>' + pv() + '</div></div>';
+  }
+
+  function A() {
+    var wells = [['Main colour', PINK], ['Second colour', GOLD]].map(function (w) {
+      return '<div class="well"><span class="field-label">' + w[0] + '</span><div class="field"><span class="chipc" style="background:' + w[1] + '"></span><span class="t-mono">' + w[1] + '</span></div></div>';
+    }).join('');
+    return panel(built() + '<div class="wells">' + wells + '</div><div class="acts"><span class="btn">' + DICE + 'Surprise me</span></div>' + ok());
+  }
+
+  var HANDLES = [[PINK, 340, 1], [GOLD, 37, 2]];
+  function B() {
+    var R = 100, r = 81;
+    var h = HANDLES.map(function (x) {
+      var a = x[1] * Math.PI / 180;
+      return '<span class="hdl" style="background:' + x[0] + ';left:' + (R + r * Math.sin(a)).toFixed(1) + 'px;top:' + (R - r * Math.cos(a)).toFixed(1) + 'px">' + x[2] + '</span>';
+    }).join('');
+    var wheel = '<div class="wheel"><div class="ring"></div>' + h + '<div class="wc"><span class="btn">' + DICE + 'Surprise me</span></div></div>';
+    var reads = '<div class="reads">' +
+      [['Main colour', PINK, 1], ['Second colour', GOLD, 2]].map(function (x) {
+        return '<div class="rd"><span class="n" style="background:' + x[1] + '">' + x[2] + '</span><div><div class="t-label">' + x[0] + '</div><div class="t-mono">' + x[1] + '</div></div></div>';
+      }).join('') + '<div class="hint">Drag a handle round the ring.</div>' + ok() + '</div>';
+    return panel(built() + '<div class="wheelwrap">' + wheel + reads + '</div>');
+  }
+
+  function C() {
+    var g = PAIRS.map(function (p, i) {
+      var sel = i === 4;
+      return '<span class="sw sm' + (sel ? ' sel' : '') + '" ' + two(p[0], p[1]) + '>' + (sel ? tick() : '') + '</span>';
+    }).join('');
+    return panel(built() + '<div class="lab">Pairs that go together</div><div class="pairs">' + g + '</div>' +
+      '<div class="acts"><span class="btn">' + SHUF + 'Shuffle</span><span class="quiet-link">Pick the two colours yourself</span></div>' + ok());
+  }
+
+  var D = [['A', 'Swatches, then two wells', 'Plain and exact, but the least playful.', A],
+           ['B', 'A two-handle colour wheel', 'The most direct and playful, but the hardest to build on four toolkits and to use with a keyboard.', B],
+           ['C', 'Pairs that go together', 'Always looks good and stays readable, but gives the least freedom.', C]];
+  document.getElementById('rows').innerHTML = D.map(function (d) {
+    return '<section class="opt" id="v-' + d[0].toLowerCase() + '"><div class="big">' + d[0] + '</div><div class="oh"><h2>' + d[0] + '. ' + d[1] + '</h2><p>' + d[2] + '</p></div>' + d[3]() + '</section>';
+  }).join('');
+</script>
+</body>
+</html>

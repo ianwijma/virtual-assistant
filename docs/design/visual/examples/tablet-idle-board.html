@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tablet idle board</title>
+<!--
+  Five designs of the tablet when nobody is using it, drawn by day and by
+  night. Nothing here is decided. See ../assistant-visuals.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-6); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 400px; border-radius: 20px; overflow: hidden; }
+  .frame > * { position: absolute; }
+  .night { inset: 0; background: color-mix(in srgb, var(--bg) 45%, transparent); }
+  .blur { inset: 0; -webkit-backdrop-filter: blur(22px); backdrop-filter: blur(22px); background: color-mix(in srgb, var(--bg) 35%, transparent); }
+  .time { line-height: 1; }
+  .shadow { text-shadow: 0 2px 18px var(--bg), 0 0 4px var(--bg); }
+  .ln { font: var(--type-body-strong); }
+
+  /* A */
+  .a-plate { left: var(--s-4); bottom: var(--s-4); padding: var(--s-3) var(--s-5); }
+  .a-chip { right: var(--s-4); top: var(--s-4); }
+  /* B */
+  .b-time { left: var(--s-6); bottom: var(--s-6); }
+  .b-row { right: var(--s-4); bottom: var(--s-4); display: flex; gap: var(--s-2); }
+  .b-card { width: 96px; padding: var(--s-3); display: flex; flex-direction: column; gap: 2px; }
+  /* C */
+  .c-grid { left: var(--s-4); right: var(--s-4); top: var(--s-4); bottom: var(--s-4); display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: var(--s-3); }
+  .c-grid .glass { position: relative; padding: var(--s-3) var(--s-4); display: flex; flex-direction: column; justify-content: center; gap: 2px; min-width: 0; }
+  .c-head { right: 26px; bottom: 26px; z-index: 2; }
+  /* D */
+  .d-fig { left: var(--s-6); bottom: 0; }
+  .d-say { left: var(--s-4); bottom: 224px; padding: var(--s-2) var(--s-4); }
+  .d-plate { right: var(--s-4); top: var(--s-4); padding: var(--s-3) var(--s-5); text-align: right; }
+  .d-chip { right: var(--s-4); top: 156px; }
+  /* E */
+  .e-wrap { inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s-2); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var DATE = 'Saturday 28 November';
+  function ch(size, style) { return '<span class="character" style="--size:' + size + 'px;' + (style || '') + '"></span>'; }
+  function fig(size, cls) { return '<span class="figure ' + cls + '" style="--size:' + size + 'px"><span class="character" style="--size:' + size + 'px"></span></span>'; }
+  function frame(mode, bg, inner) {
+    return '<div class="frame ' + mode + ' ' + bg + '">' + (mode === 'dark' && bg === 'wallpaper' ? '<div class="night"></div>' : '') + inner + '</div>';
+  }
+  function both(bg, build, nightBg) {
+    return [frame('light', bg, build('light')), frame('dark', nightBg || bg, build('dark'))];
+  }
+
+  var A = both('wallpaper', function () {
+    return '<div class="glass a-plate"><div class="t-display-xl num time">9:41</div><div class="t-label t-2">' + DATE + '</div></div>' +
+      '<span class="chip glass a-chip num">Pasta timer 07:42</span>';
+  });
+  var B = both('wallpaper', function () {
+    return '<div class="b-time"><div class="t-display-xl time shadow">9:41</div><div class="t-strong shadow" style="margin-top:6px">' + DATE + '</div></div>' +
+      '<div class="b-row">' +
+      '<div class="glass b-card"><span class="t-caption">Timer</span><span class="ln num">07:42</span></div>' +
+      '<div class="glass b-card"><span class="t-caption">Next</span><span class="ln">Bins tonight</span></div>' +
+      '<div class="glass b-card"><span class="t-caption">Shopping</span><span class="ln">3 items</span></div></div>';
+  });
+  var C = both('wallpaper', function () {
+    return '<div class="blur"></div><div class="c-grid">' +
+      '<div class="glass"><span class="t-caption">Home</span><span class="t-display-xl num time" style="font-size:72px">9:41</span><span class="t-label t-2">' + DATE + '</span></div>' +
+      '<div class="glass"><span class="t-caption">Timers</span><span class="t-strong">Pasta timer</span><span class="t-display num">07:42</span></div>' +
+      '<div class="glass"><span class="t-caption">Reminders</span><span class="t-strong">Bins go out tonight</span></div>' +
+      '<div class="glass"><span class="t-caption">Shopping</span><span class="t-strong">Bread</span><span class="t-strong">Milk</span><span class="t-strong">Eggs</span></div></div>' +
+      ch(44, 'right:26px;bottom:26px;z-index:2');
+  });
+  var D = both('wallpaper', function () {
+    return '<div class="d-fig">' + fig(90, '') + '</div>' +
+      '<div class="glass d-say t-strong">Say “Hey Juno”</div>' +
+      '<div class="glass d-plate"><div class="t-display-xl num time" style="font-size:80px">9:41</div><div class="t-label t-2" style="margin-top:4px">' + DATE + '</div></div>' +
+      '<span class="chip glass d-chip num">Pasta timer 07:42</span>';
+  });
+  var E = both('backdrop', function (m) {
+    var c = m === 'dark' ? ' t-2' : '';
+    return '<div class="e-wrap' + c + '"><div class="num time" style="font-size:150px;font-weight:600;letter-spacing:-.04em">9:41</div>' +
+      '<div class="t-title">' + DATE + '</div>' +
+      '<div class="t-label t-2" style="margin-top:var(--s-3)">Pasta timer &middot; 07:42 left</div></div>';
+  });
+
+  var arr = [
+    ['v-a', 'A. Photo frame', A, 'Gains almost the whole photo and a calm screen; costs how much you can read from across a room, since only the clock is large, and the assistant is not there at all.'],
+    ['v-b', 'B. Photo with a glance row', B, 'Gains a clock you can read from across a room and three useful facts at once; costs some of the photo along the bottom, and a bright photo can make the text on it hard to read.'],
+    ['v-c', 'C. Board', C, 'Gains the most information at a glance; costs the photo, which is blurred and dimmed, and it looks busy in a quiet room, with the assistant only a small head.'],
+    ['v-d', 'D. Resident character', D, 'Gains an assistant that is always there and shows how to call it; costs the lower left of the photo, and a figure that never moves can look odd all night.'],
+    ['v-e', 'E. Clock only', E, 'Gains the easiest read from across a room, a dark screen at night and little risk of burn-in because the clock can drift; costs the photo and every other fact.']
+  ];
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[3] + '</p><div class="pair">' +
+      a[2].map(function (f, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + (i ? 'Night' : 'Day') + '</span>' + f + '</div>'; }).join('') +
+      '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

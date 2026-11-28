@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desktop notification board</title>
+<!--
+  Five ways a notification can appear on the desktop, outside the launcher,
+  while the person works in other applications. Each is drawn twice: one
+  notification, then several with one that asks. Nothing here is decided.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .page h1 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 14px 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); max-width: 100ch; }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: 20px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 400px; border-radius: 14px; overflow: hidden; color: var(--text); }
+  .frame > .pos { position: absolute; }
+
+  /* Stand-in applications: hard-coded neutral colours on purpose. */
+  .app { position: absolute; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+  .app .tb { height: 18px; background: #3a3d42; }
+  .ed { left: 8px; top: 10px; width: 330px; height: 250px; background: #f4f4f2; }
+  .ed .ln { height: 5px; margin: 7px 10px; border-radius: 3px; background: #8d9096; }
+  .ed .ln.k { background: #2f6fbd; } .ed .ln.g { background: #3d9a5b; } .ed .ln.o { background: #c9792a; }
+  .br { left: 270px; top: 70px; width: 320px; height: 300px; background: #ffffff; }
+  .br .tb { background: #d8dadd; }
+  .br .blocks { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 8px; }
+  .br .blocks i { height: 44px; border-radius: 4px; }
+  .br .photo { margin: 0 8px; height: 90px; border-radius: 6px; background: linear-gradient(135deg, #ff8a3d, #d6336c 45%, #3b5bdb); }
+  .te { left: 30px; top: 230px; width: 300px; height: 160px; background: #14161a; }
+  .te .tb { background: #2a2d33; }
+  .te .ln { height: 5px; margin: 7px 10px; border-radius: 3px; background: #d9dde3; }
+  .te .ln.p { background: #6ee7a0; }
+
+  /* Notification card */
+  .n { display: flex; align-items: center; gap: var(--s-2); padding: 8px 10px; border-radius: var(--r-lg); min-width: 0; }
+  .n .tx { flex: 1; min-width: 0; line-height: 1.25; }
+  .n .tx .t-strong { display: block; }
+  .n .tx .sub { display: block; font: var(--type-caption); color: var(--text-2); }
+  .n .bt { display: flex; gap: 4px; flex: none; }
+  .n .btn { height: 24px; min-height: 0; padding: 0 9px; font: var(--type-caption); }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .w300 { width: 300px; }
+
+  /* B island */
+  .island { left: 130px; top: 10px; width: 340px; padding: 0; }
+  .island.one { border-radius: 30px; }
+  .island .n { padding: 8px 12px; border-radius: 0; }
+  .island.one .n { padding: 8px 12px 8px 14px; }
+  .island .n + .n { border-top: 1px solid var(--line); }
+  .island.open { border-radius: 26px; padding: 6px 0; }
+  .island .hd { display: flex; align-items: center; justify-content: space-between; padding: 4px 16px 2px; }
+
+  /* C figure */
+  .fig { right: 12px; bottom: 6px; }
+  .stackup { right: 78px; bottom: 14px; flex-direction: column; }
+  .ask { position: relative; }
+  .ask::after { content: ""; position: absolute; right: -6px; bottom: 16px; width: 12px; height: 12px; transform: rotate(45deg);
+    background: var(--glass-thick); border-top: 1px solid var(--glass-edge); border-right: 1px solid var(--glass-edge); }
+
+  /* D strip */
+  .strip { right: 8px; top: 8px; bottom: 8px; width: 44px; display: flex; flex-direction: column; align-items: center; gap: 10px; padding-top: 10px; border-radius: var(--r-xl); }
+  .si { position: relative; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+  .si .dot { position: absolute; right: -2px; top: -2px; width: 9px; height: 9px; color: var(--accent); box-shadow: 0 0 0 2px var(--glass-thick); }
+  .unf { right: 58px; }
+
+  /* E banner */
+  .bar { left: 60px; top: 110px; width: 480px; }
+  .bar .n { padding: 0 14px; height: 52px; border-radius: 0; gap: var(--s-3); }
+  .bar.one { border-radius: var(--r-xl); }
+  .bar .hint { display: inline-flex; align-items: center; gap: 5px; font: var(--type-caption); color: var(--text-2); flex: none; }
+  .bar .hints { display: flex; gap: var(--s-3); flex: none; }
+  .bar .n.is-selected { background: var(--accent-soft); }
+  .bar .n.r { height: 46px; }
+  .bar .n.r + .n.r { border-top: 1px solid var(--line); }
+  .bar .foot { display: flex; align-items: center; gap: var(--s-3); height: 34px; padding: 0 14px; border-top: 1px solid var(--line); }
+  .bar .foot .sp { flex: 1; }
+  .bar .pan { border-radius: var(--r-xl); overflow: hidden; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var lines = function (n, cls) { var s = ''; for (var i = 0; i < n; i++) s += '<div class="ln ' + (cls[i % cls.length]) + '" style="width:' + (30 + (i * 37) % 60) + '%"></div>'; return s; };
+  var desktop =
+    '<div class="app ed"><div class="tb"></div>' + lines(26, ['', 'k', '', 'g', '', '', 'o']) + '</div>' +
+    '<div class="app br"><div class="tb"></div><div class="blocks"><i style="background:#e03131"></i><i style="background:#2f9e44"></i><i style="background:#1971c2"></i><i style="background:#f08c00"></i><i style="background:#7048e8"></i><i style="background:#0c8599"></i></div><div class="photo"></div><div class="blocks"><i style="background:#212529"></i><i style="background:#adb5bd"></i><i style="background:#e64980"></i></div></div>' +
+    '<div class="app te"><div class="tb"></div>' + lines(12, ['p', '', '', 'p', '']) + '</div>';
+
+  var data = {
+    email: { t: 'Parcel arrives tomorrow', s: 'Email · now', b: '<button class="btn">Read</button><button class="btn btn-quiet">Dismiss</button>' },
+    timer: { t: 'Pasta timer finished', s: 'Kitchen tablet · now', b: '<button class="btn">Stop</button>' },
+    juno:  { t: 'Send this to Sam’s phone?', s: 'Juno · now', b: '<button class="btn btn-primary">Yes</button><button class="btn btn-quiet">No</button>' }
+  };
+  function icon(k) { return k === 'juno' ? '<span class="character" style="--size:28px"></span>' : '<span class="ico"></span>'; }
+  function inner(k, noBtn) { var d = data[k]; return icon(k) + '<span class="tx"><span class="t-strong">' + d.t + '</span><span class="sub">' + d.s + '</span></span>' + (noBtn ? '' : '<span class="bt">' + d.b + '</span>'); }
+  function card(k, extra, style) { return '<div class="n glass-thick ' + (extra || '') + '" style="' + (style || '') + '">' + inner(k) + '</div>'; }
+  var several = ['juno', 'timer', 'email']; // newest first
+
+  var A = function (n) {
+    return '<div class="pos col w300" style="right:12px;top:12px">' + (n === 1 ? card('email') : several.map(function (k) { return card(k); }).join('')) + '</div>';
+  };
+  var B = function (n) {
+    if (n === 1) return '<div class="pos island one glass-thick"><div class="n">' + inner('email') + '</div></div>';
+    return '<div class="pos island open glass-thick"><div class="hd"><span class="t-caption t-2">3 new</span><span class="chip accent">+2</span></div>' +
+      several.map(function (k) { return '<div class="n">' + inner(k) + '</div>'; }).join('') + '</div>';
+  };
+  var C = function (n) {
+    var fig = '<div class="pos fig"><div class="figure"><span class="character listening" style="--size:44px"></span></div></div>';
+    var cards = n === 1 ? card('email') : ['email', 'timer', 'juno'].map(function (k) { return card(k, k === 'juno' ? 'ask' : ''); }).join('');
+    return fig + '<div class="pos col stackup w300">' + cards + '</div>';
+  };
+  var D = function (n) {
+    var order = n === 1 ? ['email'] : several, open = n === 1 ? 'email' : 'juno';
+    var s = '<div class="pos strip glass">' + order.map(function (k) { return '<span class="si">' + icon(k) + '<span class="dot"></span></span>'; }).join('') + '</div>';
+    return s + '<div class="pos unf w300">' + card(open) + '</div>';
+  };
+  var E = function (n) {
+    var hints = '<span class="hints"><span class="hint"><span class="kbd">↵</span>Open</span><span class="hint"><span class="kbd">Esc</span>Dismiss</span></span>';
+    if (n === 1) return '<div class="pos bar glass-thick one"><div class="n">' + icon('email') + '<span class="tx"><span class="t-strong">' + data.email.t + '</span><span class="sub">' + data.email.s + '</span></span>' + hints + '</div></div>';
+    return '<div class="pos bar glass-thick"><div class="pan">' + several.map(function (k, i) {
+      return '<div class="n r' + (i === 0 ? ' is-selected' : '') + '">' + inner(k) + '</div>';
+    }).join('') + '<div class="foot"><span class="hint"><span class="kbd">↑↓</span>Choose</span><span class="sp"></span>' + hints + '</div></div></div>';
+  };
+
+  var ds = [
+    ['v-a', 'A. Top-right stack', 'dark', A, 'The convention, so it is the easiest to understand and several line up as a tidy column, but it looks like the desktop’s own notifications and is answered with the mouse.'],
+    ['v-b', 'B. Top-centre island', 'light', B, 'Very small when only one arrives and a count chip tells the rest, so it interrupts least, but a long list needs an extra step to open and it is mouse-led.'],
+    ['v-c', 'C. Bottom-right, with the figure', 'dark', C, 'The assistant visibly hands things over and a question feels like a person asking, which is the most like ours, but the figure takes a corner of the screen all the time.'],
+    ['v-d', 'D. Edge strip', 'light', D, 'Almost never covers the work and handles many at once as icons, but only one is readable at a time and the others are easy to miss.'],
+    ['v-e', 'E. Launcher-style banner', 'dark', E, 'Looks like the launcher and can be answered from the keyboard with Enter and Esc, but it sits in the middle of the screen and interrupts the most.']
+  ];
+  document.getElementById('page').innerHTML = '<h1>Desktop notification board</h1>' + ds.map(function (d) {
+    return '<div class="arr" id="' + d[0] + '"><h2>' + d[1] + '</h2><p class="d">' + d[4] + '</p><div class="pair">' +
+      [[1, 'One arrives'], [3, 'Several, and one that asks']].map(function (f) {
+        return '<div class="cell"><span class="t-caption t-2">' + f[1] + '</span><div class="frame wallpaper compact accent-tide ' + d[2] + '">' + desktop + d[3](f[0]) + '</div></div>';
+      }).join('') + '</div></div>';
+  }).join('');
+</script>
+</body>
+</html>

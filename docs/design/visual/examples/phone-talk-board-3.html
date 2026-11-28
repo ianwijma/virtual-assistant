@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone conversation board, third round</title>
+<!--
+  Four ways to build the call. The owner decided that talking is like a call:
+  the figure has the whole screen, a few round buttons sit at the bottom, and
+  a person can switch to the chat or end the call. Each is drawn three times:
+  on the call, a card pops up, switched to chat. A and C are dark; B and D are
+  light.
+  Roomy density. Nothing here is decided. See ../phone.md and
+  ../assistant-visuals.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .row3 { display: grid; grid-template-columns: repeat(3, 250px); gap: 28px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 250px; height: 520px; border-radius: 32px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-3); background-color: var(--bg); color: var(--text); }
+  .frame > * { position: absolute; }
+  .frame .bubble { font: 14px/20px var(--font-sans); max-width: 86%; }
+  .glow { border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 55%, transparent), transparent); }
+  .cx { left: 0; right: 0; margin: 0 auto; width: max-content; }
+  .center { left: 0; right: 0; text-align: center; }
+  .state { font: 600 20px/26px var(--font-sans); letter-spacing: -.01em; }
+  .say { font: 500 16px/22px var(--font-sans); padding: 0 24px; }
+  .say.sm { font-size: 15px; line-height: 20px; padding: 0; }
+
+  .pill { height: 30px; padding: 0 var(--s-3); border-radius: var(--r-full); display: inline-flex; align-items: center; gap: 6px; font: var(--type-label); white-space: nowrap; }
+  .pill.danger { color: var(--danger); }
+  .rb { border-radius: 50%; display: grid; place-items: center; position: relative; flex: none; }
+  .rb.danger { color: var(--danger); }
+  .ctl { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .cap { font: var(--type-caption); color: var(--text-2); }
+  .ctls { display: flex; justify-content: center; gap: 40px; }
+  .badge { position: absolute; top: -3px; right: -3px; min-width: 18px; height: 18px; border-radius: var(--r-full); background: var(--accent); color: var(--on-accent); font: 600 11px/18px var(--font-sans); text-align: center; }
+  .handle { width: 36px; height: 5px; border-radius: var(--r-full); background: var(--line); border: 1px solid var(--text-3); box-sizing: border-box; flex: none; align-self: center; }
+  .sheet { display: flex; flex-direction: column; gap: 8px; padding: 8px var(--s-4) 0; }
+  .th { display: flex; flex-direction: column; gap: 8px; }
+  .caret { display: inline-block; width: 2px; height: 1em; vertical-align: -2px; margin-left: 2px; background: var(--on-accent); }
+  .cl .row { min-height: 32px; padding: 0 var(--s-1); font: 14px/20px var(--font-sans); }
+  .cl-t { font: var(--type-body-strong); margin-bottom: 2px; }
+  .card-in { padding: var(--s-2) var(--s-3); }
+  .bar { display: flex; align-items: center; gap: var(--s-2); padding: 0 10px; border-radius: var(--r-xl); }
+  .bar .field .ph { white-space: nowrap; }
+  .bar .field { flex: 1; min-width: 0; height: 38px; font-size: 14px; padding: 0 var(--s-3); }
+  .nm { font: var(--type-body-strong); }
+  .st { display: flex; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
+  .st .dot { color: var(--accent); }
+
+  
+  .danger-fill { background: var(--danger); color: var(--on-accent); border: 0; }
+  .on-fill { background: var(--accent); color: var(--on-accent); border: 0; }
+  .cap-line { font: 500 13px/18px var(--font-sans); text-align: center; color: var(--text-2); }
+  .top-id { top: 46px; text-align: center; left: 0; right: 0; }
+  .top-id .nm { line-height: 20px; }
+  .top-id .st { justify-content: center; }
+  .run { top: 0; left: 0; right: 0; height: 40px; padding-top: 10px; box-sizing: border-box; text-align: center; background: var(--accent); color: var(--on-accent); font: 600 11.5px/18px var(--font-sans); white-space: nowrap; }
+  .th-box { left: 14px; right: 14px; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; overflow: hidden; }
+  .cc { position: absolute; left: 18px; right: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .cc .ln { font: 600 19px/24px var(--font-sans); letter-spacing: -.01em; }
+  .cc .ln.me { text-align: right; }
+  .cc .ln.ju { text-align: left; }
+  .dock { position: relative; width: 46px; height: 46px; flex: none; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--accent); box-sizing: border-box; overflow: hidden; }
+  .lvl { display: flex; align-items: center; gap: 3px; height: 20px; }
+  .lvl i { width: 3px; border-radius: 2px; background: var(--accent); display: block; }
+  .fold { left: 8px; right: 8px; top: 38px; height: 74px; border-radius: var(--r-xl); display: flex; align-items: center; gap: 8px; padding: 0 10px; }
+  .sysline { align-self: center; font: var(--type-caption); color: var(--text-2); padding: 2px 10px; }
+  .wide { position: absolute; left: 12px; right: 12px; height: 44px; border-radius: var(--r-full); display: flex; align-items: center; justify-content: center; font: var(--type-body-strong); }
+  .hint { left: 0; right: 0; text-align: center; font: var(--type-caption); color: var(--text-2); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var SAY = 'Put milk and eggs on the shopping list';
+  var REPLY = 'Done. I added milk and eggs.';
+  function ch(size, listening, style) {
+    return '<span class="character' + (listening ? ' listening' : '') + '" style="--size:' + size + 'px;' + (style || '') + '"></span>';
+  }
+  function fig(size, top, listening, extra) {
+    return '<span class="figure cx" style="--size:' + size + 'px;top:' + top + 'px;' + (extra || '') + '"><span class="character' + (listening ? ' listening' : '') + '" style="--size:' + size + 'px"></span></span>';
+  }
+  function glow(size, style) { return '<div class="glow" style="width:' + size + 'px;height:' + size + 'px;' + style + '"></div>'; }
+  function rb(label, danger, size, cap, badge) {
+    return '<span class="ctl"><span class="glass rb' + (danger ? ' danger' : '') + '" style="width:' + size + 'px;height:' + size + 'px"><i class="ico"></i>' +
+      (badge ? '<span class="badge">' + badge + '</span>' : '') + '</span>' + (cap ? '<span class="cap">' + label + '</span>' : '') + '</span>';
+  }
+  function pill(label, cls, style) { return '<span class="glass pill ' + (cls || '') + '" style="' + (style || '') + '">' + label + '</span>'; }
+  function items() {
+    return [['Bread', 0], ['Milk', 1], ['Eggs', 1]].map(function (r) {
+      return '<div class="row"><i class="ico"></i><span class="grow">' + r[0] + '</span>' + (r[1] ? '<span class="chip accent">New</span>' : '') + '</div>';
+    }).join('');
+  }
+  function list() { return '<div class="cl"><div class="cl-t">Shopping</div><div class="list">' + items() + '</div></div>'; }
+  function frame(accent, mode, inner) { return '<div class="frame backdrop ' + mode + ' ' + accent + '">' + inner + '</div>'; }
+  function hi() { return '<div class="bubble">Hi Alex. What can I do?</div>'; }
+  function me(caret) { return '<div class="bubble me">' + (caret ? 'Put milk and eggs on the shopping' + '<span class="caret"></span>' : SAY) + '</div>'; }
+  function reply() { return '<div class="bubble">' + REPLY + '</div>'; }
+  function cardIn() { return '<div class="surface card-in">' + list() + '</div>'; }
+  function full() { return hi() + me() + reply() + cardIn(); }
+  function inputBar(cls, lead, trail) {
+    return '<div class="glass bar ' + cls + '">' + (lead || '') + '<span class="field"><span class="ph">Message Juno</span></span>' + (trail || '') + '</div>';
+  }
+  function send() { return '<span class="btn btn-primary btn-icon" style="width:36px;height:36px;border-radius:50%;flex:none"><i class="ico"></i></span>'; }
+
+
+  function rbx(label, kind, size, cap, on) {
+    var cls = kind === 'end' ? 'danger-fill' : (on ? 'on-fill' : 'glass');
+    return '<span class="ctl"><span class="rb ' + cls + '" style="width:' + size + 'px;height:' + size + 'px"><i class="ico"></i></span>' + (cap ? '<span class="cap">' + label + '</span>' : '') + '</span>';
+  }
+  function sheetBox(style, say, compact) {
+    return '<div class="glass-thick sheet" style="left:12px;right:12px;border-radius:var(--r-xl);' + style + '"><span class="handle"></span>' + (say ? '<div class="say sm">' + REPLY + '</div>' : '') + list() + '</div>';
+  }
+  function ident(state) { return '<div class="top-id"><div class="nm">Juno</div><div class="st"><span class="dot"></span>' + state + '</div></div>'; }
+  function thread(style, card) { return '<div class="th th-box" style="' + style + '">' + hi() + me() + reply() + (card || cardIn()) + '</div>'; }
+  function sendBar(style, lead, trail) {
+    return '<div class="glass bar" style="left:12px;right:12px;bottom:14px;height:56px;' + (style || '') + '">' + (lead || '') + '<span class="field"><span class="ph">Message Juno</span></span>' + (trail === undefined ? send() : trail) + '</div>';
+  }
+
+  /* A: three buttons */
+  var A = [
+    frame('accent-tide', 'dark',
+      glow(320, 'left:-35px;top:70px') + '<div class="top-id"><div class="nm">Juno</div><div class="st">02:14</div></div>' + fig(140, 90, true) +
+      '<div class="cap-line" style="left:20px;right:20px;top:352px;color:var(--text)">&ldquo;' + SAY + '&rdquo;</div>' +
+      '<div class="ctls" style="left:0;right:0;bottom:26px;align-items:flex-end;gap:26px">' + rbx('Mute', 0, 54, 1) + rbx('Chat', 0, 54, 1) + rbx('End', 'end', 64, 1) + '</div>'),
+    frame('accent-tide', 'dark',
+      glow(280, 'left:-15px;top:30px') + '<div class="top-id"><div class="nm">Juno</div><div class="st">02:14</div></div>' + fig(70, 90, false) +
+      sheetBox('top:236px;height:196px', 1) +
+      '<div class="ctls" style="left:0;right:0;bottom:18px;align-items:flex-end;gap:26px">' + rbx('Mute', 0, 44) + rbx('Chat', 0, 44) + rbx('End', 'end', 52) + '</div>'),
+    frame('accent-tide', 'dark',
+      glow(260, 'left:-5px;top:-60px') + '<div class="run">On a call with Juno &middot; 02:14 &middot; Return</div>' +
+      thread('top:52px;bottom:84px') + sendBar())
+  ];
+
+  /* B: captions on */
+  var B = [
+    frame('accent-ember', 'light',
+      glow(320, 'left:-35px;top:20px') + '<div class="top-id"><div class="nm">Juno</div><div class="st">02:14</div></div>' + fig(100, 92, true) +
+      '<div class="cc" style="top:318px"><div class="ln ju" style="opacity:.35">Hi Alex. What can I do?</div><div class="ln me" style="opacity:1">' + SAY + '</div></div>' +
+      '<div class="ctls" style="left:0;right:0;bottom:24px;gap:14px;align-items:flex-end">' + rbx('Mute', 0, 48, 1) + rbx('Captions', 0, 48, 1, 1) + rbx('Chat', 0, 48, 1) + rbx('End', 'end', 48, 1) + '</div>'),
+    frame('accent-ember', 'light',
+      glow(280, 'left:-15px;top:10px') + '<div class="top-id"><div class="nm">Juno</div><div class="st">02:14</div></div>' + fig(58, 92, false) +
+      '<div class="cc" style="top:206px"><div class="ln ju" style="opacity:1;font-size:16px;line-height:21px">' + REPLY + '</div></div>' +
+      sheetBox('top:270px;height:164px') +
+      '<div class="ctls" style="left:0;right:0;bottom:18px;gap:14px;align-items:flex-end">' + rbx('Mute', 0, 42) + rbx('Captions', 0, 42, 0, 1) + rbx('Chat', 0, 42) + rbx('End', 'end', 42) + '</div>'),
+    frame('accent-ember', 'light',
+      glow(260, 'left:-5px;top:-60px') + '<div class="top-id"><div class="nm">Chat with Juno</div><div class="st"><span class="dot"></span>Call running &middot; 02:14</div></div>' +
+      thread('top:80px;bottom:84px') +
+      sendBar('padding:0 6px 0 12px', '', '<span class="dock">' + glow(60, 'left:-7px;top:-7px') + ch(44, true, 'position:absolute;left:1px;top:3px;') + '</span>'))
+  ];
+
+  /* C: the call folds into the chat */
+  function levels(n) {
+    var h = [8, 14, 20, 12, 18, 9, 15, 6]; var s = '';
+    for (var i = 0; i < n; i++) s += '<i style="height:' + h[i % h.length] + 'px"></i>';
+    return '<span class="lvl">' + s + '</span>';
+  }
+  function sm(kind) { return rbx(kind, kind === 'End' ? 'end' : 0, 32); }
+  var C = [
+    frame('accent-aurora', 'dark',
+      glow(340, 'left:-45px;top:40px') + '<div class="top-id"><div class="nm">Juno</div><div class="st"><span class="dot"></span>Listening &middot; 02:14</div></div>' + fig(150, 90, true) +
+      '<div class="cap-line" style="left:20px;right:20px;top:366px;color:var(--text)">&ldquo;' + SAY + '&rdquo;</div>' +
+      '<div class="ctls" style="left:0;right:0;bottom:22px;gap:44px;align-items:flex-end">' + rbx('Chat', 0, 56, 1) + rbx('End', 'end', 56, 1) + '</div>'),
+    frame('accent-aurora', 'dark',
+      glow(300, 'left:-25px;top:20px') + '<div class="top-id"><div class="nm">Juno</div><div class="st"><span class="dot"></span>Speaking &middot; 02:14</div></div>' + fig(80, 90, false) +
+      sheetBox('top:250px;height:190px', 1) +
+      '<div class="ctls" style="left:0;right:0;bottom:18px;gap:44px;align-items:flex-end">' + rbx('Chat', 0, 44) + rbx('End', 'end', 44) + '</div>'),
+    frame('accent-aurora', 'dark',
+      glow(260, 'left:-5px;top:-70px') +
+      '<div class="glass fold">' + ch(56, true) + '<div style="flex:1;min-width:0"><div class="nm">Juno</div>' + levels(8) + '</div>' + sm('Mute') + sm('End') + '</div>' +
+      thread('top:124px;bottom:84px') + sendBar())
+  ];
+
+  /* D: tap the figure */
+  var D = [
+    frame('accent-moss', 'light',
+      glow(380, 'left:-65px;top:40px') + '<div class="top-id"><div class="nm">Juno</div><div class="st">02:14</div></div>' + fig(168, 92, true) +
+      '<div class="cap-line" style="left:0;right:0;top:428px"><span class="glass pill">Tap Juno to mute</span></div>' +
+      '<div class="rb glass" style="position:absolute;left:14px;bottom:18px;width:46px;height:46px"><i class="ico"></i></div>' +
+      '<div class="rb danger-fill" style="position:absolute;right:14px;bottom:18px;width:46px;height:46px"><i class="ico"></i></div>'),
+    frame('accent-moss', 'light',
+      glow(300, 'left:-25px;top:10px') + '<div class="top-id"><div class="nm">Juno</div><div class="st"><span class="chip">Muted</span></div></div>' + fig(96, 92, false, '').replace('class="character"', 'class="character muted"') +
+      '<div class="glass-thick sheet" style="left:12px;right:12px;top:284px;height:164px;border-radius:var(--r-xl);gap:4px"><span class="handle"></span><div class="say sm" style="font-size:13px;line-height:18px">' + REPLY + '</div>' + list().replace('class="cl"', 'class="cl" style="margin-top:-2px"') + '</div>' +
+      '<div class="rb glass" style="position:absolute;left:14px;bottom:18px;width:46px;height:46px"><i class="ico"></i></div>' +
+      '<div class="rb danger-fill" style="position:absolute;right:14px;bottom:18px;width:46px;height:46px"><i class="ico"></i></div>'),
+    frame('accent-moss', 'light',
+      glow(260, 'left:-5px;top:-60px') +
+      '<div class="th th-box" style="top:50px;bottom:128px"><div class="sysline">Call paused</div>' + hi() + me() + reply() + cardIn().replace('class="surface card-in"', 'class="surface card-in" style="padding:4px 12px"') + '</div>' +
+      '<div class="wide btn-primary" style="bottom:76px">Return to the call</div>' + sendBar('', '', send()))
+  ];
+  C[1] = C[1];
+
+  var arr = [
+    ['v-a', 'A. Three buttons', ['On the call', 'A card pops up', 'Switched to chat'], A,
+      'Gains the plainest, calmest call screen and a call that keeps running with a bar to return; costs a thin one-line caption, so what is said is only readable in the chat.'],
+    ['v-b', 'B. Captions on', ['On the call', 'A card pops up', 'Switched to chat'], B,
+      'Gains what both sides say, readable on the call itself, and a live bubble to return to it; costs a busier screen with four buttons and text over the lower third.'],
+    ['v-c', 'C. The call folds into the chat', ['On the call', 'A card pops up', 'Switched to chat'], C,
+      'Gains one screen that never leaves the call, with the figure, sound level and controls above the live thread; costs a small head in the chat and a heavier header.'],
+    ['v-d', 'D. Tap the figure', ['On the call', 'A card pops up (muted)', 'Switched to chat (paused)'], D,
+      'Gains the largest figure and the quietest screen, with only two corner buttons; costs a mute that is hidden in a touch on the figure, and a call that pauses while the chat is open.']
+  ];
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[4] + '</p><div class="row3">' +
+      a[3].map(function (f, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + a[2][i] + '</span>' + f + '</div>'; }).join('') +
+      '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

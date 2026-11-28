@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin panel layout board, second round</title>
+<!--
+  Four forms of the admin panel in the layout of Apple's Settings, each drawn
+  twice: an assistant's page kept high level (light), and a search for "wake"
+  (dark). Nothing here is decided. See ../admin-panel.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 410px; border-radius: 14px; overflow: hidden; }
+  .in { position: absolute; left: 0; top: 0; width: 750px; height: 512px; zoom: .8; }
+  .in > * { position: absolute; }
+  .grow { flex: 1; min-width: 0; }
+  .ell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ico.ic { border: 0; opacity: 1; background: var(--accent-soft); }
+  .nav.on .ico.ic { background: var(--accent); }
+  .nav { display: flex; align-items: center; gap: var(--s-2); height: 24px; padding: 0 var(--s-2); border-radius: var(--r-sm); font: var(--type-label); color: var(--text); white-space: nowrap; }
+  .nav.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .cap { padding: var(--s-2) var(--s-2) 2px; }
+  .col { display: flex; flex-direction: column; gap: var(--s-2); overflow: hidden; }
+  .grp { display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; padding: 2px; }
+  .grp .row { min-height: 34px; border-radius: var(--r-md); }
+  .grp.nv { padding: 2px; }
+  .row .val { max-width: 52%; color: var(--text-2); }
+  .row.res { min-height: 42px; padding-top: 3px; padding-bottom: 3px; }
+  .row.res .sub { font-size: 11px; }
+  .chev { color: var(--text-3); font-weight: 600; flex: none; }
+  mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; padding: 0 1px; }
+  .person { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-2); border-radius: var(--r-lg); }
+  .person .avatar { width: 30px; height: 30px; }
+  .caret { display: inline-block; width: 1.5px; height: 15px; background: var(--accent); margin-left: 1px; }
+  .fld { height: 28px; flex: none; }
+  .head { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; padding: var(--s-1) 0 var(--s-2); }
+  .head.left { flex-direction: row; text-align: left; gap: var(--s-3); padding: 0 var(--s-1); }
+  .bar2 { display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-3); }
+  .back { color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .gcap { padding: 2px var(--s-3) 0; }
+  .btn { height: 28px; }
+  .dim { inset: 0; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); background: color-mix(in srgb, var(--bg) 55%, transparent); }
+  .cmd { display: flex; flex-direction: column; padding: var(--s-2); gap: 2px; }
+  .cmd .big { display: flex; align-items: center; gap: var(--s-3); height: 44px; padding: 0 var(--s-3); font: var(--type-heading); font-weight: 500; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="board"></div>
+<script>
+(function () {
+  var G = [['Household', ['People', 'Devices', 'Assistants']], ['System', ['AI providers', 'Speech', 'Modules', 'Features']], ['Logs', ['Summoning', 'Requests', 'Admin access', 'Audit']], ['Feedback', ['Feedback']]];
+  var IC = '<span class="ico ic"></span>';
+  var LENS = '<span class="ico"></span>';
+  var R = [['Wake words', 'Assistants › Juno › Identity', 'Assistants'], ['Listen for the wake word', 'Devices › Kitchen tablet', 'Devices'], ['Wake word strictness', 'System › Speech', 'System'], ['Wake-word log', 'Logs › Summoning', 'Logs']];
+  function at(s) { return ' style="' + s + '"'; }
+  function ab(s) { return at(s) + '>'; }
+  function ch(size) { return '<span class="character" style="--size:' + size + 'px"></span>'; }
+  function hit(t) { return t.replace(/wake/i, function (m) { return '<mark>' + m + '</mark>'; }); }
+
+  function nav(n, on) { return '<div class="nav' + (on ? ' on' : '') + '">' + IC + n + '</div>'; }
+  function person() { return '<div class="person"><span class="avatar">A</span><div><div class="t-label" style="font-weight:600">Alex</div><div class="t-label t-2">Admin</div></div></div>'; }
+  function navGroups(plain) {
+    return G.map(function (g) {
+      var items = g[1].map(function (n) { return nav(n, n === 'Assistants'); }).join('');
+      if (plain) return '<div>' + (g[0] === 'Feedback' ? '' : '<div class="t-caption gcap">' + g[0] + '</div>') + '<div class="grp surface">' + items + '</div></div>';
+      return (g[0] === 'Feedback' ? '<div style="height:6px"></div>' : '<div class="t-caption cap">' + g[0] + '</div>') + items;
+    }).join('');
+  }
+  function sfield(text, typed, w) { return '<div class="field fld"' + (w ? at('width:' + w + 'px') : '') + '>' + LENS + (typed ? '<span class="grow">' + text + '<span class="caret"></span></span>' : '<span class="ph grow">' + text + '</span>') + '</div>'; }
+
+  function row(label, val, o) {
+    o = o || {};
+    return '<div class="row' + (o.hl ? ' is-selected' : '') + '">' + (o.noico ? '' : IC) + '<div class="grow ell">' + label + '</div>' +
+      (val ? '<span class="val ell">' + val + '</span>' : '') + (o.toggle ? '<span class="toggle on"></span>' : '<span class="chev">›</span>') + '</div>';
+  }
+  function grp(rows) { return '<div class="grp surface">' + rows.join('') + '</div>'; }
+  function groups1(o) { return grp([row('Identity', 'Juno · Warm, calm voice'), row('Brain', 'Local model, small'), row('Abilities', '3 of 5 on')]) + grp([row('Scope', 'Household'), row('Guests', 'Answers guests', { toggle: 1 }), row('Devices', '3 devices')]); }
+  function groupsIdentity(hl) { return grp([row('Name', 'Juno'), row('Voice', 'Warm, calm')]) + grp([row('Wake words', 'Hey Juno', { hl: hl }), row('Personality', 'Warm, playful')]); }
+  function headC(size) { return '<div class="head">' + ch(size) + '<div class="t-title" style="margin-top:4px">Juno</div><div class="t-label t-2">Say: Hey Juno</div></div>'; }
+  function res(r, hl) { return '<div class="row res' + (hl ? ' is-selected' : '') + '"><div class="grow"><div class="t-strong ell">' + hit(r[0]) + '</div><div class="sub ell">' + r[1] + '</div></div></div>'; }
+  function resList(hlFirst) { return '<div class="list">' + R.map(function (r, i) { return res(r, hlFirst && i === 0); }).join('') + '</div>'; }
+
+  /* A: glass side bar, plain groups */
+  function A1() {
+    return '<aside class="glass col"' + ab('left:10px;top:10px;bottom:10px;width:200px;padding:var(--s-2);gap:0') + sfield('Search', 0) + '<div style="height:6px"></div>' + person() + navGroups(false) + '</aside>' +
+      '<main class="col"' + ab('left:230px;right:10px;top:12px;bottom:10px;padding:0 var(--s-3);gap:var(--s-3)') + headC(76) + groups1() + '</main>';
+  }
+  function A2() {
+    return '<aside class="glass col"' + ab('left:10px;top:10px;bottom:10px;width:200px;padding:var(--s-2);gap:0') + sfield('wake', 1) + '<div class="t-caption cap" style="margin-top:6px">4 results</div>' + resList(1) + '</aside>' +
+      '<main class="col"' + ab('left:230px;right:10px;top:16px;bottom:10px;padding:0 var(--s-3);gap:var(--s-3)') +
+      '<div style="display:flex;align-items:center;gap:var(--s-2)"><span class="back">‹ Juno</span><span class="grow"></span></div><div class="t-title" style="margin-top:-4px">Identity</div>' + groupsIdentity(1) + '</main>';
+  }
+
+  /* B: three columns */
+  function colsBehind(page) {
+    var col1 = '<aside class="glass col"' + ab('left:10px;top:58px;bottom:10px;width:160px;padding:var(--s-2);gap:0') + person() + navGroups(false) + '</aside>';
+    var col2 = '<section class="surface col"' + ab('left:180px;top:58px;bottom:10px;width:150px;padding:var(--s-2);gap:2px') + '<div class="t-heading" style="padding:var(--s-1) var(--s-2) var(--s-2)">Assistants</div>' +
+      '<div class="row is-selected">' + ch(22) + '<div class="grow">Juno</div><span class="chev">›</span></div><div class="row">' + ch(22).replace('class="character"', 'class="character muted"') + '<div class="grow">Sage</div><span class="chev">›</span></div><div class="grow"></div><span class="btn">Add assistant</span></section>';
+    var col3 = '<main class="col"' + ab('left:340px;right:10px;top:58px;bottom:10px;padding:0 var(--s-1);gap:var(--s-3)') +
+      '<div class="head left">' + ch(68) + '<div><div class="t-title">Juno</div><div class="t-label t-2">Say: Hey Juno</div></div></div>' + groups1() + '</main>';
+    return col1 + col2 + col3;
+  }
+  function B1() {
+    return '<header class="glass bar2"' + ab('left:10px;right:10px;top:10px;height:40px;justify-content:center') + sfield('Search settings', 0, 320) + '</header>' + colsBehind();
+  }
+  function B2() {
+    return '<header class="glass bar2"' + ab('left:10px;right:10px;top:10px;height:40px;justify-content:center') + sfield('wake', 1, 320) + '</header>' + colsBehind() +
+      '<div class="glass-thick" ' + ab('left:200px;width:350px;top:46px;padding:var(--s-2)') + resList(1) + '</div>';
+  }
+
+  /* C: one column that drills in */
+  function C1() {
+    return '<header class="glass bar2"' + ab('left:10px;right:10px;top:10px;height:42px') + '<span class="back">‹</span><span class="t-strong grow ell">Assistants › Juno</span>' + sfield('Search', 0, 190) + '</header>' +
+      '<main class="col"' + ab('left:175px;width:400px;top:62px;bottom:10px;gap:var(--s-3)') +
+      '<div class="glass head" style="padding:var(--s-3);border-radius:var(--r-xl);flex-direction:row;gap:var(--s-4);text-align:left">' + ch(72) + '<div><div class="t-title">Juno</div><div class="t-label t-2">Say: Hey Juno</div></div></div>' + groups1() + '</main>';
+  }
+  function C2() {
+    var body = R.map(function (r) { return '<div><div class="t-caption gcap">' + r[2] + '</div><div class="grp surface">' + res(r, 0).replace('</div></div>', '</div></div><span class="chev">›</span>') + '</div></div>'; }).join('');
+    return '<header class="glass bar2"' + ab('left:10px;right:10px;top:10px;height:42px') + '<span class="back">‹</span>' + sfield('wake', 1).replace('class="field fld"', 'class="field fld grow"') + '<span class="back">Cancel</span></header>' +
+      '<main class="col"' + ab('left:175px;width:400px;top:62px;bottom:10px;gap:var(--s-2)') + '<div class="t-label t-2" style="padding:0 var(--s-3)">4 results, grouped by where they are</div>' + body + '</main>';
+  }
+
+  /* D: plain side list, preview card and rows */
+  function sideD() {
+    return '<aside class="col"' + ab('left:10px;top:10px;bottom:10px;width:200px;gap:var(--s-2)') + '<div class="surface" style="border-radius:var(--r-lg)">' + person() + '</div>' + navGroups(true) + '</aside>';
+  }
+  function pageD() {
+    return '<section class="glass col"' + ab('left:230px;top:10px;bottom:10px;width:190px;align-items:center;justify-content:center;text-align:center;padding:var(--s-4);gap:var(--s-2);border-radius:var(--r-xl)') +
+      '<span class="figure" style="--size:110px"><span class="character" style="--size:110px"></span></span><div class="t-title" style="margin-top:var(--s-2)">Juno</div><div class="t-label t-2">Say: Hey Juno</div><span class="btn" style="margin-top:var(--s-2)">Hear the voice</span></section>' +
+      '<main class="col"' + ab('left:430px;right:10px;top:10px;bottom:10px;justify-content:center;gap:var(--s-3)') + groups1() + '</main>';
+  }
+  function D1() {
+    return sideD() + pageD();
+  }
+  function D2() {
+    return sideD() + pageD() + '<div class="dim"></div>' +
+      '<div class="glass-thick cmd"' + ab('left:125px;width:500px;top:60px') + '<div class="big">' + LENS + '<span class="grow">wake<span class="caret" style="height:22px"></span></span><span class="kbd">esc</span></div><hr class="divider" style="margin:2px var(--s-2)">' + resList(1) + '</div>';
+  }
+
+  function frame(light, cls, inner) { return '<div class="frame backdrop compact ' + cls + ' ' + (light ? 'light' : 'dark') + '"><div class="in">' + inner + '</div></div>'; }
+  var DS = [
+    ['v-a', 'A. Mac System Settings', 'accent-tide', 'The most familiar form, and a setting is two clicks away, but the side bar takes over a quarter of the width and on a phone it becomes a full-screen list that drills in.', A1, A2],
+    ['v-b', 'B. Three columns', 'accent-ember', 'Each step in stays in view, so the way back is always one click, but three columns leave the page narrow and a phone would show one column at a time.', B1, B2],
+    ['v-c', 'C. One column that drills in', 'accent-aurora', 'It shows the least at once and shrinks to a phone unchanged, but with no list on screen every jump to another destination goes back through the home.', C1, C2],
+    ['v-d', 'D. Side list, preview and rows', 'accent-moss', 'The character gets the room it deserves and search is a keystroke from anywhere, but the split page makes the rows narrow and a phone would stack the card above them.', D1, D2]
+  ];
+  document.getElementById('board').innerHTML = DS.map(function (a) {
+    var caps = ['1 &middot; Light &middot; An assistant’s page', '2 &middot; Dark &middot; Searching for “wake”'];
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[3] + '</p><div class="pair">' +
+      [a[4], a[5]].map(function (fn, i) { return '<div class="cell"><span class="t-caption">' + caps[i] + '</span>' + frame(i === 0, a[2], fn()) + '</div>'; }).join('') + '</div></section>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

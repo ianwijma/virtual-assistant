@@ -59,7 +59,85 @@ These are readings of earlier answers. Each stands as written in the design
 unless corrected. They are lettered so that the numbers below stay for the
 questions.
 
-None at the moment.
+A. "The frosted design of iOS 27" is read as Apple's Liquid Glass, the
+   glass material of the current iOS and macOS. [glass]
+B. "Heavy inspiration" is read as: the look is inspired by Apple's and
+   is still our own, the same on every device, so the earlier decision
+   that it is recognisable as ours stands. [visual identity]
+C. Low-fidelity mockups and examples are kept as web pages in
+   `docs/design/visual/`, which a person opens in a browser and an agent
+   can read. [mockups]
+D. All four feelings were chosen: calm, warm, precise and playful. This
+   is read as: the interface is calm and precise, and the assistants are
+   warm and playful. [visual identity]
+E. An accent is read as two colours, a main one and a second one for
+   the backdrop, so "two custom colours" makes one accent. [colour]
+F. On a household device, a recognised person's accent shows for the
+   length of the conversation, and then the device's or the household's
+   accent returns. [colour]
+G. The glass and the text are neutral, and colour comes from the
+   accent. Our own backdrop takes the accent. [glass] [colour]
+H. In the second review, the ticks are read as agreement: one shipped
+   typeface, two densities and an open icon set are agreed. [typography]
+   [shape]
+J. "Two modes" of motion is read as: reduced motion follows the device's
+   setting and can also be switched on per device in our settings.
+   [motion]
+M. The desktop settings are read as: opened from the launcher and shown
+   in the launcher's own window as another view, with the admin panel's
+   side bar and page. [visual desktop]
+N. The phone's bar is read as four buttons a person sets plus a fifth,
+   fixed button for the overview of all areas, not four in all.
+   [visual phone]
+O. "As quiet as possible" is read with its bar for a lost connection,
+   and the saved content under it stays usable, not only readable.
+   [components]
+P. Growing from what was touched is read as the rule for every sheet,
+   pop-up and new page in every client, with titles and other shared
+   parts moving into place. [motion]
+Q. "Really platform specific" is read as five reasons: room on the
+   screen, how the device is operated, how far away it is read, what the
+   device cannot do, and what only that device has. [visual]
+R. From the same answer, the setup of a new device is taken to be the
+   same design as the first-run setup, and the question of saving a
+   setting is asked once for every client. [visual admin panel]
+   [components]
+S. The request for home-like and Dutch names is read as: "Hearth" is
+   dropped, not kept beside the new candidates. [visual identity]
+T. "It depends on the device" is read as: desktop and admin panel start
+   compact, phone and tablet start roomy, and the density is the thing
+   that can be changed, not the layout. [shape]
+U. "I like the Phosphor icons" is read as the choice of the set. Whether
+   the chosen item is filled was not answered and stays a question.
+   [shape]
+V. The four devices of the accent preview are read as the phone app,
+   the tablet, the desktop and the admin panel. [colour]
+W. The answer on the accent picker is read as: pairs that go together
+   first, with Shuffle, and the two-handle wheel behind the link for a
+   free choice. Shuffle takes the place of picking two colours at
+   random. [colour]
+Z. The list of changes with before and after is read as planned and not
+   part of the first designs. [components]
+X. "A bit of both" is read as: the figure in the assistant's colour, and
+   the backdrop and the buttons in the person's accent. [colour]
+Y. From the answer on responsive layout, the app's own settings are
+   taken to be the same design as the desktop settings and the admin
+   panel, with fewer columns on a narrow screen. [visual]
+AC. "The two-tone accent as the background of the panels" is read as:
+   the plain base and panels carry a little of both colours of the
+   accent. [colour]
+AE. The tint was chosen from a board that showed it in dark too, so it
+   is taken to hold in dark. [colour]
+AH. "In the audit, agents, latency" is read as: the request timeline of
+   the admin panel records that a screen was composed. [components]
+AI. "Characters" is read as the preferred word for an assistant's look,
+   with "figure" kept for its drawn body. [assistant visuals]
+AJ. "The choice screen we have on other devices" is read as the pane of
+   the setup of a new device that asks: personal or household. [visual
+   voice page]
+AN. The default keys for actions in the launcher were chosen by the
+   agent at the owner's request and are to be validated. [visual
+   desktop]
 
 ## 1. Now
 
@@ -180,15 +258,93 @@ product, not a complete study.
 
 ## 6. Visual design
 
-These are not asked in the technical planning thread. The owner works on
-the look and feel in a separate thread.
+These are answered in the visual design thread. The candidates that
+several of them refer to are on
+[the direction board](design/visual/examples/direction-board.html), a page
+to open in a browser. Each group is needed before its part is designed in
+detail.
 
-28. Three or four words for how it should feel, and products whose look
-   you admire. [visual]
-29. Are settings screens generated from each feature's description, so
-   that one definition serves the phone app, the desktop client and the
-   admin panel? This is decided once there are visual designs of the app
-   and the admin panel. [visual]
+### The feel and the name
+
+28. Which web address does the project use? heem.com, heem.app, heem.nl
+   and heem.dev are taken. A prefix is likely, such as getheem.com. This
+   is decided after the trade mark search. [visual identity]
+
+### The glass
+
+29. Can the launcher find out how bright the windows behind it are? This
+   is to be looked into for after the first release. [glass]
+
+### The colours
+
+
+### Typography
+
+
+### Shape, spacing and icons
+
+
+### Motion and sound
+
+
+### Tokens and components
+
+
+### Assistant visuals
+
+30. Where the character is shown as a small head today, such as in a
+   list row or in the header of the folded call, is that the character
+   far away, or a picture of it apart from the room? [assistant visuals]
+31. With reduced motion, how does the character get from one place to
+   another without walking? [assistant visuals]
+32. In which style are the full figures drawn, when they are redesigned
+   later? Five styles are on the figure style board. [assistant visuals]
+33. Does a figure have a mouth that moves when it talks, and arms? Both
+   are ideas for the thread on the figures. [assistant visuals]
+34. Is the figure of the first release a rendered three-dimensional one,
+   or the flat one for now? [assistant visuals]
+35. Who draws the figures, and how many are there in the first release?
+   [assistant visuals]
+36. How does a person give their own assistant a look: by choosing from
+   a set of figures, by adjusting parts such as colour and clothing, or
+   by supplying their own drawing? [assistant visuals]
+37. How playful is the default household assistant: cute, friendly, or
+   calm? [assistant visuals]
+38. May a person bring their own figure, such as a character they like
+   from elsewhere? The project cannot ship characters that belong to
+   others. [assistant visuals]
+39. From the research: which of the three routes above do the first
+   figures take? [assistant visuals]
+
+### The clients
+
+40. The three sections, the assistant's card and the greeting do not fit
+   on one phone screen. What gives way: the greeting, the settled
+   section, or does the list simply scroll? [visual phone]
+41. With one screen that darkens, is there still a setting that keeps
+   the character asleep on screen in a fully dark room, or does only the
+   light decide? [visual tablet]
+42. How does a person reach the settings of the voice page, which has no
+   menu? [visual voice page]
+
+### The mockups
+
+
+### To research
+
+An agent does this work and the owner agrees to the outcome.
+
+43. A search of the trade mark registers of the EU, the Benelux, the UK
+   and the US for "Heem", in the classes for software and devices. The
+   registers could not be reached in the checks so far. [visual
+   identity]
+44. How fast the blur is on an old tablet and in the launcher, measured
+   on real devices. [glass]
+45. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+   sheet or a page out of one element and keep a shared element, such as
+   a title, moving between two screens. [motion]
+46. How much power a three-dimensional figure uses on an old tablet that
+   is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
 [assistants]: design/technical/voice/assistants.md
@@ -222,3 +378,18 @@ the look and feel in a separate thread.
 [licensing]: design/technical/licensing-and-hardware.md
 [repository]: design/technical/repository.md
 [visual]: design/visual/README.md
+[visual identity]: design/visual/identity.md
+[glass]: design/visual/glass.md
+[colour]: design/visual/colour.md
+[typography]: design/visual/typography.md
+[shape]: design/visual/shape-and-spacing.md
+[motion]: design/visual/motion.md
+[assistant visuals]: design/visual/assistant-visuals.md
+[tokens]: design/visual/tokens.md
+[components]: design/visual/components.md
+[mockups]: design/visual/mockups/README.md
+[visual desktop]: design/visual/desktop.md
+[visual phone]: design/visual/phone.md
+[visual tablet]: design/visual/tablet.md
+[visual admin panel]: design/visual/admin-panel.md
+[visual voice page]: design/visual/voice-page.md

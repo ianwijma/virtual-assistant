@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dark text board</title>
+<!--
+  Secondary text on glass in dark mode measures 3.8 to 1 at worst (Moss), short of 4.5.
+  Three ways to deal with it, against the current state. Each option only overrides token values
+  (and, in D, one wrapper rule). Contrast figures: secondary text over the glass on the backdrop's
+  strongest colour, worked out as in the readability board. Nothing here is decided.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .page h1 { font: var(--type-title); margin: 0 0 10px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+  .opt { display: grid; grid-template-columns: 44px 1fr; gap: 0 12px; align-content: start; }
+  .letter { grid-row: 1 / 3; font: var(--type-display); width: 44px; height: 44px; border-radius: var(--r-md);
+    display: grid; place-items: center; background: var(--text); color: var(--bg); }
+  .opt h2 { font: var(--type-heading); margin: 0; align-self: center; }
+  .opt p.d { font: var(--type-label); color: var(--text-2); margin: 2px 0 8px; }
+  .pair { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cap { font: var(--type-caption); color: var(--text-2); margin: 0 0 4px; }
+  .scene { border-radius: 20px; padding: 12px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+  .scene .card { padding: var(--s-3); }
+  .scene .head { display: flex; align-items: center; gap: var(--s-2); }
+  .scene .head .ico { flex: none; }
+  .scene .txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .scene .big { font: var(--type-display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .meas { font: var(--type-label); color: var(--text-2); margin: 6px 0 0; }
+  .meas b { font: var(--type-strong); color: var(--text); }
+  .page, .page * { word-wrap: break-word; }
+
+  /* B. Calmer dark backdrop: glows at about half strength, darker base. */
+  .v-b { --backdrop-1: 32%; --backdrop-2: 21%; --bg: light-dark(#F4F5F7, #0B0D10); }
+  /* C. Brighter secondary text in dark. */
+  .v-c { --text-2: light-dark(rgba(20,22,26,.80), rgba(242,244,247,.92)); }
+  /* D. A plate under the text of each glass card; the rest stays thin glass. */
+  .plate { display: contents; }
+  .v-d .glass.card { padding: 5px; }
+  .v-d .plate { display: flex; flex-direction: column; gap: 4px; background: rgba(0,0,0,.22); border-radius: var(--r-md); padding: var(--s-3); }
+</style>
+</head>
+<body class="va dark" style="background: var(--bg)">
+<div class="page" id="page"></div>
+<script>
+  var inner =
+    '<div class="glass card"><div class="plate">' +
+      '<div class="head"><span class="ico"></span><span class="txt"><span class="t-strong">Parcel arrives tomorrow</span>' +
+      '<span class="t-label t-2">Email from Sam, delivery slot 10 to 12</span></span></div>' +
+      '<div class="t-caption">2 min ago</div></div></div>' +
+    '<div class="glass card"><div class="plate">' +
+      '<div class="head"><span class="ico"></span><span class="txt"><span class="t-strong">Pasta timer</span>' +
+      '<span class="t-label t-2">Started by Juno in the kitchen</span></span></div>' +
+      '<div class="big">07:42</div><div class="t-caption">Ends at 18:45</div></div></div>';
+
+  var vs = [
+    ['v-a', 'A', 'As it is', 'No change. Secondary text stays too faint on thin glass, so it fails the 4.5 target.', '3.8', '4.2'],
+    ['v-b', 'B', 'Calmer dark backdrop', 'The glows in dark go to about half strength on a darker base. Cost: less colour on screen in dark.', '7.0', '7.5'],
+    ['v-c', 'C', 'Brighter secondary text in dark', 'Secondary text rises to 92% white. Cost: less difference between main and secondary text.', '4.3', '4.9'],
+    ['v-d', 'D', 'A plate under the text', 'A faint dark plate sits behind the text lines only. Cost: a second layer inside every glass card.', '5.2', '5.7']
+  ];
+  var scenes = [['moss', 'Moss (worst case)', 4], ['tide', 'Tide', 5]];
+  document.getElementById('page').innerHTML = '<h1>Secondary text on dark glass</h1><div class="grid">' + vs.map(function (v) {
+    return '<div class="opt" id="' + v[0] + '"><div class="letter">' + v[1] + '</div><h2>' + v[2] + '</h2>' +
+      '<p class="d">' + v[3] + '</p><div class="pair">' +
+      scenes.map(function (s) {
+        return '<div><p class="cap">Dark, ' + s[1] + '</p><div class="scene backdrop dark accent-' + s[0] + ' ' + v[0] + '">' + inner + '</div>' +
+          '<p class="meas">Secondary text: <b>about ' + v[s[2]] + ' to 1</b></p></div>';
+      }).join('') + '</div></div>';
+  }).join('') + '</div>';
+</script>
+</body>
+</html>

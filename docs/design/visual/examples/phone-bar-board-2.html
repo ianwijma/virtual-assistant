@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone bar board 2</title>
+<!--
+  The phone's tab bar has four buttons the person sets and one fixed button,
+  All, that opens an overview of every area. Four designs for that overview
+  and for changing the four buttons. Nothing here is decided. See ../phone.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: 8px; }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); max-width: 1200px; }
+  .trio { display: grid; grid-template-columns: repeat(3, 270px); gap: 14px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .phone { position: relative; width: 270px; height: 560px; border-radius: 34px; overflow: hidden; }
+  .phone > * { position: absolute; }
+  .sb { top: 11px; left: 26px; right: 26px; display: flex; justify-content: space-between; font: var(--type-label); font-weight: 600; font-size: 12px; z-index: 5; }
+  .scr { overflow: hidden; left: 14px; right: 14px; }
+  .grow { flex: 1; min-width: 0; }
+  .ell { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sub { font: var(--type-caption); color: var(--text-2); display: block; text-transform: none; letter-spacing: 0; }
+  .lab { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); margin: var(--s-3) 4px var(--s-1); }
+  .ico.s { width: 18px; height: 18px; }
+  .rbtn { border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .top { top: 34px; left: 10px; right: 10px; display: flex; align-items: center; gap: var(--s-2); padding: 6px 8px 6px 14px; border-radius: var(--r-full); min-height: 48px; z-index: 2; }
+  .top .t-strong { font-size: 15px; }
+  .top .btn { height: 32px; padding: 0 12px; font-size: 13px; }
+  .back { display: flex; align-items: center; gap: 4px; color: var(--accent); font: var(--type-label); font-weight: 600; }
+  .back::before { content: ""; width: 9px; height: 9px; border: solid currentColor; border-width: 0 0 2px 2px; transform: rotate(45deg); margin-left: 3px; }
+  .glass .back, .glass-thick .back { color: var(--text); }
+  .ph-scr { top: 94px; bottom: 70px; }
+  /* the bar */
+  .tb { left: 10px; right: 10px; bottom: 10px; display: flex; gap: 2px; padding: 6px; border-radius: var(--r-xl); z-index: 6; }
+  .tb > div { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 0; border: 1.5px solid transparent; border-radius: var(--r-md); font: var(--type-caption); font-size: 9.5px; letter-spacing: 0; text-transform: none; color: var(--text-2); padding-left: 0; padding-right: 0; }
+  .tb > .on { background: var(--accent-soft); color: var(--accent); }
+  .glass-thick .tb, .tb.glass-thick > .on { color: var(--text); }
+  .tb > .on { color: var(--text); background: var(--accent-soft); }
+  .tb .sep { flex: none; width: 1px; height: 30px; align-self: center; background: var(--line); margin: 0 1px; }
+  .tb > .fix { flex: .85; }
+  .tb > .slot { border: 1px dashed var(--text-3); font-size: 9px; padding-left: 0; padding-right: 0; }
+  .tb > .slot.sel { border: 1px solid var(--accent); background: var(--accent-soft); color: var(--text); }
+  .tb > .lock { opacity: .55; }
+  .gi { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: 18px; height: 18px; }
+  .gi i { background: currentColor; border-radius: 2.5px; }
+  .dim { inset: 0; background: color-mix(in srgb, var(--text) 30%, transparent); z-index: 3; }
+  .grab { width: 36px; height: 4px; border-radius: 2px; background: var(--text-3); margin: 0 auto var(--s-2); }
+  /* content */
+  .card { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3); margin-top: var(--s-2); }
+  .nrow { display: flex; align-items: center; gap: var(--s-3); padding: 9px var(--s-3); }
+  .nrow + .nrow { border-top: 1px solid var(--line); }
+  .nrow .t-label { font-size: 13px; }
+  .chev::after { content: ""; display: block; width: 8px; height: 8px; border: solid var(--text-3); border-width: 2px 2px 0 0; transform: rotate(45deg); }
+  .btn.sm { height: 30px; padding: 0 12px; font-size: 13px; }
+  /* A */
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: var(--s-2); }
+  .tl3 { height: 88px; padding: 10px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+  .tl3 .t-label { font-size: 11.5px; font-weight: 600; line-height: 1.2; }
+  .tl3.new { border: 1.5px dashed var(--text-3); background: transparent; }
+  .wig .tl3 { outline: 1.5px dashed var(--accent); outline-offset: 2px; }
+  .wig .tl3:nth-child(odd) { transform: rotate(-1.8deg); }
+  .wig .tl3:nth-child(even) { transform: rotate(1.8deg); }
+  .wig .tl3.hole { outline-color: var(--text-3); background: transparent; border-style: dashed; opacity: .6; }
+  .lift { z-index: 7; width: 84px; height: 66px; padding: 8px 10px; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(4deg); border-radius: var(--r-lg); }
+  .lift .t-label { font-size: 11px; font-weight: 600; }
+  .hint { font: var(--type-caption); color: var(--text-2); text-align: center; margin-top: var(--s-3); }
+  /* B */
+  .sheet { left: 8px; right: 8px; z-index: 4; padding: var(--s-3); }
+  .g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px 4px; }
+  .gi4 { display: flex; flex-direction: column; align-items: center; gap: 4px; position: relative; min-width: 0; }
+  .gi4 .bx { width: 44px; height: 44px; border-radius: var(--r-md); background: var(--control); display: grid; place-items: center; border: 1.5px solid transparent; }
+  .gi4 .t-label { font-size: 10px; line-height: 1.15; text-align: center; font-weight: 500; height: 23px; }
+  .gi4.new .bx { background: transparent; border: 1.5px dashed var(--text-3); }
+  .gi4.pick .bx { border-color: var(--accent); background: var(--accent-soft); }
+  .nb { position: absolute; top: -4px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font: var(--type-caption); font-size: 9px; font-weight: 700; display: grid; place-items: center; }
+  /* C */
+  .strip { display: flex; gap: 6px; }
+  .chp { flex: 1; min-width: 0; height: 38px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0 2px; font-size: 10.5px; font-weight: 600; border-radius: var(--r-md); }
+  .hdl { display: block; width: 14px; height: 6px; border-top: 2px solid var(--text-3); border-bottom: 2px solid var(--text-3); box-sizing: border-box; }
+  .chp.up { transform: translateY(-4px) rotate(-3deg); border: 1.5px solid var(--accent); z-index: 3; }
+  .tg { transform: scale(.8); transform-origin: right center; flex: none; }
+  .prow { display: flex; align-items: center; gap: var(--s-2); padding: 6px var(--s-3); }
+  .prow + .prow { border-top: 1px solid var(--line); }
+  .prow .t-label { font-size: 12.5px; font-weight: 600; }
+  .prow .sub { font-size: 10.5px; }
+  /* D */
+  .srch { top: 44px; left: 12px; right: 12px; height: 38px; border-radius: var(--r-full); display: flex; align-items: center; gap: var(--s-2); padding: 0 14px; font: var(--type-label); font-size: 13px; z-index: 2; }
+  .srch .ph { color: var(--text-2); }
+  .lrow { display: flex; align-items: center; gap: var(--s-3); height: 34px; padding: 0 var(--s-3); }
+  .lrow + .lrow { border-top: 1px solid var(--line); }
+  .lrow .t-label { font-size: 13px; font-weight: 600; }
+  .d-scr { top: 90px; bottom: 70px; }
+  .d-scr .lab { margin-top: 8px; }
+  .num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font: var(--type-caption); font-weight: 700; font-size: 11px; display: grid; place-items: center; flex: none; }
+  .srow { display: flex; align-items: center; gap: var(--s-3); height: 44px; padding: 0 var(--s-3); }
+  .srow + .srow { border-top: 1px solid var(--line); }
+  .srow .t-label { font-size: 13px; font-weight: 600; }
+  .menu { left: 22px; right: 22px; top: 272px; z-index: 5; padding: 6px; }
+  .mrow { display: flex; align-items: center; gap: var(--s-2); height: 26px; padding: 0 var(--s-2); font: var(--type-label); font-size: 12.5px; border-radius: var(--r-xs); }
+  .mrow.cur { background: var(--accent-soft); font-weight: 600; }
+  .ck { width: 9px; height: 5px; border: solid var(--text); border-width: 0 0 2px 2px; transform: rotate(-45deg) translateY(-2px); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var ico = '<span class="ico"></span>', icos = '<span class="ico s"></span>';
+  var gi = '<span class="gi"><i></i><i></i><i></i><i></i></span>';
+  var sb = '<div class="sb"><span>8:12</span><span>&#9679;&#9679;&#9679;</span></div>';
+  function ch(size, cls) { return '<span class="character ' + (cls || '') + '" style="--size:' + size + 'px"></span>'; }
+  function av(s, l) { return '<span class="avatar" style="width:' + s + 'px;height:' + s + 'px">' + (l || 'A') + '</span>'; }
+  function talkCard() { return '<div class="glass card">' + ch(38, 'listening') + '<div class="grow"><div class="t-strong">Talk to Juno</div><span class="sub">Tap or say &ldquo;Hey Juno&rdquo;</span></div></div>'; }
+  function topbar(title, left, right, centre) {
+    return '<div class="glass top">' + (left || '') + '<div class="grow t-strong"' + (centre ? ' style="text-align:center"' : '') + '>' + title + '</div>' + (right || '') + '</div>';
+  }
+  /* the bar: o.slots (four names), o.on (index or 'all'), o.edit, o.sel */
+  function bar(o) {
+    var s = o.slots.map(function (n, i) {
+      var c = (i === o.on ? 'on ' : '') + (o.edit ? 'slot ' : '') + (o.edit && i === o.sel ? 'sel' : '');
+      return '<div class="' + c + '">' + icos + '<span>' + n + '</span></div>';
+    }).join('');
+    return '<div class="glass-thick tb">' + s + '<i class="sep"></i><div class="fix ' + (o.on === 'all' ? 'on' : '') + (o.edit ? ' lock' : '') + '">' + gi + '<span>All</span></div></div>';
+  }
+  var DEF = ['Overview', 'Juno', 'Timeline', 'Chat'];
+  var AREAS = [
+    ['Lists', 'Shopping and 2 more'], ['Clipboard', '3 items'], ['Timers and alarms', '1 running'],
+    ['Notifications', '3 new'], ['Devices', '4 online'], ['Settings', 'This app and Home']
+  ];
+
+  /* the Overview screen, the same everywhere */
+  function overview(b) {
+    return sb + topbar('Overview', '', av(34)) +
+      '<div class="scr ph-scr"><div class="t-caption">Tuesday</div><div class="t-title">Good morning, Alex</div>' + talkCard() +
+      '<div class="surface" style="margin-top:var(--s-3)">' +
+      '<div class="nrow"><span class="dot" style="color:var(--accent)"></span><div class="grow t-strong">Pasta timer</div><span class="t-strong num" style="color:var(--accent);width:auto;background:none;font-size:14px">07:42</span></div>' +
+      '<div class="nrow"><div class="grow"><div class="ell t-label">Parcel arrives tomorrow</div><span class="sub">Email &middot; 8:10</span></div></div></div></div>' + b;
+  }
+
+  /* A: a grid page */
+  function tilesA(cls, hole) {
+    var t = AREAS.map(function (a, i) {
+      if (i === hole) return '<div class="surface tl3 hole"><span class="ico" style="opacity:.0"></span><div class="t-label" style="opacity:0">x</div></div>';
+      return '<div class="surface tl3">' + ico + '<div class="t-label">' + a[0] + '</div></div>';
+    }).join('') + '<div class="tl3 new">' + icos + '<div class="t-label" style="color:var(--text-2)">More to come</div></div>';
+    return '<div class="tiles ' + (cls || '') + '">' + t + '</div>';
+  }
+  var A = [
+    function () { return overview(bar({ slots: DEF, on: 0 })); },
+    function () {
+      return sb + topbar('All areas') + '<div class="scr ph-scr">' + tilesA('') + '<div class="hint">Press and hold an area to put it on the bar</div></div>' + bar({ slots: DEF, on: 'all' });
+    },
+    function () {
+      return sb + topbar('All areas', '', '<span class="btn btn-primary">Done</span>') + '<div class="scr ph-scr">' + tilesA('wig', 3) + '<div class="hint">Drag an area onto a button</div></div>' +
+        bar({ slots: DEF, on: -1, edit: true, sel: 2 }) +
+        '<div class="glass-thick lift" style="left:98px;top:428px"><span class="ico"></span><div class="t-label">Notifications</div></div>';
+    }
+  ];
+
+  /* B: a sheet from the button */
+  function gridB(items, o) {
+    return '<div class="g4">' + items.map(function (n) {
+      var c = (n === '+' ? 'new' : '') + (o && o.pick === n ? ' pick' : '');
+      var badge = o && o.badge && o.badge[n] ? '<span class="nb">' + o.badge[n] + '</span>' : '';
+      return '<div class="gi4 ' + c + '"><span class="bx">' + (n === '+' ? icos : ico) + '</span>' + badge + '<div class="t-label">' + (n === '+' ? 'More to come' : n) + '</div></div>';
+    }).join('') + '</div>';
+  }
+  function sheetB(head, body) {
+    return '<div class="glass-thick sheet" style="bottom:76px"><div class="grab"></div>' + head + body + '</div>';
+  }
+  var B = [
+    function () { return overview(bar({ slots: DEF, on: 0 })); },
+    function () {
+      var head = '<div style="display:flex;align-items:center;margin-bottom:var(--s-3)"><div class="grow t-heading">All areas</div><span class="btn btn-quiet sm" style="color:var(--text)">Edit</span></div>';
+      return overview('') + '<div class="dim"></div>' + sheetB(head, gridB(AREAS.map(function (a) { return a[0]; }).concat(['+']))) + bar({ slots: DEF, on: 'all' });
+    },
+    function () {
+      var s = ['Overview', 'Juno', 'Clipboard', 'Chat'];
+      var head = '<div style="display:flex;align-items:center;margin-bottom:var(--s-3)"><div class="grow"><div class="t-heading">Slot 3</div><span class="sub">Touch an area to put it here</span></div><span class="btn btn-primary sm">Done</span></div>';
+      var all = ['Overview', 'Juno', 'Timeline', 'Chat', 'Lists', 'Clipboard', 'Timers and alarms', 'Notifications', 'Devices', 'Settings'];
+      return overview('') + '<div class="dim"></div>' + sheetB(head, gridB(all, { pick: 'Clipboard', badge: { Overview: 1, Juno: 2, Clipboard: 3, Chat: 4 } })) + bar({ slots: s, on: -1, edit: true, sel: 2 });
+    }
+  ];
+
+  /* C: a plain list with pins */
+  var ALLC = [
+    ['Lists', 'Shopping and 2 more'], ['Clipboard', '3 items'], ['Timers and alarms', '1 running'], ['Notifications', '3 new'],
+    ['Devices', '4 online'], ['Settings', 'This app and Home'],
+    ['Overview', 'What is running and new'], ['Juno', 'Talk to your assistant'], ['Timeline', 'Today in one stream'], ['Chat', 'The conversation as text']
+  ];
+  function listC(pinned) {
+    return '<div class="surface">' + ALLC.map(function (a) {
+      return '<div class="prow">' + icos + '<div class="grow"><div class="t-label ell">' + a[0] + '</div><span class="sub ell">' + a[1] + '</span></div><span class="toggle tg ' + (pinned.indexOf(a[0]) >= 0 ? 'on' : '') + '"></span></div>';
+    }).join('') + '</div>';
+  }
+  function stripC(names, up) {
+    return '<div class="strip">' + names.map(function (n) {
+      return '<div class="chp ' + (n === up ? 'glass-thick up' : 'surface') + '"><span class="hdl"></span>' + n + '</div>';
+    }).join('') + '</div>';
+  }
+  var C = [
+    function () { return overview(bar({ slots: DEF, on: 0 })); },
+    function () {
+      return sb + topbar('All areas') + '<div class="scr ph-scr"><div class="lab" style="margin-top:0">On the bar &middot; drag to reorder</div>' + stripC(DEF) +
+        '<div class="lab">Every area</div>' + listC(DEF) + '</div>' + bar({ slots: DEF, on: 'all' });
+    },
+    function () {
+      var s = ['Overview', 'Clipboard', 'Juno', 'Chat'];
+      return sb + topbar('All areas') + '<div class="scr ph-scr"><div class="lab" style="margin-top:0">On the bar &middot; drag to reorder</div>' + stripC(s, 'Clipboard') +
+        '<div class="t-caption" style="margin:6px 4px 0">Timeline came off the bar.</div>' +
+        '<div class="lab" style="margin-top:6px">Every area</div>' + listC(s) + '</div>' + bar({ slots: s, on: 'all' });
+    }
+  ];
+
+  /* D: search first, set in Settings */
+  function lrows(names) {
+    return '<div class="surface">' + names.map(function (n) {
+      return '<div class="lrow">' + icos + '<div class="grow t-label">' + n + '</div><span class="chev"></span></div>';
+    }).join('') + '</div>';
+  }
+  var D = [
+    function () { return overview(bar({ slots: DEF, on: 0 })); },
+    function () {
+      return sb + '<div class="glass srch">' + icos + '<span class="ph">Search areas</span></div>' +
+        '<div class="scr d-scr"><div class="lab">On the bar</div>' + lrows(DEF) + '<div class="lab">Everything else</div>' + lrows(AREAS.map(function (a) { return a[0]; })) + '</div>' + bar({ slots: DEF, on: 'all' });
+    },
+    function () {
+      var cur = ['Overview', 'Juno', 'Timeline', 'Chat'];
+      var slots = cur.map(function (n, i) {
+        return '<div class="srow"><span class="num">' + (i + 1) + '</span>' + icos + '<div class="grow t-label">' + n + '</div>' +
+          (i === 2 ? '<span class="chip accent">Choosing</span>' : '<span class="chev"></span>') + '</div>';
+      }).join('');
+      var opts = ['Timeline', 'Lists', 'Clipboard', 'Timers and alarms', 'Notifications', 'Devices', 'Settings'].map(function (n, i) {
+        return '<div class="mrow ' + (i === 0 ? 'cur' : '') + '">' + icos + '<span class="grow">' + n + '</span>' + (i === 0 ? '<span class="ck"></span>' : '') + '</div>';
+      }).join('');
+      return sb + topbar('Bar', '<span class="back">Settings</span>', '<span style="width:50px"></span>', true) +
+        '<div class="scr ph-scr"><div class="t-caption" style="margin-bottom:var(--s-2)">Four buttons, then All, which is always last.</div><div class="surface">' + slots + '</div></div>' +
+        '<div class="glass-thick menu">' + opts + '</div>' + bar({ slots: cur, on: -1 });
+    }
+  ];
+
+  var arr = [
+    ['v-a', 'accent-tide', true, 'A. A grid page, like a home screen', A,
+      'Gains a familiar page where every area is one big tile and the bar is changed by dragging, as on a phone; costs a full page that hides the screen the person was on, and a hold-and-drag that is easy to miss.'],
+    ['v-b', 'accent-tide', false, 'B. A sheet that grows from the button', B,
+      'Gains a quick look at the areas without leaving the screen, and editing in the same place; costs small icons with short labels, and room for only a few areas before the sheet has to scroll.'],
+    ['v-c', 'accent-tide', true, 'C. A plain list with pins', C,
+      'Gains one honest list that says what each area holds and has no edit mode at all; costs a long page, and drag-to-reorder and pins sit together on one screen.'],
+    ['v-d', 'accent-tide', false, 'D. Search first, set in Settings', D,
+      'Gains a fast way to a named area, and a bar that is set once in a calm, familiar page; costs the bar being changed far from where it is seen, and a search field that matters little with so few areas.']
+  ];
+  var caps = ['The bar', 'All areas', 'Changing the bar'];
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    var cells = a[4].map(function (f, i) {
+      return '<div class="cell"><span class="t-caption">' + caps[i] + '</span><div class="phone backdrop ' + a[1] + ' ' + (a[2] ? 'light' : 'dark') + '">' + f() + '</div></div>';
+    }).join('');
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[3] + '</h2><p class="d">' + a[5] + '</p><div class="trio">' + cells + '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

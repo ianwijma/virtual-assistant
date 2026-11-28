@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material board</title>
+<!--
+  Four designs of the same small screen, to choose the look of the material.
+  Each design only changes token values; the layout is the same.
+  Nothing here is decided. See ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .page h2 { font: var(--type-heading); margin: 18px 0 2px; }
+  .page h2:first-child { margin-top: 0; }
+  .page p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 8px; max-width: 90ch; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .scene { border-radius: 20px; padding: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; overflow: hidden; align-content: start; }
+  .scene .bar { grid-column: 1 / -1; }
+  .scene .surface { align-self: start; }
+
+  /* A. As first drawn: the first token values, kept here now that B is the look. */
+  .v-first { --glass: light-dark(rgba(255,255,255,.58), rgba(34,37,45,.52)); --glass-thick: light-dark(rgba(255,255,255,.74), rgba(30,33,40,.72));
+    --glass-blur: 24px; --glass-saturate: 170%; --backdrop-1: 46%; --backdrop-2: 26%; --surface: light-dark(#FFFFFF, #17191E); }
+  /* B. More glass (chosen): thinner, clearer surfaces and a stronger backdrop. */
+  .v-glass { --glass: light-dark(rgba(255,255,255,.32), rgba(34,37,45,.28)); --glass-thick: light-dark(rgba(255,255,255,.5), rgba(30,33,40,.46));
+    --glass-blur: 16px; --glass-saturate: 200%; --backdrop-1: 64%; --backdrop-2: 42%;
+    --surface: light-dark(rgba(255,255,255,.62), rgba(23,25,30,.55)); }
+  /* C. Calmer: more solid surfaces and a faint backdrop. */
+  .v-calm { --glass: light-dark(rgba(255,255,255,.8), rgba(30,33,40,.78)); --glass-thick: light-dark(rgba(255,255,255,.9), rgba(28,31,37,.88));
+    --glass-blur: 32px; --glass-saturate: 120%; --backdrop-1: 20%; --backdrop-2: 10%; }
+  /* D. Closer to Apple: nearly clear, a bright bent-looking edge, pill-shaped controls. */
+  .v-apple { --glass: light-dark(rgba(255,255,255,.2), rgba(255,255,255,.07)); --glass-thick: light-dark(rgba(255,255,255,.34), rgba(255,255,255,.1));
+    --glass-blur: 7px; --glass-saturate: 190%; --backdrop-1: 58%; --backdrop-2: 38%; --r-sm: 999px; --r-lg: 26px;
+    --surface: light-dark(rgba(255,255,255,.5), rgba(23,25,30,.45)); }
+  .v-apple .glass { border-color: transparent;
+    box-shadow: var(--shadow-2), inset 0 1.5px 1px light-dark(rgba(255,255,255,.9), rgba(255,255,255,.5)),
+      inset 0 -1.5px 1px light-dark(rgba(255,255,255,.35), rgba(255,255,255,.14)),
+      inset 1.5px 0 1px light-dark(rgba(255,255,255,.4), rgba(255,255,255,.16)),
+      inset -1.5px 0 1px light-dark(rgba(255,255,255,.4), rgba(255,255,255,.16)),
+      inset 0 0 20px light-dark(rgba(255,255,255,.25), rgba(255,255,255,.06)); }
+  .v-apple .glass.bar { border-radius: 999px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var inner =
+    '<div class="glass bar"><span class="ico"></span><span class="t-strong" style="flex:1">Home</span><span class="chip success"><span class="dot"></span>Online</span><span class="avatar" style="width:28px;height:28px">A</span></div>' +
+    '<div class="glass card"><div class="card-head"><span class="character listening" style="--size:40px"></span>' +
+    '<span style="flex:1"><span class="t-strong" style="display:block">Juno</span><span class="t-label t-2">Listening…</span></span></div>' +
+    '<div class="t-caption">Pasta timer</div><div class="t-display num">07:42</div>' +
+    '<div class="actions"><span class="btn btn-primary">Stop</span><span class="btn">Snooze</span></div></div>' +
+    '<div class="surface list" style="padding:6px">' +
+    '<div class="row is-selected"><span class="ico"></span><span class="grow">Parcel arrives tomorrow<span class="sub">Email · 2 min ago</span></span></div>' +
+    '<div class="row"><span class="ico"></span><span class="grow">Milk added to Shopping<span class="sub">Lists · 18 min ago</span></span></div>' +
+    '<div class="row"><span class="ico"></span><span class="grow">Listen for the wake word</span><span class="toggle on"></span></div></div>';
+  var vs = [
+    ['v-first', 'A. As first drawn', 'A clear blur with a bright edge. Colour shows through softly; text is always easy to read.'],
+    ['v-glass', 'B. More glass (chosen)', 'Thinner, clearer surfaces and a stronger backdrop. Even the list lets colour through. More striking, a little harder to read.'],
+    ['v-calm', 'C. Calmer', 'Nearly solid surfaces over a faint backdrop. The quietest and the easiest to read and to draw; the least like glass.'],
+    ['v-apple', 'D. Closer to Apple', 'Nearly clear glass with a bright edge that looks bent, and pill-shaped controls. The most like Liquid Glass; the hardest to read and to draw outside Apple\'s devices.']
+  ];
+  document.getElementById('page').innerHTML = vs.map(function (v) {
+    return '<h2>' + v[1] + '</h2><p class="d">' + v[2] + '</p><div class="pair">' +
+      ['light', 'dark'].map(function (t) { return '<div class="scene backdrop accent-aurora ' + t + ' ' + v[0] + '">' + inner + '</div>'; }).join('') + '</div>';
+  }).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saving a setting</title>
+<!--
+  Three ways a changed setting is saved, the same in the admin panel, the
+  desktop settings and the app. Each shows the Assistants · Juno page just
+  after the name became "Juna" and "Quiet at night" was switched on.
+  Nothing here is decided.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  h1 { font: var(--type-title); margin: 0 0 var(--s-3); }
+  .trio { display: grid; grid-template-columns: repeat(3, 380px); gap: 40px; }
+  .head { display: flex; align-items: flex-start; gap: var(--s-3); height: 92px; }
+  .big { font: 700 44px/44px var(--font-sans); color: var(--accent); flex: none; width: 36px; }
+  .head h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .head p { font: var(--type-label); color: var(--text-2); margin: 0; }
+  .cap { display: block; height: 30px; font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+  .frame { position: relative; width: 380px; height: 560px; border-radius: var(--r-xl); overflow: hidden; color: var(--text); padding: var(--s-4); box-sizing: border-box; }
+  .win { position: relative; height: 100%; display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+  .top { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); min-height: 20px; }
+  .top .grow { flex: 1; min-width: 0; }
+  .path { font: var(--type-caption); color: var(--text-2); display: block; }
+  .undo { font: var(--type-label); color: var(--text-2); white-space: nowrap; }
+  .undo b { font-weight: 600; color: var(--accent); text-decoration: underline; }
+  .body { flex: 1; padding: var(--s-3) var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); min-height: 0; }
+  .lab { font: var(--type-label); color: var(--text-2); display: flex; align-items: center; gap: var(--s-2); margin-bottom: var(--s-1); }
+  .sel { display: flex; align-items: center; justify-content: space-between; height: var(--control-h); padding: 0 var(--s-3); border-radius: var(--r-sm); background: var(--control); border: 1px solid var(--line); font: var(--type-label); }
+  .sel::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid var(--text-2); border-bottom: 1.5px solid var(--text-2); transform: rotate(45deg) translateY(-2px); }
+  .sw { display: flex; align-items: center; gap: var(--s-2); min-height: 40px; }
+  .sw + .sw { border-top: 1px solid var(--line); }
+  .sw .grow { flex: 1; min-width: 0; font: var(--type-label); font-weight: 500; }
+  .chip.s { height: 20px; padding: 0 8px; font-size: 11px; }
+  .pdot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; flex: none; }
+  .danger-row { margin-top: auto; display: flex; align-items: center; gap: var(--s-2); padding-top: var(--s-3); border-top: 1px solid var(--line); min-height: 40px; }
+  .danger-row .grow { flex: 1; min-width: 0; color: var(--danger); font: var(--type-label); font-weight: 600; }
+  .danger-row .btn { height: 26px; padding: 0 var(--s-3); font-size: 12px; }
+  .savebar { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-3) var(--s-4); border-top: 1px solid var(--line); background: var(--surface-2); }
+  .savebar .grow { flex: 1; min-width: 0; font: var(--type-label); font-weight: 600; display: flex; align-items: center; gap: var(--s-2); }
+  .inl { display: flex; gap: var(--s-2); margin-top: var(--s-2); }
+  .inl .btn { height: 28px; padding: 0 var(--s-3); font-size: 12px; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+  <h1>Saving a setting</h1>
+  <div class="trio" id="page"></div>
+</div>
+<script>
+  var tick = '<span class="chip success s">&#10003; Saved</span>';
+  function tg(on) { return '<span class="toggle' + (on ? ' on' : '') + '"></span>'; }
+  function page(o) {
+    var name = '<div><div class="lab">Name' + (o.dots ? '<span class="pdot"></span>' : '') + '</div>' +
+      '<div class="field' + (o.focus ? ' is-focus' : '') + '"><span>Juna</span></div>' + (o.inline || '') + '</div>';
+    var voice = '<div><div class="lab">Voice</div><div class="sel"><span>Warm, slow</span></div></div>';
+    var sw = '<div><div class="sw"><span class="grow">Answers to its name</span>' + tg(true) + '</div>' +
+      '<div class="sw"><span class="grow">Quiet at night' + (o.dots ? ' <span class="pdot"></span>' : '') + '</span>' + (o.tick || '') + tg(true) + '</div></div>';
+    var danger = '<div class="danger-row"><span class="grow">Remove this assistant</span>' + (o.confirm || '<span class="btn">Remove</span>') + '</div>';
+    return '<div class="win"><div class="top"><div class="grow"><span class="path">Assistants</span><span class="t-heading">Juno</span></div>' + (o.undo || '') + '</div>' +
+      '<div class="body">' + name + voice + sw + danger + '</div>' + (o.bar || '') + '</div>';
+  }
+  var DEF = [
+    ['A', 'Applies at once', 'Fast, like the phone&rsquo;s own settings. A wrong touch takes effect, so Undo is needed.',
+      'The name saves when the field is left; Remove still asks first',
+      { tick: tick, undo: '<span class="undo">Changed just now &middot; <b>Undo</b></span>',
+        confirm: '<span class="chip danger s">Sure?</span><span class="btn btn-danger">Yes</span><span class="btn btn-quiet">Keep</span>' }],
+    ['B', 'A Save button', 'Nothing happens by accident, and several changes go together. One more step every time, and unsaved changes can be lost.',
+      'Changed fields carry a dot; a bar holds Discard and Save',
+      { dots: true, bar: '<div class="savebar"><span class="grow"><span class="pdot"></span>2 changes not saved</span><span class="btn btn-quiet">Discard</span><span class="btn btn-primary">Save</span></div>' }],
+    ['C', 'At once for switches, Save for typed fields', 'Each control behaves as people expect. Two behaviours on one page.',
+      'Switch saves with a tick; the name has Save and Cancel under it',
+      { tick: tick, focus: true, inline: '<div class="inl"><span class="btn btn-primary">Save</span><span class="btn">Cancel</span></div>' }]
+  ];
+  document.getElementById('page').innerHTML = DEF.map(function (d) {
+    return '<section id="v-' + d[0].toLowerCase() + '"><div class="head"><span class="big">' + d[0] + '</span><div><h2>' + d[1] + '</h2><p>' + d[2] + '</p></div></div>' +
+      '<span class="cap">' + d[3] + '</span>' +
+      '<div class="frame backdrop accent-tide light compact">' + page(d[4]) + '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

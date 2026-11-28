@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone conversation board</title>
+<!--
+  Five arrangements of the phone screen while a person talks to an assistant:
+  first the assistant listens, then it answers with a checklist card. Each is
+  drawn twice. A, C and E are dark; B and D are light. Roomy density.
+  Nothing here is decided. See ../assistant-visuals.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .grid { display: grid; grid-template-columns: 610px 610px; gap: var(--s-5) 12px; }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); min-height: 36px; }
+  .pair { display: grid; grid-template-columns: 300px 300px; gap: 10px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 300px; height: 620px; border-radius: 36px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-3); background-color: var(--bg); color: var(--text); }
+  .frame > * { position: absolute; }
+  .state { font: 600 26px/32px var(--font-sans); letter-spacing: -.01em; }
+  .say { font: 500 20px/26px var(--font-sans); }
+  .center { left: 0; right: 0; text-align: center; }
+  .glow { border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 55%, transparent), transparent); }
+
+  /* round glass controls: mute, switch to typing, end */
+  .ctls { display: flex; justify-content: center; gap: 28px; }
+  .ctl { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .rb { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; }
+  .rb.danger { color: var(--danger); }
+  .cap { font: var(--type-caption); color: var(--text-2); }
+
+  /* checklist */
+  .cl .row { min-height: 38px; }
+  .cl-t { font: var(--type-body-strong); margin-bottom: var(--s-1); }
+
+  /* A */
+  .a-card { left: var(--s-4); right: var(--s-4); top: 262px; padding: var(--s-3) var(--s-4); }
+  .a-ctls { left: 0; right: 0; bottom: 36px; }
+  /* B */
+  .floor { left: 20px; right: 20px; height: 1px; background: var(--line); }
+  .shadow { left: 36px; width: 120px; height: 14px; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--text) 30%, transparent), transparent); }
+  .b-say { left: 156px; width: 132px; padding: var(--s-2) var(--s-3); font: 500 15px/20px var(--font-sans); border-radius: var(--r-lg); }
+  .b-you { left: 24px; right: 24px; top: 436px; }
+  .b-you .say { font-size: 18px; line-height: 24px; }
+  .b-sheet { left: 0; right: 0; top: 316px; bottom: 0; border-radius: var(--r-xl) var(--r-xl) 0 0; padding: var(--s-4) var(--s-5) var(--s-5); display: flex; flex-direction: column; gap: var(--s-3); }
+  .b-sheet .ctls { margin-top: auto; }
+  /* C */
+  .c-head { left: 12px; right: 12px; top: 40px; height: 64px; display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-3); }
+  .c-head { gap: var(--s-2); padding: 0 var(--s-2); }
+  .c-head .btn { padding: 0 8px; font-size: 14px; flex: none; }
+  .c-head .nm { flex: 1; min-width: 0; white-space: nowrap; }
+  .c-head .st { display: flex; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
+  .c-head .st .dot { color: var(--accent); }
+  .c-thread { left: 12px; right: 12px; top: 116px; bottom: 92px; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; }
+  .c-juno { display: flex; align-items: flex-end; gap: 6px; }
+  .c-juno .bubble { max-width: 78%; }
+  .c-card { margin-left: 34px; padding: var(--s-3); max-width: 250px; }
+  .c-hint { align-self: flex-end; font: var(--type-caption); color: var(--text-2); }
+  .caret { display: inline-block; width: 2px; height: 1em; vertical-align: -2px; margin-left: 2px; background: var(--on-accent); }
+  .c-in { left: 12px; right: 12px; bottom: 14px; height: 64px; display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-2); }
+  .c-in .field { flex: 1; min-width: 0; }
+  .c-in .btn-icon { border-radius: 50%; flex: none; }
+  /* D */
+  .d-chip { left: 0; right: 0; margin: 0 auto; top: 52px; width: max-content; padding: var(--s-1) var(--s-4); border-radius: var(--r-full); font: var(--type-label); }
+  .d-pill { left: 20px; right: 20px; bottom: 120px; padding: var(--s-3) var(--s-5); border-radius: 28px; text-align: center; font: 500 17px/23px var(--font-sans); }
+  .d-card { left: 16px; right: 16px; top: 336px; bottom: 100px; padding: var(--s-3) var(--s-4); }
+  .d-bar { left: 12px; right: 12px; bottom: 14px; height: 72px; display: flex; justify-content: space-around; align-items: center; border-radius: var(--r-xl); }
+  .bi { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 64px; }
+  .bi.danger { color: var(--danger); }
+  .bi .cap { color: inherit; }
+  /* E */
+  .e-home { left: 0; right: 0; top: 0; bottom: 0; padding: 60px var(--s-5) 0; }
+  .e-home h3 { font: var(--type-title); margin-bottom: var(--s-4); }
+  .e-dim { inset: 0; -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); background: color-mix(in srgb, var(--bg) 55%, transparent); }
+  .e-sheet { left: 0; right: 0; top: 236px; bottom: 0; border-radius: var(--r-xl) var(--r-xl) 0 0; padding: 56px var(--s-5) var(--s-4); display: flex; flex-direction: column; align-items: center; gap: var(--s-2); text-align: center; }
+  .e-sheet .surface { width: 100%; padding: var(--s-2) var(--s-4); text-align: left; }
+  .e-sheet .ctls { margin-top: auto; }
+  .e-sheet .state { font-size: 22px; line-height: 28px; }
+  .e-sheet .say { font-size: 18px; line-height: 24px; }
+  .e-sheet .cl .row { min-height: 32px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var SAY = 'Put milk and eggs on the shopping list';
+  var REPLY = 'Done. I added milk and eggs.';
+  function ch(size, listening, style) {
+    return '<span class="character' + (listening ? ' listening' : '') + '" style="--size:' + size + 'px;' + (style || '') + '"></span>';
+  }
+  function fig(size, style) {
+    return '<span class="figure" style="--size:' + size + 'px;' + (style || '') + '"><span class="character" style="--size:' + size + 'px"></span></span>';
+  }
+  function glow(size, style) { return '<div class="glow" style="width:' + size + 'px;height:' + size + 'px;' + style + '"></div>'; }
+  function rb(label, danger) {
+    return '<span class="ctl"><span class="glass rb' + (danger ? ' danger' : '') + '"><i class="ico"></i></span><span class="cap">' + label + '</span></span>';
+  }
+  var ctls = rb('Mute') + rb('Type') + rb('End', true);
+  function items() {
+    return [['Bread', 0], ['Milk', 1], ['Eggs', 1]].map(function (r) {
+      return '<div class="row"><i class="ico"></i><span class="grow">' + r[0] + '</span>' + (r[1] ? '<span class="chip accent">New</span>' : '') + '</div>';
+    }).join('');
+  }
+  function list() { return '<div class="cl"><div class="cl-t">Shopping</div><div class="list">' + items() + '</div></div>'; }
+  function frame(cls, accent, mode, inner) { return '<div class="frame ' + mode + ' ' + accent + ' ' + cls + '">' + inner + '</div>'; }
+
+  var A = [
+    frame('backdrop', 'accent-tide', 'dark',
+      glow(380, 'left:-40px;top:50px') + ch(170, true, 'left:65px;top:120px') +
+      '<div class="center state" style="top:324px">Listening</div><div class="center say" style="top:366px;padding:0 28px">' + SAY + '</div>' +
+      '<div class="ctls a-ctls">' + ctls + '</div>'),
+    frame('backdrop', 'accent-tide', 'dark',
+      glow(260, 'left:20px;top:20px') + ch(110, false, 'left:95px;top:56px') +
+      '<div class="center state" style="top:178px">Speaking</div><div class="center say" style="top:214px;padding:0 28px;font-size:18px;line-height:24px">' + REPLY + '</div>' +
+      '<div class="glass a-card" style="top:272px">' + list() + '</div>' +
+      '<div class="ctls a-ctls">' + ctls + '</div>')
+  ];
+  var B = [
+    frame('backdrop', 'accent-ember', 'light',
+      glow(300, 'left:-10px;top:150px') +
+      '<div class="state" style="left:24px;top:70px">Listening</div>' +
+      '<div class="shadow" style="top:403px"></div><div class="floor" style="top:410px"></div>' + fig(110, 'left:40px;top:210px') +
+      '<div class="glass b-say" style="top:216px">I’m listening…</div>' +
+      '<div class="b-you"><div class="t-caption">You</div><div class="say">' + SAY + '</div></div>' +
+      '<div class="ctls" style="left:0;right:0;bottom:24px">' + ctls + '</div>'),
+    frame('backdrop', 'accent-ember', 'light',
+      glow(300, 'left:-10px;top:50px') +
+      '<div class="state" style="left:24px;top:70px">Speaking</div>' +
+      fig(110, 'left:40px;top:116px') +
+      '<div class="glass b-say" style="top:122px">' + REPLY + '</div>' +
+      '<div class="glass-thick b-sheet">' + list() + '<div class="ctls">' + ctls + '</div></div>')
+  ];
+  var C = [
+    frame('backdrop', 'accent-aurora', 'dark',
+      '<div class="glass c-head">' + ch(44, true) + '<div class="nm"><div class="t-strong">Juno</div><div class="st"><span class="dot"></span>Listening</div></div><span class="btn btn-quiet">Mute</span><span class="btn btn-quiet btn-danger">End</span></div>' +
+      '<div class="c-thread">' +
+        '<div class="c-juno">' + ch(28) + '<div class="bubble">Hi Alex. What can I do?</div></div>' +
+        '<div class="bubble me">Put milk and eggs on the shopping<span class="caret"></span></div>' +
+        '<div class="c-hint">Hearing you…</div>' +
+      '</div>' +
+      '<div class="glass c-in"><span class="field"><span class="ph">Tap to type</span></span><span class="btn btn-primary btn-icon"><i class="ico"></i></span></div>'),
+    frame('backdrop', 'accent-aurora', 'dark',
+      '<div class="glass c-head">' + ch(44, false) + '<div class="nm"><div class="t-strong">Juno</div><div class="st"><span class="dot"></span>Speaking</div></div><span class="btn btn-quiet">Mute</span><span class="btn btn-quiet btn-danger">End</span></div>' +
+      '<div class="c-thread">' +
+        '<div class="c-juno">' + ch(28) + '<div class="bubble">Hi Alex. What can I do?</div></div>' +
+        '<div class="bubble me">' + SAY + '</div>' +
+        '<div class="c-juno">' + ch(28) + '<div class="bubble">' + REPLY + '</div></div>' +
+        '<div class="surface c-card">' + list() + '</div>' +
+      '</div>' +
+      '<div class="glass c-in"><span class="field"><span class="ph">Tap to type</span></span><span class="btn btn-primary btn-icon"><i class="ico"></i></span></div>')
+  ];
+  function dbar() {
+    return '<div class="glass d-bar"><span class="bi"><i class="ico"></i><span class="cap">Mute</span></span><span class="bi"><i class="ico"></i><span class="cap">Type</span></span><span class="bi danger"><i class="ico"></i><span class="cap">End</span></span></div>';
+  }
+  var D = [
+    frame('backdrop', 'accent-moss', 'light',
+      glow(440, 'left:-70px;top:-70px') + ch(340, true, 'left:-20px;top:-30px;opacity:.96') +
+      '<div class="glass d-chip">Listening</div>' +
+      '<div class="glass d-pill">' + SAY + '</div>' + dbar()),
+    frame('backdrop', 'accent-moss', 'light',
+      glow(440, 'left:-70px;top:-70px') + ch(340, false, 'left:-20px;top:-30px;opacity:.96') +
+      '<div class="glass d-chip">Speaking</div>' +
+      '<div class="glass d-pill" style="bottom:auto;top:272px">' + REPLY + '</div>' +
+      '<div class="glass d-card">' + list() + '</div>' + dbar())
+  ];
+  function home() {
+    return '<div class="e-home"><h3>Home</h3><div class="surface list">' +
+      ['Shopping list', 'Reminders', 'Shared clipboard', 'Devices'].map(function (t) {
+        return '<div class="row"><i class="ico"></i><span class="grow">' + t + '</span><span class="t-2">&rsaquo;</span></div>';
+      }).join('') + '</div></div><div class="e-dim"></div>';
+  }
+  var E = [
+    frame('', 'accent-graphite', 'dark',
+      home() + '<div class="glass-thick e-sheet"><div class="state">Listening</div><div class="say">' + SAY + '</div><div class="ctls">' + ctls + '</div></div>' +
+      ch(90, true, 'left:105px;top:191px;z-index:3')),
+    frame('', 'accent-graphite', 'dark',
+      home() + '<div class="glass-thick e-sheet"><div class="state">Speaking</div><div class="say">' + REPLY + '</div><div class="surface">' + list() + '</div><div class="ctls">' + ctls + '</div></div>' +
+      ch(90, false, 'left:105px;top:191px;z-index:3'))
+  ];
+
+  var arr = [
+    ['v-a', 'A. Centre stage', ['Listening', 'Answering with a card'], A,
+      'Gains a large head that owns the screen and a calm centred reading; costs the room for the card, which must fit beneath a smaller head.'],
+    ['v-b', 'B. Full figure', ['Listening', 'Answering with a card'], B,
+      'Gains a whole figure with its own speech bubble and a sheet that leaves it visible; costs a head smaller than in A and a busier screen.'],
+    ['v-c', 'C. Chat with a face', ['Listening', 'Answering with a card'], C,
+      'Gains a familiar messaging layout with a history and a typing field; costs the character, which stays small, so it feels least like a person.'],
+    ['v-d', 'D. Character behind glass', ['Listening', 'Answering with a card'], D,
+      'Gains the biggest character and a clear screen while listening; costs part of its head and, when answering, the card hides much of it.'],
+    ['v-e', 'E. Sheet over the app', ['Listening', 'Answering with a card'], E,
+      'Gains a conversation that keeps the person in the app, with the head on the sheet’s edge; costs the character, which stays medium and low on the screen.']
+  ];
+  document.getElementById('page').innerHTML = '<div class="grid">' + arr.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[4] + '</p><div class="pair">' +
+      a[3].map(function (f, i) { return '<div class="cell"><span class="t-caption">' + (i + 1) + ' &middot; ' + a[2][i] + '</span>' + f + '</div>'; }).join('') +
+      '</div></section>';
+  }).join('') + '</div>';
+</script>
+</body>
+</html>

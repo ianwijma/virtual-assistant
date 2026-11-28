@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone home board</title>
+<!--
+  Five arrangements of the first screen of the phone app in personal use,
+  each drawn in light and dark. The content is the same in every one. Nothing
+  here is decided. See ../../technical/clients/mobile.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 0; display: grid; grid-template-columns: 608px 608px; gap: 12px; }
+  .arr { margin-bottom: var(--s-2); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 300px 300px; gap: 8px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .phone { position: relative; width: 300px; height: 620px; border-radius: 36px; overflow: hidden; }
+  .phone > * { position: absolute; }
+  .sb { top: 12px; left: 28px; right: 28px; display: flex; justify-content: space-between; font: var(--type-label); font-weight: 600; }
+  .round { border-radius: 50%; }
+  .mic { width: 10px; height: 16px; border: 2px solid currentColor; border-radius: var(--r-full); display: block; }
+  .stack { display: flex; flex-direction: column; }
+  .rowline { display: flex; align-items: center; gap: var(--s-3); }
+  .grow { flex: 1; min-width: 0; }
+  .ell { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .when { font: var(--type-caption); color: var(--text-3); flex: none; }
+  .timernum { font: var(--type-title); font-variant-numeric: tabular-nums; color: var(--accent); flex: none; }
+  .lab { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); margin: var(--s-3) 4px var(--s-1); }
+  .sub { font: var(--type-label); color: var(--text-2); display: block; }
+
+  /* A */
+  .a-screen { left: 14px; right: 14px; top: 42px; bottom: 90px; }
+  .a-assist { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-3) var(--s-3) var(--s-4); margin-top: var(--s-3); }
+  .a-timer { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); margin-top: var(--s-2); }
+  .a-tabs { left: 12px; right: 12px; bottom: 12px; }
+  .tabbar > * { flex: 1; min-width: 0; padding: 6px 2px; }
+
+  /* B */
+  .b-top { top: 40px; left: 0; right: 0; text-align: center; }
+  .b-fig { top: 60px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; }
+  .b-say { top: 348px; left: 0; right: 0; text-align: center; }
+  .b-sheet { left: 8px; right: 8px; bottom: 88px; padding: var(--s-2) var(--s-2) var(--s-3); }
+  .b-grab { width: 36px; height: 4px; border-radius: var(--r-full); background: var(--line); margin: 4px auto 6px; }
+  .b-nav { left: 0; right: 0; bottom: 12px; display: flex; justify-content: space-around; padding: 0 var(--s-3); }
+  .b-nav > div { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 66px; }
+  .b-nav .glass { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; }
+  .b-nav .t-caption { font-size: 10px; letter-spacing: .02em; }
+
+  /* C */
+  .c-head { top: 42px; left: 18px; right: 18px; }
+  .c-grid { top: 94px; left: 14px; right: 14px; bottom: 14px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1.2fr 1fr auto; gap: var(--s-2); }
+  .tile { padding: var(--s-3) var(--s-4); display: flex; flex-direction: column; min-width: 0; }
+  .tile.wide { grid-column: span 2; }
+  .tile .big { font: var(--type-display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; margin-top: auto; }
+  .tile .clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tile.row { flex-direction: row; align-items: center; gap: var(--s-3); }
+
+  /* D */
+  .d-head { top: 40px; left: 18px; right: 14px; display: flex; align-items: center; gap: var(--s-3); }
+  .d-feed { top: 92px; left: 14px; right: 14px; }
+  .d-chips { left: 14px; right: 14px; bottom: 90px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .d-chips .chip { padding: 0 9px; }
+  .d-bar { left: 10px; right: 10px; bottom: 12px; height: 66px; border-radius: var(--r-full); display: flex; align-items: center; gap: var(--s-3); padding: 0 11px 0 var(--s-5); }
+
+  /* E */
+  .e-head { top: 36px; left: 12px; right: 12px; height: 52px; border-radius: var(--r-full); display: flex; align-items: center; gap: var(--s-3); padding: 0 8px 0 var(--s-4); }
+  .e-filters { top: 98px; left: 14px; right: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .e-filters .chip { padding: 0 9px; }
+  .e-line { top: 138px; left: 14px; right: 14px; }
+  .tl { display: flex; gap: var(--s-2); }
+  .tl .t { width: 38px; flex: none; font: var(--type-caption); color: var(--text-2); padding-top: 3px; font-variant-numeric: tabular-nums; }
+  .tl .rail { width: 12px; flex: none; position: relative; }
+  .tl .rail::before { content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+  .tl .rail i { position: absolute; left: 1px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--text-3); }
+  .tl.now .rail i { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .tl .body { flex: 1; min-width: 0; padding: 0 0 var(--s-3); }
+  .tl .card { padding: var(--s-2) var(--s-3); display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-1); }
+  .e-fab { right: 18px; bottom: 18px; width: 64px; height: 64px; border-radius: 50%; box-shadow: var(--shadow-3); }
+  .e-fab .mic { width: 12px; height: 20px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var accents = { a: 'accent-tide', b: 'accent-ember', c: 'accent-aurora', d: 'accent-moss', e: 'accent-graphite' };
+  var N = [
+    ['Parcel arrives tomorrow', 'Email', '8:10'],
+    ['Sam added milk to Shopping', 'Lists', '7:54'],
+    ['Bins go out tonight', 'Reminder', '7:30']
+  ];
+  var ico = '<span class="ico"></span>';
+  var mic = '<span class="mic"></span>';
+  var sb = '<div class="sb"><span>8:12</span><span>&#9679;&#9679;&#9679;</span></div>';
+  function ch(size, cls) { return '<span class="character ' + (cls || '') + '" style="--size:' + size + 'px"></span>'; }
+  function fig(size) { return '<span class="figure" style="--size:' + size + 'px"><span class="character listening" style="--size:' + size + 'px"></span></span>'; }
+  function micBtn(extra) { return '<span class="btn btn-primary btn-icon round" style="' + (extra || '') + '">' + mic + '</span>'; }
+  function nrow(n, last) {
+    return '<div class="row"><div class="grow"><span class="ell">' + n[0] + '</span><span class="sub">' + n[1] + '</span></div><span class="when">' + n[2] + '</span></div>';
+  }
+
+  function A() {
+    return sb +
+      '<div class="a-screen">' +
+        '<div class="t-caption">Tuesday</div><div class="t-title">Good morning, Alex</div>' +
+        '<div class="glass a-assist">' + ch(52, 'listening') +
+          '<div class="grow"><div class="t-strong">Talk to Juno</div><span class="sub">Tap or say &ldquo;Hey Juno&rdquo;</span></div>' + micBtn() + '</div>' +
+        '<div class="glass a-timer"><span class="chip accent">Now</span><div class="grow"><span class="ell t-strong">Pasta timer</span></div><span class="timernum">07:42</span></div>' +
+        '<div class="lab">Recent</div>' +
+        '<div class="surface list">' + N.map(nrow).join('') + '</div>' +
+      '</div>' +
+      '<div class="glass-thick tabbar a-tabs">' +
+        '<div class="on">' + ico + '<span>Home</span></div><div>' + ico + '<span>Alerts</span></div><div>' + ico + '<span>Clipboard</span></div><div>' + ico + '<span>Lists</span></div><div>' + ico + '<span>More</span></div>' +
+      '</div>';
+  }
+
+  function B() {
+    var nav = [['Alerts'], ['Clipboard'], ['Lists'], ['Settings']].map(function (x) {
+      return '<div><span class="glass">' + ico + '</span><span class="t-caption">' + x[0] + '</span></div>';
+    }).join('');
+    return sb +
+      '<div class="b-top t-label t-2">Good morning, Alex</div>' +
+      '<div class="b-fig">' + fig(150) + '</div>' +
+      '<div class="b-say"><div class="t-strong">Tap or say &ldquo;Hey Juno&rdquo;</div></div>' +
+      '<div class="glass-thick b-sheet"><div class="b-grab"></div>' +
+        '<div class="row"><span class="chip accent">Now</span><div class="grow"><span class="ell t-strong">Pasta timer</span></div><span class="timernum">07:42</span></div>' +
+        '<div class="row"><div class="grow"><span class="ell">' + N[0][0] + '</span><span class="sub">' + N[0][1] + ' &middot; ' + N[0][2] + '</span></div><span class="chip">+2 more</span></div>' +
+      '</div>' +
+      '<div class="b-nav">' + nav + '</div>';
+  }
+
+  function C() {
+    return sb +
+      '<div class="c-head"><div class="t-title">Good morning, Alex</div></div>' +
+      '<div class="c-grid">' +
+        '<div class="glass tile wide row">' + ch(56, 'listening') + '<div class="grow"><div class="t-strong">Talk to Juno</div><span class="sub">Tap or say &ldquo;Hey Juno&rdquo;</span></div>' + micBtn() + '</div>' +
+        '<div class="glass tile"><div class="t-caption">Timer</div><div class="big accent-text" style="color:var(--accent)">07:42</div><span class="sub">Pasta timer</span></div>' +
+        '<div class="glass tile"><div class="t-caption">Notifications</div><div class="big">3</div><span class="sub clamp">' + N[0][0] + '</span></div>' +
+        '<div class="glass tile"><div class="t-caption">Clipboard</div><div class="t-label clamp" style="margin-top:var(--s-2)">Wi-Fi code: maple-4821</div><span class="sub" style="margin-top:auto">Jo &middot; 12m</span></div>' +
+        '<div class="glass tile"><div class="t-caption">Lists</div><div class="t-strong" style="margin-top:var(--s-2)">Shopping</div><span class="sub">3 items</span><span class="sub" style="margin-top:auto">Sam added milk</span></div>' +
+        '<div class="glass tile wide row">' + ico + '<div class="grow t-strong">Settings</div><span class="avatar">A</span></div>' +
+      '</div>';
+  }
+
+  function D() {
+    return sb +
+      '<div class="d-head"><div class="grow"><div class="t-caption">Tuesday</div><div class="t-title">Good morning, Alex</div></div><span class="avatar" style="width:40px;height:40px">A</span></div>' +
+      '<div class="d-feed">' +
+        '<div class="lab" style="margin-top:0">Now</div>' +
+        '<div class="surface"><div class="row"><span class="dot" style="color:var(--accent)"></span><div class="grow"><span class="ell t-strong">Pasta timer</span></div><span class="timernum">07:42</span></div></div>' +
+        '<div class="lab">Recent</div>' +
+        '<div class="surface list">' + N.map(nrow).join('') + '</div>' +
+      '</div>' +
+      '<div class="d-chips"><span class="chip accent">Set a timer</span><span class="chip">Shopping list</span><span class="chip">Clipboard</span></div>' +
+      '<div class="glass-thick d-bar">' + ico + '<span class="grow t-body t-2" style="color:var(--text-3)">Ask Juno or search&hellip;</span>' + micBtn() + '</div>';
+  }
+
+  function E() {
+    var items = [
+      ['now', 'Now', '<div class="glass-thick" style="display:none"></div><div class="surface card"><div class="grow"><span class="ell t-strong">Pasta timer</span><span class="sub">Running</span></div><span class="timernum">07:42</span></div>'],
+      ['', '8:10', '<div class="t-label ell">' + N[0][0] + '</div><span class="sub">' + N[0][1] + '</span>'],
+      ['', '7:54', '<div class="t-label ell">' + N[1][0] + '</div><span class="sub">' + N[1][1] + ' &middot; list changed</span>'],
+      ['', '7:30', '<div class="t-label ell">' + N[2][0] + '</div><span class="sub">' + N[2][1] + '</span>'],
+      ['', '7:15', '<div class="t-label ell">Jo copied a link</div><span class="sub">Clipboard</span>'],
+      ['', '6:30', '<div class="t-label ell">Wake-up alarm rang</div><span class="sub">Alarm</span>']
+    ];
+    return sb +
+      '<div class="glass e-head"><div class="grow t-heading">Good morning, Alex</div><span class="avatar" style="width:36px;height:36px">A</span></div>' +
+      '<div class="e-filters"><span class="chip accent">All</span><span class="chip">Alerts</span><span class="chip">Clipboard</span><span class="chip">Lists</span></div>' +
+      '<div class="e-line"><div class="t-caption" style="margin-bottom:var(--s-2)">Today</div>' +
+        items.map(function (it) {
+          return '<div class="tl ' + it[0] + '"><span class="t">' + it[1] + '</span><span class="rail"><i></i></span><div class="body">' + it[2] + '</div></div>';
+        }).join('') + '</div>' +
+      '<span class="btn btn-primary e-fab">' + mic + '</span>';
+  }
+
+  var arr = [
+    ['v-a', 'A', 'A. Feed with a tab bar', A,
+      'Gains a familiar layout with the recent things in view and every area one tap away; costs the assistant a small card and a tab bar that takes the bottom of the screen.'],
+    ['v-b', 'b', 'B. Assistant first', B,
+      'Gains a character that is the screen and a calm first impression; costs room for notifications, which shrink to a sheet that shows the latest one.'],
+    ['v-c', 'c', 'C. Cards grid', C,
+      'Gains a dashboard where every area is one big tile and nothing is hidden behind tabs; costs a busier screen, and every tile shows only a small part of what is inside.'],
+    ['v-d', 'd', 'D. Bottom search bar', D,
+      'Gains a launcher feel with typing and speaking in thumb reach, like the desktop; costs the character, which is absent, and puts navigation behind chips and the avatar.'],
+    ['v-e', 'e', 'E. Timeline', E,
+      'Gains one plain stream of everything today and a single clear button to talk; costs quick access to an area, since Clipboard and Lists are filters here.']
+  ];
+  function phone(light, key, inner) {
+    return '<div class="phone backdrop ' + accents[key.toLowerCase()] + ' ' + (light ? 'light' : 'dark') + '">' + inner + '</div>';
+  }
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    var inner = a[3]();
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[2] + '</h2><p class="d">' + a[4] + '</p><div class="pair">' +
+      '<div class="cell"><span class="t-caption">Light</span>' + phone(true, a[1], inner) + '</div>' +
+      '<div class="cell"><span class="t-caption">Dark</span>' + phone(false, a[1], inner) + '</div>' +
+      '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

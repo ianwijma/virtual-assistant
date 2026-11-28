@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome board</title>
+<!--
+  Four designs of the very first screen of the first-run setup, before the five
+  steps. Nothing here is decided. See ../../technical/clients/web-admin.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .page h1 { font: var(--type-title); margin: 0 0 var(--s-3); }
+  .grid { display: grid; grid-template-columns: repeat(2, 570px); gap: var(--s-4) var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); min-height: 36px; }
+  .arr .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 570px; height: 340px; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; align-items: center; box-sizing: border-box; padding: var(--s-4) var(--s-4) 20px; }
+  .top { display: flex; align-items: center; gap: var(--s-2); font: 600 15px/1 var(--font-sans); letter-spacing: -0.02em; }
+  .top svg { width: 22px; height: 22px; }
+  .mid { flex: 1; min-height: 0; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: var(--s-2); position: relative; }
+  .hello { font: 600 84px/1 var(--font-sans); letter-spacing: -0.04em; }
+  .big { height: 44px; font-size: 16px; border-radius: var(--r-lg); width: 240px; box-sizing: border-box; flex: none; }
+  .side { display: flex; align-items: center; justify-content: center; gap: var(--s-5); }
+  .side .txt { text-align: left; max-width: 230px; display: flex; flex-direction: column; gap: var(--s-2); }
+  .side .hello { font-size: 64px; }
+  .wm { font: 700 40px/1 var(--font-sans); letter-spacing: -0.03em; }
+  .lang { position: absolute; font-weight: 600; letter-spacing: -0.02em; color: var(--text-3); white-space: nowrap; }
+  .fadeword { opacity: .55; }
+  .chipwrap { margin-bottom: var(--s-2); flex: none; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+  <h1>What does the welcome of the first-run setup show?</h1>
+  <div class="grid" id="grid"></div>
+</div>
+<script>
+(function () {
+  var n = 0;
+  function mark(size) {
+    n++;
+    var id = 'm' + n;
+    var d = 'M38 12 H58 A28 28 0 0 1 86 40 V44 A28 28 0 0 1 58 72 H42 L18 88 L26 67 A28 28 0 0 1 10 44 V40 A28 28 0 0 1 38 12 Z';
+    var eye = function (cx) { return '<ellipse cx="' + cx + '" cy="38" rx="5.5" ry="9.5" fill="var(--text)"/>'; };
+    return '<svg viewBox="0 0 96 96" style="width:' + size + 'px;height:' + size + 'px;flex:none" aria-hidden="true"><defs><radialGradient id="' + id + '"><stop offset="0" stop-color="var(--accent-2)" stop-opacity=".9"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".15"/></radialGradient></defs>' +
+      '<path d="' + d + '" fill="var(--on-accent)" fill-opacity=".18" stroke="var(--accent)" stroke-opacity=".9" stroke-width="3" stroke-linejoin="round"/>' +
+      '<ellipse cx="48" cy="54" rx="30" ry="17" fill="url(#' + id + ')"/>' + eye(36) + eye(60) + '</svg>';
+  }
+  function top() { return '<div class="top">' + mark(22) + 'Heem</div>'; }
+  function cont() { return '<span class="btn btn-primary big">Continue</span>'; }
+  function quiet() { return '<span class="btn btn-quiet big">Continue</span>'; }
+  function fig(size) { return '<span class="figure" style="--size:' + size + 'px"><span class="character" style="--size:' + size + 'px"></span></span>'; }
+
+  function A() {
+    return top() + '<div class="mid"><div class="hello">Hello</div></div>' + quiet();
+  }
+  function B() {
+    return '<div class="mid"><div class="side">' + fig(104) +
+      '<div class="txt"><div class="hello">Hello</div><div class="t-heading t-2" style="font-weight:400;font-size:17px;line-height:1.35">I am your home&rsquo;s assistant. Let us set things up.</div></div></div></div>' + cont();
+  }
+  function C() {
+    return '<div class="mid" style="gap:var(--s-1)">' + mark(104) + '<div class="wm" style="margin-top:var(--s-1)">Heem</div><div class="t-heading t-2" style="font-weight:400">Welcome home.</div></div>' + cont();
+  }
+  function D() {
+    var w = [['Hallo', 'left:34px;top:26px', 40], ['Bonjour', 'right:30px;top:12px', 34], ['Hola', 'left:18px;bottom:30px', 30], ['Merhaba', 'right:24px;bottom:22px', 38]];
+    var words = w.map(function (x) { return '<span class="lang fadeword" style="' + x[1] + ';font-size:' + x[2] + 'px">' + x[0] + '</span>'; }).join('');
+    return '<div class="mid">' + words + '<div class="hello" style="position:relative">Hello</div></div>' +
+      '<div class="chipwrap"><span class="chip">English &middot; change</span></div>' + cont();
+  }
+  var DS = [
+    ['v-a', 'A. Hello.', A, 'Calm, like Apple’s. Says nothing about what this is.'],
+    ['v-b', 'B. Hello, with the figure.', B, 'The character is the face of the product from the first second. The figure is not chosen or named yet at this point.'],
+    ['v-c', 'C. The mark and the name.', C, 'Introduces the name. Less personal.'],
+    ['v-d', 'D. Hello, in the household’s languages.', D, 'Welcomes everyone and sets the language first. Busier.']
+  ];
+  document.getElementById('grid').innerHTML = DS.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[3] + '</p><span class="t-caption">Welcome</span>' +
+      '<div class="frame backdrop accent-tide light">' + a[2]() + '</div></section>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

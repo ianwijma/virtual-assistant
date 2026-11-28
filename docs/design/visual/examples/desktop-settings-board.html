@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desktop settings board</title>
+<!--
+  Four ways to change the settings of this device in the desktop client, which
+  is a keyboard launcher in the tray with no main window. Household-wide
+  settings stay in the admin panel. Nothing here is decided.
+  See ../desktop.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-4); }
+  .arr h2 { font: 600 17px/22px var(--font-sans); margin: 0 0 2px; }
+  .arr p.d { font: 500 13px/18px var(--font-sans); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .cap { display: block; height: 18px; font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+  .frame { position: relative; width: 1180px; height: 560px; border-radius: 14px; overflow: hidden; color: var(--text); }
+  .frame > .p { position: absolute; }
+  .frame .grow { flex: 1; min-width: 0; }
+
+  /* tray / top bar */
+  .topbar { left: 0; right: 0; top: 0; height: 26px; display: flex; align-items: center; justify-content: flex-end; gap: var(--s-3); padding: 0 var(--s-4); border-radius: 0; border-width: 0 0 1px 0; font: var(--type-caption); }
+  .topbar .mark { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid currentColor; opacity: .7; }
+  .topbar .tray { width: 22px; height: 18px; border-radius: 6px; display: grid; place-items: center; }
+  .topbar .tray.on { background: var(--accent-soft); color: var(--accent); }
+  .topbar .tray i { width: 10px; height: 10px; border-radius: 50%; background: currentColor; display: block; }
+
+  /* parts */
+  .sw { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); flex: none; display: block; }
+  .sw.sel { outline: 2px solid var(--text); outline-offset: 2px; }
+  .sws { display: flex; align-items: center; gap: var(--s-2); }
+  .sws.big .sw { width: 26px; height: 26px; }
+  .sws .chip { margin-left: var(--s-1); }
+  .slider { position: relative; width: 150px; height: 6px; border-radius: var(--r-full); background: var(--control-hover); flex: none; }
+  .slider b { position: absolute; left: 0; top: 0; bottom: 0; width: 60%; border-radius: var(--r-full); background: var(--accent); }
+  .slider i { position: absolute; left: 60%; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-1); }
+  .sel-field { display: inline-flex; align-items: center; gap: var(--s-2); height: 28px; padding: 0 var(--s-3); border-radius: var(--r-sm); background: var(--control); border: 1px solid var(--line); font: var(--type-label); white-space: nowrap; }
+  .sel-field::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid var(--text-2); border-bottom: 1.5px solid var(--text-2); transform: rotate(45deg) translateY(-2px); }
+  .val { font: var(--type-label); color: var(--text-2); white-space: nowrap; }
+  .link { font: var(--type-label); font-weight: 600; color: var(--accent); white-space: nowrap; }
+  .hd { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); padding: 0 var(--pad); }
+
+  /* A */
+  .a-win { left: 150px; top: 40px; width: 880px; height: 400px; display: flex; overflow: hidden; }
+  .a-side { width: 200px; padding: var(--s-4) var(--s-2); display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--line); }
+  .a-side .dots { display: flex; gap: 6px; padding: 0 var(--s-2) var(--s-3); }
+  .a-side .dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--control-hover); display: block; }
+  .a-side .item { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-3); border-radius: var(--r-sm); }
+  .a-side .item .sub { font: var(--type-caption); color: var(--text-2); display: block; }
+  .a-side .item.on { background: var(--accent-soft); }
+  .a-page { flex: 1; padding: var(--s-5) var(--s-6); display: flex; flex-direction: column; gap: var(--s-3); }
+  .a-page .list { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
+  .a-page .row { min-height: 52px; }
+  .a-page .big { min-height: 72px; }
+
+  /* B */
+  .b-win { left: 240px; top: 36px; width: 700px; overflow: hidden; }
+  .b-win .list { padding: 0 var(--s-2); }
+  .b-foot { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-4); border-top: 1px solid var(--line); font: var(--type-label); color: var(--text-2); }
+  .b-win .row.is-selected { margin: 0 0 1px; }
+
+  /* C */
+  .c-win { left: 360px; top: 32px; width: 460px; height: 516px; display: flex; flex-direction: column; overflow: hidden; }
+  .c-head { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); }
+  .c-head .dots { display: flex; gap: 6px; }
+  .c-head .dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--control-hover); display: block; }
+  .c-body { flex: 1; padding: var(--s-2) var(--s-3); display: flex; flex-direction: column; }
+  .c-body .hd { padding: var(--s-2) var(--s-2) 2px; }
+  .c-body .row { min-height: 32px; padding: 0 var(--s-2); }
+  .c-body .row + .hd { border-top: 0; }
+  .c-body .slider { width: 130px; }
+  .c-scroll { position: absolute; right: 4px; top: 60px; width: 4px; height: 330px; border-radius: var(--r-full); background: var(--control-hover); }
+
+  /* D */
+  .d-pop { right: 96px; top: 34px; width: 320px; padding: var(--s-2); overflow: hidden; }
+  .d-pop .head { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-3) var(--s-3); }
+  .d-pop .row { padding: 0 var(--s-3); }
+  .d-pop .acc { padding: var(--s-2) var(--s-3) var(--s-3); display: flex; flex-direction: column; gap: var(--s-2); }
+  .d-pop .acc .sws { flex-wrap: wrap; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var ACC = ['tide', 'ember', 'aurora', 'moss', 'graphite'];
+  var ACCN = ['Tide', 'Ember', 'Aurora', 'Moss', 'Graphite'];
+  function sws(big) {
+    var h = '<span class="sws' + (big ? ' big' : '') + '">';
+    ACC.forEach(function (a, i) { h += '<span class="sw accent-' + a + (i === 0 ? ' sel' : '') + '" title="' + ACCN[i] + '"></span>'; });
+    return h + '<span class="chip"><span class="dot"></span>Follow the household</span></span>';
+  }
+  function tg(on) { return '<span class="toggle' + (on ? ' on' : '') + '"></span>'; }
+  var SLIDER = '<span class="slider"><b></b><i></i></span>';
+  var MIC = '<span class="sel-field">Built-in microphone</span>';
+  var SEG = '<span class="segmented"><span>Tide</span><span class="on">Ember</span></span>';
+  function row(label, ctl, o) {
+    o = o || {};
+    return '<div class="row' + (o.sel ? ' is-selected' : '') + (o.cls ? ' ' + o.cls : '') + '"><span class="ico"></span><span class="grow">' + label +
+      (o.sub ? '<span class="sub">' + o.sub + '</span>' : '') + '</span>' + ctl + '</div>';
+  }
+  function frame(cls, inner) { return '<div class="frame wallpaper compact ' + cls + '">' + inner + '</div>'; }
+  var CONN = '<span class="chip success"><span class="dot"></span>Connected</span>';
+  var ME = '<span class="avatar" style="width:24px;height:24px">A</span>';
+  function topbar(trayOn) {
+    return '<div class="p glass topbar"><span>Alex’s desktop</span><span class="tray' + (trayOn ? ' on' : '') + '"><i></i></span><span class="mark"></span><span class="mark"></span><span class="num">09:41</span></div>';
+  }
+
+  /* A */
+  function A() {
+    var side = [['General', 'Name, hotkey, login, server'], ['Voice', 'Microphone, wake word'], ['Look', 'Accent, glass, motion'], ['Account', 'Alex, admin panel']];
+    var s = '<div class="a-side"><div class="dots"><i></i><i></i><i></i></div>';
+    side.forEach(function (x, i) { s += '<div class="item' + (i === 2 ? ' on' : '') + '"><span class="ico"></span><span><span class="t-label" style="font-weight:600">' + x[0] + '</span><span class="sub">' + x[1] + '</span></span></div>'; });
+    s += '</div>';
+    var page = '<div class="a-page"><div><div class="t-caption">Alex’s desktop</div><div class="t-title">Look</div></div>' +
+      '<div class="list">' +
+      row('Accent', sws(false), { cls: 'big', sub: 'Colour of this device’s launcher' }) +
+      row('See-through', SLIDER, { sub: 'How much of the desktop shows through the launcher' }) +
+      row('Reduce motion', tg(false)) +
+      '</div>' +
+      '<div class="t-label t-2" style="padding:0 var(--s-1)">Other groups: <b>General</b> holds the device name, the hotkey Alt+Space, start at login and the server home.local (connected). <b>Voice</b> holds the microphone and the wake word. <b>Account</b> holds Alex, switch account and Open the admin panel.</div>' +
+      '</div>';
+    return frame('dark', topbar(false) + '<div class="p glass-thick a-win">' + s + page + '</div>');
+  }
+
+  /* B */
+  function B() {
+    var q = '<div class="search"><span class="ico"></span><span>settings</span><span class="caret"></span><span class="grow"></span><span class="chip accent">This device</span></div><hr class="divider">';
+    var rows = [
+      row('Device name', '<span class="val">Alex’s desktop</span>', { sel: true }),
+      row('Signed in as Alex', '<span class="link">Switch account</span>'),
+      row('Open the launcher with', '<span class="kbd">Alt</span><span class="kbd">Space</span>'),
+      row('Start at login', tg(true)),
+      row('Microphone', MIC),
+      row('Listen for the wake word', tg(true)),
+      row('Accent', sws(false)),
+      row('See-through', SLIDER),
+      row('Reduce motion', tg(false)),
+      row('Server', '<span class="val">home.local</span>' + CONN),
+      row('Open the admin panel', '<span class="link">Open</span>')
+    ].join('');
+    var foot = '<div class="b-foot"><span class="kbd">↑↓</span>Move<span class="kbd">Enter</span>Change<span class="kbd">Space</span>Toggle<span class="grow"></span>Type “mic” to narrow to Microphone</div>';
+    return frame('dark'.replace('dark', 'light'), '<div class="p glass-thick b-win">' + q + '<div class="list">' + rows + '</div>' + foot + '</div>');
+  }
+
+  /* C */
+  function C() {
+    var b = '<div class="hd">General</div>' +
+      row('Device name', '<span class="val">Alex’s desktop</span>') +
+      row('Open the launcher with', '<span class="kbd">Alt</span><span class="kbd">Space</span>') +
+      row('Start at login', tg(true)) +
+      '<div class="hd">Voice</div>' +
+      row('Microphone', MIC) +
+      row('Listen for the wake word', tg(true)) +
+      '<div class="hd">Look</div>' +
+      row('Accent', sws(false)).replace('<span class="ico"></span>', '<span class="ico"></span>') +
+      row('See-through', SLIDER) +
+      row('Reduce motion', tg(false)) +
+      '<div class="hd">Account</div>' +
+      row('Alex', '<span class="link">Switch account</span>') +
+      row('Server home.local', CONN) +
+      row('Open the admin panel', '<span class="link">Open</span>');
+    return frame('dark'.replace('dark', 'dark'), topbar(false) +
+      '<div class="p glass-thick c-win"><div class="c-head"><span class="dots"><i></i><i></i><i></i></span><span class="t-strong grow" style="text-align:center">Settings</span><span style="width:45px"></span></div><div class="c-body">' + b + '</div></div>');
+  }
+
+  /* D */
+  function D() {
+    var pop = '<div class="p glass-thick d-pop">' +
+      '<div class="head">' + ME + '<span class="grow"><span class="t-strong">Alex’s desktop</span><span class="sub t-2" style="display:block;font:var(--type-label)">home.local</span></span>' + CONN + '</div>' +
+      '<hr class="divider">' +
+      row('Wake word', tg(true)) +
+      row('Microphone', '<span class="sel-field">Built-in</span>') +
+      row('Reduce motion', tg(false)) +
+      '<div class="acc"><span class="t-label">Accent</span>' + sws(false) + '</div>' +
+      '<hr class="divider">' +
+      row('All settings…', '<span class="kbd">Alt</span><span class="kbd">,</span>', { sel: true }) +
+      '</div>';
+    return frame('light', topbar(true) + pop);
+  }
+
+  var DEF = [
+    ['A. A settings window', 'Familiar and roomy, one group at a time, but it is a real window the launcher does not otherwise have, and a person must find the right group.', A, 'v-a', 'Dark: a window with a side bar of groups, opened from the tray'],
+    ['B. Settings in the launcher', 'No new window and every setting is a keystroke away, but the settings are a long list of controls in a space made for searching, and there is no groups overview.', B, 'v-b', 'Light: type “settings”, change a setting in its row, filter as you type'],
+    ['C. One small page', 'Everything is on one page to scroll and nothing is hidden behind a group, but it is a long page in a narrow window.', C, 'v-c', 'Dark: a narrow window, group headings, no side bar; it scrolls if the window is made smaller'],
+    ['D. A tray popover', 'Fast for the few things changed often and it needs no window, but it holds only some settings, so the rest still need a window or the launcher.', D, 'v-d', 'Light: a panel dropping from the tray icon, with an “All settings…” row']
+  ];
+  var out = '';
+  DEF.forEach(function (d) {
+    out += '<div class="arr" id="' + d[3] + '"><h2>' + d[0] + '</h2><p class="d">' + d[1] + '</p><span class="cap">' + d[4] + '</span>' + d[2]() + '</div>';
+  });
+  document.getElementById('page').innerHTML = out;
+</script>
+</body>
+</html>

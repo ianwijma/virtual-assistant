@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin panel mockups</title>
+<link rel="stylesheet" href="../examples/tokens.css"><link rel="stylesheet" href="../examples/components.css"><link rel="stylesheet" href="mockup.css">
+<style>
+body { background: var(--bg); }
+/* tokens.css works out --accent-soft once, at the root. Work it out again where an accent class changes --accent. */
+[class*="accent-"] { --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent); }
+.shots { display: grid; grid-template-columns: 590px 590px; gap: 28px 20px; align-items: start; }
+.shots > .screen.span { grid-column: 1 / -1; }
+.frame.mini { width: 590px; height: 432px; border-radius: 12px; }
+.frame.wide { width: 1200px; height: 640px; border-radius: 12px; }
+.frame.pn { width: 288px; height: 512px; border-radius: 12px; }
+.in { position: absolute; left: 0; top: 0; display: flex; gap: 10px; padding: 10px; box-sizing: border-box; }
+.mini .in { width: 738px; height: 540px; zoom: .8; }
+.wide .in { width: 1200px; height: 640px; }
+.frame.wide.tall { height: 940px; }
+.wide.tall .in { height: 940px; }
+.pn .in { width: 360px; height: 640px; zoom: .8; }
+.in > * { min-width: 0; min-height: 0; }
+.in .abs { position: absolute; }
+.screen > .notes { max-width: none; }
+.grow { flex: 1; min-width: 0; }
+.ell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+svg.i { display: block; flex: none; }
+.ib { width: 32px; height: 32px; border-radius: var(--r-sm); background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+.ib.l { width: 44px; height: 44px; border-radius: var(--r-md); }
+.nav { display: flex; align-items: center; gap: var(--s-2); height: 23px; padding: 0 var(--s-2); border-radius: var(--r-sm); font: var(--type-label); color: var(--text); white-space: nowrap; flex: none; }
+.nav.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.glass .nav.on { background: var(--glass-solid); }
+.cap { padding: var(--s-2) var(--s-2) 2px; flex: none; }
+.col { display: flex; flex-direction: column; gap: var(--s-2); overflow: hidden; }
+.side { width: 168px; flex: none; padding: var(--s-2); gap: 0; }
+.lst { width: 230px; flex: none; gap: 2px; }
+.pg { flex: 1; padding: 4px var(--s-1) 0; gap: var(--s-3); }
+.pg.body { gap: var(--s-3); }
+.grp { display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; padding: 2px; flex: none; }
+.grp .row { min-height: 34px; border-radius: var(--r-md); }
+.row .val { max-width: 55%; color: var(--text-2); }
+.chev { color: var(--text-3); flex: none; display: flex; }
+mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; padding: 0 1px; }
+.person { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2); flex: none; }
+.pav { --d: 30px; width: var(--d); height: var(--d); border-radius: 50%; flex: none; display: grid; place-items: center; border: 2px solid var(--accent); box-sizing: border-box; font: var(--type-label); font-weight: 600; color: var(--text); }
+.pav:not(.wallpaper) { background: var(--accent-soft); }
+.glass .pav:not(.wallpaper) { background: var(--glass-solid); }
+.fld { height: 28px; flex: none; }
+.fld .ph { white-space: nowrap; overflow: hidden; }
+.caret { display: inline-block; width: 1.5px; height: 15px; background: var(--accent); margin-left: 1px; vertical-align: -3px; }
+.head { display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-1); flex: none; }
+.big { min-height: 54px; padding-top: 4px; padding-bottom: 4px; border-radius: var(--r-md); }
+.big .sub { font-size: 11px; }
+.path { color: var(--text-2); padding: 0 var(--s-1); display: flex; align-items: center; gap: 4px; flex: none; }
+.empty { align-items: center; justify-content: center; text-align: center; gap: var(--s-2); }
+.btn { height: 28px; }
+.lh { padding: var(--s-1) var(--s-2) var(--s-2); }
+.sw { width: 30px; height: 30px; border-radius: 50%; flex: none; display: block; position: relative; background: linear-gradient(135deg, var(--accent) 50%, var(--accent-2) 50%); box-shadow: inset 0 0 0 1px var(--line); }
+.sw.sel { outline: 3px solid var(--accent); outline-offset: 3px; }
+.sw.sm { width: 26px; height: 26px; }
+.sw.s { width: 12px; height: 12px; }
+.sw .tick { position: absolute; right: -7px; top: -7px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; }
+.swi { display: flex; flex-direction: column; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
+.swi.sel { color: var(--text); font-weight: 600; }
+.swrow { display: flex; gap: var(--s-4); padding: 6px 4px 2px; }
+.pairs { display: grid; grid-template-columns: repeat(6, 26px); gap: var(--s-3) var(--s-4); padding: 6px 4px; justify-content: start; }
+.lrow { min-height: 46px; padding-top: 4px; padding-bottom: 4px; border-radius: var(--r-md); }
+.lrow .top { display: flex; align-items: baseline; gap: var(--s-2); }
+.tot { font-variant-numeric: tabular-nums; font-weight: 600; flex: none; }
+.strip { display: flex; gap: 1px; height: 4px; margin-top: 4px; }
+.strip i { display: block; border-radius: 2px; min-width: 1px; }
+.n1 { background: color-mix(in srgb, var(--text) 16%, transparent); }
+.n2 { background: color-mix(in srgb, var(--text) 28%, transparent); }
+.ac { background: var(--accent); }
+.wf { display: flex; flex-direction: column; gap: 4px; }
+.wf .l { display: flex; gap: var(--s-2); align-items: baseline; }
+.track { height: 10px; position: relative; border-radius: 5px; background: color-mix(in srgb, var(--text) 8%, transparent); }
+.track i { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
+.dots { display: flex; gap: 8px; align-items: center; justify-content: center; flex: none; }
+.dots i { display: block; width: 8px; height: 8px; border-radius: var(--r-full); border: 1.5px solid var(--text-3); box-sizing: border-box; }
+.dots i.done { background: var(--accent); border-color: var(--accent); }
+.dots i.now { width: 22px; background: var(--accent); border-color: var(--accent); }
+.setup { flex-direction: column; align-items: center; padding: 24px 0 20px; gap: 0; }
+.pane { width: 300px; flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--s-2); padding-top: var(--s-6); }
+.sym { width: 56px; height: 56px; border-radius: var(--r-full); background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; flex: none; }
+.fgrid { display: grid; grid-template-columns: 1fr 84px; gap: var(--s-2) var(--s-3); text-align: left; width: 100%; }
+.fgrid .full { grid-column: 1 / -1; }
+.fl { display: flex; flex-direction: column; min-width: 0; }
+.bigbtn { height: 48px; font-size: 17px; border-radius: var(--r-lg); width: 300px; box-sizing: border-box; flex: none; }
+.link { color: var(--accent); font: var(--type-label); }
+.back { position: absolute; left: 24px; top: 16px; color: var(--accent); display: flex; }
+.radio { width: 18px; height: 18px; border-radius: var(--r-full); border: 2px solid var(--line); flex: none; box-sizing: border-box; }
+.is-selected .radio { border: 5px solid var(--accent); }
+.choices { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; }
+.choices .row { border-radius: var(--r-md); min-height: 46px; border-top: 0; }
+.hw { position: relative; width: 620px; height: 250px; flex: none; margin: var(--s-4) 0 var(--s-3); }
+.hw .lang { position: absolute; font-weight: 600; letter-spacing: -.02em; color: var(--text-3); white-space: nowrap; }
+.hw .mid { position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; gap: var(--s-5); }
+.hw .txt { text-align: left; max-width: 220px; display: flex; flex-direction: column; gap: var(--s-2); }
+/* settings pages */
+.sgrid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3) var(--s-6); padding: 0 var(--s-1); }
+.sgrid .span2 { grid-column: 1 / -1; }
+.sc { display: flex; flex-direction: column; gap: var(--s-2); min-width: 0; }
+.sc > .t-heading { margin-bottom: 0; }
+.lab { font: var(--type-label); color: var(--text-2); display: flex; align-items: center; gap: var(--s-2); margin-bottom: 4px; }
+.pdot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; flex: none; }
+.sel { display: flex; align-items: center; gap: var(--s-2); }
+.sel .grow { font: var(--type-label); }
+.srow { display: flex; align-items: center; gap: var(--s-2); min-height: 26px; font: var(--type-label); }
+.srow .grow { font-weight: 500; }
+.hint { font: var(--type-caption); text-transform: none; letter-spacing: 0; color: var(--text-2); }
+.savebar { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-3); border-radius: var(--r-lg); flex: none; }
+.savebar .grow { font: var(--type-label); font-weight: 600; display: flex; align-items: center; gap: var(--s-2); }
+.dgrow { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-1) 0; border-top: 1px solid var(--line); min-height: 36px; flex: none; }
+.dgrow .grow { color: var(--danger); font: var(--type-label); font-weight: 600; }
+.slot { display: flex; align-items: center; gap: var(--s-2); height: 26px; padding: 0 var(--s-2); border-radius: var(--r-sm); background: var(--control); font: var(--type-label); }
+.slot b { width: 14px; color: var(--text-2); font-weight: 600; }
+.slot .grow { font-weight: 500; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.pics { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-2); }
+.pic { aspect-ratio: 4 / 3; border-radius: var(--r-sm); box-shadow: inset 0 0 0 1px var(--line); }
+.pic.add { display: grid; place-items: center; background: var(--control); color: var(--text-2); }
+.chips { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.well { display: flex; align-items: center; gap: var(--s-2); }
+.well .cw { width: 20px; height: 20px; border-radius: var(--r-xs); box-shadow: inset 0 0 0 1px var(--line); flex: none; }
+.fcard { width: 230px; flex: none; padding: var(--s-4) var(--s-3); display: flex; flex-direction: column; align-items: center; gap: var(--s-2); text-align: center; }
+.sheet { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 300px; padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-3); text-align: center; }
+.sheet .btn { height: 32px; }
+.bk { position: absolute; inset: 0; display: flex; gap: 10px; padding: 10px; }
+.dim { position: absolute; inset: 0; background: color-mix(in srgb, var(--bg) 55%, transparent); }
+.behind { opacity: .85; filter: blur(1px); }
+/* the four small previews of an accent */
+.pvs { display: grid; grid-template-columns: auto auto; gap: var(--s-4) var(--s-5); justify-content: start; align-items: end; }
+.pvi { display: flex; flex-direction: column; gap: 5px; align-items: center; font: var(--type-caption); text-transform: none; letter-spacing: 0; color: var(--text-2); }
+.pv { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 0 0 1px var(--line); }
+.pv.phone { width: 90px; height: 164px; border-radius: 14px; }
+.pv.tab, .pv.desk, .pv.adm { width: 150px; height: 104px; }
+.pv.desk, .pv.adm { border-radius: 8px; }
+.pv > * { position: absolute; }
+.pv .glass, .pv .glass-thick { border-radius: 8px; box-shadow: var(--shadow-1), inset 0 1px 0 var(--glass-edge); }
+.pv .ln { height: 4px; border-radius: 2px; background: var(--text-3); position: static; }
+.pv .ln.s { width: 55%; } .pv .ln.m { width: 80%; } .pv .ln.d { background: var(--text-2); }
+.pv .pb { position: static; height: 13px; width: 38px; border-radius: 4px; }
+.pv .stack { position: static; display: flex; flex-direction: column; gap: 5px; }
+.pv .phone-card { left: 8px; right: 8px; top: 26px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+.pv .phone-card .pb { width: 100%; }
+.pv .clock { left: 12px; top: 10px; width: 36px; height: 10px; border-radius: 3px; background: var(--text); opacity: .75; }
+.pv .tab-card { left: 12px; top: 30px; width: 70px; padding: 8px; display: flex; flex-direction: column; gap: 5px; }
+.pv .tab-shelf { left: 10px; right: 10px; bottom: 8px; height: 14px; border-radius: 7px; }
+.pv .win { left: 14px; right: 14px; top: 12px; bottom: 12px; padding: 6px 8px; display: flex; flex-direction: column; gap: 5px; }
+.pv .sel-row { position: static; height: 10px; border-radius: 3px; background: var(--accent-soft); }
+.pv .pside { left: 4px; top: 4px; bottom: 4px; width: 32px; padding: 5px 4px; display: flex; flex-direction: column; gap: 4px; }
+.pv .pmid { left: 40px; top: 4px; bottom: 4px; width: 38px; padding: 5px 4px; display: flex; flex-direction: column; gap: 4px; border-radius: 6px; background: var(--surface); }
+.pv .ppg { left: 82px; right: 4px; top: 4px; bottom: 4px; padding: 6px; display: flex; flex-direction: column; gap: 5px; border-radius: 6px; background: var(--surface); }
+.pv .ppg .push { margin-top: auto; }
+.wheel { position: relative; width: 190px; height: 190px; flex: none; }
+.ring { position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(hsl(0 80% 55%), hsl(60 80% 50%), hsl(120 70% 45%), hsl(180 75% 45%), hsl(240 80% 60%), hsl(300 75% 55%), hsl(360 80% 55%));
+  -webkit-mask: radial-gradient(circle, transparent 62%, black 63%); mask: radial-gradient(circle, transparent 62%, black 63%); }
+.hdl { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; border: 3px solid var(--glass-solid); box-shadow: var(--shadow-2), 0 0 0 1px var(--line); display: grid; place-items: center; font: var(--type-caption); font-weight: 700; color: var(--on-accent); letter-spacing: 0; }
+.wc { position: absolute; inset: 0; display: grid; place-items: center; }
+.rd { display: flex; align-items: center; gap: var(--s-3); }
+.rd .n { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: var(--type-caption); font-weight: 700; color: var(--on-accent); letter-spacing: 0; }
+.okline { display: flex; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
+.okline svg { color: var(--success); }
+</style></head>
+<body class="va"><div class="mock-page">
+<header><h1>Admin panel</h1><p>The browser application that configures the household. Each screen is drawn in compact density, in three columns as decided, in the accent of the person signed in. The large ones are drawn at full size, the smaller ones at four fifths. What is not decided is drawn as plainly as possible and its note says so.</p></header>
+<div class="shots" id="shots"></div>
+</div>
+<script>
+(function () {
+  var PH = {"users": "<path d=\"M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z\"/>", "devices": "<path d=\"M224,72H208V64a24,24,0,0,0-24-24H40A24,24,0,0,0,16,64v96a24,24,0,0,0,24,24H152v8a24,24,0,0,0,24,24h48a24,24,0,0,0,24-24V96A24,24,0,0,0,224,72ZM40,168a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H184a8,8,0,0,1,8,8v8H176a24,24,0,0,0-24,24v72Zm192,24a8,8,0,0,1-8,8H176a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Zm-96,16a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h40A8,8,0,0,1,136,208Zm80-96a8,8,0,0,1-8,8H192a8,8,0,0,1,0-16h16A8,8,0,0,1,216,112Z\"/>", "sparkle": "<path d=\"M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z\"/>", "palette": "<path d=\"M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z\"/>", "images": "<path d=\"M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM72,56H216v62.75l-10.07-10.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L72,109.37ZM184,200H40V88H56v80a16,16,0,0,0,16,16H184Zm32-32H72V132l36-36,49.66,49.66a8,8,0,0,0,11.31,0L194.63,120,216,141.38V168ZM160,84a12,12,0,1,1,12,12A12,12,0,0,1,160,84Z\"/>", "brain": "<path d=\"M248,124a56.11,56.11,0,0,0-32-50.61V72a48,48,0,0,0-88-26.49A48,48,0,0,0,40,72v1.39a56,56,0,0,0,0,101.2V176a48,48,0,0,0,88,26.49A48,48,0,0,0,216,176v-1.41A56.09,56.09,0,0,0,248,124ZM88,208a32,32,0,0,1-31.81-28.56A55.87,55.87,0,0,0,64,180h8a8,8,0,0,0,0-16H64A40,40,0,0,1,50.67,86.27,8,8,0,0,0,56,78.73V72a32,32,0,0,1,64,0v68.26A47.8,47.8,0,0,0,88,128a8,8,0,0,0,0,16,32,32,0,0,1,0,64Zm104-44h-8a8,8,0,0,0,0,16h8a55.87,55.87,0,0,0,7.81-.56A32,32,0,1,1,168,144a8,8,0,0,0,0-16,47.8,47.8,0,0,0-32,12.26V72a32,32,0,0,1,64,0v6.73a8,8,0,0,0,5.33,7.54A40,40,0,0,1,192,164Zm16-52a8,8,0,0,1-8,8h-4a36,36,0,0,1-36-36V80a8,8,0,0,1,16,0v4a20,20,0,0,0,20,20h4A8,8,0,0,1,208,112ZM60,120H56a8,8,0,0,1,0-16h4A20,20,0,0,0,80,84V80a8,8,0,0,1,16,0v4A36,36,0,0,1,60,120Z\"/>", "microphone": "<path d=\"M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z\"/>", "puzzle-piece": "<path d=\"M220.27,158.54a8,8,0,0,0-7.7-.46,20,20,0,1,1,0-36.16A8,8,0,0,0,224,114.69V72a16,16,0,0,0-16-16H171.78a35.36,35.36,0,0,0,.22-4,36.11,36.11,0,0,0-11.36-26.24,36,36,0,0,0-60.55,23.62,36.56,36.56,0,0,0,.14,6.62H64A16,16,0,0,0,48,72v32.22a35.36,35.36,0,0,0-4-.22,36.12,36.12,0,0,0-26.24,11.36,35.7,35.7,0,0,0-9.69,27,36.08,36.08,0,0,0,33.31,33.6,35.68,35.68,0,0,0,6.62-.14V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V165.31A8,8,0,0,0,220.27,158.54ZM208,208H64V165.31a8,8,0,0,0-11.43-7.23,20,20,0,1,1,0-36.16A8,8,0,0,0,64,114.69V72h46.69a8,8,0,0,0,7.23-11.43,20,20,0,1,1,36.16,0A8,8,0,0,0,161.31,72H208v32.23a35.68,35.68,0,0,0-6.62-.14A36,36,0,0,0,204,176a35.36,35.36,0,0,0,4-.22Z\"/>", "toggle-left": "<path d=\"M176,56H80a72,72,0,0,0,0,144h96a72,72,0,0,0,0-144Zm0,128H80A56,56,0,0,1,80,72h96a56,56,0,0,1,0,112ZM80,88a40,40,0,1,0,40,40A40,40,0,0,0,80,88Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,80,152Z\"/>", "ear": "<path d=\"M216,104a8,8,0,0,1-16,0,72,72,0,0,0-144,0c0,26.7,8.53,34.92,17.57,43.64C82.21,156,92,165.41,92,188a36,36,0,0,0,36,36c10.24,0,18.45-4.16,25.83-13.09a8,8,0,1,1,12.34,10.18C155.81,233.64,143,240,128,240a52.06,52.06,0,0,1-52-52c0-15.79-5.68-21.27-13.54-28.84C52.46,149.5,40,137.5,40,104a88,88,0,0,1,176,0Zm-38.13,57.08A8,8,0,0,0,166.93,164,8,8,0,0,1,152,160c0-9.33,4.82-15.76,10.4-23.2,6.37-8.5,13.6-18.13,13.6-32.8a48,48,0,0,0-96,0,8,8,0,0,0,16,0,32,32,0,0,1,64,0c0,9.33-4.82,15.76-10.4,23.2-6.37,8.5-13.6,18.13-13.6,32.8a24,24,0,0,0,44.78,12A8,8,0,0,0,177.87,161.08Z\"/>", "list-magnifying-glass": "<path d=\"M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,72h72a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm88,48H40a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16Zm109.66,13.66a8,8,0,0,1-11.32,0L206,177.36A40,40,0,1,1,217.36,166l20.3,20.3A8,8,0,0,1,237.66,197.66ZM184,168a24,24,0,1,0-24-24A24,24,0,0,0,184,168Z\"/>", "shield-check": "<path d=\"M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z\"/>", "receipt": "<path d=\"M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z\"/>", "chat-circle-text": "<path d=\"M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z\"/>", "magnifying-glass": "<path d=\"M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z\"/>", "caret-right": "<path d=\"M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z\"/>", "caret-left": "<path d=\"M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z\"/>", "caret-down": "<path d=\"M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z\"/>", "check": "<path d=\"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z\"/>", "plus": "<path d=\"M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z\"/>", "x": "<path d=\"M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z\"/>", "warning": "<path d=\"M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z\"/>", "arrow-counter-clockwise": "<path d=\"M224,128a96,96,0,0,1-94.71,96H128A95.38,95.38,0,0,1,62.1,197.8a8,8,0,0,1,11-11.63A80,80,0,1,0,71.43,71.39a3.07,3.07,0,0,1-.26.25L44.59,96H72a8,8,0,0,1,0,16H24a8,8,0,0,1-8-8V56a8,8,0,0,1,16,0V85.8L60.25,60A96,96,0,0,1,224,128Z\"/>", "shuffle": "<path d=\"M237.66,178.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32-11.32L212.69,192H200.94a72.12,72.12,0,0,1-58.59-30.15l-41.72-58.4A56.1,56.1,0,0,0,55.06,80H32a8,8,0,0,1,0-16H55.06a72.12,72.12,0,0,1,58.59,30.15l41.72,58.4A56.1,56.1,0,0,0,200.94,176h11.75l-10.35-10.34a8,8,0,0,1,11.32-11.32ZM143,107a8,8,0,0,0,11.16-1.86l1.2-1.67A56.1,56.1,0,0,1,200.94,80h11.75L202.34,90.34a8,8,0,0,0,11.32,11.32l24-24a8,8,0,0,0,0-11.32l-24-24a8,8,0,0,0-11.32,11.32L212.69,64H200.94a72.12,72.12,0,0,0-58.59,30.15l-1.2,1.67A8,8,0,0,0,143,107Zm-30,42a8,8,0,0,0-11.16,1.86l-1.2,1.67A56.1,56.1,0,0,1,55.06,176H32a8,8,0,0,0,0,16H55.06a72.12,72.12,0,0,0,58.59-30.15l1.2-1.67A8,8,0,0,0,113,149Z\"/>", "trash": "<path d=\"M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z\"/>", "sun": "<path d=\"M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z\"/>", "moon": "<path d=\"M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z\"/>", "speaker-high": "<path d=\"M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z\"/>", "speaker-slash": "<path d=\"M53.92,34.62A8,8,0,1,0,42.08,45.38L73.55,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V175.09l42.08,46.29a8,8,0,1,0,11.84-10.76ZM32,96H72v64H32ZM144,207.64,88,164.09V95.89l56,61.6Zm42-63.77a24,24,0,0,0,0-31.72,8,8,0,1,1,12-10.57,40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.59Zm-80.16-76a8,8,0,0,1,1.4-11.23l39.85-31A8,8,0,0,1,160,32v74.83a8,8,0,0,1-16,0V48.36l-26.94,21A8,8,0,0,1,105.84,67.91ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z\"/>", "device-tablet": "<path d=\"M192,24H64A24,24,0,0,0,40,48V208a24,24,0,0,0,24,24H192a24,24,0,0,0,24-24V48A24,24,0,0,0,192,24ZM56,72H200V184H56Zm8-32H192a8,8,0,0,1,8,8v8H56V48A8,8,0,0,1,64,40ZM192,216H64a8,8,0,0,1-8-8v-8H200v8A8,8,0,0,1,192,216Z\"/>", "device-mobile": "<path d=\"M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z\"/>", "desktop": "<path d=\"M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24h72v16H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V200h72a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40ZM48,56H208a8,8,0,0,1,8,8v80H40V64A8,8,0,0,1,48,56ZM208,184H48a8,8,0,0,1-8-8V160H216v16A8,8,0,0,1,208,184Z\"/>", "laptop": "<path d=\"M232,168h-8V72a24,24,0,0,0-24-24H56A24,24,0,0,0,32,72v96H24a8,8,0,0,0-8,8v16a24,24,0,0,0,24,24H216a24,24,0,0,0,24-24V176A8,8,0,0,0,232,168ZM48,72a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8v96H48ZM224,192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8v-8H224ZM152,88a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,88Z\"/>", "push-pin": "<path d=\"M235.32,81.37,174.63,20.69a16,16,0,0,0-22.63,0L98.37,74.49c-10.66-3.34-35-7.37-60.4,13.14a16,16,0,0,0-1.29,23.78L85,159.71,42.34,202.34a8,8,0,0,0,11.32,11.32L96.29,171l48.29,48.29A16,16,0,0,0,155.9,224c.38,0,.75,0,1.13,0a15.93,15.93,0,0,0,11.64-6.33c19.64-26.1,17.75-47.32,13.19-60L235.33,104A16,16,0,0,0,235.32,81.37ZM224,92.69h0l-57.27,57.46a8,8,0,0,0-1.49,9.22c9.46,18.93-1.8,38.59-9.34,48.62L48,100.08c12.08-9.74,23.64-12.31,32.48-12.31A40.13,40.13,0,0,1,96.81,91a8,8,0,0,0,9.25-1.51L163.32,32,224,92.68Z\"/>", "pencil-simple": "<path d=\"M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.68,147.31,64l24-24L216,84.68Z\"/>", "house": "<path d=\"M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z\"/>", "timer": "<path d=\"M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,216ZM173.66,90.34a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32l40-40A8,8,0,0,1,173.66,90.34ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z\"/>", "list-checks": "<path d=\"M224,128a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h88A8,8,0,0,1,224,128ZM128,72h88a8,8,0,0,0,0-16H128a8,8,0,0,0,0,16Zm88,112H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16ZM82.34,42.34,56,68.69,45.66,58.34A8,8,0,0,0,34.34,69.66l16,16a8,8,0,0,0,11.32,0l32-32A8,8,0,0,0,82.34,42.34Zm0,64L56,132.69,45.66,122.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Zm0,64L56,196.69,45.66,186.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Z\"/>", "clipboard-text": "<path d=\"M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z\"/>", "chat-circle": "<path d=\"M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z\"/>", "info": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z\"/>", "lock": "<path d=\"M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z\"/>", "image": "<path d=\"M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z\"/>", "globe-hemisphere-west": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm88,104a87.62,87.62,0,0,1-6.4,32.94l-44.7-27.49a15.92,15.92,0,0,0-6.24-2.23l-22.82-3.08a16.11,16.11,0,0,0-16,7.86h-8.72l-3.8-7.86a15.91,15.91,0,0,0-11-8.67l-8-1.73L96.14,104h16.71a16.06,16.06,0,0,0,7.73-2l12.25-6.76a16.62,16.62,0,0,0,3-2.14l26.91-24.34A15.93,15.93,0,0,0,166,49.1l-.36-.65A88.11,88.11,0,0,1,216,128ZM143.31,41.34,152,56.9,125.09,81.24,112.85,88H96.14a16,16,0,0,0-13.88,8l-8.73,15.23L63.38,84.19,74.32,58.32a87.87,87.87,0,0,1,69-17ZM40,128a87.53,87.53,0,0,1,8.54-37.8l11.34,30.27a16,16,0,0,0,11.62,10l21.43,4.61L96.74,143a16.09,16.09,0,0,0,14.4,9h1.48l-7.23,16.23a16,16,0,0,0,2.86,17.37l.14.14L128,205.94l-1.94,10A88.11,88.11,0,0,1,40,128Zm102.58,86.78,1.13-5.81a16.09,16.09,0,0,0-4-13.9,1.85,1.85,0,0,1-.14-.14L120,174.74,133.7,144l22.82,3.08,45.72,28.12A88.18,88.18,0,0,1,142.58,214.78Z\"/>", "cloud-arrow-up": "<path d=\"M178.34,165.66,160,147.31V208a8,8,0,0,1-16,0V147.31l-18.34,18.35a8,8,0,0,1-11.32-11.32l32-32a8,8,0,0,1,11.32,0l32,32a8,8,0,0,1-11.32,11.32ZM160,40A88.08,88.08,0,0,0,81.29,88.68,64,64,0,1,0,72,216h40a8,8,0,0,0,0-16H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.12A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,100.8,66,8,8,0,0,0,3.2,15.34,7.9,7.9,0,0,0,3.2-.68A88,88,0,0,0,160,40Z\"/>", "dots-six-vertical": "<path d=\"M104,60A12,12,0,1,1,92,48,12,12,0,0,1,104,60Zm60,12a12,12,0,1,0-12-12A12,12,0,0,0,164,72ZM92,116a12,12,0,1,0,12,12A12,12,0,0,0,92,116Zm72,0a12,12,0,1,0,12,12A12,12,0,0,0,164,116ZM92,184a12,12,0,1,0,12,12A12,12,0,0,0,92,184Zm72,0a12,12,0,1,0,12,12A12,12,0,0,0,164,184Z\"/>", "clock": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z\"/>", "paint-brush-broad": "<path d=\"M216,24H72A40,40,0,0,0,32,64v72a24,24,0,0,0,24,24h48l-7.89,46.67A8.42,8.42,0,0,0,96,208a32,32,0,0,0,64,0,8.42,8.42,0,0,0-.11-1.33L152,160h48a24,24,0,0,0,24-24V32A8,8,0,0,0,216,24ZM72,40H176V80a8,8,0,0,0,16,0V40h16v64H48V64A24,24,0,0,1,72,40ZM200,144H152a16,16,0,0,0-15.84,18.26l0,.2L144,208.6a16,16,0,0,1-32,0l7.8-46.14,0-.2A16,16,0,0,0,104,144H56a8,8,0,0,1-8-8V120H208v16A8,8,0,0,1,200,144Z\"/>", "hand-waving": "<path d=\"M220.17,100,202.86,70a28,28,0,0,0-38.24-10.25,27.69,27.69,0,0,0-9,8.34L138.2,38a28,28,0,0,0-48.48,0A28,28,0,0,0,48.15,74l1.59,2.76A27.67,27.67,0,0,0,38,80.41a28,28,0,0,0-10.24,38.25l40,69.32a87.47,87.47,0,0,0,53.43,41,88.56,88.56,0,0,0,22.92,3,88,88,0,0,0,76.06-132Zm-6.66,62.64A72,72,0,0,1,81.62,180l-40-69.32a12,12,0,0,1,20.78-12L81.63,132a8,8,0,1,0,13.85-8L62,66A12,12,0,1,1,82.78,54L114,108a8,8,0,1,0,13.85-8L103.57,58h0a12,12,0,1,1,20.78-12l33.42,57.9a48,48,0,0,0-5.54,60.6,8,8,0,0,0,13.24-9A32,32,0,0,1,172.78,112a8,8,0,0,0,2.13-10.4L168.23,90A12,12,0,1,1,189,78l17.31,30A71.56,71.56,0,0,1,213.51,162.62ZM184.25,31.71A8,8,0,0,1,194,26a59.62,59.62,0,0,1,36.53,28l.33.57a8,8,0,1,1-13.85,8l-.33-.57a43.67,43.67,0,0,0-26.8-20.5A8,8,0,0,1,184.25,31.71ZM80.89,237a8,8,0,0,1-11.23,1.33A119.56,119.56,0,0,1,40.06,204a8,8,0,0,1,13.86-8,103.67,103.67,0,0,0,25.64,29.72A8,8,0,0,1,80.89,237Z\"/>", "user-circle": "<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z\"/>", "bell": "<path d=\"M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z\"/>", "clock-counter-clockwise": "<path d=\"M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z\"/>", "arrow-right": "<path d=\"M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z\"/>"};
+  function I(n, s) { s = s || 16; return '<svg class="i" width="' + s + '" height="' + s + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">' + PH[n] + '</svg>'; }
+  var G = [['Household', [['People', 'users'], ['Devices', 'devices'], ['Assistants', 'sparkle'], ['Appearance', 'palette'], ['Wallpapers', 'images']]],
+           ['System', [['AI providers', 'brain'], ['Speech', 'microphone'], ['Modules', 'puzzle-piece'], ['Features', 'toggle-left']]],
+           ['Logs', [['Summoning', 'ear'], ['Requests', 'list-magnifying-glass'], ['Admin access', 'shield-check'], ['Audit', 'receipt']]],
+           ['Feedback', [['Feedback', 'chat-circle-text']]]];
+  function at(s) { return ' style="' + s + '"'; }
+  function ch(size, cls) { return '<span class="character' + (cls ? ' ' + cls : '') + '" style="--size:' + size + 'px"></span>'; }
+  function fig(size, cls) { return '<span class="figure' + (cls ? ' ' + cls : '') + '" style="--size:' + size + 'px"><span class="character" style="--size:' + size + 'px"></span></span>'; }
+  function pav(l, acc, d, photo) { return '<span class="pav accent-' + acc + (photo ? ' wallpaper' : '') + '" style="--d:' + d + 'px">' + (photo ? '' : l) + '</span>'; }
+  function ib(icon, large) { return '<span class="ib' + (large ? ' l' : '') + '">' + I(icon, large ? 22 : 18) + '</span>'; }
+  function chev() { return '<span class="chev">' + I('caret-right', 14) + '</span>'; }
+  function nav(n, ic, on) { return '<div class="nav' + (on ? ' on' : '') + '">' + I(ic, 16) + n + '</div>'; }
+  function navGroups(cur) {
+    return G.map(function (g) {
+      return (g[0] === 'Feedback' ? '<div style="height:6px;flex:none"></div>' : '<div class="t-caption cap">' + g[0] + '</div>') + g[1].map(function (n) { return nav(n[0], n[1], n[0] === cur); }).join('');
+    }).join('');
+  }
+  function side(cur, q) {
+    var f = q ? '<span class="grow">' + q + '<span class="caret"></span></span>' : '<span class="ph grow">Search settings</span>';
+    return '<aside class="glass col side"><div class="field fld">' + I('magnifying-glass', 14) + f + '</div><div style="height:6px;flex:none"></div>' +
+      '<div class="person">' + pav('A', 'tide', 30) + '<div class="t-label" style="font-weight:600">Alex &middot; Admin</div></div>' + navGroups(cur) + '</aside>';
+  }
+  function row(label, val, o) {
+    o = o || {};
+    return '<div class="row">' + (o.i ? I(o.i, 16) : '') + '<div class="grow ell">' + label + '</div>' + (val ? '<span class="val ell">' + val + '</span>' : '') + (o.t ? '<span class="toggle on"></span>' : chev()) + '</div>';
+  }
+  function grp(rows) { return '<div class="grp surface">' + rows.join('') + '</div>'; }
+  function bigRow(lead, title, sub, sel, extra) {
+    return '<div class="row big' + (sel ? ' is-selected' : '') + '">' + lead + '<div class="grow"><div class="t-strong ell">' + title + '</div><div class="sub ell">' + sub + '</div></div>' + (extra || '') + '</div>';
+  }
+  function listCol(title, rows, addLabel, w) {
+    return '<section class="col lst"' + at(w ? 'width:' + w + 'px' : '') + '><div class="t-heading lh">' + title + '</div>' + rows.join('') +
+      '<div class="grow"></div>' + (addLabel ? '<span class="btn">' + I('plus', 14) + addLabel + '</span>' : '') + '</section>';
+  }
+  function path(parts) { return '<div class="t-label path">' + parts.join(' ' + I('caret-right', 11) + ' ') + '</div>'; }
+  function quiet(title, sub) { return '<main class="col empty pg"><div class="t-heading">' + title + '</div><div class="t-label t-2">' + sub + '</div></main>'; }
+  function page(inner, bar, o) { return '<main class="col pg' + ((o && o.cls) || '') + '">' + inner + '<div class="grow"></div>' + (bar || '') + '</main>'; }
+  function savebar(n) {
+    return '<div class="savebar surface"><span class="grow"><span class="pdot"></span>' + n + (n === 1 ? ' change' : ' changes') + ' not saved</span><span class="btn btn-quiet">Discard</span><span class="btn btn-primary">Save</span></div>';
+  }
+  function lab(t, chg) { return '<div class="lab">' + t + (chg ? '<span class="pdot"></span>' : '') + '</div>'; }
+  function sc(title, body) { return '<div class="sc"><div class="t-heading">' + title + '</div>' + body + '</div>'; }
+  function seg(opts, on) { return '<div class="segmented">' + opts.map(function (o, i) { return '<span' + (i === on ? ' class="on"' : '') + '>' + o + '</span>'; }).join('') + '</div>'; }
+  function srow(label, on, chg) { return '<div class="srow"><span class="grow">' + label + (chg ? ' <span class="pdot"></span>' : '') + '</span><span class="toggle' + (on ? ' on' : '') + '"></span></div>'; }
+  function sel(v) { return '<div class="field sel"><span class="grow">' + v + '</span>' + I('caret-down', 12) + '</div>'; }
+  function fld(label, val, chg) { return '<div>' + lab(label, chg) + '<div class="field">' + val + '</div></div>'; }
+  var DEV = [['Alex&rsquo;s laptop', 'Desktop', 'laptop', 1], ['Alex&rsquo;s phone', 'Phone', 'device-mobile', 1], ['Sam&rsquo;s phone', 'Phone', 'device-mobile', 0], ['Kitchen tablet', 'Household tablet', 'device-tablet', 1], ['Hall tablet', 'Household tablet', 'device-tablet', 0]];
+  function online(o) { return o ? '<span class="chip success"><i class="dot"></i>Online</span>' : '<span class="chip"><i class="dot"></i>Offline</span>'; }
+  function devList(selName, widthPx) {
+    var rows = [bigRow(ib('device-tablet'), 'Bedroom tablet', 'Household tablet', selName === 'Bedroom tablet', '<span class="chip warning"><i class="dot"></i>Waiting</span>')];
+    rows = ['<div class="t-caption cap">Waiting for approval</div>'].concat(rows, ['<div class="t-caption cap">All devices</div>'],
+      DEV.map(function (d) { return bigRow(ib(d[2]), d[0], d[1], selName === d[0].replace('&rsquo;', '’'), online(d[3])); }));
+    return listCol('Devices', rows, 'Invite a household device', widthPx);
+  }
+
+  /* 1 Devices */
+  function devices() {
+    return side('Devices') + devList('Bedroom tablet', 250) +
+      page(path(['Devices', 'Bedroom tablet']) +
+        '<div class="head">' + ib('device-tablet', 1) + '<div><div class="t-title">Bedroom tablet</div><div class="t-label t-2">Asked 4 minutes ago</div></div></div>' +
+        grp([row('Kind', 'Household tablet'), row('Invite', 'From Alex'), row('Status', 'Waiting for approval')]) +
+        '<div style="display:flex;gap:var(--s-2)"><span class="btn btn-primary">Approve</span><span class="btn">Reject</span></div>');
+  }
+
+  /* 2 A device's settings */
+  function pinned() {
+    var four = [['house', 'Overview'], ['timer', 'Timers'], ['list-checks', 'Lists'], ['sparkle', 'Assistant']];
+    var from = [['clipboard-text', 'Clipboard'], ['clock-counter-clockwise', 'Timeline'], ['chat-circle', 'Chat'], ['bell', 'Alarms']];
+    return '<div class="two"><div class="col" style="gap:3px"><span class="hint">Its four</span>' + four.map(function (a, i) { return '<div class="slot"><b>' + (i + 1) + '</b>' + I(a[0], 14) + '<span class="grow">' + a[1] + '</span>' + I('x', 11) + '</div>'; }).join('') + '</div>' +
+      '<div class="col" style="gap:3px"><span class="hint">Pick from</span>' + from.map(function (a) { return '<div class="slot">' + I(a[0], 14) + '<span class="grow">' + a[1] + '</span>' + I('plus', 11) + '</div>'; }).join('') + '</div></div>';
+  }
+  function thumbs(h) { return '<div class="pics" style="grid-template-columns:repeat(4,1fr)">' + [0, 50, 110, 200].map(function (d) { return '<div class="pic wallpaper" style="filter:hue-rotate(' + (d + (h || 0)) + 'deg)"></div>'; }).join('') + '</div>'; }
+  function fol(label, val, hint) { return '<div class="srow"><span class="grow">' + label + '</span><span class="t-label t-2">' + val + '</span><span class="chip" style="font-size:11px;opacity:.8">Follows the household</span></div>' + (hint ? '<div class="hint">' + hint + '</div>' : ''); }
+  function devicePage() {
+    var body =
+      path(['Devices', 'Kitchen tablet']) +
+      '<div class="head">' + ib('device-tablet', 1) + '<div class="grow"><div class="t-title">Kitchen tablet</div><div class="t-label t-2">Household tablet &middot; last seen just now</div></div>' + online(1) + '</div>' +
+      '<div class="sgrid">' +
+        sc('Display', '<div>' + lab('Density') + seg(['Compact', 'Roomy'], 1) + '</div>' +
+          '<div>' + lab('Light and dark') + seg(['Follow device', 'Light', 'Dark', 'By time', 'By room light'], 4) + '</div>' +
+          '<div>' + lab('Glass', 1) + seg(['Clear', 'Thicker', 'Solid'], 1) + '<div class="hint" style="margin-top:4px">Clear is the glass as designed. Solid follows reduced transparency.</div></div>') +
+        sc('Sound and motion', srow('Conversation sounds', 0) + srow('Other sounds', 1) + srow('Reduced motion', 0) +
+          '<div class="hint">Timers, alarms and notifications use the other sounds.</div>' +
+          '<div class="srow" style="margin-top:var(--s-1)"><span class="grow">Accent</span><span class="sw s"></span><span class="t-label t-2">Follows the household (Tide)</span>' + chev() + '</div>') +
+        sc('Wallpaper gallery', '<div>' + lab('Gallery', 1) + sel('Seasons') + '</div>' + thumbs(0) + '<div class="hint">A gallery is made on the Wallpapers page. Its pictures change by themselves.</div>') +
+        sc('Pinned areas', lab('Shown on its bar', 1) + pinned()) +
+        sc('Cards and figure', fol('Asked-for cards stay large for', '10 seconds') + fol('Idle figure changes by itself', 'off', 'Every 10 to 15 minutes when on.')) +
+      '</div>';
+    var danger = '<div style="border:1px solid var(--danger);border-radius:var(--r-md);padding:var(--s-2) var(--s-3);display:flex;flex-direction:column;gap:var(--s-1);flex:none"><div class="t-caption" style="color:var(--danger)">Dangerous actions</div><div class="t-heading">Reset</div>' +
+      '<div class="dgrow" style="border-top:0;padding-top:0"><span class="grow">Reset this device</span><span class="chip danger">Sure?</span><span class="btn btn-danger">Reset</span><span class="btn btn-quiet">Keep</span></div>' +
+      '<div class="dgrow" style="padding-top:var(--s-1)"><span class="grow">Remove this device</span><span class="chip danger">Sure?</span><span class="btn btn-danger">Remove</span><span class="btn btn-quiet">Keep</span></div></div>';
+    return page(body, danger + savebar(3));
+  }
+  function deviceOne() { return side('Devices') + devList('Kitchen tablet', 230) + devicePage(); }
+
+  /* 3 A device's accent */
+  function pv(cls, vars) {
+    function ln(c) { return '<i class="ln ' + c + '"></i>'; }
+    function card(c) { return '<div class="glass ' + c + '"><div class="stack">' + ln('d m') + ln('s') + '</div><span class="pb btn-primary"></span></div>'; }
+    var phone = '<div class="pv phone backdrop ' + cls + '"' + at(vars) + '>' + card('phone-card') + '</div>';
+    var tab = '<div class="pv tab backdrop ' + cls + '"' + at(vars) + '><i class="clock"></i><div class="glass tab-card"><div class="stack">' + ln('d m') + ln('s') + '</div><span class="pb btn-primary"></span></div><div class="glass tab-shelf"></div></div>';
+    var desk = '<div class="pv desk wallpaper ' + cls + '"' + at(vars) + '><div class="glass-thick win">' + '<span class="sel-row"></span>' + ln('d m') + ln('s') + '<span class="pb btn-primary" style="margin-top:auto"></span></div></div>';
+    var adm = '<div class="pv adm backdrop ' + cls + '"' + at(vars) + '><div class="glass pside"><span class="sel-row"></span>' + ln('s') + ln('s') + '</div><div class="pmid"><span class="sel-row"></span>' + ln('m') + ln('m') + '</div><div class="ppg">' + ln('d s') + ln('m') + '<span class="pb btn-primary push"></span></div></div>';
+    function c(t) { return '<span>' + t + '</span>'; }
+    return { phone: '<div class="pvi">' + phone + c('Phone') + '</div>', tab: '<div class="pvi">' + tab + c('Tablet') + '</div>', desk: '<div class="pvi">' + desk + c('Desktop') + '</div>', adm: '<div class="pvi">' + adm + c('Admin panel') + '</div>' };
+  }
+  var BUILT = [['tide', 'Tide'], ['ember', 'Ember'], ['aurora', 'Aurora'], ['moss', 'Moss'], ['blossom', 'Blossom'], ['cherry', 'Cherry'], ['graphite', 'Graphite']];
+  var TICK = '<span class="tick">' + I('check', 10) + '</span>';
+  function built(sel, own) {
+    return '<div class="swrow">' + BUILT.map(function (b) { return '<div class="swi' + (b[0] === sel ? ' sel' : '') + '"><span class="sw accent-' + b[0] + (b[0] === sel ? ' sel' : '') + '">' + (b[0] === sel ? TICK : '') + '</span>' + b[1] + '</div>'; }).join('') +
+      (own ? '<div class="swi sel"><span class="sw sel" style="--accent:#E0457B;--accent-2:#F2A93B">' + TICK + '</span>Your own</div>' : '') + '</div>';
+  }
+  var PAIRS = [['#0F7B8A', '#F2C14E'], ['#3B4CCA', '#F28BB3'], ['#2E7D5B', '#E9D8A6'], ['#8E3B9E', '#FF9E7A'], ['#E0457B', '#F2A93B'], ['#1D6FB8', '#6FD3C0'],
+               ['#B5472E', '#F0C987'], ['#4C5BD4', '#7FE0D0'], ['#D1495B', '#EDAE49'], ['#2A9D8F', '#E9C46A'], ['#5E4AE3', '#F08A5D'], ['#3A7D44', '#F4D35E']];
+  function pairs(sel) { return '<div class="pairs">' + PAIRS.map(function (p, i) { return '<span class="sw sm' + (i === sel ? ' sel' : '') + '" style="--accent:' + p[0] + ';--accent-2:' + p[1] + '">' + (i === sel ? TICK : '') + '</span>'; }).join('') + '</div>'; }
+  function okline() { return '<div class="okline">' + I('check', 14) + 'Checked: text stays readable</div>'; }
+
+  function deviceAccent() {
+    var p = pv('light accent-ember', '');
+    return side('Devices') + devList('Kitchen tablet', 230) +
+      page(path(['Devices', 'Kitchen tablet', 'Accent']) +
+        '<div class="head"><div class="grow"><div class="t-title">Accent</div><div class="t-label t-2">Only this device. A person who is recognised still gets their own.</div></div></div>' +
+        '<div class="sgrid" style="grid-template-columns:1.15fr 1fr"><div class="sc">' +
+          '<div class="choices" style="gap:2px"><div class="row"><span class="radio"></span><div class="grow"><div class="t-strong">Follow the household</div><div class="sub">Tide</div></div></div>' +
+          '<div class="row is-selected"><span class="radio"></span><div class="grow"><div class="t-strong">Its own</div><div class="sub">Set for this device</div></div><span class="pdot"></span></div></div>' +
+          built('ember') + '<div class="hint">The same pairs and the colour wheel as the household&rsquo;s page.</div>' + okline() + '</div>' +
+          '<div class="sc"><span class="hint">Preview, on this device only</span><div style="padding:var(--s-3) 0">' + p.tab + '</div></div></div>',
+        savebar(1));
+  }
+
+  /* 4 Leaving with unsaved changes */
+  function leave() {
+    return '<div class="bk behind">' + deviceOne() + '</div><div class="dim"></div>' +
+      '<div class="glass-thick abs sheet"><div class="t-heading">Save your changes?</div><div class="t-label t-2">Kitchen tablet has 3 changes that are not saved.</div>' +
+      '<div class="col" style="gap:var(--s-2)"><span class="btn btn-primary">Save</span><span class="btn">Discard</span><span class="btn btn-quiet">Stay</span></div></div>';
+  }
+
+  /* 5 People */
+  function people() {
+    var P = [['A', 'Alex', 'Admin', 'tide', 1], ['S', 'Sam', 'Member', 'ember', 0], ['J', 'Jo', 'Member', 'aurora', 0], ['K', 'Kit', 'Member', 'moss', 0]];
+    var rows = P.map(function (p, i) { return bigRow(pav(p[0], p[3], 34, p[4]), p[1], p[2], i === 1, ''); });
+    return side('People') + listCol('People', rows, 'Invite a person') +
+      page(path(['People', 'Sam']) +
+        '<div class="head">' + pav('S', 'ember', 52) + '<div><div class="t-title">Sam</div><div class="t-label t-2">Member</div></div></div>' +
+        grp([row('Email', 'sam@home.example'), row('Role', 'Member'), row('Photo', 'None, the initial is shown'), '<div class="row"><div class="grow ell">Accent</div><span class="sw s accent-ember"></span><span class="val">Ember</span>' + chev() + '</div>', row('Devices', '2 devices')]) +
+        '<div class="t-label t-2" style="padding:0 var(--s-1)">A person is marked by a ring in their accent, with their photo or their initial.</div>');
+  }
+
+  /* 6 A character */
+  function character() {
+    var AS = [['Juno', 'Household assistant &middot; 3 devices', 'aurora', 1], ['Sage', 'Sam&rsquo;s assistant &middot; 1 device', 'ember', 0]];
+    var rows = AS.map(function (a) { return bigRow('<span class="character accent-' + a[2] + '" style="--size:34px"></span>', a[0], a[1], a[3], ''); });
+    var abil = [['Lists', 1], ['Timers', 1], ['Notifications', 1], ['Clipboard', 0], ['Email', 0]].map(function (a) { return srow(a[0], a[1]); }).join('');
+    var form = '<div class="sgrid" style="gap:var(--s-3) var(--s-5)">' +
+      '<div class="span2">' + sc('Identity', '<div class="two">' + fld('Name', 'Juno') + fld('Wake words', 'Hey Juno') + fld('Voice', 'Warm, calm (local)') + fld('Language', 'English (UK)') + '</div>') + '</div>' +
+      sc('Its two colours', '<div class="well">' + lab('Main', 1) + '<span class="cw" style="background:#5B43E0"></span><span class="t-mono t-2">#5B43E0</span></div>' +
+        '<div class="well">' + lab('Second', 1) + '<span class="cw" style="background:#22C1E6"></span><span class="t-mono t-2">#22C1E6</span></div>' +
+        pairs(3) + '<div style="display:flex;gap:var(--s-3);align-items:center"><span class="btn">' + I('shuffle', 14) + 'Shuffle</span><span class="link t-2">Pick the two colours yourself</span></div>') +
+      sc('Abilities', abil) +
+      sc('Brain', '<div>' + lab('AI provider') + sel('Local model (small)') + '</div>') +
+      sc('Scope and guests', '<div>' + seg(['Household', 'One person'], 0) + '</div>' + srow('Answers guests', 1)) + '</div>';
+    return side('Assistants') + listCol('Assistants', rows, 'Add an assistant', 200) +
+      page(path(['Assistants', 'Juno']) +
+        '<div style="display:flex;gap:var(--s-4);align-items:flex-start;min-height:0;overflow:hidden">' +
+        '<aside class="glass fcard">' + fig(110, 'accent-aurora') + '<div class="t-heading">Juno</div><div class="t-label t-2">Say: Hey Juno</div><span class="chip accent">Household assistant</span><div class="hint" style="margin-top:var(--s-1)">Drawn in its own two colours, whoever it talks to.</div></aside>' +
+        '<div class="grow">' + form + '</div></div>', savebar(2));
+  }
+
+  /* 7 Appearance */
+  function appearance() {
+    var p = pv('light accent-ember', '');
+    return side('Appearance') +
+      page(path(['Appearance']) + '<div class="t-title" style="padding:0 var(--s-1)">Appearance</div>' +
+        '<div style="display:flex;gap:var(--s-8);padding:0 var(--s-1);min-height:0">' +
+        '<div class="sc grow" style="max-width:480px"><div class="t-heading">Household accent' + ' <span class="pdot" style="vertical-align:1px"></span></div><div class="t-label t-2">Used on every device unless a device or a person sets their own.</div>' +
+          built('ember') + '<div class="t-caption" style="margin-top:var(--s-2)">Pairs that go together</div>' + pairs(-1) +
+          '<div style="display:flex;gap:var(--s-3);align-items:center"><span class="btn">' + I('shuffle', 14) + 'Shuffle</span><span class="link t-2" style="text-decoration:underline">Pick the two colours yourself</span></div>' + okline() + '</div>' +
+        '<div class="sc"><div class="t-caption">Preview, on all four devices</div><div class="pvs">' + p.phone + p.tab + p.desk + p.adm + '</div></div></div>',
+        savebar(1));
+  }
+
+  /* 8 Own colours */
+  function ownColours() {
+    var R = 95, r = 77, H = [['#E0457B', 340, 1], ['#F2A93B', 37, 2]];
+    var h = H.map(function (x) { var a = x[1] * Math.PI / 180; return '<span class="hdl" style="background:' + x[0] + ';left:' + (R + r * Math.sin(a)).toFixed(1) + 'px;top:' + (R - r * Math.cos(a)).toFixed(1) + 'px">' + x[2] + '</span>'; }).join('');
+    var p = pv('light', '--accent:#E0457B;--accent-2:#F2A93B;--accent-soft:color-mix(in srgb,#E0457B 14%,transparent);--on-accent:#fff;');
+    return side('Appearance') +
+      page(path(['Appearance', 'Your own accent']) + '<div class="t-title" style="padding:0 var(--s-1)">Your own accent</div>' +
+        '<div style="display:flex;gap:var(--s-8);padding:0 var(--s-1);min-height:0">' +
+        '<div class="sc"><div style="display:flex;gap:var(--s-5);align-items:center"><div class="wheel"><div class="ring"></div>' + h + '<div class="wc"></div></div>' +
+          '<div class="col" style="gap:var(--s-3);overflow:visible">' +
+          [['Main colour', '#E0457B', 1], ['Second colour', '#F2A93B', 2]].map(function (x) { return '<div class="rd"><span class="n" style="background:' + x[1] + '">' + x[2] + '</span><div><div class="t-label">' + x[0] + ' <span class="pdot"></span></div><div class="t-mono t-2">' + x[1] + '</div></div></div>'; }).join('') +
+          '<div class="hint">Drag a handle round the ring, or use the arrow keys.</div></div></div>' +
+          '<div class="t-label t-2">The wheel sets the colour only. How light and how strong it is, is ours to set.</div>' + okline() + '</div>' +
+        '<div class="sc"><div class="t-caption">Preview, on all four devices</div><div class="pvs">' + p.phone + p.tab + p.desk + p.adm + '</div></div></div>',
+        savebar(2));
+  }
+
+  /* 9 Wallpaper galleries */
+  function wallpapers() {
+    var GL = [['Family photos', '24 pictures &middot; 2 devices', 1], ['Seasons', '12 pictures &middot; all household devices', 0], ['Quiet', '8 pictures &middot; not assigned', 0]];
+    var rows = GL.map(function (g, i) { return bigRow('<span class="pic wallpaper" style="width:44px;aspect-ratio:4/3;filter:hue-rotate(' + (i * 70) + 'deg)"></span>', g[0], g[1], g[2], ''); });
+    var pics = [0, 40, 90, 150, 200, 260, 310, 20, 70, 130, 180].map(function (d) { return '<div class="pic wallpaper" style="filter:hue-rotate(' + d + 'deg)"></div>'; }).join('');
+    return side('Wallpapers') + listCol('Wallpapers', rows, 'Make a gallery', 250) +
+      page(path(['Wallpapers', 'Family photos']) +
+        '<div class="head"><div class="grow"><div class="t-title">Family photos</div><div class="t-label t-2">A wallpaper is only for a household device. Every other screen shows our own backdrop.</div></div></div>' +
+        '<div class="sc" style="padding:0 var(--s-1)"><div class="t-heading">Pictures</div><div class="pics">' + pics + '<div class="pic add">' + I('plus', 18) + '</div></div></div>' +
+        '<div class="sgrid">' + sc('Assigned to', lab('Household devices', 1) + '<div class="chips"><span class="chip accent">Kitchen tablet ' + I('x', 10) + '</span><span class="chip accent">Hall tablet ' + I('x', 10) + '</span><span class="chip">' + I('plus', 10) + 'Add a device</span></div><div class="hint">Or all of them at once.</div>') +
+          sc('Behaviour', '<div>' + lab('Pictures change every', 1) + '<div class="field">5 minutes</div></div>' + '<div class="srow"><span class="grow t-3">Members may add pictures</span><span class="chip">Later</span><span class="toggle"></span></div>') + '</div>' +
+        '<div class="dgrow"><span class="grow">Remove this gallery</span><span class="btn">Remove</span></div>', savebar(2));
+  }
+
+  /* 10 A destination without a list */
+  function speech() {
+    return side('Speech') +
+      page(path(['Speech']) + '<div class="t-title" style="padding:0 var(--s-1)">Speech</div>' +
+        '<div class="sgrid" style="grid-template-columns:1fr 1fr">' +
+        sc('Speech to text', '<div>' + lab('Provider') + sel('Local model (small)') + '</div><div>' + lab('Language') + sel('English (UK)') + '</div>') +
+        sc('Text to speech', '<div>' + lab('Provider') + sel('Local voice (small)') + '</div><div>' + lab('Default voice') + sel('Warm, calm') + '</div>') + '</div>' +
+        '<div class="t-label t-2" style="padding:0 var(--s-1)">Better local and cloud options are suggested here once the household is set up.</div>');
+  }
+
+  /* 11 Search */
+  function search() {
+    var R = [['<mark>Wake</mark> words', 'Assistants &rsaquo; Juno &rsaquo; Identity', 'sparkle'], ['<mark>Wake</mark> word listening', 'Devices &rsaquo; Kitchen tablet', 'devices'], ['<mark>Wake</mark> word attempts', 'Logs &rsaquo; Summoning', 'ear'], ['Quiet at night (stops the <mark>wake</mark> word)', 'Devices &rsaquo; Kitchen tablet &rsaquo; Sound and motion', 'devices'], ['<mark>Wake</mark> word sensitivity', 'Speech', 'microphone']];
+    var rows = R.map(function (r, i) { return bigRow(ib(r[2]), r[0], r[1], i === 0, chev()); });
+    return side('', 'wake') + '<section class="col grow" style="gap:2px;padding:0 var(--s-1)"><div class="t-heading lh">Results <span class="t-label t-2" style="font-weight:400">&middot; 5 settings found</span></div>' + rows.join('') + '</section>';
+  }
+
+  /* 12, 13 Requests */
+  var R = [
+    ['09:41', 'Alex', 'Set a pasta timer for&hellip;', '1.42 s', [40, 85, 310, 720, 45, 220]],
+    ['09:38', 'Sam', 'What is on the shopping&hellip;', '0.96 s', [40, 70, 200, 480, 30, 140]],
+    ['09:21', 'Guest', 'What time is it', '0.71 s', [40, 60, 150, 300, 20, 140]],
+    ['08:55', 'Alex', 'Send this to Sam&rsquo;s&hellip;', '2.80 s', [40, 90, 300, 1900, 70, 400]],
+    ['08:12', 'Jo', 'Stop the alarm', '0.52 s', [40, 50, 120, 200, 20, 90]]
+  ];
+  function strip(r) {
+    var hi = r[4].indexOf(Math.max.apply(null, r[4])), sum = r[4].reduce(function (a, b) { return a + b; }, 0);
+    return '<div class="strip"' + at('width:' + (sum / 2800 * 100).toFixed(1) + '%') + '>' + r[4].map(function (v, i) { return '<i class="' + (i === hi ? 'ac' : (i % 2 ? 'n2' : 'n1')) + '"' + at('flex:' + v) + '></i>'; }).join('') + '</div>';
+  }
+  function reqList(sel) {
+    var rows = R.map(function (r, i) {
+      return '<div class="row lrow' + (sel && i === 0 ? ' is-selected' : '') + '"><div class="grow"><div class="lrow top"><span class="t-mono t-2" style="font-size:11px">' + r[0] + '</span><span class="t-strong ell">' + r[1] + '</span><span class="grow"></span><span class="tot t-mono">' + r[3] + '</span></div><div class="sub ell" style="font-size:11px">' + r[2] + '</div>' + strip(r) + '</div></div>';
+    });
+    return '<section class="col lst" style="width:240px"><div class="t-heading" style="padding:var(--s-1) var(--s-2) 0">Requests</div><div class="t-caption" style="padding:0 var(--s-2) var(--s-1)">Today &middot; newest first &middot; admins only</div>' + rows.join('') + '</section>';
+  }
+  function requests() { return side('Requests') + reqList(0) + quiet('Choose a request', '38 requests today'); }
+  function bars() {
+    var S = ['Wake word', 'Speaker identified (Alex)', 'Speech to text', 'AI model', 'Tools called (timers.set)', 'Text to speech'];
+    var T = [[0, 40], [40, 85], [125, 310], [435, 720], [1060, 45], [1200, 220]], TOT = 1420;
+    var rows = T.map(function (t, i) {
+      return '<div class="wf"><div class="l"><span class="t-label grow ell">' + S[i] + '</span><span class="t-mono t-label">' + t[1] + ' ms</span></div><div class="track"><i class="' + (i === 3 ? 'ac' : 'n2') + '"' + at('left:' + (t[0] / TOT * 100).toFixed(2) + '%;width:' + (t[1] / TOT * 100).toFixed(2) + '%') + '></i></div></div>';
+    }).join('');
+    return side('Requests') + reqList(1) +
+      page(path(['Logs', 'Requests', '09:41']) +
+        '<div><div class="t-strong">Alex &middot; Kitchen tablet</div><div class="t-label t-2">&ldquo;Set a pasta timer for eight minutes&rdquo;</div><div class="t-label t-2" style="margin-top:2px">Total <span class="t-mono" style="color:var(--text);font-weight:600">1.42 s</span></div></div>' +
+        '<div class="col" style="gap:var(--s-3)">' + rows + '</div>');
+  }
+
+  /* 14 Audit */
+  function audit() {
+    var A = [['A', 'tide', 'Juno: Email ability', 'Alex &middot; 09:20 &middot; off &rarr; on', ''],
+      ['A', 'tide', 'Household accent', 'Alex &middot; 09:12 &middot; Aurora &rarr; Tide', ''],
+      ['S', 'ember', 'Sam&rsquo;s accent', 'Sam &middot; Yesterday 20:41 &middot; Tide &rarr; Ember', ''],
+      ['A', 'tide', 'Kitchen tablet: glass level', 'Alex &middot; Yesterday 18:03 &middot; Clear &rarr; Thicker', ''],
+      ['A', 'tide', 'Bedroom tablet approved', 'Alex &middot; Yesterday 18:01 &middot; waiting &rarr; approved', 'The tablet has already signed in.'],
+      ['A', 'tide', 'Kit removed', 'Alex &middot; Mon 07:30 &middot; person removed', 'Their data was removed with them.'],
+      ['A', 'tide', 'Jo: role', 'Alex &middot; Sun 21:10 &middot; Admin &rarr; Member', '']];
+    var rows = A.map(function (a) {
+      var end = a[4] ? '<span class="t-label t-2" style="display:flex;align-items:center;gap:6px;max-width:210px">' + I('info', 14) + a[4] + '</span>' : '<span class="btn btn-quiet">' + I('arrow-counter-clockwise', 14) + 'Undo</span>';
+      return bigRow(pav(a[0], a[1], 32), a[2], a[3], 0, end);
+    });
+    return side('Audit') + '<section class="col grow" style="gap:2px"><div class="t-heading" style="padding:var(--s-1) var(--s-2) 0">Audit</div><div class="t-caption" style="padding:0 var(--s-2) var(--s-1)">Every settings change &middot; newest first</div>' + rows.join('') + '</section>';
+  }
+
+  /* 15, 16 Setup */
+  function dots(n) { return '<div class="dots">' + [1, 2, 3, 4, 5].map(function (i) { return '<i class="' + (i < n ? 'done' : (i === n ? 'now' : '')) + '"></i>'; }).join('') + '</div>'; }
+  function hello() {
+    var W = [['Hallo', 'left:6px;top:8px', 40], ['Bonjour', 'right:0;top:0', 34], ['Ciao', 'left:150px;top:4px', 26], ['Hola', 'left:0;bottom:12px', 30], ['Hej', 'left:270px;bottom:10px', 26], ['Merhaba', 'right:6px;bottom:6px', 38]];
+    return dots(0) + '<div class="hw">' + W.map(function (w) { return '<span class="lang" style="' + w[1] + ';font-size:' + w[2] + 'px;opacity:.6">' + w[0] + '</span>'; }).join('') +
+      '<div class="mid">' + fig(104) + '<div class="txt"><div class="t-display-xl" style="font-size:64px;line-height:1">Hello</div><div class="t-heading t-2" style="font-weight:400;font-size:16px;line-height:1.35">I am your home&rsquo;s assistant. Let&rsquo;s set up Heem.</div></div></div></div>' +
+      '<span class="chip" style="margin-top:var(--s-2)">English &middot; change</span><div class="grow"></div><span class="btn btn-primary bigbtn">Get started</span>';
+  }
+  function step(n) {
+    var P = {
+      1: ['mail-icon', 'Mail account', 'Heem sends sign-in codes from this account.',
+        '<div class="fgrid"><div class="fl"><span class="field-label">Mail server</span><div class="field">mail.example.org</div></div><div class="fl"><span class="field-label">Port</span><div class="field">587</div></div><div class="fl full"><span class="field-label">User name</span><div class="field">home@example.org</div></div><div class="fl full"><span class="field-label">Password</span><div class="field">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</div></div></div>', 'Why is this needed?'],
+      4: ['brain', 'Who should do the thinking?', 'You can change this later.',
+        '<div class="choices">' + [['A local model', 'On this server, private, slower', 1], ['Claude Code', 'Cloud, needs your account', 0], ['Codex', 'Cloud, needs your account', 0], ['OpenRouter', 'Cloud, many models, needs a key', 0]].map(function (c) { return '<div class="row' + (c[2] ? ' is-selected' : '') + '"><span class="radio"></span><div class="grow"><div class="t-strong">' + c[0] + '</div><div class="sub">' + c[1] + '</div></div></div>'; }).join('') + '</div>', 'Set up later']
+    };
+    var p = P[n];
+    return dots(n) + '<span class="back">' + I('caret-left', 22) + '</span><div class="pane"><span class="sym">' + I(p[0] === 'mail-icon' ? 'globe-hemisphere-west' : p[0], 26) + '</span>' +
+      '<div class="t-title" style="font-size:26px;line-height:1.15;font-weight:700">' + p[1] + '</div><div class="t-label t-2" style="margin-bottom:var(--s-2)">' + p[2] + '</div>' + p[3] + '<span class="link" style="margin-top:var(--s-2)">' + p[4] + '</span></div>' +
+      '<span class="btn btn-primary bigbtn">Continue</span>';
+  }
+
+  /* 17 Medium, 18 Narrow */
+  function medium(k) {
+    if (k === 0) return side('People') + listCol('People', [['A', 'Alex', 'Admin', 'tide', 1], ['S', 'Sam', 'Member', 'ember', 0], ['J', 'Jo', 'Member', 'aurora', 0], ['K', 'Kit', 'Member', 'moss', 0]].map(function (p) { return bigRow(pav(p[0], p[3], 34, p[4]), p[1], p[2], 0, ''); }), 'Invite a person', 340) + '';
+    var rail = '<aside class="glass col" style="width:44px;flex:none;align-items:center;padding:var(--s-2) 0;gap:4px">' + G.map(function (g, gi) { return (gi ? '<span style="height:1px;width:20px;background:var(--line);margin:3px 0;flex:none"></span>' : '') + g[1].map(function (n) { return '<span class="ib" style="width:30px;height:26px' + (n[0] === 'People' ? ';background:var(--glass-solid);color:var(--accent)' : ';background:none;color:var(--text)') + '">' + I(n[1], 16) + '</span>'; }).join(''); }).join('') + '</aside>';
+    return rail + '<section class="col lst" style="width:230px"><div class="t-heading lh">People</div>' +
+      [['A', 'Alex', 'Admin', 'tide', 1], ['S', 'Sam', 'Member', 'ember', 0], ['J', 'Jo', 'Member', 'aurora', 0], ['K', 'Kit', 'Member', 'moss', 0]].map(function (p, i) { return bigRow(pav(p[0], p[3], 34, p[4]), p[1], p[2], i === 1, ''); }).join('') + '</section>' +
+      page(path(['People', 'Sam']) + '<div class="head">' + pav('S', 'ember', 44) + '<div><div class="t-title">Sam</div><div class="t-label t-2">Member</div></div></div>' +
+        grp([row('Email', 'sam@home.example'), row('Role', 'Member'), row('Accent', 'Ember'), row('Devices', '2 devices')]));
+  }
+  function narrow(k) {
+    function top(t, back) { return '<div class="glass" style="display:flex;align-items:center;gap:var(--s-2);padding:0 var(--s-3);height:44px;border-radius:var(--r-full);flex:none">' + (back ? '<span style="color:var(--accent);display:flex">' + I('caret-left', 18) + '</span>' : '') + '<div class="t-heading grow">' + t + '</div></div>'; }
+    if (k === 0) return '<div class="col grow" style="gap:var(--s-2)">' + top('Settings') + '<div class="field fld">' + I('magnifying-glass', 14) + '<span class="ph grow">Search settings</span></div>' +
+      G.map(function (g) { return '<div class="t-caption cap">' + g[0] + '</div><div class="grp surface">' + g[1].map(function (n) { return '<div class="row" style="min-height:20px;height:20px">' + I(n[1], 14) + '<div class="grow">' + n[0] + '</div>' + chev() + '</div>'; }).join('') + '</div>'; }).join('') + '</div>';
+    var pp = [['A', 'Alex', 'Admin', 'tide', 1], ['S', 'Sam', 'Member', 'ember', 0], ['J', 'Jo', 'Member', 'aurora', 0], ['K', 'Kit', 'Member', 'moss', 0]];
+    if (k === 1) return '<div class="col grow">' + top('People', 1) + pp.map(function (p) { return bigRow(pav(p[0], p[3], 34, p[4]), p[1], p[2], 0, chev()); }).join('') + '<div class="grow"></div><span class="btn">' + I('plus', 14) + 'Invite a person</span></div>';
+    return '<div class="col grow">' + top('Sam', 1) + '<div class="head" style="padding:var(--s-3) var(--s-1)">' + pav('S', 'ember', 52) + '<div><div class="t-title">Sam</div><div class="t-label t-2">Member</div></div></div>' +
+      grp([row('Email', 'sam@home.example'), row('Role', 'Member'), row('Accent', 'Ember'), row('Devices', '2 devices')]) + '</div>';
+  }
+
+  /* frames */
+  function frame(f) {
+    return '<div class="frame ' + f.size + ' backdrop compact accent-tide ' + (f.light ? 'light' : 'dark') + '"><div class="in' + (f.cls ? ' ' + f.cls : '') + '">' + f.html() + '</div></div>';
+  }
+  function F(size, light, html, cls) { return { size: size, light: light, html: html, cls: cls }; }
+
+  var S = [
+    ['1. Devices', 'Every device, and the ones waiting to be approved.', 0, [F('mini', 1, devices)],
+      ['Three columns: a glass side bar with the search field and the destinations, a plain list of devices, and the chosen device’s page with its path above it. The panel is drawn in the accent of the person signed in (Alex), or the household’s before anyone signs in.',
+       'The list shows the group that waits for approval first and leaves it out when nothing is waiting. Status carries a word and a dot. Approve and Reject act at once and do not go through the Save bar.']],
+    ['2. A device’s settings', 'Kitchen tablet: density, light and dark, glass, sounds, wallpaper and pinned areas.', 1, [F('wide tall', 0, deviceOne)],
+      ['Every device has the same settings: density (a tablet starts roomy), light and dark (follow the device, light, dark, by the time, or by the light in the room, which a new tablet starts on), the glass level (clear, thicker or solid), sounds and reduced motion. Conversation sounds are off unless switched on; every other sound is on unless switched off.',
+       'A household tablet also has the wallpaper gallery assigned to it and its four pinned areas, set by an admin. Nothing on the tablet marks them as set by an admin. A phone or a desktop has neither: the wallpaper is only for a household device. Its accent is a link to the next screen.',
+       'Three changed settings carry a dot, and the Save bar counts them. Reset this device and Remove this device sit last, in a separate group for dangerous actions: each asks first, then acts at once, and neither goes through the Save bar. Asked-for cards and the idle figure follow the household; the tag shows that the value is set for the household and a device can differ.',
+       'Not decided: which further settings a device page holds, such as vibration on a phone.']],
+    ['3. A device’s accent', 'The accent of one device, previewed on that device only.', 0, [F('wide', 1, deviceAccent)],
+      ['A device follows the household’s accent until it is given its own. The same built-in accents, pairs and colour wheel are used as for the household. The preview shows the one device (here, a tablet); it does not show the other three.',
+       'The most specific accent wins: a person’s own, then the device’s, then the household’s. The panel keeps the accent of the person signed in.']],
+    ['4. Leaving with unsaved changes', 'A sheet asks: Save, Discard or Stay.', 0, [F('mini', 0, leave)],
+      ['Leaving a page with changes that are not saved, by another destination, item or link, asks first. Save is the primary button; Stay returns to the page. The same sheet is used on every client.',
+       'Not decided: the count in the Save bar will open a list of the changes with each value before and after. It comes after the first designs.']],
+    ['5. People', 'The people of the household.', 0, [F('mini', 1, people)],
+      ['Each person is marked by a round photo with a ring in their accent. A person without a photo shows their initial in the ring, on a soft fill of their accent (Sam, Jo and Kit here; Alex has a photo). A member who is not an admin sees only their own settings.',
+       'Not decided: the fields on a person’s page beyond those drawn, and what Invite a person opens.']],
+    ['6. A character', 'The assistant’s figure beside its settings.', 1, [F('wide', 1, character)],
+      ['Left, a glass card with the whole figure (it floats, so it is glass). The figure is drawn in its own two colours, which are not the panel’s accent. Right, a plain form: Identity, the two colours, Abilities, Brain, Scope and guests.',
+       'The two colours are chosen with the same picker as an accent: pairs that go together, Shuffle, and a link to the free choice. A colour that is hard to read gives a warning and is allowed. Both can be the same colour.',
+       'Two changed settings carry a dot and the Save bar counts them.']],
+    ['7. Appearance', 'The household’s accent, on all four devices.', 0, [F('wide', 1, appearance)],
+      ['Appearance has no list of items, so it has two columns. The seven built-in accents come first: Tide (the default for a new household), Ember, Aurora, Moss, Blossom, Cherry and Graphite. Under them are pairs that go together, with Shuffle for a new set, and a link to the free choice.',
+       'The preview shows the chosen accent on the phone app, the tablet, the desktop and the admin panel. Ember is chosen but not saved, so the panel itself stays in Tide and the Save bar counts one change.',
+       'Light and dark are not chosen here: they are set on each device.']],
+    ['8. Your own accent', 'A two-handle colour wheel, for a free choice.', 1, [F('wide', 0, ownColours)],
+      ['One wheel with two handles: 1 is the main colour and 2 the second colour of the backdrop. The wheel sets the colour only; how light and how strong it is, is ours to set. The arrow keys move the handle that has the focus. There is no field to type a value in. A random pair comes from Shuffle on the pairs grid.',
+       'Under the wheel, a line says that text stays readable. A colour that is hard to read gives a warning in its place, and can be kept.']],
+    ['9. Wallpaper galleries', 'An admin makes galleries and assigns them to household devices.', 0, [F('wide', 1, wallpapers)],
+      ['A gallery is a set of pictures. It is assigned to one household device, several, or all of them, and its pictures change by themselves with a slow fade. A wallpaper is only for a household device.',
+       'Members adding pictures when an admin allows it comes close to the first release, so the switch is drawn but off, marked “Later”. Guests cannot add pictures.',
+       'Not decided: how often the pictures change (5 minutes is a placeholder), and the size and kind of pictures that can be added.']],
+    ['10. A destination without a list', 'Speech: two columns, the page takes the room.', 0, [F('mini', 1, speech)],
+      ['A destination without a list of items, such as Speech or Feedback, leaves out the second column, and the page takes the room. Appearance is the same.',
+       'Not decided: the fields of the Speech page beyond the provider, language and voice.']],
+    ['11. Search settings', 'Typing in the side bar’s search field.', 1, [F('mini', 0, search)],
+      ['The search field finds any setting by its name. The results take the second and third columns as one wide list, each with the setting and the path to it. A result opens that setting’s page, and the three columns return.']],
+    ['12. Request list', 'Recent requests, each with a strip of its steps.', 0, [F('mini', 1, requests)],
+      ['Only admins can open the request log, because it shows the first words a person said. Each row shows time, person, total time, the first words and a strip of the steps. The slowest step is in the accent, so a slow request stands out.',
+       'Before a request is chosen the third column is quiet.']],
+    ['13. One request', 'The steps of one request as bars in time.', 0, [F('mini', 0, bars)],
+      ['Admins only. Each step is a bar placed where it fell in time, with its milliseconds. Steps can run at the same time: here the tool call sits inside the AI model’s bar. The slowest step is in the accent. The timeline also records that a screen was composed.']],
+    ['14. Audit log', 'Every settings change, who made it, and Undo where it is safe.', 0, [F('mini', 1, audit)],
+      ['The audit log has no list of items, so it is one wide list, newest first: what changed, who, when, and old to new. Undo is quiet, writes a new row, and never removes the old one.',
+       'A change that cannot be put back cleanly has no button and says why in a line.',
+       'Not decided: which changes count as safe to undo, beyond these examples, and the filters.']],
+    ['15. First-run setup: Hello', 'The welcome of a new server.', 1, [F('mini', 1, hello, 'setup')],
+      ['Follows Apple’s first setup. The figure of the default household assistant says Hello, with the greeting in a fixed handful of languages around it, for show. The language of the setup is chosen here, with the chip under it. Five dots across the top show the steps ahead.',
+       'No side bar or top bar, since nothing is configured yet. One wide button at the bottom.']],
+    ['16. First-run setup: the panes', 'Step 1, the mail account, and step 4, who should do the thinking.', 1, [F('mini', 1, function () { return step(1); }, 'setup'), F('mini', 0, function () { return step(4); }, 'setup')],
+      ['One centred pane for each step: a round symbol, a large title, a short sentence, the few fields or choices, a quiet link for the alternative, and one wide Continue button. The back arrow is at the top left; the current dot is long.',
+       'The steps are mail, you, household, AI and speech. A phone, a tablet or a desktop that joins the household is set up with the same panes, in the density of that device.']],
+    ['17. Medium width', 'From 600 to 1000: as many levels as fit, here two.', 1, [F('mini', 1, function () { return medium(0); }), F('mini', 0, function () { return medium(1); })],
+      ['The three levels are the same at every width, and a screen shows as many as fit. With two columns the destinations and the list are in view first.',
+       'Going into the third level, the page, turns the destinations into a narrow rail of icons at the left, beside the list and the page. The current destination is highlighted.']],
+    ['18. Narrow width', 'Under 600: one level at a time, each taking the screen.', 0, [F('pn', 1, function () { return narrow(0); }), F('pn', 0, function () { return narrow(1); }), F('pn', 1, function () { return narrow(2); })],
+      ['Each level becomes a full screen that drills in: the destinations, then the list, then the page, with a back arrow at the top left. The Save bar and the sheet that asks on leaving work the same way.',
+       'Not decided: what the destinations become at the width of a phone. They are drawn as a plain list under the search field.']]
+  ];
+  document.getElementById('shots').innerHTML = S.map(function (s, i) {
+    var span = s[3].some(function (f) { return f.size.indexOf('wide') === 0; }) || s[3].length > 1;
+    return '<figure class="screen' + (span ? ' span' : '') + '"><figcaption><h2>' + s[0] + '</h2><p>' + s[1] + '</p></figcaption><div class="frames">' + s[3].map(frame).join('') + '</div><div class="notes">' +
+      s[4].map(function (n) { return '<div class="note">' + n + '</div>'; }).join('') + '</div></figure>';
+  }).join('');
+})();
+</script>
+</body></html>

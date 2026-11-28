@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin panel log board</title>
+<!--
+  Four designs of the second and third column for the request timeline in the
+  admin panel, each drawn twice (light and dark). Nothing here is decided.
+  See ../admin-panel.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .pair { display: grid; grid-template-columns: 600px 600px; gap: var(--s-5); }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 600px; height: 410px; border-radius: 14px; overflow: hidden; }
+  .in { position: absolute; left: 0; top: 0; width: 750px; height: 512px; zoom: .8; }
+  .in > * { position: absolute; }
+  .grow { flex: 1; min-width: 0; }
+  .ell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ico.ic { border: 0; opacity: 1; background: var(--accent-soft); }
+  .nav.on .ico.ic { background: var(--accent); }
+  .nav { display: flex; align-items: center; gap: var(--s-2); height: 24px; padding: 0 var(--s-2); border-radius: var(--r-sm); font: var(--type-label); color: var(--text); white-space: nowrap; }
+  .nav.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .cap { padding: var(--s-2) var(--s-2) 2px; }
+  .col { display: flex; flex-direction: column; gap: var(--s-2); overflow: hidden; }
+  .grp { display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; padding: 2px; }
+  .grp .row { min-height: 34px; border-radius: var(--r-md); }
+  .grp.nv { padding: 2px; }
+  .row .val { max-width: 52%; color: var(--text-2); }
+  .row.res { min-height: 42px; padding-top: 3px; padding-bottom: 3px; }
+  .row.res .sub { font-size: 11px; }
+  .chev { color: var(--text-3); font-weight: 600; flex: none; }
+  mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; padding: 0 1px; }
+  .person { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-2); border-radius: var(--r-lg); }
+  .person .avatar { width: 30px; height: 30px; }
+  .caret { display: inline-block; width: 1.5px; height: 15px; background: var(--accent); margin-left: 1px; }
+  .fld { height: 28px; flex: none; }
+  .head { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; padding: var(--s-1) 0 var(--s-2); }
+  .head.left { flex-direction: row; text-align: left; gap: var(--s-3); padding: 0 var(--s-1); }
+  .bar2 { display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-3); }
+  .back { color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .gcap { padding: 2px var(--s-3) 0; }
+  .btn { height: 28px; }
+  .behind > * { position: absolute; }
+  .behind { inset: 0; opacity: .5; filter: blur(1.5px); }
+  .big { min-height: 54px; padding-top: 4px; padding-bottom: 4px; border-radius: var(--r-md); }
+  .big .sub { font-size: 11px; }
+  .rail { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: var(--s-2) 0; overflow: hidden; }
+  .rail .ico { width: 24px; height: 24px; border-radius: 7px; }
+  .rail .avatar { width: 28px; height: 28px; margin-bottom: 4px; }
+  .card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: var(--s-4) var(--s-3); border-radius: var(--r-xl); }
+  .x { width: 24px; height: 24px; border-radius: var(--r-full); display: inline-flex; align-items: center; justify-content: center; background: var(--control-hover); color: var(--text-2); font-weight: 600; flex: none; }
+  .path { color: var(--text-2); padding: 0 var(--s-1); }
+  .empty { align-items: center; justify-content: center; text-align: center; gap: var(--s-2); }
+  .lrow { min-height: 46px; padding-top: 4px; padding-bottom: 4px; border-radius: var(--r-md); }
+  .lrow + .lrow { border-top: 0; }
+  .lrow .top { display: flex; align-items: baseline; gap: var(--s-2); }
+  .tot { font-variant-numeric: tabular-nums; font-weight: 600; flex: none; }
+  .tot.slow { color: var(--warning); }
+  .strip { display: flex; gap: 1px; height: 4px; margin-top: 4px; }
+  .strip i { display: block; border-radius: 2px; min-width: 1px; }
+  .n1 { background: color-mix(in srgb, var(--text) 16%, transparent); }
+  .n2 { background: color-mix(in srgb, var(--text) 28%, transparent); }
+  .ac { background: var(--accent); }
+  .path2 { color: var(--text-2); padding: 0 var(--s-1); }
+  .pad { padding: 0 var(--s-1); }
+  .wf { display: flex; flex-direction: column; gap: var(--s-1); }
+  .wf .l { display: flex; gap: var(--s-2); align-items: baseline; }
+  .track { height: 10px; position: relative; border-radius: 5px; background: color-mix(in srgb, var(--text) 6%, transparent); }
+  .track i { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
+  .big-strip { display: flex; gap: 2px; height: 36px; }
+  .big-strip i { display: block; border-radius: 6px; min-width: 2px; }
+  .tbl { width: 100%; border-collapse: collapse; }
+  .tbl th { text-align: left; font: var(--type-caption); color: var(--text-2); font-weight: 500; padding: 4px var(--s-1); }
+  .tbl td { padding: 6px var(--s-1); border-top: 1px solid var(--line); font: var(--type-label); }
+  .tbl .r { text-align: right; font-variant-numeric: tabular-nums; }
+  .sw { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+  .story { position: relative; display: flex; flex-direction: column; gap: var(--s-3); padding-left: 22px; }
+  .story:before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .story .st { position: relative; }
+  .story .st:before { content: ""; position: absolute; left: -22px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--text-3); box-sizing: border-box; }
+  .story .st.hi:before { border-color: var(--accent); background: var(--accent); }
+  .fig3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-2); }
+  .fig { padding: var(--s-2) var(--s-2); border-radius: var(--r-md); background: color-mix(in srgb, var(--text) 5%, transparent); min-width: 0; }
+  .fig .v { font: 600 22px/28px var(--font-sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .more { display: flex; align-items: center; height: 34px; padding: 0 var(--s-3); border-radius: var(--r-md); background: color-mix(in srgb, var(--text) 5%, transparent); color: var(--text-2); }
+  .hours { display: flex; align-items: flex-end; gap: 4px; height: 120px; padding: 0 var(--s-1); border-bottom: 1px solid var(--line); }
+  .hours i { flex: 1; display: block; border-radius: 3px 3px 0 0; background: color-mix(in srgb, var(--text) 22%, transparent); }
+  .hours i.pk { background: var(--accent); }
+  .fld .ph { white-space: nowrap; overflow: hidden; font-size: 11px; }
+  .fig .t-caption { font-size: 10px; text-transform: none; letter-spacing: 0; height: auto; }
+  .story .t-caption { text-transform: none; letter-spacing: 0; }
+  .hlab { font: var(--type-caption); display: flex; justify-content: space-between; padding: 2px var(--s-1); color: var(--text-3); }
+  .mini { height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--text) 6%, transparent); position: relative; width: 70px; }
+  .mini i { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="board"></div>
+<script>
+(function () {
+  var G = [['Household', ['People', 'Devices', 'Assistants']], ['System', ['AI providers', 'Speech', 'Modules', 'Features']], ['Logs', ['Summoning', 'Requests', 'Admin access', 'Audit']], ['Feedback', ['Feedback']]];
+  var IC = '<span class="ico ic"></span>', LENS = '<span class="ico"></span>';
+  function at(s) { return ' style="' + s + '"'; }
+  function ab(s) { return at(s) + '>'; }
+  function nav(n, on) { return '<div class="nav' + (on ? ' on' : '') + '">' + IC + n + '</div>'; }
+  function person() { return '<div class="person"><span class="avatar">A</span><div class="t-label" style="font-weight:600">Alex &middot; Admin</div></div>'; }
+  function navGroups() {
+    return G.map(function (g) {
+      return (g[0] === 'Feedback' ? '<div style="height:6px"></div>' : '<div class="t-caption cap">' + g[0] + '</div>') + g[1].map(function (n) { return nav(n, n === 'Requests'); }).join('');
+    }).join('');
+  }
+  function side() { return '<aside class="glass col"' + ab('left:10px;top:10px;bottom:10px;width:160px;padding:var(--s-2);gap:0') + '<div class="field fld">' + LENS + '<span class="ph grow">Search settings</span></div><div style="height:6px"></div>' + person() + navGroups() + '</aside>'; }
+
+  var STEPS = ['Wake word', 'Speaker identified (Alex)', 'Speech to text', 'AI model', 'Tools called (timers.set)', 'Text to speech'];
+  var R = [
+    ['09:41:07', 'Alex', 'Kitchen tablet', 'Set a pasta timer for&hellip;', '1.42 s', [40, 85, 310, 720, 45, 220]],
+    ['09:38:50', 'Sam', 'Sam&rsquo;s phone', 'What is on the shopping&hellip;', '0.96 s', [40, 70, 200, 480, 30, 140]],
+    ['09:21:13', 'Guest', 'Lounge voice page', 'What time is it', '0.71 s', [40, 60, 150, 300, 20, 140]],
+    ['08:55:40', 'Alex', 'Alex&rsquo;s laptop', 'Send this to Sam&rsquo;s&hellip;', '2.80 s', [40, 90, 300, 1900, 70, 400], 1],
+    ['08:12:02', 'Jo', 'Kitchen tablet', 'Stop the alarm', '0.52 s', [40, 50, 120, 200, 20, 90]]
+  ];
+  var S = R[0][5], TOTAL = 1420, MAXI = 3; // longest step index
+  function tints(steps, hi) { return steps.map(function (v, i) { return i === hi ? 'ac' : (i % 2 ? 'n2' : 'n1'); }); }
+  function stripOf(r) {
+    var c = tints(r[5], r[5].indexOf(Math.max.apply(null, r[5])));
+    var sum = r[5].reduce(function (a, b) { return a + b; }, 0);
+    return '<div class="strip"' + at('width:' + (sum / 2800 * 100).toFixed(1) + '%') + '>' + r[5].map(function (v, i) { return '<i class="' + c[i] + '"' + at('flex:' + v) + '></i>'; }).join('') + '</div>';
+  }
+  function tot(r) { return '<span class="tot t-mono' + (r[6] ? ' slow' : '') + '">' + r[4] + '</span>'; }
+  function listHead() { return '<div class="t-heading" style="padding:var(--s-1) var(--s-2) 0">Requests</div><div class="t-caption" style="padding:0 var(--s-2) var(--s-1)">Today &middot; newest first</div>'; }
+  var LPOS = 'left:180px;top:10px;bottom:10px;width:240px;gap:2px';
+  function listA(sel, mode) {
+    return '<section class="col"' + ab(LPOS) + listHead() + R.map(function (r, i) {
+      var on = sel && i === 0 ? ' is-selected' : '';
+      if (mode === 'c') return '<div class="row lrow' + on + '"><span class="avatar" style="width:28px;height:28px">' + r[1][0] + '</span><div class="grow"><div class="t-strong ell">' + r[3] + '</div><div class="sub ell" style="font-size:11px"><span class="t-mono">' + r[0].slice(0, 5) + '</span> &middot; ' + r[1] + '</div></div></div>';
+      return '<div class="row lrow' + on + '"><div class="grow"><div class="top"><span class="t-mono t-2" style="font-size:11px">' + r[0].slice(0, 5) + '</span><span class="t-strong ell">' + r[1] + '</span><span class="grow"></span>' + tot(r) + '</div><div class="sub ell" style="font-size:11px">' + r[3] + (mode === 'b' ? '' : '') + '</div>' + (mode === 'b' ? stripOf(r) : '') + '</div></div>';
+    }).join('') + '</section>';
+  }
+  var MPOS = 'left:430px;right:10px;top:12px;bottom:10px;padding:0 var(--s-1);gap:var(--s-3)';
+  function path(last) { return '<div class="t-label path2">Logs &rsaquo; Requests &rsaquo; ' + last + '</div>'; }
+  function summary() { return '<div><div class="t-strong">Alex &middot; Kitchen tablet</div><div class="t-label t-2">&ldquo;Set a pasta timer for eight minutes&rdquo;</div><div class="t-label t-2" style="margin-top:2px">Total <span class="t-mono" style="color:var(--text);font-weight:600">1.42 s</span></div></div>'; }
+  function msn(v) { return v + ' ms'; }
+
+  function A() {
+    var off = 0;
+    var rows = S.map(function (v, i) {
+      var l = (off / TOTAL * 100).toFixed(2), w = (v / TOTAL * 100).toFixed(2); off += v;
+      return '<div class="wf"><div class="l"><span class="t-label grow ell">' + STEPS[i] + '</span><span class="t-mono t-label">' + msn(v) + '</span></div><div class="track"><i class="' + (i === MAXI ? 'ac' : 'n2') + '"' + at('left:' + l + '%;width:' + w + '%') + '></i></div></div>';
+    }).join('');
+    return side() + listA(1, 'a') + '<main class="col"' + ab(MPOS) + path('09:41:07') + summary() + '<div class="col" style="gap:var(--s-3);margin-top:var(--s-1)">' + rows + '</div></main>';
+  }
+  function B() {
+    var seg = S.map(function (v, i) { return '<i class="' + (i === MAXI ? 'ac' : (i % 2 ? 'n2' : 'n1')) + '"' + at('flex:' + v) + '></i>'; }).join('');
+    var tr = S.map(function (v, i) {
+      return '<tr><td><span class="sw ' + (i === MAXI ? 'ac' : (i % 2 ? 'n2' : 'n1')) + '"></span>' + STEPS[i] + '</td><td class="r t-mono">' + v + ' ms</td><td class="r t-mono">' + (v / TOTAL * 100).toFixed(1) + '%</td></tr>';
+    }).join('');
+    return side() + listA(1, 'b') + '<main class="col"' + ab(MPOS) + path('09:41:07') + '<div class="t-label t-2 pad">Total <span class="t-mono" style="color:var(--text);font-weight:600">1.42 s</span> &middot; Alex &middot; Kitchen tablet</div><div class="big-strip">' + seg + '</div><table class="tbl"><tr><th>Step</th><th class="r">Time</th><th class="r">Share</th></tr>' + tr + '</table></main>';
+  }
+  function C() {
+    var T = ['Heard the wake word', 'Recognised Alex', 'Understood: &ldquo;Set a pasta timer for eight minutes&rdquo;', 'Thought about it', 'Set the timer', 'Answered: &ldquo;Pasta timer set for eight minutes.&rdquo;'];
+    var st = T.map(function (t, i) { return '<div class="st' + (i === MAXI ? ' hi' : '') + '"><div class="t-label" style="color:var(--text)">' + t + '</div><div class="t-caption t-mono">' + msn(S[i]) + '</div></div>'; }).join('');
+    return side() + listA(1, 'c') + '<main class="col"' + ab(MPOS) + path('09:41') + '<div class="pad"><div class="t-display num">1.42 s</div><div class="t-label t-2">Alex &middot; Kitchen tablet &middot; 09:41</div></div><div class="story" style="margin-top:var(--s-1)">' + st + '</div><div class="grow"></div><div class="more">Show technical detail<span class="grow"></span><span class="chev">&rsaquo;</span></div></main>';
+  }
+  function D1() {
+    var mx = 720;
+    var tr = S.map(function (v, i) { return '<tr><td>' + STEPS[i].replace(' (Alex)', '').replace(' (timers.set)', '') + '</td><td class="r t-mono">' + v + '</td><td style="width:78px"><div class="mini"><i class="' + (i === MAXI ? 'ac' : 'n2') + '"' + at('left:0;width:' + (v / mx * 100).toFixed(1) + '%') + '></i></div></td></tr>'; }).join('');
+    return side() + listA(1, 'a') + '<main class="col"' + ab(MPOS) + path('09:41:07') +
+      '<div class="fig3"><div class="fig"><div class="t-caption">Total</div><div class="v">1.42 s</div></div><div class="fig"><div class="t-caption ell">Slowest step</div><div class="v">720 ms</div><div class="t-caption">AI model</div></div><div class="fig"><div class="t-caption ell">Against usual</div><div class="v" style="color:var(--success)">&minus;0.2 s</div></div></div>' +
+      '<table class="tbl"><tr><th>Step</th><th class="r">ms</th><th></th></tr>' + tr + '</table></main>';
+  }
+  function D2() {
+    var H = [1, 3, 4, 2, 1, 0, 2, 3, 2, 1, 1, 2, 3, 5, 6, 2];
+    var bars = H.map(function (v) { return '<i' + (v === 6 ? ' class="pk"' : '') + at('height:' + (v / 6 * 100) + '%') + '></i>'; }).join('');
+    return side() + listA(0, 'a') + '<main class="col"' + ab('left:430px;right:10px;top:12px;bottom:10px;padding:0 var(--s-1);gap:var(--s-4)') + path('Today') +
+      '<div class="fig3"><div class="fig"><div class="t-caption ell">Requests today</div><div class="v">38</div></div><div class="fig"><div class="t-caption ell">Typical time</div><div class="v">1.1 s</div></div><div class="fig"><div class="t-caption ell">Slow requests</div><div class="v" style="color:var(--warning)">2</div></div></div>' +
+      '<div><div class="t-label t-2 pad" style="margin-bottom:var(--s-2)">Requests per hour</div><div class="hours">' + bars + '</div><div class="hlab"><span>06</span><span>12</span><span>21</span></div></div></main>';
+  }
+
+  function frame(light, inner) { return '<div class="frame backdrop compact accent-tide ' + (light ? 'light' : 'dark') + '"><div class="in">' + inner + '</div></div>'; }
+  var DS = [
+    ['v-a', 'A. Bars', 'A slow step is found at once because it is the longest bar and shows where it sat in the time, and anyone can read it, but it needs the most room and shows six rows at once.', A, A, ['1 &middot; Light &middot; One request', '2 &middot; Dark &middot; One request']],
+    ['v-b', 'B. One strip', 'Slow requests show in the list itself and the page is one bar and a table, but the list rows are busier and the strip is a little harder to read than bars.', B, B, ['1 &middot; Light &middot; One request', '2 &middot; Dark &middot; One request']],
+    ['v-c', 'C. Story', 'The easiest to read for someone who is not technical and the least on screen, but a slow step is found only by reading the numbers and the exact detail is one step further in.', C, C, ['1 &middot; Light &middot; One request', '2 &middot; Dark &middot; One request']],
+    ['v-d', 'D. Numbers first', 'The answer to &ldquo;was it fast?&rdquo; comes before any step, and the destination has a quiet page of its own, but a slow step needs a glance at the table and a bar chart is one more thing to read.', D1, D2, ['1 &middot; Light &middot; One request', '2 &middot; Dark &middot; Before a request is chosen']]
+  ];
+  document.getElementById('board').innerHTML = DS.map(function (a) {
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[2] + '</p><div class="pair">' +
+      [a[3], a[4]].map(function (fn, i) { return '<div class="cell"><span class="t-caption">' + a[5][i] + '</span>' + frame(i === 0, fn()) + '</div>'; }).join('') + '</div></section>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

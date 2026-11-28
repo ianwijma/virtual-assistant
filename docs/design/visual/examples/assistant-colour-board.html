@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whose colour shows on a shared screen</title>
+<!--
+  Four ways to colour the household tablet's stage while an assistant is active.
+  Scenario in every option: the household accent is Tide, the assistants are
+  Juno and Bram, and the person speaking is Sam, whose accent is Ember.
+  Nothing here is decided. See ../assistant-visuals.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  h1 { font: var(--type-title); margin: 0 0 2px; }
+  .scn { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-4); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5) var(--s-4); }
+  .opt h2 { display: flex; align-items: center; gap: var(--s-3); font: var(--type-heading); margin: 0 0 2px; }
+  .opt .letter { font: 700 40px/1 var(--font-sans); letter-spacing: -.02em; }
+  .opt p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); min-height: 40px; }
+  .pair { display: flex; gap: 20px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 280px; height: 190px; border-radius: 16px; overflow: hidden; }
+  .frame > * { position: absolute; }
+  .floor { left: 8px; width: 100px; bottom: 6px; height: 12px; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.5), transparent); }
+  .fig { left: 20px; bottom: 16px; }
+  .col { left: 114px; right: 10px; top: 12px; bottom: 12px; padding: var(--s-3); display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+  .head { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+  .head .nm { font: 600 12px/16px var(--font-sans); }
+  .chip.sm { height: 22px; padding: 0 8px 0 6px; gap: 5px; font: 600 11px/1 var(--font-sans); }
+  .sdot { color: var(--accent); }
+  .big { font: 600 30px/32px var(--font-sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .ans { font: 600 15px/20px var(--font-sans); }
+  .col .btn { height: 32px; font-size: 12px; padding: 0 var(--s-3); }
+  /* assistants differ in shape and face only */
+  .bram { border-radius: 30% 30% 38% 38% / 34% 34% 38% 38%; }
+  .bram::before { left: 26%; width: 13%; height: 13%; top: 42%; }
+  .bram::after { right: 26%; width: 13%; height: 13%; top: 42%; }
+  .juno::before, .juno::after { width: 9%; height: 17%; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+<h1>Whose colour shows on a shared screen</h1>
+<p class="scn">Household accent Tide. Two assistants, Juno and Bram. Sam is speaking and has Ember as their accent. Left frame: Sam talks to Juno, in light. Right frame: Sam talks to Bram, in dark.</p>
+<div class="grid" id="grid"></div>
+</div>
+<script>
+  function fig(who, wrapCls) {
+    return '<div class="fig ' + (wrapCls || '') + '"><span class="figure" style="--size:72px"><span class="character listening ' + who + '" style="--size:72px"></span></span></div>';
+  }
+  function chip() {
+    return '<span class="chip sm accent-ember"><span class="dot sdot"></span>Sam</span>';
+  }
+  function frame(mode, accent, who, name, wrapCls, withChip) {
+    var body = who === 'juno'
+      ? '<div class="t-caption">Pasta timer</div><div class="big">07:42</div><span class="btn btn-primary">Stop</span>'
+      : '<div class="ans">Milk is on the shopping list</div><span class="btn btn-primary">Done</span>';
+    return '<div class="frame backdrop ' + mode + ' ' + accent + '"><div class="floor"></div>' + fig(who, wrapCls) +
+      '<div class="glass col"><div class="head"><span class="nm">' + name + '</span>' + (withChip ? chip() : '') + '</div>' + body + '</div></div>';
+  }
+  function pair(a, b) {
+    return '<div class="pair"><div class="cell"><span class="t-caption">Sam talks to Juno &middot; light</span>' + a +
+      '</div><div class="cell"><span class="t-caption">Sam talks to Bram &middot; dark</span>' + b + '</div></div>';
+  }
+  var opts = [
+    ['v-a', 'A', 'The person’s colour',
+      'The screen shows who is being served. Two assistants look alike in colour.',
+      pair(frame('light', 'accent-ember', 'juno', 'Juno'), frame('dark', 'accent-ember', 'bram', 'Bram'))],
+    ['v-b', 'B', 'The assistant’s colour',
+      'The screen shows who is listening. The person’s own colour is not seen on a shared device.',
+      pair(frame('light', 'accent-aurora', 'juno', 'Juno'), frame('dark', 'accent-moss', 'bram', 'Bram'))],
+    ['v-c', 'C', 'Figure in its own colour, screen in the person’s',
+      'Both are visible. Two colours meet on one screen.',
+      pair(frame('light', 'accent-ember', 'juno', 'Juno', 'accent-aurora'), frame('dark', 'accent-ember', 'bram', 'Bram', 'accent-moss'))],
+    ['v-d', 'D', 'The assistant’s colour, with the person as a chip',
+      'Who is listening leads; who is served is a small sign.',
+      pair(frame('light', 'accent-aurora', 'juno', 'Juno', '', true), frame('dark', 'accent-moss', 'bram', 'Bram', '', true))]
+  ];
+  document.getElementById('grid').innerHTML = opts.map(function (o) {
+    return '<section class="opt" id="' + o[0] + '"><h2><span class="letter">' + o[1] + '</span>' + o[2] + '</h2><p class="d">' + o[3] + '</p>' + o[4] + '</section>';
+  }).join('');
+</script>
+</body>
+</html>

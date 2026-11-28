@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example components</title>
+<!--
+  A few components that show the design language in use, in light and dark.
+  They are built from tokens.css and components.css. See ../components.md.
+  The character is a placeholder: the illustrated figures are not drawn yet.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1100px; margin: 0 auto; }
+  .page > h2 { font: var(--type-heading); margin: 28px 0 2px; }
+  .page > h2:first-child { margin-top: 4px; }
+  .page > p { font: var(--type-label); color: var(--text-2); margin: 0 0 10px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .five { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 640px) { .pair, .three { grid-template-columns: 1fr; } .five { grid-template-columns: 1fr 1fr; } }
+  .stage { border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
+  .stage > .t-caption { margin-bottom: -6px; }
+  .wrap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  function both(inner, extra) {
+    return '<div class="pair">' + ['light', 'dark'].map(function (t) {
+      return '<div class="stage backdrop ' + t + ' ' + (extra || '') + '"><span class="t-caption">' + t + '</span>' + inner + '</div>';
+    }).join('') + '</div>';
+  }
+  var timer =
+    '<div class="glass card"><div class="card-head"><span class="character listening" style="--size:44px"></span>' +
+    '<span class="grow" style="flex:1"><span class="t-strong" style="display:block">Juno</span><span class="t-label t-2">Listening…</span></span>' +
+    '<span class="chip">Kitchen</span></div>' +
+    '<div class="t-caption">Pasta timer</div><div class="t-display num">07:42</div>' +
+    '<div class="actions"><span class="btn btn-primary">Stop</span><span class="btn">Snooze 1 min</span></div></div>';
+  var buttons =
+    '<div class="glass card"><div class="wrap">' +
+    '<span class="btn btn-primary">Primary</span><span class="btn">Default</span><span class="btn btn-quiet">Quiet</span>' +
+    '<span class="btn btn-danger">Remove</span><span class="btn is-disabled">Disabled</span><span class="btn is-focus">Focused</span>' +
+    '</div></div>';
+  var form =
+    '<div class="glass card"><label class="field-label">Name of this device</label>' +
+    '<div class="field"><span>Kitchen tablet</span></div>' +
+    '<div class="row" style="padding:0;margin-top:8px"><span class="grow">Listen for the wake word<span class="sub">The microphone stays on</span></span><span class="toggle on"></span></div>' +
+    '<div class="row" style="padding:0"><span class="grow">Speak notifications</span><span class="toggle"></span></div>' +
+    '<div class="row" style="padding:0"><span class="grow">Use as</span><span class="segmented"><span class="on">Household</span><span>Personal</span></span></div></div>';
+  var list =
+    '<div class="surface list" style="padding:6px">' +
+    '<div class="row is-selected"><span class="ico"></span><span class="grow">Clipboard history<span class="sub">Search what you copied</span></span><span class="kbd">Ctrl ⇧ V</span></div>' +
+    '<div class="row"><span class="ico"></span><span class="grow">Notifications<span class="sub">3 new</span></span><span class="chip accent">3</span></div>' +
+    '<div class="row"><span class="ico"></span><span class="grow">Living room tablet<span class="sub">Household device</span></span><span class="chip success"><span class="dot"></span>Online</span></div>' +
+    '<div class="row"><span class="ico"></span><span class="grow">Office desktop<span class="sub">Waiting for the server</span></span><span class="loader"></span></div>' +
+    '<div class="row"><span class="ico"></span><span class="grow">Old phone<span class="sub">Not seen for 12 days</span></span><span class="chip danger"><span class="dot"></span>Offline</span></div></div>';
+  var notif =
+    '<div class="glass card"><div class="card-head" style="margin-bottom:6px"><span class="ico"></span><span class="t-caption" style="flex:1">Email · 2 min ago</span><span class="btn btn-quiet btn-icon" style="height:24px;width:24px">×</span></div>' +
+    '<div class="t-strong">Parcel arrives tomorrow</div><p class="t-label t-2">Your order is out for delivery between 9 and 12.</p>' +
+    '<div class="actions"><span class="btn">Mark as read</span><span class="btn">Send to my phone</span></div></div>';
+  var h = '';
+  h += '<h2>A glass card over the backdrop</h2><p>The timer card, with a character. Glass floats; the backdrop takes the accent.</p>' + both(timer);
+  h += '<h2>Buttons</h2><p>One primary action in the accent. Everything else is quiet.</p>' + both(buttons, 'accent-aurora');
+  h += '<h2>Settings fields</h2><p>A field, toggles and a segmented control.</p>' + both(form, 'accent-moss');
+  h += '<h2>A list</h2><p>Content is plain, not glass: rows, a selected row, shortcuts and status.</p>' + both(list, 'accent-tide');
+  h += '<h2>A notification card</h2>' + both(notif, 'accent-ember');
+  h += '<h2>The accents</h2><p>Tide, Ember, Aurora, Moss, Blossom, Cherry and Graphite.</p><div class="five">' +
+    ['tide', 'ember', 'aurora', 'moss', 'blossom', 'cherry', 'graphite'].map(function (a, i) {
+      return '<div class="stage backdrop accent-' + a + ' ' + (i % 2 ? 'dark' : 'light') + '" style="padding:12px"><div class="glass card" style="display:flex;flex-direction:column;gap:8px;align-items:center">' +
+        '<span class="character" style="--size:36px"></span><span class="t-label">' + a.charAt(0).toUpperCase() + a.slice(1) + '</span><span class="toggle on"></span><span class="btn btn-primary" style="width:100%">Action</span></div></div>';
+    }).join('') + '</div>';
+  h += '<h2>When glass is not possible</h2><p>The same card with blur, without blur on a slow device, and solid for reduced transparency.</p><div class="three">' +
+    [['', 'Glass'], ['no-blur', 'No blur'], ['solid', 'Solid']].map(function (m) {
+      return '<div class="stage backdrop dark accent-aurora ' + m[0] + '"><span class="t-caption">' + m[1] + '</span>' + notif + '</div>';
+    }).join('') + '</div>';
+  h += '<h2>Two densities</h2><p>Roomy for touch, compact for the desktop and the admin panel.</p><div class="pair">' +
+    '<div class="stage backdrop light"><span class="t-caption">Roomy</span>' + list + '</div>' +
+    '<div class="stage backdrop light compact"><span class="t-caption">Compact</span>' + list + '</div></div>';
+  document.getElementById('page').innerHTML = h;
+</script>
+</body>
+</html>

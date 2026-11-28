@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layout: by width or by client</title>
+<!--
+  Does the layout follow the width of the screen, or the kind of client?
+  The same settings area (Assistants, Juno, its page) in both options.
+  Nothing here is decided. See ../README.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 8px 8px 12px; }
+  .page > h1 { font: var(--type-title); margin: 0 0 var(--s-2); }
+  .arr { margin-bottom: var(--s-3); }
+  .head { display: flex; align-items: center; gap: var(--s-4); margin-bottom: var(--s-2); }
+  .letter { width: 48px; height: 48px; border-radius: var(--r-lg); display: grid; place-items: center; flex: none; font: 700 30px/1 var(--font-sans); background: var(--accent); color: var(--on-accent, #fff); }
+  .arr h2 { font: 600 18px/22px var(--font-sans); margin: 0; }
+  .arr .note { font: 500 13px/17px var(--font-sans); color: var(--text-2); margin: 0; }
+  .frames { display: flex; gap: 14px; align-items: flex-start; }
+  .cell { flex: none; }
+  .cap { display: block; height: 16px; font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+  .under { font: 500 12px/15px var(--font-sans); color: var(--text-2); margin-top: var(--s-1); min-height: 62px; }
+  .cost { font: 600 13px/17px var(--font-sans); margin-top: var(--s-2); }
+
+  .frame { position: relative; height: 380px; border-radius: 14px; overflow: hidden; color: var(--text); }
+  .win { position: absolute; left: 8px; right: 8px; top: 8px; bottom: 8px; display: flex; overflow: hidden; border-radius: var(--r-lg); }
+  .win.tb { bottom: 62px; }
+  .win.hold { right: auto; }
+  .frame .tabbar { position: absolute; left: 8px; right: 8px; bottom: 8px; padding: 4px; }
+  .frame .tabbar > * { flex: 1; padding: 6px 0; min-width: 0; font: var(--type-caption); text-transform: none; letter-spacing: 0; gap: 2px; border-radius: var(--r-md, 12px); }
+  .frame .tabbar > i { flex: none; width: 1px; padding: 0; background: var(--line); }
+  .frame.ic .tabbar > * { font-size: 0; }
+  .i { width: 18px; height: 18px; flex: none; display: block; }
+  .nav { display: flex; flex-direction: column; gap: 2px; padding: var(--s-2); border-right: 1px solid var(--line); flex: none; }
+  .nav .item { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2); border-radius: var(--r-sm); font: var(--type-label); white-space: nowrap; }
+  .nav.rail { align-items: center; padding: var(--s-2) 4px; }
+  .nav.rail .item { padding: var(--s-2); }
+  .nav .item.on { background: var(--accent-soft); font-weight: 600; }
+  .nav .search { height: 28px; padding: 0 var(--s-2); gap: var(--s-1); font: var(--type-caption); text-transform: none; letter-spacing: 0; white-space: nowrap; margin-bottom: var(--s-1); }
+  .nav .search .caret { display: none; }
+  .mid { flex: none; border-right: 1px solid var(--line); padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; background: var(--surface); }
+  .mid .hd { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); padding: 2px var(--s-2) var(--s-1); }
+  .mid .row { min-height: 40px; padding: 0 var(--s-2); gap: var(--s-2); font: var(--type-label); border-radius: var(--r-sm); }
+  .mid .row + .row { border-top: 0; }
+  .pg { flex: 1; min-width: 0; background: var(--surface); padding: var(--s-3); display: flex; flex-direction: column; gap: var(--s-2); overflow: hidden; }
+  .pg.solo { background: transparent; }
+  .path { font: var(--type-caption); color: var(--text-2); letter-spacing: 0; text-transform: none; white-space: nowrap; }
+  .fld { display: flex; flex-direction: column; gap: 2px; }
+  .fld .field { height: 30px; padding: 0 var(--s-2); font: var(--type-label); }
+  .tg { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); font: var(--type-label); }
+  .topbar { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-3); border-radius: var(--r-full); margin-bottom: var(--s-1); font: var(--type-label); }
+  .topbar b { font-size: 18px; line-height: 1; font-weight: 500; }
+  .hint { position: absolute; left: 8px; right: 8px; bottom: 8px; }
+  .hint .chip { width: 100%; justify-content: center; }
+  .cut { position: absolute; top: 8px; bottom: 8px; right: 0; width: 36px; background: linear-gradient(90deg, transparent, var(--bg)); pointer-events: none; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var P = {
+    home: '<path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/>',
+    assistant: '<path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/>',
+    timeline: '<path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"/>',
+    chat: '<path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/>',
+    all: '<path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/>',
+    users: '<path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"/>',
+    device: '<path d="M192,24H64A24,24,0,0,0,40,48V208a24,24,0,0,0,24,24H192a24,24,0,0,0,24-24V48A24,24,0,0,0,192,24ZM56,72H200V184H56Zm8-32H192a8,8,0,0,1,8,8v8H56V48A8,8,0,0,1,64,40ZM192,216H64a8,8,0,0,1-8-8v-8H200v8A8,8,0,0,1,192,216Z"/>',
+    mic: '<path d="M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z"/>',
+    gear: '<path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"/>',
+    search: '<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/>'
+  };
+  function ic(n) { return '<svg class="i" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">' + P[n] + '</svg>'; }
+
+  var DEST = [['assistant', 'Assistants'], ['users', 'People'], ['device', 'Devices'], ['mic', 'Voice'], ['gear', 'General']];
+  function nav(kind, w) {
+    var s = '<div class="nav' + (kind === 'rail' ? ' rail' : '') + '" style="width:' + w + 'px">';
+    if (kind === 'full') s += '<div class="search">' + ic('search') + '<span class="t-2">Search settings</span></div>';
+    DEST.forEach(function (d, i) {
+      s += '<div class="item' + (i === 0 ? ' on' : '') + '" title="' + d[1] + '">' + ic(d[0]) + (kind === 'full' ? d[1] : '') + '</div>';
+    });
+    return s + '</div>';
+  }
+  function mid(w) {
+    var s = '<div class="mid" style="width:' + w + 'px"><div class="hd">Assistants</div>';
+    [['Juno', true], ['Mira'], ['Otto']].forEach(function (a) {
+      s += '<div class="row' + (a[1] ? ' is-selected' : '') + '"><span class="avatar" style="width:22px;height:22px;font-size:10px">' + a[0][0] + '</span><span class="grow">' + a[0] + '</span></div>';
+    });
+    return s + '</div>';
+  }
+  function page(solo) {
+    return '<div class="pg' + (solo ? ' solo' : '') + '"><div><div class="path">Assistants · Juno</div><div class="t-heading">Juno</div></div>' +
+      '<div class="fld"><span class="field-label" style="margin:0">Name</span><span class="field">Juno</span></div>' +
+      '<div class="fld"><span class="field-label" style="margin:0">Voice</span><span class="field">Warm, slow</span></div>' +
+      '<div class="tg"><span>Answers to its name</span><span class="toggle on"></span></div>' +
+      '<div class="tg"><span>Quiet at night</span><span class="toggle"></span></div></div>';
+  }
+  function bar() {
+    var s = '<div class="glass-thick tabbar">';
+    [['home', 'Home'], ['assistant', 'Juno'], ['timeline', 'Time'], ['chat', 'Chat']].forEach(function (t) { s += '<div>' + ic(t[0]) + t[1] + '</div>'; });
+    return s + '<i></i><div class="on">' + ic('all') + 'All</div></div>';
+  }
+  var BACK = '<div class="glass topbar"><b>‹</b><span class="grow">Assistants</span></div>';
+
+  function narrow(w) {
+    return '<div class="frame ' + (w < 190 ? 'ic ' : '') + 'backdrop accent-tide light" style="width:' + w + 'px"><div class="win tb" style="flex-direction:column;background:transparent">' + BACK + page(true) + '</div>' + bar() + '</div>';
+  }
+  function two(w) {
+    return '<div class="frame backdrop accent-tide light compact" style="width:' + w + 'px"><div class="win glass-thick">' + nav('rail', 44) + mid(Math.max(104, Math.round(w * 0.3))) + page() + '</div></div>';
+  }
+  function three(w, nw, mw) {
+    return '<div class="frame backdrop accent-tide light compact" style="width:' + w + 'px"><div class="win glass-thick">' + nav('full', nw) + mid(mw) + page() + '</div></div>';
+  }
+  function squeezed(w) {
+    return '<div class="frame backdrop accent-tide light compact" style="width:' + w + 'px"><div class="win glass-thick hold" style="width:480px">' + nav('full', 124) + mid(120) + page() + '</div><div class="cut"></div>' +
+      '<div class="hint"><span class="chip warning"><span class="dot"></span>Scroll sideways to see Juno</span></div></div>';
+  }
+
+  function cell(w, cap, html, under) {
+    return '<div class="cell" style="width:' + w + 'px"><span class="cap">' + cap + '</span>' + html + '<div class="under">' + under + '</div></div>';
+  }
+  function arr(id, letter, title, note, cells, cost) {
+    return '<div class="arr" id="' + id + '"><div class="head"><span class="letter">' + letter + '</span><div><h2>' + title + '</h2><p class="note">' + note + '</p></div></div>' +
+      '<div class="frames">' + cells + '</div><div class="cost">' + cost + '</div></div>';
+  }
+
+  var a = cell(200, 'Narrow', narrow(200), 'Under 600: one column at a time, with a back arrow and the tab bar') +
+    cell(330, 'Medium', two(330), '600 to 1000: two columns, list and page; destinations collapse to an icon rail') +
+    cell(560, 'Wide', three(560, 130, 120), 'Over 1000: three columns');
+  var b = cell(170, 'Phone app', narrow(170), 'One column at a time with the tab bar, at any width') +
+    cell(290, 'Tablet app', two(290), 'Its own fixed layout: two columns, whatever its width') +
+    cell(480, 'Desktop and web', three(480, 120, 110), 'Three columns, at any width') +
+    cell(200, 'Narrow browser window', squeezed(200), 'Still the three columns, squeezed or cut off');
+
+  document.getElementById('page').innerHTML =
+    '<h1>Layout: by width or by client</h1>' +
+    arr('v-a', 'A', 'The layout follows the width.',
+      'A narrow browser window gets the narrow layout; a wide tablet gets three columns. The phone, tablet, desktop and web share one set of layouts.', a,
+      'Costs: each screen is built to fold three ways, and a phone held sideways changes layout.') +
+    arr('v-b', 'B', 'The layout follows the client.',
+      'Each client has one fixed layout. Simpler to build per client; a narrow window or a wide tablet does not adapt.', b,
+      'Costs: a narrow browser window or a wide tablet is left with a layout that does not fit it.');
+</script>
+</body>
+</html>

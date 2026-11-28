@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Figure style board</title>
+<!--
+  Five drawing styles for the same character, Juno. Each tile shows the
+  neutral figure, four expressions at head size, and the figure small beside
+  a card on a mini tablet stage. Nothing here is decided.
+  See ../assistant-visuals.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .sty { margin-bottom: var(--s-4); }
+  .sty h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .sty p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .tile { position: relative; width: 1200px; height: 330px; border-radius: 20px; overflow: hidden; box-sizing: border-box; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; }
+  .grp { display: flex; flex-direction: column; gap: var(--s-2); }
+  .grp > .t-caption { display: block; }
+  .big { display: block; height: 240px; width: 185px; }
+  .heads { display: flex; gap: 24px; }
+  .hd { display: flex; flex-direction: column; align-items: center; gap: var(--s-1); width: 88px; }
+  .hd svg { width: 80px; height: 80px; display: block; }
+  .stage { position: relative; width: 300px; height: 190px; border-radius: 20px; overflow: hidden; outline: 1px solid var(--line); outline-offset: -1px; }
+  .stage svg { position: absolute; left: 12px; bottom: 6px; height: 110px; width: 85px; }
+  .stage .glass { position: absolute; left: 118px; right: 12px; top: 50%; transform: translateY(-50%); padding: var(--s-3); }
+  .stage .tm { font: 600 30px/32px var(--font-sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var N = 0;
+  var DK = 'color-mix(in srgb, var(--accent) 22%, black)';
+  var SH = 'color-mix(in srgb, var(--accent) 80%, black)';
+  function id(p) { return p + (N++); }
+
+  /* ---------- A. Flat and geometric ---------- */
+  function styleA(e, body) {
+    var c = 'var(--on-accent)', s = '';
+    var ar = function (x, y, d) { return '<path d="M' + (x - 12) + ' ' + (y + d) + ' Q' + x + ' ' + (y + d - 16) + ' ' + (x + 12) + ' ' + (y + d) + '" fill="none" stroke="' + c + '" stroke-width="7" stroke-linecap="round"/>'; };
+    var dot = function (x, y, r) { return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="' + c + '"/>'; };
+    var cl = function (x, y) { return '<path d="M' + (x - 12) + ' ' + (y - 2) + ' Q' + x + ' ' + (y + 12) + ' ' + (x + 12) + ' ' + (y - 2) + '" fill="none" stroke="' + c + '" stroke-width="7" stroke-linecap="round"/>'; };
+    if (body) {
+      s += '<rect x="50" y="156" width="17" height="58" rx="8.5" fill="var(--accent)"/><rect x="133" y="156" width="17" height="58" rx="8.5" fill="var(--accent)"/>';
+      s += '<rect x="72" y="226" width="26" height="16" rx="8" fill="var(--accent-2)"/><rect x="102" y="226" width="26" height="16" rx="8" fill="var(--accent-2)"/>';
+      s += '<rect x="64" y="136" width="72" height="100" rx="36" fill="var(--accent-2)"/>';
+    }
+    s += '<rect x="38" y="28" width="124" height="114" rx="42" fill="var(--accent)"/>';
+    s += '<circle cx="60" cy="108" r="8" fill="var(--accent-2)" opacity=".6"/><circle cx="140" cy="108" r="8" fill="var(--accent-2)" opacity=".6"/>';
+    if (e == 'neutral') s += dot(78, 86, 9) + dot(122, 86, 9);
+    if (e == 'listen') s += dot(78, 86, 13) + dot(122, 86, 13);
+    if (e == 'think') s += dot(88, 76, 9) + dot(132, 76, 9);
+    if (e == 'wink') s += dot(78, 86, 9) + cl(122, 86);
+    if (e == 'laugh') s += ar(78, 90, 4) + ar(122, 90, 4);
+    return s;
+  }
+
+  /* ---------- B. Soft three-dimensional ---------- */
+  function styleB(e, body) {
+    var g1 = id('bh'), g2 = id('bb'), g3 = id('bs'), g4 = id('bl'), g5 = id('be');
+    var s = '<defs>' +
+      '<radialGradient id="' + g1 + '" cx=".35" cy=".28" r=".85"><stop offset="0" style="stop-color:color-mix(in srgb, var(--accent) 55%, white)"/><stop offset=".55" stop-color="var(--accent)"/><stop offset="1" style="stop-color:' + SH + '"/></radialGradient>' +
+      '<radialGradient id="' + g2 + '" cx=".35" cy=".25" r=".9"><stop offset="0" style="stop-color:color-mix(in srgb, var(--accent-2) 55%, white)"/><stop offset=".55" stop-color="var(--accent-2)"/><stop offset="1" style="stop-color:color-mix(in srgb, var(--accent-2) 75%, black)"/></radialGradient>' +
+      '<radialGradient id="' + g3 + '"><stop offset="0" stop-color="black" stop-opacity=".4"/><stop offset="1" stop-color="black" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="' + g4 + '"><stop offset="0" stop-color="white" stop-opacity=".75"/><stop offset="1" stop-color="white" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="' + g5 + '" cx=".4" cy=".3" r=".8"><stop offset="0" style="stop-color:color-mix(in srgb, var(--accent) 45%, black)"/><stop offset="1" style="stop-color:color-mix(in srgb, var(--accent) 15%, black)"/></radialGradient></defs>';
+    var eye = function (x, y, rx, ry) { return '<ellipse cx="' + x + '" cy="' + y + '" rx="' + rx + '" ry="' + ry + '" fill="url(#' + g5 + ')"/><circle cx="' + (x + rx * .35) + '" cy="' + (y - ry * .38) + '" r="' + (rx * .38) + '" fill="white"/><circle cx="' + (x - rx * .35) + '" cy="' + (y + ry * .4) + '" r="' + (rx * .18) + '" fill="white" opacity=".6"/>'; };
+    var arc = function (x, y, up) { return '<path d="M' + (x - 12) + ' ' + (y + (up ? 4 : -2)) + ' Q' + x + ' ' + (y + (up ? -12 : 12)) + ' ' + (x + 12) + ' ' + (y + (up ? 4 : -2)) + '" fill="none" stroke="var(--on-accent)" stroke-width="6" stroke-linecap="round"/>'; };
+    if (body) {
+      s += '<ellipse cx="100" cy="244" rx="64" ry="10" fill="url(#' + g3 + ')"/>';
+      s += '<ellipse cx="59" cy="188" rx="11" ry="30" transform="rotate(12 59 188)" fill="url(#' + g2 + ')"/><ellipse cx="141" cy="188" rx="11" ry="30" transform="rotate(-12 141 188)" fill="url(#' + g2 + ')"/>';
+      s += '<ellipse cx="84" cy="238" rx="16" ry="9" fill="url(#' + g2 + ')"/><ellipse cx="116" cy="238" rx="16" ry="9" fill="url(#' + g2 + ')"/>';
+      s += '<rect x="64" y="136" width="72" height="100" rx="36" fill="url(#' + g2 + ')"/>';
+      s += '<ellipse cx="84" cy="176" rx="9" ry="20" fill="url(#' + g4 + ')" opacity=".6"/>';
+    }
+    s += '<rect x="38" y="28" width="124" height="114" rx="42" fill="url(#' + g1 + ')"/>';
+    s += '<ellipse cx="72" cy="52" rx="28" ry="13" transform="rotate(-22 72 52)" fill="url(#' + g4 + ')"/>';
+    s += '<circle cx="58" cy="108" r="11" fill="white" opacity=".16"/><circle cx="142" cy="108" r="11" fill="white" opacity=".16"/>';
+    if (e == 'neutral') s += eye(78, 88, 10, 13) + eye(122, 88, 10, 13);
+    if (e == 'listen') s += eye(78, 86, 13, 17) + eye(122, 86, 13, 17);
+    if (e == 'think') s += eye(86, 79, 10, 13) + eye(130, 79, 10, 13);
+    if (e == 'wink') s += eye(78, 88, 10, 13) + arc(122, 88, false);
+    if (e == 'laugh') s += arc(78, 90, true) + arc(122, 90, true);
+    return s;
+  }
+
+  /* ---------- C. Glass ---------- */
+  function styleC(e, body) {
+    var g1 = id('cg'), g2 = id('cw'), g3 = id('cf'), g4 = id('cc');
+    var s = '<defs>' +
+      '<linearGradient id="' + g1 + '" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".42"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".1"/></linearGradient>' +
+      '<radialGradient id="' + g2 + '"><stop offset="0" stop-color="var(--accent)" stop-opacity=".85"/><stop offset=".6" stop-color="var(--accent)" stop-opacity=".25"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="' + g4 + '"><stop offset="0" stop-color="white" stop-opacity=".95"/><stop offset=".35" stop-color="var(--accent-2)" stop-opacity=".8"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></radialGradient>' +
+      '<filter id="' + g3 + '" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+    var edge = 'stroke="white" stroke-opacity=".8" stroke-width="1.6"';
+    var eye = function (x, y, w, h) { return '<rect x="' + (x - w / 2) + '" y="' + (y - h / 2) + '" width="' + w + '" height="' + h + '" rx="' + (w / 2) + '" fill="white" filter="url(#' + g3 + ')"/>'; };
+    var arc = function (x, y, up) { return '<path d="M' + (x - 12) + ' ' + (y + (up ? 4 : -2)) + ' Q' + x + ' ' + (y + (up ? -12 : 12)) + ' ' + (x + 12) + ' ' + (y + (up ? 4 : -2)) + '" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" filter="url(#' + g3 + ')"/>'; };
+    if (body) {
+      s += '<rect x="50" y="158" width="16" height="54" rx="8" fill="url(#' + g1 + ')" ' + edge + '/><rect x="134" y="158" width="16" height="54" rx="8" fill="url(#' + g1 + ')" ' + edge + '/>';
+      s += '<rect x="64" y="136" width="72" height="104" rx="36" fill="url(#' + g1 + ')" ' + edge + '/>';
+      s += '<ellipse cx="100" cy="194" rx="34" ry="34" fill="url(#' + g2 + ')"/><circle cx="100" cy="194" r="13" fill="url(#' + g4 + ')" filter="url(#' + g3 + ')"/>';
+      s += '<ellipse cx="100" cy="246" rx="44" ry="5" fill="var(--accent)" opacity=".35"/>';
+      s += '<path d="M76 168 Q74 196 80 220" fill="none" stroke="white" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/>';
+    }
+    s += '<rect x="38" y="28" width="124" height="114" rx="42" fill="url(#' + g1 + ')" ' + edge + '/>';
+    s += '<ellipse cx="100" cy="112" rx="56" ry="38" fill="url(#' + g2 + ')"/>';
+    s += '<path d="M54 62 Q58 42 84 38" fill="none" stroke="white" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>';
+    if (e == 'neutral') s += eye(78, 86, 14, 24) + eye(122, 86, 14, 24);
+    if (e == 'listen') s += eye(78, 86, 17, 32) + eye(122, 86, 17, 32);
+    if (e == 'think') s += eye(88, 77, 14, 22) + eye(132, 77, 14, 22);
+    if (e == 'wink') s += eye(78, 86, 14, 24) + arc(122, 88, false);
+    if (e == 'laugh') s += arc(78, 90, true) + arc(122, 90, true);
+    return s;
+  }
+
+  /* ---------- D. Hand-drawn line ---------- */
+  function styleD(e, body) {
+    var ln = 'fill="none" stroke="var(--text)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"';
+    var headP = 'M44 72 C41 42 70 31 101 33 C136 30 160 44 158 80 C161 112 148 141 103 140 C60 143 41 113 44 72 Z';
+    var bodyP = 'M70 146 C63 182 64 224 80 237 C96 243 112 241 125 236 C139 222 140 182 131 148';
+    var dot = function (x, y) { return '<circle cx="' + x + '" cy="' + y + '" r="5.5" fill="var(--text)"/>'; };
+    var arc = function (x, y, up) { return '<path d="M' + (x - 11) + ' ' + (y + (up ? 4 : -2)) + ' Q' + x + ' ' + (y + (up ? -11 : 11)) + ' ' + (x + 11) + ' ' + (y + (up ? 3 : -3)) + '" ' + ln + ' stroke-width="3.5"/>'; };
+    var s = '';
+    if (body) {
+      s += '<path d="' + bodyP + ' Z" transform="translate(5 5)" style="fill:color-mix(in srgb, var(--accent-2) 55%, white)"/><path d="' + bodyP + '" ' + ln + '/>';
+      s += '<path d="M67 170 C52 177 47 192 51 206 M133 168 C149 175 153 191 150 205" ' + ln + '/>';
+      s += '<path d="M80 238 L73 249 L93 248 M112 240 L108 249 L128 248" ' + ln + '/>';
+    }
+    s += '<path d="' + headP + '" transform="translate(5 5)" fill="var(--accent-2)"/><path d="' + headP + '" ' + ln + '/>';
+    s += '<path d="M95 33 C90 19 103 11 108 21 M104 32 C109 23 117 23 119 29" ' + ln + '/>';
+    var m = '<path d="M88 113 Q101 122 113 112" ' + ln + '/>';
+    if (e == 'neutral') s += dot(80, 87) + dot(121, 86) + m;
+    if (e == 'listen') s += '<circle cx="80" cy="85" r="11" ' + ln + '/><circle cx="80" cy="85" r="4" fill="var(--text)"/><circle cx="121" cy="84" r="11" ' + ln + '/><circle cx="121" cy="84" r="4" fill="var(--text)"/><ellipse cx="101" cy="116" rx="5" ry="6" ' + ln + '/><path d="M68 66 Q80 58 92 64 M109 63 Q121 57 133 65" ' + ln + '/>';
+    if (e == 'think') s += dot(88, 78) + dot(130, 77) + '<path d="M92 115 L112 111" ' + ln + '/><path d="M114 62 Q127 54 140 62" ' + ln + '/>';
+    if (e == 'wink') s += dot(80, 87) + arc(121, 87, false) + '<path d="M85 111 Q104 126 120 109" ' + ln + '/>';
+    if (e == 'laugh') s += arc(80, 90, true) + arc(121, 89, true) + '<path d="M82 106 Q101 138 120 106 Z" ' + ln + ' fill="var(--text)"/><path d="M92 120 Q101 129 110 120 Q101 114 92 120 Z" fill="var(--accent)"/>';
+    return s;
+  }
+
+  /* ---------- E. Expressive mascot ---------- */
+  function styleE(e, body) {
+    var c1 = id('ec'), c2 = id('ed');
+    var s = '<defs><clipPath id="' + c1 + '"><ellipse cx="76" cy="86" rx="19" ry="22"/></clipPath><clipPath id="' + c2 + '"><ellipse cx="124" cy="86" rx="19" ry="22"/></clipPath></defs>';
+    var skin = 'var(--accent)';
+    var eye = function (cx, clip, px, py, lid, big) {
+      var rx = big ? 21 : 18, ry = big ? 25 : 21, pr = big ? 9 : 10;
+      var o = '<ellipse cx="' + cx + '" cy="86" rx="' + rx + '" ry="' + ry + '" fill="white"/>';
+      o += '<circle cx="' + (cx + px) + '" cy="' + (86 + py) + '" r="' + pr + '" style="fill:' + DK + '"/><circle cx="' + (cx + px + 3) + '" cy="' + (86 + py - 3) + '" r="3" fill="white"/>';
+      if (lid) o += '<g clip-path="url(#' + clip + ')"><rect x="' + (cx - 24) + '" y="58" width="48" height="' + (lid + 6) + '" fill="' + skin + '"/><line x1="' + (cx - 24) + '" y1="' + (64 + lid) + '" x2="' + (cx + 24) + '" y2="' + (64 + lid) + '" style="stroke:' + DK + '" stroke-width="3"/></g>';
+      return o;
+    };
+    var arc = function (x, up) { return '<path d="M' + (x - 14) + ' ' + (up ? 94 : 84) + ' Q' + x + ' ' + (up ? 70 : 104) + ' ' + (x + 14) + ' ' + (up ? 94 : 84) + '" fill="none" style="stroke:' + DK + '" stroke-width="6" stroke-linecap="round"/>'; };
+    var stroke = function (d) { return '<path d="' + d + '" fill="none" style="stroke:' + DK + '" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'; };
+    if (body) {
+      s += '<ellipse cx="60" cy="182" rx="10" ry="23" transform="rotate(22 60 182)" fill="var(--accent-2)"/><ellipse cx="140" cy="182" rx="10" ry="23" transform="rotate(-22 140 182)" fill="var(--accent-2)"/>';
+      s += '<ellipse cx="82" cy="238" rx="18" ry="9" style="fill:color-mix(in srgb, var(--accent-2) 70%, black)"/><ellipse cx="118" cy="238" rx="18" ry="9" style="fill:color-mix(in srgb, var(--accent-2) 70%, black)"/>';
+      s += '<ellipse cx="100" cy="188" rx="35" ry="50" fill="var(--accent-2)"/><ellipse cx="100" cy="196" rx="20" ry="28" fill="var(--on-accent)" opacity=".25"/>';
+    }
+    s += '<path d="M100 36 Q95 24 110 20" fill="none" stroke="var(--accent-2)" stroke-width="5" stroke-linecap="round"/><circle cx="111" cy="18" r="8.5" fill="var(--accent-2)"/>';
+    s += '<circle cx="38" cy="66" r="15" fill="var(--accent-2)"/><circle cx="162" cy="66" r="15" fill="var(--accent-2)"/><circle cx="38" cy="66" r="7" fill="var(--on-accent)" opacity=".3"/><circle cx="162" cy="66" r="7" fill="var(--on-accent)" opacity=".3"/>';
+    s += '<ellipse cx="100" cy="90" rx="66" ry="56" fill="' + skin + '"/>';
+    s += '<ellipse cx="60" cy="112" rx="10" ry="6" fill="var(--accent-2)" opacity=".55"/><ellipse cx="140" cy="112" rx="10" ry="6" fill="var(--accent-2)" opacity=".55"/>';
+    if (e == 'neutral') s += eye(76, c1, 0, 2, 6) + eye(124, c2, 0, 2, 6) + stroke('M88 116 Q100 126 112 116');
+    if (e == 'listen') s += eye(76, c1, 0, 0, 0, true) + eye(124, c2, 0, 0, 0, true) + stroke('M60 54 Q76 46 92 54 M108 54 Q124 46 140 54') + '<ellipse cx="100" cy="120" rx="6" ry="7" style="fill:' + DK + '"/>';
+    if (e == 'think') s += eye(76, c1, 9, -10, 10) + eye(124, c2, 9, -10, 10) + stroke('M92 121 Q104 116 114 122') + stroke('M110 52 Q124 42 140 50');
+    if (e == 'wink') s += eye(76, c1, 0, 2, 4) + arc(124, false) + stroke('M124 86 L134 80 M114 88 L110 82') + stroke('M86 114 Q104 132 118 112');
+    if (e == 'laugh') s += arc(76, true) + arc(124, true) + '<path d="M78 108 Q100 144 122 108 Z" style="fill:' + DK + '"/><ellipse cx="100" cy="124" rx="11" ry="7" fill="var(--accent-2)"/>';
+    return s;
+  }
+
+  var STYLES = [styleA, styleB, styleC, styleD, styleE];
+  function fig(st, e) { return '<svg class="big" viewBox="0 0 200 260" aria-hidden="true">' + st(e, true) + '</svg>'; }
+  function head(st, e) { return '<svg viewBox="20 6 160 160" aria-hidden="true">' + st(e, false) + '</svg>'; }
+
+  var EXPR = [['listen', 'Listening'], ['think', 'Thinking'], ['wink', 'Wink'], ['laugh', 'Laugh']];
+  function tile(st, cls) {
+    var h = EXPR.map(function (x) { return '<div class="hd">' + head(st, x[0]) + '<span class="t-caption">' + x[1] + '</span></div>'; }).join('');
+    return '<div class="tile backdrop ' + cls + '">' +
+      '<div class="grp"><span class="t-caption">Juno, standing</span>' + fig(st, 'neutral') + '</div>' +
+      '<div class="grp"><span class="t-caption">Expressions</span><div class="heads">' + h + '</div></div>' +
+      '<div class="grp"><span class="t-caption">In use</span><div class="stage backdrop">' +
+      '<svg viewBox="0 0 200 260" aria-hidden="true">' + st('neutral', true) + '</svg>' +
+      '<div class="glass"><div class="t-caption">Pasta timer</div><div class="tm">07:42</div></div></div></div></div>';
+  }
+
+  var list = [
+    ['v-a', 'A. Flat and geometric', 'backdrop dark accent-tide', 'Gains the closest match to the interface, the cheapest figure to draw and to animate in all four toolkits, and a shape that reads from across a room; costs personality, because it is plain and feels the least alive.'],
+    ['v-b', 'B. Soft three-dimensional', 'backdrop light accent-ember', 'Gains a warm toy-like character with real volume; costs a figure that looks pasted onto the flat glass interface, and shading that is harder to draw, to recolour and to animate the same in four toolkits.'],
+    ['v-c', 'C. Glass', 'backdrop dark accent-tide', 'Gains a figure made of the product’s own material, so it belongs to the interface; costs legibility on pale backdrops and small sizes, and blur and glow that the lighter toolkits may not draw alike.'],
+    ['v-d', 'D. Hand-drawn line', 'backdrop light accent-ember', 'Gains charm and a human touch that is easy to draw new assistants in; costs a clash with the precise interface, and lines that are hard to animate smoothly and to keep alike in four toolkits.'],
+    ['v-e', 'E. Expressive mascot', 'backdrop dark accent-tide', 'Gains the most personality and the clearest expressions, from the big eyes to the silhouette; costs the most drawing for each new assistant and the most animation work in four toolkits.']
+  ];
+  document.getElementById('page').innerHTML = list.map(function (a, i) {
+    return '<section class="sty" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[3] + '</p>' + tile(STYLES[i], a[2].replace('backdrop ', '')) + '</section>';
+  }).join('');
+</script>
+</body>
+</html>

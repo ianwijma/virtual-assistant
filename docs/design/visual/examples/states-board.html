@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>States board</title>
+<!--
+  Four ways to handle "nothing to show yet" the same way in every client:
+  waiting for the server, empty, and cannot reach home. Each design shows the
+  Timeline screen of the phone in the three states. Nothing here is decided.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-3); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); max-width: 900px; }
+  .trio { display: grid; grid-template-columns: repeat(3, 270px); gap: 40px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .phone { position: relative; width: 270px; height: 540px; border-radius: 32px; overflow: hidden; }
+  .phone > * { position: absolute; }
+  .sb { top: 11px; left: 24px; right: 24px; display: flex; justify-content: space-between; font: var(--type-label); font-weight: 600; font-size: 12px; }
+  .top { top: 34px; left: 12px; right: 12px; height: 44px; border-radius: var(--r-full); display: flex; align-items: center; padding: 0 var(--s-4); }
+  .scr { top: 90px; left: 14px; right: 14px; bottom: 90px; overflow: hidden; }
+  .bar { left: 10px; right: 10px; bottom: 10px; }
+  .bar.tabbar > * { flex: 1; min-width: 0; padding: 6px 2px; font-size: 11px; }
+  .ico.s { width: 18px; height: 18px; }
+  .grow { flex: 1; min-width: 0; }
+  .ell { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nrow { display: flex; align-items: center; gap: var(--s-2); padding: 12px var(--s-3); }
+  .nrow + .nrow { border-top: 1px solid var(--line); }
+  .stack { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; }
+  .stack .t-heading { margin-top: var(--s-3); }
+  .stack p { margin: var(--s-1) 0 0; font: var(--type-label); color: var(--text-2); }
+  .stack .btn { margin-top: var(--s-4); }
+  .sk { display: block; background: var(--control); border-radius: var(--r-xs); height: 10px; }
+  .skrow { display: flex; align-items: center; gap: var(--s-3); padding: 14px var(--s-3); }
+  .skrow + .skrow { border-top: 1px solid var(--line); }
+  .skrow .ico { opacity: .5; }
+  /* B */
+  .bub { position: relative; max-width: 190px; text-align: left; margin-bottom: var(--s-4); padding: var(--s-3) var(--s-4); }
+  .bub::after { content: ""; position: absolute; left: 50%; bottom: -7px; width: 14px; height: 14px; margin-left: -7px; background: var(--control); transform: rotate(45deg); }
+  .dots { display: flex; gap: 6px; justify-content: center; padding: 4px 4px; }
+  .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--text-3); display: block; animation: bob 1.2s ease-in-out infinite; }
+  .dots i:nth-child(2) { animation-delay: .15s; } .dots i:nth-child(3) { animation-delay: .3s; }
+  @keyframes bob { 0%, 100% { opacity: .35; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
+  .ghost { margin-top: var(--s-3); font: var(--type-caption); color: var(--text-3); }
+  /* C */
+  .line { top: 80px; left: 22px; right: 22px; height: 3px; border-radius: var(--r-full); background: var(--line); overflow: hidden; }
+  .line i { display: block; width: 40%; height: 100%; background: var(--accent); border-radius: var(--r-full); margin-left: 30%; }
+  .dim { opacity: .45; }
+  .warn { top: 80px; left: 0; right: 0; display: flex; align-items: center; gap: var(--s-2); padding: 9px var(--s-4); background: var(--surface-2); border-bottom: 2px solid var(--warning); font: var(--type-label); }
+  .warn .w { width: 8px; height: 8px; border-radius: 50%; background: var(--warning); flex: none; }
+  .warn .btn { height: 28px; padding: 0 var(--s-3); font-size: 12px; }
+  .quiet { font: var(--type-label); color: var(--text-2); padding: var(--s-2) var(--s-1) var(--s-3); }
+  /* D */
+  .card { top: 50%; left: 22px; right: 22px; transform: translateY(-50%); padding: var(--s-5) var(--s-4); border-radius: var(--r-xl); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .card p { margin: 0; font: var(--type-label); color: var(--text-2); }
+  .card .btn { margin-top: var(--s-3); }
+  .card .ico { margin-bottom: var(--s-2); width: 28px; height: 28px; }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var ico = '<span class="ico"></span>';
+  var icos = '<span class="ico s"></span>';
+  var sb = '<div class="sb"><span>14:09</span><span>&#9679;&#9679;&#9679;</span></div>';
+  var ROWS = ['Pasta timer ended', 'Milk added to Shopping', 'Parcel arrives tomorrow'];
+  var TIMES = ['14:01', '13:40', '12:15'];
+  var EMPTY_H = 'Nothing yet today', EMPTY_P = 'Timers, lists and messages show up here.';
+  var LOST_H = 'Can&rsquo;t reach home', LOST_P = 'Showing what was saved at 14:02.';
+  function ch(size, cls) { return '<span class="character ' + (cls || '') + '" style="--size:' + size + 'px"></span>'; }
+  function fig(size, cls) { return '<span class="figure" style="--size:' + size + 'px">' + ch(size, cls) + '</span>'; }
+  function topbar() { return '<div class="glass top"><span class="t-heading">Timeline</span></div>'; }
+  function tabs() {
+    var n = ['Overview', 'Juno', 'Timeline', 'Chat'];
+    return '<div class="glass-thick tabbar bar">' + n.map(function (x, i) { return '<div class="' + (i === 2 ? 'on' : '') + '">' + icos + '<span>' + x + '</span></div>'; }).join('') + '</div>';
+  }
+  function saved(extra) {
+    return '<div class="surface ' + (extra || '') + '">' + ROWS.map(function (r, i) {
+      return '<div class="nrow"><div class="grow"><span class="ell t-label">' + r + '</span></div><span class="t-caption t-2">' + TIMES[i] + '</span></div>';
+    }).join('') + '</div>';
+  }
+  function frame(inner) { return sb + topbar() + inner + tabs(); }
+
+  function A(s) {
+    if (s === 'wait') {
+      var r = [[70, 40], [58, 34], [76, 46]].map(function (w) {
+        return '<div class="skrow"><span class="ico"></span><div class="grow"><span class="sk" style="width:' + w[0] + '%"></span><span class="sk" style="width:' + w[1] + '%;margin-top:8px;height:8px"></span></div></div>';
+      }).join('');
+      return frame('<div class="scr"><div class="surface">' + r + '</div></div>');
+    }
+    var h = s === 'empty' ? EMPTY_H : LOST_H, p = s === 'empty' ? EMPTY_P : LOST_P;
+    return frame('<div class="scr"><div class="stack"><span class="ico" style="width:44px;height:44px;border-radius:14px"></span><div class="t-heading">' + h + '</div><p>' + p + '</p>' +
+      (s === 'lost' ? '<span class="btn btn-primary">Try again</span>' : '') + '</div></div>');
+  }
+  function B(s) {
+    var inner;
+    if (s === 'wait') inner = '<div class="glass bub"><div class="dots"><i></i><i></i><i></i></div></div>' + fig(120, 'listening') + '<div class="ghost">Juno is looking</div>';
+    else if (s === 'empty') inner = '<div class="bubble bub"><span class="t-strong">' + EMPTY_H + '</span><br><span class="t-label t-2">' + EMPTY_P + '</span></div>' + fig(120);
+    else inner = '<div class="bubble bub"><span class="t-strong">' + LOST_H + '</span><br><span class="t-label t-2">' + LOST_P + '</span></div>' + fig(120, 'muted') + '<span class="btn btn-primary">Try again</span>';
+    return frame('<div class="scr"><div class="stack">' + inner + '</div></div>');
+  }
+  function C(s) {
+    if (s === 'wait') return sb + topbar() + '<div class="line"><i></i></div><div class="scr dim">' + saved() + '</div>' + tabs();
+    if (s === 'empty') return frame('<div class="scr"><div class="quiet">' + EMPTY_H + '. ' + EMPTY_P + '</div></div>');
+    return sb + topbar() + '<div class="warn"><span class="w"></span><div class="grow"><b>' + LOST_H + '.</b> <span class="t-2">' + LOST_P + '</span></div></div>' +
+      '<div class="scr" style="top:150px"><div style="display:flex;justify-content:flex-end;margin-bottom:var(--s-2)"><span class="btn">Try again</span></div>' + saved() + '</div>' + tabs();
+  }
+  function D(s) {
+    var bg = s === 'wait' ? '<div class="scr dim">' + saved() + '</div>' : (s === 'lost' ? '<div class="scr dim">' + saved() + '</div>' : '');
+    var c;
+    if (s === 'wait') c = '<span class="loader" style="width:26px;height:26px;margin-bottom:var(--s-2)"></span><div class="t-strong">Getting the latest&hellip;</div>';
+    else if (s === 'empty') c = ico + '<div class="t-strong">' + EMPTY_H + '</div><p>' + EMPTY_P + '</p>';
+    else c = ico + '<div class="t-strong">' + LOST_H + '</div><p>' + LOST_P + '</p><span class="btn btn-primary">Try again</span>';
+    return frame(bg + '<div class="glass card">' + c + '</div>');
+  }
+
+  var arr = [
+    ['v-a', 'a', true, 'A. Skeletons and plain words', A, 'Gains a screen that already has the shape of what is coming and plain words anywhere; costs a little personality, and a centred icon and heading on every empty list.'],
+    ['v-b', 'b', false, 'B. The assistant carries it', B, 'Gains warmth, because the assistant says what is going on and a muted figure explains a lost connection at a glance; costs space on small lists and a figure drawn in three moods.'],
+    ['v-c', 'c', true, 'C. As quiet as possible', C, 'Gains almost no change on screen, with saved content always readable and nothing jumping; costs clarity, since a thin line or a sentence is easy to miss.'],
+    ['v-d', 'd', false, 'D. A glass notice', D, 'Gains one floating card that looks the same everywhere and is easy to find; costs covering the content, and one more floating thing on a screen of bars.']
+  ];
+  var caps = ['Waiting', 'Empty', 'Cannot reach home'], keys = ['wait', 'empty', 'lost'];
+  var accents = 'accent-aurora';
+  document.getElementById('page').innerHTML = arr.map(function (a) {
+    var cells = keys.map(function (k, i) {
+      return '<div class="cell"><span class="t-caption">' + caps[i] + '</span><div class="phone backdrop ' + accents + ' ' + (a[2] ? 'light' : 'dark') + '">' + a[4](k) + '</div></div>';
+    }).join('');
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[3] + '</h2><p class="d">' + a[5] + '</p><div class="trio">' + cells + '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heem on the household tablet</title>
+<link rel="stylesheet" href="../examples/tokens.css">
+<link rel="stylesheet" href="../examples/components.css">
+<link rel="stylesheet" href="mockup.css">
+<style>
+  /* Layout only. Frames are drawn at about 590 by 400, roomy density scaled to fit. The settings are drawn at a true 1024 by 700. */
+  .grid { display: grid; grid-template-columns: 590px 590px; gap: 28px 20px; }
+  .grid > .screen { width: 590px; gap: 8px; }
+  .grid > .screen.wide { grid-column: 1 / -1; width: auto; }
+  .frame.tab { width: 590px; height: 400px; border-radius: 20px; }
+  .frame.tab > *, .frame.tablet > * { position: absolute; }
+  .screen > figcaption h2 { font: var(--type-strong); }
+  .screen > figcaption p { font: var(--type-caption); }
+  svg.i { display: block; flex: none; }
+  .shadow { text-shadow: 0 2px 18px var(--bg), 0 0 4px var(--bg); }
+  .clock { left: var(--s-6); top: var(--s-4); line-height: 1; }
+  .clock .t-display-xl { font-size: 80px; }
+  .dim { opacity: .5; }
+  .night { inset: 0; background: color-mix(in srgb, var(--bg) 72%, transparent); }
+
+  /* Idle */
+  .shelf { left: 12px; right: 12px; bottom: 12px; height: 56px; border-radius: var(--r-lg); }
+  .on-shelf { left: 28px; bottom: 68px; }
+  .dots { display: flex; justify-content: center; gap: 7px; }
+  .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--text-3); }
+  .dots i.on { background: var(--accent); }
+  .shelf-dots { left: 28px; width: 70px; bottom: 36px; }
+  .bars { right: 28px; bottom: 20px; display: flex; gap: 6px; }
+  .sb { display: flex; align-items: center; gap: 6px; width: 140px; height: 40px; padding: 0 var(--s-2);
+    border-radius: var(--r-sm); background: var(--control); font-size: 12px; line-height: 14px; font-weight: 600; }
+  .sb .tx { display: flex; flex-direction: column; min-width: 0; }
+  .sb .tx small { font: var(--type-caption); letter-spacing: 0; text-transform: none; color: var(--text-2); }
+  .asleep::before, .asleep::after { background: none; border-bottom: 2px solid var(--on-accent); border-radius: 0 0 50% 50%; height: 6%; width: 14%; top: 46%; }
+  .eyes-half::before, .eyes-half::after { height: 7%; border-radius: 0 0 50% 50%; top: 43%; }
+  .sleepy { opacity: .55; }
+
+  /* Notification cards at the top right */
+  .ncards { right: 12px; top: 12px; width: 232px; display: flex; flex-direction: column; gap: 6px; }
+  .n { display: flex; align-items: center; gap: var(--s-2); padding: 8px 10px; border-radius: var(--r-lg); }
+  .n .tx { flex: 1; min-width: 0; line-height: 1.25; }
+  .n .tx b { display: block; font: var(--type-label); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .n .tx span { display: block; font: var(--type-caption); letter-spacing: 0; text-transform: none; color: var(--text-2); }
+
+  /* The stage: the call opened out */
+  .glow { border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 50%, transparent), transparent); }
+  .floor { border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.45), transparent); }
+  .lside { left: 0; top: 0; bottom: 0; width: 350px; }
+  .lside > * { position: absolute; }
+  .who { left: 0; right: 0; top: 14px; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .who .nm { display: flex; align-items: center; gap: var(--s-2); font: var(--type-body-strong); }
+  .who .st { display: flex; align-items: center; gap: 6px; font: var(--type-caption); color: var(--text-2); }
+  .who .st .dot { width: 6px; height: 6px; color: var(--accent); }
+  .pchip { height: 26px; padding: 0 10px 0 3px; gap: 6px; background: var(--glass-solid); color: var(--text); font-weight: 600; letter-spacing: 0; text-transform: none; font-size: 11px; }
+  .ring { width: 20px; height: 20px; border-radius: 50%; flex: none; display: grid; place-items: center; box-shadow: 0 0 0 2px var(--accent); background: var(--accent-soft); color: var(--text-2); overflow: hidden; }
+  .ring.initial { font: 600 11px/1 var(--font-sans); color: var(--text); }
+  .stagefig { left: 0; right: 0; margin: 0 auto; width: max-content; top: 56px; }
+  .ctls { left: 0; right: 0; bottom: 12px; display: flex; justify-content: center; gap: 28px; }
+  .ctl { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .rb { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; }
+  .rb.end { background: var(--danger); color: var(--on-accent); border: 0; }
+  .cap { font: var(--type-caption); letter-spacing: 0; text-transform: none; color: var(--text-2); }
+  .gcol { left: 362px; right: 12px; top: 12px; bottom: 12px; padding: var(--s-3); display: flex; flex-direction: column; gap: 6px; border-radius: var(--r-xl); }
+  .gcol .field { height: 34px; font-size: 12px; padding: 0 var(--s-2) 0 var(--s-3); margin-top: auto; flex: none; }
+  .gcol .send { margin-left: auto; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; flex: none; }
+  .bubble { align-self: flex-start; padding: 6px 10px; font: 12px/16px var(--font-sans); border-radius: var(--r-md); max-width: 92%; }
+  .bubble.me { align-self: flex-end; }
+  .bubble .old { color: var(--text-2); }
+  .tcard { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 8px 8px 12px; border-radius: var(--r-md); flex: none; }
+  .tcard .lab { font: var(--type-caption); text-transform: uppercase; color: var(--text-2); }
+  .tcard .tm { font: 600 22px/24px var(--font-sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .tcard.big { flex-direction: column; align-items: stretch; padding: 12px; gap: 6px; text-align: center; }
+  .tcard.big .tm { font-size: 46px; line-height: 48px; }
+  .tcard .btn { height: 30px; padding: 0 var(--s-3); font-size: 12px; border-radius: var(--r-sm); }
+  .tcard.big .btn { height: 38px; }
+  .crow { display: flex; align-items: center; gap: var(--s-2); min-height: 38px; padding: 0 var(--s-1); font: var(--type-label); font-size: 12px; font-weight: 600; flex: none; }
+  .crow + .crow { border-top: 1px solid var(--line); }
+  .crow .grow { flex: 1; min-width: 0; }
+  .crow .t-2 { font-weight: 500; }
+  .ask { align-self: flex-start; font: var(--type-caption); text-transform: uppercase; color: var(--text-2); }
+  .wind { height: 3px; border-radius: 2px; background: var(--control-hover); flex: none; }
+  .wind i { display: block; width: 22%; height: 100%; border-radius: 2px; background: var(--accent); }
+
+  /* Sheets */
+  .dimmer { z-index: 5; inset: 0; background: color-mix(in srgb, var(--bg) 55%, transparent); }
+  .sheetbox { z-index: 6; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 320px; padding: var(--s-5); display: flex; flex-direction: column; align-items: center; gap: var(--s-3); text-align: center; }
+  .sheetbox .acts { display: flex; gap: var(--s-3); width: 100%; margin-top: var(--s-2); }
+  .sheetbox .acts .btn { flex: 1; height: 52px; }
+
+  /* Set-up */
+  .topline { left: 0; right: 0; top: 0; height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--s-5); }
+  .pane { left: 50%; top: 56px; bottom: var(--s-6); transform: translateX(-50%); width: 400px; padding: var(--s-6); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s-3); text-align: center; }
+  .codes { display: flex; gap: var(--s-2); }
+  .codes > span { width: 44px; height: 56px; display: grid; place-items: center; border-radius: var(--r-md); background: var(--control); border: 1px solid var(--line); font: 600 24px/1 var(--font-sans); }
+  .codes > span.cur { outline: 2px solid var(--accent); }
+
+  /* Dark and low power */
+  .lowpower { display: flex; align-items: center; justify-content: center; }
+  .lowpower > * { position: static !important; }
+  .lowpower .t-display-xl { font-size: 80px; }
+
+  .minis { display: flex; gap: 12px; }
+  .mini { display: flex; flex-direction: column; gap: 4px; }
+  .mini .cp { font: var(--type-caption); color: var(--text-2); }
+  .mini .box { width: 266px; height: 180px; overflow: hidden; border-radius: 10px; position: relative; }
+  .mini .box > .frame { width: 590px; max-width: none; transform: scale(.45); transform-origin: 0 0; position: absolute; left: 0; top: 0; }
+  .pushed { left: 0; right: 0; top: 32px; bottom: 0; }
+  .pushed > * { position: absolute; }
+  .lside.whole { width: 100%; }
+  .ctl.off .rb, .ctl.off .cap { opacity: .5; }
+
+  /* Home out of reach */
+  .plainbar { left: 0; right: 0; top: 0; height: 32px; display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-4); background: var(--surface); border-bottom: 1px solid var(--line); font: var(--type-caption); font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--text); }
+  .plainbar .w { width: 8px; height: 8px; border-radius: 50%; background: var(--warning); flex: none; }
+  .plainbar .grow { flex: 1; }
+  .plainbar .btn { height: 22px; padding: 0 var(--s-2); font-size: 11px; }
+
+  /* Settings, at a true tablet size */
+  .set { inset: 0; padding: var(--s-4); display: flex; gap: var(--s-3); }
+  .set > * { position: static !important; }
+  .nav { width: 232px; flex: none; padding: var(--s-3); display: flex; flex-direction: column; gap: 2px; border-radius: var(--r-xl); }
+  .nav .it { display: flex; align-items: center; gap: var(--s-3); height: 44px; padding: 0 var(--s-3); border-radius: var(--r-sm); font: var(--type-label); font-size: 14px; font-weight: 500; }
+  .nav .it.on { background: var(--accent-soft); font-weight: 600; }
+  .nav .gap { flex: 1; }
+  .nav .dv { display: flex; align-items: center; gap: var(--s-2); margin: var(--s-2) 0; }
+  .nav .dv hr { flex: 1; border: 0; height: 1px; background: var(--line); margin: 0; }
+  .mid { width: 270px; flex: none; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
+  .mid .row { min-height: 52px; }
+  .pagecol { flex: 1; min-width: 0; padding: var(--s-5) var(--s-6); display: flex; flex-direction: column; gap: var(--s-4); position: relative; }
+  .path { font: var(--type-label); color: var(--text-2); }
+  .fl { display: flex; align-items: center; gap: var(--s-3); min-height: 52px; }
+  .fl .grow { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .fl .sub { font: var(--type-label); color: var(--text-2); }
+  .fl .field { width: 96px; justify-content: center; position: relative; }
+  .chg { position: relative; }
+  .chg::after { content: ""; position: absolute; left: -12px; top: 50%; margin-top: -4px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .savebar { position: absolute !important; left: var(--s-4); right: var(--s-4); bottom: var(--s-4); display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-3) var(--s-2) var(--s-4); border-radius: var(--r-lg); }
+  .savebar .grow { flex: 1; font: var(--type-label); font-weight: 600; }
+</style>
+</head>
+<body class="va">
+<div class="mock-page">
+<header>
+  <h1>Heem on the household tablet, kiosk</h1>
+  <p>A tablet in a room, left running as a voice device for everyone. Landscape, roomy density, readable from across a room. Frames are drawn at about 590 by 400 so that two fit in a row; text sizes are scaled to match. The settings are drawn at a true 1024 by 700. Light and dark frames are mixed to show both. The figure is the stand-in with two eyes, and the wallpaper a stand-in for a photo.</p>
+</header>
+
+<div class="grid" id="grid"></div>
+</div>
+
+<script>
+var PH = {"timer":"<path d=\"M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,216ZM173.66,90.34a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32l40-40A8,8,0,0,1,173.66,90.34ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z\"/>","bell":"<path d=\"M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z\"/>","list":"<path d=\"M224,128a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h88A8,8,0,0,1,224,128ZM128,72h88a8,8,0,0,0,0-16H128a8,8,0,0,0,0,16Zm88,112H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16ZM82.34,42.34,56,68.69,45.66,58.34A8,8,0,0,0,34.34,69.66l16,16a8,8,0,0,0,11.32,0l32-32A8,8,0,0,0,82.34,42.34Zm0,64L56,132.69,45.66,122.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Zm0,64L56,196.69,45.66,186.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Z\"/>","mail":"<path d=\"M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z\"/>","mic":"<path d=\"M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z\"/>","micoff":"<path d=\"M213.92,218.62l-160-176A8,8,0,0,0,42.08,53.38L80,95.09V128a48,48,0,0,0,69.11,43.12l11.1,12.2A63.41,63.41,0,0,1,128,192a64.07,64.07,0,0,1-64-64,8,8,0,0,0-16,0,80.11,80.11,0,0,0,72,79.6V240a8,8,0,0,0,16,0V207.59a78.83,78.83,0,0,0,35.16-12.22l30.92,34a8,8,0,1,0,11.84-10.76ZM128,160a32,32,0,0,1-32-32V112.69l41.66,45.82A32,32,0,0,1,128,160Zm57.52-3.91A63.32,63.32,0,0,0,192,128a8,8,0,0,1,16,0,79.16,79.16,0,0,1-8.11,35.12,8,8,0,0,1-7.19,4.49,7.88,7.88,0,0,1-3.51-.82A8,8,0,0,1,185.52,156.09ZM84,44.87A48,48,0,0,1,176,64v64a49.19,49.19,0,0,1-.26,5,8,8,0,0,1-8,7.17,8.13,8.13,0,0,1-.84,0,8,8,0,0,1-7.12-8.79c.11-1.1.17-2.24.17-3.36V64A32,32,0,0,0,98.64,51.25,8,8,0,1,1,84,44.87Z\"/>","chat":"<path d=\"M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z\"/>","end":"<path d=\"M146.34,98.34,164.69,80,146.34,61.66a8,8,0,0,1,11.32-11.32L176,68.69l18.34-18.35a8,8,0,0,1,11.32,11.32L187.32,80l18.34,18.34a8,8,0,0,1-11.32,11.32L176,91.31l-18.34,18.35a8,8,0,0,1-11.32-11.32Zm77.54,84.74A56.26,56.26,0,0,1,168,232C88.6,232,24,167.4,24,88A56.26,56.26,0,0,1,72.92,32.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,109.39,104c-.18.27-.37.52-.57.77L88,129.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,223.88,183.08Zm-15.88-2s-.07,0-.11,0h0l-47-21.05-24.35,20.71a8.44,8.44,0,0,1-.74.56,16,16,0,0,1-15.75,1.14c-18.73-9.05-37.4-27.58-46.46-46.11a16,16,0,0,1,1-15.7,6.13,6.13,0,0,1,.57-.77L96,95.15l-21-47a.61.61,0,0,1,0-.12A40.2,40.2,0,0,0,40,88,128.14,128.14,0,0,0,168,216,40.21,40.21,0,0,0,208,181.07Z\"/>","up":"<path d=\"M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z\"/>","moon":"<path d=\"M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z\"/>","warn":"<path d=\"M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z\"/>","house":"<path d=\"M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H48V120l80-80,80,80Z\"/>","wifioff":"<path d=\"M213.92,210.62a8,8,0,1,1-11.84,10.76l-52-57.15a60,60,0,0,0-57.41,7.24,8,8,0,1,1-9.42-12.93A75.43,75.43,0,0,1,128,144c1.28,0,2.55,0,3.82.1L104.9,114.49A108,108,0,0,0,61,135.31,8,8,0,0,1,49.73,134,8,8,0,0,1,51,122.77a124.27,124.27,0,0,1,41.71-21.66L69.37,75.4a155.43,155.43,0,0,0-40.29,24A8,8,0,0,1,18.92,87,171.87,171.87,0,0,1,58,62.86L42.08,45.38A8,8,0,1,1,53.92,34.62ZM128,192a12,12,0,1,0,12,12A12,12,0,0,0,128,192ZM237.08,87A172.3,172.3,0,0,0,106,49.4a8,8,0,1,0,2,15.87A158.33,158.33,0,0,1,128,64a156.25,156.25,0,0,1,98.92,35.37A8,8,0,0,0,237.08,87ZM195,135.31a8,8,0,0,0,11.24-1.3,8,8,0,0,0-1.3-11.24,124.25,124.25,0,0,0-51.73-24.2A8,8,0,1,0,150,114.24,108.12,108.12,0,0,1,195,135.31Z\"/>","lock":"<path d=\"M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z\"/>","gear":"<path d=\"M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z\"/>","users":"<path d=\"M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z\"/>","images":"<path d=\"M216,40H72A16,16,0,0,0,56,56V72H40A16,16,0,0,0,24,88V200a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V184h16a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM72,56H216v62.75l-10.07-10.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L72,109.37ZM184,200H40V88H56v80a16,16,0,0,0,16,16H184Zm32-32H72V132l36-36,49.66,49.66a8,8,0,0,0,11.31,0L194.63,120,216,141.38V168ZM160,84a12,12,0,1,1,12,12A12,12,0,0,1,160,84Z\"/>","sparkle":"<path d=\"M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z\"/>","clip":"<path d=\"M200,32H163.74a47.92,47.92,0,0,0-71.48,0H56A16,16,0,0,0,40,48V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V48A16,16,0,0,0,200,32Zm-72,0a32,32,0,0,1,32,32H96A32,32,0,0,1,128,32Zm72,184H56V48H82.75A47.93,47.93,0,0,0,80,64v8a8,8,0,0,0,8,8h80a8,8,0,0,0,8-8V64a47.93,47.93,0,0,0-2.75-16H200Z\"/>","search":"<path d=\"M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z\"/>","user":"<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z\"/>","sun":"<path d=\"M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z\"/>","tablet":"<path d=\"M192,24H64A24,24,0,0,0,40,48V208a24,24,0,0,0,24,24H192a24,24,0,0,0,24-24V48A24,24,0,0,0,192,24ZM56,72H200V184H56Zm8-32H192a8,8,0,0,1,8,8v8H56V48A8,8,0,0,1,64,40ZM192,216H64a8,8,0,0,1-8-8v-8H200v8A8,8,0,0,1,192,216Z\"/>","check":"<path d=\"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z\"/>","caret":"<path d=\"M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z\"/>","all":"<path d=\"M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z\"/>","question":"<path d=\"M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z\"/>","clock":"<path d=\"M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z\"/>","speaker":"<path d=\"M155.51,24.81a8,8,0,0,0-8.42.88L77.25,80H32A16,16,0,0,0,16,96v64a16,16,0,0,0,16,16H77.25l69.84,54.31A8,8,0,0,0,160,224V32A8,8,0,0,0,155.51,24.81ZM32,96H72v64H32ZM144,207.64,88,164.09V91.91l56-43.55Zm54-106.08a40,40,0,0,1,0,52.88,8,8,0,0,1-12-10.58,24,24,0,0,0,0-31.72,8,8,0,0,1,12-10.58ZM248,128a79.9,79.9,0,0,1-20.37,53.34,8,8,0,0,1-11.92-10.67,64,64,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67A79.83,79.83,0,0,1,248,128Z\"/>","timeline":"<path d=\"M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z\"/>"};
+function ic(n, s) { return '<svg class="i" width="' + s + '" height="' + s + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">' + PH[n] + '</svg>'; }
+
+/* The figure keeps the character's own two colours (Juno is Aurora), whoever the screen follows. */
+function fig(size, extra, wrap) {
+  return '<span class="figure accent-aurora ' + (wrap || '') + '" style="--size:' + size + 'px"><span class="character ' + (extra || '') + '" style="--size:' + size + 'px"></span></span>';
+}
+function dots(n, on, cls, st) {
+  var s = '';
+  for (var i = 0; i < n; i++) s += '<i' + (i === on ? ' class="on"' : '') + '></i>';
+  return '<div class="dots ' + cls + '" style="' + (st || '') + '">' + s + '</div>';
+}
+function clock(cls, top) {
+  return '<div class="clock shadow ' + (cls || '') + '"' + (top ? ' style="top:' + top + 'px"' : '') + '><div class="t-display-xl num">9:41</div><div class="t-strong" style="margin-top:6px">Saturday 28 November</div></div>';
+}
+function bar(i, t, sub) {
+  return '<div class="sb">' + ic(i, 16) + '<span class="tx"><span>' + t + '</span>' + (sub ? '<small>' + sub + '</small>' : '') + '</span></div>';
+}
+function bars(sub) {
+  return '<div class="bars">' + bar('timer', 'Pasta &middot; 07:42') + bar('bell', 'Bins go out tonight') + bar('list', 'Shopping &middot; 3 items', sub) + '</div>';
+}
+/* Idle: one figure standing on the shelf's left end, dots under it for the others. */
+function idleBody(o) {
+  o = o || {};
+  return clock(o.clockCls, o.clockTop) + '<div class="glass shelf"></div>' +
+    '<div class="on-shelf ' + (o.figWrap || '') + '">' + fig(70, o.figCls) + '</div>' +
+    dots(3, o.dot || 0, 'shelf-dots') + bars(o.sub);
+}
+
+/* The stage: the call opened out. Figure on the left with Mute, Chat and End; a narrower glass column on the right. With hideCol the figure has the whole stage. */
+function ctl(k, cap, off) {
+  var end = k === 'end';
+  return '<span class="ctl' + (off ? ' off' : '') + '"><span class="rb ' + (end ? 'end' : 'glass') + '">' + ic(k, 22) + '</span><span class="cap">' + cap + '</span></span>';
+}
+function stage(o) {
+  var chip = o.person ? '<span class="chip pchip"><span class="ring' + (o.person.photo ? '' : ' initial') + '">' + (o.person.photo ? ic('user', 20) : o.person.init) + '</span>' + o.person.name + '</span>' : '';
+  var field = '<div class="field"><span class="ph">Message Juno</span><span class="send">' + ic('up', 14) + '</span></div>';
+  var whole = o.hideCol;
+  return '<div class="lside' + (whole ? ' whole' : '') + '">' +
+      '<div class="glow" style="' + (whole ? 'left:125px;top:20px;width:340px;height:340px' : 'left:10px;top:10px;width:330px;height:330px') + '"></div>' +
+      '<div class="who"><span class="nm">Juno' + chip + '</span><span class="st"><span class="dot"></span>' + o.state + '</span></div>' +
+      '<div class="floor" style="' + (whole ? 'left:205px;width:180px' : 'left:70px;width:210px') + ';height:22px;top:' + (o.floor || 270) + 'px"></div>' +
+      '<div class="stagefig">' + fig(o.size || 124, o.figCls) + '</div>' +
+      '<div class="ctls">' + ctl('mic', 'Mute') + ctl('chat', 'Chat', whole) + ctl('end', 'End') + '</div>' +
+    '</div>' +
+    (whole ? '' : '<div class="glass gcol">' + o.col + (o.noField ? '' : field) + '</div>');
+}
+function bubble(t, me) { return '<div class="bubble ' + (me ? 'me glass-thick' : 'glass-thick') + '" style="' + (me ? 'background:var(--accent);color:var(--on-accent)' : '') + '">' + t + '</div>'; }
+function tcard(big) {
+  return '<div class="surface tcard' + (big ? ' big' : '') + '"><div><div class="lab">Pasta timer &middot; Kitchen</div><div class="tm">07:42</div></div><span class="btn btn-primary">Stop</span></div>';
+}
+function crows(list) {
+  return '<div>' + list.map(function (r) { return '<div class="crow">' + ic(r[0], 16) + '<span class="grow">' + r[1] + '</span><span class="t-2 num">' + r[2] + '</span></div>'; }).join('') + '</div>';
+}
+var ROWS = [['timer', 'Pasta timer', '07:42'], ['list', 'Shopping list', '3 items'], ['mail', 'New email from Sam', '9:30']];
+var ASK = 'How long is left on the pasta timer?';
+var SAY = 'The pasta timer has 7 minutes left';
+
+function sheet(inner) { return '<div class="dimmer"></div><div class="glass-thick sheetbox">' + inner + '</div>'; }
+function frame(cls, inner) { return '<div class="frame tab ' + cls + '">' + inner + '</div>'; }
+
+var S = [];
+
+/* 1 */
+S.push({ h: 'Idle with a wallpaper', p: 'A photo from a gallery, a large clock, a shelf of glance bars, and one figure with dots for the others.',
+  f: frame('wallpaper light accent-tide', idleBody()),
+  n: ['Wallpaper (a stand-in for a photo here): comes from a gallery that an admin assigns to this tablet, changes by itself every few minutes with a slow fade, and stays clear. Clock: large, top left, on the photo. It shifts a little now and then to protect the screen.',
+    'Shelf: slim glass along the bottom. One figure stands on its left end, the assistant last used. Small dots under it show the other assistants; a touch on the dots changes the figure. It does not change by itself unless that is switched on. No written hint says how to call it.',
+    'Glance bars (flat, one fact each, a card in closed form) sit at the right of the shelf. A touch on a bar opens its card as a sheet (7). Not decided: how many bars fit, and how they are chosen.'] });
+
+/* 2 */
+S.push({ h: 'Idle: a notification arrives', p: 'A glass card at the top right, over the photo. More stack downward.',
+  f: frame('wallpaper light accent-tide', idleBody() +
+    '<div class="ncards"><div class="n glass">' + ic('mail', 20) + '<span class="tx"><b>Parcel arrives tomorrow</b><span>New email from Sam</span></span></div>' +
+    '<div class="n glass">' + ic('timer', 20) + '<span class="tx"><b>Pasta timer done</b><span>Kitchen</span></span></div></div>'),
+  n: ['Notification: the same card as on every screen. On a screen this wide it is a glass card at the top right, and several stack downward, the newest on top. It is a row when touched, and lifts into a sheet.',
+    'Not decided: how long a card stays before it leaves, and whether an unanswered one is kept in the Timeline.'] });
+
+/* 3 */
+S.push({ h: 'Listening (the stage)', p: 'When an assistant is active the screen is the stage: the call opened out on a wide screen.',
+  f: frame('backdrop dark accent-tide', stage({ state: 'Listening', figCls: 'listening',
+    col: bubble('Set a pasta timer for ten minutes', 1) + '<div class="ask">Hearing you</div>' })),
+  n: ['Figure (left): has most of the room; the whole screen is the character’s room, and it walks into view when something appears. It has a soft floor shadow. It keeps its own two colours; the backdrop and the buttons follow the accent, here the household’s. Name and state sit above it.',
+    'Controls (under the figure): Mute, Chat and End, the same as on a personal device. Column (right, glass, narrower than before): what was said, growing as the person speaks, and the field to type. A touch on Chat or the field brings the on-screen keyboard. On a wide screen the column is shown at first; the Chat button hides it (4).',
+    'A wake word opens the stage; the idle screen is the call’s closed form. Not decided: what the column shows while it is empty, and whether Mute is shown as pressed by a slash on the icon.'] });
+
+/* 4 */
+S.push({ h: 'The stage without the column', p: 'The Chat button hides the column, and the character has the whole stage.',
+  f: frame('backdrop dark accent-tide', stage({ state: 'Listening', figCls: 'listening', size: 150, floor: 306, hideCol: 1 })),
+  n: ['The same stage as 3 with the column hidden. The character has walked to the middle and is larger. The Chat button is shown as off (drawn dimmer here); a touch on it shows the column again, and the character walks back to the left.',
+    'The whole screen is the character’s room. It walks to its new place and never jumps; it gets smaller by walking further away and larger by coming closer.'] });
+
+/* 5 */
+S.push({ h: 'An answer: the card shows large', p: 'A card that was asked for shows large for 10 seconds, in the column.',
+  f: frame('backdrop light accent-tide', stage({ state: 'Speaking', figCls: '',
+    col: bubble(ASK, 1) + bubble(SAY) + tcard(1), noField: false })),
+  n: ['The card the person asked for, here a timer, shows large in the column: a big number and the one primary button, Stop. The answer is spoken as well, so the screen is never the only answer.',
+    'It stays large for 10 seconds (set for the household; a device can differ), then returns to a small row (6). A card never covers the figure’s head, and the figure stands still once a card shows.'] });
+
+/* 6 */
+S.push({ h: 'The card is a small row again', p: 'After 10 seconds the card is a compact row in a list.',
+  f: frame('backdrop light accent-tide', stage({ state: 'Listening', figCls: '',
+    col: bubble(SAY) + crows(ROWS) })),
+  n: ['Each card (a timer, a list, a notification, a question to approve) is one compact row: an icon, a title and one fact. Rows are plain inside the glass column, one under another.',
+    'A touch on a row lifts it into a sheet (7). Not decided: how many rows show before the list scrolls.'] });
+
+/* 7 */
+S.push({ h: 'A card lifted into a sheet', p: 'A touch on the timer row opens it as a sheet over the dimmed stage.',
+  f: frame('backdrop dark accent-tide', stage({ state: 'Listening', figCls: '', col: bubble(SAY) + crows(ROWS) }) +
+    sheet('<span class="t-caption">Pasta timer &middot; Kitchen</span><span class="t-display-xl num" style="font-size:64px">07:42</span>' +
+      '<div class="acts"><span class="btn btn-primary">Stop</span><span class="btn">Add 1 minute</span></div>')),
+  n: ['Sheet (thick glass): floats over the middle of the dimmed screen and grows from the row that was touched; its title stays and moves into place. The one primary button is Stop. The row leaves a faint outline.',
+    'It closes by its close button (not drawn), a touch outside it, or a swipe down. Not decided: the buttons each kind of card has.'] });
+
+/* 8 */
+S.push({ h: 'A recognised person', p: 'The backdrop and buttons take the person’s accent. The figure keeps its own colours.',
+  f: frame('backdrop light accent-ember', stage({ state: 'Speaking', figCls: '', person: { name: 'Alex', photo: 1 },
+    col: bubble('What are my reminders?', 1) + bubble('Two for you today') + crows([['bell', 'Call the plumber', '10:00'], ['bell', 'Bins go out', '18:00']]) })),
+  n: ['Same stage as 5. The frame takes Alex’s own accent (Ember): backdrop, buttons and the send button change. The figure stays in its two colours (Aurora), so two colours meet on one screen.',
+    'Chip (beside the assistant’s name): the person’s photo, small and round, in a ring in their accent, then their name. With no photo it shows their initial in the ring. An unrecognised voice changes nothing. When the conversation ends the accent returns to the household’s.',
+    'Not decided: how a wrong match is corrected.'] });
+
+/* 9 */
+S.push({ h: 'The conversation closes', p: 'After 30 seconds without speech the character winds down first, then the idle screen returns.',
+  f: frame('backdrop dark accent-tide', stage({ state: 'Closing', figCls: 'eyes-half', col: bubble(SAY) + crows(ROWS) +
+    '<div style="margin-top:auto" class="wind"><i></i></div>', noField: true })),
+  n: ['Eyes half closed: the character winds down before the stage goes, so a person who is still there sees it coming and can speak. The thin line (a stand-in) is a countdown; speech or a touch starts the 30 seconds again.',
+    'After 30 seconds without speech the stage closes to the idle screen (1). The time is for the whole server and may be set per device.',
+    'Not decided: whether any countdown is shown at all, and how the character winds down beyond the eyes.'] });
+
+/* 10 */
+S.push({ h: 'An approval prompt', p: 'The question is a card row that opens as a sheet at once.',
+  f: frame('backdrop dark accent-ember', stage({ state: 'Asking', figCls: '', person: { name: 'Alex', init: 'A' },
+    col: crows([['question', 'Send the list to Sam?', '']]) , noField: true }) +
+    sheet('<span class="t-heading" style="font-weight:600">Send this to Sam’s phone?</span><span class="t-label t-2">The shopping list, 3 items</span>' +
+      '<div class="acts"><span class="btn btn-primary">Yes</span><span class="btn">No</span></div>')),
+  n: ['A question to approve is a row like any other card, lifted into a sheet. Yes is the one primary button, No is plain; “yes” and “no” spoken do the same. The question is read aloud when the sheet opens.',
+    'Not decided: the time before an unanswered question counts as No; who may approve which actions.'] });
+
+/* 11 */
+S.push({ h: 'An unrecognised voice', p: 'The assistant heard a voice it does not know.',
+  f: frame('backdrop light accent-tide', stage({ state: 'Not recognised', figCls: '',
+    col: '<div class="t-strong" style="font-size:15px;line-height:20px">I don’t recognise your voice</div><div class="t-label t-2">Not decided: what a guest may do, and the choices offered.</div>', noField: true })),
+  n: ['The household’s accent is used and no personal accent is applied; there is no chip. The figure keeps its colours. The assistant will not answer this voice as a person it knows.',
+    'Not decided: the guest’s rights, whether to offer “carry on as a guest”, and the buttons, so none is drawn. The controls and the field are left off here for that reason.'] });
+
+/* 12 */
+function dframe(cap, inner) { return '<div class="mini"><span class="cp">' + cap + '</span><div class="box">' + inner + '</div></div>'; }
+S.push({ wide: 1, h: 'In the dark: one screen that darkens', p: 'The same idle screen four times, left to right: the darker the room, the darker the screen.',
+  f: '<div class="minis">' +
+    dframe('Bright room (normal)', frame('wallpaper light accent-tide', idleBody({ clockTop: 16 }))) +
+    dframe('A little dark', frame('wallpaper dark accent-tide', '<div class="night"></div>' +
+      clock('dim', 20) + '<div class="glass shelf"></div>' +
+      '<div class="on-shelf sleepy">' + fig(70, 'asleep') + '</div>' + dots(3, 0, 'shelf-dots') +
+      bars().replace('class="', 'style="opacity:.5" class="'))) +
+    dframe('Darker', frame('wallpaper dark accent-tide', '<div class="night" style="background:color-mix(in srgb, var(--bg) 93%, transparent)"></div>' +
+      clock('dim', 24) + '<div class="glass shelf" style="opacity:.25"></div>' +
+      '<div class="on-shelf" style="opacity:.15">' + fig(70, 'asleep') + '</div>' +
+      bars().replace('class="', 'style="opacity:.2" class="'))) +
+    dframe('Fully dark, or low power', frame('lowpower', '<span class="t-display-xl num" style="opacity:.5;transform:translateY(28px)">9:41</span>')) +
+  '</div>',
+  n: ['The darker the room, the darker the same screen. Only the clock is always shown. Low power is the same screen at its darkest: true black, no animation, only the dim clock. Voice or touch wakes the tablet to the full screen. Timers still sound at their time.',
+    'It is one screen whose parts change, so the change is smooth: the photo dims, the figure falls asleep (its eyes are short curves) and fades, the bars quieten, and at the end only the clock is left. The clock is in every frame and shifts a few pixels between them, as it does now and then to protect the screen.',
+    'A tablet without a light sensor uses set hours; the hours are in the tablet’s settings (14). A black screen saves power on OLED only.'] });
+
+/* 13 */
+S.push({ h: 'Home cannot be reached', p: 'A slim plain bar across the top, and the rest of the screen a little smaller below it.',
+  f: frame('wallpaper light accent-tide', '<div class="pushed">' + idleBody({ clockTop: 16, sub: 'Waiting to send' }) + '</div>' +
+    '<div class="plainbar"><span class="w"></span><span class="grow">Cannot reach home. Saved copy from 9:38. 1 change waiting.</span><span class="btn">Try again</span></div>'),
+  n: ['Bar: plain, not glass, one sentence with the time of the saved copy and a button to try again, across the top of the screen. The rest of the screen becomes a little smaller to make room, and is pushed down, not covered. It goes when the connection returns.',
+    'Everything else looks as usual. The tablet works from its saved copy: the clock runs, the timer runs on the device and is sent when home is back. A change is marked “Waiting to send”. An assistant that is opened says in one line that it cannot reach home.',
+    'Not decided: what the figure shows while out of reach.'] });
+
+/* 14, settings, true size */
+function navItem(i, t, on) { return '<div class="it' + (on ? ' on' : '') + '">' + ic(i, 22) + t + '</div>'; }
+S.push({ wide: 1, h: 'The tablet’s settings', p: 'Three levels side by side, because the width allows it: areas, the settings list, the page. Drawn at a true 1024 by 700.',
+  f: '<div class="frame tablet backdrop light accent-tide"><div class="set">' +
+    '<div class="glass nav">' +
+      navItem('sparkle', 'Juno') + navItem('list', 'Lists') + navItem('timeline', 'Timeline') + navItem('chat', 'Chat') +
+      '<div class="dv"><hr></div>' +
+      navItem('timer', 'Timers') + navItem('clip', 'Clipboard') + navItem('gear', 'Settings', 1) +
+    '</div>' +
+    '<div class="surface mid"><div class="field"><span style="display:flex">' + ic('search', 18) + '</span><span class="ph">Search settings</span></div>' +
+      '<div class="list">' +
+      '<div class="row">' + ic('images', 20) + '<span class="grow">Wallpaper</span></div>' +
+      '<div class="row is-selected">' + ic('moon', 20) + '<span class="grow t-strong">In the dark</span></div>' +
+      '<div class="row">' + ic('chat', 20) + '<span class="grow">Conversation</span></div>' +
+      '<div class="row">' + ic('speaker', 20) + '<span class="grow">Sound</span></div>' +
+      '<div class="row">' + ic('tablet', 20) + '<span class="grow">This tablet</span></div></div></div>' +
+    '<div class="surface pagecol">' +
+      '<div class="path">Settings / In the dark</div><div class="t-title">In the dark</div>' +
+      '<div class="fl"><span class="grow"><span class="t-strong">Follow the light in the room</span><span class="sub">Otherwise the time of day is used</span></span><span class="toggle on"></span></div>' +
+      '<hr class="divider">' +
+      '<div class="fl"><span class="grow t-strong">When it is dark</span><span class="segmented chg"><span class="on">Character asleep</span><span>Clock only</span></span></div>' +
+      '<div class="fl"><span class="grow"><span class="t-strong">Dark hours</span><span class="sub">Used where the light cannot be measured</span></span>' +
+        '<span class="field chg">22:00</span><span class="t-2">to</span><span class="field">07:00</span></div>' +
+      '<div class="savebar glass"><span class="grow">1 change not saved</span><span class="btn btn-quiet">Discard</span><span class="btn btn-primary">Save</span></div>' +
+    '</div></div></div>',
+  n: ['Three levels, as in the admin panel: the side bar (every area, with four pinned on top above a thin line), the plain list of the chosen area’s items with a search field, and the chosen item’s page with its path above. With two columns going into the third moves the first out of view; with one column each level takes the screen in turn.',
+    'An admin sets the four pinned areas in the admin panel, and nothing marks that on the tablet: there is simply no pencil, which a person’s own device has. On a narrow screen this is the bar with four buttons and “All”.',
+    'A changed setting carries a small accent dot, and the Save bar at the bottom says how many changes are not saved, with Discard and Save. A tablet’s settings hold the light sensor, the dark hours and what the tablet shows when it is dark.',
+    'Not decided: which settings a person at the tablet may change and which only an admin may.'] });
+
+/* 15 */
+S.push({ h: 'Set-up: welcome', p: 'First run follows Apple’s: a “Hello”, then one centred pane per step.',
+  f: frame('backdrop light accent-tide', '<div class="topline"><span></span>' + dots(5, 0, '') + '<span></span></div>' +
+    '<div class="glass-thick pane">' + fig(64, '') + '<span class="t-display">Hello</span>' +
+    '<span class="t-label t-2">Let’s set up Heem on this tablet for your household.</span>' +
+    '<span class="btn btn-primary" style="margin-top:var(--s-3);width:100%;height:48px">Continue</span></div>'),
+  n: ['Five dots on top show the step; the current one takes the accent. One centred glass pane per step, with one primary button. The default assistant’s figure greets, in its own colours.',
+    'Not decided: the five steps, other than this welcome and the next one.'] });
+
+/* 16 */
+S.push({ h: 'Set-up: invite code', p: 'An admin’s invite code joins the tablet to the household.',
+  f: frame('backdrop dark accent-tide', '<div class="topline"><span></span>' + dots(5, 1, '') + '<span></span></div>' +
+    '<div class="glass-thick pane"><span class="t-display">Enter the invite code</span>' +
+    '<span class="t-label t-2">An admin can make one in the admin panel.</span>' +
+    '<div class="codes"><span>K</span><span>7</span><span>M</span><span>2</span><span class="cur"></span><span></span></div>' +
+    '<span class="btn btn-primary" style="margin-top:var(--s-2);width:100%;height:48px">Join</span></div>'),
+  n: ['Six code boxes, the on-screen keyboard below (not drawn) and Join as the only primary button. After a valid code the pane says an admin must approve the device, then the tablet moves to the idle screen (1) by itself.',
+    'Not decided: what the pane shows when a code is refused or has expired.'] });
+
+document.getElementById('grid').innerHTML = S.map(function (s, i) {
+  return '<figure class="screen' + (s.wide ? ' wide' : '') + '"><figcaption><h2>' + (i + 1) + '. ' + s.h + '</h2><p>' + s.p + '</p></figcaption>' + s.f +
+    s.n.map(function (t) { return '<div class="note">' + t + '</div>'; }).join('') + '</figure>';
+}).join('');
+</script>
+</body>
+</html>

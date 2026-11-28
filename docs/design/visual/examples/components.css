@@ -1,0 +1,164 @@
+/*
+  The example components, built only from the tokens in tokens.css.
+  They show the design language in use. They are examples, not the
+  implementation: each client builds its own from the same tokens.
+  See ../components.md.
+*/
+* { box-sizing: border-box; }
+.va { font: var(--type-body); color: var(--text); }
+.va h1, .va h2, .va h3, .va p { margin: 0; }
+.t-display-xl { font: var(--type-display-xl); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.t-display { font: var(--type-display); letter-spacing: -.02em; }
+.t-title { font: var(--type-title); letter-spacing: -.01em; }
+.t-heading { font: var(--type-heading); }
+.t-body { font: var(--type-body); }
+.t-strong { font: var(--type-body-strong); }
+.t-label { font: var(--type-label); }
+.t-caption { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+.t-mono { font: var(--type-mono); }
+.t-2 { color: var(--text-2); }
+.t-3 { color: var(--text-3); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Backdrop: our own soft field of colour, taking the accent. */
+.backdrop {
+  background:
+    radial-gradient(60% 70% at 10% 12%, color-mix(in srgb, var(--backdrop-a, var(--accent)) var(--backdrop-1), transparent) 0, transparent 70%),
+    radial-gradient(55% 65% at 94% 24%, color-mix(in srgb, var(--accent-2) var(--backdrop-1), transparent) 0, transparent 70%),
+    radial-gradient(70% 60% at 55% 108%, color-mix(in srgb, var(--backdrop-a, var(--accent)) var(--backdrop-2), transparent) 0, transparent 70%),
+    var(--bg);
+}
+/* A stand-in for a photo wallpaper or for the desktop behind the launcher. */
+.wallpaper {
+  background:
+    radial-gradient(40% 50% at 20% 30%, #f6c98a 0, transparent 70%),
+    radial-gradient(45% 55% at 80% 20%, #7fb5d8 0, transparent 70%),
+    radial-gradient(60% 60% at 60% 95%, #4f7a5a 0, transparent 70%),
+    #c9b9a4;
+}
+
+/* Glass: for what floats above the content. */
+.glass, .glass-thick {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--shadow-2), inset 0 1px 0 var(--glass-edge);
+  border-radius: var(--r-lg);
+}
+.glass-thick { background: var(--glass-thick); box-shadow: var(--shadow-3), inset 0 1px 0 var(--glass-edge); border-radius: var(--r-xl); }
+.no-blur .glass, .no-blur .glass-thick, .glass.no-blur {
+  -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--glass-flat); }
+.solid .glass, .solid .glass-thick { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--glass-solid); border-color: var(--line); }
+
+/* Plain content surface. */
+.surface { background: var(--surface-tint), var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  height: var(--control-h); padding: 0 var(--pad); border-radius: var(--r-sm);
+  font: var(--type-label); font-weight: 600; color: var(--text); background: var(--control);
+  border: 1px solid var(--line); white-space: nowrap; cursor: pointer;
+  transition: transform var(--t-fast) var(--spring), background var(--t-fast) var(--ease); }
+.btn:hover { background: var(--control-hover); }
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--text)); }
+.btn-danger { color: var(--danger); }
+.btn-quiet { background: transparent; border-color: transparent; }
+.btn[disabled], .btn.is-disabled { color: var(--text-3); background: var(--control); pointer-events: none; }
+.btn.is-focus, .field.is-focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn-icon { width: var(--control-h); padding: 0; }
+
+/* Field */
+.field { display: flex; align-items: center; gap: var(--s-2); height: var(--control-h);
+  padding: 0 var(--s-3); border-radius: var(--r-sm); background: var(--control);
+  border: 1px solid var(--line); font: var(--type-body); color: var(--text); }
+.field .ph { color: var(--text-3); }
+.field-label { font: var(--type-label); color: var(--text-2); margin-bottom: var(--s-1); display: block; }
+
+/* Toggle */
+.toggle { width: 44px; height: 26px; border-radius: var(--r-full); background: var(--control-hover);
+  position: relative; flex: none; transition: background var(--t-base) var(--ease); }
+.toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+  border-radius: 50%; background: #fff; box-shadow: var(--shadow-1); transition: transform var(--t-base) var(--spring); }
+.toggle.on { background: var(--accent); }
+.toggle.on::after { transform: translateX(18px); background: var(--on-accent); }
+.compact .toggle { width: 34px; height: 20px; }
+.compact .toggle::after { width: 14px; height: 14px; }
+.compact .toggle.on::after { transform: translateX(14px); }
+
+/* Segmented control */
+.segmented { display: inline-flex; padding: 3px; gap: 2px; border-radius: var(--r-sm); background: var(--control); }
+.segmented > * { padding: 0 var(--s-3); height: calc(var(--control-h) - 8px); display: flex; align-items: center;
+  border-radius: calc(var(--r-sm) - 3px); font: var(--type-label); color: var(--text-2); }
+.segmented > .on { background: var(--glass-solid); color: var(--text); box-shadow: var(--shadow-1); }
+
+/* List rows */
+.list { display: flex; flex-direction: column; }
+.row { display: flex; align-items: center; gap: var(--s-3); min-height: var(--row-h);
+  padding: 0 var(--pad); border-radius: var(--r-sm); }
+.row + .row { border-top: 1px solid var(--line); }
+.list.inset .row + .row { border-top: 0; }
+.row .grow { flex: 1; min-width: 0; }
+.row .sub { font: var(--type-label); color: var(--text-2); display: block; }
+.row.is-selected { background: var(--accent-soft); }
+.row .ico, .ico { width: var(--icon); height: var(--icon); border-radius: 5px; flex: none;
+  border: 1.5px solid currentColor; opacity: .7; }   /* a stand-in for an icon */
+
+/* Small parts */
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px;
+  border-radius: var(--r-full); background: var(--control); font: var(--type-caption); color: var(--text-2); white-space: nowrap; }
+.chip.accent { background: var(--accent-soft); color: var(--accent); }
+.chip.success { color: var(--success); } .chip.warning { color: var(--warning); } .chip.danger { color: var(--danger); }
+/* A coloured word never sits straight on glass: it sits in a solid chip. */
+.glass .chip.accent, .glass .chip.success, .glass .chip.warning, .glass .chip.danger,
+.glass-thick .chip.accent, .glass-thick .chip.success, .glass-thick .chip.warning, .glass-thick .chip.danger { background: var(--glass-solid); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
+.kbd { font: var(--type-caption); color: var(--text-2); padding: 2px 6px; border-radius: var(--r-xs);
+  background: var(--control); border: 1px solid var(--line); white-space: nowrap; }
+.divider { height: 1px; background: var(--line); border: 0; margin: 0; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  background: var(--accent); color: var(--on-accent); font: var(--type-label); font-weight: 600; }
+
+/* Waiting for the server */
+.loader { width: 16px; height: 16px; border-radius: 50%; flex: none;
+  border: 2px solid var(--line); border-top-color: var(--accent); animation: va-spin 800ms linear infinite; }
+@keyframes va-spin { to { transform: rotate(360deg); } }
+
+/* Character: a placeholder for an assistant's illustrated figure. */
+.character { --size: 64px; width: var(--size); height: var(--size); flex: none; position: relative;
+  border-radius: 42% 42% 46% 46% / 48% 48% 44% 44%;
+  background: linear-gradient(160deg, var(--accent-2), var(--accent));
+  box-shadow: 0 0 calc(var(--size) * .4) -6px var(--accent), inset 0 calc(var(--size) * -.08) calc(var(--size) * .16) rgba(0,0,0,.18); }
+.character::before, .character::after { content: ""; position: absolute; top: 40%; width: 10%; height: 16%;
+  border-radius: 50%; background: #fff; }
+.character::before { left: 30%; } .character::after { right: 30%; }
+.character.listening { animation: va-breathe 1.6s var(--ease) infinite alternate; }
+.character.muted { filter: grayscale(1); opacity: .6; }
+@keyframes va-breathe { to { transform: scale(1.06); } }
+
+/* A whole figure: the same placeholder with a body, for where the character has the screen. */
+.figure { display: inline-flex; flex-direction: column; align-items: center; flex: none; }
+.figure::after { content: ""; width: calc(var(--size, 64px) * .78); height: calc(var(--size, 64px) * .9); margin-top: calc(var(--size, 64px) * -.08);
+  border-radius: 40% 40% 28% 28% / 34% 34% 20% 20%;
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 70%, var(--bg))); }
+.figure > .character { z-index: 1; }
+
+/* Composite examples */
+.card { padding: var(--pad); }
+.card-head { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+.actions { display: flex; gap: var(--s-2); margin-top: var(--s-3); }
+.actions .btn { flex: 1; }
+.bar { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--pad); min-height: calc(var(--control-h) + 16px); }
+.tabbar { display: flex; justify-content: space-around; padding: var(--s-2); border-radius: var(--r-xl); }
+.tabbar > * { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 14px;
+  border-radius: var(--r-md); font: var(--type-caption); color: var(--text-2); }
+.tabbar > .on { background: var(--accent-soft); color: var(--accent); }
+.search { display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-5); height: 56px; font: var(--type-heading); font-weight: 500; }
+.search .caret { width: 2px; height: 22px; background: var(--accent); }
+.bubble { max-width: 80%; padding: var(--s-2) var(--s-3); border-radius: var(--r-md); background: var(--control); }
+.bubble.me { align-self: flex-end; background: var(--accent); color: var(--on-accent); }
+
+/* Notes on a mockup: what a region is, for whoever reads the mockup. */
+.note { font: var(--type-caption); color: var(--text-2); border-left: 2px solid var(--accent); padding-left: var(--s-2); }

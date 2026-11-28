@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card board</title>
+<!--
+  Four designs of the card, the unit an assistant or the system shows on every
+  device. The same four cards (timer, notification, checklist, approval prompt)
+  are drawn in each design, in light and dark. Nothing here is decided.
+  See ../components.md and ../../technical/a2ui.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .cap { display: block; height: 18px; }
+  .tile { width: 1200px; height: 276px; border-radius: 20px; overflow: hidden; margin-bottom: var(--s-2);
+    display: grid; grid-template-columns: repeat(4, 270px); gap: 24px; padding: 20px 24px; box-sizing: border-box; }
+  .tile.short { height: 232px; align-items: start; }
+  .tile.rows { height: 300px; }
+  .card { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-4); box-sizing: border-box; min-width: 0; overflow: hidden; }
+  .grow { flex: 1; min-width: 0; }
+  .btns { display: flex; gap: var(--s-2); }
+  .btns .btn { flex: 1; padding: 0 var(--s-2); }
+  .head { display: flex; align-items: center; gap: var(--s-2); }
+  .tl { display: flex; flex-direction: column; gap: var(--s-2); }
+  .check { display: flex; align-items: center; gap: var(--s-2); font: var(--type-label); }
+  .box { width: 18px; height: 18px; border-radius: var(--r-xs); border: 1.5px solid var(--text-3); flex: none; display: grid; place-items: center; font-size: 12px; line-height: 1; }
+  .box.on { background: var(--accent); border-color: transparent; color: var(--on-accent); }
+  .done { text-decoration: line-through; color: var(--text-3); }
+  .ask { display: flex; align-items: center; gap: var(--s-2); }
+  p.x { margin: 0; }
+
+  /* B */
+  .b-card { padding: 0; gap: 0; }
+  .b-band { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2) var(--s-4); background: var(--accent-soft); color: var(--accent); }
+  .b-band .k { flex: 1; font: var(--type-caption); font-weight: 600; color: var(--text); }
+  .b-body { flex: 1; padding: var(--s-3) var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); min-width: 0; }
+  .b-act { display: flex; justify-content: flex-end; gap: var(--s-1); padding: 0 var(--s-3) var(--s-3); }
+  .b-act .btn { padding: 0 var(--s-3); }
+  .b-x { width: 24px; height: 24px; }
+
+  /* C */
+  .c-card { position: relative; padding-top: var(--s-4); }
+  .c-top { position: absolute; top: var(--s-3); right: var(--s-3); display: flex; gap: var(--s-1); }
+  .c-top .btn { border-radius: var(--r-full); }
+  .c-big { font: 600 64px/64px var(--font-sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums; margin-top: var(--s-3); }
+  .c-q { font: 600 26px/30px var(--font-sans); letter-spacing: -.01em; }
+  .c-t { font: 600 24px/28px var(--font-sans); letter-spacing: -.01em; }
+  .c-lab { margin-top: auto; font: var(--type-caption); color: var(--accent); font-weight: 600; }
+  .c-small { font: var(--type-caption); color: var(--text-2); }
+
+  /* D */
+  .d-col { display: flex; flex-direction: column; gap: var(--s-2); align-self: start; }
+  .d-row { display: flex; align-items: center; gap: var(--s-3); height: 76px; padding: 0 var(--s-3); box-sizing: border-box; }
+  .d-sq { width: 44px; height: 44px; border-radius: var(--r-md); background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+  .d-t { font: var(--type-strong); font-size: 14px; line-height: 18px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .d-s { font: var(--type-caption); color: var(--text-2); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .d-b { display: flex; gap: var(--s-1); flex: none; }
+  .d-b .btn { height: 32px; padding: 0 var(--s-2); }
+  .d-b .btn-icon { width: 32px; padding: 0; }
+  .d-list { padding: var(--s-2) var(--s-3) var(--s-3) calc(var(--s-3) + 44px + var(--s-3)); display: flex; flex-direction: column; gap: var(--s-2); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  function ch(size) { return '<span class="character" style="--size:' + size + 'px"></span>'; }
+  var ico = '<span class="ico"></span>';
+  function chk(label, on) { return '<div class="check"><span class="box' + (on ? ' on' : '') + '">' + (on ? '&#10003;' : '') + '</span><span class="' + (on ? 'done' : '') + '">' + label + '</span></div>'; }
+  var items = chk('Bread', true) + chk('Milk') + chk('Eggs') + '<div class="check t-3" style="color:var(--text-3)"><span class="box" style="border-style:dashed">+</span>Add an item</div>';
+  var NOTE = 'Your order is out for delivery between 9 and 12.';
+
+  /* A */
+  function A() {
+    return [
+      '<div class="glass card"><div class="t-caption">Pasta timer</div><div class="t-display num">07:42</div><div class="btns" style="margin-top:auto"><span class="btn btn-primary">Stop</span><span class="btn">Snooze</span></div></div>',
+      '<div class="glass card"><div class="t-caption">Email &middot; 2 min ago</div><div class="t-strong">Parcel arrives tomorrow</div><p class="x t-label t-2">' + NOTE + '</p><div class="btns" style="margin-top:auto"><span class="btn">Mark as read</span><span class="btn">Send to my phone</span></div></div>',
+      '<div class="glass card"><div class="t-caption">Shopping</div><div class="tl">' + items + '</div></div>',
+      '<div class="glass card"><div class="t-caption">Juno asks</div><div class="ask">' + ch(32) + '<span class="t-strong grow">Send this to Sam&rsquo;s phone?</span></div><div class="btns" style="margin-top:auto"><span class="btn btn-primary">Yes</span><span class="btn">No</span></div></div>'
+    ];
+  }
+  /* B */
+  function band(icon, kind, right) { return '<div class="b-band">' + icon + '<span class="k">' + kind + '</span>' + right + '</div>'; }
+  var bx = '<span class="btn btn-quiet btn-icon b-x">&times;</span>';
+  function B() {
+    return [
+      '<div class="glass card b-card">' + band(ico, 'Timer', '<span class="t-caption">Kitchen</span>') + '<div class="b-body"><div class="t-strong">Pasta timer</div><div class="t-display num">07:42</div></div><div class="b-act"><span class="btn btn-quiet">Snooze</span><span class="btn btn-primary">Stop</span></div></div>',
+      '<div class="glass card b-card">' + band(ico, 'Email', '<span class="t-caption">2 min ago</span>' + bx) + '<div class="b-body"><div class="t-strong">Parcel arrives tomorrow</div><p class="x t-label t-2">' + NOTE + '</p></div><div class="b-act"><span class="btn btn-quiet">Send to my phone</span><span class="btn btn-primary">Mark as read</span></div></div>',
+      '<div class="glass card b-card">' + band(ico, 'List', bx) + '<div class="b-body"><div class="t-strong">Shopping</div><div class="tl">' + items + '</div></div></div>',
+      '<div class="glass card b-card">' + band(ch(24), 'Juno asks', bx) + '<div class="b-body"><div class="t-strong">Send this to Sam&rsquo;s phone?</div></div><div class="b-act"><span class="btn btn-quiet">No</span><span class="btn btn-primary">Yes</span></div></div>'
+    ];
+  }
+  /* C */
+  function ib(g, primary) { return '<span class="btn btn-icon ' + (primary ? 'btn-primary' : '') + '"><span class="ico">' + (g || '') + '</span></span>'; }
+  function C() {
+    return [
+      '<div class="glass card c-card"><div class="c-top">' + ib('', 0) + ib('', 1) + '</div><div class="c-small">Pasta timer</div><div class="c-big">07:42</div><div class="c-lab">Stop the timer</div></div>',
+      '<div class="glass card c-card"><div class="c-top">' + ib('', 0) + ib('', 1) + '</div><div class="c-small">Email &middot; 2 min ago</div><div class="c-t" style="margin-top:var(--s-4)">Parcel arrives tomorrow</div><div class="c-small">' + NOTE + '</div><div class="c-lab">Mark as read</div></div>',
+      '<div class="glass card c-card"><div class="c-top">' + ib('', 1) + '</div><div class="c-small">Shopping</div><div class="c-big" style="font-size:56px;line-height:56px;margin-top:var(--s-2)">2 left</div><div class="c-small">Bread done &middot; Milk &middot; Eggs</div><div class="c-lab">Add an item</div></div>',
+      '<div class="glass card c-card"><div class="c-top">' + ib('', 0) + ib('', 1) + '</div>' + ch(32) + '<div class="c-q" style="margin-top:var(--s-2)">Send this to Sam&rsquo;s phone?</div><div class="c-lab">Yes, send it</div></div>'
+    ];
+  }
+  /* D */
+  function row(lead, t, s, btns) { return '<div class="glass d-row"><span class="d-sq">' + lead + '</span><span class="grow"><span class="d-t">' + t + '</span><span class="d-s">' + s + '</span></span><span class="d-b">' + btns + '</span></div>'; }
+  function D() {
+    return [
+      '<div class="d-col">' + row(ico, '<span class="num">07:42</span>', 'Pasta timer', '<span class="btn btn-primary">Stop</span>') + '</div>',
+      '<div class="d-col">' + row(ico, 'Parcel arrives tomorrow', 'Email &middot; 2 min ago', '<span class="btn btn-icon"><span class="ico"></span></span>') + '</div>',
+      '<div class="d-col">' + row(ico, 'Shopping', '2 left of 3', '<span class="btn">Open</span>') + '<div class="glass" style="border-radius:var(--r-lg)"><div class="d-list" style="padding-left:var(--s-4)">' + items + '</div></div></div>',
+      '<div class="d-col">' + row(ch(32), 'Send this to Sam&rsquo;s phone?', 'Juno asks', '<span class="btn btn-primary">Yes</span><span class="btn">No</span>') + '</div>'
+    ];
+  }
+
+  var DESIGNS = [
+    ['v-a', 'A. Glass card, buttons below (as first drawn)', 'tide', A, '',
+      'Gains a plain, familiar card with a caption, the content and big buttons that are easy to hit by touch; costs height, since every card carries a row of buttons, and nothing tells the kinds of card apart at a glance.'],
+    ['v-b', 'B. Header band', 'ember', B, '',
+      'Gains cards that name their kind at a glance in the accent tint and keep one filled action, so a stack of mixed cards is easy to scan; costs a strip of height on every card and smaller, quieter buttons.'],
+    ['v-c', 'C. Big value', 'aurora', C, '',
+      'Gains cards that can be read from across a room because one thing is huge, which suits the tablet; costs the button labels, which become icons, so the user has to learn them, and costs more height and space.'],
+    ['v-d', 'D. Row cards', 'moss', D, 'short',
+      'Gains compact rows, four of which stack well in a list of notifications on a phone or the desktop, with the checklist opening under its row; costs room for text, so long messages are cut short and there is little space for the buttons.']
+  ];
+  var h = '';
+  DESIGNS.forEach(function (d) {
+    h += '<div class="arr" id="' + d[0] + '"><h2>' + d[1] + '</h2><p class="d">' + d[5] + '</p>';
+    ['light', 'dark'].forEach(function (t) {
+      h += '<span class="t-caption cap">' + t + '</span><div class="tile backdrop accent-' + d[2] + ' ' + t + ' ' + d[4] + '">' + d[3]().join('') + '</div>';
+    });
+    h += '</div>';
+  });
+  document.getElementById('page').innerHTML = h;
+</script>
+</body>
+</html>
