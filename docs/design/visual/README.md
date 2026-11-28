@@ -29,6 +29,11 @@ One look for every screen the system has:
   thing, they use the same design and the same controls. The voice page
   talks to an assistant the way the phone app does, and a card is the
   same card everywhere.
+- **A design choice is made for every client at once.** A choice about
+  how something looks, moves or behaves belongs to the design language,
+  not to the client it was first drawn for. A client differs only where
+  the choice cannot work on it, or where the device itself asks for
+  something else. See [where clients differ](#where-clients-differ).
 - **Recognisable as ours.** The design is distinctive, so that anyone can
   tell it is this product.
 - **Frosted glass is the design language.** Apple's Liquid Glass is the
@@ -56,6 +61,27 @@ the desktop brief's request to mimic the host desktop by default.
 
 This holds on Apple's devices too. The look is inspired by Apple's, but it
 is our own, and it is the same on Linux, Android and the web.
+
+## Where clients differ
+
+A difference between clients needs a reason that lies in the device. These
+are the reasons that count:
+
+| Reason | What may differ | Example |
+|---|---|---|
+| Room on the screen | Density, spacing, and how many columns are in view | The compact density on the desktop and in the admin panel, the roomy one on a phone |
+| How it is operated | The size of what is touched, and what the keyboard does | Keyboard shortcuts on the desktop, larger targets for a finger |
+| How far away it is read | The size of text | Text on a tablet is read from across a room |
+| What the device cannot do | A simpler form of the same design | A flat tint where glass cannot be blurred |
+| What only that device has | A part with no counterpart elsewhere | The launcher over other windows, the idle screen of a tablet that is always on |
+
+Taste, habit and the order in which the clients were drawn are not
+reasons. A choice that was made on one client holds on the others, in the
+form that fits their screen.
+
+The file of a client holds what is particular to it. A choice that holds
+everywhere is written in the file of its subject, such as
+[components](components.md) or [motion](motion.md).
 
 ## Light and dark, and no themes
 
@@ -158,6 +184,22 @@ up.
 
 Each subject's questions are in its own document.
 
+- Is a notification inside the phone and tablet app the same glass card
+  as on the desktop, stacked in the same way? It was chosen on the
+  desktop only.
+- Are the app's own settings on a phone and a tablet the same design as
+  the desktop settings and the admin panel, with fewer columns in view on
+  a narrow screen?
+- Is the overview of all areas the same on every client: the grid that
+  the phone shows in a sheet, also on the tablet, the desktop and the
+  web?
+- Can a person set what is on the main bar on every client, as on the
+  phone, or only where there is room for a few buttons?
+- Is the tablet's stage the same design as the phone's call, at a larger
+  size, or a design of its own?
+- Does the layout follow the width of the screen and not the kind of
+  client, so that a narrow browser window gets the phone's layout and a
+  wide tablet the three columns?
 - Should a screen that an assistant composed look different from a
   built-in screen, so that a person can tell?
 - Which devices are the references for the designs: which phone, which

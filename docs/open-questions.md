@@ -103,6 +103,13 @@ O. "As quiet as possible" is read with its bar for a lost connection,
 P. Growing from what was touched is read as the rule for every sheet,
    pop-up and new page in every client, with titles and other shared
    parts moving into place. [motion]
+Q. "Really platform specific" is read as five reasons: room on the
+   screen, how the device is operated, how far away it is read, what the
+   device cannot do, and what only that device has. [visual]
+R. From the same answer, the setup of a new device is taken to be the
+   same design as the first-run setup, and the question of saving a
+   setting is asked once for every client. [visual admin panel]
+   [components]
 
 ## 1. Now
 
@@ -336,152 +343,165 @@ detail.
    [components]
 61. Does the waiting line show at once, or only after a wait of about a
    second, so that a brief wait shows nothing? [components]
-62. Does a sheet also close by a touch on the dimmed area around it?
+62. Does a changed setting apply at once, or after a Save button? The
+   answer holds for the admin panel, the desktop settings and the app.
    [components]
-63. On a tablet read from across a room, is a card shown open and large
+63. Does a sheet also close by a touch on the dimmed area around it?
+   [components]
+64. On a tablet read from across a room, is a card shown open and large
    from the start? [components]
-64. Which components come next? The proposal is the ones the mockups
+65. Which components come next? The proposal is the ones the mockups
    need: the launcher's search and results, a sheet, a menu, the tab bar
    and the side bar, a table for logs, the chat, and each card of the
    A2UI catalog. [components]
 
 ### Assistant visuals
 
-65. In which style are the full figures drawn, when they are redesigned
+66. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-66. Does a figure have a mouth, or do the eyes alone carry its
+67. Does a figure have a mouth, or do the eyes alone carry its
    expressions? [assistant visuals]
-67. Who draws the figures, and how many are there in the first release?
+68. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-68. How does a person give their own assistant a look: by choosing from
+69. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-69. How playful is the default household assistant: cute, friendly, or
+70. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-70. Is the voice page arranged like the tablet, with the figure on a
+71. Is the voice page arranged like the tablet, with the figure on a
    stage? [assistant visuals]
-71. May a card cover part of the character, or does it always sit clear
+72. May a card cover part of the character, or does it always sit clear
    of the head? [assistant visuals]
-72. Does a whole figure move across the screen only while nothing else
+73. Does a whole figure move across the screen only while nothing else
    is shown, and stand still once a card appears? [assistant visuals]
-73. What does an assistant without a figure show: a sound wave, as on
+74. What does an assistant without a figure show: a sound wave, as on
    the tablet board, or something else? [assistant visuals]
-74. How large is the character where the assistant is not the subject,
+75. How large is the character where the assistant is not the subject,
    such as in the desktop launcher and on the phone's home screen?
    [assistant visuals]
-75. May a person bring their own figure, such as a character they like
+76. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-76. Does a figure have a colour of its own, apart from the accent?
+77. Does a figure have a colour of its own, apart from the accent?
    [assistant visuals]
-77. From the research: which of the three routes above do the first
+78. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-78. Should a screen that an assistant composed look different from a
+79. Is a notification inside the phone and tablet app the same glass
+   card as on the desktop, stacked in the same way? It was chosen on the
+   desktop only. [visual]
+80. Are the app's own settings on a phone and a tablet the same design
+   as the desktop settings and the admin panel, with fewer columns in
+   view on a narrow screen? [visual]
+81. Is the overview of all areas the same on every client: the grid that
+   the phone shows in a sheet, also on the tablet, the desktop and the
+   web? [visual]
+82. Can a person set what is on the main bar on every client, as on the
+   phone, or only where there is room for a few buttons? [visual]
+83. Is the tablet's stage the same design as the phone's call, at a
+   larger size, or a design of its own? [visual]
+84. Does the layout follow the width of the screen and not the kind of
+   client, so that a narrow browser window gets the phone's layout and a
+   wide tablet the three columns? [visual]
+85. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-79. Which devices are the references for the designs: which phone, which
+86. Which devices are the references for the designs: which phone, which
    tablet, which monitor size? [visual]
-80. Are settings screens generated from each feature's description, so
+87. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-81. Does the settings view stay open when the person clicks elsewhere,
+88. Does the settings view stay open when the person clicks elsewhere,
    unlike the launcher's list? [visual desktop]
-82. In the settings, does Esc first clear a search and only then return
+89. In the settings, does Esc first clear a search and only then return
    to the list? [visual desktop]
-83. Does a changed setting apply at once, or after a Save button?
+90. Can a notification on the desktop be answered from the keyboard?
    [visual desktop]
-84. Can a notification on the desktop be answered from the keyboard?
-   [visual desktop]
-85. Does a question from an assistant stay on screen until it is
+91. Does a question from an assistant stay on screen until it is
    answered? [visual desktop]
-86. Which views of the launcher have a preview, and which are a list
+92. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-87. Does the launcher show suggestions before anything is typed? With a
+93. Does the launcher show suggestions before anything is typed? With a
    preview, the empty launcher can show what is running now. [visual
    desktop]
-88. Does the window change size when it goes from a list to a list with
+94. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-89. What does the sheet show when there are more areas than fit: does it
+95. What does the sheet show when there are more areas than fit: does it
    scroll, or grow taller? [visual phone]
-90. Does the fixed button show a grid icon, the word "All", or both?
+96. Does the fixed button show a grid icon, the word "All", or both?
    [visual phone]
-91. Which four are on the bar of a new person: Overview, the assistant,
+97. Which four are on the bar of a new person: Overview, the assistant,
    Timeline and Chat? [visual phone]
-92. Can any area be put on the bar, a single list such as Shopping
+98. Can any area be put on the bar, a single list such as Shopping
    included? [visual phone]
-93. How is the microphone muted on the full call screen, which has only
+99. How is the microphone muted on the full call screen, which has only
    Chat and End? [visual phone]
-94. Is what is said also shown as a line of text on the full call
+100. Is what is said also shown as a line of text on the full call
    screen? [visual phone]
-95. Where is the first screen chosen: in the app's own settings, or in
+101. Where is the first screen chosen: in the app's own settings, or in
    the admin panel with a person's other settings? [visual phone]
-96. What does a touch on a clipboard item do: copy it to this phone, or
+102. What does a touch on a clipboard item do: copy it to this phone, or
    open it? [visual phone]
-97. When a tablet has several assistants, are all their figures on the
+103. When a tablet has several assistants, are all their figures on the
    idle screen, or one? [visual tablet]
-98. Does the clock move now and then, to protect the screen? [visual
+104. Does the clock move now and then, to protect the screen? [visual
    tablet]
-99. Is the figure on the idle screen at night as well, or does the
+105. Is the figure on the idle screen at night as well, or does the
    tablet then show only the clock? [visual tablet]
-100. After how long without speech does the stage close and the idle
+106. After how long without speech does the stage close and the idle
    screen return? [visual tablet]
-101. Does the welcome of the setup show the assistant's figure, or only
+107. Does the welcome of the setup show the assistant's figure, or only
    "Hello"? [visual admin panel]
-102. Is the setup of a new device, such as a phone or a tablet, drawn in
-   the same way? [visual admin panel]
-103. What does a destination with no list of items show, such as Speech
+108. What does a destination with no list of items show, such as Speech
    or Feedback: two columns, or a second column of its sections? [visual
    admin panel]
-104. Where do search results appear in three columns? [visual admin
+109. Where do search results appear in three columns? [visual admin
    panel]
-105. Does a settings page save as you go, or with one Save button?
-   [visual admin panel]
-106. At phone width, what does the list of destinations become? [visual
+110. At phone width, what does the list of destinations become? [visual
    admin panel]
-107. Which accent does the admin panel show: that of the person signed
+111. Which accent does the admin panel show: that of the person signed
    in, or the household's? [visual admin panel]
-108. Where on the phone app's call design do the two set-up choices and
+112. Where on the phone app's call design do the two set-up choices and
    the note for guests go? Ideas are on the voice page board. [visual
    voice page]
-109. On a wide screen, such as a tablet on its side, is the page
+113. On a wide screen, such as a tablet on its side, is the page
    arranged like the phone or like the tablet's stage? [visual voice
    page]
 
 ### The mockups
 
-110. Agree to each mockup, or say what to change in it. [mockups]
-111. Desktop: how does a person go from searching to talking to the
+114. Agree to each mockup, or say what to change in it. [mockups]
+115. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-112. Desktop: does the launcher open on the screen that holds the
+116. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-113. Desktop: is the settings window opened from the launcher only, or
+117. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-114. Admin panel: the request timeline shows the first words a person
+118. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-115. Admin panel: is "Undo" offered for every change in the audit log,
+119. Admin panel: is "Undo" offered for every change in the audit log,
    or only for changes that can be reversed safely? [mockups]
-116. Voice page: does the page remember on that browser that it was set
+120. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-117. A search of the trade mark registers of the EU, the Benelux, the UK
+121. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for the name that is chosen. The registers could not be
    reached in the first check, which used other sources. [visual
    identity]
-118. How fast the blur is on an old tablet and in the launcher, measured
+122. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-119. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+123. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-120. How much power a three-dimensional figure uses on an old tablet
+124. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

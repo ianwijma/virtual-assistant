@@ -42,7 +42,6 @@ settings are set.
   unlike the launcher's list?
 - In the settings, does Esc first clear a search and only then return to
   the list?
-- Does a changed setting apply at once, or after a Save button?
 - Can a notification on the desktop be answered from the keyboard?
 - Does a question from an assistant stay on screen until it is answered?
 - Which views of the launcher have a preview, and which are a list only?

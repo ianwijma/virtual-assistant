@@ -290,3 +290,5 @@ are 25 November 2026 unless a section says otherwise.
 | 263 | What opens grows from what was touched, and what is on both screens stays and moves into place | [motion](design/visual/motion.md) |
 | 264 | The desktop settings view has three columns: groups with search, the group's settings, and the chosen setting's page | [desktop](design/visual/desktop.md) |
 | 265 | The overview of all areas on the phone is a sheet that grows from the bar's fixed button, and the bar is changed in that sheet | [phone](design/visual/phone.md) |
+| 266 | A design choice is made for every client at once, and a client differs only for a reason that lies in the device | [visual](design/visual/README.md) |
+| 267 | The setup of a new device is the same design as the first-run setup | [admin panel](design/visual/admin-panel.md) |

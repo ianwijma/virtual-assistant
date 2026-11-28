@@ -72,6 +72,8 @@ light and dark, built from [components.css](examples/components.css).
   look: greyed out, hidden, or usable with the change sent later?
 - Does the waiting line show at once, or only after a wait of about a
   second, so that a brief wait shows nothing?
+- Does a changed setting apply at once, or after a Save button? The
+  answer holds for the admin panel, the desktop settings and the app.
 - Does a sheet also close by a touch on the dimmed area around it?
 - On a tablet read from across a room, is a card shown open and large
   from the start?

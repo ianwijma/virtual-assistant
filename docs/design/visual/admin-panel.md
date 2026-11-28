@@ -39,6 +39,9 @@ Status: started. The principle and the layout are set.
   show the steps, with a back arrow at the top left. This is "Apple
   pane, dots on top" on
   [the second setup board](examples/setup-board-2.html).
+- **The setup of a new device is the same design.** A phone, a tablet or
+  a desktop that joins the household is set up with the same panes, in
+  the density of that device.
 - It uses the compact density. See
   [shape and spacing](shape-and-spacing.md).
 
@@ -46,12 +49,9 @@ Status: started. The principle and the layout are set.
 
 - Does the welcome of the setup show the assistant's figure, or only
   "Hello"?
-- Is the setup of a new device, such as a phone or a tablet, drawn in
-  the same way?
 - What does a destination with no list of items show, such as Speech or
   Feedback: two columns, or a second column of its sections?
 - Where do search results appear in three columns?
-- Does a settings page save as you go, or with one Save button?
 - At phone width, what does the list of destinations become?
 - Which accent does the admin panel show: that of the person signed in,
   or the household's?
