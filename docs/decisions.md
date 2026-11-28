@@ -378,7 +378,7 @@ are 25 November 2026 unless a section says otherwise.
 | 351 | Sent changes lose their mark without a message | [components](design/visual/components.md) |
 | 352 | Composed screens and the tools that were used show in the chat's history only in an advanced mode | [components](design/visual/components.md) |
 | 353 | A sheet with unsaved input asks before closing | [components](design/visual/components.md) |
-| 354 | A card that was asked for stays large for 10 to 20 seconds, a time that can be set, as its sheet | [components](design/visual/components.md) |
+| 354 | A card that was asked for stays large for 10 seconds, a time that can be set, as its sheet | [components](design/visual/components.md) |
 | 355 | The next components are the ones the mockups need | [components](design/visual/components.md) |
 | 356 | The voice page follows the folding call and stage design | [assistant visuals](design/visual/assistant-visuals.md) |
 | 357 | A card never covers the character's head | [assistant visuals](design/visual/assistant-visuals.md) |
@@ -417,7 +417,7 @@ are 25 November 2026 unless a section says otherwise.
 | 390 | The sounds of a conversation are off unless switched on, and every other sound, such as a timer ending, is on unless switched off | [motion](design/visual/motion.md) |
 | 391 | No colour is avoided and no check for colour-blindness is made | [colour](design/visual/colour.md) |
 | 392 | There are no illustrations apart from the character | [shape and spacing](design/visual/shape-and-spacing.md) |
-| 393 | English is the first language, and a language read from right to left is probably next | [typography](design/visual/typography.md) |
+| 393 | English is the first language, and languages read from left to right come first | [typography](design/visual/typography.md) |
 | 394 | The sounds are plain tones for now and are replaced later | [motion](design/visual/motion.md) |
 | 395 | When two people changed the same thing the first change stands, and the second person gets an error | [components](design/visual/components.md) |
 | 396 | Notifications are ordered by kind and then by age | [visual](design/visual/README.md) |
@@ -431,3 +431,4 @@ are 25 November 2026 unless a section says otherwise.
 | 404 | Settings pages are made by hand, and a generated page is allowed | [visual](design/visual/README.md) |
 | 405 | The character is central to the experience and is designed in a thread of its own | [assistant visuals](design/visual/assistant-visuals.md) |
 | 406 | Every screen gives the character a canvas that can be moved and resized, and the character scales to it in proportion | [assistant visuals](design/visual/assistant-visuals.md) |
+| 407 | The built-in pink is Blossom and the built-in red is Cherry | [colour](design/visual/colour.md) |

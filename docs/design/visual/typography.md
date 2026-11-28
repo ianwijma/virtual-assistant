@@ -16,9 +16,8 @@ Status: started. The typeface is chosen and a first scale is set.
   It is under the SIL Open Font License, which allows sold hardware.
 - **One family is used for everything else.** Headings differ by size and
   weight, not by typeface.
-- **English is the first language.** A language read from right to left
-  is probably the next, and needs a typeface for its script beside
-  Inter.
+- **English is the first language.** Languages read from left to right
+  come first.
 - **Text follows the text size set on the device.** A person who has set
   larger text on their phone gets larger text in the app.
 - **Numbers that change in place,** such as a running timer, have digits
@@ -45,5 +44,3 @@ setting. The values are in [tokens](tokens.md).
 
 ## Open questions
 
-- Which language read from right to left comes first, and which
-  typeface covers its script?

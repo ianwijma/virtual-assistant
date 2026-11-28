@@ -57,8 +57,8 @@ focus. It also colours our own [backdrop](glass.md).
 
 - **An accent is two colours:** a main colour, and a second colour for
   the backdrop.
-- **Seven accents are built in:** Tide, Ember, Aurora, Moss, a pink, a
-  red and Graphite. Each is checked for readable text in light and in
+- **Seven accents are built in:** Tide, Ember, Aurora, Moss, Blossom,
+  Cherry and Graphite. Each is checked for readable text in light and in
   dark. A new household starts with Tide. This is "Tide" on
   [the accent start board](examples/accent-start-board.html).
 - **A person can also make their own accent.** Under the built-in
@@ -68,6 +68,9 @@ focus. It also colours our own [backdrop](glass.md).
   the colour only; how light and how strong it is, is ours to set. These are
   "Pairs that go together" and the wheel of "A two-handle colour wheel"
   on [the accent picker board](examples/accent-picker-board.html).
+- **Blossom and Cherry are "Blossom" and "Cherry" on**
+  [the pink and red board](examples/pink-red-board.html). A danger
+  button keeps its own red beside Cherry.
 - **A colour that makes text hard to read gives a warning, and is
   allowed.** The person can keep it.
 - **Choosing an accent shows a quick preview.** In the admin panel, the
@@ -115,8 +118,8 @@ tokens.
 | Ember | Coral to amber |
 | Aurora | Violet to cyan |
 | Moss | Sage green |
-| A pink | To be made |
-| A red | To be made |
+| Blossom | Soft pink to peach |
+| Cherry | Clear red to pink |
 | Graphite | Neutral: near black in light, near white in dark |
 
 ## The parts of the palette
@@ -132,6 +135,4 @@ tokens.
 
 ## Open questions
 
-- Which pink and which red are built in, with which second colour, and
-  what are they called?
 

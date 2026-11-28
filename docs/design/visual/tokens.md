@@ -60,6 +60,8 @@ of text on it. The contrast of text on the main colour is at least 4.5 to
 |---|---|---|---|---|
 | Tide | `#0B74B8` | `#4DB4FF` | `#19B8B0` | `#27CFC3` |
 | Ember | `#C2421D` | `#FF8A5C` | `#F5A13A` | `#FFB347` |
+| Blossom | `#D6457F` | `#FF86B0` | `#F4A77A` | `#F7B48E` |
+| Cherry | `#D0343C` | `#FF6B72` | `#F07A9A` | `#FF93B0` |
 | Aurora | `#5B43E0` | `#A594FF` | `#22C1E6` | `#3FD0F2` |
 | Moss | `#39733F` | `#86CF94` | `#A9C46C` | `#B9D67D` |
 | Graphite | `#1B1D21` | `#F2F4F7` | `#8A9099` | `#6B717B` |

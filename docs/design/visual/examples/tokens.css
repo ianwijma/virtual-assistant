@@ -114,6 +114,8 @@
 .accent-ember    { --accent: light-dark(#C2421D, #FF8A5C); --accent-2: light-dark(#F5A13A, #FFB347); --on-accent: light-dark(#FFFFFF, #0E1014); }
 .accent-aurora   { --accent: light-dark(#5B43E0, #A594FF); --accent-2: light-dark(#22C1E6, #3FD0F2); --on-accent: light-dark(#FFFFFF, #0E1014); }
 .accent-moss     { --accent: light-dark(#39733F, #86CF94); --accent-2: light-dark(#A9C46C, #B9D67D); --on-accent: light-dark(#FFFFFF, #0E1014); }
+.accent-blossom  { --accent: light-dark(#D6457F, #FF86B0); --accent-2: light-dark(#F4A77A, #F7B48E); --on-accent: light-dark(#FFFFFF, #0E1014); }
+.accent-cherry   { --accent: light-dark(#D0343C, #FF6B72); --accent-2: light-dark(#F07A9A, #FF93B0); --on-accent: light-dark(#FFFFFF, #0E1014); }
 .accent-graphite { --accent: light-dark(#1B1D21, #F2F4F7); --accent-2: light-dark(#8A9099, #6B717B); --on-accent: light-dark(#FFFFFF, #0E1014);
   --backdrop-a: var(--accent-2); }  /* Graphite's backdrop is drawn from its grey, so text on glass stays readable */
 
