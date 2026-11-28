@@ -33,8 +33,16 @@ chosen yet.
 - **A figure can grow over time.** It may start as a head only. Later it
   can be a whole figure that moves across the screen. A plain form, such
   as a sound wave, is possible for an assistant without a figure.
-- **The examples and mockups show a placeholder,** a simple shape with
-  two eyes, until the figures are drawn.
+- **The figure in the examples and mockups is the figure for now:** a
+  simple shape with two eyes, drawn flat with a little depth, that can
+  look around. It stays until the figures are designed.
+- **The figures are designed in a thread of their own,** not as part of
+  this work. Ideas for it: a rendered three-dimensional figure that
+  looks around, arms, a gesture for thinking such as a hand at the
+  mouth, and a mouth that moves when it talks.
+- **Layouts leave room for a larger figure.** A later figure may need
+  more space than the one for now, with arms or a whole body, so no
+  screen is fitted tightly around the present shape.
 - **A character shows expressions.** They are driven by the
   [reply tags](../technical/voice/reply-tags.md): smile, laugh, think,
   surprised, sad, wink, eye roll, nod and shake.
@@ -88,8 +96,12 @@ Assumed:
 - In which style are the full figures drawn, when they are redesigned
   later? Five styles are on
   [the figure style board](examples/figure-style-board.html).
-- Does a figure have a mouth, or do the eyes alone carry its
-  expressions?
+- Does a figure have a mouth that moves when it talks, and arms? Both
+  are ideas for the thread on the figures.
+- Is the figure of the first release a rendered three-dimensional one,
+  or the flat one for now?
+- How much more room does a screen keep for a later figure: how much
+  wider and taller than the figure for now?
 - Who draws the figures, and how many are there in the first release?
 - How does a person give their own assistant a look: by choosing from a
   set of figures, by adjusting parts such as colour and clothing, or by

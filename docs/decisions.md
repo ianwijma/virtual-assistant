@@ -301,3 +301,4 @@ are 25 November 2026 unless a section says otherwise.
 | 274 | Choosing an accent shows a preview: all four devices for the household's accent, one for a device's | [colour](design/visual/colour.md) |
 | 275 | The layout follows the width of the screen, and every screen is responsive | [visual](design/visual/README.md) |
 | 276 | An assistant's figure has its own colour, the screen around it follows the person's accent, and a recognised person is named in a chip | [colour](design/visual/colour.md) |
+| 277 | The simple figure with two eyes stays for now, the figures are designed in a thread of their own, and layouts leave room for a larger figure | [assistant visuals](design/visual/assistant-visuals.md) |
