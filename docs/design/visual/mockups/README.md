@@ -38,7 +38,4 @@ The frames the screens are drawn in are in [mockup.css](mockup.css).
 ## Open questions
 
 - Agree to each mockup, or say what to change in it.
-- Admin panel: is "Undo" offered for every change in the audit log, or
-  only for changes that can be reversed safely?
-- Voice page: does the page remember on that browser that it was set up
-  as a personal or a household device?
+

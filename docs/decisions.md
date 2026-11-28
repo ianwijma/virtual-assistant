@@ -351,3 +351,7 @@ are 25 November 2026 unless a section says otherwise.
 | 324 | Search results in the settings take the second and third columns as one list | [admin panel](design/visual/admin-panel.md) |
 | 325 | A destination without a list of items has two columns | [admin panel](design/visual/admin-panel.md) |
 | 326 | Only admins can open the request timeline | [admin panel](design/visual/admin-panel.md) |
+| 327 | The audit log offers Undo only where a change can be put back safely | [admin panel](design/visual/admin-panel.md) |
+| 328 | The voice page remembers in the browser how it was set up | [voice page](design/visual/voice-page.md) |
+| 329 | The voice page is set up with the same choice screen as other devices | [voice page](design/visual/voice-page.md) |
+| 330 | A touch on a clipboard item copies it, and holding it opens it | [phone](design/visual/phone.md) |

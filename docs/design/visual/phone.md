@@ -37,6 +37,8 @@ Status: started. The screens, how they are joined and the call are set.
   [the second phone bar board](examples/phone-bar-board-2.html).
 - **A notification enters the top of the Overview's list.** See
   [the visual design](README.md).
+- **A touch on a clipboard item copies it to the phone.** Holding it
+  opens the item, with what else is known about it.
 - **A person chooses which screen the app opens on.**
 - **Talking to an assistant shows the whole figure by default.** The
   character stands on the screen, as on the tablet. See
@@ -79,5 +81,3 @@ Status: started. The screens, how they are joined and the call are set.
   the assistant says?
 - Where is the first screen chosen: in the app's own settings, or in the
   admin panel with a person's other settings?
-- What does a touch on a clipboard item do: copy it to this phone, or
-  open it?

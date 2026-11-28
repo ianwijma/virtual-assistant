@@ -140,6 +140,9 @@ AH. "In the audit, agents, latency" is read as: the request timeline of
    the admin panel records that a screen was composed. [components]
 AI. "Characters" is read as the preferred word for an assistant's look,
    with "figure" kept for its drawn body. [assistant visuals]
+AJ. "The choice screen we have on other devices" is read as the pane of
+   the setup of a new device that asks: personal or household. [visual
+   voice page]
 
 ## 1. Now
 
@@ -467,58 +470,52 @@ detail.
    the assistant says? [visual phone]
 107. Where is the first screen chosen: in the app's own settings, or in
    the admin panel with a person's other settings? [visual phone]
-108. What does a touch on a clipboard item do: copy it to this phone, or
-   open it? [visual phone]
-109. How often does the figure on the idle screen change, and can a
+108. How often does the figure on the idle screen change, and can a
    touch on the dots change it? [visual tablet]
-110. Which assistant is shown first: the one used last, or a fixed
+109. Which assistant is shown first: the one used last, or a fixed
    order? [visual tablet]
-111. Does the clock move now and then, to protect the screen? [visual
+110. Does the clock move now and then, to protect the screen? [visual
    tablet]
-112. How does a tablet without a light sensor know the room is dark: by
+111. How does a tablet without a light sensor know the room is dark: by
    the time of day, by its camera, or does a person set the hours?
    [visual tablet]
-113. What can be set for the dark on a tablet: only which of the two
+112. What can be set for the dark on a tablet: only which of the two
    screens is used, or also the hours and how dim it is? [visual tablet]
-114. Is the time before a conversation closes 20 or 30 seconds at first?
+113. Is the time before a conversation closes 20 or 30 seconds at first?
    [visual tablet]
-115. Does the character show that the conversation is about to close?
+114. Does the character show that the conversation is about to close?
    [visual tablet]
-116. Which figure greets in the welcome, before the household has chosen
+115. Which figure greets in the welcome, before the household has chosen
    or named an assistant? [visual admin panel]
-117. Which languages does the welcome show, and in which is the setup
+116. Which languages does the welcome show, and in which is the setup
    offered at first? [visual admin panel]
-118. Is the language chosen on the welcome itself, as the board shows,
+117. Is the language chosen on the welcome itself, as the board shows,
    or in a step after it? [visual admin panel]
-119. Where on the phone app's call design do the two set-up choices and
-   the note for guests go? Ideas are on the voice page board. [visual
-   voice page]
-120. On a wide screen, such as a tablet on its side, is the page
+118. How does a guest get past the choice screen: is "Talk as a guest" a
+   third choice on it, or is the screen only shown when someone asks to
+   set the device up? [visual voice page]
+119. On a wide screen, such as a tablet on its side, is the page
    arranged like the phone or like the tablet's stage? [visual voice
    page]
 
 ### The mockups
 
-121. Agree to each mockup, or say what to change in it. [mockups]
-122. Admin panel: is "Undo" offered for every change in the audit log,
-   or only for changes that can be reversed safely? [mockups]
-123. Voice page: does the page remember on that browser that it was set
-   up as a personal or a household device? [mockups]
+120. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-124. A search of the trade mark registers of the EU, the Benelux, the UK
+121. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-125. How fast the blur is on an old tablet and in the launcher, measured
+122. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-126. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+123. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-127. How much power a three-dimensional figure uses on an old tablet
+124. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

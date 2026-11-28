@@ -30,6 +30,9 @@ Status: started. The principle and the layout are set.
   the room.
 - **It shows the accent of the person signed in,** and the household's
   before anyone is signed in.
+- **The audit log offers Undo only where it is safe.** A change that can
+  be put back cleanly has the button. One that cannot has none, and says
+  why.
 - **Only admins can open the request timeline,** which shows the first
   words a person said.
 - **The page of an assistant shows the character beside its settings,**
