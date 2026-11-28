@@ -36,6 +36,16 @@ design tokens.
 - **The colours are tokens.** Every client and every
   [described screen](../technical/a2ui.md) takes them from the one set of
   design tokens.
+- **The warning about a colour that is hard to read is under the picker,**
+  in the place where it otherwise says that text stays readable.
+- **The wheel works with a keyboard.** The arrow keys move the handle that
+  has the focus, and a value can be typed.
+- **An accent is chosen in the admin panel and on the device itself,** in
+  its settings.
+- **A character's colour is picked with the same picker as the accent,**
+  by whoever may change the character.
+- **A new household tablet follows the light in the room,** and the time
+  of day where it cannot measure the light.
 
 ## The accent
 
@@ -115,20 +125,11 @@ Graphite, a neutral accent, is drawn and is left out for now.
 
 ## Open questions
 
-- Where does the warning about a colour that is hard to read appear:
-  under the wheel, where "Checked: text stays readable" is on the board?
 - Does the wheel set only the hue, or also how light and how strong a
   colour is?
-- How is the wheel used with a keyboard, and can a value be typed?
-- Where can an accent be chosen besides the admin panel: on the device
-  itself, in its own settings?
-- Is a character's colour picked with the same picker as the accent, and
-  who may change it?
 - What happens when an assistant's colour and the person's accent are
   the same, or clash?
 - Should the set have more built-in accents, such as a pink or a red?
 - Does Graphite return later as a built-in accent?
 - Are there colours to avoid, and is anyone in the household
   colour-blind?
-- Which setting for light and dark does a new household tablet start
-  with?

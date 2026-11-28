@@ -37,6 +37,8 @@ Status: started. The feel is set. The name is open.
   dropped: Hearth Display sells a family display for the wall under that
   name and is reported to hold a United States trade mark for it on
   touchscreen devices and household software.
+- **At the size of a small icon the logo has a solid form,** since the
+  glass drop is faint there.
 
 ## What could make it ours
 
@@ -79,9 +81,6 @@ of four web addresses each:
   Which address does the project use?
 - Is the name said the Dutch way or the English way when it is spoken,
   such as in a video or by an assistant?
-- The glass drop is the faintest of the marks at the size of a small
-  icon. Is it made bolder at small sizes, or does a solid form of it
-  stand in there?
 
 To research:
 

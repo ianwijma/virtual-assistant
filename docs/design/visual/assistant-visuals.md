@@ -63,6 +63,15 @@ chosen yet.
 | Muted | The microphone is off for it |
 | Waiting | The server cannot be reached |
 | Not recognised | It heard a voice it does not know and will not answer it |
+- **The voice page follows the one folding design:** the call on a narrow
+  screen and the stage on a wide one.
+- **A card never covers the character's head.**
+- **A figure moves across the screen only while nothing else is shown,**
+  and stands still once a card appears.
+- **An assistant without a figure shows a sound wave.**
+- **Where the assistant is not the subject, the character is a small
+  head,** the size of an icon in a row, as in the launcher and on the
+  phone's Overview.
 
 ## The routes for the first figures
 
@@ -114,16 +123,6 @@ Assumed:
   supplying their own drawing?
 - How playful is the default household assistant: cute, friendly, or
   calm?
-- Is the voice page arranged like the tablet, with the figure on a
-  stage?
-- May a card cover part of the character, or does it always sit clear
-  of the head?
-- Does a whole figure move across the screen only while nothing else is
-  shown, and stand still once a card appears?
-- What does an assistant without a figure show: a sound wave, as on the
-  tablet board, or something else?
-- How large is the character where the assistant is not the subject,
-  such as in the desktop launcher and on the phone's home screen?
 - May a person bring their own figure, such as a character they like
   from elsewhere? The project cannot ship characters that belong to
   others.

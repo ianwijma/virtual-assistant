@@ -70,15 +70,12 @@ Status: started. The screens, how they are joined and the call are set.
   [the phone conversation board](examples/phone-talk-board.html).
 - It uses the roomy density. See
   [shape and spacing](shape-and-spacing.md).
+- **The sheet of all areas scrolls** when there are more than fit.
+- **The fixed button shows a grid icon with the word "All".**
+- **The line of text is switched on with a button on the call screen,**
+  and the app remembers it.
 
 ## Open questions
 
-- What does the sheet show when there are more areas than fit: does it
-  scroll, or grow taller?
-- Does the fixed button show a grid icon, the word "All", or both?
-- Where is the line of text on the call screen switched on: in the
-  settings, or with a button on the call screen itself?
 - Does the line of text also show what the person says, or only what
   the assistant says?
-- Where is the first screen chosen: in the app's own settings, or in the
-  admin panel with a person's other settings?

@@ -22,13 +22,10 @@ Status: started. The exact values are made with the design tokens.
   its style. Icons are always outlined; a chosen item is shown by the
   accent and the highlight behind it, not by a filled icon. Apple's symbols cannot be used. The sets it was chosen from
   are on [the icon board](examples/icon-board.html).
+- **The density is changed on the device itself and in the admin panel.**
+  It is one setting for the whole device, and a household tablet has it
+  like any other device.
 
 ## Open questions
 
-- Where is a device's density changed: in the admin panel, on the device
-  itself, or both?
-- Is the density one setting for a whole device, or can it differ per
-  app or area?
-- Can the density of a household tablet be changed, or is it always
-  roomy, since it is read from a distance?
 - Is there an illustration style, for empty screens and first-run setup?

@@ -51,22 +51,21 @@ settings are set.
 - **It appears with a very short animation.** See [motion](motion.md).
 - **It uses the compact density.** See
   [shape and spacing](shape-and-spacing.md).
+- **The launcher returns to its neutral state after one minute.**
+- **The tray icon's menu holds:** open the launcher, the settings, the
+  state of the connection, and quit.
+- **In the settings Esc first clears a search,** and then returns to the
+  list.
+- **A notification on the desktop can be answered from the keyboard.**
+- **A question from an assistant stays on screen until it is answered or
+  dismissed.**
+- **The order of the actions follows this person's own use.**
 
 ## Open questions
 
 - When the settings close by a click elsewhere with unsaved changes, are
   they kept for when the launcher is opened again, or is the person
   asked?
-- After how long does the launcher return to its neutral state: one
-  minute, or a time a person sets?
-- What else does the tray icon's menu hold: the state of the connection,
-  a way to quit?
-- In the settings, does Esc first clear a search and only then return to
-  the list?
-- Can a notification on the desktop be answered from the keyboard?
-- Does a question from an assistant stay on screen until it is answered?
 - Which views of the launcher have a preview, and which are a list only?
-- Is the order of the actions in the launcher taken from this person's
-  own use, from the household's, or from both?
 - Does the window change size when it goes from a list to a list with a
   preview, or is it always the wide size?

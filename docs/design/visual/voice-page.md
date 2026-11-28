@@ -10,7 +10,7 @@ Status: started. The design follows the phone app.
 
 - **The page reuses the design of the phone app.** Talking to an
   assistant is the same call: the figure has the screen, with the same
-  two buttons, Chat and End, and the call folds into the chat in the
+  buttons, Mute, Chat and End, and the call folds into the chat in the
   same way. See [phone app](phone.md).
 - **The page is set up with the same choice screen as other devices:**
   the pane of the setup of a new device that asks whether it is a
@@ -23,10 +23,10 @@ Status: started. The design follows the phone app.
   talk at once.
 - **An old tablet's browser gets the simpler glass and reduced motion.**
   See [glass](glass.md) and [motion](motion.md).
+- **Where a guest can talk at once, a quiet link on the page leads to the
+  set-up.**
+- **On a wide screen the page is the stage,** as the one folding design
+  gives.
 
 ## Open questions
 
-- Where a household allows any browser to reach the guest assistant,
-  where is the way to set the device up: a quiet link on the page?
-- On a wide screen, such as a tablet on its side, is the page arranged
-  like the phone or like the tablet's stage?

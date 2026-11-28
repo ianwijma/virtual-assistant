@@ -43,16 +43,16 @@ Status: started. The idle screen and the active screen are set.
 - The designs these came from are on
   [the tablet idle board](examples/tablet-idle-board.html) and
   [the tablet board](examples/tablet-board.html).
+- **The figure on the idle screen changes every few minutes,** and a touch
+  on the dots changes it. The assistant that was used last is shown first.
+- **The clock shifts a little now and then,** to protect the screen.
+- **A tablet that cannot measure the light uses the time of day,** with
+  hours that can be set.
+- **For the dark, a tablet's settings hold which of the two screens is
+  used and the hours.**
+- **The time before a conversation closes is 30 seconds at first.**
+- **The character shows that the conversation is about to close,** by
+  winding down.
 
 ## Open questions
 
-- How often does the figure on the idle screen change, and can a touch
-  on the dots change it?
-- Which assistant is shown first: the one used last, or a fixed order?
-- Does the clock move now and then, to protect the screen?
-- How does a tablet without a light sensor know the room is dark: by
-  the time of day, by its camera, or does a person set the hours?
-- What can be set for the dark on a tablet: only which of the two
-  screens is used, or also the hours and how dim it is?
-- Is the time before a conversation closes 20 or 30 seconds at first?
-- Does the character show that the conversation is about to close?

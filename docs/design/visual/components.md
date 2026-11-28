@@ -75,6 +75,19 @@ mockups.
   This is "As quiet as possible" on
   [the states board](examples/states-board.html). See
   [clients](../technical/clients/README.md).
+- **A dangerous action asks and then acts at once.** It does not go
+  through the Save bar.
+- **When changes that waited have been sent, their marks and the count go
+  away.** Nothing else is said.
+- **The chat's history shows that a screen was composed only in an
+  advanced mode.**
+- **A sheet with unsaved input asks before it closes by a touch outside
+  it.**
+- **A card that was asked for stays large for about five seconds.** Its
+  large form is the sheet that a touch opens.
+- **The next components are the ones the mockups need:** the launcher's
+  search and results, a sheet, a menu, the tab bar and the side bar, a
+  table for logs, the chat, and each card of the A2UI catalog.
 
 ## The examples
 
@@ -95,19 +108,5 @@ light and dark, built from [components.css](examples/components.css).
 ## Open questions
 
 - Agree to the example components as the base for the rest.
-- Does a dangerous action, such as removing an assistant, go through the
-  Save bar too, or does it ask and act at once?
 - When two devices changed the same thing while one was out of reach,
   which change wins, and is the person told?
-- Is a person told when changes that waited have been sent, or does the
-  mark only disappear?
-- Does the chat's history show that a screen was composed to everyone,
-  or only in an advanced or debug mode?
-- Does a sheet with unsaved input ask before it closes by a touch
-  outside it?
-- How long does a card that was asked for stay large, and is the large
-  form the same as the sheet a touch opens?
-- Which components come next? The proposal is the ones the mockups need:
-  the launcher's search and results, a sheet, a menu, the tab bar and the
-  side bar, a table for logs, the chat, and each card of the A2UI
-  catalog.

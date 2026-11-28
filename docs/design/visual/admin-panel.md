@@ -60,12 +60,11 @@ Status: started. The principle and the layout are set.
   the density of that device.
 - It uses the compact density. See
   [shape and spacing](shape-and-spacing.md).
+- **The figure in the welcome is that of the default household
+  assistant.**
+- **The language is chosen on the welcome itself.**
 
 ## Open questions
 
-- Which figure greets in the welcome, before the household has chosen or
-  named an assistant?
 - Which languages does the welcome show, and in which is the setup
   offered at first?
-- Is the language chosen on the welcome itself, as the board shows, or
-  in a step after it?

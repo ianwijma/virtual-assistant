@@ -30,6 +30,13 @@ Status: started. The character of the motion is set. Sound is open.
 - **The desktop launcher appears with a very short animation,** of about
   80 ms. It is drawn and takes typing at once; the animation does not
   delay it. See [desktop](../technical/clients/desktop.md).
+- **Sounds and vibration are switched on per device.**
+- **Where a toolkit cannot grow one thing out of another,** a sheet rises
+  from below and a page fades in.
+- **Only sheets and things that are pressed end with the light
+  overshoot.** A page settles without it.
+- **A client measures whether its device is too slow for full motion,**
+  and a person can also switch reduced motion on by hand.
 
 ## Sound and vibration
 
@@ -58,14 +65,6 @@ In reduced motion every timing is at most a 100 ms fade.
 - Is the sound of a timer or an alarm that ends also off unless switched
   on, or is it the one sound that is always on?
 - Which sounds are in the set, and who makes them?
-- Where are sounds and vibration switched on: per device, per person,
-  or for the household?
-- Where a toolkit cannot grow a new page out of the thing that was
-  touched, what is shown: the sheet rising from below, or a plain fade?
-- Does everything that opens end with the light overshoot, or only
-  sheets?
-- How is a device found to be too slow for full motion: measured by the
-  client, or switched by hand only?
 
 To research:
 

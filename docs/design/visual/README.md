@@ -79,6 +79,14 @@ One look for every screen the system has:
   look. See [assistants](../technical/voice/assistants.md).
 - **The product name** is chosen together with this work. "Virtual
   Assistant" is a working title.
+- **On a narrow screen a new notification puts a dot on the Overview's
+  button** while another area is open.
+- **The layout changes at 600 and at 1000:** one column below 600, two
+  from 600 to 1000 and three above. A notification becomes a card at the
+  top right from 600.
+- **The desktop launcher is the one window that does not fold.** It has
+  its own sizes.
+- **A household tablet has four pinned areas, set by an admin.**
 
 ## A fresh start
 
@@ -236,18 +244,8 @@ Each subject's questions are in its own document.
 
 - What makes one notification more important than another in the
   Overview's list: its kind, its age, or what a person set?
-- On a narrow screen, how is a new notification shown while another area
-  than the Overview is open: a dot on the bar, or nothing?
-- At which width does a notification change from a row in the list to a
-  card at the top right?
-- Does the household tablet, which nobody owns, have four pinned areas,
-  and who sets them?
-- At which widths does the layout change? The board shows one column
-  under 600, two from 600 to 1000 and three above.
 - In two columns, do the destinations become a rail of icons, as on the
   board?
-- Does the launcher of the desktop client, which has a fixed size, also
-  follow this, or is it the one window that does not fold?
 - Which devices are the references for the designs: which phone, which
   tablet, which monitor size?
 - Are settings screens generated from each feature's description, so

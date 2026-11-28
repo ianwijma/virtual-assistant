@@ -78,6 +78,16 @@ set. What each toolkit can draw is still to be researched.
 - **The low-power screen of a tablet has no glass.** It is black, with
   dim content on it. See
   [phone and tablet app](../technical/clients/mobile.md).
+- **The three levels are clear, thicker and solid.** Clear is the glass as
+  designed. The level is set per device.
+- **The pictures of a gallery change by themselves,** every few minutes,
+  with a slow fade.
+- **With reduced motion the backdrop is still.**
+- **The backdrop is still on a device too slow for full motion and in low-
+  power mode.**
+- **Where the desktop cannot blur, our own backdrop is what the launcher
+  shows at first,** and see-through without blur is switched on by the
+  person.
 
 ## What is behind the glass
 
@@ -142,18 +152,9 @@ Assumed:
 
 ## Open questions
 
-- What are the three levels of see-through: the designed glass, a
-  thicker one and solid? Is the level set per device or per person?
-- Do the pictures of a gallery change by themselves, like a photo frame,
-  and how often?
 - Can the launcher find out how bright the windows behind it are? This
   is to be looked into for after the first release.
 
-- With reduced motion, is the backdrop still, or does it drift slowly?
-- Does the backdrop also move on an old tablet and in low-power mode?
-- Where the desktop cannot blur, is the see-through launcher without
-  blur something a person switches on, with our own backdrop as the
-  default there?
 
 To research:
 
