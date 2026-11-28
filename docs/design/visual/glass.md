@@ -23,6 +23,18 @@ set. What each toolkit can draw is still to be researched.
   [the material board](examples/material-board.html).
 - **Our own backdrop is strong in colour,** so that the glass has
   something to show.
+- **A wallpaper comes from a gallery.** An admin makes a gallery of
+  pictures and assigns it to one household device or to all of them. A
+  wallpaper is only for a household device; every other screen shows
+  our own backdrop.
+- **Members of the household will be able to add pictures to a
+  gallery,** when the admin allows it. Guests cannot. This comes close
+  to the first release.
+- **The glass has three levels of see-through,** as a setting.
+- **The launcher's glass stays as designed over any desktop.** Its text
+  can be hard to read over some windows, and that is accepted for now.
+  Thickening the glass by what is behind it is an idea for after the
+  first release.
 - **Our own backdrop moves.** Its fields of colour drift slowly, and it
   reacts to the assistant in two ways: with one calm movement for each
   state, such as listening, thinking and speaking, and with the sound of
@@ -123,18 +135,15 @@ Assumed:
 
 ## Open questions
 
-- Who sets the wallpaper of a household tablet: an admin, in the admin
-  panel? Is it one picture, or several that change?
-- Can a wallpaper also be set on a personal phone, in the settings window
-  of the desktop client, or in the admin panel, or do those always show
-  our own backdrop?
+- What are the three levels of see-through: the designed glass, a
+  thicker one and solid? Is the level set per device or per person?
+- Do the pictures of a gallery change by themselves, like a photo frame,
+  and how often?
+- Can the launcher find out how bright the windows behind it are? This
+  is to be looked into for after the first release.
+
 - With reduced motion, is the backdrop still, or does it drift slowly?
 - Does the backdrop also move on an old tablet and in low-power mode?
-- Can a person set how see-through the glass is? The owner named this as
-  a possibility.
-- The launcher shows the real desktop, which can be any colour. Does the
-  launcher's glass become thicker by itself when what is behind it is
-  very bright or very dark, so that its text stays readable?
 - From the research: on Linux the launcher asks for the blurred desktop
   through the new Wayland protocol with a small piece of our own code,
   and shows our own backdrop wherever the desktop cannot blur, such as

@@ -339,3 +339,7 @@ are 25 November 2026 unless a section says otherwise.
 | 312 | The launcher opens on the screen that holds the pointer | [desktop](design/visual/desktop.md) |
 | 313 | The desktop settings are opened from the launcher and from an icon in the system tray | [desktop](design/visual/desktop.md) |
 | 314 | The launcher closes on a click elsewhere in every view, and opens again where it was for about a minute | [desktop](design/visual/desktop.md) |
+| 315 | A wallpaper comes from a gallery that an admin makes and assigns to household devices, and only household devices show one | [glass](design/visual/glass.md) |
+| 316 | Members of the household will be able to add pictures to a gallery when the admin allows it | [glass](design/visual/glass.md) |
+| 317 | The glass has three levels of see-through, as a setting | [glass](design/visual/glass.md) |
+| 318 | The launcher's glass stays as designed over any desktop for now | [glass](design/visual/glass.md) |
