@@ -30,6 +30,4 @@ Status: started. The design follows the phone app.
 
 ## Open questions
 
-- On the stage, does Chat move to the field to type and stay on the
-  stage?
 

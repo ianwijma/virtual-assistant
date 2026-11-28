@@ -61,7 +61,9 @@ One look for every screen the system has:
   for a shared device on
   [the stage and call board](examples/stage-call-board.html), mixed. A
   household device shows the same controls as a personal one: Mute, Chat,
-  End and the field to type.
+  End and the field to type. On a wide screen the column is shown at
+  first, and Chat hides it, so that the character has the whole stage;
+  Chat shows it again.
 - **The four areas are set per device,** on that device.
 - **A notification is the same card, placed by the width of the
   screen.** This follows the width and not the kind of device. On a wide screen it is a glass card at the top right, and

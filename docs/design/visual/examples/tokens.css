@@ -128,6 +128,7 @@
    Declared again in every scope that can change the accent or the mode. */
 :root, .light, .dark, [class*="accent-"] {
   --bg: color-mix(in srgb, var(--accent) 3%, light-dark(#F4F5F7, #0B0D10));
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
   --surface-tint: linear-gradient(135deg,
     color-mix(in srgb, var(--accent) 5%, transparent),
     color-mix(in srgb, var(--accent-2) 5%, transparent));

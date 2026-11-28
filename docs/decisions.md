@@ -335,7 +335,7 @@ are 25 November 2026 unless a section says otherwise.
 | 308 | Feedback is visual first; our own sounds and the phone's vibration exist and are off unless switched on | [motion](design/visual/motion.md) |
 | 309 | A card is small by default and shows large for a moment when it was asked for | [components](design/visual/components.md) |
 | 310 | A conversation on a household device closes after 20 to 30 seconds without speech, set for the server and possibly per device | [tablet](design/visual/tablet.md) |
-| 311 | Talking to the assistant is an action in the launcher with a shortcut of its own, and Tab is not its key | [desktop](design/visual/desktop.md) |
+| 311 | Talking to the assistant is an action in the launcher that a person can give a shortcut; it has none at first, and Tab is not its key | [desktop](design/visual/desktop.md) |
 | 312 | The launcher opens on the screen that holds the pointer | [desktop](design/visual/desktop.md) |
 | 313 | The desktop settings are opened from the launcher and from an icon in the system tray | [desktop](design/visual/desktop.md) |
 | 314 | The launcher closes on a click elsewhere in every view, and opens again where it was for about a minute | [desktop](design/visual/desktop.md) |
@@ -443,3 +443,7 @@ are 25 November 2026 unless a section says otherwise.
 | 416 | The notification centre has three sections: what needs attention, what is being worked on and what is settled; a notification can be snoozed | [desktop](design/visual/desktop.md) |
 | 417 | On a tablet the bar for home out of reach is across the top of the screen | [tablet](design/visual/tablet.md) |
 | 418 | Resetting an app or a device is in its settings, in a section for dangerous actions | [components](design/visual/components.md) |
+| 419 | Nothing marks a household tablet's pinned areas as set by an admin | [tablet](design/visual/tablet.md) |
+| 420 | On a wide screen the conversation column is shown at first, and Chat hides and shows it | [visual](design/visual/README.md) |
+| 421 | Enter opens a notification to read it, and a person can set it to acknowledge instead | [desktop](design/visual/desktop.md) |
+| 422 | A token made from the accent is worked out wherever the accent changes | [tokens](design/visual/tokens.md) |

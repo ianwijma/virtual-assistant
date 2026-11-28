@@ -14,6 +14,9 @@ Status: a first set. The values are tried out in
   community group. A small build step of our own, written in Rust,
   generates the four themes from it, since no existing tool writes
   Slint.
+- **A token made from the accent is worked out wherever the accent
+  changes,** so that a part of a screen in another accent, such as the
+  ring around a person's photo, gets the right soft colour.
 - **A component uses tokens only.** It never holds a colour or a size of
   its own.
 - **Every colour token has a light and a dark value.**
@@ -134,8 +137,4 @@ Assumed, needing a check on real screens:
 
 ## Open questions
 
-- The soft form of the accent is worked out once for the whole screen,
-  so it does not follow a person's own accent on a part of a screen,
-  such as a ring around their photo. Is it worked out wherever the
-  accent changes?
 

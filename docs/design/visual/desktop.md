@@ -29,7 +29,8 @@ settings are set.
   there are, ordered by how often they are used. Suggestions that follow
   what the person is doing may come later.
 - **Talking to the assistant is an action like any other.** It is chosen
-  from the list, and it has a shortcut of its own, as any action can.
+  from the list, and a person can give it a shortcut, as for any action. It has none at
+  first.
   Tab is not its key, since Tab moves between the chips.
 - **The launcher opens on the screen that holds the pointer.**
 - **The launcher closes on a click elsewhere, in every view,** the
@@ -73,7 +74,8 @@ settings are set.
   The centre is opened like any view, and its rows are used with the
   keyboard like any list.
 - **A highlighted row has one main action, on Enter.** For a clipboard
-  item that is copying it.
+  item that is copying it. For a notification it is opening it to read,
+  and a person can set it to acknowledge the notification instead.
 - **More actions open in a panel, with Ctrl and K,** as in Raycast. The
   arrow keys move through it, and Esc returns to the search field. For a
   notification the actions are such as reply, acknowledge, delete and
@@ -87,13 +89,9 @@ settings are set.
 
 ## Open questions
 
-- What is the main action of a notification, on Enter: open it,
-  acknowledge it, or does it differ by kind?
 - Is the notification centre the hub for everything that needs a person,
   such as reminders and approvals, and how does a notification move
   between its three sections? The owner wants to work this out together.
 - Do the three sections of the notification centre also order the
   Overview's list on a narrow screen?
-- Which shortcut does talking to the assistant get by default, now that
-  it is not Tab?
 

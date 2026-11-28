@@ -140,6 +140,8 @@ AI. "Characters" is read as the preferred word for an assistant's look,
 AJ. "The choice screen we have on other devices" is read as the pane of
    the setup of a new device that asks: personal or household. [visual
    voice page]
+AM. Decision 422, on tokens made from the accent, was made by the agent
+   as a correction and is to be validated. [tokens]
 
 ## 1. Now
 
@@ -291,52 +293,40 @@ detail.
 
 ### Tokens and components
 
-30. The soft form of the accent is worked out once for the whole screen,
-   so it does not follow a person's own accent on a part of a screen,
-   such as a ring around their photo. Is it worked out wherever the
-   accent changes? [tokens]
 
 ### Assistant visuals
 
-31. Can the character be anywhere on a screen, or only in the places a
+30. Can the character be anywhere on a screen, or only in the places a
    screen gives a canvas? [assistant visuals]
-32. Below which size of canvas does the character become a head only, or
+31. Below which size of canvas does the character become a head only, or
    a sound wave? [assistant visuals]
-33. In which style are the full figures drawn, when they are redesigned
+32. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-34. Does a figure have a mouth that moves when it talks, and arms? Both
+33. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-35. Is the figure of the first release a rendered three-dimensional one,
+34. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-36. Who draws the figures, and how many are there in the first release?
+35. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-37. How does a person give their own assistant a look: by choosing from
+36. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-38. How playful is the default household assistant: cute, friendly, or
+37. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-39. May a person bring their own figure, such as a character they like
+38. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-40. From the research: which of the three routes above do the first
+39. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-41. What is the main action of a notification, on Enter: open it,
-   acknowledge it, or does it differ by kind? [visual desktop]
-42. Is the notification centre the hub for everything that needs a
+40. Is the notification centre the hub for everything that needs a
    person, such as reminders and approvals, and how does a notification
    move between its three sections? The owner wants to work this out
    together. [visual desktop]
-43. Do the three sections of the notification centre also order the
+41. Do the three sections of the notification centre also order the
    Overview's list on a narrow screen? [visual desktop]
-44. Which shortcut does talking to the assistant get by default, now
-   that it is not Tab? [visual desktop]
-45. On a household tablet, what marks the pinned areas as set by an
-   admin: a small lock in place of the pencil? [visual tablet]
-46. On the stage, does Chat move to the field to type and stay on the
-   stage? [visual voice page]
 
 ### The mockups
 
@@ -345,16 +335,16 @@ detail.
 
 An agent does this work and the owner agrees to the outcome.
 
-47. A search of the trade mark registers of the EU, the Benelux, the UK
+42. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-48. How fast the blur is on an old tablet and in the launcher, measured
+43. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-49. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+44. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-50. How much power a three-dimensional figure uses on an old tablet that
+45. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
