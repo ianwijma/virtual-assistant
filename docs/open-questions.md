@@ -333,45 +333,36 @@ detail.
 
 ### The clients
 
-43. In two columns, do the destinations become a rail of icons, as on
-   the board? [visual]
-44. Which devices are the references for the designs: which phone, which
-   tablet, which monitor size? [visual]
-45. Are settings screens generated from each feature's description, so
+43. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-46. When the settings close by a click elsewhere with unsaved changes,
-   are they kept for when the launcher is opened again, or is the person
-   asked? [visual desktop]
-47. Which views of the launcher have a preview, and which are a list
+44. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-48. Does the window change size when it goes from a list to a list with
-   a preview, or is it always the wide size? [visual desktop]
-49. Does the line of text also show what the person says, or only what
+45. Does the line of text also show what the person says, or only what
    the assistant says? [visual phone]
-50. Which languages does the welcome show, and in which is the setup
+46. Which languages does the welcome show, and in which is the setup
    offered at first? [visual admin panel]
 
 ### The mockups
 
-51. Agree to each mockup, or say what to change in it. [mockups]
+47. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-52. A search of the trade mark registers of the EU, the Benelux, the UK
+48. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-53. How fast the blur is on an old tablet and in the launcher, measured
+49. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-54. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+50. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-55. How much power a three-dimensional figure uses on an old tablet that
+51. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

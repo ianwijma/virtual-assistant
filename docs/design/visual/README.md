@@ -36,7 +36,11 @@ One look for every screen the system has:
   something else. See [where clients differ](#where-clients-differ).
 - **The layout follows the width of the screen, not the kind of client.**
   Every screen is responsive. A narrow screen shows one column at a
-  time, a wider one two, and a wide one three. A browser window that is
+  time, a wider one two, and a wide one three. The three levels are the
+  same at every width, and a screen shows as many as fit: with two
+  columns, going into the third level moves the first out of view until
+  the person goes a step back, and with one column each level takes the
+  screen in turn. A browser window that is
   made narrow, or the phone app on a tablet, gets the layout of its
   width. This is "The layout follows the width" on
   [the width board](examples/width-board.html).
@@ -67,6 +71,9 @@ One look for every screen the system has:
   These are the tablet of "The same stack, at the top" and the phone of
   "Into the Overview" on
   [the app notification board](examples/app-notification-board.html).
+- **The designs are drawn and checked at four sizes:** a phone of 390
+  wide, a tablet of 1280 by 800 on its side, a laptop of 1440 by 900 and
+  a monitor of 2560 by 1440.
 - **Recognisable as ours.** The design is distinctive, so that anyone can
   tell it is this product.
 - **Frosted glass is the design language.** Apple's Liquid Glass is the
@@ -243,10 +250,6 @@ up.
 
 Each subject's questions are in its own document.
 
-- In two columns, do the destinations become a rail of icons, as on the
-  board?
-- Which devices are the references for the designs: which phone, which
-  tablet, which monitor size?
 - Are settings screens generated from each feature's description, so
   that one definition serves the phone app, the desktop client and the
   admin panel? A2UI makes this possible, but one solution may not suit

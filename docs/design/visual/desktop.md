@@ -28,7 +28,11 @@ settings are set.
   any action. By default the Tab key also starts it with what was typed.
 - **The launcher opens on the screen that holds the pointer.**
 - **The launcher closes on a click elsewhere, in every view,** the
-  settings included.
+  settings included. With unsaved changes in the settings it asks first:
+  Save, Discard or Stay.
+- **The window grows smoothly.** It is narrow for a plain list and
+  widens with a short animation for a view with a preview, and stays
+  centred.
 - **The launcher remembers where it was.** Opened again within about a
   minute, it shows the view and the state it was closed in, such as the
   settings page that was open. After that it opens in its neutral state.
@@ -63,9 +67,4 @@ settings are set.
 
 ## Open questions
 
-- When the settings close by a click elsewhere with unsaved changes, are
-  they kept for when the launcher is opened again, or is the person
-  asked?
 - Which views of the launcher have a preview, and which are a list only?
-- Does the window change size when it goes from a list to a list with a
-  preview, or is it always the wide size?
