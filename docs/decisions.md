@@ -321,3 +321,7 @@ are 25 November 2026 unless a section says otherwise.
 | 294 | An own accent that makes text hard to read gives a warning and is allowed | [colour](design/visual/colour.md) |
 | 295 | A person's four areas are set per device | [visual](design/visual/README.md) |
 | 296 | Leaving a page with unsaved changes asks first: Save, Discard or Stay | [components](design/visual/components.md) |
+| 297 | A character has its own configuration, and its colour is set there | [assistant visuals](design/visual/assistant-visuals.md) |
+| 298 | Before anything is typed the launcher lists what is running and then every action, ordered by use | [desktop](design/visual/desktop.md) |
+| 299 | A sheet also closes by a touch on the dimmed area around it | [components](design/visual/components.md) |
+| 300 | A screen that an assistant composed looks like any other; the chat's history and the request timeline record it | [components](design/visual/components.md) |

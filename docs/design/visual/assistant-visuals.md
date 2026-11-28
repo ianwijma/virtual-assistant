@@ -10,7 +10,10 @@ chosen yet.
 ## Design
 
 - **Each assistant is a character with its own look,** the same on every
-  device that shows it.
+  device that shows it. "Character" is the word for it; "figure" is used
+  for its drawn body.
+- **A character has its own configuration.** Its colour is set there,
+  with what else belongs to its look.
 - **A character is an illustrated figure.** Each assistant has its own
   drawn figure, with eyes and a head, so that it can wink, roll its eyes,
   nod and shake its head.

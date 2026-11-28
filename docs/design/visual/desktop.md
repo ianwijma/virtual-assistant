@@ -19,6 +19,10 @@ settings are set.
   [the launcher layout board](examples/launcher-layout-board.html).
 - **Under the search field is a row of chips:** the person's four areas
   and "All". See [the visual design](README.md).
+- **Before anything is typed the launcher lists every action.** What is
+  running now is on top, such as a timer. Under it are all the actions
+  there are, ordered by how often they are used. Suggestions that follow
+  what the person is doing may come later.
 - **A notification appears at the top right of the desktop,** outside
   the launcher, as a clear glass card. Several stack downward with the
   newest on top. This is "Top-right stack" on
@@ -47,7 +51,7 @@ settings are set.
 - Can a notification on the desktop be answered from the keyboard?
 - Does a question from an assistant stay on screen until it is answered?
 - Which views of the launcher have a preview, and which are a list only?
-- Under the chips, what does the launcher list before anything is
-  typed: suggestions, or what is running now?
+- Is the order of the actions in the launcher taken from this person's
+  own use, from the household's, or from both?
 - Does the window change size when it goes from a list to a list with a
   preview, or is it always the wide size?

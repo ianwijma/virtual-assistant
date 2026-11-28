@@ -30,6 +30,13 @@ mockups.
   faint outline, so that it is clear where the sheet came from. This is
   "List of rows, sheet in the middle" on
   [the third card board](examples/card-board-3.html).
+- **A sheet closes in several ways:** its close button, a touch on the
+  dimmed area around it, Esc on a keyboard and a swipe down on a touch
+  screen.
+- **A screen that an assistant composed looks like any other.** It has
+  no mark. That a screen was composed is shown in the chat's history
+  and in the request timeline of the admin panel. See
+  [described screens](../technical/a2ui.md).
 - **A screen has one primary action,** in the accent. Other actions are
   quiet.
 - **Focus is always visible,** as a ring in the accent, since the desktop
@@ -92,7 +99,10 @@ light and dark, built from [components.css](examples/components.css).
   mark only disappear?
 - Does the waiting line show at once, or only after a wait of about a
   second, so that a brief wait shows nothing?
-- Does a sheet also close by a touch on the dimmed area around it?
+- Does the chat's history show that a screen was composed to everyone,
+  or only in an advanced or debug mode?
+- Does a sheet with unsaved input ask before it closes by a touch
+  outside it?
 - On a tablet read from across a room, is a card shown open and large
   from the start?
 - Which components come next? The proposal is the ones the mockups need:

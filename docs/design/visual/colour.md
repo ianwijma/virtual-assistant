@@ -114,8 +114,8 @@ Graphite, a neutral accent, is drawn and is left out for now.
 - How is the wheel used with a keyboard, and can a value be typed?
 - Where can an accent be chosen besides the admin panel: on the device
   itself, in its own settings?
-- Is an assistant's colour chosen from the built-in accents, or can it
-  be any colour? Who chooses it?
+- Is a character's colour picked with the same picker as the accent, and
+  who may change it?
 - What happens when an assistant's colour and the person's accent are
   the same, or clash?
 - Does the chip with a person's name carry a dot in their accent, as on

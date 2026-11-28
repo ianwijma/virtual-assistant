@@ -136,6 +136,10 @@ AC. "The two-tone accent as the background of the panels" is read as:
    accent. [colour]
 AE. The tint was chosen from a board that showed it in dark too, so it
    is taken to hold in dark. [colour]
+AH. "In the audit, agents, latency" is read as: the request timeline of
+   the admin panel records that a screen was composed. [components]
+AI. "Characters" is read as the preferred word for an assistant's look,
+   with "figure" kept for its drawn body. [assistant visuals]
 
 ## 1. Now
 
@@ -308,8 +312,8 @@ detail.
    [colour]
 43. Where can an accent be chosen besides the admin panel: on the device
    itself, in its own settings? [colour]
-44. Is an assistant's colour chosen from the built-in accents, or can it
-   be any colour? Who chooses it? [colour]
+44. Is a character's colour picked with the same picker as the accent,
+   and who may change it? [colour]
 45. What happens when an assistant's colour and the person's accent are
    the same, or clash? [colour]
 46. Does the chip with a person's name carry a dot in their accent, as
@@ -375,69 +379,69 @@ detail.
    the mark only disappear? [components]
 69. Does the waiting line show at once, or only after a wait of about a
    second, so that a brief wait shows nothing? [components]
-70. Does a sheet also close by a touch on the dimmed area around it?
-   [components]
-71. On a tablet read from across a room, is a card shown open and large
+70. Does the chat's history show that a screen was composed to everyone,
+   or only in an advanced or debug mode? [components]
+71. Does a sheet with unsaved input ask before it closes by a touch
+   outside it? [components]
+72. On a tablet read from across a room, is a card shown open and large
    from the start? [components]
-72. Which components come next? The proposal is the ones the mockups
+73. Which components come next? The proposal is the ones the mockups
    need: the launcher's search and results, a sheet, a menu, the tab bar
    and the side bar, a table for logs, the chat, and each card of the
    A2UI catalog. [components]
 
 ### Assistant visuals
 
-73. In which style are the full figures drawn, when they are redesigned
+74. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-74. Does a figure have a mouth that moves when it talks, and arms? Both
+75. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-75. Is the figure of the first release a rendered three-dimensional one,
+76. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-76. How much more room does a screen keep for a later figure: how much
+77. How much more room does a screen keep for a later figure: how much
    wider and taller than the figure for now? [assistant visuals]
-77. Who draws the figures, and how many are there in the first release?
+78. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-78. How does a person give their own assistant a look: by choosing from
+79. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-79. How playful is the default household assistant: cute, friendly, or
+80. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-80. Is the voice page arranged like the tablet, with the figure on a
+81. Is the voice page arranged like the tablet, with the figure on a
    stage? [assistant visuals]
-81. May a card cover part of the character, or does it always sit clear
+82. May a card cover part of the character, or does it always sit clear
    of the head? [assistant visuals]
-82. Does a whole figure move across the screen only while nothing else
+83. Does a whole figure move across the screen only while nothing else
    is shown, and stand still once a card appears? [assistant visuals]
-83. What does an assistant without a figure show: a sound wave, as on
+84. What does an assistant without a figure show: a sound wave, as on
    the tablet board, or something else? [assistant visuals]
-84. How large is the character where the assistant is not the subject,
+85. How large is the character where the assistant is not the subject,
    such as in the desktop launcher and on the phone's home screen?
    [assistant visuals]
-85. May a person bring their own figure, such as a character they like
+86. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-86. From the research: which of the three routes above do the first
+87. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-87. What makes one notification more important than another in the
+88. What makes one notification more important than another in the
    Overview's list: its kind, its age, or what a person set? [visual]
-88. On a narrow screen, how is a new notification shown while another
+89. On a narrow screen, how is a new notification shown while another
    area than the Overview is open: a dot on the bar, or nothing?
    [visual]
-89. At which width does a notification change from a row in the list to
+90. At which width does a notification change from a row in the list to
    a card at the top right? [visual]
-90. Does the household tablet, which nobody owns, have four pinned
+91. Does the household tablet, which nobody owns, have four pinned
    areas, and who sets them? [visual]
-91. At which widths does the layout change? The board shows one column
+92. At which widths does the layout change? The board shows one column
    under 600, two from 600 to 1000 and three above. [visual]
-92. In two columns, do the destinations become a rail of icons, as on
+93. In two columns, do the destinations become a rail of icons, as on
    the board? [visual]
-93. Does the launcher of the desktop client, which has a fixed size,
+94. Does the launcher of the desktop client, which has a fixed size,
    also follow this, or is it the one window that does not fold?
    [visual]
-94. Should a screen that an assistant composed look different from a
-   built-in screen, so that a person can tell? [visual]
 95. Which devices are the references for the designs: which phone, which
    tablet, which monitor size? [visual]
 96. Are settings screens generated from each feature's description, so
@@ -455,8 +459,9 @@ detail.
    answered? [visual desktop]
 101. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-102. Under the chips, what does the launcher list before anything is
-   typed: suggestions, or what is running now? [visual desktop]
+102. Is the order of the actions in the launcher taken from this
+   person's own use, from the household's, or from both? [visual
+   desktop]
 103. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
 104. What does the sheet show when there are more areas than fit: does

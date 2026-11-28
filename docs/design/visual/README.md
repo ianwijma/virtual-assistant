@@ -247,8 +247,6 @@ Each subject's questions are in its own document.
   board?
 - Does the launcher of the desktop client, which has a fixed size, also
   follow this, or is it the one window that does not fold?
-- Should a screen that an assistant composed look different from a
-  built-in screen, so that a person can tell?
 - Which devices are the references for the designs: which phone, which
   tablet, which monitor size?
 - Are settings screens generated from each feature's description, so
