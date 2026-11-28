@@ -38,13 +38,6 @@ The frames the screens are drawn in are in [mockup.css](mockup.css).
 ## Open questions
 
 - Agree to each mockup, or say what to change in it.
-- Desktop: how does a person go from searching to talking to the
-  assistant: the Tab key, a prefix, or a shortcut of its own? The mockup
-  shows Tab and a shortcut.
-- Desktop: does the launcher open on the screen that holds the pointer,
-  or on the main screen?
-- Desktop: is the settings window opened from the launcher only, or also
-  from an icon in the system tray?
 - Admin panel: the request timeline shows the first words a person
   said. Who may see them?
 - Admin panel: is "Undo" offered for every change in the audit log, or

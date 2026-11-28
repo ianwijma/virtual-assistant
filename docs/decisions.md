@@ -335,3 +335,7 @@ are 25 November 2026 unless a section says otherwise.
 | 308 | Feedback is visual first; our own sounds and the phone's vibration exist and are off unless switched on | [motion](design/visual/motion.md) |
 | 309 | A card is small by default and shows large for a moment when it was asked for | [components](design/visual/components.md) |
 | 310 | A conversation on a household device closes after 20 to 30 seconds without speech, set for the server and possibly per device | [tablet](design/visual/tablet.md) |
+| 311 | Talking to the assistant is an action in the launcher that can have its own shortcut, and Tab starts it by default | [desktop](design/visual/desktop.md) |
+| 312 | The launcher opens on the screen that holds the pointer | [desktop](design/visual/desktop.md) |
+| 313 | The desktop settings are opened from the launcher and from an icon in the system tray | [desktop](design/visual/desktop.md) |
+| 314 | The launcher closes on a click elsewhere in every view, and opens again where it was for about a minute | [desktop](design/visual/desktop.md) |

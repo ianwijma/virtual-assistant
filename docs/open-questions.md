@@ -446,103 +446,101 @@ detail.
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-96. Does the settings view stay open when the person clicks elsewhere,
-   unlike the launcher's list? [visual desktop]
-97. In the settings, does Esc first clear a search and only then return
+96. When the settings close by a click elsewhere with unsaved changes,
+   are they kept for when the launcher is opened again, or is the person
+   asked? [visual desktop]
+97. After how long does the launcher return to its neutral state: one
+   minute, or a time a person sets? [visual desktop]
+98. What else does the tray icon's menu hold: the state of the
+   connection, a way to quit? [visual desktop]
+99. In the settings, does Esc first clear a search and only then return
    to the list? [visual desktop]
-98. Can a notification on the desktop be answered from the keyboard?
+100. Can a notification on the desktop be answered from the keyboard?
    [visual desktop]
-99. Does a question from an assistant stay on screen until it is
+101. Does a question from an assistant stay on screen until it is
    answered? [visual desktop]
-100. Which views of the launcher have a preview, and which are a list
+102. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-101. Is the order of the actions in the launcher taken from this
+103. Is the order of the actions in the launcher taken from this
    person's own use, from the household's, or from both? [visual
    desktop]
-102. Does the window change size when it goes from a list to a list with
+104. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-103. What does the sheet show when there are more areas than fit: does
+105. What does the sheet show when there are more areas than fit: does
    it scroll, or grow taller? [visual phone]
-104. Does the fixed button show a grid icon, the word "All", or both?
+106. Does the fixed button show a grid icon, the word "All", or both?
    [visual phone]
-105. Which four are on the bar of a new person: Overview, the assistant,
+107. Which four are on the bar of a new person: Overview, the assistant,
    Timeline and Chat? [visual phone]
-106. Can any area be put on the bar, a single list such as Shopping
+108. Can any area be put on the bar, a single list such as Shopping
    included? [visual phone]
-107. Where is the line of text on the call screen switched on: in the
+109. Where is the line of text on the call screen switched on: in the
    settings, or with a button on the call screen itself? [visual phone]
-108. Does the line of text also show what the person says, or only what
+110. Does the line of text also show what the person says, or only what
    the assistant says? [visual phone]
-109. Where is the first screen chosen: in the app's own settings, or in
+111. Where is the first screen chosen: in the app's own settings, or in
    the admin panel with a person's other settings? [visual phone]
-110. What does a touch on a clipboard item do: copy it to this phone, or
+112. What does a touch on a clipboard item do: copy it to this phone, or
    open it? [visual phone]
-111. How often does the figure on the idle screen change, and can a
+113. How often does the figure on the idle screen change, and can a
    touch on the dots change it? [visual tablet]
-112. Which assistant is shown first: the one used last, or a fixed
+114. Which assistant is shown first: the one used last, or a fixed
    order? [visual tablet]
-113. Does the clock move now and then, to protect the screen? [visual
+115. Does the clock move now and then, to protect the screen? [visual
    tablet]
-114. How does a tablet without a light sensor know the room is dark: by
+116. How does a tablet without a light sensor know the room is dark: by
    the time of day, by its camera, or does a person set the hours?
    [visual tablet]
-115. What can be set for the dark on a tablet: only which of the two
+117. What can be set for the dark on a tablet: only which of the two
    screens is used, or also the hours and how dim it is? [visual tablet]
-116. Is the time before a conversation closes 20 or 30 seconds at first?
+118. Is the time before a conversation closes 20 or 30 seconds at first?
    [visual tablet]
-117. Does the character show that the conversation is about to close?
+119. Does the character show that the conversation is about to close?
    [visual tablet]
-118. Which figure greets in the welcome, before the household has chosen
+120. Which figure greets in the welcome, before the household has chosen
    or named an assistant? [visual admin panel]
-119. Which languages does the welcome show, and in which is the setup
+121. Which languages does the welcome show, and in which is the setup
    offered at first? [visual admin panel]
-120. Is the language chosen on the welcome itself, as the board shows,
+122. Is the language chosen on the welcome itself, as the board shows,
    or in a step after it? [visual admin panel]
-121. What does a destination with no list of items show, such as Speech
+123. What does a destination with no list of items show, such as Speech
    or Feedback: two columns, or a second column of its sections? [visual
    admin panel]
-122. Where do search results appear in three columns? [visual admin
+124. Where do search results appear in three columns? [visual admin
    panel]
-123. Which accent does the admin panel show: that of the person signed
+125. Which accent does the admin panel show: that of the person signed
    in, or the household's? [visual admin panel]
-124. Where on the phone app's call design do the two set-up choices and
+126. Where on the phone app's call design do the two set-up choices and
    the note for guests go? Ideas are on the voice page board. [visual
    voice page]
-125. On a wide screen, such as a tablet on its side, is the page
+127. On a wide screen, such as a tablet on its side, is the page
    arranged like the phone or like the tablet's stage? [visual voice
    page]
 
 ### The mockups
 
-126. Agree to each mockup, or say what to change in it. [mockups]
-127. Desktop: how does a person go from searching to talking to the
-   assistant: the Tab key, a prefix, or a shortcut of its own? The
-   mockup shows Tab and a shortcut. [mockups]
-128. Desktop: does the launcher open on the screen that holds the
-   pointer, or on the main screen? [mockups]
-129. Desktop: is the settings window opened from the launcher only, or
-   also from an icon in the system tray? [mockups]
-130. Admin panel: the request timeline shows the first words a person
+128. Agree to each mockup, or say what to change in it. [mockups]
+129. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-131. Admin panel: is "Undo" offered for every change in the audit log,
+130. Admin panel: is "Undo" offered for every change in the audit log,
    or only for changes that can be reversed safely? [mockups]
-132. Voice page: does the page remember on that browser that it was set
+131. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-133. A search of the trade mark registers of the EU, the Benelux, the UK
+132. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-134. How fast the blur is on an old tablet and in the launcher, measured
+133. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-135. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+134. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-136. How much power a three-dimensional figure uses on an old tablet
+135. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

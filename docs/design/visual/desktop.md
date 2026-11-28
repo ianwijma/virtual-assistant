@@ -23,13 +23,23 @@ settings are set.
   running now is on top, such as a timer. Under it are all the actions
   there are, ordered by how often they are used. Suggestions that follow
   what the person is doing may come later.
+- **Talking to the assistant is an action like any other.** It is chosen
+  from the list, and a person can give it a shortcut of its own, as for
+  any action. By default the Tab key also starts it with what was typed.
+- **The launcher opens on the screen that holds the pointer.**
+- **The launcher closes on a click elsewhere, in every view,** the
+  settings included.
+- **The launcher remembers where it was.** Opened again within about a
+  minute, it shows the view and the state it was closed in, such as the
+  settings page that was open. After that it opens in its neutral state.
 - **A notification appears at the top right of the desktop,** outside
   the launcher, as a clear glass card. Several stack downward with the
   newest on top. This is "Top-right stack" on
   [the desktop notification board](examples/desktop-notification-board.html).
 - **The settings of the device are a view of the launcher.** They are
   opened from the launcher, as in Raycast, and the launcher shows them in
-  place of its list. There is no separate application for them.
+  place of its list. They can also be opened from an icon in the system
+  tray. There is no separate application for them.
 - **The settings are laid out like the admin panel, in three columns:**
   a side bar of groups with a search field, a list of the chosen group's
   settings, and the chosen setting's page with its control and a
@@ -44,8 +54,13 @@ settings are set.
 
 ## Open questions
 
-- Does the settings view stay open when the person clicks elsewhere,
-  unlike the launcher's list?
+- When the settings close by a click elsewhere with unsaved changes, are
+  they kept for when the launcher is opened again, or is the person
+  asked?
+- After how long does the launcher return to its neutral state: one
+  minute, or a time a person sets?
+- What else does the tray icon's menu hold: the state of the connection,
+  a way to quit?
 - In the settings, does Esc first clear a search and only then return to
   the list?
 - Can a notification on the desktop be answered from the keyboard?
