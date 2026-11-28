@@ -321,23 +321,29 @@
 
 <!-- 10 -->
 <figure class="screen">
-  <figcaption><h2>10. All areas</h2><p>The fixed button at the end of the bar.</p></figcaption>
+  <figcaption><h2>10. All areas</h2><p>The fixed button opens a sheet over the current screen.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-moss">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
-      <div class="glass top"><span class="grow">Areas</span><span class="avatar">A</span></div>
-      <div class="surface" style="margin-top:var(--s-1)">
-        <div class="nrow"><span class="ico"></span><span class="tx t-strong">Lists</span><span class="chev"></span></div>
-        <div class="nrow"><span class="ico"></span><span class="tx t-strong">Clipboard</span><span class="chev"></span></div>
-        <div class="nrow"><span class="ico"></span><span class="tx t-strong">Settings</span><span class="chev"></span></div>
+      <div class="dim stack">
+        <div class="glass top"><span class="grow">Overview</span><span class="avatar">A</span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Pasta timer</span><span class="t2">Running</span></span><span class="num">07:42</span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Shopping</span><span class="t2">2 left of 3</span></span></div>
       </div>
-      <p class="t-label t-2" style="margin:var(--s-1) 4px">Later areas are added here.</p>
+    </div>
+    <div class="glass-thick sheet" style="top:auto;bottom:76px;left:8px;right:8px;padding:10px 12px 12px;gap:0">
+      <div style="width:36px;height:4px;border-radius:2px;background:var(--text-3);margin:0 auto var(--s-2)"></div>
+      <div class="hd" style="margin-bottom:var(--s-2)"><span class="t-heading" style="flex:1">All areas</span><span class="btn btn-quiet" style="height:28px;padding:0 8px;font-size:12px">Edit</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px 4px"><div class="center-col" style="gap:4px"><span style="width:44px;height:44px;border-radius:var(--r-md);background:var(--control);display:grid;place-items:center"><span class="ico"></span></span><span class="t-label" style="font-size:10px;line-height:11px;height:22px">Lists</span></div><div class="center-col" style="gap:4px"><span style="width:44px;height:44px;border-radius:var(--r-md);background:var(--control);display:grid;place-items:center"><span class="ico"></span></span><span class="t-label" style="font-size:10px;line-height:11px;height:22px">Clipboard</span></div><div class="center-col" style="gap:4px"><span style="width:44px;height:44px;border-radius:var(--r-md);background:var(--control);display:grid;place-items:center"><span class="ico"></span></span><span class="t-label" style="font-size:10px;line-height:11px;height:22px">Timers and alarms</span></div><div class="center-col" style="gap:4px"><span style="width:44px;height:44px;border-radius:var(--r-md);background:var(--control);display:grid;place-items:center"><span class="ico"></span></span><span class="t-label" style="font-size:10px;line-height:11px;height:22px">Notifications</span></div><div class="center-col" style="gap:4px"><span style="width:44px;height:44px;border-radius:var(--r-md);background:var(--control);display:grid;place-items:center"><span class="ico"></span></span><span class="t-label" style="font-size:10px;line-height:11px;height:22px">Devices</span></div><div class="center-col" style="gap:4px"><span style="width:44px;height:44px;border-radius:var(--r-md);background:var(--control);display:grid;place-items:center"><span class="ico"></span></span><span class="t-label" style="font-size:10px;line-height:11px;height:22px">Settings</span></div><div class="center-col" style="gap:4px"><span style="width:44px;height:44px;border-radius:var(--r-md);background:var(--control);display:grid;place-items:center;background:transparent;border:1.5px dashed var(--text-3)"><span class="ico"></span></span><span class="t-label" style="font-size:10px;line-height:11px;height:22px;color:var(--text-2)">More to come</span></div></div>
     </div>
     <nav class="glass-thick tb" data-on="4"></nav>
   </div></div>
   <div class="notes">
-    <div class="note">Not decided. Drawn as a bare list of every area: the lists, the clipboard, the settings and any area added later. What it looks like, and how the four buttons of the bar are changed, are open.</div>
-    <div class="note">The fixed button is at the end in the direction of reading, and stays when the person changes the other four.</div>
+    <div class="note">Chosen: a sheet that grows from the fixed button. A thick glass sheet covers the lower part of the current screen, and Overview stays visible above it, dimmed. The fixed button shows as selected.</div>
+    <div class="note">The areas are a grid of icons with short labels: lists, clipboard, timers and alarms, notifications, devices and settings, then a dashed tile, More to come. A touch on an area opens it (screens 11 to 13).</div>
+    <div class="note">Edit turns the four buttons of the bar into numbered slots. A touch on a slot selects it, and a touch on an area puts it there. The sheet then reads Slot and its number, with Done in place of Edit. The fixed button stays and cannot be changed.</div>
+    <div class="note">Not decided: what the sheet does when there are more areas than fit. Not decided: whether the fixed button shows a grid icon, the word All, or both.</div>
   </div>
 </figure>
 
@@ -347,7 +353,7 @@
   <div class="frames"><div class="frame pm backdrop dark accent-tide">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
-      <div class="glass top"><span class="t-label t-2">‹ Areas</span><span class="grow" style="text-align:center">Shopping</span><span class="avatar">A</span></div>
+      <div class="glass top"><span class="t-label t-2">‹ All</span><span class="grow" style="text-align:center">Shopping</span><span class="avatar">A</span></div>
       <div class="surface" style="margin-top:var(--s-1)">
         <div class="nrow"><span class="tk"></span><span class="tx sm">Milk</span><span class="avatar mini">A</span></div>
         <div class="nrow"><span class="tk"></span><span class="tx sm">Eggs</span><span class="avatar mini">S</span></div>
@@ -370,7 +376,7 @@
   <div class="frames"><div class="frame pm backdrop light accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
-      <div class="glass top"><span class="t-label t-2">‹ Areas</span><span class="grow" style="text-align:center">Clipboard</span><span class="avatar">A</span></div>
+      <div class="glass top"><span class="t-label t-2">‹ All</span><span class="grow" style="text-align:center">Clipboard</span><span class="avatar">A</span></div>
       <div class="surface" style="margin-top:var(--s-1)">
         <div class="nrow" style="min-height:60px"><span class="ico"></span><span class="tx"><span class="sm ell">hearth.local/recipes/pasta</span><span class="sub2">Alex’s desktop · 2 min ago</span></span><span class="btn btn-icon" style="width:32px;height:32px"><span class="ico" style="width:14px;height:14px"></span></span></div>
         <div class="nrow" style="min-height:60px"><span class="ico"></span><span class="tx"><span class="sm ell">Pick up the parcel from next door</span><span class="sub2">Sam’s phone · 14 min ago</span></span><span class="btn btn-icon" style="width:32px;height:32px"><span class="ico" style="width:14px;height:14px"></span></span></div>
@@ -392,7 +398,7 @@
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
-      <div class="glass top"><span class="t-label t-2">‹ Areas</span><span class="grow" style="text-align:center">Settings</span><span class="avatar">A</span></div>
+      <div class="glass top"><span class="t-label t-2">‹ All</span><span class="grow" style="text-align:center">Settings</span><span class="avatar">A</span></div>
       <div class="surface" style="margin-top:var(--s-1)">
         <div class="nrow"><span class="tx sm">Tab bar<span class="sub2">Overview, Juno, Timeline, Chat</span></span><span class="chev"></span></div>
         <div class="nrow"><span class="tx sm">Open the app on<span class="sub2">Overview</span></span><span class="chev"></span></div>
@@ -460,7 +466,7 @@
 </div>
 <script>
   /* Stamp the tab bar: four buttons the person sets, a divider, one fixed button. */
-  var names = ['Overview', 'Juno', 'Timeline', 'Chat', 'Areas'];
+  var names = ['Overview', 'Juno', 'Timeline', 'Chat', 'All'];
   document.querySelectorAll('nav.tb').forEach(function (n) {
     var on = +n.getAttribute('data-on');
     n.innerHTML = names.map(function (t, i) {

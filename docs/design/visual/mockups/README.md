@@ -38,9 +38,6 @@ The frames the screens are drawn in are in [mockup.css](mockup.css).
 ## Open questions
 
 - Agree to each mockup, or say what to change in it.
-- The desktop and phone mockups were drawn before the second boards for
-  the settings view and the phone bar were chosen from. They show those
-  two screens plainly and are to be brought in step.
 - Desktop: how does a person go from searching to talking to the
   assistant: the Tab key, a prefix, or a shortcut of its own? The mockup
   shows Tab and a shortcut.

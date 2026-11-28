@@ -454,37 +454,34 @@ detail.
 ### The mockups
 
 110. Agree to each mockup, or say what to change in it. [mockups]
-111. The desktop and phone mockups were drawn before the second boards
-   for the settings view and the phone bar were chosen from. They show
-   those two screens plainly and are to be brought in step. [mockups]
-112. Desktop: how does a person go from searching to talking to the
+111. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-113. Desktop: does the launcher open on the screen that holds the
+112. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-114. Desktop: is the settings window opened from the launcher only, or
+113. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-115. Admin panel: the request timeline shows the first words a person
+114. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-116. Admin panel: is "Undo" offered for every change in the audit log,
+115. Admin panel: is "Undo" offered for every change in the audit log,
    or only for changes that can be reversed safely? [mockups]
-117. Voice page: does the page remember on that browser that it was set
+116. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-118. A search of the trade mark registers of the EU, the Benelux, the UK
+117. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for the name that is chosen. The registers could not be
    reached in the first check, which used other sources. [visual
    identity]
-119. How fast the blur is on an old tablet and in the launcher, measured
+118. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-120. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+119. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-121. How much power a three-dimensional figure uses on an old tablet
+120. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

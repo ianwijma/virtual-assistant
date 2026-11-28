@@ -15,7 +15,19 @@
   .w-list { width: 440px; height: 290px; }
   .w-wide { width: 540px; height: 290px; }
   .w-sheetbase { width: 440px; height: 290px; }
-  .w-set { width: 540px; height: 310px; }
+  .w-set { width: 556px; height: 350px; }
+  .s3-side { flex: none; width: 148px; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--line); }
+  .s3-top { display: flex; flex-direction: column; gap: var(--s-2); padding: 0 var(--s-1) var(--s-2); }
+  .s3-back { display: inline-flex; align-items: center; gap: var(--s-2); align-self: flex-start; height: 24px; padding: 0 var(--s-2); border-radius: var(--r-full); background: var(--control); font: var(--type-label); white-space: nowrap; }
+  .s3-search { display: flex; align-items: center; gap: var(--s-1); height: 30px; padding: 0 var(--s-2); border-radius: var(--r-md); background: var(--surface-2); font: var(--type-label); white-space: nowrap; overflow: hidden; }
+  .s3-mid { flex: none; width: 172px; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--line); }
+  .s3-mid .row .grow { white-space: nowrap; }
+  .s3-mid .row .val { font: var(--type-label); color: var(--text-2); white-space: nowrap; }
+  .s3-page { flex: 1; min-width: 0; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); overflow: hidden; }
+  .s3-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-3); display: flex; flex-direction: column; gap: var(--s-2); }
+  .s3-sws { display: flex; align-items: center; gap: var(--s-2); }
+  .s3-sw { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); flex: none; display: block; }
+  .s3-sw.sel { outline: 2px solid var(--text); outline-offset: 2px; }
   .body { flex: 1; min-height: 0; display: flex; }
   .list-pane { flex: 1; min-width: 0; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
   .row .t-caption { white-space: nowrap; }
@@ -229,32 +241,41 @@
 <figure class="screen">
   <figcaption>
     <h2>7. The settings view of the launcher</h2>
-    <p>Opened from the launcher, laid out like the admin panel: a side bar of groups with search, and the page.</p>
+    <p>Opened from the launcher in a glass window larger than the list: groups, the chosen group's settings, and the chosen setting's page.</p>
   </figcaption>
   <div class="frames"><div class="frame f wallpaper compact light">
     <div class="window glass w-set">
       <div class="body">
-        <div class="side">
-          <div class="search"><span class="ico"></span><span class="t-3">Search settings</span></div>
-          <div class="row is-selected"><span class="ico"></span><span class="grow">General</span></div>
-          <div class="row"><span class="ico"></span><span class="grow">Shortcuts</span></div>
+        <div class="s3-side">
+          <div class="s3-top">
+            <span class="s3-back"><b>‹</b><span class="kbd">Esc</span></span>
+            <div class="s3-search"><span class="ico"></span><span class="t-3">Search settings</span></div>
+          </div>
+          <div class="row"><span class="ico"></span><span class="grow">General</span></div>
+          <div class="row"><span class="ico"></span><span class="grow">Voice</span></div>
+          <div class="row is-selected"><span class="ico"></span><span class="grow">Look</span></div>
           <div class="row"><span class="ico"></span><span class="grow">Account</span></div>
-          <div class="row"><span class="ico"></span><span class="grow">Appearance</span></div>
-          <div class="row"><span class="ico"></span><span class="grow">Notifications</span></div>
         </div>
-        <div class="page surface">
-          <div class="t-caption">Settings › General</div>
-          <div class="t-heading">General</div>
-          <div class="setrow"><span class="grow">Start at login</span><span class="toggle on"></span></div>
-          <div class="setrow"><span class="grow">Open the launcher with</span><span class="kbd">Ctrl Space</span></div>
-          <div class="setrow"><span class="grow">Show on</span><span class="t-2">Screen with the pointer</span></div>
+        <div class="s3-mid">
+          <div class="t-caption t-2 cap">Look</div>
+          <div class="row is-selected"><span class="grow">Accent</span><span class="val">Tide</span></div>
+          <div class="row"><span class="grow">See-through</span><span class="val">60%</span></div>
+          <div class="row"><span class="grow">Reduce motion</span><span class="val">Off</span></div>
+        </div>
+        <div class="s3-page surface">
+          <div><div class="t-caption t-2">Settings › Look › Accent</div><div class="t-heading">Accent</div></div>
+          <div class="t-label t-2">The colour of buttons and highlights in the launcher on this device.</div>
+          <div class="s3-box">
+            <div class="s3-sws"><span class="s3-sw accent-tide sel"></span><span class="s3-sw accent-ember"></span><span class="s3-sw accent-aurora"></span><span class="s3-sw accent-moss"></span><span class="s3-sw accent-graphite"></span></div>
+            <span class="chip"><span class="dot"></span>Follow the household</span>
+          </div>
         </div>
       </div>
     </div>
   </div></div>
   <div class="notes">
-    <div class="note">Left: a glass side bar with a search field and the groups. Right: the chosen group's page as plain rows, with its path above.</div>
-    <div class="note">Not decided: the groups and what is on each page, whether the window grows, and whether a change applies at once or after Save. The rows here are placeholders.</div>
+    <div class="note">Left: a side bar with Esc to go back, a search field and the groups General, Voice, Look and Account. Middle: the settings of the chosen group with their current values. Right: the chosen setting's page, with its path, a sentence about it and the control.</div>
+    <div class="note">Not decided: whether a change applies at once or after Save, and whether the view stays open when the person clicks elsewhere.</div>
   </div>
 </figure>
 
