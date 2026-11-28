@@ -68,8 +68,13 @@ One look for every screen the system has:
 - **A notification is the same card, placed by the width of the
   screen.** This follows the width and not the kind of device. On a wide screen it is a glass card at the top right, and
   several stack downward. On a narrow screen it enters the top of the
-  Overview's list, which runs from the most important to the least: first what needs an
-  answer, then what is running now, then the rest, newest first.
+  Overview's list.
+- **The notification centre is the hub for everything that needs a
+  person:** notifications, reminders, approvals and questions from an
+  assistant. It is called "Notifications" on every device. It has three
+  sections: what needs attention, what is being worked on, and what is
+  settled. On a narrow screen the Overview's list shows the same three
+  sections. See [desktop](desktop.md).
   These are the tablet of "The same stack, at the top" and the phone of
   "Into the Overview" on
   [the app notification board](examples/app-notification-board.html).

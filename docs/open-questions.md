@@ -296,10 +296,11 @@ detail.
 
 ### Assistant visuals
 
-30. Can the character be anywhere on a screen, or only in the places a
-   screen gives a canvas? [assistant visuals]
-31. Below which size of canvas does the character become a head only, or
-   a sound wave? [assistant visuals]
+30. Where the character is shown as a small head today, such as in a
+   list row or in the header of the folded call, is that the character
+   far away, or a picture of it apart from the room? [assistant visuals]
+31. With reduced motion, how does the character get from one place to
+   another without walking? [assistant visuals]
 32. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
 33. Does a figure have a mouth that moves when it talks, and arms? Both
@@ -321,12 +322,6 @@ detail.
 
 ### The clients
 
-40. Is the notification centre the hub for everything that needs a
-   person, such as reminders and approvals, and how does a notification
-   move between its three sections? The owner wants to work this out
-   together. [visual desktop]
-41. Do the three sections of the notification centre also order the
-   Overview's list on a narrow screen? [visual desktop]
 
 ### The mockups
 
@@ -335,16 +330,16 @@ detail.
 
 An agent does this work and the owner agrees to the outcome.
 
-42. A search of the trade mark registers of the EU, the Benelux, the UK
+40. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-43. How fast the blur is on an old tablet and in the launcher, measured
+41. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-44. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+42. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-45. How much power a three-dimensional figure uses on an old tablet that
+43. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

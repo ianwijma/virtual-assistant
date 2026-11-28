@@ -430,7 +430,7 @@ are 25 November 2026 unless a section says otherwise.
 | 403 | The welcome shows the greeting in a fixed handful of languages, for show | [admin panel](design/visual/admin-panel.md) |
 | 404 | Settings pages are made by hand, and a generated page is allowed | [visual](design/visual/README.md) |
 | 405 | The character is central to the experience and is designed in a thread of its own | [assistant visuals](design/visual/assistant-visuals.md) |
-| 406 | Every screen gives the character a canvas that can be moved and resized, and the character scales to it in proportion | [assistant visuals](design/visual/assistant-visuals.md) |
+| 406 | The whole screen is the character's canvas; the character walks into view and never jumps, and becomes smaller by walking away | [assistant visuals](design/visual/assistant-visuals.md) |
 | 407 | The built-in pink is Blossom and the built-in red is Cherry | [colour](design/visual/colour.md) |
 | 408 | The first values of the tokens are agreed as a start | [tokens](design/visual/tokens.md) |
 | 409 | The example components are agreed as the base for the rest | [components](design/visual/components.md) |
@@ -447,3 +447,5 @@ are 25 November 2026 unless a section says otherwise.
 | 420 | On a wide screen the conversation column is shown at first, and Chat hides and shows it | [visual](design/visual/README.md) |
 | 421 | Enter opens a notification to read it, and a person can set it to acknowledge instead | [desktop](design/visual/desktop.md) |
 | 422 | A token made from the accent is worked out wherever the accent changes | [tokens](design/visual/tokens.md) |
+| 423 | The notification centre is the hub for everything that needs a person, and is called Notifications on every device | [visual](design/visual/README.md) |
+| 424 | On a narrow screen the Overview's list shows the three sections of Notifications | [visual](design/visual/README.md) |

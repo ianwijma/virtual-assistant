@@ -89,9 +89,4 @@ settings are set.
 
 ## Open questions
 
-- Is the notification centre the hub for everything that needs a person,
-  such as reminders and approvals, and how does a notification move
-  between its three sections? The owner wants to work this out together.
-- Do the three sections of the notification centre also order the
-  Overview's list on a narrow screen?
 

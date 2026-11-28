@@ -49,10 +49,14 @@ chosen yet.
 - **The character is central to the whole experience,** and it is
   designed in a thread of its own. Its questions are kept below for that
   thread and are not answered in this work.
-- **Every screen gives the character a canvas.** The canvas is an area
-  that a screen places, moves and resizes. The character lives inside
-  it, reacts to its size and is scaled in proportion. A screen arranges
-  the canvas, not the character.
+- **The whole screen is the character's canvas.** The character is in
+  one space behind and around what a screen shows, like a room.
+- **The character walks; it never jumps.** When something appears on the
+  screen, the character walks to where it is in view again. It does not
+  disappear in one place and appear in another.
+- **The character becomes smaller by walking away,** deeper into the
+  room, and larger by coming closer. That is how it fits where it needs
+  to be.
 - **Layouts leave room for a larger figure.** A later figure may need
   more space than the one for now, with arms or a whole body, so no
   screen is fitted tightly around the present shape.
@@ -117,10 +121,12 @@ Assumed:
 
 These are for the thread on the character.
 
-- Can the character be anywhere on a screen, or only in the places a
-  screen gives a canvas?
-- Below which size of canvas does the character become a head only, or
-  a sound wave?
+- Where the character is shown as a small head today, such as in a list
+  row or in the header of the folded call, is that the character far
+  away, or a picture of it apart from the room?
+- With reduced motion, how does the character get from one place to
+  another without walking?
+
 
 - In which style are the full figures drawn, when they are redesigned
   later? Five styles are on
