@@ -55,7 +55,10 @@ One look for every screen the system has:
   stage: the figure on one side and a glass column beside it with what
   was said and any card. These are "One design that folds" and its form
   for a shared device on
-  [the stage and call board](examples/stage-call-board.html), mixed.
+  [the stage and call board](examples/stage-call-board.html), mixed. A
+  household device shows the same controls as a personal one: Mute, Chat,
+  End and the field to type.
+- **The four areas are set per device,** on that device.
 - **A notification is the same card, placed by the width of the
   screen.** This follows the width and not the kind of device. On a wide screen it is a glass card at the top right, and
   several stack downward. On a narrow screen it enters the top of the
@@ -236,13 +239,8 @@ Each subject's questions are in its own document.
   than the Overview is open: a dot on the bar, or nothing?
 - At which width does a notification change from a row in the list to a
   card at the top right?
-- Are a person's four areas the same four on all their devices, or set
-  per device?
 - Does the household tablet, which nobody owns, have four pinned areas,
   and who sets them?
-- On a household device, which controls of the call are shown: all of
-  them, none, or some, such as Mute but no field to type? Can it be set
-  per device?
 - At which widths does the layout change? The board shows one column
   under 600, two from 600 to 1000 and three above.
 - In two columns, do the destinations become a rail of icons, as on the

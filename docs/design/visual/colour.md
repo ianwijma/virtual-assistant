@@ -52,6 +52,8 @@ focus. It also colours our own [backdrop](glass.md).
   one colour wheel with two handles, one for each colour. These are
   "Pairs that go together" and the wheel of "A two-handle colour wheel"
   on [the accent picker board](examples/accent-picker-board.html).
+- **A colour that makes text hard to read gives a warning, and is
+  allowed.** The person can keep it.
 - **Choosing an accent shows a quick preview.** In the admin panel, the
   accent of the household is previewed on all four devices: the phone
   app, the tablet, the desktop and the admin panel. The accent of one
@@ -105,9 +107,8 @@ Graphite, a neutral accent, is drawn and is left out for now.
 
 ## Open questions
 
-- How is text kept readable with an accent a person made themselves:
-  are the two colours adjusted by themselves until text on them can be
-  read, or is a colour that fails refused?
+- Where does the warning about a colour that is hard to read appear:
+  under the wheel, where "Checked: text stays readable" is on the board?
 - Does the wheel set only the hue, or also how light and how strong a
   colour is?
 - How is the wheel used with a keyboard, and can a value be typed?

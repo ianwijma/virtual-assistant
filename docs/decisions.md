@@ -317,3 +317,7 @@ are 25 November 2026 unless a section says otherwise.
 | 290 | The welcome of the setup has the figure saying "Hello", in several languages, with the choice of language | [admin panel](design/visual/admin-panel.md) |
 | 291 | Talking to an assistant is one design that folds: the call on a narrow screen opens out into the stage on a wide one | [visual](design/visual/README.md) |
 | 292 | In the dark a tablet follows the light in the room: the figure sleeps when it is a little dark, only a dim clock shows when it is fully dark, and this can be set | [tablet](design/visual/tablet.md) |
+| 293 | A household device shows the same controls of the call as a personal one | [visual](design/visual/README.md) |
+| 294 | An own accent that makes text hard to read gives a warning and is allowed | [colour](design/visual/colour.md) |
+| 295 | A person's four areas are set per device | [visual](design/visual/README.md) |
+| 296 | Leaving a page with unsaved changes asks first: Save, Discard or Stay | [components](design/visual/components.md) |

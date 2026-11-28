@@ -48,6 +48,8 @@ mockups.
   says how many changes are not saved, with Discard and Save. This holds
   in the admin panel, the desktop settings and the app. This is "A Save
   button" on [the saving board](examples/saving-board.html).
+- **Leaving a page with unsaved changes asks first.** A small sheet
+  offers Save, Discard and Stay.
 - **The count of changes will open a list of them,** each with its value
   before and after. This comes after the first designs, possibly before
   the first release.
@@ -82,8 +84,6 @@ light and dark, built from [components.css](examples/components.css).
 ## Open questions
 
 - Agree to the example components as the base for the rest.
-- What happens to unsaved changes when a person leaves the page: are
-  they asked, or are the changes kept as a draft?
 - Does a dangerous action, such as removing an assistant, go through the
   Save bar too, or does it ask and act at once?
 - When two devices changed the same thing while one was out of reach,
