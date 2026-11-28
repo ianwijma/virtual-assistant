@@ -409,8 +409,11 @@ are 25 November 2026 unless a section says otherwise.
 | 382 | A quiet link leads to the set-up where guests talk at once | [voice page](design/visual/voice-page.md) |
 | 383 | The voice page is the stage on a wide screen | [voice page](design/visual/voice-page.md) |
 | 384 | Four things set the look apart together: the characters, the two-colour accent, the living backdrop and our own shape | [identity](design/visual/identity.md) |
-| 385 | Raycast and the Arc browser are admired for their look, besides Apple's | [identity](design/visual/identity.md) |
+| 385 | Raycast, the Arc browser and Things are admired for their look, besides Apple's | [identity](design/visual/identity.md) |
 | 386 | The name is said either way, and a line of text shows how where it is introduced | [identity](design/visual/identity.md) |
 | 387 | The colour wheel sets the colour only | [colour](design/visual/colour.md) |
 | 388 | A character has two colours of its own, which can be set to the same colour; nothing is done when they are like the person's accent | [colour](design/visual/colour.md) |
 | 389 | Seven accents are built in: Tide, Ember, Aurora, Moss, a pink, a red and Graphite | [colour](design/visual/colour.md) |
+| 390 | The sounds of a conversation are off unless switched on, and every other sound, such as a timer ending, is on unless switched off | [motion](design/visual/motion.md) |
+| 391 | No colour is avoided and no check for colour-blindness is made | [colour](design/visual/colour.md) |
+| 392 | There are no illustrations apart from the character | [shape and spacing](design/visual/shape-and-spacing.md) |

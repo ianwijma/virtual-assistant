@@ -17,6 +17,10 @@ Status: started. The exact values are made with the design tokens.
 - **Each device has a default density, and it can be changed.** The
   desktop client and the admin panel start compact. The phone and the
   tablet start roomy.
+- **There are no illustrations apart from the character.** Where a
+  picture helps, such as on an empty screen or in the setup, the
+  character appears in a fitting pose. Everything else uses an icon or
+  a sentence.
 - **The icons are Phosphor's,** an open set under the MIT licence, which
   allows sold hardware. Where the set lacks an icon, we draw our own in
   its style. Icons are always outlined; a chosen item is shown by the
@@ -28,4 +32,3 @@ Status: started. The exact values are made with the design tokens.
 
 ## Open questions
 
-- Is there an illustration style, for empty screens and first-run setup?

@@ -33,6 +33,9 @@ design tokens.
 - **Text is readable on every surface it is on,** glass included: a
   contrast of at least 4.5 to 1 for normal text and 3 to 1 for large
   text, measured against the least favourable backdrop.
+- **No colour is avoided, and no check for colour-blindness is made.**
+  The design relies on the rule that a status is never shown by colour
+  alone.
 - **The colours are tokens.** Every client and every
   [described screen](../technical/a2ui.md) takes them from the one set of
   design tokens.
@@ -132,5 +135,3 @@ tokens.
 - Which pink and which red are built in, with which second colour, and
   what are they called?
 
-- Are there colours to avoid, and is anyone in the household
-  colour-blind?

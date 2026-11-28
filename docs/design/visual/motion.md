@@ -43,10 +43,13 @@ Status: started. The character of the motion is set. Sound is open.
 - **Feedback is visual first.** What happens is shown on the screen, so
   that talking to an assistant feels like a conversation and not like
   operating a machine.
-- **There is a small set of sounds of our own,** such as a tone when an
-  assistant starts to listen. They are off unless switched on.
-- **The phone can vibrate as part of the feel.** This is off unless
-  switched on.
+- **There is a small set of sounds of our own.**
+- **The sounds of a conversation are off unless switched on,** such as
+  the tone when an assistant starts to listen. The screen shows those.
+- **Every other sound is on unless switched off,** such as a timer or an
+  alarm that ends and a notification.
+- **The phone can vibrate as part of the feel.** In a conversation this
+  is off unless switched on.
 
 ## The timings
 
@@ -62,8 +65,6 @@ In reduced motion every timing is at most a 100 ms fade.
 
 ## Open questions
 
-- Is the sound of a timer or an alarm that ends also off unless switched
-  on, or is it the one sound that is always on?
 - Which sounds are in the set, and who makes them?
 
 To research:

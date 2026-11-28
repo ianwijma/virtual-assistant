@@ -23,7 +23,8 @@ Status: started. The feel is set. The name is open.
 - **Four things set it apart, together:** the characters, the accent of
   two colours, the backdrop that moves and reacts, and a shape of our
   own. See the table below.
-- **Raycast and the Arc browser are also admired for their look.**
+- **Raycast, the Arc browser and Things are also admired for their
+  look.**
 - **The name is said either way,** "haym" or "heem". Where the name is
   introduced in text, such as in the README, a line shows how it is
   said.
