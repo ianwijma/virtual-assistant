@@ -22,7 +22,8 @@ Status: a first set. The values are tried out in
 
 | Token | Light | Dark | Used for |
 |---|---|---|---|
-| `bg` | `#F4F5F7` | `#0B0D10` | Behind everything, under the backdrop |
+| `bg` | `#F4F5F7` with 3% of the accent | `#0B0D10` with 3% of the accent | Behind everything, under the backdrop |
+| `surface-tint` | 5% of the accent running to 5% of its second colour | The same | Laid over every plain panel |
 | `surface` | White at 62% | `#17191E` at 55% | Plain content: lists, logs, text. It lets a little of the backdrop through and has no blur |
 | `surface-2` | `#F4F5F7` | `#1E2127` | A plain area inside plain content |
 | `text` | `#14161A` | `#F2F4F7` | Primary text |

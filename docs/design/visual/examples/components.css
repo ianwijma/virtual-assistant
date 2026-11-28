@@ -52,7 +52,7 @@
 .solid .glass, .solid .glass-thick { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--glass-solid); border-color: var(--line); }
 
 /* Plain content surface. */
-.surface { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.surface { background: var(--surface-tint), var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);

@@ -15,11 +15,13 @@ design tokens.
   the accent.
 - **Text and glass are neutral.** They are greys with no colour of their
   own.
-- **Plain surfaces take a tint of the accent.** The base and the plain
-  panels, such as a list or a page, carry a little of both colours of
-  the accent, so that the whole screen belongs to it. This is "Tinted by
-  the accent" on [the white board](examples/white-board.html), with both
-  colours of the accent in place of one.
+- **Plain surfaces take a tint of the accent.** The base carries 3% of
+  the accent's main colour. Each plain panel, such as a list or a page,
+  has a soft run from 5% of the main colour at its top left to 5% of the
+  second colour at its bottom right. This holds in light and in dark.
+  This is "A soft run across each panel" on
+  [the tint board](examples/tint-board.html); the whites it came from
+  are on [the white board](examples/white-board.html).
 - **Dark is a dark grey with a slight tint, not black.** Glass needs
   something behind it, and on black it disappears. Only the low-power
   screen of a tablet is true black.
@@ -122,10 +124,6 @@ Graphite, a neutral accent, is drawn and is left out for now.
 - Is a person's accent also the colour that marks them elsewhere, such as
   on the account switch of a shared computer, or beside an item they
   added to a shared list?
-- How strong is the tint of the plain surfaces, and how do the two
-  colours of the accent lie in a panel: as a soft run from one to the
-  other, or one colour for the base and the other for the panels?
-- Do the plain surfaces carry the tint in dark as well?
 - Are there colours to avoid, and is anyone in the household
   colour-blind?
 - A tablet in a room has its light or dark setting fixed by whoever set

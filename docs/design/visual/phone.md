@@ -44,8 +44,13 @@ Status: started. The screens, how they are joined and the call are set.
 - **What the assistant shows pops up as a sheet** over the lower part of
   the screen, such as a list, and the figure stays visible above it.
 - **Talking is like a call,** as in the ChatGPT app. The figure has the
-  whole screen, and there are two round buttons at the bottom: Chat and
-  End.
+  whole screen, and there are three round buttons at the bottom: Mute,
+  Chat and End. This is "Three buttons" on
+  [the call controls board](examples/call-controls-board.html).
+- **What is said can also be shown as text.** A person can switch on a
+  line of text under the figure, with the words of the moment in full
+  strength. It is off unless switched on. This is the line of "Three
+  buttons and a line of text" on the same board.
 - **The call folds into the chat.** Switching to the chat does not leave
   the call. The figure shrinks into a glass header at the top, with its
   name, a sign of the sound level, and small buttons to mute and to end.
@@ -68,9 +73,10 @@ Status: started. The screens, how they are joined and the call are set.
   Timeline and Chat?
 - Can any area be put on the bar, a single list such as Shopping
   included?
-- How is the microphone muted on the full call screen, which has only
-  Chat and End?
-- Is what is said also shown as a line of text on the full call screen?
+- Where is the line of text on the call screen switched on: in the
+  settings, or with a button on the call screen itself?
+- Does the line of text also show what the person says, or only what
+  the assistant says?
 - Where is the first screen chosen: in the app's own settings, or in the
   admin panel with a person's other settings?
 - What does a touch on a clipboard item do: copy it to this phone, or

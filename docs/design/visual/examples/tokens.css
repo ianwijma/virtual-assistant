@@ -121,3 +121,12 @@
   :root { --t-instant: 0ms; --t-fast: 0ms; --t-base: 100ms; --t-slow: 100ms; --spring: linear; --ease: linear; }
 }
 .reduced-motion { --t-instant: 0ms; --t-fast: 0ms; --t-base: 100ms; --t-slow: 100ms; --spring: linear; --ease: linear; }
+
+/* Plain surfaces take a tint of both colours of the accent.
+   Declared again in every scope that can change the accent or the mode. */
+:root, .light, .dark, [class*="accent-"] {
+  --bg: color-mix(in srgb, var(--accent) 3%, light-dark(#F4F5F7, #0B0D10));
+  --surface-tint: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent) 5%, transparent),
+    color-mix(in srgb, var(--accent-2) 5%, transparent));
+}

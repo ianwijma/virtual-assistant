@@ -20,6 +20,10 @@ Status: started. The idle screen and the active screen are set.
 - **A glance bar is a small, flat rectangle** with one fact: a running
   timer, the next reminder, the number of items on the shopping list. It
   is a [card](components.md) in its closed form.
+- **A tablet with several assistants shows one figure at a time.** Small
+  dots under it show that there are others, and the figure changes now
+  and then. This is "One at a time" on
+  [the idle figures board](examples/idle-figures-board.html).
 - **The figure lives on the idle screen.** There is no written hint of
   how to call it, since a tablet can have several assistants, each with
   its own wake word.
@@ -34,8 +38,9 @@ Status: started. The idle screen and the active screen are set.
 
 ## Open questions
 
-- When a tablet has several assistants, are all their figures on the
-  idle screen, or one?
+- How often does the figure on the idle screen change, and can a touch
+  on the dots change it?
+- Which assistant is shown first: the one used last, or a fixed order?
 - Does the clock move now and then, to protect the screen?
 - Is the figure on the idle screen at night as well, or does the tablet
   then show only the clock?

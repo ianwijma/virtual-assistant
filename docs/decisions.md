@@ -311,3 +311,7 @@ are 25 November 2026 unless a section says otherwise.
 | 284 | A notification is a card at the top right on a wide screen, and enters the top of the Overview's list on a narrow one, ordered by importance | [visual](design/visual/README.md) |
 | 285 | Plain surfaces in light take a tint of both colours of the accent | [colour](design/visual/colour.md) |
 | 286 | The call and the stage both stay as drawn, and the figure gets more room on a wider screen | [assistant visuals](design/visual/assistant-visuals.md) |
+| 287 | The base carries 3% of the accent and each plain panel a soft run from 5% of its main colour to 5% of its second, in light and dark | [colour](design/visual/colour.md) |
+| 288 | The call screen has three buttons, Mute, Chat and End, and a line of text of what is said that can be switched on | [phone](design/visual/phone.md) |
+| 289 | A tablet with several assistants shows one figure at a time on its idle screen | [tablet](design/visual/tablet.md) |
+| 290 | The welcome of the setup has the figure saying "Hello", in several languages, with the choice of language | [admin panel](design/visual/admin-panel.md) |

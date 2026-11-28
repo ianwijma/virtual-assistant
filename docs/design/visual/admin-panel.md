@@ -34,7 +34,11 @@ Status: started. The principle and the layout are set.
   are the list of "One strip" and the page of "Bars" on
   [the admin log board](examples/admin-log-board.html).
 - **The first-run setup follows Apple's first setup of a device.** It
-  opens with a welcome that says "Hello". Each step is then one calm
+  opens with a welcome in which the assistant's figure says "Hello". The
+  greeting is shown in several languages, and the language is chosen
+  there, before the first step. These are "Hello, with the figure" and
+  "Hello, in the household's languages" on
+  [the welcome board](examples/welcome-board.html), together. Each step is then one calm
   pane, centred on the backdrop: a round symbol, a large title, a short
   sentence, the few fields or choices, a quiet link for the alternative,
   and one wide Continue button at the bottom. Five dots across the top
@@ -49,8 +53,10 @@ Status: started. The principle and the layout are set.
 
 ## Open questions
 
-- Does the welcome of the setup show the assistant's figure, or only
-  "Hello"?
+- Which figure greets in the welcome, before the household has chosen or
+  named an assistant?
+- Which languages does the welcome show, and in which is the setup
+  offered at first?
 - What does a destination with no list of items show, such as Speech or
   Feedback: two columns, or a second column of its sections?
 - Where do search results appear in three columns?
