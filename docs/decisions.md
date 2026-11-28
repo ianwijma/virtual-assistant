@@ -362,10 +362,10 @@ are 25 November 2026 unless a section says otherwise.
 | 335 | The three levels of glass are clear, thicker and solid, set per device | [glass](design/visual/glass.md) |
 | 336 | The pictures of a gallery change by themselves every few minutes | [glass](design/visual/glass.md) |
 | 337 | With reduced motion the backdrop is still | [glass](design/visual/glass.md) |
-| 338 | The backdrop is still on a slow device and in low-power mode | [glass](design/visual/glass.md) |
+| 338 | The backdrop is still in low-power mode | [glass](design/visual/glass.md) |
 | 339 | Where the desktop cannot blur the launcher shows our backdrop unless see-through is switched on | [glass](design/visual/glass.md) |
 | 340 | The warning for a hard-to-read colour is under the picker | [colour](design/visual/colour.md) |
-| 341 | The colour wheel works with arrow keys and a typed value | [colour](design/visual/colour.md) |
+| 341 | The colour wheel works with arrow keys, and has no field to type a value in | [colour](design/visual/colour.md) |
 | 342 | An accent can be chosen in the admin panel and on the device | [colour](design/visual/colour.md) |
 | 343 | A character's colour uses the accent's picker | [colour](design/visual/colour.md) |
 | 344 | A new household tablet follows the light in the room, or the time of day | [colour](design/visual/colour.md) |
@@ -373,12 +373,12 @@ are 25 November 2026 unless a section says otherwise.
 | 346 | Sounds and vibration are switched on per device | [motion](design/visual/motion.md) |
 | 347 | Where growing is not possible a sheet rises and a page fades | [motion](design/visual/motion.md) |
 | 348 | Only sheets and pressed things overshoot | [motion](design/visual/motion.md) |
-| 349 | A client measures whether a device is too slow for full motion | [motion](design/visual/motion.md) |
+| 349 | Reduced motion is a setting only; a device is not measured | [motion](design/visual/motion.md) |
 | 350 | A dangerous action asks and acts at once, outside the Save bar | [components](design/visual/components.md) |
 | 351 | Sent changes lose their mark without a message | [components](design/visual/components.md) |
-| 352 | Composed screens show in the chat's history only in an advanced mode | [components](design/visual/components.md) |
+| 352 | Composed screens and the tools that were used show in the chat's history only in an advanced mode | [components](design/visual/components.md) |
 | 353 | A sheet with unsaved input asks before closing | [components](design/visual/components.md) |
-| 354 | A card that was asked for stays large for about five seconds, as its sheet | [components](design/visual/components.md) |
+| 354 | A card that was asked for stays large for 10 to 20 seconds, a time that can be set, as its sheet | [components](design/visual/components.md) |
 | 355 | The next components are the ones the mockups need | [components](design/visual/components.md) |
 | 356 | The voice page follows the folding call and stage design | [assistant visuals](design/visual/assistant-visuals.md) |
 | 357 | A card never covers the character's head | [assistant visuals](design/visual/assistant-visuals.md) |
@@ -398,7 +398,7 @@ are 25 November 2026 unless a section says otherwise.
 | 371 | The sheet of all areas scrolls | [phone](design/visual/phone.md) |
 | 372 | The fixed button shows a grid icon and the word All | [phone](design/visual/phone.md) |
 | 373 | The line of text is switched on from the call screen and remembered | [phone](design/visual/phone.md) |
-| 374 | The idle figure changes every few minutes or by a touch, starting with the one used last | [tablet](design/visual/tablet.md) |
+| 374 | The idle figure changes by a touch on the dots, and by itself every 10 to 15 minutes only when that is switched on | [tablet](design/visual/tablet.md) |
 | 375 | The idle clock shifts now and then | [tablet](design/visual/tablet.md) |
 | 376 | A tablet without a light sensor uses set hours | [tablet](design/visual/tablet.md) |
 | 377 | A tablet's dark settings hold the screen and the hours | [tablet](design/visual/tablet.md) |

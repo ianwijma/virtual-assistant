@@ -83,8 +83,7 @@ set. What each toolkit can draw is still to be researched.
 - **The pictures of a gallery change by themselves,** every few minutes,
   with a slow fade.
 - **With reduced motion the backdrop is still.**
-- **The backdrop is still on a device too slow for full motion and in low-
-  power mode.**
+- **The backdrop is still in low-power mode.**
 - **Where the desktop cannot blur, our own backdrop is what the launcher
   shows at first,** and see-through without blur is switched on by the
   person.

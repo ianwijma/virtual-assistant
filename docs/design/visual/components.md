@@ -81,12 +81,12 @@ mockups.
   through the Save bar.
 - **When changes that waited have been sent, their marks and the count go
   away.** Nothing else is said.
-- **The chat's history shows that a screen was composed only in an
-  advanced mode.**
+- **The chat's history shows that a screen was composed, and which tools
+  were used, only in an advanced mode.**
 - **A sheet with unsaved input asks before it closes by a touch outside
   it.**
-- **A card that was asked for stays large for about five seconds.** Its
-  large form is the sheet that a touch opens.
+- **A card that was asked for stays large for 10 to 20 seconds.** The
+  time can be set. Its large form is the sheet that a touch opens.
 - **The next components are the ones the mockups need:** the launcher's
   search and results, a sheet, a menu, the tab bar and the side bar, a
   table for logs, the chat, and each card of the A2UI catalog.
@@ -109,4 +109,6 @@ light and dark, built from [components.css](examples/components.css).
 
 ## Open questions
 
+- Is a card that was asked for large for 10 or for 20 seconds at first,
+  and where is the time set?
 - Agree to the example components as the base for the rest.

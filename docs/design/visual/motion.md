@@ -21,10 +21,10 @@ Status: started. The character of the motion is set. Sound is open.
   drawn again. It moves to its new place while the rest changes.
 - **There are two modes: full motion and reduced motion.** Reduced motion
   switches the springs and movements off and keeps at most a short fade.
-- **Reduced motion is used in three cases:** when the device's own
-  setting asks for it, when a person switches it on for a device in our
-  settings, and on a device that is too slow to move things smoothly.
-  This keeps an old tablet fast.
+- **Reduced motion is used in two cases:** when the device's own setting
+  asks for it, and when a person switches it on for a device in our
+  settings. A device is not measured; on an old tablet it is switched on
+  by hand.
 - **Motion never makes a person wait.** An animation does not block
   input: a person can act while it runs.
 - **The desktop launcher appears with a very short animation,** of about
@@ -35,8 +35,6 @@ Status: started. The character of the motion is set. Sound is open.
   from below and a page fades in.
 - **Only sheets and things that are pressed end with the light
   overshoot.** A page settles without it.
-- **A client measures whether its device is too slow for full motion,**
-  and a person can also switch reduced motion on by hand.
 
 ## Sound and vibration
 

@@ -21,8 +21,7 @@ Status: started. The idle screen and the active screen are set.
   timer, the next reminder, the number of items on the shopping list. It
   is a [card](components.md) in its closed form.
 - **A tablet with several assistants shows one figure at a time.** Small
-  dots under it show that there are others, and the figure changes now
-  and then. This is "One at a time" on
+  dots under it show that there are others. This is "One at a time" on
   [the idle figures board](examples/idle-figures-board.html).
 - **The figure lives on the idle screen.** There is no written hint of
   how to call it, since a tablet can have several assistants, each with
@@ -43,8 +42,10 @@ Status: started. The idle screen and the active screen are set.
 - The designs these came from are on
   [the tablet idle board](examples/tablet-idle-board.html) and
   [the tablet board](examples/tablet-board.html).
-- **The figure on the idle screen changes every few minutes,** and a touch
-  on the dots changes it. The assistant that was used last is shown first.
+- **The figure on the idle screen changes by a touch on the dots.** It
+  does not change by itself unless that is switched on, and then it
+  changes every 10 to 15 minutes. This leaves a character free to play
+  an idle animation. The assistant that was used last is shown first.
 - **The clock shifts a little now and then,** to protect the screen.
 - **A tablet that cannot measure the light uses the time of day,** with
   hours that can be set.
@@ -56,3 +57,4 @@ Status: started. The idle screen and the active screen are set.
 
 ## Open questions
 
+- Where is changing the idle figure by itself switched on: per tablet?

@@ -84,8 +84,8 @@ I. A character shows seven states: idle, listening, thinking, speaking,
    muted, waiting and not recognised. This was decided by the agent and
    has not been reviewed. [assistant visuals]
 J. "Two modes" of motion is read as: reduced motion follows the device's
-   setting, can also be switched on per device in our settings, and is
-   used on a device too slow for full motion. [motion]
+   setting and can also be switched on per device in our settings.
+   [motion]
 K. One typeface family is used for everything; headings have no typeface
    of their own. This was decided by the agent. [typography]
 L. The first values of the tokens were chosen by the agent: the greys,
@@ -143,11 +143,6 @@ AI. "Characters" is read as the preferred word for an assistant's look,
 AJ. "The choice screen we have on other devices" is read as the pane of
    the setup of a new device that asks: personal or household. [visual
    voice page]
-AK. Decisions 334 to 383 in [decisions](decisions.md) were made by
-   the agent on 28 November 2026, at the owner's request, and are to be
-   validated by the owner. [visual]
-AL. Vibration is read like sound: off in a conversation unless switched
-   on, and otherwise on. [motion]
 
 ## 1. Now
 
@@ -305,53 +300,57 @@ detail.
 
 32. Agree to the first values, after seeing them in the example
    components and the mockups. [tokens]
-33. Agree to the example components as the base for the rest.
+33. Is a card that was asked for large for 10 or for 20 seconds at
+   first, and where is the time set? [components]
+34. Agree to the example components as the base for the rest.
    [components]
 
 ### Assistant visuals
 
-34. In which style are the full figures drawn, when they are redesigned
+35. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-35. Does a figure have a mouth that moves when it talks, and arms? Both
+36. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-36. Is the figure of the first release a rendered three-dimensional one,
+37. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-37. How much more room does a screen keep for a later figure: how much
+38. How much more room does a screen keep for a later figure: how much
    wider and taller than the figure for now? [assistant visuals]
-38. Who draws the figures, and how many are there in the first release?
+39. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-39. How does a person give their own assistant a look: by choosing from
+40. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-40. How playful is the default household assistant: cute, friendly, or
+41. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-41. May a person bring their own figure, such as a character they like
+42. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-42. From the research: which of the three routes above do the first
+43. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
+44. Where is changing the idle figure by itself switched on: per tablet?
+   [visual tablet]
 
 ### The mockups
 
-43. Agree to each mockup, or say what to change in it. [mockups]
+45. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-44. A search of the trade mark registers of the EU, the Benelux, the UK
+46. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-45. How fast the blur is on an old tablet and in the launcher, measured
+47. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-46. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+48. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-47. How much power a three-dimensional figure uses on an old tablet that
+49. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

@@ -42,7 +42,7 @@ design tokens.
 - **The warning about a colour that is hard to read is under the picker,**
   in the place where it otherwise says that text stays readable.
 - **The wheel works with a keyboard.** The arrow keys move the handle that
-  has the focus, and a value can be typed.
+  has the focus. There is no field to type a value in.
 - **An accent is chosen in the admin panel and on the device itself,** in
   its settings.
 - **A character's colour is picked with the same picker as the accent,**
