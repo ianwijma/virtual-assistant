@@ -48,15 +48,33 @@ combined.
 | An assistant's colour | The backdrop takes the colour of the assistant that is active, so the screen shows who is listening |
 | The shape | A corner and a control shape that are our own |
 
+## Verified and assumed
+
+Checked on 28 November 2026 for eighteen names that mean home, by a web
+search for products, the Rust package index, GitHub and the name records
+of four web addresses each:
+
+- No product in home or assistant software was found under "Heem",
+  "Heemo", "Huize" or "Stekje". An unrelated Dutch app is called "Stek".
+  A Rust package "knus" exists, and KNUSS is a Belgian maker of heated
+  furniture.
+- "Haard", "Thuis", "Honk", "Erf", "Samen", "Nest", "Domi", "Oikos",
+  "Lar" and "Kin" were set aside: each is in use in this field, crowded,
+  hard to say in English, or sounds wrong in English or German.
+- No trade mark register could be reached, so no name is checked there.
+- A missing name record does not prove that a web address is free.
+- How an English speaker says each name is assumed, not tested.
+
 ## Open questions
 
 - Which products do you admire the look of, besides Apple's?
 - What should set the look apart from Apple's, so that it is recognisable
   as ours: the colour, the backdrop, the assistants, the shape, or
   something else? See the table above.
-- Which name is chosen? It means or suggests home, homeliness or
-  family, and may be a Dutch word. A board of candidates, each checked
-  for clashes, is to be made.
+- Which name is chosen? Six candidates that mean home, each with what a
+  quick check found, are on
+  [the second name board](examples/name-board-2.html): Heem, Heemo,
+  Stek, Huize, Stekje and Knus.
 - The glass drop is the faintest of the marks at the size of a small
   icon. Is it made bolder at small sizes, or does a solid form of it
   stand in there?

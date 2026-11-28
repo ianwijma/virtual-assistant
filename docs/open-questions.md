@@ -251,9 +251,9 @@ detail.
 29. What should set the look apart from Apple's, so that it is
    recognisable as ours: the colour, the backdrop, the assistants, the
    shape, or something else? See the table above. [visual identity]
-30. Which name is chosen? It means or suggests home, homeliness or
-   family, and may be a Dutch word. A board of candidates, each checked
-   for clashes, is to be made. [visual identity]
+30. Which name is chosen? Six candidates that mean home, each with what
+   a quick check found, are on the second name board: Heem, Heemo, Stek,
+   Huize, Stekje and Knus. [visual identity]
 31. The glass drop is the faintest of the marks at the size of a small
    icon. Is it made bolder at small sizes, or does a solid form of it
    stand in there? [visual identity]

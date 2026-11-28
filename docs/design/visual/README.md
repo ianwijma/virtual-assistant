@@ -178,6 +178,10 @@ The boards in `examples/`:
 | [motion-board.html](examples/motion-board.html) | Three ways a row lifts into a sheet, as stills and as a live loop | Chosen from |
 | [dark-text-board.html](examples/dark-text-board.html) | Four ways to keep secondary text readable on dark glass | Chosen from |
 | [icon-board.html](examples/icon-board.html) | Three open icon sets in four styles, in a tab bar, a side bar and a row | Chosen from |
+| [name-board-2.html](examples/name-board-2.html) | Six names that mean home, most of them Dutch, with what a quick check found | Waiting for a choice |
+| [accent-start-board.html](examples/accent-start-board.html) | The phone's Overview in each of the five accents, light and dark | Waiting for a choice |
+| [width-board.html](examples/width-board.html) | The settings laid out by the width of the screen, or by the kind of client | Waiting for a choice |
+| [assistant-colour-board.html](examples/assistant-colour-board.html) | Whose colour a shared screen takes: the person's or the assistant's | Waiting for a choice |
 
 No board is waiting to be made. New ones are added here as subjects come
 up.
