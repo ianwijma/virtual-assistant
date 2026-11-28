@@ -4,196 +4,306 @@
 <link rel="stylesheet" href="../examples/tokens.css"><link rel="stylesheet" href="../examples/components.css"><link rel="stylesheet" href="mockup.css">
 <style>
 body { background: var(--bg); }
-.app { position: absolute; inset: 0; display: flex; gap: 12px; padding: 12px; }
-.side { width: 230px; flex: none; display: flex; flex-direction: column; padding: var(--s-3); gap: var(--s-1); }
-.brand { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-1) var(--s-2) var(--s-2); }
-.brand .logo { width: 28px; height: 28px; border-radius: var(--r-sm); background: linear-gradient(160deg, var(--accent-2), var(--accent)); }
-.nav-cap { padding: var(--s-2) var(--s-2) 2px; }
-.nav { display: flex; align-items: center; gap: var(--s-2); height: 30px; padding: 0 var(--s-2); border-radius: var(--r-sm); font: var(--type-label); color: var(--text); }
+.shots { display: grid; grid-template-columns: 590px 590px; gap: 28px 20px; align-items: start; }
+.frame.mini { width: 590px; height: 400px; border-radius: 12px; }
+.in { position: absolute; left: 0; top: 0; width: 738px; height: 500px; zoom: .8; }
+.in > * { position: absolute; }
+.screen > .notes { max-width: none; }
+.grow { flex: 1; min-width: 0; }
+.ell { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ico.ic { border: 0; opacity: 1; background: var(--accent-soft); }
+.nav { display: flex; align-items: center; gap: var(--s-2); height: 24px; padding: 0 var(--s-2); border-radius: var(--r-sm); font: var(--type-label); color: var(--text); white-space: nowrap; }
 .nav.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
-.me { margin-top: auto; display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2); border-top: 1px solid var(--line); }
-.me .avatar { width: 28px; height: 28px; }
-.main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
-.top { display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-3) 0 var(--s-4); height: 52px; flex: none; }
-.top .grow { flex: 1; }
-.top .field { width: 220px; }
-.content { flex: 1; min-height: 0; overflow: hidden; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-4); }
-.sec-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--s-2); }
-.tbl .row { display: grid; grid-template-columns: var(--cols); gap: var(--s-3); align-items: center; }
-.tbl .head { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); min-height: 28px; }
-.tbl .head + .row { border-top: 1px solid var(--line); }
-.cell-who { display: flex; align-items: center; gap: var(--s-2); min-width: 0; }
-.cell-who .avatar { width: 26px; height: 26px; }
-.wait { background: var(--accent-soft); border-radius: var(--r-md); }
-.btn-sm { height: 26px; padding: 0 var(--s-3); }
-.split { flex: 1; min-height: 0; display: flex; gap: 12px; }
-.preview { width: 250px; flex: none; padding: var(--s-4); display: flex; flex-direction: column; align-items: center; gap: var(--s-3); text-align: center; align-self: flex-start; }
-.form { flex: 1; min-width: 0; overflow: hidden; padding: var(--s-4); display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-5); align-content: start; }
-.fcol { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
-.fgroup { display: flex; flex-direction: column; gap: var(--s-2); }
-.fgroup > h3 { font: var(--type-heading); padding-bottom: var(--s-1); border-bottom: 1px solid var(--line); }
-.area { height: 76px; align-items: flex-start; padding-top: var(--s-2); }
-.sw { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); flex: none; }
+.nav.on .ico.ic { background: var(--accent); }
+.cap { padding: var(--s-2) var(--s-2) 2px; }
+.col { display: flex; flex-direction: column; gap: var(--s-2); overflow: hidden; }
+.grp { display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; padding: 2px; }
+.grp .row { min-height: 34px; border-radius: var(--r-md); }
+.row .val { max-width: 55%; color: var(--text-2); }
+.chev { color: var(--text-3); font-weight: 600; flex: none; }
+mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; padding: 0 1px; }
+.person { display: flex; align-items: center; gap: var(--s-2); padding: var(--s-2); }
+.person .avatar { width: 30px; height: 30px; }
+.fld { height: 28px; flex: none; }
+.fld .ph { white-space: nowrap; overflow: hidden; }
+.caret { display: inline-block; width: 1.5px; height: 15px; background: var(--accent); margin-left: 1px; vertical-align: -3px; }
+.head { display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-1); }
+.big { min-height: 54px; padding-top: 4px; padding-bottom: 4px; border-radius: var(--r-md); }
+.big .sub { font-size: 11px; }
+.path { color: var(--text-2); padding: 0 var(--s-1); }
+.empty { align-items: center; justify-content: center; text-align: center; gap: var(--s-2); }
+.btn { height: 28px; }
+.sw { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); flex: none; display: inline-block; }
 .sw.sel { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent); }
-.sw-row { display: flex; gap: var(--s-4); }
-.sw-item { display: flex; flex-direction: column; align-items: center; gap: var(--s-1); }
-.two { display: flex; gap: var(--s-4); flex: 1; min-height: 0; }
-.two > .surface { flex: 1; }
-.upload { height: 90px; border: 1.5px dashed var(--line); border-radius: var(--r-md); display: grid; place-items: center; color: var(--text-2); font: var(--type-label); }
-.reqs { width: 380px; flex: none; border-right: 1px solid var(--line); padding: var(--s-2); }
-.reqs .row { display: grid; grid-template-columns: 44px 1fr 56px; gap: var(--s-2); min-height: 48px; }
-.detail { flex: 1; padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-3); }
-.step { display: grid; grid-template-columns: 150px 1fr 70px; gap: var(--s-3); align-items: center; min-height: 40px; }
-.track { position: relative; height: 12px; border-radius: var(--r-full); background: var(--surface-2); }
-.bar-fill { position: absolute; top: 0; bottom: 0; border-radius: var(--r-full); background: var(--accent); }
-.filters { display: flex; align-items: center; gap: var(--s-2); }
-.sheet { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 560px; padding: var(--s-8); display: flex; flex-direction: column; gap: var(--s-4); }
-.steps { display: flex; justify-content: space-between; gap: var(--s-1); }
-.stp { display: flex; align-items: center; gap: 6px; font: var(--type-caption); color: var(--text-2); }
-.stp i { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-style: normal; background: var(--control); }
-.stp.on { color: var(--text); }
-.stp.on i { background: var(--accent); color: var(--on-accent); }
-.pgrid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
-.phone .app { flex-direction: column; padding: 12px; }
-.phone .top { height: 48px; padding: 0 var(--s-2) 0 var(--s-4); }
-.phone .tabs { display: flex; justify-content: space-around; padding: var(--s-2); flex: none; }
-.phone .tabs > * { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 12px; border-radius: var(--r-md); font: var(--type-caption); color: var(--text-2); }
-.phone .tabs > .on { background: var(--accent-soft); color: var(--accent); }
-.phone .content { padding: var(--s-2); }
-.phone .row { padding: 0 var(--s-2); }
+.sw.s { width: 12px; height: 12px; }
+.swatches { display: flex; gap: var(--s-4); padding: var(--s-3); }
+.swi { display: flex; flex-direction: column; align-items: center; gap: var(--s-1); }
+.lrow { min-height: 46px; padding-top: 4px; padding-bottom: 4px; border-radius: var(--r-md); }
+.lrow .top { display: flex; align-items: baseline; gap: var(--s-2); }
+.tot { font-variant-numeric: tabular-nums; font-weight: 600; flex: none; }
+.strip { display: flex; gap: 1px; height: 4px; margin-top: 4px; }
+.strip i { display: block; border-radius: 2px; min-width: 1px; }
+.n1 { background: color-mix(in srgb, var(--text) 16%, transparent); }
+.n2 { background: color-mix(in srgb, var(--text) 28%, transparent); }
+.ac { background: var(--accent); }
+.wf { display: flex; flex-direction: column; gap: 4px; }
+.wf .l { display: flex; gap: var(--s-2); align-items: baseline; }
+.track { height: 10px; position: relative; border-radius: 5px; background: color-mix(in srgb, var(--text) 8%, transparent); }
+.track i { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
+.pad { padding: 0 var(--s-1); }
+.dots { display: flex; gap: 8px; align-items: center; justify-content: center; }
+.dots i { display: block; width: 8px; height: 8px; border-radius: var(--r-full); border: 1.5px solid var(--text-3); box-sizing: border-box; }
+.dots i.done { background: var(--accent); border-color: var(--accent); }
+.dots i.now { width: 22px; background: var(--accent); border-color: var(--accent); }
+.mid { align-items: center; text-align: center; }
+.sym { width: 56px; height: 56px; border-radius: var(--r-full); background: var(--accent-soft); display: flex; align-items: center; justify-content: center; flex: none; }
+.sym .ico { width: 26px; height: 26px; }
+.fgrid { display: grid; grid-template-columns: 1fr 84px; gap: var(--s-2) var(--s-3); text-align: left; width: 100%; }
+.fgrid .full { grid-column: 1 / -1; }
+.fl { display: flex; flex-direction: column; min-width: 0; }
+.bigbtn { height: 48px; font-size: 17px; border-radius: var(--r-lg); width: 100%; box-sizing: border-box; }
+.link { color: var(--accent); font: var(--type-label); }
+.back { font-size: 24px; line-height: 1; color: var(--accent); }
+.prev { padding: var(--s-5) var(--s-3); display: flex; flex-direction: column; align-items: center; gap: var(--s-2); }
+.formcol { padding: var(--s-3) var(--s-4); overflow: hidden; }
+.sec { margin-bottom: var(--s-2); }
+.sec > .t-heading { margin-bottom: var(--s-2); }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2) var(--s-3); }
+.span2 { grid-column: 1 / -1; }
+.field.ta { height: auto; align-items: flex-start; padding: var(--s-2) var(--s-3); }
+.chips { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.tg .row { padding: 0; min-height: 24px; }
+.phone-col .grp .row { min-height: 20px; height: 20px; padding-top: 0; padding-bottom: 0; }
+.phone-col { gap: 2px; }
+.phone-col .cap { padding-top: 4px; }
+.phone-col .topbar { flex: none; }
+.topbar { display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-3); }
+.phone-col { padding: var(--s-2); gap: var(--s-2); }
 </style></head>
 <body class="va"><div class="mock-page">
-<header><h1>Admin panel</h1><p>The browser application that configures the household: people, devices, assistants, providers and logs, drawn at 1200 by 760 in compact density.</p></header>
+<header><h1>Admin panel</h1><p>The browser application that configures the household. Each screen is drawn at about 1000 by 680 and shown reduced, in compact density, in three columns as decided. Where a screen is not decided, it is drawn as plainly as possible and its note says so.</p></header>
+<div class="shots" id="shots"></div>
+</div>
+<script>
+(function () {
+  var G = [['Household', ['People', 'Devices', 'Assistants']], ['System', ['AI providers', 'Speech', 'Modules', 'Features']], ['Logs', ['Summoning', 'Requests', 'Admin access', 'Audit']], ['Feedback', ['Feedback']]];
+  var IC = '<span class="ico ic"></span>', LENS = '<span class="ico"></span>';
+  function at(s) { return ' style="' + s + '"'; }
+  function ab(s) { return at(s) + '>'; }
+  function ch(size, cls) { return '<span class="character' + (cls ? ' ' + cls : '') + '" style="--size:' + size + 'px"></span>'; }
+  function fig(size) { return '<span class="figure" style="--size:' + size + 'px"><span class="character" style="--size:' + size + 'px"></span></span>'; }
+  function nav(n, on) { return '<div class="nav' + (on ? ' on' : '') + '">' + IC + n + '</div>'; }
+  function navGroups(cur) {
+    return G.map(function (g) {
+      return (g[0] === 'Feedback' ? '<div style="height:6px"></div>' : '<div class="t-caption cap">' + g[0] + '</div>') + g[1].map(function (n) { return nav(n, n === cur); }).join('');
+    }).join('');
+  }
+  function side(cur, q) {
+    var f = q ? '<span class="grow">' + q + '<span class="caret"></span></span>' : '<span class="ph grow">Search settings</span>';
+    return '<aside class="glass col"' + ab('left:10px;top:10px;bottom:10px;width:160px;padding:var(--s-2);gap:0') +
+      '<div class="field fld">' + LENS + f + '</div><div style="height:6px"></div>' +
+      '<div class="person"><span class="avatar">A</span><div class="t-label" style="font-weight:600">Alex &middot; Admin</div></div>' + navGroups(cur) + '</aside>';
+  }
+  function row(label, val, o) {
+    o = o || {};
+    return '<div class="row"><span class="ico ic"></span><div class="grow ell">' + label + '</div>' + (val ? '<span class="val ell">' + val + '</span>' : '') + (o.t ? '<span class="toggle on"></span>' : '<span class="chev">&rsaquo;</span>') + '</div>';
+  }
+  function grp(rows) { return '<div class="grp surface">' + rows.join('') + '</div>'; }
+  function bigRow(avatar, title, sub, sel, extra) {
+    return '<div class="row big' + (sel ? ' is-selected' : '') + '">' + avatar + '<div class="grow"><div class="t-strong ell">' + title + '</div><div class="sub ell">' + sub + '</div></div>' + (extra || '') + '</div>';
+  }
+  function av(l) { return '<span class="avatar" style="width:32px;height:32px">' + l + '</span>'; }
+  function listCol(title, rows, addLabel, w) {
+    return '<section class="col"' + ab('left:180px;top:10px;bottom:10px;width:' + (w || 220) + 'px;gap:2px') +
+      '<div class="t-heading" style="padding:var(--s-1) var(--s-2) var(--s-2)">' + title + '</div>' + rows.join('') +
+      '<div class="grow"></div>' + (addLabel ? '<span class="btn">' + addLabel + '</span>' : '') + '</section>';
+  }
+  var PG = 'left:410px;right:10px;top:14px;bottom:10px;padding:0 var(--s-1);gap:var(--s-3)';
+  function path(s) { return '<div class="t-label path">' + s + '</div>'; }
+  function quiet(title, sub) {
+    return '<main class="col empty"' + ab('left:410px;right:10px;top:10px;bottom:10px') + '<div class="t-heading">' + title + '</div><div class="t-label t-2">' + sub + '</div></main>';
+  }
 
-<figure class="screen">
- <figcaption><h2>1. Devices</h2><p>Every device in the household, and the ones waiting to be approved.</p></figcaption>
- <div class="frames"><div class="frame browser backdrop compact"><div class="app"><aside class="side glass">
- <div class="brand"><span class="logo"></span><div><div class="t-strong">Home</div><div class="t-label t-2">Admin panel</div></div></div>
- <div class="t-caption nav-cap">Household</div><div class="nav"><span class="ico"></span>People</div><div class="nav on"><span class="ico"></span>Devices</div><div class="nav"><span class="ico"></span>Assistants</div>
- <div class="t-caption nav-cap">System</div><div class="nav"><span class="ico"></span>AI providers</div><div class="nav"><span class="ico"></span>Speech</div><div class="nav"><span class="ico"></span>Modules</div><div class="nav"><span class="ico"></span>Features</div>
- <div class="t-caption nav-cap">Logs</div><div class="nav"><span class="ico"></span>Summoning</div><div class="nav"><span class="ico"></span>Requests</div><div class="nav"><span class="ico"></span>Admin access</div><div class="nav"><span class="ico"></span>Audit</div>
- <div class="t-caption nav-cap">&nbsp;</div><div class="nav"><span class="ico"></span>Feedback</div>
- <div class="me"><span class="avatar">A</span><div class="grow"><div class="t-label" style="font-weight:600">Alex</div><div class="t-caption" style="text-transform:none;letter-spacing:0">Admin</div></div></div>
-</aside><div class="main"><header class="top glass"><div class="t-heading grow">Devices</div><div class="field"><span class="ico"></span><span class="ph">Search</span></div><button class="btn btn-primary">Invite a household device</button></header><div class="content surface">
- <section><div class="sec-h"><div class="t-heading">Waiting for approval</div><span class="t-label t-2">1 device</span></div>
-  <div class="wait row"><span class="ico"></span><div class="grow"><span class="t-strong">Bedroom tablet</span><span class="sub">Household tablet · asked 4 minutes ago with invite from Alex</span></div>
-   <span class="chip warning"><i class="dot"></i>Waiting for approval</span><button class="btn btn-primary btn-sm">Approve</button><button class="btn btn-sm">Reject</button></div></section>
- <section class="fill"><div class="sec-h"><div class="t-heading">All devices</div><span class="t-label t-2">6 devices</span></div>
-  <div class="tbl list" style="--cols: 1.4fr 1.2fr 1fr 1.6fr 1fr">
-   <div class="row head"><span>Name</span><span>Kind</span><span>Owner</span><span>Status</span><span>Last seen</span></div>
-   <div class="row"><span class="t-strong">Alex's laptop</span><span>Desktop</span><span class="t-2">Alex</span><span><span class="chip success"><i class="dot"></i>Online</span></span><span class="t-2">Now</span></div><div class="row"><span class="t-strong">Alex's phone</span><span>Phone</span><span class="t-2">Alex</span><span><span class="chip success"><i class="dot"></i>Online</span></span><span class="t-2">2 min ago</span></div><div class="row"><span class="t-strong">Sam's phone</span><span>Phone</span><span class="t-2">Sam</span><span><span class="chip"><i class="dot"></i>Offline</span></span><span class="t-2">Yesterday</span></div><div class="row"><span class="t-strong">Kitchen tablet</span><span>Household tablet</span><span class="t-2">Household</span><span><span class="chip success"><i class="dot"></i>Online</span></span><span class="t-2">Now</span></div><div class="row"><span class="t-strong">Hall tablet</span><span>Household tablet</span><span class="t-2">Household</span><span><span class="chip"><i class="dot"></i>Offline</span></span><span class="t-2">3 days ago</span></div><div class="row"><span class="t-strong">Lounge voice page</span><span>Voice page</span><span class="t-2">Household</span><span><span class="chip success"><i class="dot"></i>Online</span></span><span class="t-2">10 min ago</span></div></div></section></div></div></div></div></div>
- <div class="notes"><div class="note">Side bar (glass, 230px, 12px inset): household name, navigation groups, signed-in person at the bottom. It is the same on every screen; the current item is tinted with the accent. A member who is not an admin sees only the "My settings" items (their own profile, devices, assistants and accent), not the Household, System or Logs groups.</div><div class="note">Top bar (glass): page title, a search field that filters the list on the page, and the one primary action of the screen.</div><div class="note">"Waiting for approval" shows only when a household device has asked to join. Approve makes it a household device; Reject removes the request. The section is hidden when empty.</div><div class="note">The list is plain and not glass. Status always carries a word and a dot, never colour alone. A row opens that device's settings. Columns: name, kind, owner (a person or Household), status, last seen.</div></div>
-</figure>
-<figure class="screen">
- <figcaption><h2>2. People</h2><p>The people of the household, their role and how they are recognised.</p></figcaption>
- <div class="frames"><div class="frame browser backdrop compact"><div class="app"><aside class="side glass">
- <div class="brand"><span class="logo"></span><div><div class="t-strong">Home</div><div class="t-label t-2">Admin panel</div></div></div>
- <div class="t-caption nav-cap">Household</div><div class="nav on"><span class="ico"></span>People</div><div class="nav"><span class="ico"></span>Devices</div><div class="nav"><span class="ico"></span>Assistants</div>
- <div class="t-caption nav-cap">System</div><div class="nav"><span class="ico"></span>AI providers</div><div class="nav"><span class="ico"></span>Speech</div><div class="nav"><span class="ico"></span>Modules</div><div class="nav"><span class="ico"></span>Features</div>
- <div class="t-caption nav-cap">Logs</div><div class="nav"><span class="ico"></span>Summoning</div><div class="nav"><span class="ico"></span>Requests</div><div class="nav"><span class="ico"></span>Admin access</div><div class="nav"><span class="ico"></span>Audit</div>
- <div class="t-caption nav-cap">&nbsp;</div><div class="nav"><span class="ico"></span>Feedback</div>
- <div class="me"><span class="avatar">A</span><div class="grow"><div class="t-label" style="font-weight:600">Alex</div><div class="t-caption" style="text-transform:none;letter-spacing:0">Admin</div></div></div>
-</aside><div class="main"><header class="top glass"><div class="t-heading grow">People</div><div class="field"><span class="ico"></span><span class="ph">Search</span></div><button class="btn btn-primary">Invite a person</button></header><div class="content surface"><div class="tbl list" style="--cols: 1.4fr 2fr .8fr 1fr .6fr">
- <div class="row head"><span>Person</span><span>Email</span><span>Role</span><span>Accent</span><span>Devices</span></div>
- <div class="row"><div class="cell-who"><span class="avatar">A</span><div style="min-width:0"><div class="t-strong">Alex</div></div></div><span class="t-2">alex@home.example</span><span><span class="chip accent">Admin</span></span><span class="cell-who"><i class="sw accent-tide" style="width:12px;height:12px"></i><span class="t-2">Tide</span></span><span class="num">3</span></div><div class="row"><div class="cell-who"><span class="avatar">S</span><div style="min-width:0"><div class="t-strong">Sam</div></div></div><span class="t-2">sam@home.example</span><span><span class="chip">Member</span></span><span class="cell-who"><i class="sw accent-ember" style="width:12px;height:12px"></i><span class="t-2">Ember</span></span><span class="num">2</span></div><div class="row"><div class="cell-who"><span class="avatar">J</span><div style="min-width:0"><div class="t-strong">Jo</div></div></div><span class="t-2">jo@home.example</span><span><span class="chip">Member</span></span><span class="cell-who"><i class="sw accent-aurora" style="width:12px;height:12px"></i><span class="t-2">Aurora</span></span><span class="num">1</span></div><div class="row"><div class="cell-who"><span class="avatar">K</span><div style="min-width:0"><div class="t-strong">Kit</div></div></div><span class="t-2">kit@home.example</span><span><span class="chip">Member</span></span><span class="cell-who"><i class="sw accent-moss" style="width:12px;height:12px"></i><span class="t-2">Moss</span></span><span class="num">0</span></div></div></div></div></div></div></div>
- <div class="notes"><div class="note">Rows are plain. Each shows avatar, name, email, role chip (Admin or Member), the person's accent as a dot with its name, and the number of devices. A row opens that person's page.</div><div class="note">Invite a person opens a sheet asking for an email address and a role; the invitee signs in with a one-time code sent to that address.</div><div class="note">The accent dot is the colour that marks the person wherever they are recognised (see the Appearance screen).</div></div>
-</figure>
-<figure class="screen">
- <figcaption><h2>3. Edit an assistant</h2><p>Change who an assistant is, what it can do and where it runs.</p></figcaption>
- <div class="frames"><div class="frame browser backdrop compact"><div class="app"><aside class="side glass">
- <div class="brand"><span class="logo"></span><div><div class="t-strong">Home</div><div class="t-label t-2">Admin panel</div></div></div>
- <div class="t-caption nav-cap">Household</div><div class="nav"><span class="ico"></span>People</div><div class="nav"><span class="ico"></span>Devices</div><div class="nav on"><span class="ico"></span>Assistants</div>
- <div class="t-caption nav-cap">System</div><div class="nav"><span class="ico"></span>AI providers</div><div class="nav"><span class="ico"></span>Speech</div><div class="nav"><span class="ico"></span>Modules</div><div class="nav"><span class="ico"></span>Features</div>
- <div class="t-caption nav-cap">Logs</div><div class="nav"><span class="ico"></span>Summoning</div><div class="nav"><span class="ico"></span>Requests</div><div class="nav"><span class="ico"></span>Admin access</div><div class="nav"><span class="ico"></span>Audit</div>
- <div class="t-caption nav-cap">&nbsp;</div><div class="nav"><span class="ico"></span>Feedback</div>
- <div class="me"><span class="avatar">A</span><div class="grow"><div class="t-label" style="font-weight:600">Alex</div><div class="t-caption" style="text-transform:none;letter-spacing:0">Admin</div></div></div>
-</aside><div class="main"><header class="top glass"><div class="t-heading grow">Assistants / Juno</div><div class="field"><span class="ico"></span><span class="ph">Search</span></div><button class="btn btn-primary">Save</button></header><div class="split">
- <aside class="preview glass"><span class="character listening" style="--size:120px"></span><div class="t-heading">Juno</div><div class="t-label t-2">Say: Hey Juno</div><span class="chip accent">Household assistant</span></aside>
- <div class="form surface">
-  <div class="fcol">
-   <div class="fgroup"><h3>Identity</h3>
-    <div><label class="field-label">Name</label><div class="field">Juno</div></div>
-    <div><label class="field-label">Wake words</label><div class="field">Hey Juno</div></div>
-    <div><label class="field-label">Voice</label><div class="field">Warm, calm (local)<span class="grow"></span><span class="ico"></span></div></div>
-    <div><label class="field-label">Language</label><div class="field">English (UK)<span class="grow"></span><span class="ico"></span></div></div>
-    <div><label class="field-label">Personality</label><div class="field area">Friendly and brief. Light humour. Never pushy.</div></div></div>
-   <div class="fgroup"><h3>Brain</h3><div><label class="field-label">AI provider</label><div class="field">Local model (small)<span class="grow"></span><span class="ico"></span></div></div></div>
-  </div>
-  <div class="fcol">
-   <div class="fgroup"><h3>Abilities</h3><div class="list inset"><div class="row"><span class="ico"></span><span class="grow">Lists</span><span class="toggle on"></span></div><div class="row"><span class="ico"></span><span class="grow">Timers</span><span class="toggle on"></span></div><div class="row"><span class="ico"></span><span class="grow">Notifications</span><span class="toggle on"></span></div><div class="row"><span class="ico"></span><span class="grow">Clipboard</span><span class="toggle"></span></div><div class="row"><span class="ico"></span><span class="grow">Email</span><span class="toggle"></span></div></div></div>
-   <div class="fgroup"><h3>Scope</h3><div class="segmented"><span class="on">Household</span><span>One person</span></div></div>
-   <div class="fgroup"><h3>Guest</h3><div class="row" style="padding:0"><span class="grow">Answers guests</span><span class="toggle"></span></div></div>
-   <div class="fgroup"><h3>Devices it is on</h3><div style="display:flex;flex-wrap:wrap;gap:var(--s-2)"><span class="chip accent">Kitchen tablet</span><span class="chip accent">Lounge voice page</span><span class="chip accent">Alex's phone</span><span class="chip">Add a device</span></div></div>
-  </div></div></div></div></div></div></div>
- <div class="notes"><div class="note">Left: a preview card (glass, because it floats on the backdrop) with the character at 120px, the name and the wake phrase. It updates as the name, wake words or voice change, and the character shows its listening state.</div><div class="note">Right: a plain form in sections that follow the assistant model: Identity, Brain, Abilities, Scope, Guest, Devices it is on. The form is two columns inside the surface.</div><div class="note">Abilities are toggle rows, one per module. Scope is a segmented control: Household or One person. Guest is one toggle: "Answers guests". Devices is a set of chips; the last chip adds a device.</div><div class="note">Save is the one primary action and is in the top bar. It stays disabled until something changes; each save is written to the audit log.</div></div>
-</figure>
-<figure class="screen">
- <figcaption><h2>4. Appearance</h2><p>The accent cascade, motion and the tablet wallpaper.</p></figcaption>
- <div class="frames"><div class="frame browser backdrop compact"><div class="app"><aside class="side glass">
- <div class="brand"><span class="logo"></span><div><div class="t-strong">Home</div><div class="t-label t-2">Admin panel</div></div></div>
- <div class="t-caption nav-cap">Household</div><div class="nav"><span class="ico"></span>People</div><div class="nav"><span class="ico"></span>Devices</div><div class="nav"><span class="ico"></span>Assistants</div>
- <div class="t-caption nav-cap">System</div><div class="nav"><span class="ico"></span>AI providers</div><div class="nav"><span class="ico"></span>Speech</div><div class="nav"><span class="ico"></span>Modules</div><div class="nav on"><span class="ico"></span>Features</div>
- <div class="t-caption nav-cap">Logs</div><div class="nav"><span class="ico"></span>Summoning</div><div class="nav"><span class="ico"></span>Requests</div><div class="nav"><span class="ico"></span>Admin access</div><div class="nav"><span class="ico"></span>Audit</div>
- <div class="t-caption nav-cap">&nbsp;</div><div class="nav"><span class="ico"></span>Feedback</div>
- <div class="me"><span class="avatar">A</span><div class="grow"><div class="t-label" style="font-weight:600">Alex</div><div class="t-caption" style="text-transform:none;letter-spacing:0">Admin</div></div></div>
-</aside><div class="main"><header class="top glass"><div class="t-heading grow">Appearance</div><div class="field"><span class="ico"></span><span class="ph">Search</span></div><button class="btn btn-primary">Save</button></header><div class="content surface" style="flex-direction:row;gap:var(--s-8)">
- <div class="col" style="flex:1;gap:var(--s-6)">
-  <section class="fgroup"><div class="t-heading">Household accent</div><div class="t-label t-2">Used on every device unless something more specific is set.</div><div class="sw-row"><div class="sw-item"><span class="sw accent-tide sel"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Tide</span></div><div class="sw-item"><span class="sw accent-ember"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Ember</span></div><div class="sw-item"><span class="sw accent-aurora"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Aurora</span></div><div class="sw-item"><span class="sw accent-moss"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Moss</span></div><div class="sw-item"><span class="sw accent-graphite"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Graphite</span></div></div></section>
-  <hr class="divider"><section class="fgroup"><div class="t-heading">This device's accent (overrides the household's)</div><div class="t-label t-2">Applies to this device only.</div><div class="sw-row"><div class="sw-item"><span class="sw accent-tide"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Tide</span></div><div class="sw-item"><span class="sw accent-ember"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Ember</span></div><div class="sw-item"><span class="sw accent-aurora"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Aurora</span></div><div class="sw-item"><span class="sw accent-moss sel"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Moss</span></div><div class="sw-item"><span class="sw accent-graphite"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Graphite</span></div></div></section>
-  <hr class="divider"><section class="fgroup"><div class="t-heading">Your accent (shown wherever you are recognised)</div><div class="t-label t-2">Wins over the device's and the household's, on any device you use.</div><div class="sw-row"><div class="sw-item"><span class="sw accent-tide"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Tide</span></div><div class="sw-item"><span class="sw accent-ember sel"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Ember</span></div><div class="sw-item"><span class="sw accent-aurora"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Aurora</span></div><div class="sw-item"><span class="sw accent-moss"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Moss</span></div><div class="sw-item"><span class="sw accent-graphite"></span><span class="t-caption" style="text-transform:none;letter-spacing:0">Graphite</span></div></div></section>
- </div>
- <div class="col" style="width:340px;gap:var(--s-6)">
-  <section class="fgroup"><div class="t-heading">Motion</div><div class="row" style="padding:0"><span class="grow">Reduced motion on this device<span class="sub">Calms the character and removes slides</span></span><span class="toggle"></span></div></section>
-  <section class="fgroup"><div class="t-heading">Wallpaper of household tablets</div><div class="upload">Drop a picture here, or choose a file</div><div class="t-label t-2">Shown behind the glass while no assistant is active.</div></section>
-  <section class="fgroup"><div class="t-heading">Light and dark</div><div class="t-label t-2">Follows each device. It cannot be chosen here.</div></section>
- </div></div></div></div></div></div>
- <div class="notes"><div class="note">Three plain sections show the cascade from least to most specific: household, this device, you. Each is a row of five swatches (Tide, Ember, Aurora, Moss, Graphite); the selected one has a ring in the accent colour. A swatch is a circle filled with that accent.</div><div class="note">The most specific accent set wins. On a household device the accent changes to a person's own while that person is recognised.</div><div class="note">Reduced motion applies to this browser or device only. The wallpaper upload is for household tablets and is shown while no assistant is active; the upload placeholder takes one picture.</div><div class="note">Light and dark follow the device and cannot be chosen; the panel says so instead of showing a switch.</div></div>
-</figure>
-<figure class="screen">
- <figcaption><h2>5. Request timeline</h2><p>How long each step of one request took, to see where time goes.</p></figcaption>
- <div class="frames"><div class="frame browser backdrop compact"><div class="app"><aside class="side glass">
- <div class="brand"><span class="logo"></span><div><div class="t-strong">Home</div><div class="t-label t-2">Admin panel</div></div></div>
- <div class="t-caption nav-cap">Household</div><div class="nav"><span class="ico"></span>People</div><div class="nav"><span class="ico"></span>Devices</div><div class="nav"><span class="ico"></span>Assistants</div>
- <div class="t-caption nav-cap">System</div><div class="nav"><span class="ico"></span>AI providers</div><div class="nav"><span class="ico"></span>Speech</div><div class="nav"><span class="ico"></span>Modules</div><div class="nav"><span class="ico"></span>Features</div>
- <div class="t-caption nav-cap">Logs</div><div class="nav"><span class="ico"></span>Summoning</div><div class="nav on"><span class="ico"></span>Requests</div><div class="nav"><span class="ico"></span>Admin access</div><div class="nav"><span class="ico"></span>Audit</div>
- <div class="t-caption nav-cap">&nbsp;</div><div class="nav"><span class="ico"></span>Feedback</div>
- <div class="me"><span class="avatar">A</span><div class="grow"><div class="t-label" style="font-weight:600">Alex</div><div class="t-caption" style="text-transform:none;letter-spacing:0">Admin</div></div></div>
-</aside><div class="main"><header class="top glass"><div class="t-heading grow">Requests</div><div class="field"><span class="ico"></span><span class="ph">Search</span></div><button class="btn btn-primary">Export</button></header><div class="content surface" style="flex-direction:row;padding:0;gap:0">
- <div class="reqs list inset"><div class="row is-selected"><span class="t-mono">09:14</span><div class="grow"><div class="t-strong">Add milk to the shopping list</div><span class="sub">Alex · Kitchen tablet</span></div><span class="t-mono">2.8 s</span></div><div class="row"><span class="t-mono">09:02</span><div class="grow"><div class="t-strong">Set a timer for ten minutes</div><span class="sub">Sam · Sam's phone</span></div><span class="t-mono">1.9 s</span></div><div class="row"><span class="t-mono">08:47</span><div class="grow"><div class="t-strong">What is the weather today</div><span class="sub">Guest · Lounge voice page</span></div><span class="t-mono">3.4 s</span></div><div class="row"><span class="t-mono">08:31</span><div class="grow"><div class="t-strong">Read my notifications</div><span class="sub">Alex · Alex's laptop</span></div><span class="t-mono">2.2 s</span></div><div class="row"><span class="t-mono">08:05</span><div class="grow"><div class="t-strong">Turn on the lights</div><span class="sub">Jo · Hall tablet</span></div><span class="t-mono">1.6 s</span></div><div class="row"><span class="t-mono">07:58</span><div class="grow"><div class="t-strong">Remind me to call mum</div><span class="sub">Sam · Sam's phone</span></div><span class="t-mono">2.1 s</span></div></div>
- <div class="detail"><div><div class="t-title">Add milk to the shopping list</div><div class="t-label t-2">09:14 · Alex · Kitchen tablet · Juno</div></div>
-  <hr class="divider"><div class="step"><span class="t-label">Wake word</span><div class="track"><div class="bar-fill" style="left:0.0%;width:4.2%"></div></div><span class="t-mono" style="text-align:right">120 ms</span></div><div class="step"><span class="t-label">Speaker identified</span><div class="track"><div class="bar-fill" style="left:4.2%;width:4.9%"></div></div><span class="t-mono" style="text-align:right">140 ms</span></div><div class="step"><span class="t-label">Speech to text</span><div class="track"><div class="bar-fill" style="left:9.2%;width:18.3%"></div></div><span class="t-mono" style="text-align:right">520 ms</span></div><div class="step"><span class="t-label">AI model</span><div class="track"><div class="bar-fill" style="left:27.5%;width:44.7%"></div></div><span class="t-mono" style="text-align:right">1270 ms</span></div><div class="step"><span class="t-label">Tools called</span><div class="track"><div class="bar-fill" style="left:72.2%;width:12.0%"></div></div><span class="t-mono" style="text-align:right">340 ms</span></div><div class="step"><span class="t-label">Text to speech</span><div class="track"><div class="bar-fill" style="left:84.2%;width:15.8%"></div></div><span class="t-mono" style="text-align:right">450 ms</span></div><hr class="divider">
-  <div class="step"><span class="t-strong">Total</span><span></span><span class="t-mono" style="text-align:right">2840 ms</span></div>
-  <div class="t-label t-2">Tools called: lists.add_item (340 ms). Bars start where each step started.</div></div></div></div></div></div></div>
- <div class="notes"><div class="note">Left: the recent requests, newest first, in a plain list: time, person, device, the first words, and the total duration in monospace. The selected row is tinted with the accent. The list updates live and loads older requests when scrolled.</div><div class="note">Right: the selected request as a timeline. Each step (Wake word, Speaker identified, Speech to text, AI model, Tools called, Text to speech) is a row with a bar and its milliseconds. A bar starts at the offset where the step began, so gaps and overlaps are visible. Steps that did not run are shown greyed.</div><div class="note">No glass inside the content. The primary action here is Export (the request as JSON for a bug report).</div></div>
-</figure>
-<figure class="screen">
- <figcaption><h2>6. Audit log</h2><p>Every settings change, with who made it, and a way to undo it.</p></figcaption>
- <div class="frames"><div class="frame browser backdrop compact"><div class="app"><aside class="side glass">
- <div class="brand"><span class="logo"></span><div><div class="t-strong">Home</div><div class="t-label t-2">Admin panel</div></div></div>
- <div class="t-caption nav-cap">Household</div><div class="nav"><span class="ico"></span>People</div><div class="nav"><span class="ico"></span>Devices</div><div class="nav"><span class="ico"></span>Assistants</div>
- <div class="t-caption nav-cap">System</div><div class="nav"><span class="ico"></span>AI providers</div><div class="nav"><span class="ico"></span>Speech</div><div class="nav"><span class="ico"></span>Modules</div><div class="nav"><span class="ico"></span>Features</div>
- <div class="t-caption nav-cap">Logs</div><div class="nav"><span class="ico"></span>Summoning</div><div class="nav"><span class="ico"></span>Requests</div><div class="nav"><span class="ico"></span>Admin access</div><div class="nav on"><span class="ico"></span>Audit</div>
- <div class="t-caption nav-cap">&nbsp;</div><div class="nav"><span class="ico"></span>Feedback</div>
- <div class="me"><span class="avatar">A</span><div class="grow"><div class="t-label" style="font-weight:600">Alex</div><div class="t-caption" style="text-transform:none;letter-spacing:0">Admin</div></div></div>
-</aside><div class="main"><header class="top glass"><div class="t-heading grow">Audit</div><div class="field"><span class="ico"></span><span class="ph">Search</span></div></header><div class="content surface" style="gap:var(--s-3)">
- <div class="filters"><div class="field" style="width:220px"><span class="ico"></span><span class="ph">Search changes</span></div><div class="segmented"><span class="on">All people</span><span>Alex</span><span>Sam</span></div><div class="field" style="width:150px">Last 7 days<span class="grow"></span><span class="ico"></span></div><span class="grow" style="flex:1"></span><span class="t-label t-2">9 changes</span></div>
- <div class="tbl list" style="--cols: 130px 140px 1.6fr 1.4fr 80px">
- <div class="row head"><span>Time</span><span>Who</span><span>What changed</span><span>Old → new</span><span></span></div><div class="row"><span class="t-mono t-2">09:20</span><span class="cell-who"><span class="avatar">A</span>Alex</span><span>Juno: Email ability</span><span class="t-mono">off → on</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div><div class="row"><span class="t-mono t-2">09:12</span><span class="cell-who"><span class="avatar">A</span>Alex</span><span>Household accent</span><span class="t-mono">Aurora → Tide</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div><div class="row"><span class="t-mono t-2">Yesterday 20:41</span><span class="cell-who"><span class="avatar">S</span>Sam</span><span>Sam's accent</span><span class="t-mono">Tide → Ember</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div><div class="row"><span class="t-mono t-2">Yesterday 18:03</span><span class="cell-who"><span class="avatar">A</span>Alex</span><span>Kitchen tablet: wake word listening</span><span class="t-mono">off → on</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div><div class="row"><span class="t-mono t-2">Yesterday 18:01</span><span class="cell-who"><span class="avatar">A</span>Alex</span><span>Bedroom tablet approved</span><span class="t-mono">pending → approved</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div><div class="row"><span class="t-mono t-2">Mon 07:30</span><span class="cell-who"><span class="avatar">A</span>Alex</span><span>Juno: AI provider</span><span class="t-mono">Local small → Local medium</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div><div class="row"><span class="t-mono t-2">Mon 07:25</span><span class="cell-who"><span class="avatar">A</span>Alex</span><span>Speech: voice</span><span class="t-mono">Plain → Warm, calm</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div><div class="row"><span class="t-mono t-2">Sun 21:10</span><span class="cell-who"><span class="avatar">A</span>Alex</span><span>Jo: role</span><span class="t-mono">Admin → Member</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div><div class="row"><span class="t-mono t-2">Sun 21:02</span><span class="cell-who"><span class="avatar">A</span>Alex</span><span>Invite sent: kit@home.example</span><span class="t-mono">none → Member</span><span style="text-align:right"><button class="btn btn-sm">Undo</button></span></div></div></div></div></div></div></div>
- <div class="notes"><div class="note">Filter bar: a text search, a person filter (segmented) and a date range. Filters apply to the table at once.</div><div class="note">The table is dense and plain: time, who, what changed, and old → new value in monospace. Newest first, with more rows loaded as it scrolls.</div><div class="note">Undo restores the old value and writes a new row to the log; it never deletes the original row. The button is disabled when the old value no longer applies. There is no primary action on this screen.</div></div>
-</figure>
-<figure class="screen">
- <figcaption><h2>7. First-run setup</h2><p>The first screen of a new server: step 1 of 5.</p></figcaption>
- <div class="frames"><div class="frame browser backdrop compact"><div class="sheet glass-thick"><div class="steps"><span class="stp on"><i>1</i>Mail account</span><span class="stp"><i>2</i>Your account</span><span class="stp"><i>3</i>Household</span><span class="stp"><i>4</i>AI provider</span><span class="stp"><i>5</i>Speech</span></div><hr class="divider">
- <div><div class="t-title">Mail account</div><div class="t-label t-2" style="margin-top:4px">Sign-in codes are sent from this account. It is set first, so your own code proves it works.</div></div>
- <div><label class="field-label">Mail server</label><div class="field">smtp.example.com</div></div><div><label class="field-label">Port</label><div class="field">587</div></div><div><label class="field-label">Username</label><div class="field">home@example.com</div></div><div><label class="field-label">Password</label><div class="field">••••••••••</div></div><div><label class="field-label">Send codes from</label><div class="field">Home <home@example.com></div></div>
- <div style="display:flex;justify-content:space-between;align-items:center"><button class="btn">Send a test mail</button><button class="btn btn-primary">Continue</button></div></div></div></div>
- <div class="notes"><div class="note">No side bar or top bar: the setup is one centred glass sheet (560px) on the backdrop, because nothing is configured yet. The accent is the default one.</div><div class="note">Step indicator across the top: Mail account, Your account, Household, AI provider, Speech. The current step is filled with the accent; earlier steps show a tick and can be revisited.</div><div class="note">Step 1 asks for the mail account. "Send a test mail" is a quiet action; Continue is the one primary action and is enabled once a test mail has been sent.</div></div>
-</figure>
-<figure class="screen">
- <figcaption><h2>8. Narrow width</h2><p>The People screen on a phone, to show how the shell collapses.</p></figcaption>
- <div class="frames"><div class="frame phone backdrop compact"><div class="app"><div class="main"><header class="top glass"><span class="btn btn-icon btn-quiet" style="width:32px"><span class="ico"></span></span><div class="t-heading grow">People</div><span class="btn btn-primary btn-icon" style="width:32px">+</span></header>
- <div class="content surface"><div class="field"><span class="ico"></span><span class="ph">Search</span></div><div class="list"><div class="row" style="min-height:56px"><span class="avatar">A</span><div class="grow"><div class="t-strong">Alex</div><span class="sub">alex@home.example</span></div><span class="chip accent">Admin</span></div><div class="row" style="min-height:56px"><span class="avatar">S</span><div class="grow"><div class="t-strong">Sam</div><span class="sub">sam@home.example</span></div><span class="chip">Member</span></div><div class="row" style="min-height:56px"><span class="avatar">J</span><div class="grow"><div class="t-strong">Jo</div><span class="sub">jo@home.example</span></div><span class="chip">Member</span></div><div class="row" style="min-height:56px"><span class="avatar">K</span><div class="grow"><div class="t-strong">Kit</div><span class="sub">kit@home.example</span></div><span class="chip">Member</span></div></div></div>
- <nav class="tabs glass-thick" style="border-radius:var(--r-xl)"><div class="on"><span class="ico"></span>People</div><div><span class="ico"></span>Devices</div><div><span class="ico"></span>Assistants</div><div><span class="ico"></span>More</div></nav></div></div></div></div>
- <div class="notes"><div class="note">The side bar becomes a floating glass bottom tab bar with four tabs: People, Devices, Assistants and More. More opens a glass sheet with the rest of the navigation groups (System, Logs, Feedback) and the signed-in person.</div><div class="note">The top bar stays: a menu button on the left (opens the same sheet as More), the title, and the primary action shrunk to an icon button (here +, Invite a person).</div><div class="note">Tables become two-line rows: name and email on the left, the role chip on the right. The collapse happens below about 700px of width.</div></div>
-</figure>
-</div></body></html>
+  /* 1 Devices */
+  function devices() {
+    var rows = [
+      '<div class="t-caption cap">Waiting for approval</div>',
+      bigRow(IC, 'Bedroom tablet', 'Household tablet', 1, '<span class="chip warning"><i class="dot"></i>Waiting</span>'),
+      '<div class="t-caption cap">All devices</div>',
+      bigRow(IC, 'Alex&rsquo;s laptop', 'Desktop', 0, '<span class="chip success"><i class="dot"></i>Online</span>'),
+      bigRow(IC, 'Alex&rsquo;s phone', 'Phone', 0, '<span class="chip success"><i class="dot"></i>Online</span>'),
+      bigRow(IC, 'Sam&rsquo;s phone', 'Phone', 0, '<span class="chip"><i class="dot"></i>Offline</span>'),
+      bigRow(IC, 'Kitchen tablet', 'Household tablet', 0, '<span class="chip success"><i class="dot"></i>Online</span>'),
+      bigRow(IC, 'Hall tablet', 'Household tablet', 0, '<span class="chip"><i class="dot"></i>Offline</span>')
+    ];
+    return side('Devices') + listCol('Devices', rows, 'Invite a household device', 250) +
+      '<main class="col"' + ab(PG.replace('410px', '440px')) + path('Devices &rsaquo; Bedroom tablet') +
+      '<div class="head">' + '<span class="ico ic" style="width:44px;height:44px"></span><div><div class="t-title">Bedroom tablet</div><div class="t-label t-2">Asked 4 minutes ago</div></div></div>' +
+      grp([row('Kind', 'Household tablet'), row('Invite', 'From Alex'), row('Status', 'Waiting for approval')]) +
+      '<div style="display:flex;gap:var(--s-2)"><span class="btn btn-primary">Approve</span><span class="btn">Reject</span></div></main>';
+  }
+
+  /* 2 People */
+  function people() {
+    var P = [['A', 'Alex', 'Admin', 'tide', 'Tide', 3], ['S', 'Sam', 'Member', 'ember', 'Ember', 2], ['J', 'Jo', 'Member', 'aurora', 'Aurora', 1], ['K', 'Kit', 'Member', 'moss', 'Moss', 0]];
+    var rows = P.map(function (p, i) { return bigRow(av(p[0]), p[1], p[2], i === 1, '<i class="sw s accent-' + p[3] + '"></i>'); });
+    return side('People') + listCol('People', rows, 'Invite a person') +
+      '<main class="col"' + ab(PG) + path('People &rsaquo; Sam') +
+      '<div class="head"><span class="avatar" style="width:44px;height:44px">S</span><div><div class="t-title">Sam</div><div class="t-label t-2">Member</div></div></div>' +
+      grp([row('Email', 'sam@home.example'), row('Role', 'Member'), row('Accent', 'Ember'), row('Devices', '2 devices')]) + '</main>';
+  }
+
+  /* 3 Edit an assistant */
+  function fld(label, val, extra) { return '<div class="' + (extra || '') + '"><span class="field-label">' + label + '</span><div class="field">' + val + '</div></div>'; }
+  function sec(t, b) { return '<div class="sec"><div class="t-heading">' + t + '</div>' + b + '</div>'; }
+  function edit() {
+    var abil = '<div class="tg">' + [['Lists', 1], ['Timers', 1], ['Notifications', 1], ['Clipboard', 0], ['Email', 0]].map(function (a) { return '<div class="row"><span class="grow">' + a[0] + '</span><span class="toggle' + (a[1] ? ' on' : '') + '"></span></div>'; }).join('') + '</div>';
+    return '<div class="glass topbar"' + ab('left:10px;right:10px;top:10px;height:44px') + '<div class="t-heading grow"><span class="t-2">Assistants /</span> Juno</div><span class="btn btn-quiet">Discard</span><span class="btn btn-primary">Save</span></div>' +
+      '<aside class="glass prev"' + ab('left:10px;top:64px;width:200px;height:300px') + ch(110, 'listening') + '<div class="t-heading">Juno</div><div class="t-label t-2">Say: Hey Juno</div><span class="chip accent">Household assistant</span></aside>' +
+      '<div class="surface formcol"' + ab('left:220px;right:10px;top:64px;bottom:10px') +
+      sec('Identity', '<div class="grid2">' + fld('Name', 'Juno') + fld('Wake words', 'Hey Juno') + fld('Voice', 'Warm, calm (local)') + fld('Language', 'English (UK)') + '</div>') +
+      '<div class="grid2"><div>' + sec('Brain', fld('AI provider', 'Local model (small)')) + '</div><div>' + sec('Scope', '<div class="segmented"><span class="on">Household</span><span>One person</span></div>') + '</div></div>' +
+      '<div class="grid2"><div>' + sec('Abilities', abil) + '</div><div>' + sec('Guest', '<div class="row" style="padding:0"><span class="grow">Answers guests</span><span class="toggle on"></span></div>') +
+      sec('Devices it is on', '<div class="chips"><span class="chip">Kitchen tablet</span><span class="chip">Alex&rsquo;s phone</span><span class="chip accent">+ Add a device</span></div>') + '</div></div></div>';
+  }
+
+  /* 4 Appearance */
+  function appearance() {
+    var A = [['tide', 'Tide', 1], ['ember', 'Ember'], ['aurora', 'Aurora'], ['moss', 'Moss'], ['graphite', 'Graphite']];
+    return side('') + '<main class="col"' + ab('left:180px;right:10px;top:14px;bottom:10px;padding:0 var(--s-1);gap:var(--s-3)') + path('Appearance') +
+      '<div class="t-title">Appearance</div>' +
+      '<div class="t-heading" style="margin-top:var(--s-2)">Household accent</div>' +
+      '<div class="t-label t-2">Used on every device unless something more specific is set.</div>' +
+      '<div class="grp surface"><div class="swatches">' + A.map(function (a) { return '<div class="swi"><i class="sw accent-' + a[0] + (a[2] ? ' sel' : '') + '"></i><span class="t-label">' + a[1] + '</span></div>'; }).join('') + '</div></div>' +
+      '<div class="t-label t-2">Light and dark follow each device and are not chosen here.</div></main>';
+  }
+
+  /* 5 Search */
+  function search() {
+    var R = [['<mark>Wake</mark> words', 'Assistants &rsaquo; Juno &rsaquo; Identity'], ['<mark>Wake</mark> word listening', 'Devices &rsaquo; Kitchen tablet'], ['<mark>Wake</mark> word attempts', 'Logs &rsaquo; Summoning']];
+    var rows = R.map(function (r, i) {
+      return '<div class="row big' + (i === 0 ? ' is-selected' : '') + '">' + IC + '<div class="grow"><div class="t-strong ell">' + r[0] + '</div><div class="sub ell">' + r[1] + '</div></div><span class="chev">&rsaquo;</span></div>';
+    });
+    return side('', 'wake') + listCol('Results', rows, '') + quiet('Choose a result', '3 settings found');
+  }
+
+  /* 6 Request list, 7 one request */
+  var R = [
+    ['09:41', 'Alex', 'Set a pasta timer for&hellip;', '1.42 s', [40, 85, 310, 720, 45, 220]],
+    ['09:38', 'Sam', 'What is on the shopping&hellip;', '0.96 s', [40, 70, 200, 480, 30, 140]],
+    ['09:21', 'Guest', 'What time is it', '0.71 s', [40, 60, 150, 300, 20, 140]],
+    ['08:55', 'Alex', 'Send this to Sam&rsquo;s&hellip;', '2.80 s', [40, 90, 300, 1900, 70, 400], 1],
+    ['08:12', 'Jo', 'Stop the alarm', '0.52 s', [40, 50, 120, 200, 20, 90]]
+  ];
+  function strip(r) {
+    var hi = r[4].indexOf(Math.max.apply(null, r[4])), sum = r[4].reduce(function (a, b) { return a + b; }, 0);
+    return '<div class="strip"' + at('width:' + (sum / 2800 * 100).toFixed(1) + '%') + '>' + r[4].map(function (v, i) { return '<i class="' + (i === hi ? 'ac' : (i % 2 ? 'n2' : 'n1')) + '"' + at('flex:' + v) + '></i>'; }).join('') + '</div>';
+  }
+  function reqList(sel) {
+    var rows = R.map(function (r, i) {
+      return '<div class="row lrow' + (sel && i === 0 ? ' is-selected' : '') + '"><div class="grow"><div class="lrow top"><span class="t-mono t-2" style="font-size:11px">' + r[0] + '</span><span class="t-strong ell">' + r[1] + '</span><span class="grow"></span><span class="tot t-mono">' + r[3] + '</span></div><div class="sub ell" style="font-size:11px">' + r[2] + '</div>' + strip(r) + '</div></div>';
+    });
+    return '<section class="col"' + ab('left:180px;top:10px;bottom:10px;width:230px;gap:2px') +
+      '<div class="t-heading" style="padding:var(--s-1) var(--s-2) 0">Requests</div><div class="t-caption" style="padding:0 var(--s-2) var(--s-1)">Today &middot; newest first</div>' + rows.join('') + '</section>';
+  }
+  function requests() {
+    return side('Requests') + reqList(0) +
+      '<main class="col empty"' + ab('left:420px;right:10px;top:10px;bottom:10px') + '<div class="t-heading">Choose a request</div><div class="t-label t-2">38 requests today</div></main>';
+  }
+  function bars() {
+    var S = ['Wake word', 'Speaker identified (Alex)', 'Speech to text', 'AI model', 'Tools called (timers.set)', 'Text to speech'];
+    var T = [[0, 40], [40, 85], [125, 310], [435, 720], [1060, 45], [1200, 220]], TOT = 1420;
+    var rows = T.map(function (t, i) {
+      return '<div class="wf"><div class="l"><span class="t-label grow ell">' + S[i] + '</span><span class="t-mono t-label">' + t[1] + ' ms</span></div><div class="track"><i class="' + (i === 3 ? 'ac' : 'n2') + '"' + at('left:' + (t[0] / TOT * 100).toFixed(2) + '%;width:' + (t[1] / TOT * 100).toFixed(2) + '%') + '></i></div></div>';
+    }).join('');
+    return side('Requests') + reqList(1) +
+      '<main class="col"' + ab('left:420px;right:10px;top:14px;bottom:10px;padding:0 var(--s-1);gap:var(--s-3)') + path('Logs &rsaquo; Requests &rsaquo; 09:41') +
+      '<div><div class="t-strong">Alex &middot; Kitchen tablet</div><div class="t-label t-2">&ldquo;Set a pasta timer for eight minutes&rdquo;</div><div class="t-label t-2" style="margin-top:2px">Total <span class="t-mono" style="color:var(--text);font-weight:600">1.42 s</span></div></div>' +
+      '<div class="col" style="gap:var(--s-3)">' + rows + '</div></main>';
+  }
+
+  /* 8 Audit */
+  function audit() {
+    var A = [['A', 'Juno: Email ability', 'Alex &middot; 09:20 &middot; off &rarr; on'], ['A', 'Household accent', 'Alex &middot; 09:12 &middot; Aurora &rarr; Tide'], ['S', 'Sam&rsquo;s accent', 'Sam &middot; Yesterday 20:41 &middot; Tide &rarr; Ember'], ['A', 'Kitchen tablet: wake word listening', 'Alex &middot; Yesterday 18:03 &middot; off &rarr; on'], ['A', 'Bedroom tablet approved', 'Alex &middot; Yesterday 18:01 &middot; waiting &rarr; approved'], ['A', 'Juno: AI provider', 'Alex &middot; Mon 07:30 &middot; Local small &rarr; Local medium'], ['A', 'Jo: role', 'Alex &middot; Sun 21:10 &middot; Admin &rarr; Member']];
+    var rows = A.map(function (a) { return bigRow(av(a[0]), a[1], a[2], 0, '<span class="btn btn-quiet">Undo</span>'); });
+    return side('Audit') + '<section class="col"' + ab('left:180px;right:10px;top:10px;bottom:10px;gap:2px') +
+      '<div class="t-heading" style="padding:var(--s-1) var(--s-2) 0">Audit</div><div class="t-caption" style="padding:0 var(--s-2) var(--s-1)">Every settings change &middot; newest first</div>' + rows.join('') + '</section>';
+  }
+
+  /* 9 Setup */
+  function dots(n) { return '<div class="dots">' + [1, 2, 3, 4, 5].map(function (i) { return '<i class="' + (i < n ? 'done' : (i === n ? 'now' : '')) + '"></i>'; }).join('') + '</div>'; }
+  function hello() {
+    return '<div' + ab('left:0;right:0;top:26px') + dots(0) + '</div>' +
+      '<div class="col mid"' + ab('left:219px;width:300px;top:80px;gap:var(--s-3)') +
+      '<div class="t-display-xl" style="font-size:64px;line-height:1">Hello</div><div class="t-heading t-2" style="font-weight:400">Let&rsquo;s set up Hearth for your household.</div>' +
+      '<div style="margin-top:var(--s-3)">' + fig(120) + '</div></div>' +
+      '<span class="btn btn-primary bigbtn"' + ab('left:219px;width:300px;bottom:22px') + 'Get started</span>';
+  }
+  function step() {
+    return '<div' + ab('left:0;right:0;top:26px') + dots(1) + '</div><span class="back"' + ab('left:28px;top:16px') + '&lsaquo;</span>' +
+      '<div class="col mid"' + ab('left:219px;width:300px;top:66px;gap:var(--s-2)') +
+      '<span class="sym"><span class="ico"></span></span><div class="t-title" style="font-size:26px;line-height:1.15;font-weight:700">Mail account</div>' +
+      '<div class="t-label t-2" style="margin-bottom:var(--s-2)">Hearth sends sign-in codes from this account.</div>' +
+      '<div class="fgrid"><div class="fl"><span class="field-label">Mail server</span><div class="field">mail.example.org</div></div><div class="fl"><span class="field-label">Port</span><div class="field">587</div></div>' +
+      '<div class="fl full"><span class="field-label">User name</span><div class="field">home@example.org</div></div><div class="fl full"><span class="field-label">Password</span><div class="field">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</div></div></div>' +
+      '<span class="link" style="margin-top:var(--s-2)">Why is this needed?</span></div>' +
+      '<span class="btn btn-primary bigbtn"' + ab('left:219px;width:300px;bottom:22px') + 'Continue</span>';
+  }
+
+  /* 10 Narrow */
+  function narrow() {
+    function top(t, back) { return '<div class="glass topbar"' + ab('left:0;right:0;top:0;height:44px') + (back ? '<span class="chev" style="color:var(--accent)">&lsaquo;</span>' : '') + '<div class="t-heading grow">' + t + '</div></div>'; }
+    var dest = G.map(function (g) {
+      return '<div class="t-caption cap">' + g[0] + '</div>' + '<div class="grp surface">' + g[1].map(function (n) { return '<div class="row">' + IC + '<div class="grow">' + n + '</div><span class="chev">&rsaquo;</span></div>'; }).join('') + '</div>';
+    }).join('');
+    var pp = [['A', 'Alex', 'Admin'], ['S', 'Sam', 'Member'], ['J', 'Jo', 'Member'], ['K', 'Kit', 'Member']].map(function (p, i) { return bigRow(av(p[0]), p[1], p[2], 0, '<span class="chev">&rsaquo;</span>'); }).join('');
+    return '<div class="col phone-col"' + ab('left:10px;top:10px;bottom:10px;width:350px') + top('Settings') +
+      '<div class="field fld">' + LENS + '<span class="ph grow">Search settings</span></div>' + dest + '</div>' +
+      '<div class="col phone-col"' + ab('left:378px;top:10px;bottom:10px;width:350px') + top('People', 1) + pp +
+      '<div class="grow"></div><span class="btn">Invite a person</span></div>';
+  }
+
+  function frame(light, inner) { return '<div class="frame mini backdrop compact accent-tide ' + (light ? 'light' : 'dark') + '"><div class="in">' + inner + '</div></div>'; }
+  var S = [
+    ['1. Devices', 'Every device, and the ones waiting to be approved.', devices, 1,
+      ['Three columns: a glass side bar with the search field and the destinations, a plain list of devices, and the chosen device’s page with its path above it. The list shows the group that waits for approval first; it is hidden when nothing is waiting.',
+       'Status always carries a word and a dot. Approve is the one primary button; Reject removes the request.',
+       'Not decided: whether a settings page saves as you go or with one Save button.']],
+    ['2. People', 'The people of the household.', people, 0,
+      ['The second column lists the people with a dot in each person’s accent; the third is the chosen person’s page. A member who is not an admin would see only their own settings.',
+       'Not decided: the fields on a person’s page beyond email, role, accent and devices, and what Invite a person opens.']],
+    ['3. Edit an assistant', 'Preview and form: the figure beside its settings.', edit, 1,
+      ['Left, a glass card with the character, name and wake phrase (it floats, so it is glass). Right, a plain form in sections: Identity, Brain, Scope, Abilities, Guest, Devices it is on.',
+       'Not decided: how this page fits beside the side bar and the list (drawn alone, as on the board), and whether it saves as you go or with Save and Discard as drawn.']],
+    ['4. Appearance', 'The household’s accent.', appearance, 0,
+      ['One row of five swatches; the chosen one has a ring. A swatch is a circle in that accent. The accent is applied on every device unless something more specific is set.',
+       'Not decided: where Appearance sits in the side bar, whether it has a list column, which accent the panel itself shows, and how a device or a person sets their own accent here.']],
+    ['5. Search settings', 'Typing in the side bar’s search field.', search, 0,
+      ['The search field in the side bar finds any setting by name. Each result shows the setting and the path to it; a result opens that setting’s page.',
+       'Not decided: where results appear in three columns. They are drawn in the second column in place of the list, as plainly as possible.']],
+    ['6. Request list', 'Recent requests, each with a strip of its steps.', requests, 1,
+      ['Each row shows time, person, total time, the first words and a strip of the request’s steps. The slowest step is in the accent, so a slow request stands out in the list.',
+       'Before a request is chosen the third column is quiet.']],
+    ['7. One request', 'The steps of one request as bars in time.', bars, 0,
+      ['Each step is a bar placed where it fell in time, with its milliseconds. Steps can run at the same time: here the tool call sits inside the AI model’s bar. The slowest step is in the accent.',
+       'Not decided: who may see the first words a person said, and the Export button of the old design (it is not drawn).']],
+    ['8. Audit log', 'Every settings change, who made it, and a way to undo it.', audit, 1,
+      ['A plain list, newest first: what changed, who, when, and old to new. Undo is a quiet button and writes a new row; it never removes the old one.',
+       'Not decided: how the audit log fits three columns (a list with a page, or one wide list as drawn), its filters, and whether Undo is offered for every change.']],
+    ['9. First-run setup: Hello', 'The welcome of a new server.', hello, 0,
+      ['Follows Apple’s first setup: a large “Hello”, one sentence, one wide button. Five hollow dots across the top show the steps ahead. No side bar or top bar, since nothing is configured yet.',
+       'Not decided: whether the welcome shows the assistant’s figure (drawn as a plain placeholder) and what colour of accent the setup uses.']],
+    ['10. First-run setup: a step', 'Step 1 of 5, the mail account.', step, 1,
+      ['One centred pane: a round symbol, a large title, a short sentence, the fields, a quiet link and one wide Continue button at the bottom. The back arrow is at the top left; the current dot is long.',
+       'Not decided: the order and content of the five steps, and whether the setup of a new device is drawn the same way.']],
+    ['11. Narrow width', 'A phone-sized browser: one column at a time.', narrow, 0,
+      ['Each column becomes a full screen that drills in: the destinations, then the list, then the page. Two of the screens are drawn side by side, at reduced size.',
+       'Not decided: what the list of destinations becomes at phone width. It is drawn as a plain list under a search field.']]
+  ];
+  document.getElementById('shots').innerHTML = S.map(function (s) {
+    return '<figure class="screen"><figcaption><h2>' + s[0] + '</h2><p>' + s[1] + '</p></figcaption><div class="frames">' + frame(s[3], s[2]()) + '</div><div class="notes">' +
+      s[4].map(function (n) { return '<div class="note">' + n + '</div>'; }).join('') + '</div></figure>';
+  }).join('');
+})();
+</script>
+</body></html>

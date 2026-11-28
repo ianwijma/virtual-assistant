@@ -9,37 +9,42 @@
 <link rel="stylesheet" href="mockup.css">
 <style>
   /* Layout only. */
-  .w-launch { width: 760px; height: 460px; }
-  .w-settings { width: 860px; height: 560px; }
-  .w-assist { width: 680px; height: 540px; }
-  .w-pass { width: 380px; height: 400px; }
+  .grid { display: grid; grid-template-columns: 580px 580px; gap: 36px 40px; }
+  .grid .screen { width: 580px; }
+  .frame.f { width: 580px; height: 380px; border-radius: 12px; }
+  .w-list { width: 440px; height: 290px; }
+  .w-wide { width: 540px; height: 290px; }
+  .w-sheetbase { width: 440px; height: 290px; }
+  .w-set { width: 540px; height: 310px; }
   .body { flex: 1; min-height: 0; display: flex; }
   .list-pane { flex: 1; min-width: 0; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
-  .list-pane.narrow { flex: none; width: 330px; border-right: 1px solid var(--line); }
-  .preview { flex: 1; min-width: 0; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); overflow: hidden; }
-  .cap { padding: var(--s-2) var(--pad) var(--s-1); }
-  .cap:not(:first-child) { margin-top: var(--s-1); }
-  .foot { flex: none; min-height: 40px; padding: 0 var(--pad); display: flex; align-items: center; gap: var(--s-3); border-top: 1px solid var(--line); }
+  .row .t-caption { white-space: nowrap; }
+  .list-pane.narrow { flex: none; width: 260px; border-right: 1px solid var(--line); }
+  .preview { flex: 1; min-width: 0; padding: var(--s-3); display: flex; flex-direction: column; gap: var(--s-2); overflow: hidden; }
+  .cap { padding: var(--s-1) var(--pad); }
+  .foot { flex: none; min-height: 32px; padding: 0 var(--pad); display: flex; align-items: center; gap: var(--s-3); border-top: 1px solid var(--line); }
   .foot .sp { flex: 1; }
   .hint { display: inline-flex; align-items: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
   .avatar.sm { width: 22px; height: 22px; font: var(--type-caption); }
-  .row .meta { font: var(--type-caption); color: var(--text-2); white-space: nowrap; }
-  .row.tall { min-height: 44px; padding-top: 4px; padding-bottom: 4px; }
-  .thumb { width: 100%; height: 150px; border-radius: var(--r-md); background: var(--surface-2); border: 1px solid var(--line); display: grid; place-items: center; }
   .snippet { padding: var(--s-3); border-radius: var(--r-md); background: var(--surface-2); }
-  .side { flex: none; width: 210px; padding: var(--s-3); display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--line); }
-  .main { flex: 1; min-width: 0; padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-3); overflow: hidden; }
-  .titlebar { flex: none; height: 40px; display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--s-4); border-bottom: 1px solid var(--line); }
-  .lights { display: flex; gap: 6px; }
-  .lights i { width: 11px; height: 11px; border-radius: 50%; background: var(--control-hover); }
-  .assist { flex: 1; min-height: 0; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); overflow: hidden; }
-  .wait { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); border-radius: var(--r-md); background: var(--control); }
-  .people { display: flex; justify-content: center; gap: var(--s-8); }
+  .thumb { height: 90px; border-radius: var(--r-md); background: var(--surface-2); border: 1px solid var(--line); display: grid; place-items: center; }
+  .side { flex: none; width: 190px; padding: var(--s-2); display: flex; flex-direction: column; gap: 2px; border-right: 1px solid var(--line); }
+  .page { flex: 1; min-width: 0; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); overflow: hidden; }
+  .setrow { display: flex; align-items: center; gap: var(--s-3); min-height: 34px; border-bottom: 1px solid var(--line); }
+  .assist-fig { flex: none; width: 190px; display: flex; align-items: flex-end; justify-content: center; padding: var(--s-3); }
+  .chat { flex: 1; min-width: 0; padding: var(--s-3); display: flex; flex-direction: column; gap: var(--s-2); justify-content: flex-end; overflow: hidden; }
+  .dim { position: absolute; inset: 0; background: color-mix(in srgb, black 35%, transparent); }
+  .sheet { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 300px; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); }
+  .acts { display: flex; gap: var(--s-2); }
+  .notif { position: absolute; right: 12px; width: 250px; padding: var(--s-3); display: flex; flex-direction: column; gap: 2px; }
+  .waitline { height: 2px; background: var(--accent); flex: none; }
+  .quietbar { flex: none; padding: var(--s-2) var(--pad); display: flex; align-items: center; gap: var(--s-2); background: var(--surface-2); border-bottom: 1px solid var(--line); font: var(--type-label); }
+  .people { display: flex; justify-content: center; gap: var(--s-6); padding: var(--s-4); }
   .person { display: flex; flex-direction: column; align-items: center; gap: var(--s-2); padding: var(--s-3); border-radius: var(--r-lg); }
   .person.on { background: var(--accent-soft); }
-  .person .avatar { width: 56px; height: 56px; font: var(--type-heading); }
-  .pass { justify-content: center; letter-spacing: .4em; }
-  .stack { display: flex; flex-direction: column; gap: var(--s-4); padding: var(--s-6); flex: 1; justify-content: center; }
+  .person .avatar { width: 48px; height: 48px; font: var(--type-heading); }
+  .empty { flex: 1; display: grid; place-items: center; }
+  .note { max-width: 580px; }
 </style>
 </head>
 <body class="va">
@@ -47,305 +52,259 @@
 
 <header>
   <h1>Desktop client</h1>
-  <p>A launcher that opens over whatever the person is doing, with its views, the assistant and settings, all in compact density.</p>
+  <p>A clear glass launcher over the desktop. It is a list, or wide with a preview when the content needs one. Settings are a view of it. Frames are shown at reduced size, two to a row.</p>
 </header>
+
+<div class="grid">
 
 <!-- 1 -->
 <figure class="screen">
   <figcaption>
-    <h2>1. Launcher, empty query</h2>
-    <p>The window that opens on the global hotkey, showing suggestions before anything is typed.</p>
+    <h2>1. The empty launcher</h2>
+    <p>A list only. What it suggests before anything is typed is not decided.</p>
   </figcaption>
-  <div class="frames">
-    <div class="frame desktop wallpaper compact">
-      <div class="window glass-thick w-launch">
-        <div class="search"><span class="ico"></span><span class="t-3">Search commands, views and applications</span></div>
-        <hr class="divider">
-        <div class="body">
-          <div class="list-pane">
-            <div class="t-caption cap">Suggested</div>
-            <div class="row is-selected"><span class="ico"></span><span class="grow">Clipboard history <span class="t-label t-2">Search what you copied</span></span><span class="kbd">Ctrl ⇧ V</span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Ask Juno <span class="t-label t-2">Type or speak a request</span></span><span class="kbd">Tab</span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Set a timer <span class="t-label t-2">Start a countdown</span></span></div>
-            <div class="t-caption cap">Views</div>
-            <div class="row"><span class="ico"></span><span class="grow">Notifications <span class="t-label t-2">3 new</span></span><span class="kbd">Ctrl N</span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Timers <span class="t-label t-2">1 running</span></span></div>
-            <div class="t-caption cap">Applications</div>
-            <div class="row"><span class="ico"></span><span class="grow">Firefox <span class="t-label t-2">Application</span></span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Files <span class="t-label t-2">Application</span></span></div>
-          </div>
-        </div>
-        <div class="foot">
-          <span class="avatar sm">A</span><span class="t-label">Alex</span>
-          <span class="chip success"><span class="dot"></span>Online</span>
-          <span class="sp"></span>
-          <span class="hint"><span class="kbd">↵</span>Open</span>
-          <span class="hint"><span class="kbd">Ctrl K</span>Actions</span>
-        </div>
+  <div class="frames"><div class="frame f wallpaper compact light">
+    <div class="window glass w-list">
+      <div class="search"><span class="ico"></span><span class="t-3">Search commands, views and clipboard</span></div>
+      <hr class="divider">
+      <div class="list-pane">
+        <div class="t-caption cap">Suggested</div>
+        <div class="row is-selected"><span class="ico"></span><span class="grow">Clipboard</span><span class="kbd">Ctrl ⇧ V</span></div>
+        <div class="row"><span class="ico"></span><span class="grow">Ask Juno</span><span class="kbd">Tab</span></div>
+        <div class="row"><span class="ico"></span><span class="grow">Set a timer</span></div>
+        <div class="row"><span class="ico"></span><span class="grow">Notifications</span></div>
       </div>
+      <div class="foot"><span class="avatar sm">A</span><span class="t-label">Alex</span><span class="sp"></span><span class="hint"><span class="kbd">↵</span>Open</span></div>
     </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">Window: glass-thick, 760×460, centred on the screen that holds the pointer. Opens in 80 ms (--t-instant) with the search field focused. Esc or the hotkey again closes it.</div>
-    <div class="note">Results: plain transparent rows on the glass, grouped by captions in a fixed order (Suggested, Views, Applications). Up and Down move the selected row, ↵ runs it, Ctrl K opens actions for the selected row. Suggested is the most used commands, then recent ones.</div>
-    <div class="note">Row: icon, name, secondary text on the same line, and the bound shortcut on the right as .kbd when one exists.</div>
-    <div class="note">Footer bar: the active account avatar and name, the server status chip (Online, Offline or Waiting for the server), and key hints for the selected row on the right. Clicking the avatar opens the account switch.</div>
+    <div class="note">Window: clear glass, about half see-through, over the desktop. No preview, so a list only.</div>
+    <div class="note">Rows: plain, with icon, name and the bound shortcut. Up and Down move, Enter runs.</div>
+    <div class="note">Not decided: whether suggestions show before typing, and which ones. The rows here are a placeholder.</div>
   </div>
 </figure>
 
 <!-- 2 -->
 <figure class="screen">
   <figcaption>
-    <h2>2. Launcher, results while typing</h2>
-    <p>Results narrow with each key, and a preview shows what the selected row will do.</p>
+    <h2>2. Results while typing</h2>
+    <p>A list only. A plain search for actions needs no preview.</p>
   </figcaption>
-  <div class="frames">
-    <div class="frame desktop wallpaper compact">
-      <div class="window glass-thick w-launch">
-        <div class="search"><span class="ico"></span><span>tim</span><span class="caret"></span></div>
-        <hr class="divider">
-        <div class="body">
-          <div class="list-pane narrow">
-            <div class="t-caption cap">Commands</div>
-            <div class="row is-selected"><span class="ico"></span><span class="grow">Set a timer</span><span class="kbd">↵</span></div>
-            <div class="t-caption cap">Views</div>
-            <div class="row"><span class="ico"></span><span class="grow">Timers <span class="t-label t-2">1 running</span></span></div>
-            <div class="t-caption cap">Applications</div>
-            <div class="row"><span class="ico"></span><span class="grow">Timeshift <span class="t-label t-2">Application</span></span></div>
-          </div>
-          <div class="preview">
-            <div class="hstack" style="gap:var(--s-3)"><span class="ico"></span><span class="t-heading">Set a timer</span></div>
-            <p class="t-2">Starts a countdown on this computer. Say how long and give it a name, for example “8 minutes for pasta”.</p>
-            <div class="snippet">
-              <div class="t-caption">Pasta</div>
-              <div class="t-display num">08:00</div>
-            </div>
-            <div class="hstack" style="gap:var(--s-2)"><span class="chip">Here</span><span class="chip">Kitchen tablet</span></div>
-          </div>
-        </div>
-        <div class="foot">
-          <span class="avatar sm">A</span><span class="t-label">Alex</span>
-          <span class="chip success"><span class="dot"></span>Online</span>
-          <span class="sp"></span>
-          <span class="hint"><span class="kbd">↵</span>Run</span>
-          <span class="hint"><span class="kbd">Ctrl K</span>Actions</span>
-        </div>
+  <div class="frames"><div class="frame f wallpaper compact dark">
+    <div class="window glass w-list">
+      <div class="search"><span class="ico"></span><span>tim</span><span class="caret"></span></div>
+      <hr class="divider">
+      <div class="list-pane">
+        <div class="t-caption cap">Commands</div>
+        <div class="row is-selected"><span class="ico"></span><span class="grow">Set a timer</span><span class="kbd">↵</span></div>
+        <div class="t-caption cap">Views</div>
+        <div class="row"><span class="ico"></span><span class="grow">Timers</span><span class="chip">1 running</span></div>
+        <div class="row"><span class="ico"></span><span class="grow">Timeline</span></div>
       </div>
+      <div class="foot"><span class="avatar sm">A</span><span class="t-label">Alex</span><span class="sp"></span><span class="hint"><span class="kbd">↵</span>Run</span><span class="hint"><span class="kbd">Ctrl K</span>Actions</span></div>
     </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">Results list (left, 330 wide): filtered as the person types, same grouping and the first match selected. Groups with no match are hidden.</div>
-    <div class="note">Preview pane (right): appears only when the selected row has something to show. It is plain content and changes as the selection moves. Rows without a preview use the full width.</div>
-    <div class="note">The search field keeps the caret in the accent colour. Clearing it returns to the empty-query state.</div>
+    <div class="note">Results narrow with each key, grouped under small captions. The first row is selected.</div>
+    <div class="note">The window stays the same size as the empty launcher. Not decided: whether it ever changes size between a list and a wide view.</div>
   </div>
 </figure>
 
 <!-- 3 -->
 <figure class="screen">
   <figcaption>
-    <h2>3. Clipboard view</h2>
-    <p>Search and reuse what was copied, with a preview and actions for the selected item.</p>
+    <h2>3. The clipboard</h2>
+    <p>Wide, with the list on the left and a preview of the selected row on the right.</p>
   </figcaption>
-  <div class="frames">
-    <div class="frame desktop wallpaper compact">
-      <div class="window glass-thick w-launch">
-        <div class="search"><span class="chip accent">Clipboard</span><span class="t-3">Search what you copied</span></div>
-        <hr class="divider">
-        <div class="body">
-          <div class="list-pane narrow">
-            <div class="row tall is-selected"><span class="ico"></span><span class="grow">Meeting moved to 3 pm, see you<span class="sub">Messages · 1 min ago</span></span></div>
-            <div class="row tall"><span class="ico"></span><span class="grow">https://example.org/recipes/pasta<span class="sub">Firefox · 12 min ago</span></span></div>
-            <div class="row tall"><span class="ico"></span><span class="grow">Image, 1280 × 720<span class="sub">Screenshot · 40 min ago</span></span></div>
-            <div class="row tall"><span class="ico"></span><span class="grow">Flat 4, 12 Mill Lane<span class="sub">Notes · 2 h ago</span></span><span class="chip">Pinned</span></div>
-            <div class="row tall"><span class="ico"></span><span class="grow">0161 496 0000<span class="sub">Contacts · Yesterday</span></span></div>
-            <div class="row tall"><span class="ico"></span><span class="grow">Remember to book the vet<span class="sub">Messages · Yesterday</span></span></div>
-          </div>
-          <div class="preview">
-            <div class="t-caption">Text · Messages · 1 min ago</div>
-            <div class="snippet t-body">Meeting moved to 3 pm, see you in the usual room. Sam is bringing the printed copies.</div>
-            <div class="hstack" style="gap:var(--s-2)"><span class="chip">31 characters</span><span class="chip">Copied on this computer</span></div>
-            <div class="thumb t-3 t-label">Image items preview here</div>
-          </div>
+  <div class="frames"><div class="frame f wallpaper compact light">
+    <div class="window glass w-wide">
+      <div class="search"><span class="ico"></span><span class="t-3">Search what you copied</span></div>
+      <hr class="divider">
+      <div class="body">
+        <div class="list-pane narrow">
+          <div class="row is-selected"><span class="ico"></span><span class="grow">Pasta, 8 minutes</span><span class="t-caption" style="white-space:nowrap">now</span></div>
+          <div class="row"><span class="ico"></span><span class="grow">example.org/menu</span><span class="t-caption">4 m</span></div>
+          <div class="row"><span class="ico"></span><span class="grow">Image, 1200×800</span><span class="t-caption">1 h</span></div>
+          <div class="row"><span class="ico"></span><span class="grow">Door code 4821</span><span class="t-caption">2 h</span></div>
         </div>
-        <div class="foot">
-          <span class="btn btn-primary">Paste</span>
-          <span class="btn">Copy</span>
-          <span class="btn">Pin</span>
-          <span class="btn">Send to device</span>
-          <span class="sp"></span>
-          <span class="hint"><span class="kbd">Ctrl K</span>Actions</span>
+        <div class="preview">
+          <div class="t-caption">Text, from Sam's phone</div>
+          <div class="snippet"><span class="t-body">Pasta, 8 minutes. Salt the water first.</span></div>
+          <div class="thumb t-caption">Image preview for images</div>
+          <div class="hstack" style="gap:var(--s-2)"><span class="chip">Shared</span></div>
         </div>
       </div>
+      <div class="foot"><span class="sp"></span><span class="hint"><span class="kbd">↵</span>Paste</span><span class="hint"><span class="kbd">Ctrl K</span>Actions</span></div>
     </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">List (left): plain transparent rows inside the glass window, not a glass list. Newest first, pinned items stay in the list with a Pinned chip. Each row shows a one-line preview, then the source application and the time.</div>
-    <div class="note">Performance: the list must stay fast with 100,000 items. Render only the visible rows (virtual list), search on the device, and never build a row for an item that is off screen.</div>
-    <div class="note">Preview (right): shows the full text, a link, or an image for the selected item, plus small facts. It changes with the selection.</div>
-    <div class="note">Footer: Paste (↵) is the one primary button. Copy puts it back on the clipboard without pasting, Pin keeps it, Send to device asks which of the person's devices.</div>
+    <div class="note">Left: the copied items, newest first, as plain rows. Right: a preview of the selected row, text or image.</div>
+    <div class="note">Which other views get a preview is not decided.</div>
   </div>
 </figure>
 
 <!-- 4 -->
 <figure class="screen">
   <figcaption>
-    <h2>4. Notifications view</h2>
-    <p>Notifications for the active account, grouped by day, with actions on the selected one.</p>
+    <h2>4. Talking to the assistant in the launcher</h2>
+    <p>Juno's whole figure is the subject, so it gets the left of the window.</p>
   </figcaption>
-  <div class="frames">
-    <div class="frame desktop wallpaper compact">
-      <div class="window glass-thick w-launch">
-        <div class="search"><span class="chip accent">Notifications</span><span class="t-3">Search notifications</span></div>
-        <hr class="divider">
-        <div class="body">
-          <div class="list-pane">
-            <div class="t-caption cap">Today</div>
-            <div class="row tall is-selected"><span class="ico"></span><span class="grow">Parcel arrives tomorrow<span class="sub">Email · Out for delivery between 9 and 12</span></span><span class="meta">2 min ago</span></div>
-            <div class="row tall"><span class="ico"></span><span class="grow">Pasta timer finished<span class="sub">Kitchen tablet · Eight minutes are up</span></span><span class="meta">1 h ago</span></div>
-            <div class="row tall"><span class="ico"></span><span class="grow">Sam shared a list<span class="sub">Shopping · 4 items added</span></span><span class="meta">3 h ago</span></div>
-            <div class="t-caption cap">Yesterday</div>
-            <div class="row tall"><span class="ico"></span><span class="grow">Backup finished<span class="sub">Home server · All devices saved</span></span><span class="meta">20:14</span></div>
-            <div class="row tall"><span class="ico"></span><span class="grow">Bins go out tonight<span class="sub">Reminder · Green bin this week</span></span><span class="meta">17:00</span></div>
-          </div>
-        </div>
-        <div class="foot">
-          <span class="btn">Mark as read</span>
-          <span class="btn">Send to my phone</span>
-          <span class="btn btn-danger">Dismiss</span>
-          <span class="sp"></span>
-          <span class="hint"><span class="kbd">Ctrl K</span>Actions</span>
+  <div class="frames"><div class="frame f wallpaper compact dark">
+    <div class="window glass w-wide">
+      <div class="search"><span class="ico"></span><span>Ask Juno</span><span class="caret"></span></div>
+      <hr class="divider">
+      <div class="body">
+        <div class="assist-fig"><div class="figure" style="--size:96px"><div class="character listening" style="--size:96px"></div></div></div>
+        <div class="chat">
+          <div class="bubble me">Set a timer for 8 minutes, for the pasta.</div>
+          <div class="bubble">Done. Eight minutes for the pasta, starting now.</div>
+          <div class="hstack" style="gap:var(--s-2)"><span class="loader"></span><span class="t-label t-2">Listening</span></div>
         </div>
       </div>
+      <div class="foot"><span class="t-label">Juno</span><span class="sp"></span><span class="hint"><span class="kbd">Esc</span>Back to search</span></div>
     </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">List: plain rows grouped by day (Today, Yesterday, then dates). Each row has the source icon, title, source and text on a second line, and the time on the right. Unread rows use the strong title weight; read rows use the normal one.</div>
-    <div class="note">Selected row: the footer shows its actions: Mark as read, Send to my phone, Dismiss. They are all quiet buttons; there is no primary because nothing is the usual next step.</div>
-    <div class="note">Up and Down move the selection, ↵ opens the source where it can be opened, Ctrl K lists more actions. An empty list says “Nothing new”.</div>
+    <div class="note">Left: the figure, which listens, speaks and reacts. Right: the conversation, newest at the bottom, and a field to type in.</div>
+    <div class="note">Not decided: how a person gets here from searching (Tab, a prefix or its own shortcut), and the exact arrangement of figure and conversation.</div>
   </div>
 </figure>
 
 <!-- 5 -->
 <figure class="screen">
   <figcaption>
-    <h2>5. Assistant in the launcher</h2>
-    <p>The person asked the assistant, and it shows its state, the request and the answer as a described screen.</p>
+    <h2>5. A card row lifted into a sheet</h2>
+    <p>A timer is a compact row. A click lifts it into a thick glass sheet over the dimmed launcher.</p>
   </figcaption>
-  <div class="frames">
-    <div class="frame desktop wallpaper compact dark accent-aurora">
-      <div class="window glass-thick w-assist">
-        <div class="search"><span class="ico"></span><span>Set a pasta timer for eight minutes</span></div>
-        <hr class="divider">
-        <div class="assist">
-          <div class="hstack" style="gap:var(--s-3)">
-            <span class="character listening" style="--size:56px"></span>
-            <span class="grow" style="flex:1"><span class="t-strong" style="display:block">Juno</span><span class="t-label t-2">Thinking…</span></span>
-            <span class="chip">This computer</span>
-          </div>
-          <div class="bubble me">Set a pasta timer for eight minutes</div>
-          <div class="glass card">
-            <div class="card-head"><span class="ico"></span><span class="t-caption" style="flex:1">Timer</span><span class="chip">This computer</span></div>
-            <div class="t-caption">Pasta timer</div>
-            <div class="t-display num">07:42</div>
-            <div class="actions"><span class="btn btn-primary">Stop</span><span class="btn">Snooze 1 min</span></div>
-          </div>
-          <div class="wait"><span class="loader"></span><span class="t-label t-2">Waiting for the server</span></div>
-        </div>
-        <div class="foot">
-          <span class="avatar sm">A</span><span class="t-label">Alex</span>
-          <span class="chip success"><span class="dot"></span>Online</span>
-          <span class="sp"></span>
-          <span class="hint"><span class="kbd">Esc</span>Close</span>
-          <span class="hint"><span class="kbd">Tab</span>Back to search</span>
-        </div>
+  <div class="frames"><div class="frame f wallpaper compact light">
+    <div class="window glass w-sheetbase">
+      <div class="search"><span class="ico"></span><span class="t-3">Timers</span></div>
+      <hr class="divider">
+      <div class="list-pane">
+        <div class="row is-selected"><span class="ico"></span><span class="grow">Pasta</span><span class="num">07:12</span></div>
+        <div class="row"><span class="ico"></span><span class="grow">Laundry</span><span class="num">34:00</span></div>
+        <div class="row"><span class="ico"></span><span class="grow">Oven</span><span class="num">Done</span></div>
       </div>
     </div>
-  </div>
+    <div class="dim"></div>
+    <div class="sheet glass-thick">
+      <div class="hstack" style="gap:var(--s-2)"><span class="ico"></span><span class="t-heading grow">Pasta</span><span class="chip">Running</span></div>
+      <div class="t-display num">07:12</div>
+      <div class="acts"><button class="btn grow">Pause</button><button class="btn grow">Add a minute</button><button class="btn btn-quiet">Cancel</button></div>
+    </div>
+  </div></div>
   <div class="notes">
-    <div class="note">Character header: the assistant's figure at 56 px, its name and its state (Listening…, Thinking…, Speaking…). The figure breathes while listening. The chip names the device that answers.</div>
-    <div class="note">Transcript: the person's request as a bubble on the right, typed or spoken (spoken text appears as it is recognised). Follow-up requests stack below, scrolling up.</div>
-    <div class="note">Answer area: the server sends a described screen and the client draws it with the shared components; here a timer card. The card is glass because it floats above the window's content. The last card keeps the one primary button.</div>
-    <div class="note">Waiting for the server: a loader and one plain line shown while the server has not answered; it replaces the answer card and disappears when the answer arrives. This frame is dark with the Aurora accent to show that the account's accent and theme change everything here.</div>
+    <div class="note">The sheet grows out of the row that was clicked and shrinks back into it. The rest of the launcher is dimmed and softened.</div>
+    <div class="note">Not decided: the actions each kind of card offers. The ones here are placeholders.</div>
   </div>
 </figure>
 
 <!-- 6 -->
 <figure class="screen">
   <figcaption>
-    <h2>6. Settings window</h2>
-    <p>The settings of this computer's client, with the person's own settings kept in the admin panel.</p>
+    <h2>6. Notifications at the top right</h2>
+    <p>Clear glass cards stack down from the top right of the desktop, newest on top, outside the launcher.</p>
   </figcaption>
-  <div class="frames">
-    <div class="frame desktop backdrop compact">
-      <div class="window glass-thick w-settings">
-        <div class="titlebar"><span class="lights"><i></i><i></i><i></i></span><span class="t-strong">Settings</span></div>
-        <div class="body">
-          <div class="side">
-            <div class="row"><span class="ico"></span><span class="grow">General</span></div>
-            <div class="row is-selected"><span class="ico"></span><span class="grow">Shortcuts</span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Voice</span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Accounts</span></div>
-            <div class="row"><span class="ico"></span><span class="grow">About</span></div>
-          </div>
-          <div class="main">
-            <div class="t-title">Shortcuts</div>
-            <p class="t-2">Keys that work anywhere on this computer. Click a key to change it.</p>
-            <div class="surface list" style="padding:6px">
-              <div class="row"><span class="ico"></span><span class="grow">Open the launcher</span><span class="kbd">Alt Space</span></div>
-              <div class="row"><span class="ico"></span><span class="grow">Clipboard history</span><span class="kbd">Ctrl ⇧ V</span></div>
-              <div class="row"><span class="ico"></span><span class="grow">Notifications</span><span class="kbd">Ctrl N</span></div>
-              <div class="row"><span class="ico"></span><span class="grow">Ask Juno</span><span class="kbd">Alt J</span></div>
-              <div class="row"><span class="ico"></span><span class="grow">Set a timer</span><span class="t-3 t-label">Not set</span></div>
-            </div>
-            <div class="surface list" style="padding:6px">
-              <div class="row"><span class="ico"></span><span class="grow">Your own settings open in the admin panel<span class="sub">Name, accent, passcode and devices</span></span><span class="t-2">↗</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="frames"><div class="frame f wallpaper compact dark">
+    <div class="notif glass" style="top:12px">
+      <div class="hstack" style="gap:var(--s-2)"><span class="ico"></span><span class="t-strong grow">Pasta timer</span><span class="t-caption" style="white-space:nowrap">now</span></div>
+      <span class="t-label t-2">Eight minutes are up.</span>
     </div>
-  </div>
+    <div class="notif glass" style="top:88px">
+      <div class="hstack" style="gap:var(--s-2)"><span class="ico"></span><span class="t-strong grow">New email</span><span class="t-caption">2 m</span></div>
+      <span class="t-label t-2">From Jo: Saturday plans</span>
+    </div>
+    <div class="notif glass" style="top:164px">
+      <div class="hstack" style="gap:var(--s-2)"><span class="ico"></span><span class="t-strong grow">Shopping list</span><span class="t-caption">9 m</span></div>
+      <span class="t-label t-2">Sam added milk.</span>
+    </div>
+  </div></div>
   <div class="notes">
-    <div class="note">Window: a normal desktop window with the system title bar, glass-thick, 860×560, over the person's own wallpaper or the backdrop. Not tied to the launcher hotkey.</div>
-    <div class="note">Groups (left, 210 wide): General, Shortcuts, Voice, Accounts, About. One is selected; the right side shows only that group.</div>
-    <div class="note">Content (right): a plain .surface list, not glass. Each row is a command with its bound shortcut as .kbd. Clicking the key waits for a new key press; Esc cancels. A command without a key shows “Not set”.</div>
-    <div class="note">Link row: opens the admin panel in the browser at the person's own settings. Nothing personal is edited in this window.</div>
+    <div class="note">Each card is a compact row of icon, title, time and one line. It fades after a few seconds and stays in the Notifications view.</div>
+    <div class="note">Not decided: answering from the keyboard, and whether a question from an assistant stays on screen until answered.</div>
   </div>
 </figure>
 
 <!-- 7 -->
 <figure class="screen">
   <figcaption>
-    <h2>7. Account switch with passcode</h2>
-    <p>Choosing the account and entering its passcode, asked at start and after the computer is unlocked.</p>
+    <h2>7. The settings view of the launcher</h2>
+    <p>Opened from the launcher, laid out like the admin panel: a side bar of groups with search, and the page.</p>
   </figcaption>
-  <div class="frames">
-    <div class="frame desktop wallpaper compact">
-      <div class="window glass-thick w-pass">
-        <div class="stack">
-          <div class="t-title" style="text-align:center">Who is using this?</div>
-          <div class="people">
-            <div class="person on"><span class="avatar">A</span><span class="t-strong">Alex</span></div>
-            <div class="person"><span class="avatar" style="background:var(--accent-2)">S</span><span class="t-strong">Sam</span></div>
-          </div>
-          <div>
-            <label class="field-label">Passcode for Alex</label>
-            <div class="field is-focus pass"><span>● ● ● ●</span></div>
-          </div>
-          <div class="actions"><span class="btn btn-quiet">Cancel</span><span class="btn btn-primary">Continue</span></div>
-          <p class="t-label t-2" style="text-align:center">Asked when the client starts and after you unlock this computer.</p>
+  <div class="frames"><div class="frame f wallpaper compact light">
+    <div class="window glass w-set">
+      <div class="body">
+        <div class="side">
+          <div class="search"><span class="ico"></span><span class="t-3">Search settings</span></div>
+          <div class="row is-selected"><span class="ico"></span><span class="grow">General</span></div>
+          <div class="row"><span class="ico"></span><span class="grow">Shortcuts</span></div>
+          <div class="row"><span class="ico"></span><span class="grow">Account</span></div>
+          <div class="row"><span class="ico"></span><span class="grow">Appearance</span></div>
+          <div class="row"><span class="ico"></span><span class="grow">Notifications</span></div>
+        </div>
+        <div class="page surface">
+          <div class="t-caption">Settings › General</div>
+          <div class="t-heading">General</div>
+          <div class="setrow"><span class="grow">Start at login</span><span class="toggle on"></span></div>
+          <div class="setrow"><span class="grow">Open the launcher with</span><span class="kbd">Ctrl Space</span></div>
+          <div class="setrow"><span class="grow">Show on</span><span class="t-2">Screen with the pointer</span></div>
         </div>
       </div>
     </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">Window: small, centred, glass-thick, 380×400. It takes focus and the launcher does not open until an account is unlocked.</div>
-    <div class="note">Account choice: one avatar and name per account on this computer. The selected one is highlighted with the accent tint; clicking another changes the passcode label.</div>
-    <div class="note">Passcode field: shows one dot per digit, focused on open; ↵ or Continue submits. A wrong passcode shakes the field once and clears it.</div>
-    <div class="note">Shown at client start and after the computer is unlocked, so a household member cannot use another's account.</div>
+    <div class="note">Left: a glass side bar with a search field and the groups. Right: the chosen group's page as plain rows, with its path above.</div>
+    <div class="note">Not decided: the groups and what is on each page, whether the window grows, and whether a change applies at once or after Save. The rows here are placeholders.</div>
   </div>
 </figure>
 
+<!-- 8 -->
+<figure class="screen">
+  <figcaption>
+    <h2>8. The account switch</h2>
+    <p>Plainly drawn: a person is chosen from the avatars.</p>
+  </figcaption>
+  <div class="frames"><div class="frame f wallpaper compact dark">
+    <div class="window glass w-list" style="height:240px">
+      <div class="t-heading cap" style="padding:var(--s-3) var(--pad) 0">Switch account</div>
+      <div class="people">
+        <div class="person on"><span class="avatar">A</span><span class="t-strong">Alex</span><span class="chip">Signed in</span></div>
+        <div class="person"><span class="avatar">S</span><span class="t-strong">Sam</span></div>
+        <div class="person"><span class="avatar">J</span><span class="t-strong">Jo</span></div>
+      </div>
+      <div class="foot"><span class="hint"><span class="kbd">←</span><span class="kbd">→</span>Choose</span><span class="sp"></span><span class="hint"><span class="kbd">↵</span>Switch</span></div>
+    </div>
+  </div></div>
+  <div class="notes">
+    <div class="note">Opened from the avatar in the launcher's bottom bar.</div>
+    <div class="note">Not decided: the design of this screen, where the avatars are on the machine, and whether a password is asked.</div>
+  </div>
+</figure>
+
+<!-- 9 -->
+<figure class="screen">
+  <figcaption>
+    <h2>9. When home cannot be reached</h2>
+    <p>Quiet: a slim plain bar under the top bar. Saved content stays usable.</p>
+  </figcaption>
+  <div class="frames"><div class="frame f wallpaper compact light">
+    <div class="window glass w-list">
+      <div class="search"><span class="ico"></span><span class="t-3">Search commands, views and clipboard</span></div>
+      <div class="quietbar"><span class="dot"></span><span class="grow">Home cannot be reached. Showing saved content.</span></div>
+      <div class="list-pane">
+        <div class="row is-selected"><span class="ico"></span><span class="grow">Clipboard</span><span class="kbd">Ctrl ⇧ V</span></div>
+        <div class="row"><span class="ico"></span><span class="grow">Notifications</span></div>
+        <div class="row is-disabled"><span class="ico"></span><span class="grow">Ask Juno</span></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="notes">
+    <div class="note">The bar is plain, not glass, and is the only sign. Rows that need home are dimmed.</div>
+    <div class="note">While waiting for a reply, a thin accent line sits under the top bar and the last content stays. Not decided: which views work offline.</div>
+  </div>
+</figure>
+
+</div>
 </div>
 </body>
 </html>

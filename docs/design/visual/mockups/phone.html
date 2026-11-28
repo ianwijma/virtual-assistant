@@ -9,328 +9,464 @@
 <link rel="stylesheet" href="mockup.css">
 <style>
   /* Layout only. */
-  .sb { display: flex; justify-content: space-between; padding: var(--s-4) var(--s-6) var(--s-1); font: var(--type-label); font-weight: 600; flex: none; }
-  .pb { flex: 1; min-height: 0; padding: var(--s-2) var(--s-4) var(--s-4); display: flex; flex-direction: column; gap: var(--s-4); position: relative; }
-  .pb.tabs { padding-bottom: 96px; }
-  .floatbar { position: absolute; left: var(--s-3); right: var(--s-3); bottom: var(--s-4); }
+  .mock-page { padding: 8px 2px; gap: 28px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 236px); column-gap: 10px; row-gap: 28px; align-items: start; }
+  .grid .screen { min-width: 0; }
+  .grid .screen > figcaption p { font-size: 12px; line-height: 16px; }
+  .grid .notes { gap: 4px; }
+  .grid .note { font-size: 11px; line-height: 15px; }
+  .frame.pm { width: 236px; height: 520px; border-radius: 32px; }
+
+  .sb { display: flex; justify-content: space-between; padding: 12px 22px 2px; font: var(--type-label); font-size: 12px; font-weight: 600; flex: none; }
+  .pb { flex: 1; min-height: 0; padding: var(--s-2) 12px 0; display: flex; flex-direction: column; gap: var(--s-2); position: relative; }
+  .pb.bar { padding-bottom: 78px; }
+  .top { display: flex; align-items: center; gap: var(--s-2); padding: 6px 8px 6px 14px; border-radius: var(--r-full); flex: none; }
+  .top .grow { flex: 1; min-width: 0; font: var(--type-body-strong); }
+  .top .avatar { width: 28px; height: 28px; font-size: 12px; }
   .spacer { flex: 1; }
-  .stack { display: flex; flex-direction: column; gap: var(--s-3); }
-  .opt { display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-5); }
+  .pb > * { min-width: 0; max-width: 100%; }
+  .surface { overflow: hidden; }
+  .stack { display: flex; flex-direction: column; gap: var(--s-2); }
+  .ell { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sm { font: var(--type-label); font-size: 12px; }
+  .sub2 { font: var(--type-caption); color: var(--text-2); display: block; }
+  .lab { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); margin: var(--s-1) 4px 0; }
+  .chev::after { content: ""; display: block; width: 7px; height: 7px; border: solid var(--text-3); border-width: 2px 2px 0 0; transform: rotate(45deg); }
+  .dim { opacity: .45; }
+
+  /* The tab bar: four buttons the person sets, a divider, one fixed button. */
+  .tb { position: absolute; left: 8px; right: 8px; bottom: 10px; display: flex; align-items: stretch; padding: 6px; border-radius: var(--r-xl); }
+  .tb > div { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 0; border-radius: var(--r-md); font: var(--type-caption); font-size: 9.5px; letter-spacing: -.01em; color: var(--text-2); }
+  .tb > div.on { background: var(--accent-soft); color: var(--accent); }
+  .tb > i { width: 1px; background: var(--line); margin: 6px 4px; flex: none; }
+  .tb .ico { width: 18px; height: 18px; }
+
+  /* Rows that float. */
+  .rw { display: flex; align-items: center; gap: var(--s-2); padding: 6px 10px; min-height: 46px; border-radius: var(--r-lg); }
+  .rw .tx { flex: 1; min-width: 0; }
+  .rw .t1 { font: var(--type-body-strong); font-size: 13px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rw .t2 { font: var(--type-caption); color: var(--text-2); display: block; }
+  .rw .btn { height: 30px; padding: 0 10px; font-size: 12px; }
+  .rw .num { font: var(--type-heading); font-size: 15px; color: var(--text); flex: none; }
+  .nrow { display: flex; align-items: center; gap: var(--s-2); padding: 8px var(--s-3); min-height: 44px; }
+  .nrow + .nrow { border-top: 1px solid var(--line); }
+  .nrow .tx, .rw .tx { flex: 1; min-width: 0; display: block; }
+  .nrow .btn { flex: none; }
+  .tk { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--text-3); flex: none; display: grid; place-items: center; font-size: 12px; line-height: 1; }
+  .tk.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .done { text-decoration: line-through; color: var(--text-3); }
+  .avatar.mini { width: 22px; height: 22px; font-size: 11px; }
+
+  /* Timeline */
+  .tl { display: flex; gap: var(--s-2); }
+  .tl .t { width: 32px; flex: none; font: var(--type-caption); color: var(--text-2); padding-top: 1px; font-variant-numeric: tabular-nums; }
+  .tl .rail { width: 12px; flex: none; position: relative; }
+  .tl .rail::before { content: ""; position: absolute; left: 5px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+  .tl .rail i { position: absolute; left: 1px; top: 3px; width: 10px; height: 10px; border-radius: 50%; background: var(--text-3); }
+  .tl.now .rail i { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .tl .body { flex: 1; min-width: 0; padding-bottom: var(--s-3); }
+
+  /* Chat and call */
+  .chat { display: flex; flex-direction: column; gap: var(--s-2); flex: 1; min-height: 0; overflow: hidden; }
+  .chat .bubble { font-size: 13px; padding: 7px 11px; max-width: 86%; }
+  .inbar { display: flex; align-items: center; gap: var(--s-2); padding: 6px; border-radius: var(--r-full); flex: none; margin-bottom: 12px; }
+  .inbar .field { flex: 1; min-width: 0; height: 38px; border-radius: var(--r-full); font-size: 13px; }
+  .rb { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; flex: none; padding: 0; }
+  .rb.big { width: 56px; height: 56px; }
+  .rb.end { background: var(--danger); color: var(--on-accent); border-color: transparent; }
+  .rbs { display: flex; justify-content: center; gap: 40px; padding-bottom: 20px; flex: none; }
+  .rbs > div { display: flex; flex-direction: column; align-items: center; gap: 4px; font: var(--type-caption); }
+  .center-col { display: flex; flex-direction: column; align-items: center; gap: var(--s-1); text-align: center; }
+  .fold { display: flex; align-items: center; gap: var(--s-2); padding: 8px 10px; border-radius: var(--r-xl); flex: none; }
+  .lvl { display: flex; align-items: center; gap: 3px; height: 20px; }
+  .lvl i { width: 3px; border-radius: 2px; background: var(--accent); display: block; }
+  .fold .rb { width: 32px; height: 32px; }
+  .fold .nm { font: var(--type-body-strong); display: block; }
+
+  /* The sheet over the middle of a dimmed screen. */
+  .sheet { position: absolute; left: 14px; right: 14px; top: 150px; padding: 14px; display: flex; flex-direction: column; gap: var(--s-2); }
+  .sheet .hd { display: flex; align-items: center; gap: var(--s-2); }
+  .sheet .acts { display: flex; gap: var(--s-2); }
+  .sheet .acts .btn { flex: 1; height: 36px; padding: 0 6px; font-size: 12px; }
+  .check { display: flex; align-items: center; gap: var(--s-2); font-size: 13px; padding: 3px 0; }
+
+  /* Waiting, out of reach */
+  .wline { height: 3px; border-radius: 2px; background: var(--line); position: relative; overflow: hidden; flex: none; margin: 0 14px; }
+  .wline::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 38%; background: var(--accent); border-radius: 2px; }
+  .warn { display: flex; align-items: center; gap: var(--s-2); padding: 8px 12px; background: var(--control); border: 1px solid var(--line); border-radius: var(--r-md); flex: none; font-size: 12px; line-height: 16px; }
+  .warn .w { width: 8px; height: 8px; border-radius: 50%; background: var(--warning); flex: none; }
+  .opt { padding: 12px; display: flex; flex-direction: column; gap: 4px; border-radius: var(--r-lg); }
   .opt.on { outline: 2px solid var(--accent); }
-  .codes { display: flex; gap: var(--s-2); }
-  .codes > span { flex: 1; height: 56px; display: grid; place-items: center; border-radius: var(--r-md); background: var(--control); border: 1px solid var(--line); font: var(--type-heading); }
-  .codes > span.cur { outline: 2px solid var(--accent); }
-  .ctl { display: flex; justify-content: center; align-items: center; gap: var(--s-6); }
-  .ctl .btn-icon { width: 60px; height: 60px; border-radius: var(--r-full); }
-  .big { width: 72px !important; height: 72px !important; }
-  .center-col { display: flex; flex-direction: column; align-items: center; gap: var(--s-2); text-align: center; }
-  .sw { display: flex; gap: var(--s-2); }
-  .sw > span { width: 24px; height: 24px; border-radius: var(--r-full); background: var(--accent); }
-  .sw > span.sel { outline: 2px solid var(--text); outline-offset: 2px; }
-  .check { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-1) 0; }
-  .check .ico { border-radius: var(--r-full); }
-  .group { padding: var(--s-2) var(--s-1) var(--s-1); }
-  .tight .row { min-height: 44px; }
-  .chat { display: flex; flex-direction: column; gap: var(--s-2); flex: 1; min-height: 0; }
-  .disabled { opacity: .5; pointer-events: none; }
 </style>
 </head>
 <body class="va">
 <div class="mock-page">
 <header>
   <h1>Phone app, personal use</h1>
-  <p>The phone as one person's device: sign in, talk to an assistant, read notifications and share the clipboard. Roomy density, touch sized.</p>
+  <p>The phone as one person's device. Fifteen screens as decided, five to a row. The tab bar has four buttons the person sets (Overview, Juno, Timeline, Chat by default) and one fixed button at its end for every area. Roomy density, touch sized. Where nothing is decided the screen is drawn plainly and says so.</p>
 </header>
+
+<div class="grid">
 
 <!-- 1 -->
 <figure class="screen">
-  <figcaption><h2>1. Set-up choice</h2><p>On first run the person chooses what this device is for.</p></figcaption>
-  <div class="frames">
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb">
-        <div style="margin-top:var(--s-8)"><h1 class="t-display">Use this device as</h1><p class="t-label t-2" style="margin-top:var(--s-2)">You can set up another device later.</p></div>
-        <div class="stack" style="margin-top:var(--s-4)">
-          <div class="glass opt on"><span class="ico"></span><span class="t-heading">Personal</span><span class="t-label t-2">My phone. My notifications, clipboard and assistants.</span></div>
-          <div class="glass opt"><span class="ico"></span><span class="t-heading">Household</span><span class="t-label t-2">A shared device in a room. A voice device for everyone.</span></div>
-        </div>
-        <div class="spacer"></div>
-        <span class="btn btn-primary" style="height:56px">Continue</span>
+  <figcaption><h2>1. Set-up choice</h2><p>First run: what the device is for.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop light">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb">
+      <div style="margin-top:var(--s-6)"><h1 class="t-title">Use this device as</h1></div>
+      <div class="stack" style="margin-top:var(--s-3)">
+        <div class="surface opt on"><span class="t-strong">Personal</span><span class="t-label t-2">My phone. My notifications, clipboard and assistants.</span></div>
+        <div class="surface opt"><span class="t-strong">Household</span><span class="t-label t-2">A shared device in a room, for everyone.</span></div>
       </div>
+      <div class="spacer"></div>
+      <span class="btn btn-primary" style="height:48px;margin-bottom:16px">Continue</span>
     </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">Title: large, left aligned. Two glass option cards stacked; exactly one is selected, shown with an accent outline. Tapping a card selects it and never moves on by itself.</div>
-    <div class="note">Personal is selected at first. Continue is the only primary button, pinned to the bottom, full width. It goes to Sign in for Personal and to the household invite code for Household.</div>
-    <div class="note">Glass is used for the option cards because they float over the backdrop. The backdrop takes the default accent until a person picks one.</div>
+    <div class="note">Not decided. Two plain options, one selected with an accent outline, and one primary button. Where this sits among the first-run steps (Apple's "Hello", one pane per step, five dots) is open.</div>
+    <div class="note">Personal goes on to sign-in. Household goes on to an invite code.</div>
   </div>
 </figure>
 
 <!-- 2 -->
 <figure class="screen">
-  <figcaption><h2>2. Sign in</h2><p>An email address, then the one-time code sent to it.</p></figcaption>
-  <div class="frames">
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb">
-        <div style="margin-top:var(--s-8)"><h1 class="t-display">Sign in</h1><p class="t-label t-2" style="margin-top:var(--s-2)">We will send a code to your email address.</p></div>
-        <div class="glass card" style="margin-top:var(--s-4)">
-          <label class="field-label">Email address</label>
-          <div class="field is-focus"><span>alex@example.com</span></div>
-        </div>
-        <div class="spacer"></div>
-        <span class="btn btn-primary" style="height:56px">Send code</span>
-      </div>
+  <figcaption><h2>2. Sign in</h2><p>An email address, then a one-time code.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop dark">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb">
+      <div style="margin-top:var(--s-6)"><h1 class="t-title">Sign in</h1><p class="t-label t-2" style="margin-top:var(--s-1)">We will send a code to your email address.</p></div>
+      <div style="margin-top:var(--s-3)"><label class="field-label">Email address</label><div class="field is-focus"><span>alex@example.com</span></div></div>
+      <div class="spacer"></div>
+      <span class="btn btn-primary" style="height:48px;margin-bottom:16px">Send code</span>
     </div>
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb">
-        <div style="margin-top:var(--s-8)"><h1 class="t-display">Enter the code</h1><p class="t-label t-2" style="margin-top:var(--s-2)">Sent to alex@example.com</p></div>
-        <div class="glass card" style="margin-top:var(--s-4)">
-          <div class="codes"><span>4</span><span>8</span><span>1</span><span class="cur"></span><span></span><span></span></div>
-          <div class="hstack" style="margin-top:var(--s-4);justify-content:space-between"><span class="t-label t-2">Code expires in 09:12</span><span class="btn btn-quiet">Send again</span></div>
-        </div>
-        <div class="spacer"></div>
-        <span class="btn btn-quiet">Use another email address</span>
-      </div>
-    </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">Left: one glass card with a labelled email field, focused on open with the keyboard up. Send code is primary and stays disabled until the address looks valid.</div>
-    <div class="note">Right: six single-digit boxes, one numeric keyboard. The box with the outline is the cursor. The sixth digit submits at once, so there is no confirm button. A wrong code shakes the boxes and clears them.</div>
-    <div class="note">Send again is quiet and works after the countdown. Use another email address returns to the left frame.</div>
+    <div class="note">Not decided. A plain form: one field, one primary button. The next step is six digit boxes for the code, which is also not drawn.</div>
   </div>
 </figure>
 
 <!-- 3 -->
 <figure class="screen">
-  <figcaption><h2>3. Home</h2><p>The place to start: talk to an assistant, see what is running and what just arrived.</p></figcaption>
-  <div class="frames">
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb tabs">
-        <h1 class="t-display">Good morning, Alex</h1>
-        <div class="glass card hstack" style="gap:var(--s-4)">
-          <span class="character" style="--size:64px"></span>
-          <span style="flex:1"><span class="t-heading" style="display:block">Talk to Juno</span><span class="t-label t-2">Tap to speak</span></span>
-          <span class="btn btn-primary btn-icon" style="border-radius:var(--r-full)"><span class="ico"></span></span>
-        </div>
-        <div>
-          <div class="t-caption group">Now</div>
-          <div class="glass card hstack" style="gap:var(--s-3)">
-            <span style="flex:1"><span class="t-label t-2" style="display:block">Pasta timer · Kitchen</span><span class="t-display num">07:42</span></span>
-            <span class="btn">Stop</span>
-          </div>
-        </div>
-        <div>
-          <div class="t-caption group">Recent</div>
-          <div class="surface list tight" style="padding:var(--s-1)">
-            <div class="row"><span class="ico"></span><span class="grow">Parcel arrives tomorrow<span class="sub">Email · 2 min ago</span></span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Sam added milk to Shopping<span class="sub">Lists · 18 min ago</span></span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Dinner is ready<span class="sub">Broadcast · 1 h ago</span></span></div>
-          </div>
-        </div>
-        <div class="glass tabbar floatbar">
-          <span class="on"><span class="ico"></span>Home</span><span><span class="ico"></span>Alerts</span><span><span class="ico"></span>Clipboard</span><span><span class="ico"></span>Lists</span><span><span class="ico"></span>More</span>
-        </div>
-      </div>
+  <figcaption><h2>3. Overview</h2><p>What is running and what just arrived, as rows.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop light">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="glass top"><span class="grow">Overview</span><span class="avatar">A</span></div>
+      <div style="margin:var(--s-1) 4px 0"><div class="t-caption">Tuesday</div><div class="t-title">Good morning, Alex</div></div>
+      <div class="glass rw" style="min-height:56px"><span class="character" style="--size:36px"></span><span class="tx"><span class="t1">Talk to Juno</span><span class="t2">Tap or say “Hey Juno”</span></span></div>
+      <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Pasta timer</span><span class="t2">Running</span></span><span class="num">07:42</span></div>
+      <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span><span class="chev"></span></div>
+      <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Shopping</span><span class="t2">2 left of 3</span></span><span class="chev"></span></div>
+      <div class="glass rw"><span class="character" style="--size:28px"></span><span class="tx"><span class="t1">Send this to Sam?</span><span class="t2">Juno asks</span></span><span class="btn btn-primary">Yes</span></div>
     </div>
-  </div>
+    <nav class="glass-thick tb" data-on="0"></nav>
+  </div></div>
   <div class="notes">
-    <div class="note">Title: a greeting with the person's name. Assistant card (glass): the character, "Talk to Juno" and a round primary microphone button. Tapping anywhere on the card or the button starts a conversation (screen 4). If there is more than one assistant, the name is the person's default.</div>
-    <div class="note">Now: one glass card per running thing (timer, alarm, call). Hidden when nothing runs. Each has its own action. Several cards stack, newest first.</div>
-    <div class="note">Recent: the latest three notifications on a plain surface, not glass. Tapping a row opens Notifications with that row expanded.</div>
-    <div class="note">Tab bar: floating glass at the bottom with five tabs, Home selected. The tab named Notifications is labelled "Alerts" here only to fit; the owner should confirm the label.</div>
+    <div class="note">Top bar: glass, with the screen name and the person's avatar.</div>
+    <div class="note">The assistant row starts a call. Below are compact glass rows, one per timer, notification, list or question. Only the question has the primary button. A touch on a row lifts it into a sheet (screen 9).</div>
   </div>
 </figure>
 
 <!-- 4 -->
 <figure class="screen">
-  <figcaption><h2>4. Talking to an assistant</h2><p>Voice first: the character listens, the transcript follows, and a card appears when the assistant shows something. Typing is a switch away.</p></figcaption>
-  <div class="frames">
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb" style="gap:var(--s-3)">
-        <div class="center-col" style="margin-top:var(--s-4)">
-          <span class="character listening" style="--size:140px"></span>
-          <span class="t-heading" style="margin-top:var(--s-3)">Listening…</span>
-          <span class="t-label t-2">“Put milk and eggs on the shopping list”</span>
-        </div>
-        <div class="glass card" style="margin-top:var(--s-2)">
-          <div class="card-head" style="margin-bottom:var(--s-2)"><span class="t-caption" style="flex:1">Shopping</span><span class="chip">3 items</span></div>
-          <div class="check"><span class="ico"></span><span>Bread</span></div>
-          <div class="check"><span class="ico"></span><span>Milk</span><span class="chip accent">New</span></div>
-          <div class="check"><span class="ico"></span><span>Eggs</span><span class="chip accent">New</span></div>
-        </div>
-        <div class="spacer"></div>
-        <div class="ctl">
-          <span class="glass btn btn-icon"><span class="ico"></span></span>
-          <span class="glass btn btn-icon"><span class="ico"></span></span>
-          <span class="btn btn-icon btn-danger glass"><span class="ico"></span></span>
-        </div>
-        <div class="ctl" style="gap:var(--s-6)"><span class="t-caption" style="width:60px;text-align:center">Mute</span><span class="t-caption" style="width:60px;text-align:center">Type</span><span class="t-caption" style="width:60px;text-align:center">End</span></div>
+  <figcaption><h2>4. Juno</h2><p>The assistant screen: the whole figure, ready to be talked to.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop dark accent-aurora">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="glass top"><span class="grow">Juno</span><span class="avatar">A</span></div>
+      <div class="spacer center-col" style="justify-content:center;flex:1">
+        <span class="figure" style="--size:116px"><span class="character listening" style="--size:116px"></span></span>
+        <div class="t-heading" style="margin-top:var(--s-4)">Juno</div>
+        <div class="t-label t-2">Tap or say “Hey Juno”</div>
+        <span class="chip" style="margin-top:var(--s-2)">Listening</span>
       </div>
     </div>
-    <div class="frame phone backdrop dark accent-aurora">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb" style="gap:var(--s-3)">
-        <div class="hstack" style="gap:var(--s-3)"><span class="character" style="--size:40px"></span><span class="t-heading" style="flex:1">Juno</span><span class="btn btn-quiet">End</span></div>
-        <div class="chat">
-          <div class="bubble me" style="align-self:flex-end">Put milk and eggs on the shopping list</div>
-          <div class="bubble" style="align-self:flex-start">Done. I added milk and eggs to Shopping.</div>
-          <div class="bubble me" style="align-self:flex-end">What is on it now?</div>
-          <div class="bubble" style="align-self:flex-start">Bread, milk and eggs.</div>
-        </div>
-        <div class="hstack" style="gap:var(--s-2)">
-          <span class="glass btn btn-icon" style="border-radius:var(--r-full)"><span class="ico"></span></span>
-          <span class="field" style="flex:1;height:48px;border-radius:var(--r-full)"><span class="ph">Message Juno</span></span>
-          <span class="btn btn-primary btn-icon" style="border-radius:var(--r-full);height:48px;width:48px"><span class="ico"></span></span>
-        </div>
-      </div>
-    </div>
-  </div>
+    <nav class="glass-thick tb" data-on="1"></nav>
+  </div></div>
   <div class="notes">
-    <div class="note">Left (voice): the character sits in the upper half at 140px and breathes while listening. Below it the state word ("Listening…", "Thinking…", "Speaking…") and the live transcript, one or two lines, replaced as the person speaks.</div>
-    <div class="note">The glass card is a screen the assistant chose to show, here a checklist from the A2UI catalogue. It slides in under the transcript, and a new one replaces it. It is touch-live: ticking an item acts at once.</div>
-    <div class="note">Bottom controls, three round glass buttons: Mute (character turns grey), Type (switches to the right frame) and End (red, closes the conversation and returns to Home). Labels sit under the buttons.</div>
-    <div class="note">Right (typing, dark, Aurora accent): the same conversation as bubbles, the person's in the accent colour on the right. The field sits at the bottom with a round microphone button to go back to voice; the primary send button is the only primary on the screen.</div>
+    <div class="note">The figure has most of the screen, standing, and breathes while it listens. Its name and one line of help sit under it. A touch on the figure starts a call (screen 7).</div>
+    <div class="note">The bar stays, so the person can go to another screen without leaving.</div>
   </div>
 </figure>
 
 <!-- 5 -->
 <figure class="screen">
-  <figcaption><h2>5. Notifications</h2><p>Everything sent to this person, grouped by day, newest first.</p></figcaption>
-  <div class="frames">
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb tabs" style="gap:var(--s-2)">
-        <h1 class="t-title">Notifications</h1>
-        <div class="t-caption group">Today</div>
-        <div class="surface list" style="padding:var(--s-1)">
-          <div class="col" style="background:var(--accent-soft);border-radius:var(--r-sm);padding:var(--s-3) var(--pad)">
-            <div class="hstack" style="gap:var(--s-3)"><span class="ico"></span><span class="t-strong" style="flex:1">Parcel arrives tomorrow</span><span class="t-label t-2">9:39</span></div>
-            <p class="t-label t-2" style="margin:var(--s-2) 0 0 34px">Your order is out for delivery between 9 and 12.</p>
-            <div class="actions" style="margin-left:34px"><span class="btn">Mark as read</span><span class="btn">Send to Sam</span></div>
-          </div>
-          <div class="row"><span class="ico"></span><span class="grow">Sam added milk to Shopping<span class="sub">Lists</span></span><span class="t-label t-2">9:22</span></div>
-          <div class="row"><span class="ico"></span><span class="grow">Dinner is ready<span class="sub">Broadcast from Kitchen</span></span><span class="t-label t-2">8:40</span></div>
-        </div>
-        <div class="t-caption group">Yesterday</div>
-        <div class="surface list" style="padding:var(--s-1)">
-          <div class="row"><span class="ico"></span><span class="grow">Bins go out tonight<span class="sub">Reminder</span></span><span class="t-label t-2">18:00</span></div>
-          <div class="row"><span class="ico"></span><span class="grow">Washing machine finished<span class="sub">Home</span></span><span class="t-label t-2">15:12</span></div>
-        </div>
-        <div class="glass tabbar floatbar">
-          <span><span class="ico"></span>Home</span><span class="on"><span class="ico"></span>Alerts</span><span><span class="ico"></span>Clipboard</span><span><span class="ico"></span>Lists</span><span><span class="ico"></span>More</span>
-        </div>
-      </div>
+  <figcaption><h2>5. Timeline</h2><p>Everything of today in one stream, newest first.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop light accent-ember">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="glass top"><span class="grow">Timeline</span><span class="avatar">A</span></div>
+      <div class="t-title" style="margin:var(--s-1) 4px 2px">Today</div>
+      <div class="tl now"><span class="t">Now</span><span class="rail"><i></i></span><div class="body"><div class="surface rw" style="min-height:40px"><span class="tx"><span class="t1">Pasta timer</span><span class="t2">Running</span></span><span class="num">07:42</span></div></div></div>
+      <div class="tl"><span class="t">8:10</span><span class="rail"><i></i></span><div class="body"><span class="sm ell">Parcel arrives tomorrow</span><span class="sub2">Email</span></div></div>
+      <div class="tl"><span class="t">7:54</span><span class="rail"><i></i></span><div class="body"><span class="sm ell">Sam added milk to Shopping</span><span class="sub2">Lists</span></div></div>
+      <div class="tl"><span class="t">7:30</span><span class="rail"><i></i></span><div class="body"><span class="sm ell">Bins go out tonight</span><span class="sub2">Reminder</span></div></div>
+      <div class="tl"><span class="t">7:15</span><span class="rail"><i></i></span><div class="body"><span class="sm ell">Jo copied a link</span><span class="sub2">Clipboard</span></div></div>
     </div>
-  </div>
+    <nav class="glass-thick tb" data-on="2"></nav>
+  </div></div>
   <div class="notes">
-    <div class="note">Plain surfaces, not glass: the content is a list. Day headings are small caps captions. Unread rows are bold and show the time on the right.</div>
-    <div class="note">Tapping a row expands it in place, tinted with the soft accent, and shows its full text and its actions. Only one row is open at a time. Actions come from the notification itself, here Mark as read and Send to Sam.</div>
-    <div class="note">Swiping a row left clears it. Older days load as the list scrolls.</div>
+    <div class="note">Plain content on a rail, not glass. What is running sits at the top, marked Now. Below, one line per event with its time and where it came from.</div>
+    <div class="note">Older entries load as the list scrolls.</div>
   </div>
 </figure>
 
 <!-- 6 -->
 <figure class="screen">
-  <figcaption><h2>6. Clipboard</h2><p>The household's shared clipboard history for this person, with where each item came from.</p></figcaption>
-  <div class="frames">
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb tabs" style="gap:var(--s-3)">
-        <h1 class="t-title">Clipboard</h1>
-        <div class="field"><span class="ico"></span><span class="ph">Search what you copied</span></div>
-        <div class="surface list" style="padding:var(--s-1)">
-          <div class="row" style="min-height:64px"><span class="grow">https://example.com/recipe/lasagne<span class="sub">2 min ago</span></span><span class="chip">Office desktop</span></div>
-          <div class="row" style="min-height:64px"><span class="grow">Door code 4471<span class="sub">1 h ago</span></span><span class="chip accent">This phone</span></div>
-          <div class="row" style="min-height:64px"><span class="grow">12 Mill Lane, Leeds<span class="sub">Yesterday</span></span><span class="chip">Laptop</span></div>
-          <div class="row" style="min-height:64px"><span class="grow">Photo, 1.2 MB<span class="sub">Yesterday</span></span><span class="chip">Sam’s phone</span></div>
-        </div>
-        <div class="glass card" style="padding:var(--s-3) var(--pad)"><span class="t-label t-2">This phone adds items when you use Share or the keyboard. It cannot copy in the background.</span></div>
-        <div class="glass tabbar floatbar">
-          <span><span class="ico"></span>Home</span><span><span class="ico"></span>Alerts</span><span class="on"><span class="ico"></span>Clipboard</span><span><span class="ico"></span>Lists</span><span><span class="ico"></span>More</span>
-        </div>
+  <figcaption><h2>6. Chat</h2><p>The conversation with an assistant, as text.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop dark accent-moss">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="glass top"><span class="character" style="--size:26px"></span><span class="grow">Juno</span><span class="avatar">A</span></div>
+      <div class="chat" style="margin-top:var(--s-1)">
+        <div class="bubble">Hi Alex. What can I do?</div>
+        <div class="bubble me">Put milk and eggs on the shopping list</div>
+        <div class="bubble">Done. I added milk and eggs to Shopping.</div>
+        <div class="bubble me">What is on it now?</div>
+        <div class="bubble">Bread, milk and eggs.</div>
       </div>
+      <div class="glass inbar" style="margin-bottom:6px"><span class="field"><span class="ph">Message Juno</span></span><span class="btn btn-primary rb"><span class="ico"></span></span></div>
     </div>
-  </div>
+    <nav class="glass-thick tb" data-on="3"></nav>
+  </div></div>
   <div class="notes">
-    <div class="note">Search field at the top filters the list as the person types. The list is plain: one item per row, a preview of the text (one line, cut with an ellipsis), the age, and a chip on the right naming the source device. This phone's chip uses the accent.</div>
-    <div class="note">Tapping a row copies it to this phone's clipboard and shows a short "Copied" toast. A long press offers Delete.</div>
-    <div class="note">The glass card explains the platform limit: the phone cannot read the clipboard in the background, so items arrive through the system Share action or the Virtual Assistant keyboard. It stays visible at first and can be dismissed.</div>
+    <div class="note">The person's messages are in the accent colour on the right. A floating glass field sits above the bar, with the only primary button, send.</div>
+    <div class="note">What the assistant shows appears in the thread as a plain card.</div>
   </div>
 </figure>
 
 <!-- 7 -->
 <figure class="screen">
-  <figcaption><h2>7. More and settings</h2><p>This device, how it looks, and the way to everything else.</p></figcaption>
-  <div class="frames">
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb tabs" style="gap:var(--s-2)">
-        <h1 class="t-title">More</h1>
-        <div class="surface list" style="padding:var(--s-1)">
-          <div class="row"><span class="ico"></span><span class="grow">This device<span class="sub">Alex’s phone · Personal</span></span><span class="t-3">›</span></div>
-          <div class="row" style="min-height:76px"><span class="ico"></span><span class="grow">Accent colour
-            <span class="sw" style="margin-top:var(--s-2)">
-              <span class="sel accent-tide"></span><span class="accent-ember"></span><span class="accent-aurora"></span><span class="accent-moss"></span><span class="accent-graphite"></span>
-            </span></span></div>
-          <div class="row"><span class="ico"></span><span class="grow">Reduced motion</span><span class="toggle"></span></div>
-        </div>
-        <div class="surface list" style="padding:var(--s-1);margin-top:var(--s-2)">
-          <div class="row"><span class="ico"></span><span class="grow">Your settings<span class="sub">Opens the admin panel, already signed in</span></span><span class="t-3">↗</span></div>
-        </div>
-        <div class="surface list" style="padding:var(--s-1);margin-top:var(--s-2)">
-          <div class="row"><span class="ico"></span><span class="grow">Report a bug</span><span class="t-3">›</span></div>
-          <div class="row"><span class="ico"></span><span class="grow">Suggest a feature</span><span class="t-3">›</span></div>
-        </div>
-        <div class="glass tabbar floatbar">
-          <span><span class="ico"></span>Home</span><span><span class="ico"></span>Alerts</span><span><span class="ico"></span>Clipboard</span><span><span class="ico"></span>Lists</span><span class="on"><span class="ico"></span>More</span>
-        </div>
+  <figcaption><h2>7. The call</h2><p>The whole figure has the screen, with two round buttons.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop dark accent-aurora">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb">
+      <div class="center-col" style="margin-top:var(--s-2)"><span class="t-heading">Juno</span><span class="t-label t-2">Listening · 02:14</span></div>
+      <div class="spacer center-col" style="justify-content:center;flex:1">
+        <span class="figure" style="--size:130px"><span class="character listening" style="--size:130px"></span></span>
+        <div class="t-label" style="margin-top:var(--s-4)">“Put milk and eggs on the shopping list”</div>
+      </div>
+      <div class="rbs">
+        <div><span class="glass btn rb big"><span class="ico"></span></span>Chat</div>
+        <div><span class="btn rb big end"><span class="ico"></span></span>End</div>
       </div>
     </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">Rows in three plain groups. This device opens a detail page with its name and use. Accent colour shows five small circles (Tide, Ember, Aurora, Moss, Graphite); the chosen one has a ring. Picking one changes the accent of the whole app at once.</div>
-    <div class="note">Reduced motion is a toggle that starts from the system setting. When on, animation shortens to a fade and the character stops breathing.</div>
-    <div class="note">Your settings opens the admin panel in the browser, already signed in with the app's own session. Report a bug and Suggest a feature open a short form each.</div>
+    <div class="note">Like a call: no tab bar. Name and state with the time at the top, the standing figure, then the live words as one line. Chat is glass, End is red.</div>
+    <div class="note">Chat folds the call into the chat (screen 8). End closes the call and returns to the screen the person came from.</div>
   </div>
 </figure>
 
 <!-- 8 -->
 <figure class="screen">
-  <figcaption><h2>8. Waiting for the server</h2><p>The server cannot be reached. The app says so and waits, and nothing is lost.</p></figcaption>
-  <div class="frames">
-    <div class="frame phone backdrop">
-      <div class="sb"><span>9:41</span><span>●●●</span></div>
-      <div class="pb tabs">
-        <div class="glass hstack" style="gap:var(--s-3);padding:var(--s-2) var(--s-4);border-radius:var(--r-full)"><span class="loader"></span><span class="t-label">Cannot reach the server. Waiting…</span></div>
-        <h1 class="t-display">Good morning, Alex</h1>
-        <div class="glass card hstack disabled" style="gap:var(--s-4)">
-          <span class="character muted" style="--size:64px"></span>
-          <span style="flex:1"><span class="t-heading" style="display:block">Talk to Juno</span><span class="t-label t-2">Not available</span></span>
-          <span class="btn btn-icon is-disabled" style="border-radius:var(--r-full)"><span class="ico"></span></span>
-        </div>
-        <div>
-          <div class="t-caption group">Recent</div>
-          <div class="surface list tight" style="padding:var(--s-1)">
-            <div class="row"><span class="ico"></span><span class="grow">Parcel arrives tomorrow<span class="sub">Email · 2 min ago</span></span></div>
-            <div class="row"><span class="ico"></span><span class="grow">Sam added milk to Shopping<span class="sub">Lists · 18 min ago</span></span></div>
-          </div>
-        </div>
-        <div class="glass tabbar floatbar">
-          <span class="on"><span class="ico"></span>Home</span><span><span class="ico"></span>Alerts</span><span><span class="ico"></span>Clipboard</span><span><span class="ico"></span>Lists</span><span><span class="ico"></span>More</span>
+  <figcaption><h2>8. The call folds into the chat</h2><p>The call goes on while the chat is shown.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop dark accent-aurora">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb">
+      <div class="glass fold">
+        <span class="character" style="--size:44px"></span>
+        <div style="flex:1;min-width:0"><span class="nm">Juno</span><span class="lvl"><i style="height:8px"></i><i style="height:14px"></i><i style="height:20px"></i><i style="height:12px"></i><i style="height:18px"></i><i style="height:9px"></i><i style="height:15px"></i></span></div>
+        <span class="glass btn rb"><span class="ico"></span></span><span class="btn rb end"><span class="ico"></span></span>
+      </div>
+      <div class="chat" style="margin-top:var(--s-1)">
+        <div class="bubble">Hi Alex. What can I do?</div>
+        <div class="bubble me">Put milk and eggs on the shopping list</div>
+        <div class="bubble">Done. I added milk and eggs to Shopping.</div>
+        <div class="surface" style="padding:var(--s-1) var(--s-3);border-radius:var(--r-lg)">
+          <div class="t-caption" style="margin:4px 0">Shopping</div>
+          <div class="check"><span class="tk on">✓</span><span class="done">Bread</span></div>
+          <div class="check"><span class="tk"></span>Milk</div>
         </div>
       </div>
+      <div class="glass inbar"><span class="field"><span class="ph">Message Juno</span></span><span class="btn btn-primary rb"><span class="ico"></span></span></div>
     </div>
-  </div>
+  </div></div>
   <div class="notes">
-    <div class="note">A slim glass banner sits at the top, under the status bar, with the spinning loader and "Cannot reach the server. Waiting…". It appears after a few seconds of no connection and disappears by itself when the server answers.</div>
-    <div class="note">The assistant card is dimmed, its character is grey and its button is disabled, because there is nothing to talk to. The text says "Not available".</div>
-    <div class="note">Already loaded content, such as recent notifications, stays visible and readable. The Now section is hidden. The tab bar still works for what is stored on the phone.</div>
+    <div class="note">The figure shrinks into a glass header: its name, a sign of the sound level, and small Mute and End buttons. A touch on the header returns to the full figure.</div>
+    <div class="note">The rest is the conversation, live, with a field to type in.</div>
   </div>
 </figure>
+
+<!-- 9 -->
+<figure class="screen">
+  <figcaption><h2>9. A row lifted into a sheet</h2><p>A touch on the Shopping row (screen 3).</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop light">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="dim stack">
+        <div class="glass top"><span class="grow">Overview</span><span class="avatar">A</span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Pasta timer</span><span class="t2">Running</span></span><span class="num">07:42</span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span></div>
+        <div style="height:46px;border:2px dashed var(--line);border-radius:var(--r-lg)"></div>
+        <div class="glass rw"><span class="character" style="--size:28px"></span><span class="tx"><span class="t1">Send this to Sam?</span></span></div>
+      </div>
+    </div>
+    <nav class="glass-thick tb dim" data-on="0"></nav>
+    <div class="glass-thick sheet" style="top:120px">
+      <div class="hd"><span class="ico"></span><span class="tx" style="flex:1"><span class="t-strong" style="display:block">Shopping</span><span class="sub2">2 left of 3</span></span><span class="btn btn-quiet btn-icon" style="width:32px;height:32px">×</span></div>
+      <div class="check"><span class="tk on">✓</span><span class="done">Bread</span></div>
+      <div class="check"><span class="tk"></span>Milk</div>
+      <div class="check"><span class="tk"></span>Eggs</div>
+      <div class="check t-2"><span class="tk">+</span>Add an item</div>
+      <div class="acts"><span class="btn">Clear ticked</span><span class="btn btn-primary">Add an item</span></div>
+    </div>
+  </div></div>
+  <div class="notes">
+    <div class="note">The screen dims. A thick glass sheet floats over the middle. It grows from the row, which leaves a gap of its own size, and the title Shopping stays and moves into place.</div>
+    <div class="note">The sheet is the card's own content, live: ticking acts at once. The cross, or a touch outside, closes it.</div>
+  </div>
+</figure>
+
+<!-- 10 -->
+<figure class="screen">
+  <figcaption><h2>10. All areas</h2><p>The fixed button at the end of the bar.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop light accent-moss">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="glass top"><span class="grow">Areas</span><span class="avatar">A</span></div>
+      <div class="surface" style="margin-top:var(--s-1)">
+        <div class="nrow"><span class="ico"></span><span class="tx t-strong">Lists</span><span class="chev"></span></div>
+        <div class="nrow"><span class="ico"></span><span class="tx t-strong">Clipboard</span><span class="chev"></span></div>
+        <div class="nrow"><span class="ico"></span><span class="tx t-strong">Settings</span><span class="chev"></span></div>
+      </div>
+      <p class="t-label t-2" style="margin:var(--s-1) 4px">Later areas are added here.</p>
+    </div>
+    <nav class="glass-thick tb" data-on="4"></nav>
+  </div></div>
+  <div class="notes">
+    <div class="note">Not decided. Drawn as a bare list of every area: the lists, the clipboard, the settings and any area added later. What it looks like, and how the four buttons of the bar are changed, are open.</div>
+    <div class="note">The fixed button is at the end in the direction of reading, and stays when the person changes the other four.</div>
+  </div>
+</figure>
+
+<!-- 11 -->
+<figure class="screen">
+  <figcaption><h2>11. Shopping list</h2><p>A list, shared with the household.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop dark accent-tide">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="glass top"><span class="t-label t-2">‹ Areas</span><span class="grow" style="text-align:center">Shopping</span><span class="avatar">A</span></div>
+      <div class="surface" style="margin-top:var(--s-1)">
+        <div class="nrow"><span class="tk"></span><span class="tx sm">Milk</span><span class="avatar mini">A</span></div>
+        <div class="nrow"><span class="tk"></span><span class="tx sm">Eggs</span><span class="avatar mini">S</span></div>
+        <div class="nrow"><span class="tk"></span><span class="tx sm">Olive oil</span><span class="avatar mini">J</span></div>
+        <div class="nrow"><span class="tk on">✓</span><span class="tx sm done">Washing-up liquid</span><span class="avatar mini">S</span></div>
+        <div style="padding:var(--s-2) var(--s-3) var(--s-3)"><div class="field" style="height:38px;font-size:13px"><span class="ico" style="width:16px;height:16px"></span><span class="ph">Add an item</span></div></div>
+      </div>
+    </div>
+    <nav class="glass-thick tb" data-on="4"></nav>
+  </div></div>
+  <div class="notes">
+    <div class="note">Plain rows on a surface. Each has a tick and, on the right, the avatar of whoever added it. Ticked items are struck through.</div>
+    <div class="note">The field at the end adds an item. The bar keeps its fixed button selected, because the list belongs to the areas.</div>
+  </div>
+</figure>
+
+<!-- 12 -->
+<figure class="screen">
+  <figcaption><h2>12. Clipboard</h2><p>The shared clipboard, with where each item came from.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop light accent-ember">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="glass top"><span class="t-label t-2">‹ Areas</span><span class="grow" style="text-align:center">Clipboard</span><span class="avatar">A</span></div>
+      <div class="surface" style="margin-top:var(--s-1)">
+        <div class="nrow" style="min-height:60px"><span class="ico"></span><span class="tx"><span class="sm ell">hearth.local/recipes/pasta</span><span class="sub2">Alex’s desktop · 2 min ago</span></span><span class="btn btn-icon" style="width:32px;height:32px"><span class="ico" style="width:14px;height:14px"></span></span></div>
+        <div class="nrow" style="min-height:60px"><span class="ico"></span><span class="tx"><span class="sm ell">Pick up the parcel from next door</span><span class="sub2">Sam’s phone · 14 min ago</span></span><span class="btn btn-icon" style="width:32px;height:32px"><span class="ico" style="width:14px;height:14px"></span></span></div>
+        <div class="nrow" style="min-height:60px"><span class="ico"></span><span class="tx"><span class="sm ell">Image, 1200 × 800</span><span class="sub2">Kitchen tablet · 1 h ago</span></span><span class="btn btn-icon" style="width:32px;height:32px"><span class="ico" style="width:14px;height:14px"></span></span></div>
+      </div>
+      <div class="glass rw" style="min-height:40px"><span class="t-label t-2" style="font-size:11px;line-height:14px">Items arrive through the Share action. The phone cannot copy in the background.</span></div>
+    </div>
+    <nav class="glass-thick tb" data-on="4"></nav>
+  </div></div>
+  <div class="notes">
+    <div class="note">Plain rows: a preview of the item cut to one line, the device it came from, its age, and a copy button at the end.</div>
+    <div class="note">The copy button puts the item on this phone's clipboard. Whether a touch on the row itself copies or opens is open.</div>
+  </div>
+</figure>
+
+<!-- 13 -->
+<figure class="screen">
+  <figcaption><h2>13. Settings</h2><p>This device and how it looks.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop dark accent-ember">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar">
+      <div class="glass top"><span class="t-label t-2">‹ Areas</span><span class="grow" style="text-align:center">Settings</span><span class="avatar">A</span></div>
+      <div class="surface" style="margin-top:var(--s-1)">
+        <div class="nrow"><span class="tx sm">Tab bar<span class="sub2">Overview, Juno, Timeline, Chat</span></span><span class="chev"></span></div>
+        <div class="nrow"><span class="tx sm">Open the app on<span class="sub2">Overview</span></span><span class="chev"></span></div>
+        <div class="nrow" style="min-height:62px"><span class="tx sm">Accent colour
+          <span style="display:flex;gap:8px;margin-top:6px"><span class="accent-tide" style="width:22px;height:22px;border-radius:50%;background:var(--accent)"></span><span class="accent-ember" style="width:22px;height:22px;border-radius:50%;background:var(--accent);outline:2px solid var(--text);outline-offset:2px"></span><span class="accent-aurora" style="width:22px;height:22px;border-radius:50%;background:var(--accent)"></span><span class="accent-moss" style="width:22px;height:22px;border-radius:50%;background:var(--accent)"></span><span class="accent-graphite" style="width:22px;height:22px;border-radius:50%;background:var(--accent)"></span></span></span></div>
+        <div class="nrow"><span class="tx sm">Reduced motion</span><span class="toggle"></span></div>
+        <div class="nrow"><span class="tx sm">Your settings<span class="sub2">Opens the admin panel</span></span><span class="t-3">↗</span></div>
+      </div>
+    </div>
+    <nav class="glass-thick tb" data-on="4"></nav>
+  </div></div>
+  <div class="notes">
+    <div class="note">Plain rows on a surface, reached from All areas. Tab bar and Open the app on are where the person sets the bar and the first screen. Not decided: where the first screen is set, and how the bar is changed.</div>
+    <div class="note">The ring marks the chosen accent colour. Reduced motion starts from the system setting.</div>
+  </div>
+</figure>
+
+<!-- 14 -->
+<figure class="screen">
+  <figcaption><h2>14. Waiting</h2><p>Quiet: a thin line, and the last content kept.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop light accent-aurora">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar" style="gap:6px">
+      <div class="glass top"><span class="grow">Overview</span><span class="avatar">A</span></div>
+      <div class="wline"></div>
+      <div class="stack" style="margin-top:var(--s-1)">
+        <div style="margin:0 4px"><div class="t-title">Good morning, Alex</div></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Shopping</span><span class="t2">2 left of 3</span></span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Bins go out tonight</span><span class="t2">Reminder</span></span></div>
+      </div>
+    </div>
+    <nav class="glass-thick tb" data-on="0"></nav>
+  </div></div>
+  <div class="notes">
+    <div class="note">A thin accent line under the top bar shows that something is loading. It moves along while it waits.</div>
+    <div class="note">Nothing else changes: the last content stays and can be used. The line goes when the answer arrives.</div>
+  </div>
+</figure>
+
+<!-- 15 -->
+<figure class="screen">
+  <figcaption><h2>15. Home cannot be reached</h2><p>A slim plain bar, and saved content still usable.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop dark accent-aurora">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar" style="gap:6px">
+      <div class="glass top"><span class="grow">Overview</span><span class="avatar">A</span></div>
+      <div class="warn"><span class="w"></span><span style="flex:1"><b>Cannot reach home.</b> <span class="t-2">Showing what was saved.</span></span><span class="btn" style="height:28px;padding:0 8px;font-size:12px">Retry</span></div>
+      <div class="stack" style="margin-top:var(--s-1)">
+        <div style="margin:0 4px"><div class="t-title">Good morning, Alex</div></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Shopping</span><span class="t2">2 left of 3</span></span></div>
+        <div class="glass rw"><span class="ico"></span><span class="tx"><span class="t1">Bins go out tonight</span><span class="t2">Reminder</span></span></div>
+      </div>
+    </div>
+    <nav class="glass-thick tb" data-on="0"></nav>
+  </div></div>
+  <div class="notes">
+    <div class="note">A slim plain bar under the top bar, not glass. It says what is wrong in one sentence and offers Retry. It goes by itself when home answers.</div>
+    <div class="note">Saved content stays readable and usable. Anything that needs home, such as a call, says so when touched.</div>
+  </div>
+</figure>
+
 </div>
+</div>
+<script>
+  /* Stamp the tab bar: four buttons the person sets, a divider, one fixed button. */
+  var names = ['Overview', 'Juno', 'Timeline', 'Chat', 'Areas'];
+  document.querySelectorAll('nav.tb').forEach(function (n) {
+    var on = +n.getAttribute('data-on');
+    n.innerHTML = names.map(function (t, i) {
+      return (i === 4 ? '<i></i>' : '') + '<div class="' + (i === on ? 'on' : '') + '"><span class="ico"></span>' + t + '</div>';
+    }).join('');
+  });
+</script>
 </body>
 </html>

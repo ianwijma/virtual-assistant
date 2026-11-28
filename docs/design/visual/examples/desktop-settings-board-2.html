@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desktop settings board 2</title>
+<!--
+  Four ways the launcher becomes the settings view of this device. Settings are
+  a view of the launcher, laid out like the admin panel; what is open is how
+  the launcher turns into that view. Nothing here is decided.
+  See ../desktop.md and ../glass.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: 8px; }
+  .arr h2 { font: 600 17px/20px var(--font-sans); margin: 0; }
+  .arr p.d { font: 500 13px/16px var(--font-sans); color: var(--text-2); margin: 0 0 2px; }
+  .cap { display: block; height: 16px; font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+  .frame { position: relative; width: 1180px; height: 600px; border-radius: 14px; overflow: hidden; color: var(--text); }
+  .frame > .p { position: absolute; }
+  .frame .grow { flex: 1; min-width: 0; }
+
+  /* tray / top bar */
+  .topbar { left: 0; right: 0; top: 0; height: 26px; display: flex; align-items: center; justify-content: flex-end; gap: var(--s-3); padding: 0 var(--s-4); border-radius: 0; border-width: 0 0 1px 0; font: var(--type-caption); }
+  .topbar .mark { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid currentColor; opacity: .7; }
+  .topbar .tray { width: 22px; height: 18px; border-radius: 6px; display: grid; place-items: center; }
+  .topbar .tray.on { background: var(--accent-soft); color: var(--accent); }
+  .topbar .tray i { width: 10px; height: 10px; border-radius: 50%; background: currentColor; display: block; }
+
+  /* parts */
+  .sw { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); flex: none; display: block; }
+  .sw.sel { outline: 2px solid var(--text); outline-offset: 2px; }
+  .sws { display: flex; align-items: center; gap: var(--s-2); }
+  .sws.big .sw { width: 26px; height: 26px; }
+  .sws .chip { margin-left: var(--s-1); }
+  .slider { position: relative; width: 150px; height: 6px; border-radius: var(--r-full); background: var(--control-hover); flex: none; }
+  .slider b { position: absolute; left: 0; top: 0; bottom: 0; width: 60%; border-radius: var(--r-full); background: var(--accent); }
+  .slider i { position: absolute; left: 60%; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-1); }
+  .sel-field { display: inline-flex; align-items: center; gap: var(--s-2); height: 28px; padding: 0 var(--s-3); border-radius: var(--r-sm); background: var(--control); border: 1px solid var(--line); font: var(--type-label); white-space: nowrap; }
+  .sel-field::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid var(--text-2); border-bottom: 1.5px solid var(--text-2); transform: rotate(45deg) translateY(-2px); }
+  .val { font: var(--type-label); color: var(--text-2); white-space: nowrap; }
+  .link { font: var(--type-label); font-weight: 600; color: var(--accent); white-space: nowrap; }
+  .hd { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); padding: 0 var(--pad); }
+
+
+  /* shared by all four */
+  .thumb { left: 16px; top: 38px; width: 190px; padding: var(--s-2); border-radius: var(--r-lg); font: var(--type-caption); }
+  .thumb .lab { display: block; padding: 0 2px var(--s-1); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+  .thumb .mini { display: flex; align-items: center; gap: var(--s-2); height: 20px; padding: 0 var(--s-2); border-radius: var(--r-sm); }
+  .thumb .mini.on { background: var(--accent-soft); font-weight: 600; }
+  .thumb .mini .ico { width: 10px; height: 10px; }
+  .thumb .mini.q { background: var(--control); color: var(--text-2); margin-bottom: 2px; }
+  .thumb .mini .kbd { margin-left: auto; font-size: 9px; padding: 0 3px; }
+  .thumb .go { display: flex; align-items: center; gap: var(--s-1); padding: var(--s-1) 2px 0; color: var(--text-2); }
+  .back { display: inline-flex; align-items: center; gap: var(--s-2); height: 28px; padding: 0 var(--s-3) 0 var(--s-2); border-radius: var(--r-full); background: var(--control); font: var(--type-label); flex: none; white-space: nowrap; }
+  .back b { font-size: 18px; line-height: 1; font-weight: 500; }
+  .win { display: flex; flex-direction: column; overflow: hidden; }
+  .win .top { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--line); }
+  .win .top .search, .nav .search { flex: 1; min-width: 0; white-space: nowrap; }
+  .win .cols { flex: 1; display: flex; min-height: 0; }
+  .win .foot { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-4); border-top: 1px solid var(--line); font: var(--type-label); color: var(--text-2); }
+  .nav { display: flex; flex-direction: column; gap: 2px; padding: var(--s-3) var(--s-2); border-right: 1px solid var(--line); flex: none; }
+  .nav .item { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-2) var(--s-3); border-radius: var(--r-sm); }
+  .nav .item .sub { font: var(--type-caption); color: var(--text-2); display: block; }
+  .nav .item.on { background: var(--accent-soft); }
+  .pg { flex: 1; min-width: 0; padding: var(--s-4) var(--s-5); display: flex; flex-direction: column; gap: var(--s-3); overflow: hidden; }
+  .pg .list { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
+  .pg .row { min-height: 48px; }
+  .pg .big { min-height: 64px; }
+  .path { font: var(--type-caption); color: var(--text-2); }
+  .sub2 { font: var(--type-caption); color: var(--text-2); display: block; }
+
+  /* A */
+  .a-win { left: 232px; top: 40px; width: 900px; height: 420px; }
+  .a-win .nav { width: 210px; }
+  /* B */
+  .b-win { left: 400px; top: 40px; width: 560px; height: 440px; }
+  .b-win .nav { width: 76px; align-items: stretch; padding: var(--s-3) var(--s-2); }
+  .b-win .nav .item { flex-direction: column; gap: var(--s-1); padding: var(--s-2) 0; font: var(--type-caption); text-align: center; }
+  .b-win .pg { padding: var(--s-3) var(--s-4); gap: var(--s-2); }
+  .b-win .row { min-height: 44px; }
+  .b-win .slider { width: 110px; }
+  .b-win .sws .chip { display: none; }
+  /* C */
+  .c-win { left: 232px; top: 40px; width: 930px; height: 460px; }
+  .c-win .nav { width: 230px; }
+  .c-mid { width: 270px; flex: none; border-right: 1px solid var(--line); padding: var(--s-4) var(--s-2); display: flex; flex-direction: column; gap: 2px; }
+  .c-mid .row { min-height: 52px; }
+  .c-mid .row .sub { font: var(--type-caption); color: var(--text-2); display: block; }
+  .c-page { flex: 1; min-width: 0; padding: var(--s-5) var(--s-6); display: flex; flex-direction: column; gap: var(--s-4); }
+  .c-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); }
+  /* D */
+  .d-win { left: 330px; top: 40px; width: 620px; height: 470px; }
+  .d-win .seg { padding: var(--s-3) var(--s-4) 0; display: flex; }
+  .d-win .seg .segmented { flex: 1; }
+  .d-win .seg .segmented span { flex: 1; text-align: center; }
+  .d-win .pg { padding: var(--s-3) var(--s-4); }
+  .d-ghost { left: 330px; top: 40px; width: 620px; height: 330px; border: 1px dashed var(--line); border-radius: var(--r-xl); pointer-events: none; }
+  .d-ghost span { position: absolute; right: var(--s-3); top: 4px; font: var(--type-caption); color: var(--text-2); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var ACC = ['tide', 'ember', 'aurora', 'moss', 'graphite'];
+  var ACCN = ['Tide', 'Ember', 'Aurora', 'Moss', 'Graphite'];
+  function sws(big) {
+    var h = '<span class="sws' + (big ? ' big' : '') + '">';
+    ACC.forEach(function (a, i) { h += '<span class="sw accent-' + a + (i === 0 ? ' sel' : '') + '" title="' + ACCN[i] + '"></span>'; });
+    return h + '<span class="chip"><span class="dot"></span>Follow the household</span></span>';
+  }
+  function tg(on) { return '<span class="toggle' + (on ? ' on' : '') + '"></span>'; }
+  var SLIDER = '<span class="slider"><b></b><i></i></span>';
+  var MIC = '<span class="sel-field">Built-in microphone</span>';
+  var SEG = '<span class="segmented"><span>Tide</span><span class="on">Ember</span></span>';
+  function row(label, ctl, o) {
+    o = o || {};
+    return '<div class="row' + (o.sel ? ' is-selected' : '') + (o.cls ? ' ' + o.cls : '') + '"><span class="ico"></span><span class="grow">' + label +
+      (o.sub ? '<span class="sub">' + o.sub + '</span>' : '') + '</span>' + ctl + '</div>';
+  }
+  function frame(cls, inner) { return '<div class="frame wallpaper compact ' + cls + '">' + inner + '</div>'; }
+  var CONN = '<span class="chip success"><span class="dot"></span>Connected</span>';
+  var ME = '<span class="avatar" style="width:24px;height:24px">A</span>';
+  function topbar(trayOn) {
+    return '<div class="p glass topbar"><span>Alex’s desktop</span><span class="tray' + (trayOn ? ' on' : '') + '"><i></i></span><span class="mark"></span><span class="mark"></span><span class="num">09:41</span></div>';
+  }
+
+
+  var G = [['General', 'Name, hotkey, login, server'], ['Voice', 'Microphone, wake word'], ['Look', 'Accent, glass, motion'], ['Account', 'Alex, admin panel']];
+  var SRCH = '<div class="search"><span class="ico"></span><span class="t-2">Search settings</span><span class="caret"></span></div>';
+  var BACK = '<span class="back"><b>‹</b><span class="kbd">Esc</span></span>';
+  function thumb() {
+    function m(t, on, k) { return '<div class="mini' + (on ? ' on' : '') + '"><span class="ico"></span>' + t + (k ? '<span class="kbd">' + k + '</span>' : '') + '</div>'; }
+    return '<div class="p glass thumb"><span class="lab">The launcher, as it is now</span>' +
+      '<div class="mini q"><span class="ico"></span>Type a command</div>' + m('Clipboard') + m('Timers') + m('Settings', true, '↵') + m('Lists') +
+      '<div class="go"><span class="kbd">↵</span>opens the settings view</div></div>';
+  }
+  function nav(items, sel, extra) {
+    var s = '<div class="nav">';
+    items.forEach(function (x, i) {
+      s += '<div class="item' + (i === sel ? ' on' : '') + '"><span class="ico"></span>' + (extra ? '<span><span class="t-label" style="font-weight:600">' + x[0] + '</span><span class="sub">' + x[1] + '</span></span>' : x[0]) + '</div>';
+    });
+    return s + '</div>';
+  }
+  function lookRows(tight) {
+    return '<div class="list">' +
+      row('Accent', sws(false), { cls: tight ? '' : 'big', sub: tight ? '' : 'Colour of this device’s launcher' }) +
+      row('See-through', SLIDER, { sub: tight ? '' : 'How much of the desktop shows through' }) +
+      row('Reduce motion', tg(false)) + '</div>';
+  }
+  function foot(t) { return '<div class="foot"><span class="kbd">Esc</span>Back to the list<span class="kbd">↑↓</span>Move<span class="kbd">Tab</span>Next group<span class="grow"></span>' + (t || '') + '</div>'; }
+
+  function A() {
+    var top = '<div class="top">' + BACK + SRCH + '</div>';
+    var page = '<div class="pg"><div><div class="path">Settings · Alex’s desktop</div><div class="t-title">Look</div></div>' + lookRows(false) +
+      '<div class="t-label t-2">Other groups: General holds the device name, the hotkey Alt+Space, start at login and the server home.local. Voice holds the microphone and the wake word. Account holds Alex and the admin panel.</div></div>';
+    return frame('dark', topbar(false) + thumb() +
+      '<div class="p glass-thick win a-win">' + top + '<div class="cols">' + nav(G, 2, true) + page + '</div>' + foot('Window grew from the launcher') + '</div>');
+  }
+
+  function B() {
+    var top = '<div class="top">' + BACK + SRCH + '</div>';
+    var rail = [['General'], ['Voice'], ['Look'], ['Account']];
+    var page = '<div class="pg"><div class="t-heading">Look</div>' + lookRows(true) + '<div class="t-caption t-2" style="padding:0 var(--s-1)">Type in the field above to find any setting from every group.</div></div>';
+    return frame('light', topbar(false) + thumb() +
+      '<div class="p glass-thick win b-win">' + top + '<div class="cols">' + nav(rail, 2, false) + page + '</div>' + foot('Same size as the list') + '</div>');
+  }
+
+  function C() {
+    var side = '<div class="nav" style="width:230px"><div style="display:flex;flex-direction:column;gap:var(--s-3);padding:0 var(--s-1) var(--s-3)">' + BACK + SRCH + '</div>';
+    G.forEach(function (x, i) { side += '<div class="item' + (i === 2 ? ' on' : '') + '"><span class="ico"></span>' + x[0] + '</div>'; });
+    side += '</div>';
+    var mid = '<div class="c-mid"><div class="hd" style="padding:var(--s-1) var(--s-2) var(--s-2)">Look</div>' +
+      row('Accent', '', { sel: true, sub: 'Tide' }).replace('class="grow"', 'class="grow"') +
+      row('See-through', '<span class="val">60%</span>', { sub: 'Launcher glass' }) +
+      row('Reduce motion', '<span class="val">Off</span>', { sub: 'Animations' }) + '</div>';
+    var page = '<div class="c-page"><div><div class="path">Settings · Look · Accent</div><div class="t-title">Accent</div></div>' +
+      '<div class="t-label t-2" style="max-width:420px">The colour of buttons and highlights in the launcher on this device. Follow the household uses the colour chosen in the admin panel.</div>' +
+      '<div class="c-box">' + sws(true) + '<span class="sub2">Tide is chosen. The change shows in the launcher at once.</span></div></div>';
+    return frame('dark', topbar(false) + thumb() +
+      '<div class="p glass-thick win c-win"><div class="cols">' + side + mid + page + '</div>' + foot('Bigger window than the list') + '</div>');
+  }
+
+  function D() {
+    var top = '<div class="top">' + BACK + SRCH + '</div>';
+    var seg = '<div class="seg"><span class="segmented">' + G.map(function (x, i) { return '<span' + (i === 2 ? ' class="on"' : '') + '>' + x[0] + '</span>'; }).join('') + '</span></div>';
+    var page = '<div class="pg">' + lookRows(false) + '<div class="t-caption t-2" style="padding:0 var(--s-1)">Press Tab or ←→ to move between groups.</div></div>';
+    return frame('light', topbar(false) + thumb() + '<div class="p d-ghost"><span>the list’s height</span></div>' +
+      '<div class="p glass-thick win d-win">' + top + seg + page + foot('Grew downward only') + '</div>');
+  }
+
+  var DEF = [
+    ['A. The launcher grows', 'The same window widens and deepens, so it clearly is the launcher and the admin panel layout is kept whole, but it jumps to a much larger window than the list.', A, 'v-a', 'Dark: the glass window grows in place from the Settings row; the search field becomes “Search settings”'],
+    ['B. Same size, settings inside', 'Nothing resizes or moves, so it is the calmest change, but the rail and the page are cramped and show few rows at once.', B, 'v-b', 'Light: the launcher keeps its size; a narrow rail of groups replaces the list'],
+    ['C. Three columns', 'Closest to the admin panel and room to explain each setting, but it is the largest window and it feels least like the launcher.', C, 'v-c', 'Dark: side bar of groups, list of the group’s settings, and the chosen setting’s page'],
+    ['D. Groups as tabs', 'No side bar, one column and a modest height, so it stays near the list, but it does not follow the admin panel layout and the groups are hidden behind tabs.', D, 'v-d', 'Light: the launcher grows downward only; groups are a segmented control']
+  ];
+  var out = '';
+  DEF.forEach(function (d) {
+    out += '<div class="arr" id="' + d[3] + '"><h2>' + d[0] + '</h2><p class="d">' + d[1] + '</p><span class="cap">' + d[4] + '</span>' + d[2]() + '</div>';
+  });
+  document.getElementById('page').innerHTML = out;
+</script>
+</body>
+</html>
