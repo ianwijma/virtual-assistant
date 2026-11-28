@@ -46,7 +46,7 @@ mockups.
 
 | State | What is shown |
 |---|---|
-| Waiting for the server | A thin line in the accent under the top bar. What was last known stays on screen |
+| Waiting for the server | A thin line in the accent under the top bar, shown only once the wait has lasted about half a second. What was last known stays on screen |
 | Nothing in it | One sentence in secondary text where the content would be |
 | Home cannot be reached | A slim plain bar under the top bar that says so, with the time of the saved copy and a button to try again |
 
@@ -97,8 +97,6 @@ light and dark, built from [components.css](examples/components.css).
   which change wins, and is the person told?
 - Is a person told when changes that waited have been sent, or does the
   mark only disappear?
-- Does the waiting line show at once, or only after a wait of about a
-  second, so that a brief wait shows nothing?
 - Does the chat's history show that a screen was composed to everyone,
   or only in an advanced or debug mode?
 - Does a sheet with unsaved input ask before it closes by a touch

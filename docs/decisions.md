@@ -328,3 +328,7 @@ are 25 November 2026 unless a section says otherwise.
 | 301 | Our own backdrop drifts slowly and reacts to the assistant, and is calmer with reduced motion | [glass](design/visual/glass.md) |
 | 302 | A household tablet's light and dark is set per device: light, dark, by the time of day or by the light in the room | [colour](design/visual/colour.md) |
 | 303 | A person is marked by a photo of themselves in a ring of their accent, with their name | [colour](design/visual/colour.md) |
+| 304 | The waiting line shows only once a wait has lasted about half a second | [components](design/visual/components.md) |
+| 305 | The backdrop reacts to the assistant with a movement for each state and with the sound of the voice | [glass](design/visual/glass.md) |
+| 306 | A person without a photo shows their initial in the ring | [colour](design/visual/colour.md) |
+| 307 | Every device has a setting for light and dark, and a phone and a desktop start on following the device | [colour](design/visual/colour.md) |

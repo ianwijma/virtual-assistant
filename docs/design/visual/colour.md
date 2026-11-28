@@ -10,9 +10,9 @@ design tokens.
 
 - **There is a light and a dark form,** and each client follows the
   setting of the device it runs on.
-- **A household tablet has its own setting for light and dark,** set per
-  device: always light, always dark, by the time of day, or by the light
-  in the room.
+- **Every device has a setting for light and dark:** follow the device,
+  always light, always dark, by the time of day, or by the light in the
+  room. A phone and a desktop start on "follow the device".
 - **A person cannot choose a theme.** The one thing that can be chosen is
   the accent.
 - **Text and glass are neutral.** They are greys with no colour of their
@@ -81,7 +81,8 @@ focus. It also colours our own [backdrop](glass.md).
   upload a photo of themselves. It is shown small and round with a ring
   in their accent, in the chip and wherever the person is marked, such
   as beside an item they added to a shared list. Their name or initial
-  is always with it.
+  is always with it. A person without a photo shows their initial in
+  the ring, on a soft fill of their accent.
 - **An assistant has a colour of its own.** Its figure is drawn in that
   colour everywhere, whoever it talks to. The backdrop and the buttons
   around it follow the accent as above. This is "Figure in its own
@@ -127,10 +128,7 @@ Graphite, a neutral accent, is drawn and is left out for now.
   the same, or clash?
 - Should the set have more built-in accents, such as a pink or a red?
 - Does Graphite return later as a built-in accent?
-- What does a person without a photo show in the ring: their initial?
 - Are there colours to avoid, and is anyone in the household
   colour-blind?
 - Which setting for light and dark does a new household tablet start
   with?
-- Can a phone or a desktop also be given its own setting for light and
-  dark, or do they always follow the device?
