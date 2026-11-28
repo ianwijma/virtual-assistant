@@ -40,6 +40,23 @@ One look for every screen the system has:
   made narrow, or the phone app on a tablet, gets the layout of its
   width. This is "The layout follows the width" on
   [the width board](examples/width-board.html).
+- **Every area is listed where there is room, and four are a person's
+  own.** A person chooses four areas. On a narrow screen they are the
+  four buttons of the bar, with the fixed "All" button beside them. On a
+  medium or wide screen the side bar lists every area, with the person's
+  four pinned at the top above a thin line and a small pencil to change
+  them; there is no "All" button. In the desktop launcher the four are
+  chips under the search field, with an "All" chip, and the list is
+  below. These are the wide screen of "The side bar is the overview" and
+  the launcher of "Four and All everywhere" on
+  [the all areas board](examples/all-areas-board.html).
+- **A notification is the same card, placed by the width of the
+  screen.** On a wide screen it is a glass card at the top right, and
+  several stack downward. On a narrow screen it enters the top of the
+  Overview's list, which runs from the most important to the least.
+  These are the tablet of "The same stack, at the top" and the phone of
+  "Into the Overview" on
+  [the app notification board](examples/app-notification-board.html).
 - **Recognisable as ours.** The design is distinctive, so that anyone can
   tell it is this product.
 - **Frosted glass is the design language.** Apple's Liquid Glass is the
@@ -203,9 +220,12 @@ up.
 
 Each subject's questions are in its own document.
 
-- Is a notification inside the phone and tablet app the same glass card
-  as on the desktop, stacked in the same way? It was chosen on the
-  desktop only.
+- What makes one notification more important than another in the
+  Overview's list: its kind, its age, or what a person set?
+- On a narrow screen, how is a new notification shown while another area
+  than the Overview is open: a dot on the bar, or nothing?
+- At which width does a notification change from a row in the list to a
+  card at the top right?
 - Is the overview of all areas the same on every client: the grid that
   the phone shows in a sheet, also on the tablet, the desktop and the
   web?
