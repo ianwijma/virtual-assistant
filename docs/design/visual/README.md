@@ -208,10 +208,10 @@ The boards in `examples/`:
 | [accent-picker-board.html](examples/accent-picker-board.html) | Three designs for choosing an accent, with the preview on four devices | Chosen from |
 | [saving-board.html](examples/saving-board.html) | A changed setting applied at once, with a Save button, or both | Chosen from |
 | [offline-actions-board.html](examples/offline-actions-board.html) | Four ways to show what needs the server while home cannot be reached | Chosen from |
-| [app-notification-board.html](examples/app-notification-board.html) | Three ways a notification appears inside the phone and tablet app | Waiting for a choice |
-| [all-areas-board.html](examples/all-areas-board.html) | The overview of all areas on a narrow screen, a wide screen and in the launcher | Waiting for a choice |
-| [stage-call-board.html](examples/stage-call-board.html) | Talking to an assistant as one design at every width, or as two | Waiting for a choice |
-| [white-board.html](examples/white-board.html) | Four whites for the plain surfaces in light | Waiting for a choice |
+| [app-notification-board.html](examples/app-notification-board.html) | Three ways a notification appears inside the phone and tablet app | Chosen from |
+| [all-areas-board.html](examples/all-areas-board.html) | The overview of all areas on a narrow screen, a wide screen and in the launcher | Chosen from |
+| [stage-call-board.html](examples/stage-call-board.html) | Talking to an assistant as one design at every width, or as two | Chosen from |
+| [white-board.html](examples/white-board.html) | Four whites for the plain surfaces in light | Chosen from |
 
 No board is waiting to be made. New ones are added here as subjects come
 up.
@@ -226,13 +226,15 @@ Each subject's questions are in its own document.
   than the Overview is open: a dot on the bar, or nothing?
 - At which width does a notification change from a row in the list to a
   card at the top right?
-- Is the overview of all areas the same on every client: the grid that
-  the phone shows in a sheet, also on the tablet, the desktop and the
-  web?
-- Can a person set what is on the main bar on every client, as on the
-  phone, or only where there is room for a few buttons?
-- Is the tablet's stage the same design as the phone's call, at a larger
-  size, or a design of its own?
+- Are a person's four areas the same four on all their devices, or set
+  per device?
+- Does the household tablet, which nobody owns, have four pinned areas,
+  and who sets them?
+- Is talking to an assistant one design at every width? The call and the
+  stage both stay as drawn. Still to settle: whether the stage is the
+  call on a wide screen with the controls hidden on a household device,
+  or a design of its own for a household device. The designs are on
+  [the stage and call board](examples/stage-call-board.html).
 - At which widths does the layout change? The board shows one column
   under 600, two from 600 to 1000 and three above.
 - In two columns, do the destinations become a rail of icons, as on the

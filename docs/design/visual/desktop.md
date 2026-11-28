@@ -17,6 +17,8 @@ settings are set.
   it does not, as in a plain search for actions, the window is a list
   only. These are "Wide with a preview" and "Classic window" on
   [the launcher layout board](examples/launcher-layout-board.html).
+- **Under the search field is a row of chips:** the person's four areas
+  and "All". See [the visual design](README.md).
 - **A notification appears at the top right of the desktop,** outside
   the launcher, as a clear glass card. Several stack downward with the
   newest on top. This is "Top-right stack" on
@@ -45,7 +47,7 @@ settings are set.
 - Can a notification on the desktop be answered from the keyboard?
 - Does a question from an assistant stay on screen until it is answered?
 - Which views of the launcher have a preview, and which are a list only?
-- Does the launcher show suggestions before anything is typed? With a
-  preview, the empty launcher can show what is running now.
+- Under the chips, what does the launcher list before anything is
+  typed: suggestions, or what is running now?
 - Does the window change size when it goes from a list to a list with a
   preview, or is it always the wide size?

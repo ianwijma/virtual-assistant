@@ -40,6 +40,9 @@ chosen yet.
   this work. Ideas for it: a rendered three-dimensional figure that
   looks around, arms, a gesture for thinking such as a hand at the
   mouth, and a mouth that moves when it talks.
+- **On a wider screen the figure gets more of the room.** It is larger
+  there than on the stage and call board, and the column beside it is
+  narrower.
 - **Layouts leave room for a larger figure.** A later figure may need
   more space than the one for now, with arms or a whole body, so no
   screen is fitted tightly around the present shape.

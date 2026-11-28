@@ -35,6 +35,8 @@ Status: started. The screens, how they are joined and the call are set.
   and a touch on an area puts it there. This is "A sheet that grows from
   the button" on
   [the second phone bar board](examples/phone-bar-board-2.html).
+- **A notification enters the top of the Overview's list.** See
+  [the visual design](README.md).
 - **A person chooses which screen the app opens on.**
 - **Talking to an assistant shows the whole figure by default.** The
   character stands on the screen, as on the tablet. See

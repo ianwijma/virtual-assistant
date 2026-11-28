@@ -13,9 +13,13 @@ design tokens.
   in our own settings.
 - **A person cannot choose a theme.** The one thing that can be chosen is
   the accent.
-- **The base is neutral.** Glass, text and plain surfaces are greys with
-  no colour of their own. All colour comes from the accent, from the
-  status colours and from the assistants.
+- **Text and glass are neutral.** They are greys with no colour of their
+  own.
+- **Plain surfaces take a tint of the accent.** The base and the plain
+  panels, such as a list or a page, carry a little of both colours of
+  the accent, so that the whole screen belongs to it. This is "Tinted by
+  the accent" on [the white board](examples/white-board.html), with both
+  colours of the accent in place of one.
 - **Dark is a dark grey with a slight tint, not black.** Glass needs
   something behind it, and on black it disappears. Only the low-power
   screen of a tablet is true black.
@@ -118,7 +122,10 @@ Graphite, a neutral accent, is drawn and is left out for now.
 - Is a person's accent also the colour that marks them elsewhere, such as
   on the account switch of a shared computer, or beside an item they
   added to a shared list?
-- Is light a pure white, or a slightly tinted, softer white?
+- How strong is the tint of the plain surfaces, and how do the two
+  colours of the accent lie in a panel: as a soft run from one to the
+  other, or one colour for the base and the other for the panels?
+- Do the plain surfaces carry the tint in dark as well?
 - Are there colours to avoid, and is anyone in the household
   colour-blind?
 - A tablet in a room has its light or dark setting fixed by whoever set

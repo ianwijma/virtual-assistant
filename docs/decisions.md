@@ -307,3 +307,7 @@ are 25 November 2026 unless a section says otherwise.
 | 280 | The count of unsaved changes will open a list of them with the value before and after | [components](design/visual/components.md) |
 | 281 | What needs home looks as usual while home cannot be reached, and changes wait to be sent | [components](design/visual/components.md) |
 | 282 | Icons are always outlined | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 283 | Every area is listed in the side bar on a medium or wide screen with a person's four pinned on top; the bar with "All" is for a narrow screen; the launcher shows the four as chips | [visual](design/visual/README.md) |
+| 284 | A notification is a card at the top right on a wide screen, and enters the top of the Overview's list on a narrow one, ordered by importance | [visual](design/visual/README.md) |
+| 285 | Plain surfaces in light take a tint of both colours of the accent | [colour](design/visual/colour.md) |
+| 286 | The call and the stage both stay as drawn, and the figure gets more room on a wider screen | [assistant visuals](design/visual/assistant-visuals.md) |
