@@ -11,16 +11,25 @@ Status: started. The exact values are made with the design tokens.
   and a control inside it a smaller one that follows the panel's curve.
   Controls are not pill-shaped. This is "Clearly round" on
   [the direction board](examples/direction-board.html).
-- **There are two densities from one scale.** A compact one serves the
-  desktop client and the admin panel, where a mouse and a keyboard are
-  used and lists are long. A roomy one serves touch, and the tablet that
-  is read from across a room.
-- **Icons come from an open icon set,** with a licence that allows sold
-  hardware. We do not draw a full set of our own. Apple's symbols cannot
-  be used.
+- **There are two densities from one scale.** A compact one serves a
+  mouse and a keyboard and long lists. A roomy one serves touch, and a
+  screen that is read from across a room.
+- **Each device has a default density, and it can be changed.** The
+  desktop client and the admin panel start compact. The phone and the
+  tablet start roomy.
+- **The icons are Phosphor's,** an open set under the MIT licence, which
+  allows sold hardware. Where the set lacks an icon, we draw our own in
+  its style. Apple's symbols cannot be used. The sets it was chosen from
+  are on [the icon board](examples/icon-board.html).
 
 ## Open questions
 
-- Are icons outlined or filled, and which open set is used: Lucide,
-  Phosphor, Tabler or another?
+- Does the chosen item show its icon filled, as in "Phosphor, filled
+  when selected" on the icon board, or do icons always stay outlined?
+- Where is a device's density changed: in the admin panel, on the device
+  itself, or both?
+- Is the density one setting for a whole device, or can it differ per
+  app or area?
+- Can the density of a household tablet be changed, or is it always
+  roomy, since it is read from a distance?
 - Is there an illustration style, for empty screens and first-run setup?

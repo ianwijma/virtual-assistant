@@ -23,6 +23,10 @@ set. What each toolkit can draw is still to be researched.
   [the material board](examples/material-board.html).
 - **Our own backdrop is strong in colour,** so that the glass has
   something to show.
+- **In dark the backdrop is calmer.** Its colour is about half as strong
+  as in light, on a darker base, so that secondary text on thin glass
+  stays readable. This is "Calmer dark backdrop" on
+  [the dark text board](examples/dark-text-board.html).
 - **The desktop launcher is clear glass:** about half see-through, so the
   desktop behind it is clearly there. This is "Clear glass" on
   [the launcher board](examples/launcher-board.html).
@@ -85,8 +89,8 @@ the strongest part of our own backdrop for every accent:
 - With "Thin glass, firmer text", main text on glass has a contrast of at
   least 8.6 to 1 in light and 4.7 in dark. Coloured words in solid chips
   have at least 5.0 in light and 5.4 in dark.
-- Secondary text on glass has at least 5.8 in light, and 3.8 in dark,
-  which is below the 4.5 that [colour](colour.md) asks for.
+- Secondary text on glass has at least 5.8 in light. In dark it has at
+  least 7.0 with the calmer backdrop; it was 3.8 before.
 - In the launcher over a desktop that is not ours, main text falls to
   2.6 in dark over a white window, and to 4.6 in light over a black one.
 
@@ -122,9 +126,6 @@ Assumed:
 - Does our own backdrop move slowly, or is it still?
 - Can a person set how see-through the glass is? The owner named this as
   a possibility.
-- Secondary text on glass in dark measures 3.8 to 1 at worst, short of
-  4.5. Is that accepted for secondary text, or is the dark backdrop made
-  calmer, or does secondary text in dark get a plate under it?
 - The launcher shows the real desktop, which can be any colour. Does the
   launcher's glass become thicker by itself when what is behind it is
   very bright or very dark, so that its text stays readable?

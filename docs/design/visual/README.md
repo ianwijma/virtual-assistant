@@ -176,6 +176,8 @@ The boards in `examples/`:
 | [phone-bar-board-2.html](examples/phone-bar-board-2.html) | Four designs of the overview of all areas and of changing the bar | Chosen from |
 | [states-board.html](examples/states-board.html) | Waiting, empty and out of reach, as four families | Chosen from |
 | [motion-board.html](examples/motion-board.html) | Three ways a row lifts into a sheet, as stills and as a live loop | Chosen from |
+| [dark-text-board.html](examples/dark-text-board.html) | Four ways to keep secondary text readable on dark glass | Chosen from |
+| [icon-board.html](examples/icon-board.html) | Three open icon sets in four styles, in a tab bar, a side bar and a row | Chosen from |
 
 No board is waiting to be made. New ones are added here as subjects come
 up.

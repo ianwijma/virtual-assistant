@@ -110,6 +110,14 @@ R. From the same answer, the setup of a new device is taken to be the
    same design as the first-run setup, and the question of saving a
    setting is asked once for every client. [visual admin panel]
    [components]
+S. The request for home-like and Dutch names is read as: "Hearth" is
+   dropped, not kept beside the new candidates. [visual identity]
+T. "It depends on the device" is read as: desktop and admin panel start
+   compact, phone and tablet start roomy, and the density is the thing
+   that can be changed, not the layout. [shape]
+U. "I like the Phosphor icons" is read as the choice of the set. Whether
+   the chosen item is filled was not answered and stays a question.
+   [shape]
 
 ## 1. Now
 
@@ -243,265 +251,259 @@ detail.
 29. What should set the look apart from Apple's, so that it is
    recognisable as ours: the colour, the backdrop, the assistants, the
    shape, or something else? See the table above. [visual identity]
-30. Who is the design for first: the power user at the desktop, or the
-   whole household at a tablet, guests and children included? When a
-   dense screen and a friendly screen conflict, which wins? [visual
-   identity]
-31. "Hearth", the name the owner chose from the board, carries a high
-   risk. Hearth Display sells a family display for the wall under that
-   name and is reported to hold a United States trade mark for it on
-   touchscreen devices and household software. Another self-hosted
-   household assistant, a Rust package and the obvious web addresses
-   also use the name. Is another name chosen? Of five quick
-   alternatives, "Inglenook" and "Ingle" showed no clash; neither is
-   checked in a register. [visual identity]
-32. The glass drop is the faintest of the marks at the size of a small
+30. Which name is chosen? It means or suggests home, homeliness or
+   family, and may be a Dutch word. A board of candidates, each checked
+   for clashes, is to be made. [visual identity]
+31. The glass drop is the faintest of the marks at the size of a small
    icon. Is it made bolder at small sizes, or does a solid form of it
    stand in there? [visual identity]
 
 ### The glass
 
-33. Who sets the wallpaper of a household tablet: an admin, in the admin
+32. Who sets the wallpaper of a household tablet: an admin, in the admin
    panel? Is it one picture, or several that change? [glass]
-34. Can a wallpaper also be set on a personal phone, in the settings
+33. Can a wallpaper also be set on a personal phone, in the settings
    window of the desktop client, or in the admin panel, or do those
    always show our own backdrop? [glass]
-35. Does our own backdrop move slowly, or is it still? [glass]
-36. Can a person set how see-through the glass is? The owner named this
+34. Does our own backdrop move slowly, or is it still? [glass]
+35. Can a person set how see-through the glass is? The owner named this
    as a possibility. [glass]
-37. Secondary text on glass in dark measures 3.8 to 1 at worst, short of
-   4.5. Is that accepted for secondary text, or is the dark backdrop
-   made calmer, or does secondary text in dark get a plate under it?
-   [glass]
-38. The launcher shows the real desktop, which can be any colour. Does
+36. The launcher shows the real desktop, which can be any colour. Does
    the launcher's glass become thicker by itself when what is behind it
    is very bright or very dark, so that its text stays readable? [glass]
-39. From the research: on Linux the launcher asks for the blurred
+37. From the research: on Linux the launcher asks for the blurred
    desktop through the new Wayland protocol with a small piece of our
    own code, and shows our own backdrop wherever the desktop cannot
    blur, such as under Sway and on most of X11. Agree? [glass]
-40. From the research: an Android tablet on Android 11 or earlier shows
+38. From the research: an Android tablet on Android 11 or earlier shows
    the flat tint, not the blur. Agree? [glass]
 
 ### The colours
 
-41. Which accent does a new household start with? [colour]
-42. Should the set have more accents, such as a pink or a red, and how
+39. Which accent does a new household start with? [colour]
+40. Should the set have more accents, such as a pink or a red, and how
    many is enough? [colour]
-43. Does each assistant have its own colour? If so, which one shows
+41. Does each assistant have its own colour? If so, which one shows
    while an assistant is active on a household device: the assistant's,
    or the accent of the person it recognised? [colour]
-44. Is a person's accent also the colour that marks them elsewhere, such
+42. Is a person's accent also the colour that marks them elsewhere, such
    as on the account switch of a shared computer, or beside an item they
    added to a shared list? [colour]
-45. Is light a pure white, or a slightly tinted, softer white? [colour]
-46. Are there colours to avoid, and is anyone in the household colour-
+43. Is light a pure white, or a slightly tinted, softer white? [colour]
+44. Are there colours to avoid, and is anyone in the household colour-
    blind? [colour]
-47. A tablet in a room has its light or dark setting fixed by whoever
+45. A tablet in a room has its light or dark setting fixed by whoever
    set it up. Should a household tablet go dark at night by itself?
    [colour]
 
 ### Typography
 
-48. Which monospace typeface is shipped for logs and timelines?
+46. Which monospace typeface is shipped for logs and timelines?
    JetBrains Mono is a candidate with a fitting licence. [typography]
-49. Which languages and scripts must be covered later, beyond what Inter
+47. Which languages and scripts must be covered later, beyond what Inter
    covers? [typography]
 
 ### Shape, spacing and icons
 
-50. Are icons outlined or filled, and which open set is used: Lucide,
-   Phosphor, Tabler or another? [shape]
-51. Is there an illustration style, for empty screens and first-run
+48. Does the chosen item show its icon filled, as in "Phosphor, filled
+   when selected" on the icon board, or do icons always stay outlined?
+   [shape]
+49. Where is a device's density changed: in the admin panel, on the
+   device itself, or both? [shape]
+50. Is the density one setting for a whole device, or can it differ per
+   app or area? [shape]
+51. Can the density of a household tablet be changed, or is it always
+   roomy, since it is read from a distance? [shape]
+52. Is there an illustration style, for empty screens and first-run
    setup? [shape]
 
 ### Motion and sound
 
-52. Are sounds part of the identity, such as a tone when an assistant
+53. Are sounds part of the identity, such as a tone when an assistant
    starts listening or a timer ends? [motion]
-53. Does the phone use vibration as part of the feel? [motion]
-54. Where a toolkit cannot grow a new page out of the thing that was
+54. Does the phone use vibration as part of the feel? [motion]
+55. Where a toolkit cannot grow a new page out of the thing that was
    touched, what is shown: the sheet rising from below, or a plain fade?
    [motion]
-55. Does everything that opens end with the light overshoot, or only
+56. Does everything that opens end with the light overshoot, or only
    sheets? [motion]
-56. How is a device found to be too slow for full motion: measured by
+57. How is a device found to be too slow for full motion: measured by
    the client, or switched by hand only? [motion]
 
 ### Tokens and components
 
-57. From the research: the source of the tokens is kept in the Design
+58. From the research: the source of the tokens is kept in the Design
    Tokens format of the W3C community group, and a small build step of
    our own in Rust generates the four themes from it, since no existing
    tool writes Slint. Agree? [tokens]
-58. Agree to the first values, after seeing them in the example
+59. Agree to the first values, after seeing them in the example
    components and the mockups. [tokens]
-59. Agree to the example components as the base for the rest.
+60. Agree to the example components as the base for the rest.
    [components]
-60. While home cannot be reached, how does a thing that needs the server
+61. While home cannot be reached, how does a thing that needs the server
    look: greyed out, hidden, or usable with the change sent later?
    [components]
-61. Does the waiting line show at once, or only after a wait of about a
+62. Does the waiting line show at once, or only after a wait of about a
    second, so that a brief wait shows nothing? [components]
-62. Does a changed setting apply at once, or after a Save button? The
+63. Does a changed setting apply at once, or after a Save button? The
    answer holds for the admin panel, the desktop settings and the app.
    [components]
-63. Does a sheet also close by a touch on the dimmed area around it?
+64. Does a sheet also close by a touch on the dimmed area around it?
    [components]
-64. On a tablet read from across a room, is a card shown open and large
+65. On a tablet read from across a room, is a card shown open and large
    from the start? [components]
-65. Which components come next? The proposal is the ones the mockups
+66. Which components come next? The proposal is the ones the mockups
    need: the launcher's search and results, a sheet, a menu, the tab bar
    and the side bar, a table for logs, the chat, and each card of the
    A2UI catalog. [components]
 
 ### Assistant visuals
 
-66. In which style are the full figures drawn, when they are redesigned
+67. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-67. Does a figure have a mouth, or do the eyes alone carry its
+68. Does a figure have a mouth, or do the eyes alone carry its
    expressions? [assistant visuals]
-68. Who draws the figures, and how many are there in the first release?
+69. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-69. How does a person give their own assistant a look: by choosing from
+70. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-70. How playful is the default household assistant: cute, friendly, or
+71. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-71. Is the voice page arranged like the tablet, with the figure on a
+72. Is the voice page arranged like the tablet, with the figure on a
    stage? [assistant visuals]
-72. May a card cover part of the character, or does it always sit clear
+73. May a card cover part of the character, or does it always sit clear
    of the head? [assistant visuals]
-73. Does a whole figure move across the screen only while nothing else
+74. Does a whole figure move across the screen only while nothing else
    is shown, and stand still once a card appears? [assistant visuals]
-74. What does an assistant without a figure show: a sound wave, as on
+75. What does an assistant without a figure show: a sound wave, as on
    the tablet board, or something else? [assistant visuals]
-75. How large is the character where the assistant is not the subject,
+76. How large is the character where the assistant is not the subject,
    such as in the desktop launcher and on the phone's home screen?
    [assistant visuals]
-76. May a person bring their own figure, such as a character they like
+77. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-77. Does a figure have a colour of its own, apart from the accent?
+78. Does a figure have a colour of its own, apart from the accent?
    [assistant visuals]
-78. From the research: which of the three routes above do the first
+79. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-79. Is a notification inside the phone and tablet app the same glass
+80. Is a notification inside the phone and tablet app the same glass
    card as on the desktop, stacked in the same way? It was chosen on the
    desktop only. [visual]
-80. Are the app's own settings on a phone and a tablet the same design
+81. Are the app's own settings on a phone and a tablet the same design
    as the desktop settings and the admin panel, with fewer columns in
    view on a narrow screen? [visual]
-81. Is the overview of all areas the same on every client: the grid that
+82. Is the overview of all areas the same on every client: the grid that
    the phone shows in a sheet, also on the tablet, the desktop and the
    web? [visual]
-82. Can a person set what is on the main bar on every client, as on the
+83. Can a person set what is on the main bar on every client, as on the
    phone, or only where there is room for a few buttons? [visual]
-83. Is the tablet's stage the same design as the phone's call, at a
+84. Is the tablet's stage the same design as the phone's call, at a
    larger size, or a design of its own? [visual]
-84. Does the layout follow the width of the screen and not the kind of
+85. Does the layout follow the width of the screen and not the kind of
    client, so that a narrow browser window gets the phone's layout and a
    wide tablet the three columns? [visual]
-85. Should a screen that an assistant composed look different from a
+86. Should a screen that an assistant composed look different from a
    built-in screen, so that a person can tell? [visual]
-86. Which devices are the references for the designs: which phone, which
+87. Which devices are the references for the designs: which phone, which
    tablet, which monitor size? [visual]
-87. Are settings screens generated from each feature's description, so
+88. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-88. Does the settings view stay open when the person clicks elsewhere,
+89. Does the settings view stay open when the person clicks elsewhere,
    unlike the launcher's list? [visual desktop]
-89. In the settings, does Esc first clear a search and only then return
+90. In the settings, does Esc first clear a search and only then return
    to the list? [visual desktop]
-90. Can a notification on the desktop be answered from the keyboard?
+91. Can a notification on the desktop be answered from the keyboard?
    [visual desktop]
-91. Does a question from an assistant stay on screen until it is
+92. Does a question from an assistant stay on screen until it is
    answered? [visual desktop]
-92. Which views of the launcher have a preview, and which are a list
+93. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-93. Does the launcher show suggestions before anything is typed? With a
+94. Does the launcher show suggestions before anything is typed? With a
    preview, the empty launcher can show what is running now. [visual
    desktop]
-94. Does the window change size when it goes from a list to a list with
+95. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-95. What does the sheet show when there are more areas than fit: does it
+96. What does the sheet show when there are more areas than fit: does it
    scroll, or grow taller? [visual phone]
-96. Does the fixed button show a grid icon, the word "All", or both?
+97. Does the fixed button show a grid icon, the word "All", or both?
    [visual phone]
-97. Which four are on the bar of a new person: Overview, the assistant,
+98. Which four are on the bar of a new person: Overview, the assistant,
    Timeline and Chat? [visual phone]
-98. Can any area be put on the bar, a single list such as Shopping
+99. Can any area be put on the bar, a single list such as Shopping
    included? [visual phone]
-99. How is the microphone muted on the full call screen, which has only
+100. How is the microphone muted on the full call screen, which has only
    Chat and End? [visual phone]
-100. Is what is said also shown as a line of text on the full call
+101. Is what is said also shown as a line of text on the full call
    screen? [visual phone]
-101. Where is the first screen chosen: in the app's own settings, or in
+102. Where is the first screen chosen: in the app's own settings, or in
    the admin panel with a person's other settings? [visual phone]
-102. What does a touch on a clipboard item do: copy it to this phone, or
+103. What does a touch on a clipboard item do: copy it to this phone, or
    open it? [visual phone]
-103. When a tablet has several assistants, are all their figures on the
+104. When a tablet has several assistants, are all their figures on the
    idle screen, or one? [visual tablet]
-104. Does the clock move now and then, to protect the screen? [visual
+105. Does the clock move now and then, to protect the screen? [visual
    tablet]
-105. Is the figure on the idle screen at night as well, or does the
+106. Is the figure on the idle screen at night as well, or does the
    tablet then show only the clock? [visual tablet]
-106. After how long without speech does the stage close and the idle
+107. After how long without speech does the stage close and the idle
    screen return? [visual tablet]
-107. Does the welcome of the setup show the assistant's figure, or only
+108. Does the welcome of the setup show the assistant's figure, or only
    "Hello"? [visual admin panel]
-108. What does a destination with no list of items show, such as Speech
+109. What does a destination with no list of items show, such as Speech
    or Feedback: two columns, or a second column of its sections? [visual
    admin panel]
-109. Where do search results appear in three columns? [visual admin
+110. Where do search results appear in three columns? [visual admin
    panel]
-110. At phone width, what does the list of destinations become? [visual
+111. At phone width, what does the list of destinations become? [visual
    admin panel]
-111. Which accent does the admin panel show: that of the person signed
+112. Which accent does the admin panel show: that of the person signed
    in, or the household's? [visual admin panel]
-112. Where on the phone app's call design do the two set-up choices and
+113. Where on the phone app's call design do the two set-up choices and
    the note for guests go? Ideas are on the voice page board. [visual
    voice page]
-113. On a wide screen, such as a tablet on its side, is the page
+114. On a wide screen, such as a tablet on its side, is the page
    arranged like the phone or like the tablet's stage? [visual voice
    page]
 
 ### The mockups
 
-114. Agree to each mockup, or say what to change in it. [mockups]
-115. Desktop: how does a person go from searching to talking to the
+115. Agree to each mockup, or say what to change in it. [mockups]
+116. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-116. Desktop: does the launcher open on the screen that holds the
+117. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-117. Desktop: is the settings window opened from the launcher only, or
+118. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-118. Admin panel: the request timeline shows the first words a person
+119. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-119. Admin panel: is "Undo" offered for every change in the audit log,
+120. Admin panel: is "Undo" offered for every change in the audit log,
    or only for changes that can be reversed safely? [mockups]
-120. Voice page: does the page remember on that browser that it was set
+121. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-121. A search of the trade mark registers of the EU, the Benelux, the UK
+122. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for the name that is chosen. The registers could not be
    reached in the first check, which used other sources. [visual
    identity]
-122. How fast the blur is on an old tablet and in the launcher, measured
+123. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-123. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+124. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-124. How much power a three-dimensional figure uses on an old tablet
+125. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

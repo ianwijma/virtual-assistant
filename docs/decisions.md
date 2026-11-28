@@ -292,3 +292,7 @@ are 25 November 2026 unless a section says otherwise.
 | 265 | The overview of all areas on the phone is a sheet that grows from the bar's fixed button, and the bar is changed in that sheet | [phone](design/visual/phone.md) |
 | 266 | A design choice is made for every client at once, and a client differs only for a reason that lies in the device | [visual](design/visual/README.md) |
 | 267 | The setup of a new device is the same design as the first-run setup | [admin panel](design/visual/admin-panel.md) |
+| 268 | "Hearth" is not the name; the name is to mean or suggest home, homeliness or family, and may be Dutch | [identity](design/visual/identity.md) |
+| 269 | Who a screen is designed for depends on the device; each device has a default density that can be changed | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 270 | In dark our backdrop is about half as strong on a darker base, so that secondary text on glass is readable | [glass](design/visual/glass.md) |
+| 271 | The icons are Phosphor's, and we draw our own in its style where the set lacks one | [shape and spacing](design/visual/shape-and-spacing.md) |

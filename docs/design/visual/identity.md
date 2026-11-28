@@ -13,6 +13,11 @@ Status: started. The feel is set. The name is open.
   at a desktop. The assistants are the warm and playful part: the
   characters, their expressions and their voices bring the life, so that
   it suits a home. It is both a tool and a thing for the home.
+- **Who a screen is designed for depends on the device.** The desktop is
+  for a power user first. A phone serves power users and the rest of the
+  household. A display in a room is for the whole household. Each device
+  has a strong default, and its density can be changed. See
+  [shape and spacing](shape-and-spacing.md).
 - **The look is inspired by Apple's Liquid Glass, and is not a copy of
   it.** See [glass](glass.md). What sets it apart is a question below.
 - **The logo mark is the glass drop:** a speech bubble that is also a
@@ -21,8 +26,13 @@ Status: started. The feel is set. The name is open.
   [the second logo board](examples/logo-board-2.html). It is a candidate
   like the name, to be drawn properly once the name is settled.
 - **The name and the logo are chosen together with this work.** "Virtual
-  Assistant" is a working title. Candidates are on
-  [the name and logo board](examples/name-and-logo-board.html).
+  Assistant" is a working title. The name is to mean or suggest home,
+  homeliness or family, and a Dutch word is welcome.
+- **"Hearth" is not the name.** It was chosen from
+  [the name and logo board](examples/name-and-logo-board.html) and then
+  dropped: Hearth Display sells a family display for the wall under that
+  name and is reported to hold a United States trade mark for it on
+  touchscreen devices and household software.
 
 ## What could make it ours
 
@@ -44,17 +54,9 @@ combined.
 - What should set the look apart from Apple's, so that it is recognisable
   as ours: the colour, the backdrop, the assistants, the shape, or
   something else? See the table above.
-- Who is the design for first: the power user at the desktop, or the
-  whole household at a tablet, guests and children included? When a dense
-  screen and a friendly screen conflict, which wins?
-- "Hearth", the name the owner chose from the board, carries a high
-  risk. Hearth Display sells a family display for the wall under that
-  name and is reported to hold a United States trade mark for it on
-  touchscreen devices and household software. Another self-hosted
-  household assistant, a Rust package and the obvious web addresses also
-  use the name. Is another name chosen? Of five quick alternatives,
-  "Inglenook" and "Ingle" showed no clash; neither is checked in a
-  register.
+- Which name is chosen? It means or suggests home, homeliness or
+  family, and may be a Dutch word. A board of candidates, each checked
+  for clashes, is to be made.
 - The glass drop is the faintest of the marks at the size of a small
   icon. Is it made bolder at small sizes, or does a solid form of it
   stand in there?

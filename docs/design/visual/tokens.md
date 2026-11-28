@@ -22,7 +22,7 @@ Status: a first set. The values are tried out in
 
 | Token | Light | Dark | Used for |
 |---|---|---|---|
-| `bg` | `#F4F5F7` | `#101216` | Behind everything, under the backdrop |
+| `bg` | `#F4F5F7` | `#0B0D10` | Behind everything, under the backdrop |
 | `surface` | White at 62% | `#17191E` at 55% | Plain content: lists, logs, text. It lets a little of the backdrop through and has no blur |
 | `surface-2` | `#F4F5F7` | `#1E2127` | A plain area inside plain content |
 | `text` | `#14161A` | `#F2F4F7` | Primary text |
@@ -41,7 +41,7 @@ Status: a first set. The values are tried out in
 | `glass-edge` | White at 85% | White at 14% | The thin light edge |
 | `glass-blur` | 16 | 16 | The blur of what is behind |
 | `glass-saturate` | 200% | 200% | How much colour comes through |
-| `backdrop-1`, `backdrop-2` | 64%, 42% | 64%, 42% | How strongly our backdrop takes the accent |
+| `backdrop-1`, `backdrop-2` | 64%, 42% | 32%, 21% | How strongly our backdrop takes the accent |
 | `control` | Black at 6% | White at 9% | A control resting on glass |
 | `shadow-1`, `-2`, `-3` | Soft, dark blue-grey | Soft, black | A control, a card, a sheet |
 
