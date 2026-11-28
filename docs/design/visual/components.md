@@ -103,7 +103,7 @@ light and dark, built from [components.css](examples/components.css).
 | Settings fields | A text field, toggles and a segmented control |
 | List | Plain rows with a selected row, shortcuts, status and a loader |
 | Notification card | A glass card with a source, a text and actions |
-| The accents | The five accents on the same card |
+| The accents | The seven accents on the same card |
 | Fallbacks | The same card as glass, without blur, and solid |
 | Densities | The same list, roomy and compact |
 

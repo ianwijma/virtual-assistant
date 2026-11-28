@@ -18,7 +18,7 @@
   .page > h2:first-child { margin-top: 4px; }
   .page > p { font: var(--type-label); color: var(--text-2); margin: 0 0 10px; }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .five { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .five { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
   .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   @media (max-width: 640px) { .pair, .three { grid-template-columns: 1fr; } .five { grid-template-columns: 1fr 1fr; } }
   .stage { border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
@@ -68,8 +68,8 @@
   h += '<h2>Settings fields</h2><p>A field, toggles and a segmented control.</p>' + both(form, 'accent-moss');
   h += '<h2>A list</h2><p>Content is plain, not glass: rows, a selected row, shortcuts and status.</p>' + both(list, 'accent-tide');
   h += '<h2>A notification card</h2>' + both(notif, 'accent-ember');
-  h += '<h2>The accents</h2><p>Tide, Ember, Aurora, Moss and Graphite.</p><div class="five">' +
-    ['tide', 'ember', 'aurora', 'moss', 'graphite'].map(function (a, i) {
+  h += '<h2>The accents</h2><p>Tide, Ember, Aurora, Moss, Blossom, Cherry and Graphite.</p><div class="five">' +
+    ['tide', 'ember', 'aurora', 'moss', 'blossom', 'cherry', 'graphite'].map(function (a, i) {
       return '<div class="stage backdrop accent-' + a + ' ' + (i % 2 ? 'dark' : 'light') + '" style="padding:12px"><div class="glass card" style="display:flex;flex-direction:column;gap:8px;align-items:center">' +
         '<span class="character" style="--size:36px"></span><span class="t-label">' + a.charAt(0).toUpperCase() + a.slice(1) + '</span><span class="toggle on"></span><span class="btn btn-primary" style="width:100%">Action</span></div></div>';
     }).join('') + '</div>';
