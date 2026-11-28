@@ -43,7 +43,8 @@ Status: started. The idle screen and the active screen are set.
   [the tablet idle board](examples/tablet-idle-board.html) and
   [the tablet board](examples/tablet-board.html).
 - **The figure on the idle screen changes by a touch on the dots.** It
-  does not change by itself unless that is switched on, and then it
+  does not change by itself unless that is switched on, for the
+  household or for one device, and then it
   changes every 10 to 15 minutes. This leaves a character free to play
   an idle animation. The assistant that was used last is shown first.
 - **The clock shifts a little now and then,** to protect the screen.
@@ -57,4 +58,3 @@ Status: started. The idle screen and the active screen are set.
 
 ## Open questions
 
-- Where is changing the idle figure by itself switched on: per tablet?

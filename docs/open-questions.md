@@ -88,9 +88,6 @@ J. "Two modes" of motion is read as: reduced motion follows the device's
    [motion]
 K. One typeface family is used for everything; headings have no typeface
    of their own. This was decided by the agent. [typography]
-L. The first values of the tokens were chosen by the agent: the greys,
-   the five accents, the status colours, the type scale, the spacing, the
-   corners and the timings. [tokens]
 M. The desktop settings are read as: opened from the launcher and shown
    in the launcher's own window as another view, with the admin panel's
    side bar and page. [visual desktop]
@@ -294,61 +291,53 @@ detail.
 
 ### Tokens and components
 
-30. Agree to the first values, after seeing them in the example
-   components and the mockups. [tokens]
-31. Where is the time set that an asked-for card stays large: per
-   device? [components]
-32. Agree to the example components as the base for the rest.
-   [components]
 
 ### Assistant visuals
 
-33. Can the character be anywhere on a screen, or only in the places a
+30. Can the character be anywhere on a screen, or only in the places a
    screen gives a canvas? [assistant visuals]
-34. Below which size of canvas does the character become a head only, or
+31. Below which size of canvas does the character become a head only, or
    a sound wave? [assistant visuals]
-35. In which style are the full figures drawn, when they are redesigned
+32. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-36. Does a figure have a mouth that moves when it talks, and arms? Both
+33. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-37. Is the figure of the first release a rendered three-dimensional one,
+34. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-38. Who draws the figures, and how many are there in the first release?
+35. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-39. How does a person give their own assistant a look: by choosing from
+36. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-40. How playful is the default household assistant: cute, friendly, or
+37. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-41. May a person bring their own figure, such as a character they like
+38. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-42. From the research: which of the three routes above do the first
+39. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-43. Where is changing the idle figure by itself switched on: per tablet?
-   [visual tablet]
 
 ### The mockups
 
-44. Agree to each mockup, or say what to change in it. [mockups]
+40. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-45. A search of the trade mark registers of the EU, the Benelux, the UK
+41. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-46. How fast the blur is on an old tablet and in the launcher, measured
+42. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-47. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+43. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-48. How much power a three-dimensional figure uses on an old tablet that
+44. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

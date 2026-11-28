@@ -432,3 +432,6 @@ are 25 November 2026 unless a section says otherwise.
 | 405 | The character is central to the experience and is designed in a thread of its own | [assistant visuals](design/visual/assistant-visuals.md) |
 | 406 | Every screen gives the character a canvas that can be moved and resized, and the character scales to it in proportion | [assistant visuals](design/visual/assistant-visuals.md) |
 | 407 | The built-in pink is Blossom and the built-in red is Cherry | [colour](design/visual/colour.md) |
+| 408 | The first values of the tokens are agreed as a start | [tokens](design/visual/tokens.md) |
+| 409 | The example components are agreed as the base for the rest | [components](design/visual/components.md) |
+| 410 | How long an asked-for card stays large, and whether the idle figure changes by itself, are set for the household, and a device can differ | [components](design/visual/components.md) |

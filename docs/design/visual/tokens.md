@@ -134,5 +134,3 @@ Assumed, needing a check on real screens:
 
 ## Open questions
 
-- Agree to the first values, after seeing them in
-  [the example components](examples/components.html) and the mockups.

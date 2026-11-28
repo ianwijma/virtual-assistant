@@ -3,7 +3,8 @@
 The shared components and how they behave. Part of
 [the visual design](README.md).
 
-Status: started. A few example components exist. The full set follows the
+Status: started. The example components are agreed as the base for the
+rest. The full set follows the
 mockups.
 
 ## Design
@@ -85,8 +86,8 @@ mockups.
   were used, only in an advanced mode.**
 - **A sheet with unsaved input asks before it closes by a touch outside
   it.**
-- **A card that was asked for stays large for 10 seconds.** The time can
-  be set. Its large form is the sheet that a touch opens.
+- **A card that was asked for stays large for 10 seconds.** The time is
+  set for the household, and a device can differ. Its large form is the sheet that a touch opens.
 - **The next components are the ones the mockups need:** the launcher's
   search and results, a sheet, a menu, the tab bar and the side bar, a
   table for logs, the chat, and each card of the A2UI catalog.
@@ -109,5 +110,3 @@ light and dark, built from [components.css](examples/components.css).
 
 ## Open questions
 
-- Where is the time set that an asked-for card stays large: per device?
-- Agree to the example components as the base for the rest.
