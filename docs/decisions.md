@@ -411,3 +411,6 @@ are 25 November 2026 unless a section says otherwise.
 | 384 | Four things set the look apart together: the characters, the two-colour accent, the living backdrop and our own shape | [identity](design/visual/identity.md) |
 | 385 | Raycast and the Arc browser are admired for their look, besides Apple's | [identity](design/visual/identity.md) |
 | 386 | The name is said either way, and a line of text shows how where it is introduced | [identity](design/visual/identity.md) |
+| 387 | The colour wheel sets the colour only | [colour](design/visual/colour.md) |
+| 388 | A character has two colours of its own, which can be set to the same colour; nothing is done when they are like the person's accent | [colour](design/visual/colour.md) |
+| 389 | Seven accents are built in: Tide, Ember, Aurora, Moss, a pink, a red and Graphite | [colour](design/visual/colour.md) |

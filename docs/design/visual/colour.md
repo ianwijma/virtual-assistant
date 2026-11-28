@@ -54,14 +54,15 @@ focus. It also colours our own [backdrop](glass.md).
 
 - **An accent is two colours:** a main colour, and a second colour for
   the backdrop.
-- **Four accents are built in:** Tide, Ember, Aurora and Moss. Each is
-  checked for readable text in light and in dark. A new household starts
-  with Tide. This is "Tide" on
+- **Seven accents are built in:** Tide, Ember, Aurora, Moss, a pink, a
+  red and Graphite. Each is checked for readable text in light and in
+  dark. A new household starts with Tide. This is "Tide" on
   [the accent start board](examples/accent-start-board.html).
 - **A person can also make their own accent.** Under the built-in
   accents is a grid of pairs of colours that go well together, with a
   button that brings a new set of pairs. A link leads to a free choice:
-  one colour wheel with two handles, one for each colour. These are
+  one colour wheel with two handles, one for each colour. The wheel sets
+  the colour only; how light and how strong it is, is ours to set. These are
   "Pairs that go together" and the wheel of "A two-handle colour wheel"
   on [the accent picker board](examples/accent-picker-board.html).
 - **A colour that makes text hard to read gives a warning, and is
@@ -93,8 +94,10 @@ focus. It also colours our own [backdrop](glass.md).
   as beside an item they added to a shared list. Their name or initial
   is always with it. A person without a photo shows their initial in
   the ring, on a soft fill of their accent.
-- **An assistant has a colour of its own.** Its figure is drawn in that
-  colour everywhere, whoever it talks to. The backdrop and the buttons
+- **A character has two colours of its own,** like an accent. Its figure
+  is drawn in them everywhere, whoever it talks to. Both can be set to
+  the same colour, which gives a figure of one colour. Nothing is done
+  when a character's colours and the person's accent are alike. The backdrop and the buttons
   around it follow the accent as above. This is "Figure in its own
   colour, screen in the person's" on
   [the assistant colour board](examples/assistant-colour-board.html),
@@ -109,8 +112,9 @@ tokens.
 | Ember | Coral to amber |
 | Aurora | Violet to cyan |
 | Moss | Sage green |
-
-Graphite, a neutral accent, is drawn and is left out for now.
+| A pink | To be made |
+| A red | To be made |
+| Graphite | Neutral: near black in light, near white in dark |
 
 ## The parts of the palette
 
@@ -125,11 +129,8 @@ Graphite, a neutral accent, is drawn and is left out for now.
 
 ## Open questions
 
-- Does the wheel set only the hue, or also how light and how strong a
-  colour is?
-- What happens when an assistant's colour and the person's accent are
-  the same, or clash?
-- Should the set have more built-in accents, such as a pink or a red?
-- Does Graphite return later as a built-in accent?
+- Which pink and which red are built in, with which second colour, and
+  what are they called?
+
 - Are there colours to avoid, and is anyone in the household
   colour-blind?

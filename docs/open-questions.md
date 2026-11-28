@@ -285,107 +285,102 @@ detail.
 
 ### The colours
 
-30. Does the wheel set only the hue, or also how light and how strong a
-   colour is? [colour]
-31. What happens when an assistant's colour and the person's accent are
-   the same, or clash? [colour]
-32. Should the set have more built-in accents, such as a pink or a red?
-   [colour]
-33. Does Graphite return later as a built-in accent? [colour]
-34. Are there colours to avoid, and is anyone in the household colour-
+30. Which pink and which red are built in, with which second colour, and
+   what are they called? [colour]
+31. Are there colours to avoid, and is anyone in the household colour-
    blind? [colour]
 
 ### Typography
 
-35. Which languages and scripts must be covered later, beyond what Inter
+32. Which languages and scripts must be covered later, beyond what Inter
    covers? [typography]
 
 ### Shape, spacing and icons
 
-36. Is there an illustration style, for empty screens and first-run
+33. Is there an illustration style, for empty screens and first-run
    setup? [shape]
 
 ### Motion and sound
 
-37. Is the sound of a timer or an alarm that ends also off unless
+34. Is the sound of a timer or an alarm that ends also off unless
    switched on, or is it the one sound that is always on? [motion]
-38. Which sounds are in the set, and who makes them? [motion]
+35. Which sounds are in the set, and who makes them? [motion]
 
 ### Tokens and components
 
-39. Agree to the first values, after seeing them in the example
+36. Agree to the first values, after seeing them in the example
    components and the mockups. [tokens]
-40. Agree to the example components as the base for the rest.
+37. Agree to the example components as the base for the rest.
    [components]
-41. When two devices changed the same thing while one was out of reach,
+38. When two devices changed the same thing while one was out of reach,
    which change wins, and is the person told? [components]
 
 ### Assistant visuals
 
-42. In which style are the full figures drawn, when they are redesigned
+39. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-43. Does a figure have a mouth that moves when it talks, and arms? Both
+40. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-44. Is the figure of the first release a rendered three-dimensional one,
+41. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-45. How much more room does a screen keep for a later figure: how much
+42. How much more room does a screen keep for a later figure: how much
    wider and taller than the figure for now? [assistant visuals]
-46. Who draws the figures, and how many are there in the first release?
+43. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-47. How does a person give their own assistant a look: by choosing from
+44. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-48. How playful is the default household assistant: cute, friendly, or
+45. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-49. May a person bring their own figure, such as a character they like
+46. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-50. From the research: which of the three routes above do the first
+47. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-51. What makes one notification more important than another in the
+48. What makes one notification more important than another in the
    Overview's list: its kind, its age, or what a person set? [visual]
-52. In two columns, do the destinations become a rail of icons, as on
+49. In two columns, do the destinations become a rail of icons, as on
    the board? [visual]
-53. Which devices are the references for the designs: which phone, which
+50. Which devices are the references for the designs: which phone, which
    tablet, which monitor size? [visual]
-54. Are settings screens generated from each feature's description, so
+51. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-55. When the settings close by a click elsewhere with unsaved changes,
+52. When the settings close by a click elsewhere with unsaved changes,
    are they kept for when the launcher is opened again, or is the person
    asked? [visual desktop]
-56. Which views of the launcher have a preview, and which are a list
+53. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-57. Does the window change size when it goes from a list to a list with
+54. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-58. Does the line of text also show what the person says, or only what
+55. Does the line of text also show what the person says, or only what
    the assistant says? [visual phone]
-59. Which languages does the welcome show, and in which is the setup
+56. Which languages does the welcome show, and in which is the setup
    offered at first? [visual admin panel]
 
 ### The mockups
 
-60. Agree to each mockup, or say what to change in it. [mockups]
+57. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-61. A search of the trade mark registers of the EU, the Benelux, the UK
+58. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-62. How fast the blur is on an old tablet and in the launcher, measured
+59. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-63. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+60. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-64. How much power a three-dimensional figure uses on an old tablet that
+61. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
