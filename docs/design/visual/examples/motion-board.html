@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motion board</title>
+<!--
+  Four ways a card row lifts into a sheet. The lift itself is decided; how it
+  moves is open. Each design is a filmstrip of five still frames (static
+  markup, so a screenshot always shows the same thing) and a sixth, live
+  frame that loops the real animation. See ../motion.md and ../glass.md.
+  Nothing here is decided. D is a reference: it is what all of them become
+  in reduced motion.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .intro { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-5); }
+  .arr { margin-bottom: var(--s-5); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .strip { display: grid; grid-template-columns: repeat(6, 196px); gap: 10px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .cell .t-caption b { font-weight: 700; }
+  .frame { position: relative; width: 196px; height: 380px; border-radius: var(--r-xl); overflow: hidden; --pad: 12px; }
+  .frame > * { position: absolute; }
+  .hd { left: 16px; top: 16px; }
+  .lst { left: 8px; top: 52px; width: 180px; overflow: hidden; }
+  .lst .row { height: 56px; box-sizing: border-box; gap: 10px; font: var(--type-label); }
+  .lst .row .t-label { font: var(--type-label); }
+  .dim { inset: 0; background: var(--bg); }
+  .sheet { overflow: hidden; }
+  .sc { position: relative; left: 16px; top: 16px; width: 134px; display: flex; flex-direction: column; }
+  .big { font: 600 44px/52px var(--font-sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums; margin: 2px 0 14px; }
+  .sbtns { display: flex; flex-direction: column; gap: var(--s-2); --control-h: 36px; }
+  .rc { left: 0; top: 0; width: 180px; height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 12px; font: var(--type-label); }
+  .rc .grow { flex: 1; }
+
+  /* Live frames: a 2500 ms loop. 1% is 25 ms. Motion starts at 16% (400 ms pause),
+     lasts as long as its token (--t-slow 420 ms = 16.8%, --t-base 240 ms = 9.6%,
+     100 ms = 4%), holds until 84%, then goes back in 200 ms and rests. The spring
+     and the ease are the tokens themselves. */
+  .live > * { animation-duration: 2500ms; animation-iteration-count: infinite; animation-timing-function: linear; }
+  .live .a-row { animation-name: a-row; }
+  .live .a-dim, .live .b-dim { animation-name: dim; }
+  .live .a-grow { animation-name: a-grow; }
+  .live .a-grow .rc { animation: a-rc 2500ms infinite linear; }
+  .live .a-grow .sc { animation: a-sc 2500ms infinite linear; }
+  .live .b-sheet { animation-name: b-sheet; }
+  .live .c-dim { animation-name: c-dim; }
+  .live .c-sheet { animation-name: c-sheet; }
+  .live .d-dim { animation-name: d-dim; }
+  .live .d-sheet { animation-name: d-sheet; }
+
+  @keyframes dim {
+    0%, 16% { opacity: 0; animation-timing-function: var(--ease); }
+    32.8%, 84% { opacity: .5; animation-timing-function: var(--ease); }
+    92%, 100% { opacity: 0; }
+  }
+  @keyframes a-row { 0%, 15.9% { opacity: 1; } 16%, 92% { opacity: 0; } 92.1%, 100% { opacity: 1; } }
+  @keyframes a-grow {
+    0%, 15.9% { opacity: 0; left: 8px; top: 52px; width: 180px; height: 56px; }
+    16% { opacity: 1; left: 8px; top: 52px; width: 180px; height: 56px; animation-timing-function: var(--spring); }
+    32.8%, 84% { opacity: 1; left: 14px; top: 96px; width: 168px; height: 196px; animation-timing-function: var(--ease); }
+    92% { opacity: 1; left: 8px; top: 52px; width: 180px; height: 56px; }
+    92.1%, 100% { opacity: 0; left: 8px; top: 52px; width: 180px; height: 56px; }
+  }
+  @keyframes a-rc { 0%, 16% { opacity: 1; } 24%, 86% { opacity: 0; } 92%, 100% { opacity: 1; } }
+  @keyframes a-sc { 0%, 22% { opacity: 0; } 32.8%, 84% { opacity: 1; } 89%, 100% { opacity: 0; } }
+  @keyframes b-sheet {
+    0%, 16% { top: 380px; animation-timing-function: var(--spring); }
+    32.8%, 84% { top: 96px; animation-timing-function: var(--ease); }
+    92%, 100% { top: 380px; }
+  }
+  @keyframes c-dim {
+    0%, 16% { opacity: 0; backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); animation-timing-function: var(--ease); }
+    20%, 84% { opacity: .55; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation-timing-function: var(--ease); }
+    92%, 100% { opacity: 0; backdrop-filter: blur(0); -webkit-backdrop-filter: blur(0); }
+  }
+  @keyframes c-sheet {
+    0%, 20% { opacity: 0; transform: scale(.9); animation-timing-function: var(--ease); }
+    29.6%, 84% { opacity: 1; transform: scale(1); animation-timing-function: var(--ease); }
+    90%, 100% { opacity: 0; transform: scale(.9); }
+  }
+  @keyframes d-dim { 0%, 16% { opacity: 0; } 20%, 84% { opacity: .55; } 88%, 100% { opacity: 0; } }
+  @keyframes d-sheet { 0%, 16% { opacity: 0; } 20%, 84% { opacity: 1; } 88%, 100% { opacity: 0; } }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var ROWS = [
+    ['Pasta timer', '07:42'],
+    ['Milk added to Shopping', ''],
+    ['Parcel arrives tomorrow', ''],
+    ['Approve: unlock the front door?', '']
+  ];
+  var SHEET = 'left:14px;width:168px;height:196px;';
+  function list(rowOpacityStyle, cls) {
+    return '<div class="surface lst">' + ROWS.map(function (r, i) {
+      return '<div class="row' + (i === 0 ? ' is-selected ' + (cls || '') : '') + '"' +
+        (i === 0 && rowOpacityStyle ? ' style="' + rowOpacityStyle + '"' : '') + '><span class="ico"></span>' +
+        '<span class="grow">' + r[0] + '</span>' + (r[1] ? '<span class="num t-label">' + r[1] + '</span>' : '') + '</div>';
+    }).join('') + '</div>';
+  }
+  var SC = '<div class="sc"><div class="t-caption t-2">Pasta timer</div><div class="big">07:42</div>' +
+    '<div class="sbtns"><span class="btn btn-primary">Stop</span><span class="btn">Snooze</span></div></div>';
+  var RC = '<div class="rc"><span class="ico"></span><span class="grow">Pasta timer</span><span class="num t-label">07:42</span></div>';
+  function dim(o, blur, cls) {
+    return '<div class="dim ' + (cls || '') + '" style="opacity:' + o + ';' + (blur ? 'backdrop-filter:blur(' + blur + 'px);-webkit-backdrop-filter:blur(' + blur + 'px);' : '') + '"></div>';
+  }
+  function frame(inner, cls) {
+    return '<div class="frame backdrop dark accent-ember ' + (cls || '') + '"><div class="hd t-heading">Overview</div>' + inner + '</div>';
+  }
+
+  /* Static stills. Every value is written out per frame. */
+  var T = {
+    a: [0, 105, 210, 315, 420],
+    b: [0, 105, 210, 315, 420],
+    c: [0, 85, 170, 255, 340],
+    d: [0, 25, 50, 75, 100]
+  };
+  // A: p is how far the row has grown (1 is the finished sheet; 1.06 is the overshoot).
+  var AP = [0, .42, .9, 1.06, 1], ADIM = [0, .2, .4, .5, .5], ARC = [1, .6, 0, 0, 0], ASC = [0, 0, .7, 1, 1];
+  function stillA(i) {
+    var p = AP[i], g = '';
+    if (i > 0) {
+      g = '<div class="glass-thick sheet" style="left:' + (8 + 6 * p) + 'px;top:' + (52 + 44 * p) + 'px;width:' + (180 - 12 * p) + 'px;height:' + (56 + 140 * p) + 'px;">' +
+        '<div style="opacity:' + ARC[i] + ';position:absolute;left:0;top:0">' + RC + '</div>' +
+        '<div style="opacity:' + ASC[i] + ';position:absolute;left:0;top:0;width:100%;height:100%">' + SC + '</div></div>';
+    }
+    return frame(list(i > 0 ? 'opacity:0' : '') + dim(ADIM[i]) + g);
+  }
+  // B: the sheet's top edge, 380 is below the screen.
+  var BTOP = [380, 238, 117, 85, 96];
+  function stillB(i) {
+    return frame(list() + dim(ADIM[i]) +
+      '<div class="glass-thick sheet" style="' + SHEET + 'top:' + BTOP[i] + 'px">' + SC + '</div>');
+  }
+  // C: the dim and blur come first, then the sheet scales up.
+  var CDIM = [0, .5, .55, .55, .55], CBLUR = [0, 7, 8, 8, 8], CS = [.9, .9, .93, .99, 1], CO = [0, 0, .35, .9, 1];
+  function stillC(i) {
+    return frame(list() + dim(CDIM[i], CBLUR[i]) +
+      '<div class="glass-thick sheet" style="' + SHEET + 'top:96px;opacity:' + CO[i] + ';transform:scale(' + CS[i] + ')">' + SC + '</div>');
+  }
+  // D: a fade only.
+  var DO = [0, .25, .5, .75, 1];
+  function stillD(i) {
+    return frame(list() + dim(DO[i] * .55) +
+      '<div class="glass-thick sheet" style="' + SHEET + 'top:96px;opacity:' + DO[i] + '">' + SC + '</div>');
+  }
+
+  /* Live frames: the same parts, moved by the keyframes above. */
+  var live = {
+    a: frame(list('', 'a-row') + '<div class="dim a-dim" style="opacity:0"></div>' +
+      '<div class="glass-thick sheet a-grow" style="opacity:0">' + '<div class="rc-wrap"></div>' + '</div>', 'live'),
+    b: frame(list() + '<div class="dim b-dim" style="opacity:0"></div>' +
+      '<div class="glass-thick sheet b-sheet" style="' + SHEET + 'top:380px">' + SC + '</div>', 'live'),
+    c: frame(list() + '<div class="dim c-dim" style="opacity:0"></div>' +
+      '<div class="glass-thick sheet c-sheet" style="' + SHEET + 'top:96px;opacity:0">' + SC + '</div>', 'live'),
+    d: frame(list() + '<div class="dim d-dim" style="opacity:0"></div>' +
+      '<div class="glass-thick sheet d-sheet" style="' + SHEET + 'top:96px;opacity:0">' + SC + '</div>', 'live')
+  };
+  // A's live frame needs the row's own class on the pasta row, and both contents inside the growing sheet.
+  live.a = frame(list('', 'a-row') + '<div class="dim a-dim" style="opacity:0"></div>' +
+    '<div class="glass-thick sheet a-grow" style="opacity:0;left:8px;top:52px;width:180px;height:56px">' +
+    '<div class="rc" style="position:absolute">' + RC.replace(/^<div class="rc">|<\/div>$/g, '') + '</div>' +
+    '<div class="sc" style="position:absolute;left:16px;top:16px;opacity:0">' + SC.replace(/^<div class="sc">|<\/div>$/g, '') + '</div></div>', 'live');
+  // Both contents above are wrapped by hand, so the .rc and .sc classes carry the keyframes.
+
+  var arr = [
+    ['v-a', 'A. Grows from the row', 'a', stillA,
+      'Gains the clearest link between the row and the sheet, which is the same object growing; costs the most, as it is the hardest to build the same in four toolkits (--t-slow, --spring).'],
+    ['v-b', 'B. Rises from below', 'b', stillB,
+      'Gains a familiar, simple movement that is easy to build everywhere; costs the link to the row, which stays behind, highlighted, while a sheet arrives from elsewhere (--t-slow, --spring).'],
+    ['v-c', 'C. Blooms in the middle', 'c', stillC,
+      'Gains a calm movement that is cheap to draw and to build, with no travel; costs liveliness, as it is the least springy of the three (--t-base).'],
+    ['v-d', 'D. Reduced motion (reference, not a choice)', 'd', stillD,
+      'What every design becomes in reduced motion: the sheet fades in over 100 ms and nothing moves, so the sheet is the same and only the way it arrives goes.']
+  ];
+  document.getElementById('page').innerHTML =
+    '<p class="intro">A touch on a row lifts it into a sheet over the dimmed list. That is decided. How it moves is open. Each strip shows five stills (the time in milliseconds under each), then a live loop that plays the real animation in a browser. Motion never blocks input: a person can act while it runs.</p>' +
+    arr.map(function (a) {
+      var cells = T[a[2]].map(function (ms, i) {
+        return '<div class="cell"><span class="t-caption"><b>' + ms + ' ms</b> &middot; ' + (i * 25) + '%</span>' + a[3](i) + '</div>';
+      }).join('') +
+        '<div class="cell"><span class="t-caption"><b>Live</b> &middot; loops</span>' + live[a[2]] + '</div>';
+      return '<section class="arr" id="' + a[0] + '"><h2>' + a[1] + '</h2><p class="d">' + a[4] + '</p><div class="strip">' + cells + '</div></section>';
+    }).join('');
+</script>
+</body>
+</html>

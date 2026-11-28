@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone areas board</title>
+<!--
+  Four ways to reach the phone app's other areas (lists, clipboard, settings)
+  from its four screens. Each design shows the entry point, the Shopping list
+  and the clipboard. Nothing here is decided. See ../phone.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  .arr { margin-bottom: var(--s-4); }
+  .arr h2 { font: var(--type-heading); margin: 0 0 2px; }
+  .arr p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); max-width: 840px; }
+  .trio { display: grid; grid-template-columns: repeat(3, 270px); gap: 14px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .phone { position: relative; width: 270px; height: 560px; border-radius: 34px; overflow: hidden; }
+  .phone > * { position: absolute; }
+  .sb { top: 11px; left: 26px; right: 26px; display: flex; justify-content: space-between; font: var(--type-label); font-weight: 600; font-size: 12px; z-index: 5; }
+  .scr { overflow: hidden; left: 14px; right: 14px; }
+  .grow { flex: 1; min-width: 0; }
+  .ell { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sub { font: var(--type-caption); color: var(--text-2); display: block; text-transform: none; letter-spacing: 0; }
+  .lab { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); margin: var(--s-4) 4px var(--s-1); }
+  .ico.s { width: 18px; height: 18px; }
+  .rbtn { border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .top { top: 34px; left: 10px; right: 10px; display: flex; align-items: center; gap: var(--s-2); padding: 6px 8px 6px 14px; border-radius: var(--r-full); min-height: 48px; }
+  .top .t-strong { font-size: 15px; }
+  .back { display: flex; align-items: center; gap: 4px; color: var(--accent); font: var(--type-label); font-weight: 600; }
+  .back::before { content: ""; width: 9px; height: 9px; border: solid currentColor; border-width: 0 0 2px 2px; transform: rotate(45deg); margin-left: 3px; }
+  .ph-scr { top: 94px; bottom: 90px; }
+  .tb { left: 10px; right: 10px; bottom: 10px; display: flex; padding: 6px; border-radius: var(--r-xl); }
+  .tb > div { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 0; border-radius: var(--r-md); font: var(--type-caption); font-size: 10px; letter-spacing: 0; text-transform: none; color: var(--text-2); }
+  .tb > .on { background: var(--accent-soft); color: var(--accent); }
+  .dim { inset: 0; background: color-mix(in srgb, var(--text) 30%, transparent); z-index: 3; }
+  .sheet { left: 8px; right: 8px; z-index: 4; padding: var(--s-3); }
+  .grab { width: 36px; height: 4px; border-radius: 2px; background: var(--text-3); margin: 0 auto var(--s-2); }
+  /* content */
+  .card { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-3); margin-top: var(--s-2); }
+  .nrow { display: flex; align-items: center; gap: var(--s-3); padding: 9px var(--s-3); }
+  .nrow + .nrow { border-top: 1px solid var(--line); }
+  .nrow .t-label { font-size: 13px; }
+  .tk { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--text-3); flex: none; position: relative; }
+  .tk.on { background: var(--accent); border-color: var(--accent); }
+  .tk.on::after { content: ""; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; border: solid var(--on-accent); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .done { text-decoration: line-through; color: var(--text-3); }
+  .mini { width: 24px; height: 24px; font-size: 11px; }
+  .copy { width: 34px; height: 34px; padding: 0; }
+  .pic { width: 34px; height: 34px; border-radius: var(--r-xs); background: linear-gradient(150deg, var(--accent-2), var(--accent)); flex: none; opacity: .8; }
+  .tile { flex: 1; display: flex; flex-direction: column; gap: var(--s-2); padding: var(--s-3); min-width: 0; }
+  .tiles { display: flex; gap: var(--s-2); margin-top: var(--s-2); }
+  .tile .t-label { font-size: 12px; }
+  .more-row { display: flex; align-items: center; gap: var(--s-3); padding: 12px var(--s-3); }
+  .more-row + .more-row { border-top: 1px solid var(--line); }
+  .chev::after { content: ""; display: block; width: 8px; height: 8px; border: solid var(--text-3); border-width: 2px 2px 0 0; transform: rotate(45deg); }
+  .chips { display: flex; gap: 4px; }
+  .chips .chip { height: 28px; font-size: 10px; padding: 0 7px; letter-spacing: 0; text-transform: none; }
+  .tl { display: flex; gap: var(--s-2); padding: 7px 0; }
+  .tl + .tl { border-top: 1px solid var(--line); }
+  .tl .t { width: 34px; flex: none; font: var(--type-caption); color: var(--text-2); font-variant-numeric: tabular-nums; }
+  .tl .t-label { font-size: 13px; }
+  .pin { padding: var(--s-1) 0; border-color: var(--accent); }
+  .pinh { display: flex; align-items: center; gap: var(--s-2); padding: 8px var(--s-3); }
+  .addf { margin: var(--s-2) var(--s-3) var(--s-3); height: 38px; font-size: 13px; }
+  .wide { margin-top: var(--s-3); }
+</style>
+</head>
+<body class="va">
+<div class="page" id="page"></div>
+<script>
+  var ico = '<span class="ico"></span>', icos = '<span class="ico s"></span>';
+  var sb = '<div class="sb"><span>8:12</span><span>&#9679;&#9679;&#9679;</span></div>';
+  function ch(size, cls) { return '<span class="character ' + (cls || '') + '" style="--size:' + size + 'px"></span>'; }
+  function av(s, l) { return '<span class="avatar" style="width:' + s + 'px;height:' + s + 'px">' + (l || 'A') + '</span>'; }
+  function gear(cls) { return '<span class="glass rbtn ' + (cls || '') + '" style="width:34px;height:34px"><span class="ico s"></span></span>'; }
+
+  var ITEMS = [['Milk', 'A', 0], ['Eggs', 'S', 0], ['Olive oil', 'J', 0], ['Washing-up liquid', 'S', 1]];
+  function shopRows() {
+    return ITEMS.map(function (i) {
+      return '<div class="nrow"><span class="tk ' + (i[2] ? 'on' : '') + '"></span><div class="grow ell t-label ' + (i[2] ? 'done' : '') + '">' + i[0] + '</div>' + av(24, i[1]).replace('class="avatar"', 'class="avatar mini"') + '</div>';
+    }).join('');
+  }
+  function addField() { return '<div class="field addf"><span class="ico s"></span><span class="ph">Add an item</span></div>'; }
+  function shopList() { return '<div class="surface">' + shopRows() + addField() + '</div>'; }
+  var CL = [
+    ['<span class="ico"></span>', 'hearth.local/recipes/pasta', 'Alex&rsquo;s desktop &middot; 2 min ago'],
+    ['<span class="ico"></span>', 'Pick up the parcel from next door', 'Sam&rsquo;s phone &middot; 14 min ago'],
+    ['<span class="pic"></span>', 'Image, 1200 &times; 800', 'Kitchen tablet &middot; 1 h ago']
+  ];
+  function clipRows() {
+    return CL.map(function (c) {
+      return '<div class="nrow" style="padding:12px var(--s-3)">' + c[0] + '<div class="grow"><span class="ell t-label">' + c[1] + '</span><span class="sub ell">' + c[2] + '</span></div><span class="btn btn-icon copy" title="Copy"><span class="ico s"></span></span></div>';
+    }).join('');
+  }
+  function clipList() { return '<div class="surface">' + clipRows() + '</div>'; }
+
+  var N = [['Parcel arrives tomorrow', 'Email', '8:10'], ['Sam added milk to Shopping', 'Lists', '7:54'], ['Bins go out tonight', 'Reminder', '7:30']];
+  function recent() {
+    return '<div class="lab">Recent</div><div class="surface">' + N.map(function (n) {
+      return '<div class="nrow"><div class="grow"><div class="ell t-label">' + n[0] + '</div><span class="sub">' + n[1] + ' &middot; ' + n[2] + '</span></div></div>';
+    }).join('') + '</div>';
+  }
+  function talkCard() { return '<div class="glass card">' + ch(38, 'listening') + '<div class="grow"><div class="t-strong">Talk to Juno</div><span class="sub">Tap or say &ldquo;Hey Juno&rdquo;</span></div></div>'; }
+  function timerCard() { return '<div class="surface card"><span class="dot" style="color:var(--accent)"></span><div class="grow t-strong">Pasta timer</div><span class="t-strong num" style="color:var(--accent)">07:42</span></div>'; }
+  function tabbar(names, on) {
+    return '<div class="glass-thick tb">' + names.map(function (n, i) { return '<div class="' + (i === on ? 'on' : '') + '">' + icos + '<span>' + n + '</span></div>'; }).join('') + '</div>';
+  }
+  function bar(title, left, right) {
+    return '<div class="glass top">' + (left || '') + '<div class="grow t-strong">' + title + '</div>' + (right || '') + '</div>';
+  }
+  var T4 = ['Overview', 'Juno', 'Timeline', 'Chat'];
+  var T5 = T4.concat(['More']);
+
+  /* A: tiles on Overview */
+  function overviewA() {
+    var tiles = ['Lists', 'Clipboard', 'Settings'].map(function (n) {
+      return '<div class="surface tile">' + ico + '<div class="t-label">' + n + '</div></div>';
+    }).join('');
+    return sb + bar('Overview', '', av(34)) +
+      '<div class="scr ph-scr"><div class="t-caption">Tuesday</div><div class="t-title">Good morning, Alex</div>' + talkCard() +
+      '<div class="lab">Areas</div><div class="tiles" style="margin-top:0">' + tiles + '</div>' +
+      timerCard().replace('card"', 'card" style="margin-top:var(--s-3)"') + recent() + '</div>' + tabbar(T4, 0);
+  }
+  var A = [overviewA,
+    function () { return sb + bar('Shopping', '<span class="back">Overview</span>').replace('<div class="grow t-strong">Shopping</div>', '<div class="grow t-strong" style="text-align:center">Shopping</div><span style="width:70px"></span>') +
+      '<div class="scr ph-scr"><div class="t-caption">List &middot; 3 to get</div>' + '<div class="wide">' + shopList() + '</div></div>' + tabbar(T4, 0); },
+    function () { return sb + bar('Clipboard', '<span class="back">Overview</span>').replace('<div class="grow t-strong">Clipboard</div>', '<div class="grow t-strong" style="text-align:center">Clipboard</div><span style="width:70px"></span>') +
+      '<div class="scr ph-scr"><div class="t-caption">Shared with Home</div><div class="wide">' + clipList() + '</div></div>' + tabbar(T4, 0); }
+  ];
+
+  /* B: fifth tab */
+  function moreList() {
+    var rows = [['Lists', 'Shopping and 2 more'], ['Clipboard', '3 items'], ['Settings', 'This app and Home']].map(function (r) {
+      return '<div class="more-row">' + ico + '<div class="grow"><div class="t-strong">' + r[0] + '</div><span class="sub">' + r[1] + '</span></div><span class="chev"></span></div>';
+    }).join('');
+    return '<div class="surface">' + rows + '</div>';
+  }
+  function pushed(title, body, cap) {
+    return sb + bar(title, '<span class="back">More</span>').replace('<div class="grow t-strong">' + title + '</div>', '<div class="grow t-strong" style="text-align:center">' + title + '</div><span style="width:50px"></span>') +
+      '<div class="scr ph-scr"><div class="t-caption">' + cap + '</div><div class="wide">' + body + '</div></div>' + tabbar(T5, 4);
+  }
+  var B = [
+    function () { return sb + bar('More') + '<div class="scr ph-scr"><div class="t-title">More</div><div class="wide">' + moreList() + '</div>' +
+      '<div class="lab">Signed in</div><div class="surface"><div class="more-row">' + av(34) + '<div class="grow"><div class="t-strong">Alex</div><span class="sub">Home &middot; admin</span></div></div></div></div>' + tabbar(T5, 4); },
+    function () { return pushed('Shopping', shopList(), 'List &middot; 3 to get'); },
+    function () { return pushed('Clipboard', clipList(), 'Shared with Home'); }
+  ];
+
+  /* C: behind the avatar */
+  function behind() { return sb + '<div class="glass top" style="justify-content:space-between"><div class="t-strong">Overview</div>' + av(34) + '</div>' +
+    '<div class="scr ph-scr"><div class="t-title">Good morning, Alex</div>' + talkCard() + timerCard() + recent() + '</div>' + tabbar(T4, 0); }
+  function sheetBase(title, body, h) {
+    return behind() + '<div class="dim"></div><div class="glass-thick sheet" style="top:' + (270 - h + 0) + 'px;bottom:10px;top:' + (560 - 10 - h) + 'px;"><div class="grab"></div>' +
+      '<div style="display:flex;align-items:center;margin-bottom:var(--s-2)"><div class="grow t-heading">' + title + '</div><span class="btn btn-quiet" style="height:30px;padding:0 6px;color:var(--accent)">Close</span></div>' + body + '</div>';
+  }
+  var C = [
+    function () {
+      var rows = [['Lists', 'Shopping and 2 more'], ['Clipboard', '3 items'], ['Settings', 'This app and Home']].map(function (r) {
+        return '<div class="more-row">' + ico + '<div class="grow"><div class="t-strong">' + r[0] + '</div><span class="sub">' + r[1] + '</span></div><span class="chev"></span></div>';
+      }).join('');
+      return behind() + '<div class="dim"></div><div class="glass-thick sheet" style="top:34px;padding-top:var(--s-3)">' +
+        '<div style="display:flex;align-items:center;gap:var(--s-3);padding:4px 4px var(--s-3)">' + av(44) + '<div class="grow"><div class="t-strong">Alex</div><span class="sub">Home &middot; admin</span></div></div>' +
+        '<div class="divider"></div>' + rows + '<div class="grab" style="margin-top:var(--s-3);margin-bottom:0"></div></div>'.replace('<div class="divider"></div>', '');
+    },
+    function () { return sheetBase('Shopping', shopList(), 440); },
+    function () { return sheetBase('Clipboard', clipList(), 330); }
+  ];
+
+  /* D: inside the Timeline */
+  function chips(on) {
+    return '<div class="chips">' + ['All', 'Lists', 'Clipboard', 'Notifications'].map(function (c) {
+      return '<span class="chip ' + (c === on ? 'accent' : '') + '">' + c + '</span>';
+    }).join('') + '</div>';
+  }
+  function tlrow(t, a, b) { return '<div class="tl"><span class="t">' + t + '</span><div class="grow"><div class="t-label ell">' + a + '</div><span class="sub">' + b + '</span></div></div>'; }
+  function dscreen(on, pinned, rows) {
+    return sb + '<div class="glass top"><div class="grow t-strong">Timeline</div>' + gear() + av(34) + '</div>' +
+      '<div class="scr ph-scr"><div style="margin-bottom:var(--s-3)">' + chips(on) + '</div>' + pinned + rows + '</div>' + tabbar(T4, 2);
+  }
+  var D = [
+    function () {
+      return dscreen('All', '<div class="surface card" style="margin:0 0 var(--s-2)"><span class="dot" style="color:var(--accent)"></span><div class="grow t-strong">Pasta timer</div><span class="t-strong num" style="color:var(--accent)">07:42</span></div>',
+        tlrow('8:10', 'Parcel arrives tomorrow', 'Email') + tlrow('7:54', 'Sam added milk to Shopping', 'Lists') + tlrow('7:30', 'Bins go out tonight', 'Reminder') +
+        tlrow('7:15', 'Jo copied a link', 'Clipboard') + tlrow('6:30', 'Wake-up alarm rang', 'Alarm'));
+    },
+    function () {
+      var pinned = '<div class="surface pin"><div class="pinh">' + icos + '<div class="grow t-strong">Shopping</div><span class="chip accent">Pinned</span></div>' + shopRows() + addField() + '</div>';
+      return dscreen('Lists', pinned, '<div class="lab">Activity</div>' + tlrow('7:54', 'Sam added milk', 'Shopping') + tlrow('7:02', 'Jo added olive oil', 'Shopping'));
+    },
+    function () {
+      var pinned = '<div class="surface pin"><div class="pinh">' + icos + '<div class="grow t-strong">Clipboard</div><span class="chip accent">Pinned</span></div>' + clipRows() + '</div>';
+      return dscreen('Clipboard', pinned, '<div class="lab">Activity</div>' + tlrow('7:15', 'Jo copied a link', 'Clipboard'));
+    }
+  ];
+
+  var arr = [
+    ['v-a', 'accent-tide', true, 'A. Tiles on Overview', A,
+      'Gains areas that are seen the moment the app opens and a tab bar that never changes; costs room on Overview, and an area is a full page away from the screen the person was on.'],
+    ['v-b', 'accent-tide', false, 'B. A fifth tab, More', B,
+      'Gains the plainest, most familiar way to find everything, from any screen; costs a crowded five-item bar, and every area sits two touches deep.'],
+    ['v-c', 'accent-tide', true, 'C. Behind the avatar', C,
+      'Gains a calm tab bar and areas that open over the current screen, so nobody loses their place; costs discoverability, as the avatar does not look like a menu.'],
+    ['v-d', 'accent-tide', false, 'D. Inside the Timeline', D,
+      'Gains one place for everything, with no extra screens to learn; costs clarity, since the clipboard and lists become views of a feed, and settings hide behind a small gear.']
+  ];
+  var caps = [
+    ['Entry point', 'Shopping list', 'Clipboard'], ['Entry point', 'Shopping list', 'Clipboard'],
+    ['Entry point', 'Shopping list', 'Clipboard'], ['Entry point (Timeline)', 'Shopping list', 'Clipboard']
+  ];
+  document.getElementById('page').innerHTML = arr.map(function (a, n) {
+    var cells = a[4].map(function (f, i) {
+      return '<div class="cell"><span class="t-caption">' + caps[n][i] + '</span><div class="phone backdrop ' + a[1] + ' ' + (a[2] ? 'light' : 'dark') + '">' + f() + '</div></div>';
+    }).join('');
+    return '<section class="arr" id="' + a[0] + '"><h2>' + a[3] + '</h2><p class="d">' + a[5] + '</p><div class="trio">' + cells + '</div></section>';
+  }).join('');
+</script>
+</body>
+</html>
