@@ -315,3 +315,5 @@ are 25 November 2026 unless a section says otherwise.
 | 288 | The call screen has three buttons, Mute, Chat and End, and a line of text of what is said that can be switched on | [phone](design/visual/phone.md) |
 | 289 | A tablet with several assistants shows one figure at a time on its idle screen | [tablet](design/visual/tablet.md) |
 | 290 | The welcome of the setup has the figure saying "Hello", in several languages, with the choice of language | [admin panel](design/visual/admin-panel.md) |
+| 291 | Talking to an assistant is one design that folds: the call on a narrow screen opens out into the stage on a wide one | [visual](design/visual/README.md) |
+| 292 | In the dark a tablet follows the light in the room: the figure sleeps when it is a little dark, only a dim clock shows when it is fully dark, and this can be set | [tablet](design/visual/tablet.md) |

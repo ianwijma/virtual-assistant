@@ -131,22 +131,13 @@ X. "A bit of both" is read as: the figure in the assistant's colour, and
 Y. From the answer on responsive layout, the app's own settings are
    taken to be the same design as the desktop settings and the admin
    panel, with fewer columns on a narrow screen. [visual]
-AA. "I do like the two designs. I also like C" is read as: the call
-   and the stage both stay, and the choice between two designs and one
-   design that hides controls is left for later. [visual]
-AB. The notification answer is read as following the width of the
-   screen, not the kind of client: a wide phone app shows the card at
-   the top right. [visual]
 AC. "The two-tone accent as the background of the panels" is read as:
    the plain base and panels carry a little of both colours of the
    accent. [colour]
-AD. "B and D" for the welcome is read as one screen: the figure, the
-   greeting in several languages, and the choice of language. [visual
-   admin panel]
 AE. The tint was chosen from a board that showed it in dark too, so it
    is taken to hold in dark. [colour]
-AF. The night screen of the tablet was not answered with "One at a
-   time" and stays a question. [visual tablet]
+AG. "A mixture of A and C" is read as: one design that folds, with the
+   controls on a household device still to settle. [visual]
 
 ## 1. Now
 
@@ -444,11 +435,9 @@ detail.
    per device? [visual]
 92. Does the household tablet, which nobody owns, have four pinned
    areas, and who sets them? [visual]
-93. Is talking to an assistant one design at every width? The call and
-   the stage both stay as drawn. Still to settle: whether the stage is
-   the call on a wide screen with the controls hidden on a household
-   device, or a design of its own for a household device. The designs
-   are on the stage and call board. [visual]
+93. On a household device, which controls of the call are shown: all of
+   them, none, or some, such as Mute but no field to type? Can it be set
+   per device? [visual]
 94. At which widths does the layout change? The board shows one column
    under 600, two from 600 to 1000 and three above. [visual]
 95. In two columns, do the destinations become a rail of icons, as on
@@ -501,59 +490,64 @@ detail.
    order? [visual tablet]
 117. Does the clock move now and then, to protect the screen? [visual
    tablet]
-118. Is the figure on the idle screen at night as well, or does the
-   tablet then show only the clock? [visual tablet]
-119. After how long without speech does the stage close and the idle
+118. How does a tablet without a light sensor know the room is dark: by
+   the time of day, by its camera, or does a person set the hours?
+   [visual tablet]
+119. What can be set for the dark on a tablet: only which of the two
+   screens is used, or also the hours and how dim it is? [visual tablet]
+120. After how long without speech does the stage close and the idle
    screen return? [visual tablet]
-120. Which figure greets in the welcome, before the household has chosen
+121. Which figure greets in the welcome, before the household has chosen
    or named an assistant? [visual admin panel]
-121. Which languages does the welcome show, and in which is the setup
+122. Which languages does the welcome show, and in which is the setup
    offered at first? [visual admin panel]
-122. What does a destination with no list of items show, such as Speech
+123. Is the language chosen on the welcome itself, as the board shows,
+   or in a step after it? [visual admin panel]
+124. What does a destination with no list of items show, such as Speech
    or Feedback: two columns, or a second column of its sections? [visual
    admin panel]
-123. Where do search results appear in three columns? [visual admin
+125. Where do search results appear in three columns? [visual admin
    panel]
-124. Which accent does the admin panel show: that of the person signed
+126. Which accent does the admin panel show: that of the person signed
    in, or the household's? [visual admin panel]
-125. Where on the phone app's call design do the two set-up choices and
+127. Where on the phone app's call design do the two set-up choices and
    the note for guests go? Ideas are on the voice page board. [visual
    voice page]
-126. On a wide screen, such as a tablet on its side, is the page
+128. On a wide screen, such as a tablet on its side, is the page
    arranged like the phone or like the tablet's stage? [visual voice
    page]
 
 ### The mockups
 
-127. Agree to each mockup, or say what to change in it. [mockups]
-128. Desktop: how does a person go from searching to talking to the
+129. Agree to each mockup, or say what to change in it. [mockups]
+130. Desktop: how does a person go from searching to talking to the
    assistant: the Tab key, a prefix, or a shortcut of its own? The
    mockup shows Tab and a shortcut. [mockups]
-129. Desktop: does the launcher open on the screen that holds the
+131. Desktop: does the launcher open on the screen that holds the
    pointer, or on the main screen? [mockups]
-130. Desktop: is the settings window opened from the launcher only, or
+132. Desktop: is the settings window opened from the launcher only, or
    also from an icon in the system tray? [mockups]
-131. Admin panel: the request timeline shows the first words a person
+133. Admin panel: the request timeline shows the first words a person
    said. Who may see them? [mockups]
-132. Admin panel: is "Undo" offered for every change in the audit log,
+134. Admin panel: is "Undo" offered for every change in the audit log,
    or only for changes that can be reversed safely? [mockups]
-133. Voice page: does the page remember on that browser that it was set
+135. Voice page: does the page remember on that browser that it was set
    up as a personal or a household device? [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-134. A search of the trade mark registers of the EU, the Benelux, the UK
+136. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-135. How fast the blur is on an old tablet and in the launcher, measured
+137. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-136. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+138. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-137. How much power a three-dimensional figure uses on an old tablet
+139. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

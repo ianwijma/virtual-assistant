@@ -29,6 +29,11 @@ Status: started. The idle screen and the active screen are set.
   its own wake word.
 - **When an assistant is active it stands on a stage.** See
   [assistant visuals](assistant-visuals.md).
+- **In the dark the tablet follows the light in the room.** When the
+  room is a little dark, or it is night, the photo is dimmed and the
+  figure sleeps. When the room is fully dark, only a dim clock is shown.
+  This can be set per tablet. These are the two night screens on
+  [the idle figures board](examples/idle-figures-board.html).
 - **In low-power mode the screen is black** with a dim clock and no
   glass. See [glass](glass.md).
 - **Text is sized to be read from across a room.**
@@ -42,7 +47,9 @@ Status: started. The idle screen and the active screen are set.
   on the dots change it?
 - Which assistant is shown first: the one used last, or a fixed order?
 - Does the clock move now and then, to protect the screen?
-- Is the figure on the idle screen at night as well, or does the tablet
-  then show only the clock?
+- How does a tablet without a light sensor know the room is dark: by
+  the time of day, by its camera, or does a person set the hours?
+- What can be set for the dark on a tablet: only which of the two
+  screens is used, or also the hours and how dim it is?
 - After how long without speech does the stage close and the idle screen
   return?

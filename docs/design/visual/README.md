@@ -50,8 +50,14 @@ One look for every screen the system has:
   below. These are the wide screen of "The side bar is the overview" and
   the launcher of "Four and All everywhere" on
   [the all areas board](examples/all-areas-board.html).
+- **Talking to an assistant is one design that folds.** On a narrow
+  screen it is the call. On a wide screen the call opens out into the
+  stage: the figure on one side and a glass column beside it with what
+  was said and any card. These are "One design that folds" and its form
+  for a shared device on
+  [the stage and call board](examples/stage-call-board.html), mixed.
 - **A notification is the same card, placed by the width of the
-  screen.** On a wide screen it is a glass card at the top right, and
+  screen.** This follows the width and not the kind of device. On a wide screen it is a glass card at the top right, and
   several stack downward. On a narrow screen it enters the top of the
   Overview's list, which runs from the most important to the least.
   These are the tablet of "The same stack, at the top" and the phone of
@@ -234,11 +240,9 @@ Each subject's questions are in its own document.
   per device?
 - Does the household tablet, which nobody owns, have four pinned areas,
   and who sets them?
-- Is talking to an assistant one design at every width? The call and the
-  stage both stay as drawn. Still to settle: whether the stage is the
-  call on a wide screen with the controls hidden on a household device,
-  or a design of its own for a household device. The designs are on
-  [the stage and call board](examples/stage-call-board.html).
+- On a household device, which controls of the call are shown: all of
+  them, none, or some, such as Mute but no field to type? Can it be set
+  per device?
 - At which widths does the layout change? The board shows one column
   under 600, two from 600 to 1000 and three above.
 - In two columns, do the destinations become a rail of icons, as on the
