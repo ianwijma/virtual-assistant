@@ -80,14 +80,9 @@ G. The glass and the text are neutral, and colour comes from the
 H. In the second review, the ticks are read as agreement: one shipped
    typeface, two densities and an open icon set are agreed. [typography]
    [shape]
-I. A character shows seven states: idle, listening, thinking, speaking,
-   muted, waiting and not recognised. This was decided by the agent and
-   has not been reviewed. [assistant visuals]
 J. "Two modes" of motion is read as: reduced motion follows the device's
    setting and can also be switched on per device in our settings.
    [motion]
-K. One typeface family is used for everything; headings have no typeface
-   of their own. This was decided by the agent. [typography]
 M. The desktop settings are read as: opened from the launcher and shown
    in the launcher's own window as another view, with the admin panel's
    side bar and page. [visual desktop]
@@ -140,8 +135,6 @@ AI. "Characters" is read as the preferred word for an assistant's look,
 AJ. "The choice screen we have on other devices" is read as the pane of
    the setup of a new device that asks: personal or household. [visual
    voice page]
-AM. Decision 422, on tokens made from the accent, was made by the agent
-   as a correction and is to be validated. [tokens]
 
 ## 1. Now
 
@@ -322,6 +315,14 @@ detail.
 
 ### The clients
 
+40. The three sections, the assistant's card and the greeting do not fit
+   on one phone screen. What gives way: the greeting, the settled
+   section, or does the list simply scroll? [visual phone]
+41. With one screen that darkens, is there still a setting that keeps
+   the character asleep on screen in a fully dark room, or does only the
+   light decide? [visual tablet]
+42. How does a person reach the settings of the voice page, which has no
+   menu? [visual voice page]
 
 ### The mockups
 
@@ -330,16 +331,16 @@ detail.
 
 An agent does this work and the owner agrees to the outcome.
 
-40. A search of the trade mark registers of the EU, the Benelux, the UK
+43. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-41. How fast the blur is on an old tablet and in the launcher, measured
+44. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-42. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+45. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-43. How much power a three-dimensional figure uses on an old tablet that
+46. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

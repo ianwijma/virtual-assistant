@@ -63,26 +63,14 @@ chosen yet.
 - **A character shows expressions.** They are driven by the
   [reply tags](../technical/voice/reply-tags.md): smile, laugh, think,
   surprised, sad, wink, eye roll, nod and shake.
-- **A character shows the state of the conversation:**
-
-| State | When |
-|---|---|
-| Idle | Nobody is talking to it |
-| Listening | It was summoned and hears the person |
-| Thinking | The answer is being made |
-| Speaking | It talks |
-| Muted | The microphone is off for it |
-| Waiting | The server cannot be reached |
-| Not recognised | It heard a voice it does not know and will not answer it |
-- **The voice page follows the one folding design:** the call on a narrow
-  screen and the stage on a wide one.
-- **A card never covers the character's head.**
-- **A figure moves across the screen only while nothing else is shown,**
-  and stands still once a card appears.
-- **An assistant without a figure shows a sound wave.**
-- **Where the assistant is not the subject, the character is a small
-  head,** the size of an icon in a row, as in the launcher and on the
-  phone's Overview.
+- **The character is a system of its own.** It is animated and what it
+  does follows from what is happening, not from a fixed list of states:
+  it may walk about while it talks, tap out a drum roll for a joke, or
+  get a light bulb above its head when a notification comes in. Which
+  states and behaviours it has is settled in the thread on the
+  character. The earlier list of seven states (idle, listening,
+  thinking, speaking, muted, waiting and not recognised) is a starting
+  point for that thread.
 
 ## The routes for the first figures
 

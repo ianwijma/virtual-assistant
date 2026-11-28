@@ -449,3 +449,5 @@ are 25 November 2026 unless a section says otherwise.
 | 422 | A token made from the accent is worked out wherever the accent changes | [tokens](design/visual/tokens.md) |
 | 423 | The notification centre is the hub for everything that needs a person, and is called Notifications on every device | [visual](design/visual/README.md) |
 | 424 | On a narrow screen the Overview's list shows the three sections of Notifications | [visual](design/visual/README.md) |
+| 425 | The character is a system of its own, with behaviour that follows what happens; its states are settled in the character thread | [assistant visuals](design/visual/assistant-visuals.md) |
+| 426 | One typeface family is used for the interface, and JetBrains Mono for logs and technical text in the admin panel | [typography](design/visual/typography.md) |

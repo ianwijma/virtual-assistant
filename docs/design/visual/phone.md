@@ -77,3 +77,7 @@ Status: started. The screens, how they are joined and the call are set.
 
 ## Open questions
 
+- The three sections, the assistant's card and the greeting do not fit
+  on one phone screen. What gives way: the greeting, the settled
+  section, or does the list simply scroll?
+

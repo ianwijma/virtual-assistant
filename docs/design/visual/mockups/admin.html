@@ -14,6 +14,8 @@ body { background: var(--bg); }
 .in { position: absolute; left: 0; top: 0; display: flex; gap: 10px; padding: 10px; box-sizing: border-box; }
 .mini .in { width: 738px; height: 540px; zoom: .8; }
 .wide .in { width: 1200px; height: 640px; }
+.frame.wide.tall { height: 940px; }
+.wide.tall .in { height: 940px; }
 .pn .in { width: 360px; height: 640px; zoom: .8; }
 .in > * { min-width: 0; min-height: 0; }
 .in .abs { position: absolute; }
@@ -239,6 +241,7 @@ mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; p
       '<div class="col" style="gap:3px"><span class="hint">Pick from</span>' + from.map(function (a) { return '<div class="slot">' + I(a[0], 14) + '<span class="grow">' + a[1] + '</span>' + I('plus', 11) + '</div>'; }).join('') + '</div></div>';
   }
   function thumbs(h) { return '<div class="pics" style="grid-template-columns:repeat(4,1fr)">' + [0, 50, 110, 200].map(function (d) { return '<div class="pic wallpaper" style="filter:hue-rotate(' + (d + (h || 0)) + 'deg)"></div>'; }).join('') + '</div>'; }
+  function fol(label, val, hint) { return '<div class="srow"><span class="grow">' + label + '</span><span class="t-label t-2">' + val + '</span><span class="chip" style="font-size:11px;opacity:.8">Follows the household</span></div>' + (hint ? '<div class="hint">' + hint + '</div>' : ''); }
   function devicePage() {
     var body =
       path(['Devices', 'Kitchen tablet']) +
@@ -252,8 +255,11 @@ mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; p
           '<div class="srow" style="margin-top:var(--s-1)"><span class="grow">Accent</span><span class="sw s"></span><span class="t-label t-2">Follows the household (Tide)</span>' + chev() + '</div>') +
         sc('Wallpaper gallery', '<div>' + lab('Gallery', 1) + sel('Seasons') + '</div>' + thumbs(0) + '<div class="hint">A gallery is made on the Wallpapers page. Its pictures change by themselves.</div>') +
         sc('Pinned areas', lab('Shown on its bar', 1) + pinned()) +
+        sc('Cards and figure', fol('Asked-for cards stay large for', '10 seconds') + fol('Idle figure changes by itself', 'off', 'Every 10 to 15 minutes when on.')) +
       '</div>';
-    var danger = '<div class="dgrow"><span class="grow">Remove this device</span><span class="chip danger">Sure?</span><span class="btn btn-danger">Remove</span><span class="btn btn-quiet">Keep</span></div>';
+    var danger = '<div style="border:1px solid var(--danger);border-radius:var(--r-md);padding:var(--s-2) var(--s-3);display:flex;flex-direction:column;gap:var(--s-1);flex:none"><div class="t-caption" style="color:var(--danger)">Dangerous actions</div><div class="t-heading">Reset</div>' +
+      '<div class="dgrow" style="border-top:0;padding-top:0"><span class="grow">Reset this device</span><span class="chip danger">Sure?</span><span class="btn btn-danger">Reset</span><span class="btn btn-quiet">Keep</span></div>' +
+      '<div class="dgrow" style="padding-top:var(--s-1)"><span class="grow">Remove this device</span><span class="chip danger">Sure?</span><span class="btn btn-danger">Remove</span><span class="btn btn-quiet">Keep</span></div></div>';
     return page(body, danger + savebar(3));
   }
   function deviceOne() { return side('Devices') + devList('Kitchen tablet', 230) + devicePage(); }
@@ -352,7 +358,7 @@ mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; p
     return side('Appearance') +
       page(path(['Appearance', 'Your own accent']) + '<div class="t-title" style="padding:0 var(--s-1)">Your own accent</div>' +
         '<div style="display:flex;gap:var(--s-8);padding:0 var(--s-1);min-height:0">' +
-        '<div class="sc"><div style="display:flex;gap:var(--s-5);align-items:center"><div class="wheel"><div class="ring"></div>' + h + '<div class="wc"><span class="btn">' + I('shuffle', 14) + 'Surprise me</span></div></div>' +
+        '<div class="sc"><div style="display:flex;gap:var(--s-5);align-items:center"><div class="wheel"><div class="ring"></div>' + h + '<div class="wc"></div></div>' +
           '<div class="col" style="gap:var(--s-3);overflow:visible">' +
           [['Main colour', '#E0457B', 1], ['Second colour', '#F2A93B', 2]].map(function (x) { return '<div class="rd"><span class="n" style="background:' + x[1] + '">' + x[2] + '</span><div><div class="t-label">' + x[0] + ' <span class="pdot"></span></div><div class="t-mono t-2">' + x[1] + '</div></div></div>'; }).join('') +
           '<div class="hint">Drag a handle round the ring, or use the arrow keys.</div></div></div>' +
@@ -463,7 +469,8 @@ mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; p
   /* 17 Medium, 18 Narrow */
   function medium(k) {
     if (k === 0) return side('People') + listCol('People', [['A', 'Alex', 'Admin', 'tide', 1], ['S', 'Sam', 'Member', 'ember', 0], ['J', 'Jo', 'Member', 'aurora', 0], ['K', 'Kit', 'Member', 'moss', 0]].map(function (p) { return bigRow(pav(p[0], p[3], 34, p[4]), p[1], p[2], 0, ''); }), 'Invite a person', 340) + '';
-    return '<section class="col lst" style="width:230px"><div class="glass" style="display:flex;align-items:center;gap:6px;height:30px;padding:0 var(--s-3);border-radius:var(--r-full);flex:none;color:var(--accent)">' + I('caret-left', 14) + '<span class="t-label" style="font-weight:600">Settings</span></div><div class="t-heading lh">People</div>' +
+    var rail = '<aside class="glass col" style="width:44px;flex:none;align-items:center;padding:var(--s-2) 0;gap:4px">' + G.map(function (g, gi) { return (gi ? '<span style="height:1px;width:20px;background:var(--line);margin:3px 0;flex:none"></span>' : '') + g[1].map(function (n) { return '<span class="ib" style="width:30px;height:26px' + (n[0] === 'People' ? ';background:var(--glass-solid);color:var(--accent)' : ';background:none;color:var(--text)') + '">' + I(n[1], 16) + '</span>'; }).join(''); }).join('') + '</aside>';
+    return rail + '<section class="col lst" style="width:230px"><div class="t-heading lh">People</div>' +
       [['A', 'Alex', 'Admin', 'tide', 1], ['S', 'Sam', 'Member', 'ember', 0], ['J', 'Jo', 'Member', 'aurora', 0], ['K', 'Kit', 'Member', 'moss', 0]].map(function (p, i) { return bigRow(pav(p[0], p[3], 34, p[4]), p[1], p[2], i === 1, ''); }).join('') + '</section>' +
       page(path(['People', 'Sam']) + '<div class="head">' + pav('S', 'ember', 44) + '<div><div class="t-title">Sam</div><div class="t-label t-2">Member</div></div></div>' +
         grp([row('Email', 'sam@home.example'), row('Role', 'Member'), row('Accent', 'Ember'), row('Devices', '2 devices')]));
@@ -488,10 +495,10 @@ mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; p
     ['1. Devices', 'Every device, and the ones waiting to be approved.', 0, [F('mini', 1, devices)],
       ['Three columns: a glass side bar with the search field and the destinations, a plain list of devices, and the chosen device’s page with its path above it. The panel is drawn in the accent of the person signed in (Alex), or the household’s before anyone signs in.',
        'The list shows the group that waits for approval first and leaves it out when nothing is waiting. Status carries a word and a dot. Approve and Reject act at once and do not go through the Save bar.']],
-    ['2. A device’s settings', 'Kitchen tablet: density, light and dark, glass, sounds, wallpaper and pinned areas.', 1, [F('wide', 0, deviceOne)],
+    ['2. A device’s settings', 'Kitchen tablet: density, light and dark, glass, sounds, wallpaper and pinned areas.', 1, [F('wide tall', 0, deviceOne)],
       ['Every device has the same settings: density (a tablet starts roomy), light and dark (follow the device, light, dark, by the time, or by the light in the room, which a new tablet starts on), the glass level (clear, thicker or solid), sounds and reduced motion. Conversation sounds are off unless switched on; every other sound is on unless switched off.',
-       'A household tablet also has the wallpaper gallery assigned to it and its four pinned areas, set by an admin. A phone or a desktop has neither: the wallpaper is only for a household device. Its accent is a link to the next screen.',
-       'Three changed settings carry a dot, and the Save bar counts them. Removing a device is a dangerous action: it asks, then acts at once, and does not go through the Save bar.',
+       'A household tablet also has the wallpaper gallery assigned to it and its four pinned areas, set by an admin. Nothing on the tablet marks them as set by an admin. A phone or a desktop has neither: the wallpaper is only for a household device. Its accent is a link to the next screen.',
+       'Three changed settings carry a dot, and the Save bar counts them. Reset this device and Remove this device sit last, in a separate group for dangerous actions: each asks first, then acts at once, and neither goes through the Save bar. Asked-for cards and the idle figure follow the household; the tag shows that the value is set for the household and a device can differ.',
        'Not decided: which further settings a device page holds, such as vibration on a phone.']],
     ['3. A device’s accent', 'The accent of one device, previewed on that device only.', 0, [F('wide', 1, deviceAccent)],
       ['A device follows the household’s accent until it is given its own. The same built-in accents, pairs and colour wheel are used as for the household. The preview shows the one device (here, a tablet); it does not show the other three.',
@@ -511,7 +518,7 @@ mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; p
        'The preview shows the chosen accent on the phone app, the tablet, the desktop and the admin panel. Ember is chosen but not saved, so the panel itself stays in Tide and the Save bar counts one change.',
        'Light and dark are not chosen here: they are set on each device.']],
     ['8. Your own accent', 'A two-handle colour wheel, for a free choice.', 1, [F('wide', 0, ownColours)],
-      ['One wheel with two handles: 1 is the main colour and 2 the second colour of the backdrop. The wheel sets the colour only; how light and how strong it is, is ours to set. The arrow keys move the handle that has the focus. There is no field to type a value in.',
+      ['One wheel with two handles: 1 is the main colour and 2 the second colour of the backdrop. The wheel sets the colour only; how light and how strong it is, is ours to set. The arrow keys move the handle that has the focus. There is no field to type a value in. A random pair comes from Shuffle on the pairs grid.',
        'Under the wheel, a line says that text stays readable. A colour that is hard to read gives a warning in its place, and can be kept.']],
     ['9. Wallpaper galleries', 'An admin makes galleries and assigns them to household devices.', 0, [F('wide', 1, wallpapers)],
       ['A gallery is a set of pictures. It is assigned to one household device, several, or all of them, and its pictures change by themselves with a slow fade. A wallpaper is only for a household device.',
@@ -538,14 +545,14 @@ mark { background: var(--accent-soft); color: var(--text); border-radius: 3px; p
       ['One centred pane for each step: a round symbol, a large title, a short sentence, the few fields or choices, a quiet link for the alternative, and one wide Continue button. The back arrow is at the top left; the current dot is long.',
        'The steps are mail, you, household, AI and speech. A phone, a tablet or a desktop that joins the household is set up with the same panes, in the density of that device.']],
     ['17. Medium width', 'From 600 to 1000: as many levels as fit, here two.', 1, [F('mini', 1, function () { return medium(0); }), F('mini', 0, function () { return medium(1); })],
-      ['The three levels are the same at every width, and a screen shows as many as fit. With two columns the destinations and the list are in view first. Going into the third level, the page, moves the first out of view until the person goes a step back, which the “Settings” bar at the top does.',
-       'Not decided: whether the destinations stay as an icon rail beside the list and page (as the width board draws it) or leave the screen completely (as the visual design says). It is drawn here without the rail.']],
+      ['The three levels are the same at every width, and a screen shows as many as fit. With two columns the destinations and the list are in view first.',
+       'Going into the third level, the page, turns the destinations into a narrow rail of icons at the left, beside the list and the page. The current destination is highlighted.']],
     ['18. Narrow width', 'Under 600: one level at a time, each taking the screen.', 0, [F('pn', 1, function () { return narrow(0); }), F('pn', 0, function () { return narrow(1); }), F('pn', 1, function () { return narrow(2); })],
       ['Each level becomes a full screen that drills in: the destinations, then the list, then the page, with a back arrow at the top left. The Save bar and the sheet that asks on leaving work the same way.',
        'Not decided: what the destinations become at the width of a phone. They are drawn as a plain list under the search field.']]
   ];
   document.getElementById('shots').innerHTML = S.map(function (s, i) {
-    var span = s[3].some(function (f) { return f.size === 'wide'; }) || s[3].length > 1;
+    var span = s[3].some(function (f) { return f.size.indexOf('wide') === 0; }) || s[3].length > 1;
     return '<figure class="screen' + (span ? ' span' : '') + '"><figcaption><h2>' + s[0] + '</h2><p>' + s[1] + '</p></figcaption><div class="frames">' + s[3].map(frame).join('') + '</div><div class="notes">' +
       s[4].map(function (n) { return '<div class="note">' + n + '</div>'; }).join('') + '</div></figure>';
   }).join('');

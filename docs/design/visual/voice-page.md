@@ -30,4 +30,6 @@ Status: started. The design follows the phone app.
 
 ## Open questions
 
+- How does a person reach the settings of the voice page, which has no
+  menu?
 

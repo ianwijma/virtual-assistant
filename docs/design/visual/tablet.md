@@ -65,4 +65,7 @@ Status: started. The idle screen and the active screen are set.
 
 ## Open questions
 
+- With one screen that darkens, is there still a setting that keeps the
+  character asleep on screen in a fully dark room, or does only the
+  light decide?
 

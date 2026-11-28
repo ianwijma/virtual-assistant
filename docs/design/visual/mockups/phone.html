@@ -37,6 +37,20 @@
   .sub2 { font: var(--type-caption); color: var(--text-2); display: block; text-transform: none; letter-spacing: 0; }
   .lab { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); margin: var(--s-1) 4px 0; }
   .dim { opacity: .45; }
+  .pb.ov { gap: 4px; }
+  .pb.ov .hello { margin: 0 4px; display: flex; align-items: baseline; gap: 6px; }
+  .pb.ov .hello .t-title { font-size: 17px; line-height: 22px; }
+  .pb.ov .rw .wt { font-size: 10px; white-space: nowrap; }
+  .pb.ov .rw { min-height: 36px; padding: 2px 10px; }
+  .pb.ov > *, .pb.ov .stack > * { flex: none; }
+  .pb.ov .rw { align-self: stretch; }
+  .pb.ov .rw.one { min-height: 30px; }
+  .pb.ov { overflow: hidden; -webkit-mask-image: linear-gradient(#000 calc(100% - 100px), transparent calc(100% - 66px)); mask-image: linear-gradient(#000 calc(100% - 100px), transparent calc(100% - 66px)); }
+  .pb.ov .lab { margin: 3px 4px 0; }
+  .menu { position: absolute; left: 22px; right: 22px; top: 150px; padding: 6px; display: flex; flex-direction: column; border-radius: var(--r-lg); }
+  .menu > div { display: flex; align-items: center; gap: var(--s-2); padding: 0 10px; height: 38px; border-radius: var(--r-md); font: var(--type-label); font-size: 13px; }
+  .menu > div + div { border-top: 1px solid var(--line); }
+  .menu > div.bad { color: var(--danger); }
   .wt { display: flex; align-items: center; gap: 3px; font: var(--type-caption); color: var(--text-2); text-transform: none; letter-spacing: 0; }
 
   /* A person: round photo or initial, in a ring of their accent. */
@@ -168,7 +182,7 @@
 <div class="mock-page">
 <header>
   <h1>Heem on the phone, personal use</h1>
-  <p>The phone as one person's device. Twenty-five screens, five to a row. The tab bar has four buttons the person sets (Overview, Juno, Timeline and Chat to begin with) and the fixed All button, with a grid icon and the word. Roomy density, touch sized. Icons are Phosphor, outlined. Where nothing is decided the screen is drawn plainly and its note says "Not decided".</p>
+  <p>The phone as one person's device. Twenty-six screens, five to a row. The tab bar has four buttons the person sets (Overview, Juno, Timeline and Chat to begin with) and the fixed All button, with a grid icon and the word. Roomy density, touch sized. Icons are Phosphor, outlined. Where nothing is decided the screen is drawn plainly and its note says "Not decided".</p>
 </header>
 
 <div class="grid">
@@ -216,47 +230,88 @@
   <figcaption><h2>3. Overview</h2><p>What needs an answer, what is running, then the rest.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-tide">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
-    <div class="pb bar">
+    <div class="pb bar ov">
       <div class="glass top"><span class="grow">Overview</span><span class="pa photo"><b>A</b></span></div>
-      <div style="margin:var(--s-1) 4px 0"><div class="t-caption">Tuesday</div><div class="t-title">Good morning, Alex</div></div>
-      <div class="glass rw" style="min-height:56px"><span class="character" style="--size:36px"></span><span class="tx"><span class="t1">Talk to Juno</span><span class="t2">Tap or say “Hey Juno”</span></span></div>
+      <div class="hello"><div class="t-title">Good morning, Alex</div></div>
+      <div class="glass rw" style="min-height:48px"><span class="character" style="--size:32px"></span><span class="tx"><span class="t1">Talk to Juno</span><span class="t2">Tap or say “Hey Juno”</span></span></div>
+      <div class="lab">Needs attention</div>
       <div class="glass rw"><span class="character accent-aurora" style="--size:28px"></span><span class="tx"><span class="t1">Send this to Sam?</span><span class="t2">Juno asks</span></span><span class="btn btn-primary">Yes</span></div>
-      <div class="glass rw"><i data-i="timer" data-s="20"></i><span class="tx"><span class="t1">Pasta timer</span><span class="t2">Running</span></span><span class="num">07:42</span></div>
       <div class="glass rw"><i data-i="bell" data-s="20"></i><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span><i data-i="next" data-s="14"></i></div>
+      <div class="glass rw"><i data-i="alarm" data-s="20"></i><span class="tx"><span class="t1">Bins go out tonight</span><span class="wt"><i data-i="alarm" data-s="11"></i>Snoozed until 08:00, back now</span></span><i data-i="next" data-s="14"></i></div>
+      <div class="lab">Being worked on</div>
+      <div class="glass rw"><i data-i="timer" data-s="20"></i><span class="tx"><span class="t1">Pasta timer</span><span class="t2">Running</span></span><span class="num">07:42</span></div>
       <div class="glass rw"><i data-i="lists" data-s="20"></i><span class="tx"><span class="t1">Shopping</span><span class="t2">2 left of 3</span></span><i data-i="next" data-s="14"></i></div>
+      <div class="lab">Settled</div>
+      <div class="glass rw dim one"><i data-i="lists" data-s="20"></i><span class="tx"><span class="t1">Sam added milk to Shopping</span></span></div>
+      <div class="glass rw dim one"><i data-i="link" data-s="20"></i><span class="tx"><span class="t1">Jo copied a link</span></span></div>
     </div>
     <nav class="glass-thick tb" data-on="0"></nav>
   </div></div>
   <div class="notes">
-    <div class="note">The list runs from the most important to the least: what needs an answer (the question), then what is running now (the timer), then the rest, newest first. Only the question has the primary button.</div>
-    <div class="note">The assistant row starts a call. Its head is the small one, as in a row. The person is a round photo in a ring of their accent. A touch on a row lifts it into a sheet (screen 11).</div>
+    <div class="note">Notifications is the hub for everything that needs a person: notifications, reminders, approvals and questions from an assistant. It has three sections, one under another: Needs attention, Being worked on and Settled. On a narrow screen the Overview's list shows them. Only the question has the primary button; a snoozed item carries a small mark; Settled is dimmed. The list scrolls; the rest fades under the bar.</div>
+    <div class="note">Not decided: whether the Overview is the same thing as Notifications or holds more; how a thing moves between the sections.</div>
+    <div class="note">The assistant row starts a call. Its head is the small one, as in a row. The person is a round photo in a ring of their accent. A touch on a row lifts it into a sheet (screen 12).</div>
   </div>
 </figure>
 
 <!-- 4 -->
 <figure class="screen">
-  <figcaption><h2>4. A notification arrives</h2><p>It enters the top of the Overview list.</p></figcaption>
+  <figcaption><h2>4. A notification arrives</h2><p>It enters the top of Needs attention.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-tide">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
-    <div class="pb bar">
+    <div class="pb bar ov">
       <div class="glass top"><span class="grow">Overview</span><span class="pa photo"><b>A</b></span></div>
-      <div style="margin:var(--s-1) 4px 0"><div class="t-caption">Tuesday</div><div class="t-title">Good morning, Alex</div></div>
+      <div class="hello"><div class="t-title">Good morning, Alex</div></div>
+      <div class="glass rw" style="min-height:48px"><span class="character" style="--size:32px"></span><span class="tx"><span class="t1">Talk to Juno</span><span class="t2">Tap or say “Hey Juno”</span></span></div>
+      <div class="lab">Needs attention</div>
       <div class="glass rw new"><i data-i="timer" data-s="20"></i><span class="tx"><span class="t1">Pasta timer done</span><span class="t2">Kitchen · now</span></span><span class="chip accent">New</span></div>
-      <div class="glass rw" style="min-height:56px"><span class="character" style="--size:36px"></span><span class="tx"><span class="t1">Talk to Juno</span><span class="t2">Tap or say “Hey Juno”</span></span></div>
       <div class="glass rw"><span class="character accent-aurora" style="--size:28px"></span><span class="tx"><span class="t1">Send this to Sam?</span><span class="t2">Juno asks</span></span><span class="btn btn-primary">Yes</span></div>
-      <div class="glass rw"><i data-i="bell" data-s="20"></i><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span></div>
+      <div class="glass rw"><i data-i="bell" data-s="20"></i><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span><i data-i="next" data-s="14"></i></div>
+      <div class="lab">Being worked on</div>
+      <div class="glass rw"><i data-i="lists" data-s="20"></i><span class="tx"><span class="t1">Shopping</span><span class="t2">2 left of 3</span></span><i data-i="next" data-s="14"></i></div>
+      <div class="lab">Settled</div>
+      <div class="glass rw dim one"><i data-i="lists" data-s="20"></i><span class="tx"><span class="t1">Sam added milk to Shopping</span></span></div>
     </div>
     <nav class="glass-thick tb" data-on="0"></nav>
   </div></div>
   <div class="notes">
-    <div class="note">On a narrow screen a notification is the same row, entering the top of the list with a soft accent fill and a New chip. There is no floating card; from 600 wide it is a glass card at the top right.</div>
-    <div class="note">Not decided: whether a notification that needs no answer keeps the top until it is seen, or goes to its place in the order of the list.</div>
+    <div class="note">On a narrow screen a notification is the same row, entering the top of Needs attention with a soft accent fill and a New chip. There is no floating card; from 600 wide it is a glass card at the top right.</div>
+    <div class="note">Not decided: whether a notification that needs no answer keeps the top until it is seen, or goes to its place in the order of its section.</div>
+  </div>
+</figure>
+
+<!-- 4b -->
+<figure class="screen">
+  <figcaption><h2>5. A notification, held</h2><p>Holding a row opens a menu of actions.</p></figcaption>
+  <div class="frames"><div class="frame pm backdrop light accent-tide">
+    <div class="sb"><span>9:41</span><span>●●●</span></div>
+    <div class="pb bar ov">
+      <div class="dim stack">
+        <div class="glass top"><span class="grow">Overview</span><span class="pa photo"><b>A</b></span></div>
+        <div class="lab">Needs attention</div>
+        <div class="glass rw"><span class="character accent-aurora" style="--size:28px"></span><span class="tx"><span class="t1">Send this to Sam?</span><span class="t2">Juno asks</span></span><span class="btn btn-primary">Yes</span></div>
+      </div>
+      <div class="glass rw" style="outline:2px solid var(--accent)"><i data-i="bell" data-s="20"></i><span class="tx"><span class="t1">Parcel arrives tomorrow</span><span class="t2">Email · 2 min ago</span></span></div>
+      <div class="dim glass rw"><i data-i="alarm" data-s="20"></i><span class="tx"><span class="t1">Bins go out tonight</span><span class="t2">Snoozed, back now</span></span></div>
+    </div>
+    <nav class="glass-thick tb dim" data-on="0"></nav>
+    <div class="glass-thick menu" style="top:232px">
+      <div><i data-i="next" data-s="18"></i>Open</div>
+      <div><i data-i="check" data-s="18"></i>Acknowledge</div>
+      <div><i data-i="alarm" data-s="18"></i>Snooze until tomorrow morning</div>
+      <div><i data-i="timer" data-s="18"></i>Snooze…</div>
+      <div class="bad"><i data-i="trash" data-s="18"></i>Delete</div>
+    </div>
+  </div></div>
+  <div class="notes">
+    <div class="note">A row held down opens a small glass menu beside it, and the screen dims. The actions are the same as the desktop's action panel: Open, Acknowledge, Snooze until tomorrow morning, Snooze… and Delete.</div>
+    <div class="note">A touch opens the row to read it.</div>
   </div>
 </figure>
 
 <!-- 5 -->
 <figure class="screen">
-  <figcaption><h2>5. Timeline</h2><p>Everything of today in one stream, newest first.</p></figcaption>
+  <figcaption><h2>6. Timeline</h2><p>Everything of today in one stream, newest first.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -278,7 +333,7 @@
 
 <!-- 6 -->
 <figure class="screen">
-  <figcaption><h2>6. Juno</h2><p>The assistant screen: the whole figure, ready to be talked to.</p></figcaption>
+  <figcaption><h2>7. Juno</h2><p>The assistant screen: the whole figure, ready to be talked to.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -293,14 +348,14 @@
     <nav class="glass-thick tb" data-on="1"></nav>
   </div></div>
   <div class="notes">
-    <div class="note">The figure has most of the screen, with room around it for a larger figure later, and breathes while it listens. It is drawn in Juno's own two colours (violet and cyan) while the backdrop and the bar follow the person's accent, here Ember.</div>
-    <div class="note">A touch on the figure starts a call (screen 8). The bar stays.</div>
+    <div class="note">The figure has most of the screen, with room around it for a larger figure later, and breathes while it listens. The whole screen is the character's room: it walks to its place when something appears and never jumps, and it gets smaller by walking further away. It is drawn in Juno's own two colours (violet and cyan) while the backdrop and the bar follow the person's accent, here Ember.</div>
+    <div class="note">A touch on the figure starts a call (screen 9). The bar stays.</div>
   </div>
 </figure>
 
 <!-- 7 -->
 <figure class="screen">
-  <figcaption><h2>7. Chat</h2><p>The conversation with an assistant, as text.</p></figcaption>
+  <figcaption><h2>8. Chat</h2><p>The conversation with an assistant, as text.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-moss">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -324,7 +379,7 @@
 
 <!-- 8 -->
 <figure class="screen">
-  <figcaption><h2>8. The call</h2><p>The whole figure, and three round buttons.</p></figcaption>
+  <figcaption><h2>9. The call</h2><p>The whole figure, and three round buttons.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <span class="glass cc"><i data-i="cc" data-s="18"></i></span>
@@ -341,14 +396,14 @@
     </div>
   </div></div>
   <div class="notes">
-    <div class="note">Like a call: no tab bar. Name and state with the time at the top, the standing figure, then Mute, Chat and End. End is red. The captions button is at the top right.</div>
-    <div class="note">Chat folds the call into the chat (screen 10). End closes the call and returns to the screen the person came from. Muted, the figure turns grey and the button shows a slashed microphone. The conversation's sounds are off unless switched on, and the phone vibrates only if switched on.</div>
+    <div class="note">Like a call: no tab bar. Name and state with the time at the top, the standing figure, then Mute, Chat and End. End is red. The captions button is at the top right. The whole screen is the character's room: it walks to its place when something appears and never jumps, and it gets smaller by walking further away.</div>
+    <div class="note">Chat folds the call into the chat (screen 11). End closes the call and returns to the screen the person came from. Muted, the figure turns grey and the button shows a slashed microphone. The conversation's sounds are off unless switched on, and the phone vibrates only if switched on.</div>
   </div>
 </figure>
 
 <!-- 9 -->
 <figure class="screen">
-  <figcaption><h2>9. The call, with captions</h2><p>A line of what the assistant says.</p></figcaption>
+  <figcaption><h2>10. The call, with captions</h2><p>A line of what the assistant says.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <span class="glass cc on"><i data-i="cc" data-s="18"></i></span>
@@ -366,14 +421,14 @@
     </div>
   </div></div>
   <div class="notes">
-    <div class="note">The captions button switches on one line of text under the figure. The words of the moment are in full strength and what was said before is quieter. It shows what the assistant says, not what the person says.</div>
+    <div class="note">The captions button switches on one line of text under the figure. The words of the moment are in full strength and what was said before is quieter. It shows what the assistant says, not what the person says. The figure walks to its smaller place to make room for the line; it does not jump.</div>
     <div class="note">It is off unless switched on, and the app remembers the choice.</div>
   </div>
 </figure>
 
 <!-- 10 -->
 <figure class="screen">
-  <figcaption><h2>10. The call folds into the chat</h2><p>The call goes on while the chat is shown.</p></figcaption>
+  <figcaption><h2>11. The call folds into the chat</h2><p>The call goes on while the chat is shown.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb">
@@ -403,7 +458,7 @@
 
 <!-- 11 -->
 <figure class="screen">
-  <figcaption><h2>11. A row lifted into a sheet</h2><p>A touch on the Shopping row (screen 3).</p></figcaption>
+  <figcaption><h2>12. A row lifted into a sheet</h2><p>A touch on the Shopping row (screen 3).</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-tide">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -432,7 +487,7 @@
 
 <!-- 12 -->
 <figure class="screen">
-  <figcaption><h2>12. All areas</h2><p>The fixed All button opens a sheet that scrolls.</p></figcaption>
+  <figcaption><h2>13. All areas</h2><p>The fixed All button opens a sheet that scrolls.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-moss">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -464,13 +519,13 @@
   <div class="notes">
     <div class="note">A thick glass sheet grows from the fixed button and covers the lower part of the screen. The screen stays visible above it, dimmed. The button shows a grid icon with the word All, and it shows as selected.</div>
     <div class="note">Every area is a tile. The four on the bar have a soft fill. When there are more areas than fit, the sheet scrolls (the last row fades, with a thin scroll bar). A touch on an area opens it.</div>
-    <div class="note">Edit changes the four buttons of the bar (screen 13).</div>
+    <div class="note">Edit changes the four buttons of the bar (screen 14).</div>
   </div>
 </figure>
 
 <!-- 13 -->
 <figure class="screen">
-  <figcaption><h2>13. Changing the bar</h2><p>Edit turns the four buttons into numbered slots.</p></figcaption>
+  <figcaption><h2>14. Changing the bar</h2><p>Edit turns the four buttons into numbered slots.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-moss">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -506,7 +561,7 @@
 
 <!-- 14 -->
 <figure class="screen">
-  <figcaption><h2>14. Shopping list</h2><p>A list, shared with the household.</p></figcaption>
+  <figcaption><h2>15. Shopping list</h2><p>A list, shared with the household.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-tide">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -529,7 +584,7 @@
 
 <!-- 15 -->
 <figure class="screen">
-  <figcaption><h2>15. Clipboard</h2><p>A touch on an item copies it.</p></figcaption>
+  <figcaption><h2>16. Clipboard</h2><p>A touch on an item copies it.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -545,13 +600,13 @@
   </div></div>
   <div class="notes">
     <div class="note">Plain rows: a preview cut to one line, the device it came from and its age. A touch on a row copies the item to this phone, and the row says Copied for a moment (the first row here).</div>
-    <div class="note">Holding a row opens the item (screen 16).</div>
+    <div class="note">Holding a row opens the item (screen 17).</div>
   </div>
 </figure>
 
 <!-- 16 -->
 <figure class="screen">
-  <figcaption><h2>16. A clipboard item, held</h2><p>Holding a row opens the item.</p></figcaption>
+  <figcaption><h2>17. A clipboard item, held</h2><p>Holding a row opens the item.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -576,7 +631,7 @@
 
 <!-- 17 -->
 <figure class="screen">
-  <figcaption><h2>17. Settings, level one</h2><p>The groups. Each level takes the screen in turn.</p></figcaption>
+  <figcaption><h2>18. Settings, level one</h2><p>The groups. Each level takes the screen in turn.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -589,18 +644,23 @@
         <div class="nrow"><i data-i="bell" data-s="18"></i><span class="tx sm">Notifications</span><i data-i="next" data-s="14"></i></div>
         <div class="nrow"><i data-i="users" data-s="18"></i><span class="tx sm">Your account<span class="sub2">Opens the admin panel</span></span><i data-i="next" data-s="14"></i></div>
       </div>
+      <div class="lab">Dangerous actions</div>
+      <div class="surface">
+        <div class="nrow"><i data-i="trash" data-s="18" style="color:var(--danger)"></i><span class="tx sm" style="color:var(--danger)">Reset this app</span><i data-i="next" data-s="14"></i></div>
+      </div>
     </div>
     <nav class="glass-thick tb" data-on="4"></nav>
   </div></div>
   <div class="notes">
     <div class="note">Settings have three levels, the same at every width: the groups, a group's items, and the page of an item. On a narrow screen each level takes the screen in turn, with a back arrow at the top left.</div>
     <div class="note">Plain rows on a surface, reached from All. A field to search the settings sits above them. Which groups the phone has is a proposal.</div>
+    <div class="note">Resetting an app or device is in its settings, in a section of its own: Dangerous actions. It asks first and acts at once, outside the Save bar.</div>
   </div>
 </figure>
 
 <!-- 18 -->
 <figure class="screen">
-  <figcaption><h2>18. Settings, level two</h2><p>The items of one group.</p></figcaption>
+  <figcaption><h2>19. Settings, level two</h2><p>The items of one group.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar">
@@ -622,7 +682,7 @@
 
 <!-- 19 -->
 <figure class="screen">
-  <figcaption><h2>19. Settings, level three: accent</h2><p>Seven built in, pairs, and your own.</p></figcaption>
+  <figcaption><h2>20. Settings, level three: accent</h2><p>Seven built in, pairs, and your own.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar sv" style="gap:5px">
@@ -644,14 +704,14 @@
     <nav class="glass-thick tb" data-on="4"></nav>
   </div></div>
   <div class="notes">
-    <div class="note">The seven built-in accents are round swatches of both colours: Tide, Ember, Aurora, Moss, Blossom, Cherry and Graphite. Under them is a grid of pairs that go well together, with Shuffle to bring a new set, and a link to a free choice (screen 20).</div>
-    <div class="note">The preview shows this device only. The accent of the household is previewed on all four devices in the admin panel. The changed field has a dot, and the Save bar appears (screen 21).</div>
+    <div class="note">The seven built-in accents are round swatches of both colours: Tide, Ember, Aurora, Moss, Blossom, Cherry and Graphite. Under them is a grid of pairs that go well together, with Shuffle to bring a new set, and a link to a free choice (screen 21).</div>
+    <div class="note">The preview shows this device only. The accent of the household is previewed on all four devices in the admin panel. The changed field has a dot, and the Save bar appears (screen 22).</div>
   </div>
 </figure>
 
 <!-- 20 -->
 <figure class="screen">
-  <figcaption><h2>20. Your own accent</h2><p>One colour wheel with two handles.</p></figcaption>
+  <figcaption><h2>21. Your own accent</h2><p>One colour wheel with two handles.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-blossom">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar sv" style="gap:6px">
@@ -677,7 +737,7 @@
 
 <!-- 21 -->
 <figure class="screen">
-  <figcaption><h2>21. Changed settings: the Save bar</h2><p>Dots on changed fields, a count at the bottom.</p></figcaption>
+  <figcaption><h2>22. Changed settings: the Save bar</h2><p>Dots on changed fields, a count at the bottom.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar sv">
@@ -699,7 +759,7 @@
 
 <!-- 22 -->
 <figure class="screen">
-  <figcaption><h2>22. Leaving with unsaved changes</h2><p>The back arrow asks first.</p></figcaption>
+  <figcaption><h2>23. Leaving with unsaved changes</h2><p>The back arrow asks first.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-ember">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar sv dim">
@@ -727,7 +787,7 @@
 
 <!-- 23 -->
 <figure class="screen">
-  <figcaption><h2>23. Waiting</h2><p>Quiet: a thin line, and the last content kept.</p></figcaption>
+  <figcaption><h2>24. Waiting</h2><p>Quiet: a thin line, and the last content kept.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-aurora">
     <div class="sb"><span>9:41</span><span>●●●</span></div>
     <div class="pb bar" style="gap:6px">
@@ -750,7 +810,7 @@
 
 <!-- 24 -->
 <figure class="screen">
-  <figcaption><h2>24. Home cannot be reached</h2><p>Everything looks as usual; changes wait.</p></figcaption>
+  <figcaption><h2>25. Home cannot be reached</h2><p>Everything looks as usual; changes wait.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop light accent-tide">
     <div class="sb"><span>14:09</span><span>●●●</span></div>
     <div class="pb bar" style="gap:6px">
@@ -775,7 +835,7 @@
 
 <!-- 25 -->
 <figure class="screen">
-  <figcaption><h2>25. An assistant, without home</h2><p>It says so in one line.</p></figcaption>
+  <figcaption><h2>26. An assistant, without home</h2><p>It says so in one line.</p></figcaption>
   <div class="frames"><div class="frame pm backdrop dark accent-tide">
     <div class="sb"><span>14:09</span><span>●●●</span></div>
     <div class="pb bar" style="gap:6px">
@@ -790,7 +850,7 @@
     <nav class="glass-thick tb" data-on="1"></nav>
   </div></div>
   <div class="notes">
-    <div class="note">An assistant that is opened while home cannot be reached says in one line that it cannot reach home. The bar and the count stay as on screen 24.</div>
+    <div class="note">An assistant that is opened while home cannot be reached says in one line that it cannot reach home. The bar and the count stay as on screen 25.</div>
     <div class="note">Not decided: how the figure looks in its Waiting state. It is drawn as usual here.</div>
   </div>
 </figure>

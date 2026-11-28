@@ -103,6 +103,16 @@
   .lowpower > * { position: static !important; }
   .lowpower .t-display-xl { font-size: 80px; }
 
+  .minis { display: flex; gap: 12px; }
+  .mini { display: flex; flex-direction: column; gap: 4px; }
+  .mini .cp { font: var(--type-caption); color: var(--text-2); }
+  .mini .box { width: 266px; height: 180px; overflow: hidden; border-radius: 10px; position: relative; }
+  .mini .box > .frame { width: 590px; max-width: none; transform: scale(.45); transform-origin: 0 0; position: absolute; left: 0; top: 0; }
+  .pushed { left: 0; right: 0; top: 32px; bottom: 0; }
+  .pushed > * { position: absolute; }
+  .lside.whole { width: 100%; }
+  .ctl.off .rb, .ctl.off .cap { opacity: .5; }
+
   /* Home out of reach */
   .plainbar { left: 0; right: 0; top: 0; height: 32px; display: flex; align-items: center; gap: var(--s-2); padding: 0 var(--s-4); background: var(--surface); border-bottom: 1px solid var(--line); font: var(--type-caption); font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--text); }
   .plainbar .w { width: 8px; height: 8px; border-radius: 50%; background: var(--warning); flex: none; }
@@ -118,8 +128,6 @@
   .nav .gap { flex: 1; }
   .nav .dv { display: flex; align-items: center; gap: var(--s-2); margin: var(--s-2) 0; }
   .nav .dv hr { flex: 1; border: 0; height: 1px; background: var(--line); margin: 0; }
-  .nav .lk { display: flex; align-items: center; gap: 6px; font: var(--type-caption); letter-spacing: 0; text-transform: none; color: var(--text-2); }
-  .nav .lk span.c { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--control); }
   .mid { width: 270px; flex: none; padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); }
   .mid .row { min-height: 52px; }
   .pagecol { flex: 1; min-width: 0; padding: var(--s-5) var(--s-6); display: flex; flex-direction: column; gap: var(--s-4); position: relative; }
@@ -174,22 +182,23 @@ function idleBody(o) {
     dots(3, o.dot || 0, 'shelf-dots') + bars(o.sub);
 }
 
-/* The stage: the call opened out. Figure on the left with Mute, Chat and End; a narrower glass column on the right. */
-function ctl(k, cap) {
+/* The stage: the call opened out. Figure on the left with Mute, Chat and End; a narrower glass column on the right. With hideCol the figure has the whole stage. */
+function ctl(k, cap, off) {
   var end = k === 'end';
-  return '<span class="ctl"><span class="rb ' + (end ? 'end' : 'glass') + '">' + ic(k, 22) + '</span><span class="cap">' + cap + '</span></span>';
+  return '<span class="ctl' + (off ? ' off' : '') + '"><span class="rb ' + (end ? 'end' : 'glass') + '">' + ic(k, 22) + '</span><span class="cap">' + cap + '</span></span>';
 }
 function stage(o) {
   var chip = o.person ? '<span class="chip pchip"><span class="ring' + (o.person.photo ? '' : ' initial') + '">' + (o.person.photo ? ic('user', 20) : o.person.init) + '</span>' + o.person.name + '</span>' : '';
   var field = '<div class="field"><span class="ph">Message Juno</span><span class="send">' + ic('up', 14) + '</span></div>';
-  return '<div class="lside">' +
-      '<div class="glow" style="left:10px;top:10px;width:330px;height:330px"></div>' +
+  var whole = o.hideCol;
+  return '<div class="lside' + (whole ? ' whole' : '') + '">' +
+      '<div class="glow" style="' + (whole ? 'left:125px;top:20px;width:340px;height:340px' : 'left:10px;top:10px;width:330px;height:330px') + '"></div>' +
       '<div class="who"><span class="nm">Juno' + chip + '</span><span class="st"><span class="dot"></span>' + o.state + '</span></div>' +
-      '<div class="floor" style="left:70px;width:210px;height:22px;top:' + (o.floor || 270) + 'px"></div>' +
+      '<div class="floor" style="' + (whole ? 'left:205px;width:180px' : 'left:70px;width:210px') + ';height:22px;top:' + (o.floor || 270) + 'px"></div>' +
       '<div class="stagefig">' + fig(o.size || 124, o.figCls) + '</div>' +
-      '<div class="ctls">' + ctl('mic', 'Mute') + ctl('chat', 'Chat') + ctl('end', 'End') + '</div>' +
+      '<div class="ctls">' + ctl('mic', 'Mute') + ctl('chat', 'Chat', whole) + ctl('end', 'End') + '</div>' +
     '</div>' +
-    '<div class="glass gcol">' + o.col + (o.noField ? '' : field) + '</div>';
+    (whole ? '' : '<div class="glass gcol">' + o.col + (o.noField ? '' : field) + '</div>');
 }
 function bubble(t, me) { return '<div class="bubble ' + (me ? 'me glass-thick' : 'glass-thick') + '" style="' + (me ? 'background:var(--accent);color:var(--on-accent)' : '') + '">' + t + '</div>'; }
 function tcard(big) {
@@ -212,7 +221,7 @@ S.push({ h: 'Idle with a wallpaper', p: 'A photo from a gallery, a large clock, 
   f: frame('wallpaper light accent-tide', idleBody()),
   n: ['Wallpaper (a stand-in for a photo here): comes from a gallery that an admin assigns to this tablet, changes by itself every few minutes with a slow fade, and stays clear. Clock: large, top left, on the photo. It shifts a little now and then to protect the screen.',
     'Shelf: slim glass along the bottom. One figure stands on its left end, the assistant last used. Small dots under it show the other assistants; a touch on the dots changes the figure. It does not change by itself unless that is switched on. No written hint says how to call it.',
-    'Glance bars (flat, one fact each, a card in closed form) sit at the right of the shelf. A touch on a bar opens its card as a sheet (6). Not decided: how many bars fit, and how they are chosen.'] });
+    'Glance bars (flat, one fact each, a card in closed form) sit at the right of the shelf. A touch on a bar opens its card as a sheet (7). Not decided: how many bars fit, and how they are chosen.'] });
 
 /* 2 */
 S.push({ h: 'Idle: a notification arrives', p: 'A glass card at the top right, over the photo. More stack downward.',
@@ -226,25 +235,31 @@ S.push({ h: 'Idle: a notification arrives', p: 'A glass card at the top right, o
 S.push({ h: 'Listening (the stage)', p: 'When an assistant is active the screen is the stage: the call opened out on a wide screen.',
   f: frame('backdrop dark accent-tide', stage({ state: 'Listening', figCls: 'listening',
     col: bubble('Set a pasta timer for ten minutes', 1) + '<div class="ask">Hearing you</div>' })),
-  n: ['Figure (left): has most of the room, on a canvas the screen gives it, with a soft floor shadow. It keeps its own two colours; the backdrop and the buttons follow the accent, here the household’s. Name and state sit above it.',
-    'Controls (under the figure): Mute, Chat and End, the same as on a personal device. Column (right, glass, narrower than before): what was said, growing as the person speaks, and the field to type. A touch on Chat or the field brings the on-screen keyboard.',
+  n: ['Figure (left): has most of the room; the whole screen is the character’s room, and it walks into view when something appears. It has a soft floor shadow. It keeps its own two colours; the backdrop and the buttons follow the accent, here the household’s. Name and state sit above it.',
+    'Controls (under the figure): Mute, Chat and End, the same as on a personal device. Column (right, glass, narrower than before): what was said, growing as the person speaks, and the field to type. A touch on Chat or the field brings the on-screen keyboard. On a wide screen the column is shown at first; the Chat button hides it (4).',
     'A wake word opens the stage; the idle screen is the call’s closed form. Not decided: what the column shows while it is empty, and whether Mute is shown as pressed by a slash on the icon.'] });
 
 /* 4 */
+S.push({ h: 'The stage without the column', p: 'The Chat button hides the column, and the character has the whole stage.',
+  f: frame('backdrop dark accent-tide', stage({ state: 'Listening', figCls: 'listening', size: 150, floor: 306, hideCol: 1 })),
+  n: ['The same stage as 3 with the column hidden. The character has walked to the middle and is larger. The Chat button is shown as off (drawn dimmer here); a touch on it shows the column again, and the character walks back to the left.',
+    'The whole screen is the character’s room. It walks to its new place and never jumps; it gets smaller by walking further away and larger by coming closer.'] });
+
+/* 5 */
 S.push({ h: 'An answer: the card shows large', p: 'A card that was asked for shows large for 10 seconds, in the column.',
   f: frame('backdrop light accent-tide', stage({ state: 'Speaking', figCls: '',
     col: bubble(ASK, 1) + bubble(SAY) + tcard(1), noField: false })),
   n: ['The card the person asked for, here a timer, shows large in the column: a big number and the one primary button, Stop. The answer is spoken as well, so the screen is never the only answer.',
-    'It stays large for 10 seconds (set for the household; a device can differ), then returns to a small row (5). A card never covers the figure’s head, and the figure stands still once a card shows.'] });
+    'It stays large for 10 seconds (set for the household; a device can differ), then returns to a small row (6). A card never covers the figure’s head, and the figure stands still once a card shows.'] });
 
-/* 5 */
+/* 6 */
 S.push({ h: 'The card is a small row again', p: 'After 10 seconds the card is a compact row in a list.',
   f: frame('backdrop light accent-tide', stage({ state: 'Listening', figCls: '',
     col: bubble(SAY) + crows(ROWS) })),
   n: ['Each card (a timer, a list, a notification, a question to approve) is one compact row: an icon, a title and one fact. Rows are plain inside the glass column, one under another.',
-    'A touch on a row lifts it into a sheet (6). Not decided: how many rows show before the list scrolls.'] });
+    'A touch on a row lifts it into a sheet (7). Not decided: how many rows show before the list scrolls.'] });
 
-/* 6 */
+/* 7 */
 S.push({ h: 'A card lifted into a sheet', p: 'A touch on the timer row opens it as a sheet over the dimmed stage.',
   f: frame('backdrop dark accent-tide', stage({ state: 'Listening', figCls: '', col: bubble(SAY) + crows(ROWS) }) +
     sheet('<span class="t-caption">Pasta timer &middot; Kitchen</span><span class="t-display-xl num" style="font-size:64px">07:42</span>' +
@@ -252,15 +267,15 @@ S.push({ h: 'A card lifted into a sheet', p: 'A touch on the timer row opens it 
   n: ['Sheet (thick glass): floats over the middle of the dimmed screen and grows from the row that was touched; its title stays and moves into place. The one primary button is Stop. The row leaves a faint outline.',
     'It closes by its close button (not drawn), a touch outside it, or a swipe down. Not decided: the buttons each kind of card has.'] });
 
-/* 7 */
+/* 8 */
 S.push({ h: 'A recognised person', p: 'The backdrop and buttons take the person’s accent. The figure keeps its own colours.',
   f: frame('backdrop light accent-ember', stage({ state: 'Speaking', figCls: '', person: { name: 'Alex', photo: 1 },
     col: bubble('What are my reminders?', 1) + bubble('Two for you today') + crows([['bell', 'Call the plumber', '10:00'], ['bell', 'Bins go out', '18:00']]) })),
-  n: ['Same stage as 4. The frame takes Alex’s own accent (Ember): backdrop, buttons and the send button change. The figure stays in its two colours (Aurora), so two colours meet on one screen.',
+  n: ['Same stage as 5. The frame takes Alex’s own accent (Ember): backdrop, buttons and the send button change. The figure stays in its two colours (Aurora), so two colours meet on one screen.',
     'Chip (beside the assistant’s name): the person’s photo, small and round, in a ring in their accent, then their name. With no photo it shows their initial in the ring. An unrecognised voice changes nothing. When the conversation ends the accent returns to the household’s.',
     'Not decided: how a wrong match is corrected.'] });
 
-/* 8 */
+/* 9 */
 S.push({ h: 'The conversation closes', p: 'After 30 seconds without speech the character winds down first, then the idle screen returns.',
   f: frame('backdrop dark accent-tide', stage({ state: 'Closing', figCls: 'eyes-half', col: bubble(SAY) + crows(ROWS) +
     '<div style="margin-top:auto" class="wind"><i></i></div>', noField: true })),
@@ -268,7 +283,7 @@ S.push({ h: 'The conversation closes', p: 'After 30 seconds without speech the c
     'After 30 seconds without speech the stage closes to the idle screen (1). The time is for the whole server and may be set per device.',
     'Not decided: whether any countdown is shown at all, and how the character winds down beyond the eyes.'] });
 
-/* 9 */
+/* 10 */
 S.push({ h: 'An approval prompt', p: 'The question is a card row that opens as a sheet at once.',
   f: frame('backdrop dark accent-ember', stage({ state: 'Asking', figCls: '', person: { name: 'Alex', init: 'A' },
     col: crows([['question', 'Send the list to Sam?', '']]) , noField: true }) +
@@ -277,49 +292,47 @@ S.push({ h: 'An approval prompt', p: 'The question is a card row that opens as a
   n: ['A question to approve is a row like any other card, lifted into a sheet. Yes is the one primary button, No is plain; “yes” and “no” spoken do the same. The question is read aloud when the sheet opens.',
     'Not decided: the time before an unanswered question counts as No; who may approve which actions.'] });
 
-/* 10 */
+/* 11 */
 S.push({ h: 'An unrecognised voice', p: 'The assistant heard a voice it does not know.',
   f: frame('backdrop light accent-tide', stage({ state: 'Not recognised', figCls: '',
     col: '<div class="t-strong" style="font-size:15px;line-height:20px">I don’t recognise your voice</div><div class="t-label t-2">Not decided: what a guest may do, and the choices offered.</div>', noField: true })),
   n: ['The household’s accent is used and no personal accent is applied; there is no chip. The figure keeps its colours. The assistant will not answer this voice as a person it knows.',
     'Not decided: the guest’s rights, whether to offer “carry on as a guest”, and the buttons, so none is drawn. The controls and the field are left off here for that reason.'] });
 
-/* 11 */
-S.push({ h: 'In the dark: a little dark', p: 'The photo is dimmed and the figure is asleep.',
-  f: frame('wallpaper dark accent-tide', '<div class="night"></div>' +
-    clock('dim') + '<div class="glass shelf"></div>' +
-    '<div class="on-shelf sleepy">' + fig(70, 'asleep') + '</div>' + dots(3, 0, 'shelf-dots') +
-    bars().replace('class="', 'style="opacity:.5" class="')),
-  n: ['When the room is a little dark, or it is night, the photo is dimmed, the clock and bars are quieter and the figure sleeps (its eyes are short curves). Voice or touch wakes it.',
-    'A tablet that cannot measure the light uses the time of day, with hours that can be set. Which of the two night screens is used, and the hours, are in the tablet’s settings (15).'] });
-
 /* 12 */
-S.push({ h: 'In the dark: fully dark', p: 'Only a dim clock on black.',
-  f: frame('lowpower', '<span class="t-display-xl num">9:41</span>'),
-  n: ['When the room is fully dark, only a dim clock is shown, on black: no photo, no glass, no figure and no bars. Voice or touch wakes the tablet to the idle screen (1). Timers still sound at their time.',
-    'Per tablet the setting can be “clock only” or “character asleep” for the dark (15). The clock shifts a little now and then here too.'] });
+function dframe(cap, inner) { return '<div class="mini"><span class="cp">' + cap + '</span><div class="box">' + inner + '</div></div>'; }
+S.push({ wide: 1, h: 'In the dark: one screen that darkens', p: 'The same idle screen four times, left to right: the darker the room, the darker the screen.',
+  f: '<div class="minis">' +
+    dframe('Bright room (normal)', frame('wallpaper light accent-tide', idleBody({ clockTop: 16 }))) +
+    dframe('A little dark', frame('wallpaper dark accent-tide', '<div class="night"></div>' +
+      clock('dim', 20) + '<div class="glass shelf"></div>' +
+      '<div class="on-shelf sleepy">' + fig(70, 'asleep') + '</div>' + dots(3, 0, 'shelf-dots') +
+      bars().replace('class="', 'style="opacity:.5" class="'))) +
+    dframe('Darker', frame('wallpaper dark accent-tide', '<div class="night" style="background:color-mix(in srgb, var(--bg) 93%, transparent)"></div>' +
+      clock('dim', 24) + '<div class="glass shelf" style="opacity:.25"></div>' +
+      '<div class="on-shelf" style="opacity:.15">' + fig(70, 'asleep') + '</div>' +
+      bars().replace('class="', 'style="opacity:.2" class="'))) +
+    dframe('Fully dark, or low power', frame('lowpower', '<span class="t-display-xl num" style="opacity:.5;transform:translateY(28px)">9:41</span>')) +
+  '</div>',
+  n: ['The darker the room, the darker the same screen. Only the clock is always shown. Low power is the same screen at its darkest: true black, no animation, only the dim clock. Voice or touch wakes the tablet to the full screen. Timers still sound at their time.',
+    'It is one screen whose parts change, so the change is smooth: the photo dims, the figure falls asleep (its eyes are short curves) and fades, the bars quieten, and at the end only the clock is left. The clock is in every frame and shifts a few pixels between them, as it does now and then to protect the screen.',
+    'A tablet without a light sensor uses set hours; the hours are in the tablet’s settings (14). A black screen saves power on OLED only.'] });
 
 /* 13 */
-S.push({ h: 'Low power', p: 'After a long quiet the screen goes black at minimum brightness.',
-  f: frame('lowpower', '<span class="t-display-xl num" style="font-size:56px">9:41</span>'),
-  n: ['True black, no wallpaper, no glass, no figure, no bars and no animation; the backdrop is still. Only a dim clock. Voice or touch wakes the tablet to the idle screen (1). Timers still sound at their time.',
-    'Not decided: after how long it starts, whether the clock shows or the screen is blank, and whether this and the fully dark screen (12) are one screen. A black screen saves power on OLED only.'] });
-
-/* 14 */
-S.push({ h: 'Home cannot be reached', p: 'A slim plain bar, and the rest looks as usual.',
-  f: frame('wallpaper light accent-tide', idleBody({ clockTop: 48, sub: 'Waiting to send' }) +
+S.push({ h: 'Home cannot be reached', p: 'A slim plain bar across the top, and the rest of the screen a little smaller below it.',
+  f: frame('wallpaper light accent-tide', '<div class="pushed">' + idleBody({ clockTop: 16, sub: 'Waiting to send' }) + '</div>' +
     '<div class="plainbar"><span class="w"></span><span class="grow">Cannot reach home. Saved copy from 9:38. 1 change waiting.</span><span class="btn">Try again</span></div>'),
-  n: ['Bar: plain, not glass, one sentence with the time of the saved copy and a button to try again, under the top of the screen. It goes when the connection returns.',
+  n: ['Bar: plain, not glass, one sentence with the time of the saved copy and a button to try again, across the top of the screen. The rest of the screen becomes a little smaller to make room, and is pushed down, not covered. It goes when the connection returns.',
     'Everything else looks as usual. The tablet works from its saved copy: the clock runs, the timer runs on the device and is sent when home is back. A change is marked “Waiting to send”. An assistant that is opened says in one line that it cannot reach home.',
-    'Not decided: whether the bar is the same on a tablet, which has no top bar, and what the figure shows while out of reach.'] });
+    'Not decided: what the figure shows while out of reach.'] });
 
-/* 15, settings, true size */
+/* 14, settings, true size */
 function navItem(i, t, on) { return '<div class="it' + (on ? ' on' : '') + '">' + ic(i, 22) + t + '</div>'; }
 S.push({ wide: 1, h: 'The tablet’s settings', p: 'Three levels side by side, because the width allows it: areas, the settings list, the page. Drawn at a true 1024 by 700.',
   f: '<div class="frame tablet backdrop light accent-tide"><div class="set">' +
     '<div class="glass nav">' +
       navItem('sparkle', 'Juno') + navItem('list', 'Lists') + navItem('timeline', 'Timeline') + navItem('chat', 'Chat') +
-      '<div class="dv"><hr><span class="lk"><span class="c">' + ic('lock', 14) + '</span>Set by an admin</span></div>' +
+      '<div class="dv"><hr></div>' +
       navItem('timer', 'Timers') + navItem('clip', 'Clipboard') + navItem('gear', 'Settings', 1) +
     '</div>' +
     '<div class="surface mid"><div class="field"><span style="display:flex">' + ic('search', 18) + '</span><span class="ph">Search settings</span></div>' +
@@ -339,11 +352,11 @@ S.push({ wide: 1, h: 'The tablet’s settings', p: 'Three levels side by side, b
       '<div class="savebar glass"><span class="grow">1 change not saved</span><span class="btn btn-quiet">Discard</span><span class="btn btn-primary">Save</span></div>' +
     '</div></div></div>',
   n: ['Three levels, as in the admin panel: the side bar (every area, with four pinned on top above a thin line), the plain list of the chosen area’s items with a search field, and the chosen item’s page with its path above. With two columns going into the third moves the first out of view; with one column each level takes the screen in turn.',
-    'The four pinned areas are set by an admin, so a small lock stands where a person’s own device has a pencil. On a narrow screen this is the bar with four buttons and “All”.',
-    'A changed setting carries a small accent dot, and the Save bar at the bottom says how many changes are not saved, with Discard and Save. A tablet’s settings hold the light sensor, the dark hours and which night screen is used.',
-    'Not decided: which settings a person at the tablet may change and which only an admin may, and whether the lock is the right sign.'] });
+    'An admin sets the four pinned areas in the admin panel, and nothing marks that on the tablet: there is simply no pencil, which a person’s own device has. On a narrow screen this is the bar with four buttons and “All”.',
+    'A changed setting carries a small accent dot, and the Save bar at the bottom says how many changes are not saved, with Discard and Save. A tablet’s settings hold the light sensor, the dark hours and what the tablet shows when it is dark.',
+    'Not decided: which settings a person at the tablet may change and which only an admin may.'] });
 
-/* 16 */
+/* 15 */
 S.push({ h: 'Set-up: welcome', p: 'First run follows Apple’s: a “Hello”, then one centred pane per step.',
   f: frame('backdrop light accent-tide', '<div class="topline"><span></span>' + dots(5, 0, '') + '<span></span></div>' +
     '<div class="glass-thick pane">' + fig(64, '') + '<span class="t-display">Hello</span>' +
@@ -352,7 +365,7 @@ S.push({ h: 'Set-up: welcome', p: 'First run follows Apple’s: a “Hello”, t
   n: ['Five dots on top show the step; the current one takes the accent. One centred glass pane per step, with one primary button. The default assistant’s figure greets, in its own colours.',
     'Not decided: the five steps, other than this welcome and the next one.'] });
 
-/* 17 */
+/* 16 */
 S.push({ h: 'Set-up: invite code', p: 'An admin’s invite code joins the tablet to the household.',
   f: frame('backdrop dark accent-tide', '<div class="topline"><span></span>' + dots(5, 1, '') + '<span></span></div>' +
     '<div class="glass-thick pane"><span class="t-display">Enter the invite code</span>' +
