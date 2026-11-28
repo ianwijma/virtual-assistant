@@ -23,6 +23,9 @@ set. What each toolkit can draw is still to be researched.
   [the material board](examples/material-board.html).
 - **Our own backdrop is strong in colour,** so that the glass has
   something to show.
+- **Our own backdrop moves.** Its fields of colour drift slowly, and it
+  reacts to the assistant, such as while it listens or speaks. With
+  reduced motion it is still or only drifts. See [motion](motion.md).
 - **In dark the backdrop is calmer.** Its colour is about half as strong
   as in light, on a darker base, so that secondary text on thin glass
   stays readable. This is "Calmer dark backdrop" on
@@ -123,7 +126,11 @@ Assumed:
 - Can a wallpaper also be set on a personal phone, in the settings window
   of the desktop client, or in the admin panel, or do those always show
   our own backdrop?
-- Does our own backdrop move slowly, or is it still?
+- How does the backdrop react to the assistant: does it follow the sound
+  of the voice, or change with the state, such as listening and
+  speaking?
+- With reduced motion, is the backdrop still, or does it drift slowly?
+- Does the backdrop also move on an old tablet and in low-power mode?
 - Can a person set how see-through the glass is? The owner named this as
   a possibility.
 - The launcher shows the real desktop, which can be any colour. Does the

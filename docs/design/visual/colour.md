@@ -9,8 +9,10 @@ design tokens.
 ## Design
 
 - **There is a light and a dark form,** and each client follows the
-  setting of the device it runs on. There is no switch for light and dark
-  in our own settings.
+  setting of the device it runs on.
+- **A household tablet has its own setting for light and dark,** set per
+  device: always light, always dark, by the time of day, or by the light
+  in the room.
 - **A person cannot choose a theme.** The one thing that can be chosen is
   the accent.
 - **Text and glass are neutral.** They are greys with no colour of their
@@ -75,6 +77,11 @@ focus. It also colours our own [backdrop](glass.md).
 - **A recognised person is named in a chip.** While the conversation
   lasts, a small chip beside the assistant's name shows the person's
   name.
+- **A person is marked by their accent and their photo.** A person can
+  upload a photo of themselves. It is shown small and round with a ring
+  in their accent, in the chip and wherever the person is marked, such
+  as beside an item they added to a shared list. Their name or initial
+  is always with it.
 - **An assistant has a colour of its own.** Its figure is drawn in that
   colour everywhere, whoever it talks to. The backdrop and the buttons
   around it follow the accent as above. This is "Figure in its own
@@ -118,14 +125,12 @@ Graphite, a neutral accent, is drawn and is left out for now.
   who may change it?
 - What happens when an assistant's colour and the person's accent are
   the same, or clash?
-- Does the chip with a person's name carry a dot in their accent, as on
-  the board?
 - Should the set have more built-in accents, such as a pink or a red?
 - Does Graphite return later as a built-in accent?
-- Is a person's accent also the colour that marks them elsewhere, such as
-  on the account switch of a shared computer, or beside an item they
-  added to a shared list?
+- What does a person without a photo show in the ring: their initial?
 - Are there colours to avoid, and is anyone in the household
   colour-blind?
-- A tablet in a room has its light or dark setting fixed by whoever set
-  it up. Should a household tablet go dark at night by itself?
+- Which setting for light and dark does a new household tablet start
+  with?
+- Can a phone or a desktop also be given its own setting for light and
+  dark, or do they always follow the device?

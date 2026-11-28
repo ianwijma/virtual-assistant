@@ -325,3 +325,6 @@ are 25 November 2026 unless a section says otherwise.
 | 298 | Before anything is typed the launcher lists what is running and then every action, ordered by use | [desktop](design/visual/desktop.md) |
 | 299 | A sheet also closes by a touch on the dimmed area around it | [components](design/visual/components.md) |
 | 300 | A screen that an assistant composed looks like any other; the chat's history and the request timeline record it | [components](design/visual/components.md) |
+| 301 | Our own backdrop drifts slowly and reacts to the assistant, and is calmer with reduced motion | [glass](design/visual/glass.md) |
+| 302 | A household tablet's light and dark is set per device: light, dark, by the time of day or by the light in the room | [colour](design/visual/colour.md) |
+| 303 | A person is marked by a photo of themselves in a ring of their accent, with their name | [colour](design/visual/colour.md) |
