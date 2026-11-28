@@ -335,7 +335,7 @@ are 25 November 2026 unless a section says otherwise.
 | 308 | Feedback is visual first; our own sounds and the phone's vibration exist and are off unless switched on | [motion](design/visual/motion.md) |
 | 309 | A card is small by default and shows large for a moment when it was asked for | [components](design/visual/components.md) |
 | 310 | A conversation on a household device closes after 20 to 30 seconds without speech, set for the server and possibly per device | [tablet](design/visual/tablet.md) |
-| 311 | Talking to the assistant is an action in the launcher that can have its own shortcut, and Tab starts it by default | [desktop](design/visual/desktop.md) |
+| 311 | Talking to the assistant is an action in the launcher with a shortcut of its own, and Tab is not its key | [desktop](design/visual/desktop.md) |
 | 312 | The launcher opens on the screen that holds the pointer | [desktop](design/visual/desktop.md) |
 | 313 | The desktop settings are opened from the launcher and from an icon in the system tray | [desktop](design/visual/desktop.md) |
 | 314 | The launcher closes on a click elsewhere in every view, and opens again where it was for about a minute | [desktop](design/visual/desktop.md) |
@@ -392,7 +392,7 @@ are 25 November 2026 unless a section says otherwise.
 | 365 | The launcher returns to neutral after one minute | [desktop](design/visual/desktop.md) |
 | 366 | The tray menu holds the launcher, settings, connection state and quit | [desktop](design/visual/desktop.md) |
 | 367 | Esc clears a search before it leaves the settings | [desktop](design/visual/desktop.md) |
-| 368 | A desktop notification can be answered from the keyboard | [desktop](design/visual/desktop.md) |
+| 368 | A notification is answered in the launcher's notification centre, not on the card on the desktop | [desktop](design/visual/desktop.md) |
 | 369 | An assistant's question stays until answered or dismissed | [desktop](design/visual/desktop.md) |
 | 370 | The launcher orders actions by the person's own use | [desktop](design/visual/desktop.md) |
 | 371 | The sheet of all areas scrolls | [phone](design/visual/phone.md) |
@@ -438,5 +438,8 @@ are 25 November 2026 unless a section says otherwise.
 | 411 | The five mockups are agreed as the layouts to build from, apart from what their notes mark as not decided | [mockups](design/visual/mockups/README.md) |
 | 412 | A chip in the launcher opens its area, Tab moves between the chips, and an area can have a shortcut that opens the launcher in it | [desktop](design/visual/desktop.md) |
 | 413 | A shortcut is always two or more keys together, never a single letter | [desktop](design/visual/desktop.md) |
-| 414 | A shortcut moves the keyboard to the newest notification on the desktop | [desktop](design/visual/desktop.md) |
+| 414 | A highlighted row has one main action on Enter, and more actions open in a panel with Ctrl and K | [desktop](design/visual/desktop.md) |
 | 415 | The dark, the fully dark and the low-power state of a tablet are one screen that darkens, on which the clock is always shown | [tablet](design/visual/tablet.md) |
+| 416 | The notification centre has three sections: what needs attention, what is being worked on and what is settled; a notification can be snoozed | [desktop](design/visual/desktop.md) |
+| 417 | On a tablet the bar for home out of reach is across the top of the screen | [tablet](design/visual/tablet.md) |
+| 418 | Resetting an app or a device is in its settings, in a section for dangerous actions | [components](design/visual/components.md) |

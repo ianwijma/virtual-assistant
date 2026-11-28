@@ -323,18 +323,18 @@ detail.
 
 ### The clients
 
-41. Tab moves between the chips, and Tab also starts a talk with the
-   assistant by default. Which of the two does Tab do, and what does the
-   other get? [visual desktop]
-42. Once the keyboard is on a notification, which keys answer it, now
-   that a single letter is not a shortcut: the arrow keys and Enter?
-   [visual desktop]
-43. Where does the bar for "home cannot be reached" go on a tablet,
-   which has no top bar? [visual tablet]
-44. On a household tablet, what marks the pinned areas as set by an
+41. What is the main action of a notification, on Enter: open it,
+   acknowledge it, or does it differ by kind? [visual desktop]
+42. Is the notification centre the hub for everything that needs a
+   person, such as reminders and approvals, and how does a notification
+   move between its three sections? The owner wants to work this out
+   together. [visual desktop]
+43. Do the three sections of the notification centre also order the
+   Overview's list on a narrow screen? [visual desktop]
+44. Which shortcut does talking to the assistant get by default, now
+   that it is not Tab? [visual desktop]
+45. On a household tablet, what marks the pinned areas as set by an
    admin: a small lock in place of the pencil? [visual tablet]
-45. Where on the page is the way to reset how it was set up? [visual
-   voice page]
 46. On the stage, does Chat move to the field to type and stay on the
    stage? [visual voice page]
 

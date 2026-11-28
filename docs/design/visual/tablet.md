@@ -41,6 +41,8 @@ Status: started. The idle screen and the active screen are set.
   [the idle figures board](examples/idle-figures-board.html).
 - **Low-power mode is that same screen at its darkest:** black, with a
   dim clock and no glass. See [glass](glass.md).
+- **When home cannot be reached, a bar across the top of the screen says
+  so.** The rest of the screen becomes a little smaller to make room.
 - **Text is sized to be read from across a room.**
 - The designs these came from are on
   [the tablet idle board](examples/tablet-idle-board.html) and
@@ -61,8 +63,6 @@ Status: started. The idle screen and the active screen are set.
 
 ## Open questions
 
-- Where does the bar for "home cannot be reached" go on a tablet, which
-  has no top bar?
 - On a household tablet, what marks the pinned areas as set by an admin:
   a small lock in place of the pencil?
 

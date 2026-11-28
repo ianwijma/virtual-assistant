@@ -29,8 +29,8 @@ settings are set.
   there are, ordered by how often they are used. Suggestions that follow
   what the person is doing may come later.
 - **Talking to the assistant is an action like any other.** It is chosen
-  from the list, and a person can give it a shortcut of its own, as for
-  any action. By default the Tab key also starts it with what was typed.
+  from the list, and it has a shortcut of its own, as any action can.
+  Tab is not its key, since Tab moves between the chips.
 - **The launcher opens on the screen that holds the pointer.**
 - **The launcher closes on a click elsewhere, in every view,** the
   settings included. With unsaved changes in the settings it asks first:
@@ -68,17 +68,32 @@ settings are set.
   state of the connection, and quit.
 - **In the settings Esc first clears a search,** and then returns to the
   list.
-- **A notification on the desktop can be answered from the keyboard.** A
-  shortcut moves the keyboard to the newest card.
+- **A notification is answered in the launcher's notification centre,**
+  not on the card. The card on the desktop does not take the keyboard.
+  The centre is opened like any view, and its rows are used with the
+  keyboard like any list.
+- **A highlighted row has one main action, on Enter.** For a clipboard
+  item that is copying it.
+- **More actions open in a panel, with Ctrl and K,** as in Raycast. The
+  arrow keys move through it, and Esc returns to the search field. For a
+  notification the actions are such as reply, acknowledge, delete and
+  snooze until a later time, such as tomorrow morning.
+- **The notification centre has three sections:** what needs attention,
+  which holds new ones and snoozed ones that are back; what is being
+  worked on; and what is settled.
 - **A question from an assistant stays on screen until it is answered or
   dismissed.**
 - **The order of the actions follows this person's own use.**
 
 ## Open questions
 
-- Tab moves between the chips, and Tab also starts a talk with the
-  assistant by default. Which of the two does Tab do, and what does the
-  other get?
-- Once the keyboard is on a notification, which keys answer it, now that
-  a single letter is not a shortcut: the arrow keys and Enter?
+- What is the main action of a notification, on Enter: open it,
+  acknowledge it, or does it differ by kind?
+- Is the notification centre the hub for everything that needs a person,
+  such as reminders and approvals, and how does a notification move
+  between its three sections? The owner wants to work this out together.
+- Do the three sections of the notification centre also order the
+  Overview's list on a narrow screen?
+- Which shortcut does talking to the assistant get by default, now that
+  it is not Tab?
 

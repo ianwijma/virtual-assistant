@@ -78,6 +78,9 @@ mockups.
   This is "As quiet as possible" on
   [the states board](examples/states-board.html). See
   [clients](../technical/clients/README.md).
+- **Resetting an app or a device is in its settings, in a section of its
+  own for dangerous actions.** This holds for every client, the voice
+  page included.
 - **A dangerous action asks and then acts at once.** It does not go
   through the Save bar.
 - **When changes that waited have been sent, their marks and the count go
