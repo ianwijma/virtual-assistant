@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Figures on the idle screen</title>
+<!--
+  Two open questions about the household tablet's idle screen: with several
+  assistants, are all their figures there or one; and is the figure there at
+  night. Scenario: three assistants, Juno (Aurora), Bram (Moss), Pip (Ember).
+  Nothing here is decided. See ../tablet.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: var(--s-3) var(--s-4); }
+  h1 { font: var(--type-title); margin: 0 0 var(--s-3); }
+  .grid { display: grid; grid-template-columns: 570px 570px; gap: var(--s-4) var(--s-6); justify-content: center; }
+  .opt h2 { display: flex; align-items: center; gap: var(--s-3); font: var(--type-heading); margin: 0 0 2px; }
+  .opt .letter { font: 700 40px/1 var(--font-sans); letter-spacing: -.02em; }
+  .opt p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); min-height: 40px; }
+  .cap-t { display: block; height: 18px; }
+  .pair { display: flex; gap: 10px; align-items: flex-start; }
+  .zoom-main { zoom: .58; }
+  .zoom-tiny { zoom: .4; }
+
+  .frame { position: relative; width: 570px; height: 320px; border-radius: 20px; overflow: hidden; }
+  .frame > * { position: absolute; }
+  .night { inset: 0; background: color-mix(in srgb, var(--bg) 72%, transparent); }
+  .black { inset: 0; background: color-mix(in srgb, var(--bg) 15%, black); }
+  .clock { left: var(--s-6); top: var(--s-4); line-height: 1; text-shadow: 0 2px 18px var(--bg), 0 0 4px var(--bg); }
+  .clock .t-display-xl { font-size: 68px; }
+  .clock .t-strong { display: block; margin-top: 6px; }
+  .dim { opacity: .5; }
+  .shelf { left: 12px; right: 12px; bottom: 12px; height: 64px; border-radius: var(--r-lg); }
+  .fig { bottom: 76px; }
+  .name { width: 70px; text-align: center; font-size: 10px; line-height: 12px; font-weight: 600; color: var(--text-2); bottom: 22px; }
+
+  .bars { right: 24px; bottom: 22px; display: flex; gap: 6px; }
+  .sb { display: flex; align-items: center; gap: 5px; width: 96px; height: 44px; padding: 0 var(--s-2); border-radius: var(--r-sm);
+    background: var(--control); font-size: 11px; line-height: 13px; font-weight: 600; }
+  .sb .ico { width: 12px; height: 12px; flex: none; }
+
+  /* Assistants differ in shape and face only. */
+  .bram { border-radius: 30% 30% 38% 38% / 34% 34% 38% 38%; }
+  .bram::before { left: 26%; width: 13%; height: 13%; top: 42%; }
+  .bram::after { right: 26%; width: 13%; height: 13%; top: 42%; }
+  .pip { border-radius: 50%; }
+  .pip::before { left: 31%; width: 12%; height: 15%; top: 44%; }
+  .pip::after { right: 31%; width: 12%; height: 15%; top: 44%; }
+  .juno::before, .juno::after { width: 9%; height: 17%; }
+  /* Asleep: short curved lines for eyes. */
+  .asleep::before, .asleep::after { background: none; border-bottom: 2px solid var(--on-accent); border-radius: 0 0 50% 50%; height: 6%; width: 14%; top: 46%; }
+  .asleep-fig { opacity: .55; }
+
+  /* B */
+  .dots { left: 24px; width: 62px; bottom: 28px; display: flex; justify-content: center; gap: 6px; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--text-3); }
+  .dots i.on { background: var(--accent); }
+  .tiny { left: 112px; bottom: 26px; font-size: 10px; line-height: 12px; font-weight: 600; color: var(--text-2); }
+  .bars.wide { right: 24px; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+<h1>Which figures stand on the idle screen, and is the figure there at night?</h1>
+<div class="grid" id="grid"></div>
+</div>
+<script>
+  var FACTS = ['Pasta timer &middot; 07:42', 'Bins go out tonight', 'Shopping &middot; 3 items'];
+  var WHO = [
+    { n: 'Juno', a: 'accent-aurora', c: 'juno', s: 60 },
+    { n: 'Bram', a: 'accent-moss', c: 'bram', s: 60 },
+    { n: 'Pip', a: 'accent-ember', c: 'pip', s: 50 }
+  ];
+  function bars() { return '<div class="bars">' + FACTS.map(function (f) { return '<div class="sb"><span class="ico"></span><span>' + f + '</span></div>'; }).join('') + '</div>'; }
+  function clock(cls) { return '<div class="clock ' + (cls || '') + '"><div class="t-display-xl num">9:41</div><span class="t-strong">Saturday 28 November</span></div>'; }
+  function figure(w, size, extra, left, wrap) {
+    var s = size || w.s;
+    return '<div class="fig ' + (wrap || '') + '" style="left:' + left + 'px"><span class="figure ' + w.a + '" style="--size:' + s + 'px"><span class="character ' + w.c + ' ' + (extra || '') + '" style="--size:' + s + 'px"></span></span></div>';
+  }
+  function frame(mode, inner, under) { return '<div class="frame wallpaper ' + mode + '">' + (under || '') + inner + '</div>'; }
+
+  function three(asleep) {
+    var out = '';
+    WHO.forEach(function (w, i) {
+      var left = 24 + i * 76;
+      var size = w.s;
+      // centre the smaller head over the same slot
+      out += figure(w, size, asleep ? 'asleep' : '', left + (60 - size) / 2 + 5, asleep ? 'asleep-fig' : '');
+      out += '<div class="name' + (asleep ? ' asleep-fig' : '') + '" style="left:' + (left - 1) + 'px">' + w.n + '</div>';
+    });
+    return out;
+  }
+  var A = frame('light', clock() + '<div class="glass shelf"></div>' + three(false) + bars());
+  var B = frame('light', clock() + '<div class="glass shelf"></div>' + figure(WHO[0], 62, '', 24) +
+    '<div class="dots"><i class="on"></i><i></i><i></i></div><div class="tiny">changes every few minutes</div>' + bars());
+  var C = frame('light', clock() + '<div class="glass shelf"></div>' + figure(WHO[0], 62, '', 24) +
+    figure(WHO[1], 34, '', 112) + figure(WHO[2], 30, '', 156) + bars());
+  var night = '<div class="night"></div>';
+  var D1 = frame('dark', clock('dim') + '<div class="glass shelf"></div>' + three(true) + bars().replace('class="bars"', 'class="bars dim"'), night);
+  var D2 = '<div class="frame wallpaper dark"><div class="black"></div>' + clock('dim') + '</div>';
+
+  var opts = [
+    ['v-a', 'A', 'All of them, side by side', 'Shows who can be called. Three figures take room from the photo and the bars.',
+      '<span class="t-caption cap-t">Three assistants &middot; light</span>' + A],
+    ['v-b', 'B', 'One at a time', 'Calm, like one figure. The others are out of sight.',
+      '<span class="t-caption cap-t">One figure, three dots &middot; light</span>' + B],
+    ['v-c', 'C', 'One large, the others small', 'Shows all, favours one. The small heads are hard to read from across a room.',
+      '<span class="t-caption cap-t">Last used is large &middot; light</span>' + C],
+    ['v-d', 'D', 'All of them, asleep at night', 'Night keeps the figures, asleep, or shows only the clock.',
+      '<div class="pair"><div><span class="t-caption cap-t">Night, figures asleep</span><div class="zoom-main">' + D1 + '</div></div>' +
+      '<div><span class="t-caption cap-t">Night, clock only</span><div class="zoom-tiny">' + D2 + '</div></div></div>']
+  ];
+  document.getElementById('grid').innerHTML = opts.map(function (o) {
+    return '<section class="opt" id="' + o[0] + '"><h2><span class="letter">' + o[1] + '</span>' + o[2] + '</h2><p class="d">' + o[3] + '</p>' + o[4] + '</section>';
+  }).join('');
+</script>
+</body>
+</html>

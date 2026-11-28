@@ -212,6 +212,10 @@ The boards in `examples/`:
 | [all-areas-board.html](examples/all-areas-board.html) | The overview of all areas on a narrow screen, a wide screen and in the launcher | Chosen from |
 | [stage-call-board.html](examples/stage-call-board.html) | Talking to an assistant as one design at every width, or as two | Chosen from |
 | [white-board.html](examples/white-board.html) | Four whites for the plain surfaces in light | Chosen from |
+| [tint-board.html](examples/tint-board.html) | Four ways the two colours of the accent tint the plain surfaces | Waiting for a choice |
+| [call-controls-board.html](examples/call-controls-board.html) | Muting and a line of text on the call screen, in four designs | Waiting for a choice |
+| [idle-figures-board.html](examples/idle-figures-board.html) | Several assistants on the idle screen of a tablet, and the screen at night | Waiting for a choice |
+| [welcome-board.html](examples/welcome-board.html) | Four designs of the welcome of the first-run setup | Waiting for a choice |
 
 No board is waiting to be made. New ones are added here as subjects come
 up.

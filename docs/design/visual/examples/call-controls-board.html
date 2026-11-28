@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Call controls board</title>
+<!--
+  Two open questions about the full call screen on a narrow screen: how the
+  microphone is muted when the screen has only Chat and End, and whether what
+  is said is also shown as a line of text. Four answers, all at the same moment:
+  Juno (figure in Aurora, screen in Tide) is speaking "The pasta timer has seven
+  minutes left." Light, roomy. Nothing here is decided. See ../phone.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  h1 { font: var(--type-title); margin: 0 0 var(--s-3); }
+  .row4 { display: grid; grid-template-columns: repeat(4, 260px); gap: 28px; }
+  .opt h2 { display: flex; align-items: center; gap: var(--s-3); font: var(--type-heading); margin: 0 0 2px; min-height: 44px; }
+  .opt .letter { font: 700 36px/1 var(--font-sans); letter-spacing: -.02em; }
+  .opt p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); min-height: 54px; }
+  .opt .t-caption { display: block; height: 18px; }
+  .frame { position: relative; width: 260px; height: 520px; border-radius: 32px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-3); background-color: var(--bg); color: var(--text); }
+  .frame > * { position: absolute; }
+  .glow { border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 55%, transparent), transparent); }
+  .cx { left: 0; right: 0; margin: 0 auto; width: max-content; }
+  .top-id { top: 46px; left: 0; right: 0; text-align: center; }
+  .nm { font: var(--type-body-strong); line-height: 20px; }
+  .st { display: flex; align-items: center; justify-content: center; gap: 6px; font: var(--type-label); color: var(--text-2); }
+  .st .dot { color: var(--accent); width: 6px; height: 6px; }
+  .hint { font: var(--type-caption); color: var(--text-2); margin-top: 2px; }
+  .rb { border-radius: 50%; display: grid; place-items: center; flex: none; border: 0; }
+  .rb.end { background: var(--danger); color: var(--on-accent); }
+  .ctl { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .cap { font: var(--type-caption); color: var(--text-2); }
+  .ctls { left: 0; right: 0; bottom: 22px; display: flex; justify-content: center; }
+  .words { left: 22px; right: 22px; text-align: center; font: 600 20px/26px var(--font-sans); letter-spacing: -.01em; }
+  .words .old { color: color-mix(in srgb, var(--text) 45%, transparent); }
+  .strip { left: 16px; right: 16px; padding: 10px 14px; border-radius: var(--r-lg); text-align: center; font: 500 14px/20px var(--font-sans); }
+  .strip .old { color: var(--text-2); }
+  .cc { top: 14px; right: 14px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; }
+  .cc.on { background: var(--accent); color: var(--on-accent); border: 0; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+<h1>Call controls: how to mute, and whether to show the words</h1>
+<div class="row4" id="page"></div>
+</div>
+<script>
+  var P = {
+    mic: 'M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z',
+    chat: 'M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z',
+    end: 'M146.34,98.34,164.69,80,146.34,61.66a8,8,0,0,1,11.32-11.32L176,68.69l18.34-18.35a8,8,0,0,1,11.32,11.32L187.32,80l18.34,18.34a8,8,0,0,1-11.32,11.32L176,91.31l-18.34,18.35a8,8,0,0,1-11.32-11.32Zm77.54,84.74A56.26,56.26,0,0,1,168,232C88.6,232,24,167.4,24,88A56.26,56.26,0,0,1,72.92,32.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,109.39,104c-.18.27-.37.52-.57.77L88,129.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,223.88,183.08Zm-15.88-2s-.07,0-.11,0h0l-47-21.05-24.35,20.71a8.44,8.44,0,0,1-.74.56,16,16,0,0,1-15.75,1.14c-18.73-9.05-37.4-27.58-46.46-46.11a16,16,0,0,1,1-15.7,6.13,6.13,0,0,1,.57-.77L96,95.15l-21-47a.61.61,0,0,1,0-.12A40.2,40.2,0,0,0,40,88,128.14,128.14,0,0,0,168,216,40.21,40.21,0,0,0,208,181.07Z',
+    cc: 'M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,144H32V64H224V192ZM118.92,151.71A8,8,0,0,1,116,162.64a40,40,0,1,1,0-69.28,8,8,0,1,1-8,13.85,24,24,0,1,0,0,41.58A8,8,0,0,1,118.92,151.71Zm80,0A8,8,0,0,1,196,162.64a40,40,0,1,1,0-69.28,8,8,0,1,1-8,13.85,24,24,0,1,0,0,41.58A8,8,0,0,1,198.92,151.71Z'
+  };
+  function ic(k, s) { return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="' + P[k] + '"/></svg>'; }
+  function rb(kind, label, size) {
+    return '<span class="ctl"><span class="rb ' + (kind === 'end' ? 'end' : 'glass') + '" style="width:' + size + 'px;height:' + size + 'px">' + ic(kind === 'end' ? 'end' : kind, Math.round(size * .46)) + '</span><span class="cap">' + label + '</span></span>';
+  }
+  function glow(s, st) { return '<div class="glow" style="width:' + s + 'px;height:' + s + 'px;' + st + '"></div>'; }
+  function fig(head, top) {
+    return '<span class="figure accent-aurora cx" style="--size:' + head + 'px;top:' + top + 'px"><span class="character listening" style="--size:' + head + 'px"></span></span>';
+  }
+  function ident(hint) {
+    return '<div class="top-id"><div class="nm">Juno</div><div class="st"><span class="dot"></span>Speaking</div>' + (hint ? '<div class="hint">' + hint + '</div>' : '') + '</div>';
+  }
+  function frame(inner) { return '<div class="frame backdrop light accent-tide">' + inner + '</div>'; }
+
+  var A = frame(glow(340, 'left:-40px;top:70px') + ident() + fig(116, 120) +
+    '<div class="ctls" style="gap:52px">' + rb('chat', 'Chat', 58) + rb('end', 'End', 58) + '</div>');
+  var B = frame(glow(340, 'left:-40px;top:70px') + ident() + fig(116, 120) +
+    '<div class="ctls" style="gap:26px">' + rb('mic', 'Mute', 58) + rb('chat', 'Chat', 58) + rb('end', 'End', 58) + '</div>');
+  var C = frame(glow(320, 'left:-30px;top:30px') + ident() + fig(88, 106) +
+    '<div class="words" style="top:290px"><span class="old">The pasta timer has seven</span> minutes left.</div>' +
+    '<div class="ctls" style="gap:26px">' + rb('mic', 'Mute', 58) + rb('chat', 'Chat', 58) + rb('end', 'End', 58) + '</div>');
+  var D = frame(glow(340, 'left:-40px;top:70px') + ident('Touch Juno to mute') +
+    '<span class="glass cc on" aria-label="Captions on">' + ic('cc', 20) + '</span>' + fig(104, 122) +
+    '<div class="glass strip" style="top:344px"><span class="old">The pasta timer has seven</span> minutes left.</div>' +
+    '<div class="ctls" style="gap:52px">' + rb('chat', 'Chat', 58) + rb('end', 'End', 58) + '</div>');
+
+  var opts = [
+    ['v-a', 'A', 'As now: two buttons, no text.', 'Calmest. Muting takes two touches and nothing can be read.', A],
+    ['v-b', 'B', 'Three buttons.', 'Mute is one touch. Three buttons under the figure.', B],
+    ['v-c', 'C', 'Three buttons and a line of text.', 'Works in a noisy room and for people who cannot hear well. More on the screen with the figure.', C],
+    ['v-d', 'D', 'Touch the figure to mute, text on request.', 'Keeps two buttons. Muting is hidden behind a gesture people must learn.', D]
+  ];
+  var caps = ['Muting: in the chat view header', 'Mute, Chat, End', 'Words under the figure', 'Captions switched on'];
+  document.getElementById('page').innerHTML = opts.map(function (o, i) {
+    return '<section class="opt" id="' + o[0] + '"><h2><span class="letter">' + o[1] + '</span>' + o[2] + '</h2><p class="d">' + o[3] + '</p><span class="t-caption">' + caps[i] + '</span>' + o[4] + '</section>';
+  }).join('');
+</script>
+</body>
+</html>
