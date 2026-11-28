@@ -58,3 +58,10 @@ Status: started. The idle screen and the active screen are set.
 
 ## Open questions
 
+- Are the clock-only screen of a dark room and the low-power screen one
+  and the same screen?
+- Where does the bar for "home cannot be reached" go on a tablet, which
+  has no top bar?
+- On a household tablet, what marks the pinned areas as set by an admin:
+  a small lock in place of the pencil?
+

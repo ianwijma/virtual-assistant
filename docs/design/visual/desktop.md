@@ -70,3 +70,8 @@ settings are set.
 
 ## Open questions
 
+- Does a chip under the search field open its area, or filter the list
+  to it?
+- How do the keys reach a notification while another window has the
+  keyboard: a shortcut that moves to the newest card?
+

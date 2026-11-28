@@ -134,3 +134,8 @@ Assumed, needing a check on real screens:
 
 ## Open questions
 
+- The soft form of the accent is worked out once for the whole screen,
+  so it does not follow a person's own accent on a part of a screen,
+  such as a ring around their photo. Is it worked out wherever the
+  accent changes?
+

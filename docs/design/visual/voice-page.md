@@ -30,3 +30,7 @@ Status: started. The design follows the phone app.
 
 ## Open questions
 
+- Where on the page is the way to reset how it was set up?
+- On the stage, does Chat move to the field to type and stay on the
+  stage?
+

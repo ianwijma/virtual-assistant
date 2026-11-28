@@ -291,53 +291,75 @@ detail.
 
 ### Tokens and components
 
+30. The soft form of the accent is worked out once for the whole screen,
+   so it does not follow a person's own accent on a part of a screen,
+   such as a ring around their photo. Is it worked out wherever the
+   accent changes? [tokens]
 
 ### Assistant visuals
 
-30. Can the character be anywhere on a screen, or only in the places a
+31. Can the character be anywhere on a screen, or only in the places a
    screen gives a canvas? [assistant visuals]
-31. Below which size of canvas does the character become a head only, or
+32. Below which size of canvas does the character become a head only, or
    a sound wave? [assistant visuals]
-32. In which style are the full figures drawn, when they are redesigned
+33. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-33. Does a figure have a mouth that moves when it talks, and arms? Both
+34. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-34. Is the figure of the first release a rendered three-dimensional one,
+35. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-35. Who draws the figures, and how many are there in the first release?
+36. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-36. How does a person give their own assistant a look: by choosing from
+37. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-37. How playful is the default household assistant: cute, friendly, or
+38. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-38. May a person bring their own figure, such as a character they like
+39. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-39. From the research: which of the three routes above do the first
+40. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
+41. With two columns, is anything of the first level kept in view, such
+   as a rail of icons, or is it gone until the person steps back? The
+   decision says gone; the width board drew a rail. Each subject's
+   questions are in its own document. [visual]
+42. Does a chip under the search field open its area, or filter the list
+   to it? [visual desktop]
+43. How do the keys reach a notification while another window has the
+   keyboard: a shortcut that moves to the newest card? [visual desktop]
+44. Are the clock-only screen of a dark room and the low-power screen
+   one and the same screen? [visual tablet]
+45. Where does the bar for "home cannot be reached" go on a tablet,
+   which has no top bar? [visual tablet]
+46. On a household tablet, what marks the pinned areas as set by an
+   admin: a small lock in place of the pencil? [visual tablet]
+47. Where on the page is the way to reset how it was set up? [visual
+   voice page]
+48. On the stage, does Chat move to the field to type and stay on the
+   stage? [visual voice page]
 
 ### The mockups
 
-40. Agree to each mockup, or say what to change in it. [mockups]
+49. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-41. A search of the trade mark registers of the EU, the Benelux, the UK
+50. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-42. How fast the blur is on an old tablet and in the launcher, measured
+51. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-43. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+52. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-44. How much power a three-dimensional figure uses on an old tablet that
+53. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

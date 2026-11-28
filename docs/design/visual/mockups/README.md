@@ -3,8 +3,8 @@
 The low-fidelity mockups of each client. Part of
 [the visual design](../README.md).
 
-Status: redrawn on 28 November 2026 from the designs chosen on the
-boards, as proposals. None is agreed yet. What is not decided is drawn
+Status: redrawn on 28 November 2026 from the decisions of that day, as
+proposals. None is agreed yet. What is not decided is drawn
 as plainly as possible, and its note says "Not decided".
 
 ## What a mockup is
@@ -27,11 +27,11 @@ as plainly as possible, and its note says "Not decided".
 
 | Mockup | Client | Screens |
 |---|---|---|
-| [desktop.html](desktop.html) | [Desktop client](../../technical/clients/desktop.md) | The empty launcher, results while typing, the clipboard, the assistant in the launcher, a card lifted into a sheet, notifications, the settings view, the account switch, home out of reach |
-| [phone.html](phone.html) | [Phone app](../../technical/clients/mobile.md), personal | Set-up choice, sign-in, Overview, the assistant, Timeline, Chat, the call, the call folded into the chat, a card lifted into a sheet, all areas, a list, the clipboard, settings, waiting, home out of reach |
-| [tablet.html](tablet.html) | [Phone app](../../technical/clients/mobile.md), household | Idle with a wallpaper, listening, an answer with card rows, a card lifted into a sheet, a recognised person, an approval prompt, an unrecognised voice, home out of reach, low power, set-up |
-| [admin.html](admin.html) | [Admin panel](../../technical/clients/web-admin.md) | Devices, people, editing an assistant, appearance, settings search, the request list, one request, the audit log, first-run setup, narrow width |
-| [voice.html](voice.html) | [Voice page](../../technical/clients/web-voice.md) | Before sign-in, the set-up choice, the call, a card as a sheet, the call folded into chat, without blur, microphone blocked, home out of reach |
+| [desktop.html](desktop.html) | [Desktop client](../../technical/clients/desktop.md) | The launcher before typing, results, the clipboard, talking to the assistant, a card as a sheet, notifications, a question that stays, the tray menu, the settings view, searching the settings, unsaved changes, where it opens, the account switch, home out of reach |
+| [phone.html](phone.html) | [Phone app](../../technical/clients/mobile.md), personal | Set-up choice, sign-in, Overview, a notification arriving, Timeline, the assistant, Chat, the call, the call with text, the call folded into the chat, a card as a sheet, all areas, changing the bar, a list, the clipboard, the settings in three levels, the accent, the wheel, changed settings, unsaved changes, waiting, home out of reach |
+| [tablet.html](tablet.html) | [Phone app](../../technical/clients/mobile.md), household | Idle, a notification, the stage, an answer with a large card, the card as a row, a sheet, a recognised person, the conversation closing, an approval prompt, an unrecognised voice, the two screens in the dark, low power, home out of reach, the settings, set-up |
+| [admin.html](admin.html) | [Admin panel](../../technical/clients/web-admin.md) | Devices, a device's settings and accent, unsaved changes, people, a character, appearance, the wheel, wallpaper galleries, a destination without a list, search, the request list, one request, the audit log, first-run setup, medium and narrow width |
+| [voice.html](voice.html) | [Voice page](../../technical/clients/web-voice.md) | The set-up choice, a guest talking at once, the call, the call with text, a card as a sheet, the call folded into chat, the stage on a wide screen, without blur, microphone blocked, home out of reach |
 
 The frames the screens are drawn in are in [mockup.css](mockup.css).
 

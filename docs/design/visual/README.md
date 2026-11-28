@@ -253,5 +253,9 @@ up.
 
 ## Open questions
 
+- With two columns, is anything of the first level kept in view, such as
+  a rail of icons, or is it gone until the person steps back? The
+  decision says gone; the width board drew a rail.
+
 Each subject's questions are in its own document.
 
