@@ -289,7 +289,7 @@ S.push({ h: 'In the dark: a little dark', p: 'The photo is dimmed and the figure
   f: frame('wallpaper dark accent-tide', '<div class="night"></div>' +
     clock('dim') + '<div class="glass shelf"></div>' +
     '<div class="on-shelf sleepy">' + fig(70, 'asleep') + '</div>' + dots(3, 0, 'shelf-dots') +
-    '<div class="dim" style="position:absolute;inset:0">' + bars() + '</div>'),
+    bars().replace('class="', 'style="opacity:.5" class="')),
   n: ['When the room is a little dark, or it is night, the photo is dimmed, the clock and bars are quieter and the figure sleeps (its eyes are short curves). Voice or touch wakes it.',
     'A tablet that cannot measure the light uses the time of day, with hours that can be set. Which of the two night screens is used, and the hours, are in the tablet’s settings (15).'] });
 
