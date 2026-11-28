@@ -15,6 +15,8 @@ Status: started. The principle and the layout are set.
   its bottom. The third is the page of the chosen item, with its path
   above it. Every step stays in view. This is "Three columns, calmer" on
   [the third admin layout board](examples/admin-layout-board-3.html).
+- **On a narrower screen fewer columns are in view.** See
+  [the visual design](README.md).
 - **Before an item is chosen, the third column is quiet:** it shows a
   short summary of the destination.
 - **Little is shown at once.** A page shows the high-level things first.
@@ -52,6 +54,5 @@ Status: started. The principle and the layout are set.
 - What does a destination with no list of items show, such as Speech or
   Feedback: two columns, or a second column of its sections?
 - Where do search results appear in three columns?
-- At phone width, what does the list of destinations become?
 - Which accent does the admin panel show: that of the person signed in,
   or the household's?

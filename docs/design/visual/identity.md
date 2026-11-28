@@ -25,9 +25,13 @@ Status: started. The feel is set. The name is open.
   inside. This is "D2. Glass drop" on
   [the second logo board](examples/logo-board-2.html). It is a candidate
   like the name, to be drawn properly once the name is settled.
-- **The name and the logo are chosen together with this work.** "Virtual
-  Assistant" is a working title. The name is to mean or suggest home,
-  homeliness or family, and a Dutch word is welcome.
+- **The name is "Heem",** an old Dutch word for a homestead, the ground
+  a home stands on. It is said "haym" in Dutch and "heem" in English.
+  It stands as the candidate until the trade mark registers are
+  searched. This is "Heem" on
+  [the second name board](examples/name-board-2.html). The boards and
+  mockups drawn before it still show the earlier name or the working
+  title.
 - **"Hearth" is not the name.** It was chosen from
   [the name and logo board](examples/name-and-logo-board.html) and then
   dropped: Hearth Display sells a family display for the wall under that
@@ -71,10 +75,10 @@ of four web addresses each:
 - What should set the look apart from Apple's, so that it is recognisable
   as ours: the colour, the backdrop, the assistants, the shape, or
   something else? See the table above.
-- Which name is chosen? Six candidates that mean home, each with what a
-  quick check found, are on
-  [the second name board](examples/name-board-2.html): Heem, Heemo,
-  Stek, Huize, Stekje and Knus.
+- The web addresses heem.com, heem.app, heem.nl and heem.dev are taken.
+  Which address does the project use?
+- Is the name said the Dutch way or the English way when it is spoken,
+  such as in a video or by an assistant?
 - The glass drop is the faintest of the marks at the size of a small
   icon. Is it made bolder at small sizes, or does a solid form of it
   stand in there?
@@ -82,5 +86,5 @@ of four web addresses each:
 To research:
 
 - A search of the trade mark registers of the EU, the Benelux, the UK
-  and the US for the name that is chosen. The registers could not be
-  reached in the first check, which used other sources.
+  and the US for "Heem", in the classes for software and devices. The
+  registers could not be reached in the checks so far.

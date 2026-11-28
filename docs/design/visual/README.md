@@ -34,6 +34,12 @@ One look for every screen the system has:
   not to the client it was first drawn for. A client differs only where
   the choice cannot work on it, or where the device itself asks for
   something else. See [where clients differ](#where-clients-differ).
+- **The layout follows the width of the screen, not the kind of client.**
+  Every screen is responsive. A narrow screen shows one column at a
+  time, a wider one two, and a wide one three. A browser window that is
+  made narrow, or the phone app on a tablet, gets the layout of its
+  width. This is "The layout follows the width" on
+  [the width board](examples/width-board.html).
 - **Recognisable as ours.** The design is distinctive, so that anyone can
   tell it is this product.
 - **Frosted glass is the design language.** Apple's Liquid Glass is the
@@ -145,7 +151,7 @@ The boards in `examples/`:
 | [material-board.html](examples/material-board.html) | Four designs of the material: as first drawn, more glass, calmer, closer to Apple | Chosen from |
 | [launcher-board.html](examples/launcher-board.html) | The desktop launcher at four levels of see-through | Chosen from |
 | [tablet-board.html](examples/tablet-board.html) | Five arrangements of the tablet around the character, and one without a figure | Chosen from |
-| [name-and-logo-board.html](examples/name-and-logo-board.html) | Six name directions and six logo marks | "Hearth" chosen as candidate; logo to a second round |
+| [name-and-logo-board.html](examples/name-and-logo-board.html) | Six name directions and six logo marks | "Hearth" chosen and later dropped; logo to a second round |
 | [tablet-idle-board.html](examples/tablet-idle-board.html) | Five designs of the tablet while nobody is using it | Chosen from; a second round follows |
 | [phone-home-board.html](examples/phone-home-board.html) | Five designs of the first screen of the phone app | Chosen from; a second round follows |
 | [phone-talk-board.html](examples/phone-talk-board.html) | Five designs of the phone while talking to an assistant | Chosen from; a second round follows |
@@ -178,10 +184,10 @@ The boards in `examples/`:
 | [motion-board.html](examples/motion-board.html) | Three ways a row lifts into a sheet, as stills and as a live loop | Chosen from |
 | [dark-text-board.html](examples/dark-text-board.html) | Four ways to keep secondary text readable on dark glass | Chosen from |
 | [icon-board.html](examples/icon-board.html) | Three open icon sets in four styles, in a tab bar, a side bar and a row | Chosen from |
-| [name-board-2.html](examples/name-board-2.html) | Six names that mean home, most of them Dutch, with what a quick check found | Waiting for a choice |
-| [accent-start-board.html](examples/accent-start-board.html) | The phone's Overview in each of the five accents, light and dark | Waiting for a choice |
-| [width-board.html](examples/width-board.html) | The settings laid out by the width of the screen, or by the kind of client | Waiting for a choice |
-| [assistant-colour-board.html](examples/assistant-colour-board.html) | Whose colour a shared screen takes: the person's or the assistant's | Waiting for a choice |
+| [name-board-2.html](examples/name-board-2.html) | Six names that mean home, most of them Dutch, with what a quick check found | Chosen from |
+| [accent-start-board.html](examples/accent-start-board.html) | The phone's Overview in each of the five accents, light and dark | Chosen from |
+| [width-board.html](examples/width-board.html) | The settings laid out by the width of the screen, or by the kind of client | Chosen from |
+| [assistant-colour-board.html](examples/assistant-colour-board.html) | Whose colour a shared screen takes: the person's or the assistant's | Chosen from |
 
 No board is waiting to be made. New ones are added here as subjects come
 up.
@@ -193,9 +199,6 @@ Each subject's questions are in its own document.
 - Is a notification inside the phone and tablet app the same glass card
   as on the desktop, stacked in the same way? It was chosen on the
   desktop only.
-- Are the app's own settings on a phone and a tablet the same design as
-  the desktop settings and the admin panel, with fewer columns in view on
-  a narrow screen?
 - Is the overview of all areas the same on every client: the grid that
   the phone shows in a sheet, also on the tablet, the desktop and the
   web?
@@ -203,9 +206,12 @@ Each subject's questions are in its own document.
   phone, or only where there is room for a few buttons?
 - Is the tablet's stage the same design as the phone's call, at a larger
   size, or a design of its own?
-- Does the layout follow the width of the screen and not the kind of
-  client, so that a narrow browser window gets the phone's layout and a
-  wide tablet the three columns?
+- At which widths does the layout change? The board shows one column
+  under 600, two from 600 to 1000 and three above.
+- In two columns, do the destinations become a rail of icons, as on the
+  board?
+- Does the launcher of the desktop client, which has a fixed size, also
+  follow this, or is it the one window that does not fold?
 - Should a screen that an assistant composed look different from a
   built-in screen, so that a person can tell?
 - Which devices are the references for the designs: which phone, which

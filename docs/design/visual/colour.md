@@ -34,8 +34,18 @@ design tokens.
 The accent is the one colour for the main action, for selection and for
 focus. It also colours our own [backdrop](glass.md).
 
-- **The accent is chosen from a fixed set.** Each accent in the set is
-  checked for readable text in light and in dark.
+- **An accent is two colours:** a main colour, and a second colour for
+  the backdrop.
+- **Four accents are built in:** Tide, Ember, Aurora and Moss. Each is
+  checked for readable text in light and in dark. A new household starts
+  with Tide. This is "Tide" on
+  [the accent start board](examples/accent-start-board.html).
+- **A person can also make their own accent,** by picking two colours or
+  by having two picked at random.
+- **Choosing an accent shows a quick preview.** In the admin panel, the
+  accent of the household is previewed on all four devices: the phone
+  app, the tablet, the desktop and the admin panel. The accent of one
+  device is previewed on that device only.
 - **It can be set in three places,** and the most specific one wins:
 
 | Set on | Applies to | Wins over |
@@ -50,8 +60,18 @@ focus. It also colours our own [backdrop](glass.md).
   assistant recognises their voice, and returns to the device's or the
   household's when the conversation ends. An unrecognised voice changes
   nothing.
+- **A recognised person is named in a chip.** While the conversation
+  lasts, a small chip beside the assistant's name shows the person's
+  name.
+- **An assistant has a colour of its own.** Its figure is drawn in that
+  colour everywhere, whoever it talks to. The backdrop and the buttons
+  around it follow the accent as above. This is "Figure in its own
+  colour, screen in the person's" on
+  [the assistant colour board](examples/assistant-colour-board.html),
+  with the chip of the design beside it.
 
-The first set, with working names. The values are made with the tokens.
+The built-in accents, with working names. The values are made with the
+tokens.
 
 | Accent | Colour |
 |---|---|
@@ -59,7 +79,8 @@ The first set, with working names. The values are made with the tokens.
 | Ember | Coral to amber |
 | Aurora | Violet to cyan |
 | Moss | Sage green |
-| Graphite | Neutral: near black in light, near white in dark |
+
+Graphite, a neutral accent, is drawn and is left out for now.
 
 ## The parts of the palette
 
@@ -70,16 +91,27 @@ The first set, with working names. The values are made with the tokens.
 | Text | Primary, secondary and disabled text, readable on glass |
 | Accent | The colour for the main action, for selection and for focus |
 | Status | Success, warning and danger |
-| Assistant colours | One per assistant, if assistants have a colour |
+| Assistant colours | One per assistant, for its figure |
 
 ## Open questions
 
-- Which accent does a new household start with?
-- Should the set have more accents, such as a pink or a red, and how
-  many is enough?
-- Does each assistant have its own colour? If so, which one shows while
-  an assistant is active on a household device: the assistant's, or the
-  accent of the person it recognised?
+- How is text kept readable with an accent a person made themselves:
+  are the two colours adjusted by themselves until text on them can be
+  read, or is a colour that fails refused?
+- Is a person's own accent picked from a colour wheel, from a larger
+  grid of colours, or by typing a value?
+- Does an accent picked at random come from any colour, or from pairs
+  that are known to go together?
+- Where can an accent be chosen besides the admin panel: on the device
+  itself, in its own settings?
+- Is an assistant's colour chosen from the built-in accents, or can it
+  be any colour? Who chooses it?
+- What happens when an assistant's colour and the person's accent are
+  the same, or clash?
+- Does the chip with a person's name carry a dot in their accent, as on
+  the board?
+- Should the set have more built-in accents, such as a pink or a red?
+- Does Graphite return later as a built-in accent?
 - Is a person's accent also the colour that marks them elsewhere, such as
   on the account switch of a shared computer, or beside an item they
   added to a shared list?

@@ -296,3 +296,8 @@ are 25 November 2026 unless a section says otherwise.
 | 269 | Who a screen is designed for depends on the device; each device has a default density that can be changed | [shape and spacing](design/visual/shape-and-spacing.md) |
 | 270 | In dark our backdrop is about half as strong on a darker base, so that secondary text on glass is readable | [glass](design/visual/glass.md) |
 | 271 | The icons are Phosphor's, and we draw our own in its style where the set lacks one | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 272 | The name is "Heem", as the candidate until the trade mark registers are searched | [identity](design/visual/identity.md) |
+| 273 | Four accents are built in and a new household starts with Tide; a person can make their own accent from two colours; Graphite is left out for now | [colour](design/visual/colour.md) |
+| 274 | Choosing an accent shows a preview: all four devices for the household's accent, one for a device's | [colour](design/visual/colour.md) |
+| 275 | The layout follows the width of the screen, and every screen is responsive | [visual](design/visual/README.md) |
+| 276 | An assistant's figure has its own colour, the screen around it follows the person's accent, and a recognised person is named in a chip | [colour](design/visual/colour.md) |

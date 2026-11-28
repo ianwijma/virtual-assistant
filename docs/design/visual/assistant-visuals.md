@@ -109,8 +109,6 @@ Assumed:
 - May a person bring their own figure, such as a character they like
   from elsewhere? The project cannot ship characters that belong to
   others.
-- Does a figure have a colour of its own, apart from the
-  [accent](colour.md)?
 
 - From the research: which of the three routes above do the first
   figures take?
