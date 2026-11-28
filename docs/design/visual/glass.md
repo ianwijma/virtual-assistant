@@ -34,6 +34,13 @@ set. What each toolkit can draw is still to be researched.
   list, a log or a page of text, is plain: it has no blur and lets only a
   little of the backdrop's colour through. This keeps text readable and
   keeps long lists fast.
+- **Text on glass is kept readable without thickening the glass.**
+  Secondary text is firmer than on a plain surface. A coloured word, such
+  as a status or a link in the accent, never sits straight on glass: it
+  sits in a small solid chip. The backdrop of the Graphite accent is
+  drawn from its grey, not from its near black or near white. This is
+  "Thin glass, firmer text" on
+  [the readability board](examples/readability-board.html).
 - **A device that is too slow for the blur shows a simpler form:** a flat
   translucent tint in the same colour and shape, without the blur. It is
   the same look with less effect, not another theme.
@@ -72,12 +79,38 @@ material.
 
 ## Verified and assumed
 
-Assumed, needing research to confirm:
+Verified on 28 November 2026, by calculation from the token values, over
+the strongest part of our own backdrop for every accent:
 
-- Slint, Jetpack Compose, SwiftUI and CSS can each draw a blurred,
-  translucent surface fast enough for the clients above.
-- A launcher window on Linux can show the blurred desktop behind it on
-  both X11 and Wayland.
+- With "Thin glass, firmer text", main text on glass has a contrast of at
+  least 8.6 to 1 in light and 4.7 in dark. Coloured words in solid chips
+  have at least 5.0 in light and 5.4 in dark.
+- Secondary text on glass has at least 5.8 in light, and 3.8 in dark,
+  which is below the 4.5 that [colour](colour.md) asks for.
+- In the launcher over a desktop that is not ours, main text falls to
+  2.6 in dark over a white window, and to 4.6 in light over a black one.
+
+Verified on 28 November 2026, from the toolkits' own documentation:
+
+- Slint draws a blur behind a rectangle from version 1.19, with two of
+  its renderers only. It blurs and does not raise the colour.
+- Jetpack Compose draws it with the Haze library, under the Apache 2.0
+  licence, on Android 12 and later. On Android 11 and earlier the library
+  draws a flat tint in its place.
+- CSS draws it with `backdrop-filter`.
+- A window can ask for the desktop behind it to be blurred on Wayland
+  through the `ext-background-effect-v1` protocol, which KDE, GNOME,
+  Hyprland, COSMIC and niri support, and Sway does not. Slint's window
+  library does not use this protocol yet.
+- On Windows 11 and macOS the `window-vibrancy` library, under the MIT
+  and Apache 2.0 licences, asks the system for the effect.
+
+Assumed:
+
+- SwiftUI draws the material with its own materials.
+- The blur is fast enough on an old tablet and within the 100 ms of the
+  launcher. Nobody has measured this.
+- X11 can blur behind a window only under KDE.
 
 ## Open questions
 
@@ -89,12 +122,20 @@ Assumed, needing research to confirm:
 - Does our own backdrop move slowly, or is it still?
 - Can a person set how see-through the glass is? The owner named this as
   a possibility.
-- Does glass become thicker where text sits on it and what is behind it
-  is busy, so that the text stays readable?
+- Secondary text on glass in dark measures 3.8 to 1 at worst, short of
+  4.5. Is that accepted for secondary text, or is the dark backdrop made
+  calmer, or does secondary text in dark get a plate under it?
+- The launcher shows the real desktop, which can be any colour. Does the
+  launcher's glass become thicker by itself when what is behind it is
+  very bright or very dark, so that its text stays readable?
+- From the research: on Linux the launcher asks for the blurred desktop
+  through the new Wayland protocol with a small piece of our own code,
+  and shows our own backdrop wherever the desktop cannot blur, such as
+  under Sway and on most of X11. Agree?
+- From the research: an Android tablet on Android 11 or earlier shows the
+  flat tint, not the blur. Agree?
 
 To research:
 
-- What Slint, Jetpack Compose on older Android, SwiftUI and CSS can each
-  draw: blur behind a surface, and at what speed.
-- Whether the launcher window can show the blurred desktop behind it on
-  Linux, on X11 and on Wayland.
+- How fast the blur is on an old tablet and in the launcher, measured on
+  real devices.

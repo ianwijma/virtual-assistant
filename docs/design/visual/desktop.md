@@ -4,7 +4,8 @@ How the look applies to the desktop client. Part of
 [the visual design](README.md). What the client does is in
 [the technical design](../technical/clients/desktop.md).
 
-Status: started. The launcher's glass and shape are set.
+Status: started. The launcher's glass and shape and the place of the
+settings are set.
 
 ## Design
 
@@ -20,12 +21,22 @@ Status: started. The launcher's glass and shape are set.
   the launcher, as a clear glass card. Several stack downward with the
   newest on top. This is "Top-right stack" on
   [the desktop notification board](examples/desktop-notification-board.html).
+- **The settings of the device are a view of the launcher.** They are
+  opened from the launcher, as in Raycast, and the launcher shows them in
+  place of its list. There is no separate application for them.
+- **The settings are laid out like the admin panel:** a side bar of
+  groups with a search field, and the chosen group's page. See
+  [admin panel](admin-panel.md). The designs this came from are on
+  [the desktop settings board](examples/desktop-settings-board.html).
 - **It appears with a very short animation.** See [motion](motion.md).
 - **It uses the compact density.** See
   [shape and spacing](shape-and-spacing.md).
 
 ## Open questions
 
+- Does the launcher's window grow to hold the settings, and does it stay
+  open when the person clicks elsewhere, unlike the launcher's list?
+- Does a changed setting apply at once, or after a Save button?
 - Can a notification on the desktop be answered from the keyboard?
 - Does a question from an assistant stay on screen until it is answered?
 - Which views of the launcher have a preview, and which are a list only?

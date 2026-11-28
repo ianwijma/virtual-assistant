@@ -143,15 +143,18 @@ The boards in `examples/`:
 | [admin-log-board.html](examples/admin-log-board.html) | Four designs of the request timeline in the admin panel | Chosen from |
 | [setup-board.html](examples/setup-board.html) | Four designs of the first-run setup | Chosen from; a second round follows |
 | [setup-board-2.html](examples/setup-board-2.html) | The first-run setup after Apple's, with the steps on top | Chosen from |
+| [readability-board.html](examples/readability-board.html) | The measured contrast of text on glass, and four ways to mend it | Chosen from |
+| [desktop-settings-board.html](examples/desktop-settings-board.html) | Four places for the settings of a device on the desktop | Chosen from; a second round follows |
+| [phone-areas-board.html](examples/phone-areas-board.html) | Four ways to reach the lists, the clipboard and the settings on the phone | Chosen from; a second round follows |
+| [states-board.html](examples/states-board.html) | Waiting, empty and out of reach, as four families | Chosen from |
+| [motion-board.html](examples/motion-board.html) | Three ways a row lifts into a sheet, as stills and as a live loop | Chosen from |
 
 Boards still to make, each with several designs of one thing:
 
 | Board | Shows |
 |---|---|
-| Desktop settings window | The settings of a device |
-| Phone, the other areas | The clipboard, lists and settings of the phone app |
-| Waiting and empty states | A screen that waits for the server, and a screen with nothing in it |
-| Motion | How a sheet, a card and the character move, as a page that moves |
+| Desktop settings, second round | The settings as a view of the launcher, laid out like the admin panel |
+| Phone bar, second round | The overview of all areas, and how a person sets the four buttons of the bar |
 
 ## Open questions
 

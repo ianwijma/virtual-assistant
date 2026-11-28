@@ -17,10 +17,15 @@ Status: started. The screens, how they are joined and the call are set.
 | Timeline | Everything of today in one stream, newest first |
 | Chat | The conversation with an assistant as text |
 
-- **A floating glass tab bar joins them,** with one tab for each. The
-  other areas, such as the clipboard, lists and settings, are reached
-  from the avatar. This is "Tab bar" on
+- **A floating glass tab bar joins them.** This is "Tab bar" on
   [the phone screens board](examples/phone-screens-board.html).
+- **A person chooses what is on the bar.** It has four buttons that the
+  person sets, and one fixed button at its end. The fixed button opens an
+  overview of every area: the lists, the clipboard, the settings and any
+  module added later. It is at the end in the direction of reading, so it
+  is on the other side in a language read from right to left. The designs
+  this came from are on
+  [the phone areas board](examples/phone-areas-board.html).
 - **A person chooses which screen the app opens on.**
 - **Talking to an assistant shows the whole figure by default.** The
   character stands on the screen, as on the tablet. See
@@ -45,6 +50,12 @@ Status: started. The screens, how they are joined and the call are set.
 
 ## Open questions
 
+- What does the overview of all areas look like, and how does a person
+  change the four buttons of the bar?
+- Which four are on the bar of a new person: Overview, the assistant,
+  Timeline and Chat?
+- Can any area be put on the bar, a single list such as Shopping
+  included?
 - How is the microphone muted on the full call screen, which has only
   Chat and End?
 - Is what is said also shown as a line of text on the full call screen?

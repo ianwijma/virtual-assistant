@@ -34,8 +34,19 @@ mockups.
   quiet.
 - **Focus is always visible,** as a ring in the accent, since the desktop
   is used with the keyboard.
-- **A component that waits for the server shows a loader,** and the rest
-  of the screen stays usable. See
+- **Waiting, empty and out of reach are shown as quietly as possible,**
+  the same way in every client:
+
+| State | What is shown |
+|---|---|
+| Waiting for the server | A thin line in the accent under the top bar. What was last known stays on screen |
+| Nothing in it | One sentence in secondary text where the content would be |
+| Home cannot be reached | A slim plain bar under the top bar that says so, with the time of the saved copy and a button to try again |
+
+- **The app stays usable while home cannot be reached.** It works from
+  its saved copy. What needs the server does not work, and the rest does.
+  This is "As quiet as possible" on
+  [the states board](examples/states-board.html). See
   [clients](../technical/clients/README.md).
 
 ## The examples
@@ -57,6 +68,10 @@ light and dark, built from [components.css](examples/components.css).
 ## Open questions
 
 - Agree to the example components as the base for the rest.
+- While home cannot be reached, how does a thing that needs the server
+  look: greyed out, hidden, or usable with the change sent later?
+- Does the waiting line show at once, or only after a wait of about a
+  second, so that a brief wait shows nothing?
 - Does a sheet also close by a touch on the dimmed area around it?
 - On a tablet read from across a room, is a card shown open and large
   from the start?

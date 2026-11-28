@@ -50,6 +50,39 @@ chosen yet.
 | Waiting | The server cannot be reached |
 | Not recognised | It heard a voice it does not know and will not answer it |
 
+## The routes for the first figures
+
+Research found three routes that fit the licence. None is chosen.
+
+| Route | Gains | Costs |
+|---|---|---|
+| Drawn parts in layers, moved by our own code in the shared core | No licence risk, the cheapest, anyone can make a figure with free tools | We write the rigging ourselves, and it looks basic |
+| A three-dimensional model in the VRM format, drawn by a small renderer of our own in the core | Ready-made expressions and mouth shapes, a free tool to make figures, one file | Graphics work in four clients, more power used on a tablet that is always on, each model's licence must be checked |
+| dotLottie animations with their state machines | A free runtime on every platform, one file | The tools to make them are not open, and moving the mouth with speech is clumsy |
+
+Live2D and Spine are ruled out: their licences do not fit GPLv3 and
+hardware that is sold. Rive's runtimes fit, but its editor is closed
+and paid, so a person could not make their own figure freely.
+
+## Verified and assumed
+
+Verified on 28 November 2026, from each project's own pages:
+
+- The Rive runtimes, dotlottie-rs and ThorVG are under the MIT licence.
+  Filament and SceneView are under Apache 2.0. wgpu and three-vrm are
+  under MIT or Apache 2.0.
+- Live2D needs a signed release licence, and Spine needs every user of
+  the product to hold an editor licence.
+- VRM 1.0 has presets for moods, for five mouth shapes, for blinking and
+  for where the eyes look.
+- About 7% of Android devices have no Vulkan.
+
+Assumed:
+
+- A renderer of our own for a model with blend shapes is a few thousand
+  lines, and Slint can show its output. Slint's interface for this is
+  marked unstable.
+
 ## Open questions
 
 - In which style are the full figures drawn, when they are redesigned
@@ -79,10 +112,10 @@ chosen yet.
 - Does a figure have a colour of its own, apart from the
   [accent](colour.md)?
 
+- From the research: which of the three routes above do the first
+  figures take?
+
 To research:
 
-- Whether a simple three-dimensional figure can be drawn and moved by
-  the reply tags in Slint, Jetpack Compose, SwiftUI and a browser, on an
-  old tablet as well, and from which kind of source file.
-- How each character is animated so that it runs in Slint, Jetpack
-  Compose, SwiftUI and a browser from one source.
+- How much power a three-dimensional figure uses on an old tablet that
+  is on all day. No figures were found.

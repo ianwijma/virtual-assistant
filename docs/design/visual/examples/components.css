@@ -23,9 +23,9 @@
 /* Backdrop: our own soft field of colour, taking the accent. */
 .backdrop {
   background:
-    radial-gradient(60% 70% at 10% 12%, color-mix(in srgb, var(--accent) var(--backdrop-1), transparent) 0, transparent 70%),
+    radial-gradient(60% 70% at 10% 12%, color-mix(in srgb, var(--backdrop-a, var(--accent)) var(--backdrop-1), transparent) 0, transparent 70%),
     radial-gradient(55% 65% at 94% 24%, color-mix(in srgb, var(--accent-2) var(--backdrop-1), transparent) 0, transparent 70%),
-    radial-gradient(70% 60% at 55% 108%, color-mix(in srgb, var(--accent) var(--backdrop-2), transparent) 0, transparent 70%),
+    radial-gradient(70% 60% at 55% 108%, color-mix(in srgb, var(--backdrop-a, var(--accent)) var(--backdrop-2), transparent) 0, transparent 70%),
     var(--bg);
 }
 /* A stand-in for a photo wallpaper or for the desktop behind the launcher. */
@@ -111,6 +111,9 @@
   border-radius: var(--r-full); background: var(--control); font: var(--type-caption); color: var(--text-2); white-space: nowrap; }
 .chip.accent { background: var(--accent-soft); color: var(--accent); }
 .chip.success { color: var(--success); } .chip.warning { color: var(--warning); } .chip.danger { color: var(--danger); }
+/* A coloured word never sits straight on glass: it sits in a solid chip. */
+.glass .chip.accent, .glass .chip.success, .glass .chip.warning, .glass .chip.danger,
+.glass-thick .chip.accent, .glass-thick .chip.success, .glass-thick .chip.warning, .glass-thick .chip.danger { background: var(--glass-solid); }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
 .kbd { font: var(--type-caption); color: var(--text-2); padding: 2px 6px; border-radius: var(--r-xs);
   background: var(--control); border: 1px solid var(--line); white-space: nowrap; }

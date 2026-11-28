@@ -283,3 +283,8 @@ are 25 November 2026 unless a section says otherwise.
 | 256 | The list of requests shows a small strip of steps in each row, and one request shows its steps as bars in time | [admin panel](design/visual/admin-panel.md) |
 | 257 | The first-run setup has its steps across the top and takes Apple's first setup as its example | [admin panel](design/visual/admin-panel.md) |
 | 258 | The first-run setup is a welcome and then one centred pane per step, after Apple's setup, with five dots across the top | [admin panel](design/visual/admin-panel.md) |
+| 259 | Text on glass is kept readable with thin glass: firmer secondary text, coloured words in solid chips, and Graphite's backdrop from its grey | [glass](design/visual/glass.md) |
+| 260 | The settings of a desktop device are a view of the launcher, opened from it, and laid out like the admin panel | [desktop](design/visual/desktop.md) |
+| 261 | The phone's bar has four buttons a person sets and one fixed button at its end that opens an overview of every area | [phone](design/visual/phone.md) |
+| 262 | Waiting, empty and out of reach are shown as quietly as possible, and the app stays usable from its saved copy | [components](design/visual/components.md) |
+| 263 | What opens grows from what was touched, and what is on both screens stays and moves into place | [motion](design/visual/motion.md) |

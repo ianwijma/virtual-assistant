@@ -26,7 +26,7 @@ Status: a first set. The values are tried out in
 | `surface` | White at 62% | `#17191E` at 55% | Plain content: lists, logs, text. It lets a little of the backdrop through and has no blur |
 | `surface-2` | `#F4F5F7` | `#1E2127` | A plain area inside plain content |
 | `text` | `#14161A` | `#F2F4F7` | Primary text |
-| `text-2` | `text` at 64% | `text` at 66% | Secondary text |
+| `text-2` | `text` at 80% | `text` at 82% | Secondary text |
 | `text-3` | `text` at 42% | `text` at 40% | Disabled text and placeholders |
 | `line` | Black at 10% | White at 10% | Dividers and borders |
 
@@ -115,18 +115,21 @@ Verified on 28 November 2026, by calculation:
   `bg` and `surface`, and `text-2` on `bg` all have a contrast of at
   least 4.5 to 1, in light and in dark.
 
+- Text on glass was measured too. The outcome is in [glass](glass.md).
+- The Design Tokens format of the W3C community group reached its first
+  stable version, 2025.10, in October 2025, and its resolver module can
+  hold a light and a dark value for one token. Style Dictionary, under
+  the Apache 2.0 licence, has no output for Slint.
+
 Assumed, needing a check on real screens:
 
-- Text on glass keeps that contrast over the strongest backdrop, over a
-  photo wallpaper, and in the launcher over a busy desktop. The chosen
-  glass is thin, so this needs measuring, and the glass may need to
-  thicken where text sits on it.
+- Text on glass over a photo wallpaper stays readable.
 
 ## Open questions
 
-- In which format is the source of the tokens kept in the repository,
-  and which tool generates the four themes from it? The Design Tokens
-  format of the W3C community group is a candidate. This is research
-  still to do.
+- From the research: the source of the tokens is kept in the Design
+  Tokens format of the W3C community group, and a small build step of our
+  own in Rust generates the four themes from it, since no existing tool
+  writes Slint. Agree?
 - Agree to the first values, after seeing them in
   [the example components](examples/components.html) and the mockups.

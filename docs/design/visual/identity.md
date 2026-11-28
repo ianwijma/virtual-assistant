@@ -47,14 +47,20 @@ combined.
 - Who is the design for first: the power user at the desktop, or the
   whole household at a tablet, guests and children included? When a dense
   screen and a friendly screen conflict, which wins?
-- Is the name "Hearth"? It is the one name the owner chose from the
-  board. It is not yet checked for existing products, trade marks and
-  web addresses, and the working title stays until it is.
+- "Hearth", the name the owner chose from the board, carries a high
+  risk. Hearth Display sells a family display for the wall under that
+  name and is reported to hold a United States trade mark for it on
+  touchscreen devices and household software. Another self-hosted
+  household assistant, a Rust package and the obvious web addresses also
+  use the name. Is another name chosen? Of five quick alternatives,
+  "Inglenook" and "Ingle" showed no clash; neither is checked in a
+  register.
 - The glass drop is the faintest of the marks at the size of a small
   icon. Is it made bolder at small sizes, or does a solid form of it
   stand in there?
 
 To research:
 
-- Whether the chosen name is free to use: existing products, trade marks
-  and web addresses.
+- A search of the trade mark registers of the EU, the Benelux, the UK
+  and the US for the name that is chosen. The registers could not be
+  reached in the first check, which used other sources.
