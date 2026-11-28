@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is talking to an assistant one design at every width</title>
+<!--
+  Three answers to one question. The owner's rule: a design choice holds on
+  every client, and layout follows the width of the screen. Talking was drawn
+  as a call on the phone and as a stage on the tablet. Is it one design at every
+  width? The same moment is drawn in each answer: Juno has answered and shows a
+  timer card. Light, accent Tide for the screen, the figure Juno in Aurora.
+  Nothing here is decided. See ../phone.md, ../tablet.md and
+  ../assistant-visuals.md.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  h1 { font: var(--type-title); margin: 0 0 var(--s-3); }
+  .opt { margin-bottom: var(--s-3); }
+  .opt h2 { display: flex; align-items: center; gap: var(--s-3); font: var(--type-heading); margin: 0 0 2px; }
+  .opt .letter { font: 700 36px/1 var(--font-sans); letter-spacing: -.02em; }
+  .opt p.d { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-2); }
+  .set { display: flex; gap: 24px; align-items: flex-start; }
+  .grp { display: flex; gap: 16px; align-items: flex-start; }
+  .stack { display: flex; flex-direction: column; gap: 8px; }
+  .cell .t-caption { display: block; height: 18px; }
+  .small-wrap { overflow: hidden; border-radius: 17px; }
+  .small-wrap > .frame { transform-origin: top left; }
+
+  .frame { position: relative; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-3); background-color: var(--bg); color: var(--text); }
+  .frame > * { position: absolute; }
+  .glow { border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 50%, transparent), transparent); }
+  .cx { left: 0; right: 0; margin: 0 auto; width: max-content; }
+  .top-id { left: 0; right: 0; text-align: center; }
+  .nm { font: var(--type-body-strong); line-height: 18px; }
+  .st { display: flex; align-items: center; justify-content: center; gap: 6px; font: var(--type-caption); color: var(--text-2); }
+  .st .dot { color: var(--accent); width: 6px; height: 6px; }
+  .rb { border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .rb.end { background: var(--danger); color: var(--on-accent); border: 0; }
+  .ctl { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .cap { font: var(--type-caption); color: var(--text-2); }
+  .ctls { left: 0; right: 0; display: flex; justify-content: center; gap: 34px; }
+  .handle { width: 32px; height: 4px; border-radius: var(--r-full); background: var(--text-3); align-self: center; flex: none; }
+  .sheet { display: flex; flex-direction: column; gap: 6px; padding: 6px 10px 8px; border-radius: var(--r-xl); }
+  .reply { font: 500 12px/16px var(--font-sans); }
+  .tcard { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 8px 6px 12px; border-radius: var(--r-md); }
+  .tcard .lab { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+  .tcard .tm { font: 600 22px/24px var(--font-sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .tcard .btn { height: 30px; padding: 0 var(--s-3); font-size: 12px; border-radius: var(--r-sm); }
+  .bubble { align-self: flex-start; padding: 6px 10px; font: 12px/16px var(--font-sans); border-radius: var(--r-md); max-width: 88%; }
+  .lcol { left: 0; top: 0; bottom: 0; width: 190px; display: flex; flex-direction: column; align-items: center; padding: 12px 0 8px; }
+  .lcol .figure { margin-top: 10px; }
+  .lcol .ctls { position: static; margin-top: auto; gap: 26px; }
+  .rcol { left: 196px; right: 12px; top: 12px; bottom: 12px; padding: 12px; display: flex; flex-direction: column; gap: 6px; border-radius: var(--r-xl); }
+  .rcol .t-caption { height: auto; }
+  .rcol .field { height: 32px; font-size: 12px; padding: 0 var(--s-3); margin-top: auto; }
+  .rcol .send { margin-left: auto; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; flex: none; }
+  .auto { margin-top: auto; align-self: flex-start; }
+  .push { margin-top: auto; align-self: flex-start; }
+  .hrow { display: flex; align-items: center; gap: 10px; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+<h1>Is talking to an assistant one design at every width?</h1>
+<div id="page"></div>
+</div>
+<script>
+  var CHAT = '<path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/>';
+  var X = '<path d="M200 56L56 200M200 200L56 56" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>';
+  var UP = '<path d="M128 216V40M56 112l72-72 72 72" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>';
+  function ic(inner, s) { return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">' + inner + '</svg>'; }
+
+  var ASK = 'How long is left on the pasta timer?';
+  var SAY = 'The pasta timer has 7 minutes left';
+
+  function frame(w, h, r, inner) {
+    return '<div class="frame backdrop light accent-tide" style="width:' + w + 'px;height:' + h + 'px;border-radius:' + r + 'px">' + inner + '</div>';
+  }
+  function glow(s, st) { return '<div class="glow" style="width:' + s + 'px;height:' + s + 'px;' + st + '"></div>'; }
+  function fig(head, top) {
+    return '<span class="figure accent-aurora cx" style="--size:' + head + 'px;top:' + top + 'px"><span class="character" style="--size:' + head + 'px"></span></span>';
+  }
+  function figIn(head) {
+    return '<span class="figure accent-aurora" style="--size:' + head + 'px"><span class="character" style="--size:' + head + 'px"></span></span>';
+  }
+  function ident(top, extra) {
+    return '<div class="top-id" style="top:' + top + 'px;' + (extra || '') + '"><div class="nm">Juno</div><div class="st"><span class="dot"></span>Speaking</div></div>';
+  }
+  function ident2() {
+    return '<div><div class="nm" style="text-align:center">Juno</div><div class="st"><span class="dot"></span>Speaking</div></div>';
+  }
+  function rb(kind, size, withCap) {
+    var end = kind === 'End';
+    return '<span class="ctl"><span class="rb ' + (end ? 'end' : 'glass') + '" style="width:' + size + 'px;height:' + size + 'px">' +
+      ic(end ? X : CHAT, Math.round(size * .5)) + '</span>' + (withCap ? '<span class="cap">' + kind + '</span>' : '') + '</span>';
+  }
+  function buttons(size, st) {
+    return '<div class="ctls" style="' + (st || '') + '">' + rb('Chat', size, 1) + rb('End', size, 1) + '</div>';
+  }
+  function card(tm) {
+    return '<div class="surface tcard"><div><div class="lab">Pasta timer</div><div class="tm" style="font-size:' + (tm || 22) + 'px;line-height:' + ((tm || 22) + 2) + 'px">07:42</div></div><span class="btn btn-primary">Stop</span></div>';
+  }
+  function sheet(st, textSize) {
+    return '<div class="glass-thick sheet" style="left:10px;right:10px;' + st + '"><span class="handle"></span><div class="reply" style="font-size:' + (textSize || 12) + 'px;line-height:' + ((textSize || 12) + 4) + 'px">' + SAY + '</div>' + card() + '</div>';
+  }
+
+  /* The phone's call, at two widths */
+  function callNarrow() {
+    return frame(190, 380, 28,
+      glow(250, 'left:-30px;top:20px') + ident(12) + fig(64, 50) + sheet('top:178px;height:124px') + buttons(40, 'bottom:12px;gap:24px'));
+  }
+  function callMedium() {
+    return frame(330, 380, 32,
+      glow(380, 'left:-25px;top:10px') + ident(14) + fig(92, 50) + sheet('top:206px;height:96px;left:16px;right:16px', 13) + buttons(44, 'bottom:12px;gap:34px'));
+  }
+  /* The call stretched sideways on a phone (drawn at 520 x 240 and shrunk) */
+  function callSide() {
+    return frame(520, 240, 28,
+      glow(380, 'left:70px;top:-60px') + ident(8) + fig(52, 40) +
+      '<div class="glass-thick sheet" style="left:80px;right:80px;top:140px;height:52px;flex-direction:row;align-items:center;gap:16px;padding:6px 12px"><div class="reply" style="font-size:13px;line-height:18px;flex:1">' + SAY + '</div><div class="surface tcard" style="gap:16px">' +
+      '<div class="tm" style="font:600 20px/22px var(--font-sans);font-variant-numeric:tabular-nums">07:42</div><span class="btn btn-primary">Stop</span></div></div>' +
+      buttons(30, 'bottom:4px;gap:34px'));
+  }
+  /* The stage: the call opened out. controls: Chat, End and the field */
+  function stage(controls, closes) {
+    var col = '<div class="bubble me" style="align-self:flex-end">' + ASK + '</div>' +
+      '<div class="bubble">' + SAY + '</div>' + card(20) +
+      (controls ? '<div class="field"><span class="ph">Message Juno</span><span class="send">' + ic(UP, 14) + '</span></div>' : '') +
+      (closes ? '<span class="chip push">Closes by itself</span>' : '');
+    return frame(520, 230, 28,
+      glow(300, 'left:-40px;top:-30px') +
+      '<div class="lcol">' + ident2() + figIn(62) + (controls ? buttons(34) : '') + '</div>' +
+      '<div class="glass rcol">' + col + '</div>');
+  }
+  /* The stage as the household tablet has it: dark-free, voice only */
+  function stageHousehold(closes) { return stage(false, closes); }
+
+  function scaled(inner, w, h, s) {
+    return '<div class="small-wrap" style="width:' + Math.round(w * s) + 'px;height:' + Math.round(h * s) + 'px"><div style="width:' + w + 'px;height:' + h + 'px;transform:scale(' + s + ');transform-origin:top left">' + inner + '</div></div>';
+  }
+  function cell(cap, html) { return '<div class="cell"><span class="t-caption">' + cap + '</span>' + html + '</div>'; }
+
+  var S = .56;
+  var opts = [
+    ['v-a', 'A', 'One design that folds: the call',
+      'One design; the stage is the call on a wide screen. A household tablet gets Chat and End buttons and a field to type.',
+      '<div class="set"><div class="grp">' +
+        cell('Narrow &middot; 190', callNarrow()) + cell('Medium &middot; 330', callMedium()) + '</div>' +
+        '<div class="stack">' + cell('Wide &middot; 520, the call opened out', stage(true, false)) + '</div></div>'],
+    ['v-b', 'B', 'Two designs: call for a personal device, stage for a shared one',
+      'Each fits its use. It differs by client, which the rule asks to avoid, and a tablet with the phone app gets a different design from a household tablet of the same size.',
+      '<div class="set"><div class="grp">' +
+        cell('Narrow &middot; Personal phone', callNarrow()) + cell('Medium &middot; Personal phone', callMedium()) + '</div>' +
+        '<div class="stack">' + cell('Wide &middot; Household tablet', stageHousehold(true)) +
+        cell('Personal phone, held sideways', scaled(callSide(), 520, 240, S)) + '</div></div>'],
+    ['v-c', 'C', 'One design that folds, and a shared device hides the controls',
+      'One design; the kind of device only switches controls off. One more setting to explain.',
+      '<div class="set"><div class="grp">' +
+        cell('Narrow &middot; 190', callNarrow()) + cell('Medium &middot; 330', callMedium()) + '</div>' +
+        '<div class="stack">' + cell('Wide &middot; 520', stage(true, false)) +
+        cell('Wide, on a household device', scaled(stage(false, false), 520, 230, S)) + '</div></div>']
+  ];
+  document.getElementById('page').innerHTML = opts.map(function (o) {
+    return '<section class="opt" id="' + o[0] + '"><h2><span class="letter">' + o[1] + '</span>' + o[2] + '</h2><p class="d">' + o[3] + '</p>' + o[4] + '</section>';
+  }).join('');
+</script>
+</body>
+</html>

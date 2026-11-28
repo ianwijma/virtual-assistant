@@ -191,6 +191,10 @@ The boards in `examples/`:
 | [accent-picker-board.html](examples/accent-picker-board.html) | Three designs for choosing an accent, with the preview on four devices | Chosen from |
 | [saving-board.html](examples/saving-board.html) | A changed setting applied at once, with a Save button, or both | Chosen from |
 | [offline-actions-board.html](examples/offline-actions-board.html) | Four ways to show what needs the server while home cannot be reached | Chosen from |
+| [app-notification-board.html](examples/app-notification-board.html) | Three ways a notification appears inside the phone and tablet app | Waiting for a choice |
+| [all-areas-board.html](examples/all-areas-board.html) | The overview of all areas on a narrow screen, a wide screen and in the launcher | Waiting for a choice |
+| [stage-call-board.html](examples/stage-call-board.html) | Talking to an assistant as one design at every width, or as two | Waiting for a choice |
+| [white-board.html](examples/white-board.html) | Four whites for the plain surfaces in light | Waiting for a choice |
 
 No board is waiting to be made. New ones are added here as subjects come
 up.
