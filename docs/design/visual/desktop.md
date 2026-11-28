@@ -18,7 +18,12 @@ settings are set.
   only. These are "Wide with a preview" and "Classic window" on
   [the launcher layout board](examples/launcher-layout-board.html).
 - **Under the search field is a row of chips:** the person's four areas
-  and "All". See [the visual design](README.md).
+  and "All". A chip opens its area. Tab moves to the next chip and Shift
+  with Tab to the one before, and the launcher can be opened straight
+  into an area with a shortcut of that area.
+- **A shortcut is always two or more keys together,** such as Ctrl,
+  Shift and N. A single letter cannot be a shortcut, since it would be
+  typed into the search field. See [the visual design](README.md).
 - **Before anything is typed the launcher lists every action.** What is
   running now is on top, such as a timer. Under it are all the actions
   there are, ordered by how often they are used. Suggestions that follow
@@ -63,15 +68,17 @@ settings are set.
   state of the connection, and quit.
 - **In the settings Esc first clears a search,** and then returns to the
   list.
-- **A notification on the desktop can be answered from the keyboard.**
+- **A notification on the desktop can be answered from the keyboard.** A
+  shortcut moves the keyboard to the newest card.
 - **A question from an assistant stays on screen until it is answered or
   dismissed.**
 - **The order of the actions follows this person's own use.**
 
 ## Open questions
 
-- Does a chip under the search field open its area, or filter the list
-  to it?
-- How do the keys reach a notification while another window has the
-  keyboard: a shortcut that moves to the newest card?
+- Tab moves between the chips, and Tab also starts a talk with the
+  assistant by default. Which of the two does Tab do, and what does the
+  other get?
+- Once the keyboard is on a notification, which keys answer it, now that
+  a single letter is not a shortcut: the arrow keys and Enter?
 

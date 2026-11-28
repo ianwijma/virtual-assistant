@@ -31,13 +31,16 @@ Status: started. The idle screen and the active screen are set.
   may also be set per device.
 - **When an assistant is active it stands on a stage.** See
   [assistant visuals](assistant-visuals.md).
-- **In the dark the tablet follows the light in the room.** When the
-  room is a little dark, or it is night, the photo is dimmed and the
-  figure sleeps. When the room is fully dark, only a dim clock is shown.
+- **In the dark the tablet follows the light in the room, on one
+  screen.** The darker the room, the darker the same idle screen
+  becomes: the photo is dimmed and the figure sleeps, and when the room
+  is fully dark everything is black except the clock. The clock is
+  always shown. It is one screen whose parts change, so the change is
+  smooth.
   This can be set per tablet. These are the two night screens on
   [the idle figures board](examples/idle-figures-board.html).
-- **In low-power mode the screen is black** with a dim clock and no
-  glass. See [glass](glass.md).
+- **Low-power mode is that same screen at its darkest:** black, with a
+  dim clock and no glass. See [glass](glass.md).
 - **Text is sized to be read from across a room.**
 - The designs these came from are on
   [the tablet idle board](examples/tablet-idle-board.html) and
@@ -58,8 +61,6 @@ Status: started. The idle screen and the active screen are set.
 
 ## Open questions
 
-- Are the clock-only screen of a dark room and the low-power screen one
-  and the same screen?
 - Where does the bar for "home cannot be reached" go on a tablet, which
   has no top bar?
 - On a household tablet, what marks the pinned areas as set by an admin:

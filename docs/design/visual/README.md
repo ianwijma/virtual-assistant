@@ -38,8 +38,8 @@ One look for every screen the system has:
   Every screen is responsive. A narrow screen shows one column at a
   time, a wider one two, and a wide one three. The three levels are the
   same at every width, and a screen shows as many as fit: with two
-  columns, going into the third level moves the first out of view until
-  the person goes a step back, and with one column each level takes the
+  columns, going into the third level turns the first into a rail of
+  icons, and with one column each level takes the
   screen in turn. A browser window that is
   made narrow, or the phone app on a tablet, gets the layout of its
   width. This is "The layout follows the width" on
@@ -152,7 +152,7 @@ everywhere is written in the file of its subject, such as
    use. See [components](components.md).
 4. **Low-fidelity mockups** of each client. They show layout and content,
    not polish, so that an agent can combine them with the design language.
-   A first set exists, as proposals. See [mockups](mockups/README.md).
+   The five are agreed. See [mockups](mockups/README.md).
 
 ## How the work is done
 
@@ -253,9 +253,6 @@ up.
 
 ## Open questions
 
-- With two columns, is anything of the first level kept in view, such as
-  a rail of icons, or is it gone until the person steps back? The
-  decision says gone; the width board drew a rail.
 
 Each subject's questions are in its own document.
 

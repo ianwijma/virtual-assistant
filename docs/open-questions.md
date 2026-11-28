@@ -323,23 +323,19 @@ detail.
 
 ### The clients
 
-41. With two columns, is anything of the first level kept in view, such
-   as a rail of icons, or is it gone until the person steps back? The
-   decision says gone; the width board drew a rail. Each subject's
-   questions are in its own document. [visual]
-42. Does a chip under the search field open its area, or filter the list
-   to it? [visual desktop]
-43. How do the keys reach a notification while another window has the
-   keyboard: a shortcut that moves to the newest card? [visual desktop]
-44. Are the clock-only screen of a dark room and the low-power screen
-   one and the same screen? [visual tablet]
-45. Where does the bar for "home cannot be reached" go on a tablet,
+41. Tab moves between the chips, and Tab also starts a talk with the
+   assistant by default. Which of the two does Tab do, and what does the
+   other get? [visual desktop]
+42. Once the keyboard is on a notification, which keys answer it, now
+   that a single letter is not a shortcut: the arrow keys and Enter?
+   [visual desktop]
+43. Where does the bar for "home cannot be reached" go on a tablet,
    which has no top bar? [visual tablet]
-46. On a household tablet, what marks the pinned areas as set by an
+44. On a household tablet, what marks the pinned areas as set by an
    admin: a small lock in place of the pencil? [visual tablet]
-47. Where on the page is the way to reset how it was set up? [visual
+45. Where on the page is the way to reset how it was set up? [visual
    voice page]
-48. On the stage, does Chat move to the field to type and stay on the
+46. On the stage, does Chat move to the field to type and stay on the
    stage? [visual voice page]
 
 ### The mockups
@@ -349,16 +345,16 @@ detail.
 
 An agent does this work and the owner agrees to the outcome.
 
-49. A search of the trade mark registers of the EU, the Benelux, the UK
+47. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-50. How fast the blur is on an old tablet and in the launcher, measured
+48. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-51. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+49. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-52. How much power a three-dimensional figure uses on an old tablet that
+50. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

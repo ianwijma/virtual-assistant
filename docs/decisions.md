@@ -421,7 +421,7 @@ are 25 November 2026 unless a section says otherwise.
 | 394 | The sounds are plain tones for now and are replaced later | [motion](design/visual/motion.md) |
 | 395 | When two people changed the same thing the first change stands, and the second person gets an error | [components](design/visual/components.md) |
 | 396 | Notifications are ordered by kind and then by age | [visual](design/visual/README.md) |
-| 397 | The three levels are the same at every width, and a screen shows as many as fit, moving the first out of view when the third is entered | [visual](design/visual/README.md) |
+| 397 | The three levels are the same at every width, and a screen shows as many as fit, turning the first into a rail of icons when the third is entered | [visual](design/visual/README.md) |
 | 398 | The designs are drawn and checked at a phone of 390, a tablet of 1280 by 800, a laptop of 1440 by 900 and a monitor of 2560 by 1440 | [visual](design/visual/README.md) |
 | 399 | The desktop settings ask before closing with unsaved changes | [desktop](design/visual/desktop.md) |
 | 400 | The launcher window grows smoothly between a plain list and a list with a preview | [desktop](design/visual/desktop.md) |
@@ -436,3 +436,7 @@ are 25 November 2026 unless a section says otherwise.
 | 409 | The example components are agreed as the base for the rest | [components](design/visual/components.md) |
 | 410 | How long an asked-for card stays large, and whether the idle figure changes by itself, are set for the household, and a device can differ | [components](design/visual/components.md) |
 | 411 | The five mockups are agreed as the layouts to build from, apart from what their notes mark as not decided | [mockups](design/visual/mockups/README.md) |
+| 412 | A chip in the launcher opens its area, Tab moves between the chips, and an area can have a shortcut that opens the launcher in it | [desktop](design/visual/desktop.md) |
+| 413 | A shortcut is always two or more keys together, never a single letter | [desktop](design/visual/desktop.md) |
+| 414 | A shortcut moves the keyboard to the newest notification on the desktop | [desktop](design/visual/desktop.md) |
+| 415 | The dark, the fully dark and the low-power state of a tablet are one screen that darkens, on which the clock is always shown | [tablet](design/visual/tablet.md) |
