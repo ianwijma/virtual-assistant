@@ -22,6 +22,10 @@ mockups.
   lines of text and one or two small buttons, and several are shown as a
   list, one under another. This is "Row cards" on
   [the card board](examples/card-board.html).
+- **A card that was asked for shows large for a moment.** When a person
+  asks for something, such as a timer, its card is shown larger for a
+  short time and then returns to its small form. A card is small
+  otherwise, on a tablet as well.
 - **A touch on a card lifts it into a sheet.** The card rises out of its
   place into a larger glass card over the rest of the screen, which is
   dimmed, like a modal. The sheet floats over the middle of the list and has a
@@ -101,8 +105,8 @@ light and dark, built from [components.css](examples/components.css).
   or only in an advanced or debug mode?
 - Does a sheet with unsaved input ask before it closes by a touch
   outside it?
-- On a tablet read from across a room, is a card shown open and large
-  from the start?
+- How long does a card that was asked for stay large, and is the large
+  form the same as the sheet a touch opens?
 - Which components come next? The proposal is the ones the mockups need:
   the launcher's search and results, a sheet, a menu, the tab bar and the
   side bar, a table for logs, the chat, and each card of the A2UI

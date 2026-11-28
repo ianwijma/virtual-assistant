@@ -27,6 +27,9 @@ Status: started. The idle screen and the active screen are set.
 - **The figure lives on the idle screen.** There is no written hint of
   how to call it, since a tablet can have several assistants, each with
   its own wake word.
+- **The conversation closes after 20 to 30 seconds without speech,** and
+  the idle screen returns. The time is set for the whole server, and
+  may also be set per device.
 - **When an assistant is active it stands on a stage.** See
   [assistant visuals](assistant-visuals.md).
 - **In the dark the tablet follows the light in the room.** When the
@@ -51,5 +54,5 @@ Status: started. The idle screen and the active screen are set.
   the time of day, by its camera, or does a person set the hours?
 - What can be set for the dark on a tablet: only which of the two
   screens is used, or also the hours and how dim it is?
-- After how long without speech does the stage close and the idle screen
-  return?
+- Is the time before a conversation closes 20 or 30 seconds at first?
+- Does the character show that the conversation is about to close?

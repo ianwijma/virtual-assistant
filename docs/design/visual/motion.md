@@ -31,6 +31,16 @@ Status: started. The character of the motion is set. Sound is open.
   80 ms. It is drawn and takes typing at once; the animation does not
   delay it. See [desktop](../technical/clients/desktop.md).
 
+## Sound and vibration
+
+- **Feedback is visual first.** What happens is shown on the screen, so
+  that talking to an assistant feels like a conversation and not like
+  operating a machine.
+- **There is a small set of sounds of our own,** such as a tone when an
+  assistant starts to listen. They are off unless switched on.
+- **The phone can vibrate as part of the feel.** This is off unless
+  switched on.
+
 ## The timings
 
 | Token | Value | Used for |
@@ -45,9 +55,11 @@ In reduced motion every timing is at most a 100 ms fade.
 
 ## Open questions
 
-- Are sounds part of the identity, such as a tone when an assistant
-  starts listening or a timer ends?
-- Does the phone use vibration as part of the feel?
+- Is the sound of a timer or an alarm that ends also off unless switched
+  on, or is it the one sound that is always on?
+- Which sounds are in the set, and who makes them?
+- Where are sounds and vibration switched on: per device, per person,
+  or for the household?
 - Where a toolkit cannot grow a new page out of the thing that was
   touched, what is shown: the sheet rising from below, or a plain fade?
 - Does everything that opens end with the light overshoot, or only

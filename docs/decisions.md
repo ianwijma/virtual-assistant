@@ -332,3 +332,6 @@ are 25 November 2026 unless a section says otherwise.
 | 305 | The backdrop reacts to the assistant with a movement for each state and with the sound of the voice | [glass](design/visual/glass.md) |
 | 306 | A person without a photo shows their initial in the ring | [colour](design/visual/colour.md) |
 | 307 | Every device has a setting for light and dark, and a phone and a desktop start on following the device | [colour](design/visual/colour.md) |
+| 308 | Feedback is visual first; our own sounds and the phone's vibration exist and are off unless switched on | [motion](design/visual/motion.md) |
+| 309 | A card is small by default and shows large for a moment when it was asked for | [components](design/visual/components.md) |
+| 310 | A conversation on a household device closes after 20 to 30 seconds without speech, set for the server and possibly per device | [tablet](design/visual/tablet.md) |
