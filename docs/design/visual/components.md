@@ -70,6 +70,8 @@ mockups.
   sent when home is back. An assistant that is opened says in one line
   that it cannot reach home. This is "Usable, sent later" on
   [the offline actions board](examples/offline-actions-board.html).
+- **When two people changed the same thing, the first change stands.**
+  The second person is told that someone else changed it, as an error.
 - **The app stays usable while home cannot be reached.** It works from
   its saved copy. What needs the server does not work, and the rest does.
   This is "As quiet as possible" on
@@ -108,5 +110,3 @@ light and dark, built from [components.css](examples/components.css).
 ## Open questions
 
 - Agree to the example components as the base for the rest.
-- When two devices changed the same thing while one was out of reach,
-  which change wins, and is the person told?

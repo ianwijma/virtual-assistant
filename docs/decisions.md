@@ -417,3 +417,7 @@ are 25 November 2026 unless a section says otherwise.
 | 390 | The sounds of a conversation are off unless switched on, and every other sound, such as a timer ending, is on unless switched off | [motion](design/visual/motion.md) |
 | 391 | No colour is avoided and no check for colour-blindness is made | [colour](design/visual/colour.md) |
 | 392 | There are no illustrations apart from the character | [shape and spacing](design/visual/shape-and-spacing.md) |
+| 393 | English is the first language, and a language read from right to left is probably next | [typography](design/visual/typography.md) |
+| 394 | The sounds are plain tones for now and are replaced later | [motion](design/visual/motion.md) |
+| 395 | When two people changed the same thing the first change stands, and the second person gets an error | [components](design/visual/components.md) |
+| 396 | Notifications are ordered by kind and then by age | [visual](design/visual/README.md) |

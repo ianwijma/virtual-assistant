@@ -62,7 +62,8 @@ One look for every screen the system has:
 - **A notification is the same card, placed by the width of the
   screen.** This follows the width and not the kind of device. On a wide screen it is a glass card at the top right, and
   several stack downward. On a narrow screen it enters the top of the
-  Overview's list, which runs from the most important to the least.
+  Overview's list, which runs from the most important to the least: first what needs an
+  answer, then what is running now, then the rest, newest first.
   These are the tablet of "The same stack, at the top" and the phone of
   "Into the Overview" on
   [the app notification board](examples/app-notification-board.html).
@@ -242,8 +243,6 @@ up.
 
 Each subject's questions are in its own document.
 
-- What makes one notification more important than another in the
-  Overview's list: its kind, its age, or what a person set?
 - In two columns, do the destinations become a rail of icons, as on the
   board?
 - Which devices are the references for the designs: which phone, which

@@ -292,91 +292,86 @@ detail.
 
 ### Typography
 
-31. Which languages and scripts must be covered later, beyond what Inter
-   covers? [typography]
+31. Which language read from right to left comes first, and which
+   typeface covers its script? [typography]
 
 ### Shape, spacing and icons
 
 
 ### Motion and sound
 
-32. Which sounds are in the set, and who makes them? [motion]
 
 ### Tokens and components
 
-33. Agree to the first values, after seeing them in the example
+32. Agree to the first values, after seeing them in the example
    components and the mockups. [tokens]
-34. Agree to the example components as the base for the rest.
+33. Agree to the example components as the base for the rest.
    [components]
-35. When two devices changed the same thing while one was out of reach,
-   which change wins, and is the person told? [components]
 
 ### Assistant visuals
 
-36. In which style are the full figures drawn, when they are redesigned
+34. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-37. Does a figure have a mouth that moves when it talks, and arms? Both
+35. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-38. Is the figure of the first release a rendered three-dimensional one,
+36. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-39. How much more room does a screen keep for a later figure: how much
+37. How much more room does a screen keep for a later figure: how much
    wider and taller than the figure for now? [assistant visuals]
-40. Who draws the figures, and how many are there in the first release?
+38. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-41. How does a person give their own assistant a look: by choosing from
+39. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-42. How playful is the default household assistant: cute, friendly, or
+40. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-43. May a person bring their own figure, such as a character they like
+41. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-44. From the research: which of the three routes above do the first
+42. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-45. What makes one notification more important than another in the
-   Overview's list: its kind, its age, or what a person set? [visual]
-46. In two columns, do the destinations become a rail of icons, as on
+43. In two columns, do the destinations become a rail of icons, as on
    the board? [visual]
-47. Which devices are the references for the designs: which phone, which
+44. Which devices are the references for the designs: which phone, which
    tablet, which monitor size? [visual]
-48. Are settings screens generated from each feature's description, so
+45. Are settings screens generated from each feature's description, so
    that one definition serves the phone app, the desktop client and the
    admin panel? A2UI makes this possible, but one solution may not suit
    every device. This is decided once there are visual designs of the
    app and the admin panel. [visual]
-49. When the settings close by a click elsewhere with unsaved changes,
+46. When the settings close by a click elsewhere with unsaved changes,
    are they kept for when the launcher is opened again, or is the person
    asked? [visual desktop]
-50. Which views of the launcher have a preview, and which are a list
+47. Which views of the launcher have a preview, and which are a list
    only? [visual desktop]
-51. Does the window change size when it goes from a list to a list with
+48. Does the window change size when it goes from a list to a list with
    a preview, or is it always the wide size? [visual desktop]
-52. Does the line of text also show what the person says, or only what
+49. Does the line of text also show what the person says, or only what
    the assistant says? [visual phone]
-53. Which languages does the welcome show, and in which is the setup
+50. Which languages does the welcome show, and in which is the setup
    offered at first? [visual admin panel]
 
 ### The mockups
 
-54. Agree to each mockup, or say what to change in it. [mockups]
+51. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-55. A search of the trade mark registers of the EU, the Benelux, the UK
+52. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-56. How fast the blur is on an old tablet and in the launcher, measured
+53. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-57. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+54. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-58. How much power a three-dimensional figure uses on an old tablet that
+55. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
