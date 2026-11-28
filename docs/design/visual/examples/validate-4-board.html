@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To approve, group 4</title>
+<!--
+  Eleven small decisions (373 to 383) to approve, each drawn at a glance.
+  Light, screen accent Tide, the character Juno in Aurora. The owner approves
+  or changes each one. Nothing here is final until approved.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 4px; }
+  h1 { font: var(--type-title); margin: 0 0 var(--s-3); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .tile { position: relative; height: 262px; padding: 12px; border-radius: var(--r-lg); display: flex; flex-direction: column; gap: 8px; }
+  .tile h2 { display: flex; align-items: center; gap: 10px; font: var(--type-heading); min-height: 40px; }
+  .badge { flex: none; min-width: 46px; height: 32px; padding: 0 8px; border-radius: var(--r-md); display: grid; place-items: center;
+    background: var(--accent); color: var(--on-accent); font: 700 17px/1 var(--font-sans); letter-spacing: -.02em; }
+  .art { position: relative; flex: none; height: 164px; }
+  .cap { font: var(--type-caption); color: var(--text-2); text-align: center; height: 14px; }
+  .mf { position: absolute; overflow: hidden; border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow-1); }
+  .mf > * { position: absolute; }
+  .ab { position: absolute; }
+  .cxm { left: 0; right: 0; margin: 0 auto; width: max-content; }
+  .rb { border-radius: 50%; display: grid; place-items: center; }
+  .rb.end { background: var(--danger); color: var(--on-accent); }
+  .arrow { position: absolute; display: grid; place-items: center; color: var(--text-2); }
+  .tapring { position: absolute; border-radius: 50%; border: 2px solid var(--accent); background: var(--accent-soft); }
+  .clock { font: 600 20px/1 var(--font-sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .shelf { left: 5px; right: 5px; bottom: 5px; height: 15px; border-radius: 8px; }
+  .dots { display: flex; gap: 3px; align-items: center; }
+  .dots i { width: 4px; height: 4px; border-radius: 50%; background: var(--text-3); }
+  .dots i.on { background: var(--accent); }
+  .dots.big { gap: 7px; }
+  .dots.big i { width: 10px; height: 10px; }
+  .sm { font: 500 10px/12px var(--font-sans); }
+  .xs { font: 500 8px/10px var(--font-sans); }
+  .lang { position: absolute; font-weight: 600; letter-spacing: -.02em; color: var(--text-3); opacity: .8; white-space: nowrap; }
+  .eyes-half .character::before, .eyes-half .character::after { height: 7%; top: 45%; border-radius: 0 0 50% 50%; }
+  .eyes-shut .character::before, .eyes-shut .character::after { height: 2%; top: 47%; border-radius: 2px; }
+  .eyes-shut { filter: brightness(.82) saturate(.7); }
+  .menu { padding: 4px; border-radius: var(--r-md); }
+  .menu div { display: flex; align-items: center; justify-content: space-between; height: 19px; padding: 0 7px; border-radius: 7px; font: 500 10px/1 var(--font-sans); }
+  .menu .on { background: var(--accent-soft); font-weight: 600; }
+  .url { left: 0; right: 0; top: 0; height: 15px; display: flex; align-items: center; gap: 3px; padding: 0 6px; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .url b { width: 4px; height: 4px; border-radius: 50%; background: var(--text-3); }
+  .url span { flex: 1; margin-left: 4px; height: 8px; border-radius: 4px; background: var(--control); font: 500 6px/8px var(--font-sans); color: var(--text-2); padding-left: 4px; }
+  .fld { height: 30px; flex: 1; justify-content: center; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .note { align-items: center; justify-content: center; text-align: center; border-style: dashed; background: transparent; box-shadow: none; }
+</style>
+</head>
+<body class="va">
+<div class="page">
+  <h1>To approve, group 4: call, tablet, setup, voice page</h1>
+  <div class="grid" id="grid"></div>
+</div>
+<script>
+  var P = {
+    mic: 'M128,176a48.05,48.05,0,0,0,48-48V64a48,48,0,0,0-96,0v64A48.05,48.05,0,0,0,128,176ZM96,64a32,32,0,0,1,64,0v64a32,32,0,0,1-64,0Zm40,143.6V240a8,8,0,0,1-16,0V207.6A80.11,80.11,0,0,1,48,128a8,8,0,0,1,16,0,64,64,0,0,0,128,0,8,8,0,0,1,16,0A80.11,80.11,0,0,1,136,207.6Z',
+    chat: 'M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z',
+    end: 'M146.34,98.34,164.69,80,146.34,61.66a8,8,0,0,1,11.32-11.32L176,68.69l18.34-18.35a8,8,0,0,1,11.32,11.32L187.32,80l18.34,18.34a8,8,0,0,1-11.32,11.32L176,91.31l-18.34,18.35a8,8,0,0,1-11.32-11.32Zm77.54,84.74A56.26,56.26,0,0,1,168,232C88.6,232,24,167.4,24,88A56.26,56.26,0,0,1,72.92,32.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,109.39,104c-.18.27-.37.52-.57.77L88,129.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,223.88,183.08Zm-15.88-2s-.07,0-.11,0h0l-47-21.05-24.35,20.71a8.44,8.44,0,0,1-.74.56,16,16,0,0,1-15.75,1.14c-18.73-9.05-37.4-27.58-46.46-46.11a16,16,0,0,1,1-15.7,6.13,6.13,0,0,1,.57-.77L96,95.15l-21-47a.61.61,0,0,1,0-.12A40.2,40.2,0,0,0,40,88,128.14,128.14,0,0,0,168,216,40.21,40.21,0,0,0,208,181.07Z',
+    cc: 'M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,144H32V64H224V192ZM118.92,151.71A8,8,0,0,1,116,162.64a40,40,0,1,1,0-69.28,8,8,0,1,1-8,13.85,24,24,0,1,0,0,41.58A8,8,0,0,1,118.92,151.71Zm80,0A8,8,0,0,1,196,162.64a40,40,0,1,1,0-69.28,8,8,0,1,1-8,13.85,24,24,0,1,0,0,41.58A8,8,0,0,1,198.92,151.71Z',
+    right: 'M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z',
+    down: 'M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z',
+    caret: 'M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z',
+    check: 'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z'
+  };
+  function ic(k, s) { return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="' + P[k] + '"/></svg>'; }
+  function arrow(k, x, y, s) { return '<span class="arrow" style="left:' + x + 'px;top:' + y + 'px;width:' + s + 'px;height:' + s + 'px">' + ic(k, s) + '</span>'; }
+  function fig(head, acc, st, chr) {
+    return '<span class="figure ' + acc + '" style="--size:' + head + 'px;' + st + '"><span class="character" style="--size:' + head + 'px;' + (chr || '') + '"></span></span>';
+  }
+  function head(size, acc, cls, st) {
+    return '<span class="' + cls + '" style="display:inline-flex;' + st + '"><span class="character ' + acc + '" style="--size:' + size + 'px"></span></span>';
+  }
+  function scr(cls, st, inner) { return '<div class="mf backdrop light accent-tide ' + cls + '" style="' + st + '">' + inner + '</div>'; }
+  function wall(st, inner) { return '<div class="mf wallpaper light accent-tide" style="' + st + '">' + inner + '</div>'; }
+  function rb(k, s, st) { return '<span class="rb ' + (k === 'end' ? 'end' : 'glass') + '" style="width:' + s + 'px;height:' + s + 'px;' + st + '">' + ic(k, Math.round(s * .5)) + '</span>'; }
+
+  // A tablet at rest: clock, shelf, one figure, dots.
+  function idle(st, o) {
+    o = o || {};
+    var dots = '<span class="ab dots" style="right:12px;bottom:10px">' + (o.dots || [1, 0, 0]).map(function (d) { return '<i class="' + (d ? 'on' : '') + '"></i>'; }).join('') + '</span>';
+    return wall(st,
+      '<span class="clock" style="left:' + (o.cl || 10) + 'px;top:' + (o.ct || 8) + 'px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35)">' + (o.time || '7:42') + '</span>' +
+      (o.noClock ? '' : '') +
+      '<div class="shelf glass" style="' + (o.shelfSt || '') + '"></div>' +
+      (o.noFig ? '' : fig(o.fs || 16, o.acc || 'accent-aurora', 'left:' + (o.fl || 12) + 'px;bottom:11px', o.chr)) + dots);
+  }
+
+  function phone() {
+    return scr('', 'left:6px;top:0;width:104px;height:164px;border-radius:16px',
+      '<span class="xs" style="top:9px;left:0;right:0;text-align:center;font-weight:600">Juno</span>' +
+      '<span class="glass rb" style="top:6px;right:6px;width:19px;height:19px;background:var(--accent);color:var(--on-accent)">' + ic('cc', 11) + '</span>' +
+      fig(32, 'accent-aurora', 'top:30px;left:0;right:0;margin:0 auto;width:max-content') +
+      '<div class="glass" style="left:6px;right:6px;top:101px;padding:4px 5px;border-radius:8px;text-align:center;font:600 8px/10px var(--font-sans)">The pasta timer has seven minutes left.</div>' +
+      '<div style="left:0;right:0;bottom:7px;display:flex;justify-content:center;gap:9px">' + rb('mic', 21) + rb('chat', 21) + rb('end', 21) + '</div>');
+  }
+
+  function stage(st, withFig) {
+    return scr('', st,
+      fig(26, 'accent-aurora', 'left:12%;bottom:6px') +
+      '<div class="glass" style="right:6px;top:6px;bottom:6px;width:34%;border-radius:8px"></div>');
+  }
+
+  function welcome(inner, st) {
+    return scr('', st || 'left:0;top:0;width:100%;height:164px;border-radius:14px', inner);
+  }
+  var words = '<span class="lang" style="left:14px;top:12px;font-size:17px">Hallo</span>' +
+    '<span class="lang" style="right:14px;top:8px;font-size:15px">Bonjour</span>' +
+    '<span class="lang" style="left:20px;bottom:12px;font-size:14px">Hola</span>' +
+    '<span class="lang" style="right:18px;bottom:16px;font-size:16px">Merhaba</span>';
+
+  var T = [];
+  T[373] = ['Text on the call: a button, remembered', function () {
+    return phone() +
+      '<span class="glass rb ab" style="left:152px;top:30px;width:46px;height:46px;background:var(--accent);color:var(--on-accent);box-shadow:0 0 0 4px var(--accent-soft)">' + ic('cc', 24) + '</span>' +
+      '<span class="ab sm" style="left:206px;top:46px;font-weight:600">On</span>' +
+      arrow('right', 118, 42, 16).replace('arrow"', 'arrow" ').replace('left:118px', 'left:122px;transform:scaleX(-1)') +
+      '<div class="ab surface sm" style="left:132px;top:96px;width:120px;padding:7px 8px;text-align:center;font-weight:600">The pasta timer has seven minutes left.</div>';
+  }, 'stays on next time'];
+
+  T[374] = ['Idle figure changes, or touch the dots', function () {
+    return idle('left:0;top:2px;width:118px;height:80px', { dots: [1, 0, 0] }) +
+      '<span class="tapring" style="left:84px;top:62px;width:24px;height:24px"></span>' +
+      arrow('right', 123, 30, 20) +
+      idle('left:148px;top:2px;width:118px;height:80px', { dots: [0, 1, 0], acc: 'accent-ember', chr: 'border-radius:50%', time: '7:46' }) +
+      '<span class="ab dots big" style="left:36px;top:100px"><i class="on"></i><i></i><i></i></span>' +
+      '<span class="tapring" style="left:26px;top:90px;width:30px;height:30px;display:none"></span>' +
+      '<span class="ab dots big" style="left:184px;top:100px"><i></i><i class="on"></i><i></i></span>' +
+      arrow('right', 123, 98, 20);
+  }, 'last used first, changes every few minutes'];
+
+  T[375] = ['The clock shifts a little', function () {
+    var c = function (st) { return '<span class="ab clock" style="font-size:44px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);' + st + '">7:42</span>'; };
+    return wall('left:30px;top:0;width:206px;height:164px;border-radius:14px',
+      c('left:26px;top:24px;opacity:.28;text-shadow:none') + c('left:36px;top:32px') +
+      '<span class="ab" style="left:92px;top:24px;color:#fff;transform:rotate(45deg)">' + ic('right', 14) + '</span>' +
+      '<div class="shelf glass" style="height:20px"></div>' +
+      fig(20, 'accent-aurora', 'left:14px;bottom:15px'));
+  }, 'protects the screen'];
+
+  T[376] = ['No light sensor: set hours', function () {
+    var sun = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M2.5 12h2.3M19.2 12h2.3M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/><path d="M4 20 20 4" stroke="var(--danger)" stroke-width="2"/></svg>';
+    return scr('', 'left:0;top:0;width:100%;height:164px;border-radius:14px',
+      '<div class="glass" style="left:10px;top:14px;width:158px;padding:10px;border-radius:14px;display:flex;flex-direction:column;gap:8px">' +
+        '<span class="sm" style="font-weight:600;font-size:12px;line-height:15px">Dark from 22:00 to 07:00</span>' +
+        '<div style="display:flex;gap:6px"><div><span class="xs t-2" style="display:block;margin-bottom:2px">From</span><span class="field fld">22:00</span></div>' +
+        '<div><span class="xs t-2" style="display:block;margin-bottom:2px">To</span><span class="field fld">07:00</span></div></div></div>' +
+      '<div class="surface" style="left:180px;top:30px;width:74px;height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--text-2)">' + sun +
+        '<span class="xs" style="text-align:center">No light sensor</span></div>');
+  }, ''];
+
+  T[377] = ['Settings for the dark', function () {
+    return scr('', 'left:0;top:0;width:100%;height:164px;border-radius:14px',
+      '<div class="glass" style="left:10px;right:10px;top:12px;padding:10px;border-radius:14px;display:flex;flex-direction:column;gap:9px">' +
+        '<span class="sm" style="font-weight:600;font-size:12px;line-height:15px">Kitchen tablet &middot; In the dark</span>' +
+        '<span class="segmented" style="display:flex"><span class="on" style="height:26px;font-size:11px;flex:1;justify-content:center">Character asleep</span><span style="height:26px;font-size:11px;flex:1;justify-content:center">Clock only</span></span>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;font:500 11px/14px var(--font-sans)"><span>Hours</span><span style="display:flex;align-items:center;gap:5px"><span class="field" style="height:24px;padding:0 7px;font-size:11px">22:00</span>to<span class="field" style="height:24px;padding:0 7px;font-size:11px">07:00</span></span></div>' +
+      '</div>');
+  }, ''];
+
+  T[378] = ['A conversation closes after 30 seconds', function () {
+    return stage('left:0;top:10px;width:122px;height:84px', 1) +
+      '<div class="ab" style="left:0;top:108px;width:122px;display:flex;align-items:center;gap:6px"><div style="flex:1;height:5px;border-radius:3px;background:var(--control-hover)"><div style="width:68%;height:100%;border-radius:3px;background:var(--accent)"></div></div><span class="chip accent" style="height:20px;padding:0 7px">30 s</span></div>' +
+      arrow('right', 130, 42, 20) +
+      idle('left:158px;top:10px;width:108px;height:76px', { fs: 13, dots: [1, 0, 0], fl: 9, cl: 8 });
+  }, ''];
+  T[378][2] = 'no one speaks for 30 s';
+
+  T[379] = ['The character winds down first', function () {
+    var h = function (cls, x) { return '<span class="ab ' + cls + '" style="left:' + x + 'px;top:6px">' + head(54, 'accent-aurora', cls, '') + '</span>'; };
+    return h('', 6) + h('eyes-half', 98) + '<span class="ab eyes-shut" style="left:190px;top:6px"><span class="character accent-aurora" style="--size:54px;display:block"></span></span>' +
+      '<span class="arrow" style="left:66px;top:22px;width:22px;height:22px">' + ic('right', 18) + '</span>' +
+      '<span class="arrow" style="left:158px;top:22px;width:22px;height:22px">' + ic('right', 18) + '</span>' +
+      '<span class="arrow" style="left:122px;top:68px;width:22px;height:22px">' + ic('down', 20) + '</span>' +
+      idle('left:78px;top:98px;width:110px;height:64px', { noFig: 1, dots: [1, 0, 0], cl: 8, ct: 6, time: '22:14' });
+  }, ''];
+  // The first head must not carry stray classes.
+  T[379][1] = (function (f) { return function () { return f().replace('class="ab " ', 'class="ab" '); }; })(T[379][1]);
+
+  T[380] = ['The default assistant greets in setup', function () {
+    return welcome(words +
+      fig(34, 'accent-aurora', 'top:20px;left:0;right:0;margin:0 auto;width:max-content') +
+      '<span class="ab" style="left:0;right:0;top:104px;text-align:center;font:600 38px/1 var(--font-sans);letter-spacing:-.04em">Hello</span>');
+  }, ''];
+
+  T[381] = ['Language is chosen on the welcome', function () {
+    var rows = [['English', 1], ['Nederlands', 0], ['Deutsch', 0], ['Fran&ccedil;ais', 0], ['Espa&ntilde;ol', 0]].map(function (r) {
+      return '<div class="' + (r[1] ? 'on' : '') + '">' + r[0] + (r[1] ? ic('check', 10) : '') + '</div>';
+    }).join('');
+    return welcome(
+      fig(26, 'accent-aurora', 'top:14px;left:34px') +
+      '<span class="ab" style="left:12px;top:78px;font:600 28px/1 var(--font-sans);letter-spacing:-.04em">Hello</span>' +
+      '<span class="chip accent ab" style="left:12px;top:118px;height:26px;padding:0 9px;background:var(--glass-solid);font-size:10px;text-transform:none;letter-spacing:0">English &middot; change ' + ic('caret', 9) + '</span>' +
+      '<div class="glass-thick menu" style="left:140px;top:14px;width:112px">' + rows + '</div>' );
+  }, ''];
+
+  T[382] = ['Guests talk at once: a quiet set-up link', function () {
+    return scr('', 'left:0;top:0;width:150px;height:164px;border-radius:12px',
+      '<div class="url"><b></b><b></b><b></b><span>heem.home/talk</span></div>' +
+      '<span class="xs" style="top:22px;left:0;right:0;text-align:center;font-weight:600">Juno</span>' +
+      fig(30, 'accent-aurora', 'top:36px;left:0;right:0;margin:0 auto;width:max-content') +
+      '<div style="left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:12px">' + rb('chat', 20) + rb('end', 20) + '</div>' +
+      '<span class="ab t-2" style="right:6px;bottom:6px;font:500 6px/8px var(--font-sans);text-decoration:underline">Set up this device</span>') +
+      '<span class="tapring" style="left:92px;top:146px;width:56px;height:16px;border-radius:8px;background:none;border-width:1.5px"></span>' +
+      arrow('right', 158, 120, 18).replace('left:158px', 'left:158px;transform:scaleX(-1)') +
+      '<div class="ab surface" style="left:182px;top:104px;width:84px;padding:7px 8px;font:500 11px/14px var(--font-sans);text-decoration:underline;text-align:center;color:var(--text-2)">Set up this device</div>' +
+      '<span class="ab sm t-2" style="left:162px;top:20px;width:104px;text-align:center">no sign-in, no menu; the link is quiet</span>';
+  }, ''];
+  T[382][1] = (function (f) { return function () { return f().replace('<span class="ab sm t-2" style="left:162px;top:20px;width:104px;text-align:center">no sign-in, no menu; the link is quiet</span>', ''); }; })(T[382][1]);
+
+  T[383] = ['Voice page: call when narrow, stage when wide', function () {
+    return scr('', 'left:0;top:0;width:78px;height:164px;border-radius:10px',
+      '<div class="url"><b></b><b></b><span style="margin-left:2px"></span></div>' +
+      fig(26, 'accent-aurora', 'top:36px;left:0;right:0;margin:0 auto;width:max-content') +
+      '<div style="left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:7px">' + rb('chat', 17) + rb('end', 17) + '</div>') +
+      scr('', 'left:90px;top:22px;width:176px;height:112px;border-radius:10px',
+        '<div class="url"><b></b><b></b><b></b><span></span></div>' +
+        fig(34, 'accent-aurora', 'left:20px;bottom:6px') +
+        '<div class="glass" style="right:8px;top:22px;bottom:8px;width:84px;border-radius:9px;padding:7px;display:flex;flex-direction:column;gap:5px">' +
+          '<span style="height:6px;border-radius:3px;background:var(--control-hover);width:80%"></span><span style="height:6px;border-radius:3px;background:var(--control-hover);width:55%"></span><span style="height:6px;border-radius:3px;background:var(--control-hover);width:68%"></span></div>');
+  }, 'narrow: call. wide: stage'];
+
+  var order = [373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383];
+  var html = order.map(function (n) {
+    var t = T[n];
+    return '<section class="tile surface" id="d-' + n + '"><h2><span class="badge">' + n + '</span><span>' + t[0] + '</span></h2>' +
+      '<div class="art">' + t[1]() + '</div><div class="cap">' + (t[2] || '') + '</div></section>';
+  });
+  html.push('<section class="tile note surface" style="display:flex"><span class="t-caption" style="line-height:20px">Light, screen in Tide<br>the character Juno in Aurora<br><br>Approve each number, or say which to change.</span></section>');
+  document.getElementById('grid').innerHTML = html.join('');
+</script>
+</body>
+</html>

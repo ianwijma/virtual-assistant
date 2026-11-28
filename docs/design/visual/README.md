@@ -245,6 +245,7 @@ The boards in `examples/`:
 | [call-controls-board.html](examples/call-controls-board.html) | Muting and a line of text on the call screen, in four designs | Chosen from |
 | [idle-figures-board.html](examples/idle-figures-board.html) | Several assistants on the idle screen of a tablet, and the screen at night | Chosen from |
 | [welcome-board.html](examples/welcome-board.html) | Four designs of the welcome of the first-run setup | Chosen from |
+| [validate-1-board.html](examples/validate-1-board.html) to [validate-4-board.html](examples/validate-4-board.html) | A small drawing of each of the fifty decisions the agent made, in four groups | Waiting for approval |
 
 No board is waiting to be made. New ones are added here as subjects come
 up.

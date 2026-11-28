@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To approve, group 1: glass, colour, density, sound</title>
+<!--
+  Thirteen small decisions (334 to 346) for the owner to approve, each drawn
+  as one tile. Light mode, Tide unless a tile says otherwise.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { width: 1240px; margin: 0 auto; padding: var(--s-3) 16px var(--s-4); }
+  h1 { font: var(--type-title); margin: 0 0 var(--s-3); }
+  .grid { display: grid; grid-template-columns: repeat(4, 290px); gap: 14px; justify-content: space-between; }
+  .tile { position: relative; height: 252px; padding: 0; overflow: hidden; display: flex; flex-direction: column; background: var(--surface-solid, var(--glass-solid)); }
+  .badge { position: absolute; left: 0; top: 0; min-width: 52px; height: 32px; padding: 0 var(--s-3); display: grid; place-items: center;
+    border-radius: 0 0 var(--r-md) 0; background: var(--accent); color: var(--on-accent); font: 700 18px/1 var(--font-sans); letter-spacing: -.01em; }
+  .tile h2 { font: var(--type-label); font-weight: 600; font-size: 14px; line-height: 18px; margin: 0; padding: 7px var(--s-3) 0 66px; height: 38px; }
+  .art { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 4px var(--s-3); min-height: 0; position: relative; }
+  .cap { font: var(--type-caption); color: var(--text-2); text-align: center; padding: 0 var(--s-3) var(--s-2); height: 24px; }
+  svg.i { display: block; flex: none; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .lbl { font: var(--type-caption); color: var(--text-2); text-align: center; line-height: 12px; }
+  .stack { flex-direction: column; gap: 8px; }
+  .row-h { display: flex; align-items: center; gap: 8px; }
+
+  /* 334 */
+  .big-mark svg { width: 92px; height: 92px; display: block; }
+  .solid-mark svg { display: block; }
+  .tray { display: flex; flex-direction: column; gap: 10px; align-items: center; padding: 10px 12px; border-radius: var(--r-md); background: var(--control); }
+  .tray .row-h { gap: 6px; }
+
+  /* 335 */
+  .bd { position: relative; width: 262px; height: 92px; border-radius: var(--r-md); overflow: hidden; }
+  .bd i { position: absolute; border-radius: 50%; }
+  .bd .b1 { width: 70px; height: 70px; left: 20px; top: 40px; background: var(--accent); opacity: .7; }
+  .bd .b2 { width: 80px; height: 80px; left: 100px; top: -30px; background: var(--accent-2); opacity: .8; }
+  .bd .b3 { width: 70px; height: 70px; left: 190px; top: 38px; background: var(--accent); opacity: .6; }
+  .gc { position: absolute; top: 14px; width: 74px; height: 64px; padding: 8px; display: flex; flex-direction: column; gap: 6px; border-radius: var(--r-md); }
+  .gc b { display: block; height: 6px; border-radius: 3px; background: var(--text); opacity: .75; width: 70%; }
+  .gc s { display: block; height: 5px; border-radius: 3px; background: var(--text-2); width: 90%; }
+  .gc.c1 { left: 6px; } .gc.c2 { left: 94px; } .gc.c3 { left: 182px; }
+  .three { display: flex; justify-content: space-between; width: 262px; }
+  .three span { width: 74px; text-align: center; font: var(--type-caption); text-transform: none; letter-spacing: 0; color: var(--text-2); }
+  .three span.on { color: var(--text); font-weight: 700; }
+  .segmented.sm { padding: 2px; }
+  .segmented.sm > * { height: 22px; font-size: 11px; padding: 0 9px; }
+
+  /* 336 */
+  .tab { position: relative; width: 140px; height: 104px; margin: 0 14px 6px 0; }
+  .ph1, .ph2 { position: absolute; width: 118px; height: 82px; border-radius: var(--r-md); border: 3px solid var(--text); overflow: hidden; }
+  .ph1 { left: 0; top: 18px; z-index: 2; }
+  .ph2 { left: 20px; top: 0; z-index: 1; opacity: .9; border-color: var(--text-2);
+    background: radial-gradient(60% 70% at 70% 30%, var(--accent-2) 0, transparent 70%), linear-gradient(160deg, var(--accent) 0, var(--surface-2) 100%); }
+  .ph1 .clk { position: absolute; left: 8px; top: 6px; font: 600 18px/1 var(--font-sans); letter-spacing: -.03em; color: var(--text); text-shadow: 0 1px 8px var(--bg); }
+  .fade { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 40%, color-mix(in srgb, var(--bg) 55%, transparent)); }
+  .thumbs { display: flex; flex-direction: column; gap: 6px; }
+  .thumbs i { width: 46px; height: 32px; border-radius: var(--r-xs); display: block; box-shadow: inset 0 0 0 1px var(--line); }
+  .th1 { background: radial-gradient(60% 70% at 30% 30%, var(--accent-2), transparent 70%), var(--surface-2); }
+  .th2 { background: linear-gradient(150deg, var(--accent), var(--accent-2)); }
+  .th3 { background: radial-gradient(70% 70% at 70% 80%, var(--accent), transparent 75%), var(--surface-2); }
+
+  /* 337 */
+  .bk { position: relative; width: 120px; height: 96px; border-radius: var(--r-md); overflow: hidden; }
+  .bk svg { position: absolute; inset: 0; }
+  .pausemark { position: absolute; left: 50%; top: 50%; width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; background: var(--glass-solid); display: grid; place-items: center; box-shadow: var(--shadow-1); }
+
+  /* 338 */
+  .old { position: relative; width: 120px; height: 90px; border: 5px solid var(--text); border-radius: 8px; overflow: hidden; }
+  .old .backdrop { position: absolute; inset: 0; }
+  .old .chip { position: absolute; left: 6px; bottom: 6px; background: var(--glass-solid); color: var(--text); height: 22px; padding: 0 8px 0 5px; }
+  .blk { width: 120px; height: 90px; border-radius: 8px; background: color-mix(in srgb, var(--bg) 12%, black); border: 5px solid var(--text); position: relative; display: grid; place-items: center; }
+  .blk b { font: 600 24px/1 var(--font-sans); letter-spacing: -.03em; color: rgba(255,255,255,.4); }
+  .blk .bat { position: absolute; right: 6px; top: 6px; color: rgba(255,255,255,.4); }
+
+  /* 339 */
+  .fr { position: relative; width: 124px; height: 100px; border-radius: var(--r-md); overflow: hidden; }
+  .launch { position: absolute; left: 14px; right: 14px; top: 14px; padding: 6px; display: flex; flex-direction: column; gap: 4px; border-radius: var(--r-md); }
+  .launch .s { height: 14px; border-radius: 5px; background: var(--control); }
+  .launch .r { display: flex; align-items: center; gap: 4px; }
+  .launch .r i { width: 8px; height: 8px; border-radius: 2px; background: var(--text-2); opacity: .6; flex: none; }
+  .launch .r b { height: 4px; flex: 1; border-radius: 2px; background: var(--text-2); opacity: .7; }
+  .wnd { position: absolute; border-radius: 4px; background: var(--glass-solid); box-shadow: var(--shadow-1); }
+  .wnd::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--control-hover); border-radius: 4px 4px 0 0; }
+  .tg { display: flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: var(--r-sm); background: var(--control); font: var(--type-label); }
+  .tg .toggle { width: 34px; height: 20px; }
+  .tg .toggle::after { width: 14px; height: 14px; }
+  .tg .toggle.on::after { transform: translateX(14px); }
+
+  /* 340 / 341 rings */
+  .ring { position: relative; width: 104px; height: 104px; flex: none; }
+  .ring i.r { position: absolute; inset: 0; border-radius: 50%;
+    background: conic-gradient(hsl(0 80% 55%), hsl(60 80% 50%), hsl(120 70% 45%), hsl(180 75% 45%), hsl(240 80% 60%), hsl(300 75% 55%), hsl(360 80% 55%));
+    -webkit-mask: radial-gradient(circle, transparent 62%, black 63%); mask: radial-gradient(circle, transparent 62%, black 63%); }
+  .ring .h { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; border: 3px solid var(--glass-solid); box-shadow: var(--shadow-2), 0 0 0 1px var(--line); }
+  .ring .h.foc { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .ring .mid { position: absolute; inset: 0; display: grid; place-items: center; }
+  .ring .sw { width: 26px; height: 26px; border-radius: 8px; background: linear-gradient(135deg, var(--accent) 50%, var(--accent-2) 50%); box-shadow: inset 0 0 0 1px var(--line); }
+  .warn { display: flex; align-items: flex-start; gap: 6px; font: var(--type-label); font-weight: 600; color: var(--warning); padding: 6px 10px; border-radius: var(--r-sm); background: color-mix(in srgb, var(--warning) 12%, transparent); width: 100%; }
+  .was { font: var(--type-caption); color: var(--text-3); text-decoration: line-through; text-transform: none; letter-spacing: 0; }
+  .keys { display: flex; gap: 6px; }
+  .keys .kbd { width: 34px; height: 30px; display: grid; place-items: center; font-size: 15px; box-shadow: 0 2px 0 var(--line); }
+
+  /* 342 */
+  .sws { display: flex; gap: 5px; flex-wrap: wrap; }
+  .sws i { width: 20px; height: 20px; border-radius: 50%; display: block; background: linear-gradient(135deg, var(--accent) 50%, var(--accent-2) 50%); box-shadow: inset 0 0 0 1px var(--line); }
+  .sws i.on { outline: 2px solid var(--text); outline-offset: 2px; }
+  .sws i.mk { background: conic-gradient(hsl(0 80% 55%), hsl(120 70% 45%), hsl(240 80% 60%), hsl(360 80% 55%)); }
+  .adm { width: 150px; height: 104px; border-radius: var(--r-md); border: 3px solid var(--text); overflow: hidden; display: flex; background: var(--surface-2); }
+  .adm .sb { width: 30px; background: var(--control); padding: 6px 5px; display: flex; flex-direction: column; gap: 5px; }
+  .adm .sb i { height: 5px; border-radius: 2px; background: var(--text-2); opacity: .5; display: block; }
+  .adm .sb i.on { background: var(--accent); opacity: 1; }
+  .adm .pg { flex: 1; padding: 7px; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .phn { width: 78px; height: 118px; border-radius: 14px; border: 3px solid var(--text); background: var(--surface-2); padding: 8px 6px; display: flex; flex-direction: column; gap: 7px; }
+  .pth { font: 600 9px/11px var(--font-sans); color: var(--text-2); }
+  .pth b { color: var(--text); font-weight: 700; }
+  .phn .sws i, .adm .sws i { width: 14px; height: 14px; }
+
+  /* 343 */
+  .two { display: flex; flex-direction: column; align-items: center; }
+  .two .figure { --size: 54px; }
+  .two .character { background: var(--accent-2); box-shadow: inset 0 -4px 8px rgba(0,0,0,.14); }
+  .two .figure::after { background: var(--accent); }
+  .pair { width: 44px; height: 26px; border-radius: var(--r-sm); position: relative; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); display: block; }
+  .pair::before, .pair::after { content: ""; position: absolute; top: 0; bottom: 0; width: 50%; }
+  .pair::before { left: 0; background: var(--accent-2); } .pair::after { right: 0; background: var(--accent); }
+  .pair.on { outline: 2px solid var(--text); outline-offset: 2px; }
+  .pair.t2::before { background: hsl(340 75% 62%); } .pair.t2::after { background: hsl(265 60% 52%); }
+  .pair.t3::before { background: hsl(40 90% 58%); } .pair.t3::after { background: hsl(190 70% 40%); }
+  .ring.s { width: 56px; height: 56px; }
+  .ring.s .h { width: 12px; height: 12px; margin: -6px 0 0 -6px; border-width: 2px; }
+
+  /* 344 */
+  .rm { position: relative; width: 122px; height: 84px; border-radius: var(--r-md); overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 10px; border: 3px solid var(--text); }
+  .rm .clk { font: 600 24px/1 var(--font-sans); letter-spacing: -.03em; }
+  .rm .t-caption { text-transform: none; letter-spacing: 0; font-size: 10px; }
+  .rm .orb { position: absolute; right: 8px; top: 8px; }
+  .rowset { display: flex; align-items: center; gap: 6px; width: 100%; padding: 7px 10px; border-radius: var(--r-sm); background: var(--accent-soft); font: var(--type-label); font-size: 11px; justify-content: space-between; }
+  .rowset span:last-child { display: flex; gap: 4px; align-items: center; font-weight: 600; }
+
+  /* 345 */
+  .dens { width: 100%; display: flex; flex-direction: column; gap: 8px; align-items: stretch; }
+  .setrow { display: flex; align-items: center; justify-content: space-between; font: var(--type-label); font-weight: 600; }
+  .lists { display: flex; gap: 10px; justify-content: space-between; }
+  .lists > div { flex: 1; }
+  .mini { border-radius: var(--r-sm); background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
+  .mini .mr { display: flex; align-items: center; gap: 6px; padding: 0 7px; border-top: 1px solid var(--line); }
+  .mini .mr:first-child { border-top: 0; }
+  .mini .mr i { width: 8px; height: 8px; border-radius: 2px; border: 1.5px solid var(--text-2); flex: none; }
+  .mini .mr b { height: 4px; flex: 1; border-radius: 2px; background: var(--text-2); opacity: .7; }
+  .mini.cp .mr { height: 18px; } .mini.cp .mr i { width: 7px; height: 7px; }
+  .mini.rm2 .mr { height: 30px; } .mini.rm2 .mr i { width: 12px; height: 12px; border-radius: 3px; } .mini.rm2 .mr b { height: 5px; }
+
+  /* 346 */
+  .cardset { width: 100%; padding: 8px 10px; border-radius: var(--r-md); background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); }
+  .cardset h3 { font: var(--type-caption); text-transform: none; letter-spacing: 0; color: var(--text-2); margin-bottom: 2px; display: flex; align-items: center; gap: 5px; font-weight: 700; }
+  .cardset .setrow { padding: 4px 0; font-weight: 500; font-size: 12px; }
+  .cardset .setrow + .setrow { border-top: 1px solid var(--line); }
+  .cardset .toggle { width: 34px; height: 20px; }
+  .cardset .toggle::after { width: 14px; height: 14px; }
+  .cardset .toggle.on::after { transform: translateX(14px); }
+</style>
+</head>
+<body class="va">
+<div class="page backdrop accent-tide light">
+<h1>To approve, group 1: glass, colour, density, sound</h1>
+<div class="grid" id="grid">
+
+<!-- 334 -->
+<div class="tile" data-n="334" data-t="Small logo is solid" data-c="Glass at large sizes, solid at 24px and 16px">
+  <div class="art">
+    <div class="col"><div class="big-mark" data-mark="glass"></div><span class="lbl">Glass</span></div>
+    <span style="color:var(--text-2)">[[arrow]]</span>
+    <div class="tray">
+      <div class="col"><div class="solid-mark" data-mark="solid" data-size="24"></div><span class="lbl">24px</span></div>
+      <div class="col"><div class="solid-mark" data-mark="solid" data-size="16"></div><span class="lbl">16px</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 335 -->
+<div class="tile" data-n="335" data-t="Three levels of glass, per device" data-c="Clear is the design; each device picks one">
+  <div class="art"><div class="col" style="gap:5px">
+    <div class="bd backdrop"><i class="b1"></i><i class="b2"></i><i class="b3"></i>
+      <div class="gc glass c1"><b></b><s></s><s></s></div>
+      <div class="gc glass-thick c2"><b></b><s></s><s></s></div>
+      <div class="solid"><div class="gc glass c3"><b></b><s></s><s></s></div></div>
+    </div>
+    <div class="three"><span class="on">Clear</span><span>Thicker</span><span>Solid</span></div>
+    <div class="segmented sm"><span class="on">Clear</span><span>Thicker</span><span>Solid</span></div>
+  </div></div>
+</div>
+
+<!-- 336 -->
+<div class="tile" data-n="336" data-t="Gallery pictures change by themselves" data-c="A new picture every few minutes">
+  <div class="art">
+    <div class="tab"><div class="ph2"></div><div class="ph1 wallpaper"><span class="clk">9:41</span><span class="fade"></span></div></div>
+    <div class="thumbs"><i class="th1"></i><i class="th2"></i><i class="th3"></i></div>
+  </div>
+</div>
+
+<!-- 337 -->
+<div class="tile" data-n="337" data-t="Reduced motion: backdrop is still" data-c="Same backdrop, no drifting">
+  <div class="art">
+    <div class="col"><div class="bk backdrop">
+      <svg viewBox="0 0 120 96" fill="none" stroke="var(--text)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".7"><path d="M14 30 C40 8 70 52 100 28"/><path d="M92 20 L101 28 L91 35"/><path d="M18 76 C44 54 74 94 104 68"/><path d="M96 60 L105 68 L95 75"/></svg></div>
+      <span class="lbl">Drifts</span></div>
+    <div class="col"><div class="bk backdrop"><span class="pausemark"><svg class="i" width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,48V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V48a16,16,0,0,1,16-16h32A16,16,0,0,1,216,48ZM88,32H56A16,16,0,0,0,40,48V208a16,16,0,0,0,16,16H88a16,16,0,0,0,16-16V48A16,16,0,0,0,88,32Z"/></svg></span></div>
+      <span class="lbl">Still, with reduced motion</span></div>
+  </div>
+</div>
+
+<!-- 338 -->
+<div class="tile" data-n="338" data-t="Still on a slow device and in low power" data-c="Slow tablet: still. Low power: dim clock">
+  <div class="art">
+    <div class="col"><div class="old"><div class="backdrop"></div><span class="chip">[[turtle]]Slow</span></div><span class="lbl">Old tablet</span></div>
+    <div class="col"><div class="blk"><span class="bat">[[battery]]</span><b>9:41</b></div><span class="lbl">Low power</span></div>
+  </div>
+</div>
+
+<!-- 339 -->
+<div class="tile" data-n="339" data-t="No blur on this desktop: our backdrop" data-c="See-through is a choice, off by default">
+  <div class="art" style="flex-direction:column;gap:7px"><div class="row-h" style="align-items:flex-start;gap:10px">
+    <div class="col"><div class="fr backdrop"><div class="launch glass"><div class="s"></div><div class="r"><i></i><b></b></div><div class="r"><i></i><b></b></div></div></div><span class="lbl">Default: our backdrop</span></div>
+    <div class="col"><div class="fr wallpaper">
+      <div class="wnd" style="left:6px;top:8px;width:48px;height:36px"></div>
+      <div class="wnd" style="right:6px;bottom:8px;width:54px;height:34px"></div>
+      <div class="launch glass no-blur" style="left:22px;right:22px;top:20px"><div class="s"></div><div class="r"><i></i><b></b></div><div class="r"><i></i><b></b></div></div></div>
+      <span class="lbl">No blur: see-through</span></div>
+  </div>
+  <div class="tg"><span>See-through</span><span class="toggle on"></span></div></div>
+</div>
+
+<!-- 340 -->
+<div class="tile" data-n="340" data-t="Warning sits under the picker" data-c="Replaces “Checked: text stays readable”">
+  <div class="art" style="flex-direction:column;gap:6px">
+    <div class="ring"><i class="r"></i><span class="h" style="left:84%;top:26%;background:hsl(340 75% 62%)"></span><span class="h" style="left:22%;top:86%;background:hsl(50 90% 58%)"></span><span class="mid"><span class="sw" style="background:linear-gradient(135deg,hsl(340 75% 62%) 50%,hsl(50 90% 58%) 50%)"></span></span></div>
+    <div class="warn">[[warn]]<span>Text may be hard to read with this colour</span></div>
+    <span class="was">Checked: text stays readable</span>
+  </div>
+</div>
+
+<!-- 341 -->
+<div class="tile" data-n="341" data-t="Wheel works with the keyboard" data-c="Arrow keys move the handle; a value can be typed">
+  <div class="art">
+    <div class="ring"><i class="r"></i><span class="h foc" style="left:84%;top:26%;background:hsl(340 75% 62%)"></span><span class="h" style="left:22%;top:86%;background:hsl(265 60% 52%)"></span><span class="mid"><span class="sw" style="background:linear-gradient(135deg,hsl(340 75% 62%) 50%,hsl(265 60% 52%) 50%)"></span></span></div>
+    <div class="col" style="align-items:flex-start;gap:8px">
+      <div class="keys"><span class="kbd">&larr;</span><span class="kbd">&rarr;</span></div>
+      <div class="field is-focus" style="height:30px;width:106px;font:var(--type-mono)"><span>#E0457B</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 342 -->
+<div class="tile" data-n="342" data-t="Accent: admin panel or the device" data-c="Household accent there, this device's here">
+  <div class="art" style="gap:10px">
+    <div class="col"><div class="adm"><div class="sb"><i></i><i class="on"></i><i></i><i></i></div><div class="pg"><span class="pth">Household &middot; <b>Accent</b></span><div class="sws" data-sw></div></div></div><span class="lbl">Admin panel</span></div>
+    <div class="col"><div class="phn"><span class="pth">This phone &middot; <b>Accent</b></span><div class="sws" data-sw></div></div><span class="lbl">Phone</span></div>
+  </div>
+</div>
+
+<!-- 343 -->
+<div class="tile" data-n="343" data-t="A character's colours: same picker" data-c="Head and body: two colours, as for an accent">
+  <div class="art" style="gap:14px">
+    <div class="two"><span class="figure accent-ember"><span class="character"></span></span></div>
+    <div class="col" style="align-items:flex-start;gap:8px">
+      <div class="row-h"><span class="pair on"></span><span class="pair t2"></span><span class="pair t3"></span></div>
+      <div class="row-h" style="gap:10px"><div class="ring s"><i class="r"></i><span class="h" style="left:84%;top:26%;background:var(--accent-2)"></span><span class="h" style="left:22%;top:86%;background:var(--accent)"></span></div><span class="lbl" style="text-align:left">Head and<br>body</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 344 -->
+<div class="tile" data-n="344" data-t="New tablet follows the room's light" data-c="Bright room: light. Dark room: dark">
+  <div class="art" style="flex-direction:column;gap:7px"><div class="row-h" style="gap:10px">
+    <div class="col"><div class="rm backdrop light"><span class="orb">[[sun]]</span><span class="clk">9:41</span></div><span class="lbl">Bright room</span></div>
+    <div class="col"><div class="rm backdrop dark" style="color:var(--text)"><span class="orb">[[moon]]</span><span class="clk">9:41</span></div><span class="lbl">Dark room</span></div>
+  </div>
+  <div class="rowset"><span>Light and dark</span><span>By the light in the room [[check]]</span></div></div>
+</div>
+
+<!-- 345 -->
+<div class="tile" data-n="345" data-t="Density: one setting per device" data-c="Same list, compact and roomy">
+  <div class="art"><div class="dens">
+    <div class="setrow"><span>Density</span><div class="segmented sm"><span>Compact</span><span class="on">Roomy</span></div></div>
+    <div class="lists">
+      <div class="col" style="align-items:stretch"><div class="mini cp"><div class="mr"><i></i><b></b></div><div class="mr"><i></i><b></b></div><div class="mr"><i></i><b></b></div></div><span class="lbl">Compact</span></div>
+      <div class="col" style="align-items:stretch"><div class="mini rm2"><div class="mr"><i></i><b></b></div><div class="mr"><i></i><b></b></div><div class="mr"><i></i><b></b></div></div><span class="lbl">Roomy</span></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- 346 -->
+<div class="tile" data-n="346" data-t="Sounds and vibration: per device" data-c="Each device has its own">
+  <div class="art"><div class="col" style="width:100%;align-items:stretch;gap:6px">
+    <div class="cardset"><h3>[[tablet]]Kitchen tablet</h3>
+      <div class="setrow"><span>Conversation sounds</span><span class="toggle"></span></div>
+      <div class="setrow"><span>Other sounds</span><span class="toggle on"></span></div></div>
+    <div class="cardset"><h3>[[phone]]This phone</h3>
+      <div class="setrow"><span>Vibration in a conversation</span><span class="toggle"></span></div></div>
+  </div></div>
+</div>
+
+</div>
+</div>
+<script>
+  function ph(d, size) { return '<svg class="i" width="' + size + '" height="' + size + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="' + d + '"/></svg>'; }
+  function st(d, size) { return '<svg class="i" width="' + size + '" height="' + size + '" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; }
+  var IC = {
+    arrow: st('<path d="M40 128h176M144 56l72 72-72 72"/>', 34),
+    warn: ph('M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z', 16),
+    check: ph('M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z', 12),
+    sun: st('<circle cx="128" cy="128" r="48"/><path d="M128 32v16M128 208v16M60 60l11 11M185 185l11 11M32 128h16M208 128h16M60 196l11-11M185 71l11-11"/>', 22),
+    moon: st('<path d="M216 136a88 88 0 0 1-96-96 88 88 0 1 0 96 96Z"/>', 20),
+    battery: st('<rect x="24" y="80" width="192" height="96" rx="16"/><path d="M240 112v32M56 112v32"/>', 18),
+    turtle: st('<path d="M40 168a88 72 0 0 1 176 0Z"/><path d="M216 150l24-10M64 168v24M184 168v24M40 160l-16-6"/>', 16),
+    tablet: st('<rect x="40" y="32" width="176" height="192" rx="20"/><path d="M116 196h24"/>', 12),
+    phone: st('<rect x="64" y="24" width="128" height="208" rx="20"/><path d="M116 200h24"/>', 12)
+  };
+  var D = 'M38 12 H58 A28 28 0 0 1 86 40 V44 A28 28 0 0 1 58 72 H42 L18 88 L26 67 A28 28 0 0 1 10 44 V40 A28 28 0 0 1 38 12 Z';
+  var gid = 0;
+  function mark(kind, size) {
+    gid++;
+    var id = 'g' + gid;
+    if (kind === 'solid') {
+      return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 96 96" aria-hidden="true"><path d="' + D + '" fill="var(--accent)"/>' +
+        '<ellipse cx="36" cy="38" rx="6.5" ry="10.5" fill="var(--on-accent)"/><ellipse cx="60" cy="38" rx="6.5" ry="10.5" fill="var(--on-accent)"/></svg>';
+    }
+    return '<svg viewBox="0 0 96 96" aria-hidden="true"><defs><radialGradient id="' + id + '"><stop offset="0" stop-color="var(--accent-2)" stop-opacity=".9"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".15"/></radialGradient></defs>' +
+      '<path d="' + D + '" fill="#fff" fill-opacity=".18" stroke="var(--accent)" stroke-opacity=".9" stroke-width="3" stroke-linejoin="round"/>' +
+      '<ellipse cx="48" cy="54" rx="30" ry="17" fill="url(#' + id + ')"/>' +
+      '<ellipse cx="36" cy="38" rx="5.5" ry="9.5" fill="var(--text)"/><ellipse cx="60" cy="38" rx="5.5" ry="9.5" fill="var(--text)"/></svg>';
+  }
+  document.querySelectorAll('.tile').forEach(function (t) {
+    var head = '<span class="badge">' + t.dataset.n + '</span><h2>' + t.dataset.t + '</h2>';
+    t.insertAdjacentHTML('afterbegin', head);
+    t.insertAdjacentHTML('beforeend', '<div class="cap">' + t.dataset.c + '</div>');
+    t.querySelectorAll('[data-mark]').forEach(function (m) { m.innerHTML = mark(m.dataset.mark, m.dataset.size); });
+    t.querySelectorAll('[data-sw]').forEach(function (s) {
+      s.innerHTML = ['accent-tide on', 'accent-ember', 'accent-aurora', 'accent-moss', 'mk'].map(function (c) {
+        var p = c.split(' '); return '<i class="' + (p[0].indexOf('accent') === 0 ? p[0] : p[0]) + (p[1] ? ' on' : '') + '"></i>';
+      }).join('');
+    });
+    t.innerHTML = t.innerHTML.replace(/\[\[(\w+)\]\]/g, function (_, k) { return IC[k]; });
+  });
+</script>
+</body>
+</html>

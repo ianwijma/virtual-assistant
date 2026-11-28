@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To approve, group 3: layout and the desktop</title>
+<!--
+  Twelve small decisions (361 to 372) drawn one per tile, for the owner to
+  approve at a glance. Nothing here is new: each tile shows a decision.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 8px 8px 10px; }
+  .page > h1 { font: var(--type-title); margin: 0 0 var(--s-2); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .tile { position: relative; height: 252px; padding: 10px; overflow: hidden; display: flex; flex-direction: column; gap: 8px; }
+  .th { display: flex; align-items: center; gap: 10px; height: 40px; flex: none; }
+  .num-badge { min-width: 44px; height: 36px; padding: 0 6px; border-radius: var(--r-md); display: grid; place-items: center; flex: none; font: 700 19px/1 var(--font-sans); background: var(--accent); color: var(--on-accent); }
+  .th .t { font: 600 14px/17px var(--font-sans); }
+  .art { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; gap: 12px; position: relative; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .cap { font: 500 11px/14px var(--font-sans); color: var(--text-2); text-align: center; }
+  .i { display: block; flex: none; }
+  .stage { position: relative; overflow: hidden; border-radius: var(--r-md); color: var(--text); }
+  .abs { position: absolute; }
+  .ell { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .blk { background: var(--control-hover); border-radius: 2px; }
+
+  /* phone */
+  .ptop { left: 6px; right: 6px; top: 6px; height: 20px; display: flex; align-items: center; padding: 0 8px; border-radius: var(--r-full); font: 600 9px/1 var(--font-sans); }
+  .ptb { left: 6px; right: 6px; bottom: 6px; display: flex; align-items: center; justify-content: space-around; padding: 4px 2px; border-radius: var(--r-lg); }
+  .ptb > span { position: relative; display: grid; place-items: center; width: 22px; height: 22px; border-radius: var(--r-sm); color: var(--text-2); }
+  .ptb > .on { background: var(--accent-soft); color: var(--text); }
+  .ptb > .sep { width: 1px; height: 16px; background: var(--line); border-radius: 0; }
+  .bub { font: 500 8px/1.2 var(--font-sans); padding: 4px 6px; border-radius: 8px; background: var(--control); max-width: 74%; }
+  .bub.me { align-self: flex-end; background: var(--accent); color: var(--on-accent); }
+  .pdot { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 1.5px solid var(--glass-solid); }
+
+  /* ruler */
+  .rz { display: flex; width: 100%; }
+  .rz > div { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; }
+  .mf { position: relative; height: 46px; display: flex; gap: 2px; padding: 3px; border-radius: 6px; }
+  .mf .card { position: absolute; top: 3px; right: 3px; width: 14px; height: 7px; border-radius: 2px; background: var(--accent); z-index: 2; }
+  .seg { height: 6px; border-radius: 3px; }
+
+  /* launcher mini */
+  .mini-l { display: flex; flex-direction: column; gap: 3px; padding: 6px; }
+  .mini-l .f { height: 8px; border-radius: 4px; background: var(--control-hover); }
+  .mini-l .r { height: 5px; border-radius: 2px; background: var(--control-hover); }
+  .mini-l .r.s { background: var(--accent-soft); }
+
+  /* admin */
+  .adm { width: 100%; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .adm .h { font: 600 11px/14px var(--font-sans); }
+  .slot { display: flex; align-items: center; gap: 6px; height: 24px; padding: 0 6px; border-radius: var(--r-sm); background: var(--accent-soft); font: 500 11px/1 var(--font-sans); }
+  .slot b { width: 15px; height: 15px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font: 700 9px/1 var(--font-sans); flex: none; }
+  .pick { display: flex; align-items: center; gap: 6px; height: 24px; padding: 0 6px; font: 500 11px/1 var(--font-sans); color: var(--text); }
+  .pick + .pick { border-top: 1px solid var(--line); }
+  .pick .sp, .slot .sp { flex: 1; }
+
+  /* menus and cards */
+  .mrow { display: flex; align-items: center; gap: 8px; height: 24px; padding: 0 8px; border-radius: var(--r-xs); font: 500 11px/1 var(--font-sans); }
+  .mrow.sel { background: var(--accent-soft); }
+  .ncard { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .ncard .hd { display: flex; align-items: center; gap: 8px; }
+  .ncard .tx { font: 600 12px/15px var(--font-sans); }
+  .ncard .sb { font: 500 10px/13px var(--font-sans); color: var(--text-2); }
+  .ncard .btns { display: flex; gap: 6px; }
+  .ncard .btn { flex: 1; height: 26px; padding: 0 8px; font-size: 11px; border-radius: var(--r-sm); }
+  .ncard .kbd { font-size: 9px; padding: 1px 4px; }
+
+  .lr { display: flex; align-items: center; gap: 8px; height: 28px; padding: 0 8px; border-radius: var(--r-sm); font: 500 11px/1 var(--font-sans); }
+  .lr.sel { background: var(--accent-soft); }
+  .lr .sp { flex: 1; }
+  .use { width: 70px; height: 6px; border-radius: 3px; background: var(--control); overflow: hidden; flex: none; }
+  .use i { display: block; height: 100%; border-radius: 3px; background: var(--accent); }
+  .gi { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
+  .gi .bx { width: 28px; height: 28px; border-radius: var(--r-md); background: var(--control); display: grid; place-items: center; }
+  .gi.mine .bx { background: var(--accent-soft); }
+  .gi .l { font: 500 7px/9px var(--font-sans); white-space: nowrap; }
+  .tbb { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 56px; padding: 7px 0; border-radius: var(--r-md); font: 500 11px/1 var(--font-sans); color: var(--text-2); }
+  .tbb.on { background: var(--accent-soft); color: var(--text); font-weight: 600; }
+  .step { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .esc { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+</style>
+</head>
+<body class="va">
+<div class="page accent-tide light" id="page">
+  <h1>To approve, group 3: layout and the desktop</h1>
+  <div class="grid" id="grid"></div>
+</div>
+<script>
+  var P = {"home": "<path d=\"M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z\"/>", "assistant": "<path d=\"M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z\"/>", "timeline": "<path d=\"M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z\"/>", "chat": "<path d=\"M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z\"/>", "all": "<path d=\"M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z\"/>", "lists": "<path d=\"M224,128a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h88A8,8,0,0,1,224,128ZM128,72h88a8,8,0,0,0,0-16H128a8,8,0,0,0,0,16Zm88,112H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16ZM82.34,42.34,56,68.69,45.66,58.34A8,8,0,0,0,34.34,69.66l16,16a8,8,0,0,0,11.32,0l32-32A8,8,0,0,0,82.34,42.34Zm0,64L56,132.69,45.66,122.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Zm0,64L56,196.69,45.66,186.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Z\"/>", "clip": "<path d=\"M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z\"/>", "timer": "<path d=\"M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,216ZM173.66,90.34a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32l40-40A8,8,0,0,1,173.66,90.34ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z\"/>", "bell": "<path d=\"M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z\"/>", "search": "<path d=\"M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z\"/>", "gear": "<path d=\"M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z\"/>", "check": "<path d=\"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z\"/>", "x": "<path d=\"M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z\"/>", "lock": "<path d=\"M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z\"/>", "users": "<path d=\"M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z\"/>", "cart": "<path d=\"M230.14,58.87A8,8,0,0,0,224,56H62.68L56.6,22.57A8,8,0,0,0,48.73,16H24a8,8,0,0,0,0,16h18L67.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,160,204a28,28,0,1,0,28-28H91.17a8,8,0,0,1-7.87-6.57L80.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,230.14,58.87ZM104,204a12,12,0,1,1-12-12A12,12,0,0,1,104,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,200,204Zm4-74.57A8,8,0,0,1,196.1,136H77.22L65.59,72H214.41Z\"/>", "plus": "<path d=\"M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z\"/>"};
+  function ic(n, s) { s = s || 14; return '<svg class="i" width="' + s + '" height="' + s + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">' + P[n] + '</svg>'; }
+  var mn = 0;
+  function mark(size) {
+    mn++; var id = 'mk' + mn;
+    var d = 'M38 12 H58 A28 28 0 0 1 86 40 V44 A28 28 0 0 1 58 72 H42 L18 88 L26 67 A28 28 0 0 1 10 44 V40 A28 28 0 0 1 38 12 Z';
+    var eye = function (cx) { return '<ellipse cx="' + cx + '" cy="38" rx="5.5" ry="9.5" fill="var(--text)"/>'; };
+    return '<svg class="i" viewBox="0 0 96 96" style="width:' + size + 'px;height:' + size + 'px" aria-hidden="true"><defs><radialGradient id="' + id + '"><stop offset="0" stop-color="var(--accent-2)" stop-opacity=".9"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".15"/></radialGradient></defs>' +
+      '<path d="' + d + '" fill="var(--on-accent)" fill-opacity=".18" stroke="var(--accent)" stroke-opacity=".9" stroke-width="3" stroke-linejoin="round"/>' +
+      '<ellipse cx="48" cy="54" rx="30" ry="17" fill="url(#' + id + ')"/>' + eye(36) + eye(60) + '</svg>';
+  }
+  /* a push pin, drawn as a simple outline (the icon set copy has none) */
+  function pin(s) { return '<svg class="i" width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l-1 6 3 3v2H7v-2l3-3z"/><path d="M12 14v7"/></svg>'; }
+  function ring(s, frac) {
+    var r = 9, c = 2 * Math.PI * r;
+    return '<svg class="i" width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="' + r + '" stroke="var(--line)" stroke-width="3"/><circle cx="12" cy="12" r="' + r + '" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-dasharray="' + (c * frac) + ' ' + c + '" transform="rotate(-90 12 12)"/></svg>';
+  }
+
+  var T = [];
+
+  /* 361 */
+  T.push([361, 'New notification: a dot on Overview',
+    '<div class="stage backdrop" style="width:112px;height:172px">' +
+      '<div class="abs glass ptop">Chat</div>' +
+      '<div class="abs" style="top:34px;left:8px;right:8px;display:flex;flex-direction:column;gap:5px"><div class="bub">Add milk to the list</div><div class="bub me">Done</div><div class="bub">Anything else?</div></div>' +
+      '<div class="abs glass-thick ptb"><span>' + ic('home', 13) + '<i class="pdot"></i></span><span>' + ic('assistant', 13) + '</span><span>' + ic('timeline', 13) + '</span><span class="on">' + ic('chat', 13) + '</span><span class="sep"></span><span>' + ic('all', 13) + '</span></div>' +
+    '</div>' +
+    '<div class="col" style="width:112px"><div class="glass-thick" style="position:relative;width:64px;height:64px;border-radius:var(--r-lg);display:grid;place-items:center">' + ic('home', 30) + '<i class="pdot" style="top:8px;right:8px;width:14px;height:14px;border-width:2.5px"></i></div>' +
+    '<span class="t-strong" style="font-size:12px">Overview</span><div class="cap">The dot stays until you open it</div></div>']);
+
+  /* 362 */
+  function mf(kind) {
+    var b = function (w, extra) { return '<div class="blk" style="width:' + w + 'px;' + (extra || '') + '"></div>'; };
+    var inner = kind === 1 ? b(28) : kind === 2 ? b(7) + b(42) : b(16) + b(22) + b(32);
+    return '<div class="mf surface">' + (kind > 1 ? '<i class="card"></i>' : '') + inner + '</div>';
+  }
+  T.push([362, 'Layout changes at 600 and 1000',
+    '<div class="col" style="width:100%;gap:8px"><div class="rz" style="align-items:flex-end">' +
+      '<div style="width:100px">' + mf(1) + '<span class="cap">One column</span></div>' +
+      '<div style="width:80px">' + mf(2) + '<span class="cap">Two</span></div>' +
+      '<div style="width:90px">' + mf(3) + '<span class="cap">Three</span></div></div>' +
+    '<div style="position:relative;width:100%;height:34px">' +
+      '<div class="abs seg" style="left:0;width:100px;top:2px;background:color-mix(in srgb,var(--accent) 22%,transparent)"></div>' +
+      '<div class="abs seg" style="left:102px;width:78px;top:2px;background:color-mix(in srgb,var(--accent) 50%,transparent)"></div>' +
+      '<div class="abs seg" style="left:182px;right:0;top:2px;background:var(--accent)"></div>' +
+      '<div class="abs t-strong num" style="left:101px;top:12px;font-size:12px;transform:translateX(-50%)">600</div>' +
+      '<div class="abs t-strong num" style="left:181px;top:12px;font-size:12px;transform:translateX(-50%)">1000</div>' +
+      '<div class="abs cap" style="left:0;top:12px">0</div><div class="abs cap" style="right:0;top:12px">px</div></div>' +
+    '<div class="note" style="font:500 11px/14px var(--font-sans);align-self:flex-start">Notification cards at the top right from 600</div></div>']);
+
+  /* 363 */
+  function lw() { return '<div class="abs glass-thick mini-l" style="width:54px;height:48px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:var(--r-lg)"><div class="f"></div><div class="r s"></div><div class="r"></div><div class="r"></div></div>'; }
+  T.push([363, 'The launcher does not fold',
+    '<div class="col"><div class="stage wallpaper" style="width:150px;height:92px;border:3px solid var(--text);border-radius:8px">' + lw() + '</div><span class="cap">Wide desktop</span></div>' +
+    '<div class="col"><div class="stage wallpaper" style="width:96px;height:62px;border:3px solid var(--text);border-radius:6px">' + lw() + '</div><span class="cap">Smaller laptop</span><span class="chip accent" style="margin-top:2px">its own sizes</span></div>']);
+
+  /* 364 */
+  T.push([364, 'An admin sets a household tablet’s four',
+    '<div class="adm surface compact"><div class="h">Kitchen tablet · Pinned areas</div><div style="display:flex;gap:10px">' +
+      '<div style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="cap" style="text-align:left">Its four</span>' +
+        [['home', 'Overview'], ['timer', 'Timers'], ['lists', 'Lists'], ['assistant', 'Assistant']].map(function (a, i) { return '<div class="slot"><b>' + (i + 1) + '</b>' + ic(a[0], 13) + '<span>' + a[1] + '</span></div>'; }).join('') + '</div>' +
+      '<div style="width:96px;display:flex;flex-direction:column"><span class="cap" style="text-align:left;margin-bottom:3px">Pick from</span>' +
+        [['clip', 'Clipboard'], ['timeline', 'Timeline'], ['chat', 'Chat'], ['bell', 'Alarms']].map(function (a) { return '<div class="pick">' + ic(a[0], 13) + '<span class="sp">' + a[1] + '</span>' + ic('plus', 11) + '</div>'; }).join('') + '</div></div></div>']);
+
+  /* 365 */
+  function miniSet() { return '<div class="stage backdrop" style="width:100%;height:58px"><div class="abs glass-thick" style="inset:5px;display:flex;overflow:hidden;border-radius:var(--r-md)"><div style="width:22px;border-right:1px solid var(--line);padding:4px;display:flex;flex-direction:column;gap:3px"><div class="blk" style="height:5px"></div><div class="blk" style="height:5px;background:var(--accent-soft)"></div><div class="blk" style="height:5px"></div></div><div style="flex:1;padding:5px;display:flex;flex-direction:column;gap:4px"><div style="font:600 8px/10px var(--font-sans)" class="ell">Settings · Sound</div><div class="blk" style="height:5px"></div><div class="blk" style="height:5px;width:70%"></div></div></div></div>'; }
+  function miniList() { return '<div class="stage backdrop" style="width:100%;height:58px"><div class="abs glass-thick mini-l" style="inset:5px;border-radius:var(--r-md)"><div class="f"></div><div class="r s"></div><div class="r"></div><div class="r"></div></div></div>'; }
+  T.push([365, 'Launcher forgets after one minute',
+    '<div class="col" style="width:100%;gap:6px;align-items:stretch">' +
+      '<div style="display:flex;align-items:center;gap:6px;font:600 11px/14px var(--font-sans)"><span class="dot" style="color:var(--text-3)"></span>Closed on “Settings · Sound”</div>' +
+      '<div style="position:relative;height:30px"><div class="abs seg" style="left:0;width:122px;top:6px;background:var(--accent)"></div><div class="abs seg" style="left:126px;right:0;top:6px;background:var(--control-hover)"></div>' +
+        '<div class="abs" style="left:0;top:16px;display:flex;align-items:center;gap:3px;font:500 11px/14px var(--font-sans)">' + ic('timeline', 12) + '0</div>' +
+        '<div class="abs" style="left:124px;top:16px;transform:translateX(-50%);display:flex;align-items:center;gap:3px;font:600 11px/14px var(--font-sans)">1 min</div>' +
+        '<div class="abs" style="right:0;top:16px;display:flex;align-items:center;gap:3px;font:500 11px/14px var(--font-sans)">later</div></div>' +
+      '<div style="display:flex;gap:8px"><div style="flex:1;min-width:0"><div class="cap" style="margin-bottom:3px">Same view</div>' + miniSet() + '</div><div style="flex:1;min-width:0"><div class="cap" style="margin-bottom:3px">Neutral list</div>' + miniList() + '</div></div></div>']);
+
+  /* 366 */
+  T.push([366, 'The tray icon’s menu',
+    '<div class="stage wallpaper compact" style="width:100%;height:100%"><div class="abs glass" style="left:0;right:0;top:0;height:22px;border-radius:0;display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:0 10px"><span class="blk" style="width:12px;height:6px"></span><span class="blk" style="width:12px;height:6px"></span><span style="background:var(--accent-soft);border-radius:4px;padding:1px 3px;display:grid;place-items:center">' + mark(14) + '</span><span class="t-label num" style="font-size:10px">09:41</span></div>' +
+      '<div class="abs glass-thick" style="right:8px;top:28px;width:168px;padding:5px;border-radius:var(--r-md)">' +
+        '<div class="mrow sel">' + ic('search', 13) + 'Open launcher</div><div class="mrow">' + ic('gear', 13) + 'Settings</div><hr class="divider" style="margin:3px 0">' +
+        '<div class="mrow"><span class="dot" style="color:var(--success)"></span>Connected to home</div><hr class="divider" style="margin:3px 0">' +
+        '<div class="mrow">' + ic('x', 13) + 'Quit</div></div></div>']);
+
+  /* 367 */
+  function sfr(kind) {
+    var side = '<div style="width:16px;border-right:1px solid var(--line);padding:4px 3px;display:flex;flex-direction:column;gap:3px"><div class="blk" style="height:4px"></div><div class="blk" style="height:4px;background:var(--accent-soft)"></div><div class="blk" style="height:4px"></div></div>';
+    var f = function (txt) { return '<div style="display:flex;align-items:center;gap:3px;height:13px;padding:0 4px;border-radius:4px;background:var(--control);font:500 8px/1 var(--font-sans)">' + ic('search', 7) + (txt ? txt + '<i style="width:1px;height:8px;background:var(--accent)"></i>' : '<span class="t-3">Search</span>') + '</div>'; };
+    var rows = '<div class="blk" style="height:5px"></div><div class="blk" style="height:5px;width:75%"></div>';
+    var body = kind === 1 ? '<div style="flex:1;padding:4px;display:flex;flex-direction:column;gap:4px">' + f('sound') + rows + '</div>' :
+      kind === 2 ? '<div style="flex:1;padding:4px;display:flex;flex-direction:column;gap:4px">' + f('') + '<div class="blk" style="height:5px"></div><div class="blk" style="height:5px;width:75%"></div><div class="blk" style="height:5px;width:55%"></div></div>' :
+      '<div style="flex:1;padding:5px;display:flex;flex-direction:column;gap:4px">' + f('') + '<div class="r" style="height:6px;border-radius:2px;background:var(--accent-soft)"></div><div class="blk" style="height:6px"></div><div class="blk" style="height:6px"></div></div>';
+    return '<div class="stage wallpaper" style="width:68px;height:84px"><div class="abs glass-thick" style="inset:5px;display:flex;overflow:hidden;border-radius:var(--r-md)">' + (kind < 3 ? side : '') + body + '</div></div>';
+  }
+  function escKey() { return '<div class="esc"><span class="kbd" style="font-size:11px;padding:3px 7px">Esc</span><span style="color:var(--text-2)">' + '<svg width="16" height="8" viewBox="0 0 16 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h13M10 1l4 3-4 3"/></svg></span></div>'; }
+  T.push([367, 'Esc: first clear search, then leave',
+    '<div class="col" style="width:100%;gap:8px"><div style="display:flex;align-items:center;justify-content:space-between;width:100%">' +
+      '<div class="step">' + sfr(1) + '<span class="cap">Search “sound”</span></div>' + escKey() +
+      '<div class="step">' + sfr(2) + '<span class="cap">Search empty</span></div>' + escKey() +
+      '<div class="step">' + sfr(3) + '<span class="cap">Launcher list</span></div></div>' +
+    '<span class="cap">One press clears the search; the next leaves</span></div>']);
+
+  /* 368 */
+  T.push([368, 'Answer a notification from the keyboard',
+    '<div class="stage wallpaper compact" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">' +
+      '<div class="glass ncard" style="width:236px"><div class="hd"><span class="character" style="--size:30px"></span><div style="flex:1"><div class="tx">Juno asks: add milk to the list?</div><div class="sb">Shopping</div></div></div>' +
+      '<div class="btns"><span class="btn btn-primary is-focus">Yes <span class="kbd">Y</span></span><span class="btn">No <span class="kbd">N</span></span></div></div></div>']);
+
+  /* 369 */
+  T.push([369, 'A question stays until answered',
+    '<div class="stage wallpaper compact" style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:0 14px">' +
+      '<div class="glass ncard" style="padding:8px 10px;gap:6px"><div class="hd"><span class="character" style="--size:24px"></span><div class="tx" style="flex:1">Add milk to the list?</div>' +
+        '<span class="chip accent" style="padding:0 6px;gap:3px">' + pin(11) + 'Stays</span></div>' +
+      '<div class="btns"><span class="btn btn-primary">Yes</span><span class="btn">No</span></div></div>' +
+      '<div class="glass ncard" style="padding:8px 10px;opacity:.6"><div class="hd">' + ic('bell', 18) + '<div style="flex:1"><div class="tx">Parcel arrives tomorrow</div></div>' + ring(20, .55) + '</div></div></div>']);
+
+  /* 370 */
+  var US = [['clip', 'Clipboard history', 100, 34], ['timer', 'Set a timer', 74, 25], ['cart', 'Shopping', 48, 16], ['bell', 'Notifications', 26, 9]];
+  T.push([370, 'Actions ordered by your own use',
+    '<div class="stage wallpaper compact" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center"><div class="glass-thick" style="width:244px;padding:6px;border-radius:var(--r-lg)">' +
+      '<div class="cap" style="text-align:left;padding:0 8px 3px;text-transform:uppercase;letter-spacing:.04em">Most used first</div>' +
+      US.map(function (u, i) { return '<div class="lr' + (i === 0 ? ' sel' : '') + '">' + ic(u[0], 14) + '<span class="sp">' + u[1] + '</span><span class="use"><i style="width:' + u[2] + '%"></i></span><span class="num t-2" style="width:18px;text-align:right;font-size:10px">' + u[3] + '</span></div>'; }).join('') + '</div></div>']);
+
+  /* 371 */
+  var AR = [['home', 'Overview'], ['assistant', 'Juno'], ['timeline', 'Timeline'], ['chat', 'Chat'], ['lists', 'Lists'], ['clip', 'Clipboard'], ['timer', 'Timers'], ['gear', 'Settings'], ['bell', 'Alarms'], ['users', 'People'], ['lock', 'Devices'], ['cart', 'Shopping']];
+  T.push([371, 'The All sheet scrolls',
+    '<div class="stage backdrop" style="width:188px;height:172px"><div class="abs glass ptop" style="width:auto">Overview</div>' +
+      '<div class="abs" style="inset:0;background:color-mix(in srgb,var(--text) 25%,transparent)"></div>' +
+      '<div class="abs glass-thick" style="left:6px;right:6px;top:30px;height:210px;padding:6px 6px;border-radius:var(--r-xl)">' +
+        '<div style="width:26px;height:3px;border-radius:2px;background:var(--text-3);margin:0 auto 5px"></div><div class="t-heading" style="font-size:12px;margin-bottom:3px">All areas</div>' +
+        '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px 0;padding-right:5px">' + AR.map(function (a, i) { return '<div class="gi' + (i < 4 ? ' mine' : '') + '"><span class="bx">' + ic(a[0], 16) + '</span><span class="l">' + a[1] + '</span></div>'; }).join('') + '</div>' +
+        '<div class="abs" style="right:3px;top:44px;width:3px;height:44px;border-radius:2px;background:var(--text-3)"></div></div></div>' +
+    '<div class="col" style="width:62px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M7 14l5-5 5 5"/><path d="M7 19l5-5 5 5"/></svg><div class="cap">Swipe up for more</div></div>']);
+
+  /* 372 */
+  T.push([372, 'The All button: grid icon and the word',
+    '<div class="stage backdrop" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center"><div class="glass-thick" style="display:flex;align-items:center;gap:4px;padding:6px 8px;border-radius:var(--r-xl)">' +
+      '<div class="tbb">' + ic('timeline', 22) + 'Timeline</div><div class="tbb">' + ic('chat', 22) + 'Chat</div>' +
+      '<span style="width:1px;height:38px;background:var(--line);margin:0 2px"></span>' +
+      '<div class="tbb on" style="width:64px">' + ic('all', 26) + 'All</div></div></div>' +
+    '']);
+
+  document.getElementById('grid').innerHTML = T.map(function (t) {
+    return '<div class="tile surface"><div class="th"><span class="num-badge">' + t[0] + '</span><div class="t">' + t[1] + '</div></div><div class="art">' + t[2] + '</div></div>';
+  }).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To approve, group 2</title>
+<!--
+  Thirteen small decisions to approve, each drawn as a small example:
+  motion, saving, cards and characters. Light mode, accent Tide.
+-->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  body { margin: 0; background: var(--bg); }
+  .page { width: 1240px; margin: 0 auto; padding: 0; }
+  h1 { font: var(--type-title); margin: 0 0 var(--s-3); }
+  .grid { display: grid; grid-template-columns: repeat(4, 290px); justify-content: space-between; gap: 14px 0; }
+  .tile { position: relative; height: 256px; padding: 12px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+  .hd { display: flex; align-items: center; gap: 10px; min-height: 38px; }
+  .num-b { width: 40px; height: 34px; border-radius: var(--r-sm); background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font: 700 15px/1 var(--font-sans); flex: none; font-variant-numeric: tabular-nums; }
+  .hd h2 { font: 600 14px/17px var(--font-sans); }
+  .art { flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .rw { display: flex; align-items: center; gap: 8px; }
+  .cap { font: var(--type-label); font-size: 11px; line-height: 14px; color: var(--text-2); text-align: center; }
+
+  /* mini parts */
+  .ar { width: 18px; height: 18px; flex: none; background: var(--text-2);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath d='M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath d='M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z'/%3E%3C/svg%3E") center/contain no-repeat; }
+  .ar.up { transform: rotate(-90deg); } .ar.down { transform: rotate(90deg); } .ar.left { transform: rotate(180deg); }
+  .ar.acc { background: var(--accent); }
+  .fr { position: relative; border-radius: var(--r-md); overflow: hidden; flex: none; }
+  .fr.dim::after { content: ""; position: absolute; inset: 0; background: color-mix(in srgb, var(--text) 38%, transparent); }
+  .ln { height: 5px; border-radius: 3px; background: var(--control-hover); }
+  .ln.a { background: var(--accent); opacity: .7; }
+  .pg { position: absolute; inset: 6px; display: flex; flex-direction: column; gap: 5px; padding: 6px; border-radius: 8px; background: var(--surface-2); }
+  .sh { position: absolute; left: 6px; right: 6px; bottom: 0; border-radius: 12px 12px 0 0; border-bottom: 0; padding: 6px; z-index: 2; }
+  .cv { width: 90px; height: 46px; flex: none; overflow: visible; }
+  .cv .t { stroke: var(--text-3); stroke-width: 1; stroke-dasharray: 3 3; fill: none; }
+  .cv .c { stroke: var(--accent); stroke-width: 2.5; fill: none; stroke-linecap: round; }
+  .btn.s { height: 26px; padding: 0 12px; font-size: 12px; }
+  .chip.s { height: 20px; padding: 0 8px; font-size: 11px; text-transform: none; letter-spacing: 0; }
+  .pdot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; flex: none; }
+  svg.i { display: block; flex: none; }
+  .bb { padding: 4px 8px; border-radius: 10px; background: var(--glass-solid); font: var(--type-label); font-size: 11px; line-height: 14px; align-self: flex-start; box-shadow: var(--shadow-1); }
+  .bb.me { align-self: flex-end; background: var(--accent); color: var(--on-accent); }
+  .tk { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--text-3); flex: none; }
+  .mk { position: absolute; width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--glass-solid); background: color-mix(in srgb, var(--accent) 45%, transparent); z-index: 4; box-shadow: var(--shadow-1); }
+  .badge-ok, .badge-no { position: absolute; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; z-index: 5; color: var(--on-accent); }
+  .badge-ok { background: var(--success); } .badge-no { background: var(--danger); }
+  .thumb { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 62px; }
+  .thumb .fr { width: 62px; height: 46px; }
+  .thumb span { font: var(--type-label); font-size: 10px; line-height: 12px; text-align: center; color: var(--text-2); }
+  .bars { display: flex; align-items: center; gap: 4px; height: 70px; }
+  .bars i { width: 6px; border-radius: 3px; background: linear-gradient(var(--accent), var(--accent-2)); animation: wv 900ms var(--ease) infinite alternate; }
+  @keyframes wv { from { transform: scaleY(.45); } to { transform: scaleY(1); } }
+</style>
+</head>
+<body class="va accent-tide light">
+<div class="page">
+  <h1>To approve, group 2: motion, saving, cards, characters</h1>
+  <div class="grid">
+
+    <!-- 347 -->
+    <section class="tile surface" id="t347"><div class="hd"><span class="num-b">347</span><h2>Cannot grow: sheet rises, page fades</h2></div>
+      <div class="art">
+        <div class="rw">
+          <div class="fr backdrop" style="width:54px;height:66px"></div>
+          <i class="ar"></i>
+          <div class="fr backdrop" style="width:54px;height:66px"><div class="glass-thick sh" style="height:26px"></div></div>
+          <i class="ar"></i>
+          <div class="fr backdrop" style="width:54px;height:66px"><div class="glass-thick sh" style="height:46px"></div></div>
+          <i class="ar up acc"></i>
+        </div>
+        <div class="rw">
+          <div class="fr backdrop" style="width:54px;height:66px;opacity:.3"><div class="pg"><span class="ln" style="width:60%"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span></div></div>
+          <i class="ar"></i>
+          <div class="fr backdrop" style="width:54px;height:66px"><div class="pg"><span class="ln" style="width:60%"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span></div></div>
+          <span class="chip s" style="margin-left:6px">30% &rarr; 100%</span>
+        </div>
+        <span class="cap">Nothing grows out of a row</span>
+      </div></section>
+
+    <!-- 348 -->
+    <section class="tile surface" id="t348"><div class="hd"><span class="num-b">348</span><h2>Only sheets and presses overshoot</h2></div>
+      <div class="art" style="gap:6px">
+        <div class="rw">
+          <div class="fr backdrop" style="width:70px;height:48px"><div class="glass-thick sh" style="height:26px"></div></div>
+          <svg class="cv" viewBox="0 0 90 48"><path class="t" d="M4 14H86"/><path class="c" d="M4 44C18 44 24 3 40 5C52 7 58 14 86 14"/></svg>
+        </div>
+        <div class="rw">
+          <div style="width:70px;display:grid;place-items:center"><span class="btn btn-primary s" style="transform:scale(.92)">Press</span></div>
+          <svg class="cv" viewBox="0 0 90 48"><path class="t" d="M4 14H86"/><path class="c" d="M4 44C18 44 24 3 40 5C52 7 58 14 86 14"/></svg>
+        </div>
+        <div class="rw">
+          <div class="fr backdrop" style="width:70px;height:48px"><div class="pg"><span class="ln" style="width:60%"></span><span class="ln"></span><span class="ln"></span></div></div>
+          <svg class="cv" viewBox="0 0 90 48"><path class="t" d="M4 14H86"/><path class="c" d="M4 44C30 44 40 14 86 14"/></svg>
+          <span class="chip s">no overshoot</span>
+        </div>
+      </div></section>
+
+    <!-- 349 -->
+    <section class="tile surface" id="t349"><div class="hd"><span class="num-b">349</span><h2>The app measures a slow device</h2></div>
+      <div class="art" style="gap:6px">
+        <div style="position:relative;width:128px;height:78px;border-radius:12px;border:6px solid var(--text-2);background:var(--surface-2);display:grid;place-items:center;overflow:hidden">
+          <svg width="64" height="40" viewBox="0 0 64 40" style="display:block"><path d="M6 36A26 26 0 0 1 58 36" fill="none" stroke="var(--control-hover)" stroke-width="7" stroke-linecap="round"/><path d="M6 36A26 26 0 0 1 20 13" fill="none" stroke="var(--warning)" stroke-width="7" stroke-linecap="round"/><path d="M32 36L22 20" stroke="var(--text)" stroke-width="2.5" stroke-linecap="round"/><circle cx="32" cy="36" r="3.5" fill="var(--text)"/></svg>
+        </div>
+        <i class="ar down"></i>
+        <span class="chip accent">Reduced motion: on (measured)</span>
+        <div class="rw" style="width:100%;padding:6px 10px;border-radius:var(--r-sm);background:var(--control);border:1px solid var(--line)"><span class="t-label" style="flex:1;font-size:12px">Reduced motion</span><span class="toggle on"></span></div>
+      </div></section>
+
+    <!-- 350 -->
+    <section class="tile surface" id="t350"><div class="hd"><span class="num-b">350</span><h2>Dangerous actions ask, then act at once</h2></div>
+      <div class="art" style="flex-direction:row;align-items:stretch;gap:12px">
+        <div class="fr" style="width:122px;background:var(--surface-2);border:1px solid var(--line);display:flex;flex-direction:column;padding:8px;gap:5px">
+          <span class="ln" style="width:55%"></span>
+          <span class="ln" style="height:16px;border-radius:6px"></span>
+          <span class="ln" style="height:16px;border-radius:6px"></span>
+          <div style="margin:auto -8px -8px;padding:6px 8px;border-top:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:4px">
+            <span class="rw" style="gap:4px;font:600 10px/12px var(--font-sans)"><span class="pdot"></span>2 changes not saved</span>
+            <span class="rw" style="gap:4px;justify-content:flex-end"><span class="chip s" style="height:18px;font-size:10px">Discard</span><span class="chip s" style="height:18px;font-size:10px;background:var(--accent);color:var(--on-accent)">Save</span></span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;align-items:stretch;width:122px;justify-content:center">
+          <div class="rw" style="padding:6px 8px;border-radius:var(--r-sm);background:var(--control);border:1px solid var(--line);color:var(--danger);font:600 11px/13px var(--font-sans)">Remove this assistant</div>
+          <i class="ar down" style="align-self:center"></i>
+          <div class="fr backdrop" style="height:78px"><div class="glass-thick" style="position:absolute;left:8px;right:8px;top:10px;padding:6px;border-radius:14px;text-align:center">
+            <div style="font:600 11px/14px var(--font-sans)">Remove Juno?</div>
+            <div class="rw" style="gap:4px;margin-top:6px"><span class="btn s" style="flex:1;height:22px;padding:0;font-size:10px;color:var(--danger)">Remove</span><span class="btn s" style="flex:1;height:22px;padding:0;font-size:10px">Keep</span></div></div></div>
+        </div>
+      </div>
+      <div class="cap" style="display:flex;align-items:center;justify-content:center;gap:4px"><i class="ar left"></i>Not part of Save</div></section>
+
+    <!-- 351 -->
+    <section class="tile surface" id="t351"><div class="hd"><span class="num-b">351</span><h2>Sent changes just lose their mark</h2></div>
+      <div class="art" style="gap:4px">
+        <div class="rw" style="width:210px;padding:8px 10px;border-radius:var(--r-sm);background:var(--surface-2);border:1px solid var(--line)">
+          <span class="tk"></span><span style="flex:1"><b class="t-label" style="display:block">Milk</b><span class="rw" style="gap:4px;font:var(--type-label);font-size:11px;color:var(--text-2)"><i data-ic="off" data-s="11"></i>Waiting to send</span></span>
+        </div>
+        <i class="ar down"></i>
+        <div class="rw" style="width:210px;padding:8px 10px;min-height:42px;border-radius:var(--r-sm);background:var(--surface-2);border:1px solid var(--line)">
+          <span class="tk"></span><b class="t-label">Milk</b>
+        </div>
+        <span class="chip s" style="margin-top:4px;text-decoration:line-through;text-decoration-color:var(--danger)">Sent &#10003;</span>
+        <span class="cap" style="margin-top:-4px">No toast</span>
+      </div></section>
+
+    <!-- 352 -->
+    <section class="tile surface" id="t352"><div class="hd"><span class="num-b">352</span><h2>Composed screens show only in advanced mode</h2></div>
+      <div class="art" style="flex-direction:row;align-items:flex-start;gap:10px;justify-content:center">
+        <div style="display:flex;flex-direction:column;gap:4px;align-items:center"><span class="chip s">Normal</span>
+          <div class="fr backdrop" style="width:126px;height:150px;display:flex;flex-direction:column;gap:6px;padding:8px;justify-content:center">
+            <span class="bb me">Pasta timer</span>
+            <div class="glass rw" style="padding:6px 8px;border-radius:12px;gap:6px"><i data-ic="timer" data-s="16"></i><span class="t-label" style="font-size:11px;flex:1">Pasta</span><b class="num" style="font-size:12px">07:42</b></div>
+            <span class="bb">Started it.</span>
+          </div></div>
+        <div style="display:flex;flex-direction:column;gap:4px;align-items:center"><span class="chip s accent">Advanced mode</span>
+          <div class="fr backdrop" style="width:126px;height:150px;display:flex;flex-direction:column;gap:6px;padding:8px;justify-content:center">
+            <span class="bb me">Pasta timer</span>
+            <span class="t-label" style="font-size:10px;line-height:12px;padding:0 2px;text-align:center;background:var(--glass-solid);border-radius:8px;padding:2px 4px;align-self:center">Juno composed this screen</span>
+            <div class="glass rw" style="padding:6px 8px;border-radius:12px;gap:6px;margin-top:-2px"><i data-ic="timer" data-s="16"></i><span class="t-label" style="font-size:11px;flex:1">Pasta</span><b class="num" style="font-size:12px">07:42</b></div>
+            <span class="bb">Started it.</span>
+          </div></div>
+      </div></section>
+
+    <!-- 353 -->
+    <section class="tile surface" id="t353"><div class="hd"><span class="num-b">353</span><h2>A sheet with unsaved input asks first</h2></div>
+      <div class="art" style="flex-direction:row;gap:8px">
+        <div class="fr backdrop dim" style="width:124px;height:168px">
+          <span class="mk" style="left:14px;top:12px"></span>
+          <div class="glass-thick sh" style="height:92px;padding:10px 8px">
+            <div class="t-label" style="font-size:11px;margin-bottom:4px">New note</div>
+            <div class="field is-focus" style="height:30px;padding:0 8px;font-size:11px;outline-offset:1px;background:var(--glass-solid)">Pick up Sam<span style="width:1.5px;height:14px;background:var(--accent);margin-left:1px"></span></div>
+          </div>
+        </div>
+        <i class="ar"></i>
+        <div class="fr backdrop dim" style="width:124px;height:168px">
+          <div class="glass-thick sh" style="height:92px"></div>
+          <div class="glass-thick" style="position:absolute;left:8px;right:8px;top:40px;z-index:5;padding:8px;border-radius:14px;text-align:center;background:var(--glass-solid)">
+            <div style="font:600 11px/14px var(--font-sans)">Discard what you typed?</div>
+            <div style="display:flex;flex-direction:column;gap:4px;margin-top:6px"><span class="btn s" style="height:22px;font-size:10px;color:var(--danger)">Discard</span><span class="btn btn-primary s" style="height:22px;font-size:10px">Keep editing</span></div>
+          </div>
+        </div>
+      </div></section>
+
+    <!-- 354 -->
+    <section class="tile surface" id="t354"><div class="hd"><span class="num-b">354</span><h2>Asked-for card: large for about 5 seconds</h2></div>
+      <div class="art">
+        <div class="rw" style="gap:3px">
+          <div class="fr backdrop" style="width:70px;height:120px"><div class="pg" style="gap:6px"><span class="ln" style="width:55%"></span><span class="rw" style="gap:3px;padding:4px;border-radius:7px;background:var(--glass-solid);box-shadow:var(--shadow-1)"><i data-ic="timer" data-s="10"></i><b class="num" style="font-size:9px">07:42</b></span><span class="ln"></span><span class="ln"></span></div></div>
+          <i class="ar"></i>
+          <div class="fr backdrop dim" style="width:70px;height:120px"><div class="glass-thick" style="position:absolute;left:6px;right:6px;top:20px;bottom:16px;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:16px">
+            <b class="num" style="font:600 18px/20px var(--font-sans)">07:42</b>
+            <span style="width:26px;height:26px;border-radius:50%;background:conic-gradient(var(--accent) 0 72%, var(--control-hover) 0);display:grid;place-items:center"><span style="width:18px;height:18px;border-radius:50%;background:var(--glass-solid);display:grid;place-items:center;font:600 8px/1 var(--font-sans)">5 s</span></span></div></div>
+          <i class="ar"></i>
+          <div class="fr backdrop" style="width:70px;height:120px"><div class="pg" style="gap:6px"><span class="ln" style="width:55%"></span><span class="rw" style="gap:3px;padding:4px;border-radius:7px;background:var(--glass-solid);box-shadow:var(--shadow-1)"><i data-ic="timer" data-s="10"></i><b class="num" style="font-size:9px">07:42</b></span><span class="ln"></span><span class="ln"></span></div></div>
+        </div>
+        <span class="cap">You asked for it by voice</span>
+      </div></section>
+
+    <!-- 355 -->
+    <section class="tile surface" id="t355"><div class="hd"><span class="num-b">355</span><h2>Next components: what the mockups need</h2></div>
+      <div class="art" style="gap:10px">
+        <div style="display:grid;grid-template-columns:repeat(4,62px);gap:12px 8px">
+          <div class="thumb"><div class="fr backdrop"><div class="glass-thick" style="position:absolute;left:5px;right:5px;top:8px;height:14px;border-radius:7px;display:flex;align-items:center;padding:0 4px;gap:3px"><span style="width:1.5px;height:8px;background:var(--accent)"></span><span class="ln" style="width:20px;height:3px"></span></div><span class="ln" style="position:absolute;left:8px;right:8px;top:28px;height:4px"></span><span class="ln" style="position:absolute;left:8px;width:24px;top:36px;height:4px"></span></div><span>Launcher search</span></div>
+          <div class="thumb"><div class="fr backdrop dim"><div class="glass-thick sh" style="height:24px;left:5px;right:5px"></div></div><span>Sheet</span></div>
+          <div class="thumb"><div class="fr backdrop"><div class="glass-thick" style="position:absolute;left:12px;right:12px;top:6px;padding:4px;border-radius:8px;display:flex;flex-direction:column;gap:4px"><span class="ln"></span><span class="ln a"></span><span class="ln"></span></div></div><span>Menu</span></div>
+          <div class="thumb"><div class="fr backdrop"><div class="glass-thick" style="position:absolute;left:5px;right:5px;bottom:6px;height:16px;border-radius:9px;display:flex;align-items:center;justify-content:space-around;padding:0 3px"><span class="dot" style="width:5px;height:5px;color:var(--accent)"></span><span class="dot" style="width:5px;height:5px;color:var(--text-3)"></span><span class="dot" style="width:5px;height:5px;color:var(--text-3)"></span><span class="dot" style="width:5px;height:5px;color:var(--text-3)"></span><span class="dot" style="width:5px;height:5px;color:var(--text-3)"></span></div></div><span>Tab bar</span></div>
+          <div class="thumb"><div class="fr backdrop"><div class="glass" style="position:absolute;left:4px;top:4px;bottom:4px;width:18px;border-radius:7px;display:flex;flex-direction:column;gap:4px;padding:5px 3px"><span class="ln a" style="height:4px"></span><span class="ln" style="height:4px"></span><span class="ln" style="height:4px"></span></div><div class="pg" style="left:26px;gap:4px"><span class="ln"></span><span class="ln"></span></div></div><span>Side bar</span></div>
+          <div class="thumb"><div class="fr" style="background:var(--surface-2);border:1px solid var(--line);padding:6px;display:flex;flex-direction:column;gap:4px"><span class="ln a" style="height:4px"></span><span class="ln" style="height:3px"></span><span class="ln" style="height:3px"></span><span class="ln" style="height:3px"></span><span class="ln" style="height:3px"></span></div><span>Log table</span></div>
+          <div class="thumb"><div class="fr backdrop" style="padding:6px;display:flex;flex-direction:column;gap:4px"><span class="bb" style="width:26px;height:9px;padding:0"></span><span class="bb me" style="width:30px;height:9px;padding:0"></span><span class="bb" style="width:22px;height:9px;padding:0"></span></div><span>Chat</span></div>
+          <div class="thumb"><div class="fr backdrop"><div class="glass" style="position:absolute;left:6px;right:6px;top:7px;bottom:7px;border-radius:9px;display:flex;align-items:center;gap:4px;padding:4px"><span class="character" style="--size:16px"></span><span style="flex:1;display:flex;flex-direction:column;gap:3px"><span class="ln"></span><span class="ln" style="width:70%"></span></span></div></div><span>Catalog card</span></div>
+        </div>
+      </div></section>
+
+    <!-- 357 -->
+    <section class="tile surface" id="t357"><div class="hd"><span class="num-b">357</span><h2>A card never covers the head</h2></div>
+      <div class="art" style="flex-direction:row;gap:10px;align-items:center">
+        <div class="fr backdrop" style="width:130px;height:150px">
+          <span class="figure" style="--size:44px;position:absolute;left:14px;top:12px"><span class="character" style="--size:44px"></span></span>
+          <div class="glass" style="position:absolute;left:44px;right:8px;top:86px;padding:6px;border-radius:12px;display:flex;flex-direction:column;gap:4px;z-index:3"><span class="t-label" style="font-size:10px">Timer 07:42</span><span class="ln"></span></div>
+          <span class="badge-ok" style="right:6px;top:6px"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><path d="M48 136l56 56 104-120"/></svg></span>
+        </div>
+        <div class="fr backdrop" style="width:130px;height:150px">
+          <span class="figure" style="--size:44px;position:absolute;left:14px;top:12px"><span class="character" style="--size:44px"></span></span>
+          <div class="glass" style="position:absolute;left:18px;right:8px;top:16px;padding:6px;border-radius:12px;display:flex;flex-direction:column;gap:4px;z-index:3"><span class="t-label" style="font-size:10px">Timer 07:42</span><span class="ln"></span></div>
+          <span class="badge-no" style="right:6px;bottom:6px"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="28" stroke-linecap="round"><path d="M64 64l128 128M192 64L64 192"/></svg></span>
+        </div>
+      </div></section>
+
+    <!-- 358 -->
+    <section class="tile surface" id="t358"><div class="hd"><span class="num-b">358</span><h2>The figure stands still once a card shows</h2></div>
+      <div class="art">
+        <div class="rw" style="gap:6px">
+          <div class="fr backdrop" style="width:122px;height:140px">
+            <svg width="122" height="140" viewBox="0 0 122 140" style="position:absolute;inset:0"><path d="M10 124C36 132 60 116 108 124" fill="none" stroke="var(--text-2)" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/><path d="M100 118l8 6-9 4" fill="none" stroke="var(--text-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="figure" style="--size:40px;position:absolute;left:46px;top:28px"><span class="character" style="--size:40px"></span></span>
+          </div>
+          <i class="ar"></i>
+          <div class="fr backdrop" style="width:122px;height:140px">
+            <span class="figure" style="--size:40px;position:absolute;left:8px;top:28px"><span class="character" style="--size:40px"></span></span>
+            <div class="glass" style="position:absolute;left:56px;right:6px;top:34px;padding:6px;border-radius:12px;display:flex;flex-direction:column;gap:4px"><span class="t-label" style="font-size:10px">Timer 07:42</span><span class="ln"></span><span class="ln" style="width:60%"></span></div>
+          </div>
+        </div>
+        <span class="cap">Walks about; stops when a card shows</span>
+      </div></section>
+
+    <!-- 359 -->
+    <section class="tile surface" id="t359"><div class="hd"><span class="num-b">359</span><h2>No figure: a sound wave</h2></div>
+      <div class="art">
+        <div class="fr backdrop" style="width:100%;height:150px;display:flex;align-items:center">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px">
+            <div class="bars">
+              <i style="height:30px;animation-delay:0ms"></i><i style="height:48px;animation-delay:-200ms"></i><i style="height:64px;animation-delay:-400ms"></i><i style="height:40px;animation-delay:-100ms"></i><i style="height:70px;animation-delay:-600ms"></i><i style="height:52px;animation-delay:-300ms"></i><i style="height:34px;animation-delay:-500ms"></i><i style="height:58px;animation-delay:-150ms"></i><i style="height:26px;animation-delay:-350ms"></i>
+            </div>
+            <span class="chip" style="background:var(--glass-solid);color:var(--text)">Juno</span>
+          </div>
+          <div class="glass" style="width:78px;margin:12px 12px 12px 0;align-self:stretch;padding:8px;display:flex;flex-direction:column;gap:6px;border-radius:14px"><span class="ln"></span><span class="ln" style="width:70%"></span><span class="ln"></span></div>
+        </div>
+      </div></section>
+
+    <!-- 360 -->
+    <section class="tile surface" id="t360"><div class="hd"><span class="num-b">360</span><h2>Not the subject: a small head</h2></div>
+      <div class="art" style="gap:10px">
+        <div class="fr backdrop" style="width:100%;padding:8px">
+          <div class="glass-thick" style="border-radius:var(--r-lg);padding:4px 6px">
+            <div class="rw" style="min-height:34px;gap:10px"><span class="character" style="--size:22px"></span><span class="t-label" style="flex:1">Talk to Juno</span><span class="kbd">&crarr;</span></div>
+            <div class="rw" style="min-height:34px;gap:10px;border-top:1px solid var(--line)"><span class="ico"></span><span class="t-label" style="flex:1;color:var(--text-2)">Shopping list</span></div>
+          </div>
+        </div>
+        <div class="fr backdrop" style="width:180px;height:92px">
+          <span class="t-label" style="position:absolute;left:12px;top:8px;font-weight:600;background:var(--glass-solid);border-radius:8px;padding:0 6px">Overview</span>
+          <div class="glass" style="position:absolute;left:8px;right:8px;top:34px;padding:8px;border-radius:14px;display:flex;align-items:center;gap:8px"><span class="character" style="--size:30px"></span><span class="t-label" style="flex:1;font-weight:600">Talk to Juno</span></div>
+        </div>
+      </div></section>
+
+  </div>
+</div>
+<script>
+  var P = {
+    timer: '<path d="M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,216ZM173.66,90.34a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32l40-40A8,8,0,0,1,173.66,90.34ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z"/>'
+  };
+  document.querySelectorAll('[data-ic]').forEach(function (el) {
+    var n = el.getAttribute('data-ic'), s = el.getAttribute('data-s');
+    if (n === 'off') {
+      el.outerHTML = '<svg class="i" width="' + s + '" height="' + s + '" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M72 188a44 44 0 0 1-6-87.6A68 68 0 0 1 196 108a40 40 0 0 1 4 80Z"/><path d="M40 36l176 184"/></svg>';
+    } else {
+      el.outerHTML = '<svg class="i" width="' + s + '" height="' + s + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">' + P[n] + '</svg>';
+    }
+  });
+</script>
+</body>
+</html>
