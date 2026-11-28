@@ -39,7 +39,12 @@ Status: started. The screens, how they are joined and the call are set.
   [the visual design](README.md).
 - **A touch on a clipboard item copies it to the phone.** Holding it
   opens the item, with what else is known about it.
-- **A person chooses which screen the app opens on.**
+- **A new person's four are Overview, the assistant, Timeline and
+  Chat.**
+- **Anything can be one of the four:** an area, a single list such as
+  Shopping, and later a screen of a module.
+- **A person chooses which screen the app opens on,** in the settings of
+  the app on that device.
 - **Talking to an assistant shows the whole figure by default.** The
   character stands on the screen, as on the tablet. See
   [assistant visuals](assistant-visuals.md).
@@ -71,10 +76,6 @@ Status: started. The screens, how they are joined and the call are set.
 - What does the sheet show when there are more areas than fit: does it
   scroll, or grow taller?
 - Does the fixed button show a grid icon, the word "All", or both?
-- Which four are on the bar of a new person: Overview, the assistant,
-  Timeline and Chat?
-- Can any area be put on the bar, a single list such as Shopping
-  included?
 - Where is the line of text on the call screen switched on: in the
   settings, or with a button on the call screen itself?
 - Does the line of text also show what the person says, or only what

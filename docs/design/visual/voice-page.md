@@ -17,14 +17,16 @@ Status: started. The design follows the phone app.
   personal or a household device. See [admin panel](admin-panel.md).
 - **The page remembers how it was set up,** in that browser. It can be
   reset from the page.
-- **A guest can talk at once.**
+- **The page is set up before it is used.** A browser that is not set up
+  shows the choice screen first. The exception is a household that
+  allows any browser to reach its guest assistant: there a guest can
+  talk at once.
 - **An old tablet's browser gets the simpler glass and reduced motion.**
   See [glass](glass.md) and [motion](motion.md).
 
 ## Open questions
 
-- How does a guest get past the choice screen: is "Talk as a guest" a
-  third choice on it, or is the screen only shown when someone asks to
-  set the device up?
+- Where a household allows any browser to reach the guest assistant,
+  where is the way to set the device up: a quiet link on the page?
 - On a wide screen, such as a tablet on its side, is the page arranged
   like the phone or like the tablet's stage?

@@ -460,62 +460,58 @@ detail.
    it scroll, or grow taller? [visual phone]
 102. Does the fixed button show a grid icon, the word "All", or both?
    [visual phone]
-103. Which four are on the bar of a new person: Overview, the assistant,
-   Timeline and Chat? [visual phone]
-104. Can any area be put on the bar, a single list such as Shopping
-   included? [visual phone]
-105. Where is the line of text on the call screen switched on: in the
+103. Where is the line of text on the call screen switched on: in the
    settings, or with a button on the call screen itself? [visual phone]
-106. Does the line of text also show what the person says, or only what
+104. Does the line of text also show what the person says, or only what
    the assistant says? [visual phone]
-107. Where is the first screen chosen: in the app's own settings, or in
+105. Where is the first screen chosen: in the app's own settings, or in
    the admin panel with a person's other settings? [visual phone]
-108. How often does the figure on the idle screen change, and can a
+106. How often does the figure on the idle screen change, and can a
    touch on the dots change it? [visual tablet]
-109. Which assistant is shown first: the one used last, or a fixed
+107. Which assistant is shown first: the one used last, or a fixed
    order? [visual tablet]
-110. Does the clock move now and then, to protect the screen? [visual
+108. Does the clock move now and then, to protect the screen? [visual
    tablet]
-111. How does a tablet without a light sensor know the room is dark: by
+109. How does a tablet without a light sensor know the room is dark: by
    the time of day, by its camera, or does a person set the hours?
    [visual tablet]
-112. What can be set for the dark on a tablet: only which of the two
+110. What can be set for the dark on a tablet: only which of the two
    screens is used, or also the hours and how dim it is? [visual tablet]
-113. Is the time before a conversation closes 20 or 30 seconds at first?
+111. Is the time before a conversation closes 20 or 30 seconds at first?
    [visual tablet]
-114. Does the character show that the conversation is about to close?
+112. Does the character show that the conversation is about to close?
    [visual tablet]
-115. Which figure greets in the welcome, before the household has chosen
+113. Which figure greets in the welcome, before the household has chosen
    or named an assistant? [visual admin panel]
-116. Which languages does the welcome show, and in which is the setup
+114. Which languages does the welcome show, and in which is the setup
    offered at first? [visual admin panel]
-117. Is the language chosen on the welcome itself, as the board shows,
+115. Is the language chosen on the welcome itself, as the board shows,
    or in a step after it? [visual admin panel]
-118. How does a guest get past the choice screen: is "Talk as a guest" a
-   third choice on it, or is the screen only shown when someone asks to
-   set the device up? [visual voice page]
-119. On a wide screen, such as a tablet on its side, is the page
+116. Where a household allows any browser to reach the guest assistant,
+   where is the way to set the device up: a quiet link on the page?
+   [visual voice page]
+117. On a wide screen, such as a tablet on its side, is the page
    arranged like the phone or like the tablet's stage? [visual voice
    page]
 
 ### The mockups
 
-120. Agree to each mockup, or say what to change in it. [mockups]
+118. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-121. A search of the trade mark registers of the EU, the Benelux, the UK
+119. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-122. How fast the blur is on an old tablet and in the launcher, measured
+120. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-123. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+121. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-124. How much power a three-dimensional figure uses on an old tablet
+122. How much power a three-dimensional figure uses on an old tablet
    that is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md
