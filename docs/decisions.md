@@ -451,3 +451,4 @@ are 25 November 2026 unless a section says otherwise.
 | 424 | On a narrow screen the Overview's list shows the three sections of Notifications | [visual](design/visual/README.md) |
 | 425 | The character is a system of its own, with behaviour that follows what happens; its states are settled in the character thread | [assistant visuals](design/visual/assistant-visuals.md) |
 | 426 | One typeface family is used for the interface, and JetBrains Mono for logs and technical text in the admin panel | [typography](design/visual/typography.md) |
+| 427 | Every action in the launcher has a key combination with Ctrl that means the same in every view, with a set of defaults that can be changed | [desktop](design/visual/desktop.md) |

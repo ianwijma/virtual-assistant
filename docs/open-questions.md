@@ -135,6 +135,9 @@ AI. "Characters" is read as the preferred word for an assistant's look,
 AJ. "The choice screen we have on other devices" is read as the pane of
    the setup of a new device that asks: personal or household. [visual
    voice page]
+AN. The default keys for actions in the launcher were chosen by the
+   agent at the owner's request and are to be validated. [visual
+   desktop]
 
 ## 1. Now
 

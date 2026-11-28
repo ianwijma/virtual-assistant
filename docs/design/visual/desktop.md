@@ -87,6 +87,41 @@ settings are set.
   dismissed.**
 - **The order of the actions follows this person's own use.**
 
+## The keys for actions
+
+- **Every action has a key combination with Ctrl,** shown beside it in
+  the panel of more actions. The combination also works on the
+  highlighted row without opening the panel.
+- **The same letter means the same action in every view,** so that a
+  person learns it once. An action that a row does not have does
+  nothing.
+- **A person can change every combination.**
+- **While text in the search field is selected, Ctrl with C copies that
+  text,** as anywhere. Otherwise it copies the highlighted row.
+
+| Keys | Action | Examples |
+|---|---|---|
+| Enter | The main action of the row | Copy a clipboard item, open a notification, run an action |
+| Ctrl K | Open the panel of more actions | |
+| Ctrl O | Open | A link in the browser, a file, an item in full |
+| Ctrl S | Save to a file | A copied image or text, to a place on this computer |
+| Ctrl C | Copy | The row's content |
+| Ctrl Shift C | Copy as plain text | A copied text without its styling |
+| Ctrl E | Edit | A list item, a timer, a clipboard text |
+| Ctrl N | New | A list item, a timer, a reminder |
+| Ctrl R | Reply | An email, a question from an assistant |
+| Ctrl D | Done | Acknowledge a notification, tick a list item |
+| Ctrl L | Later | Snooze until tomorrow morning |
+| Ctrl Shift L | Later, at a time to choose | |
+| Ctrl P | Pin or unpin | Keep a clipboard item, pin an area |
+| Ctrl T | Send to a device | A link or a list to the phone |
+| Ctrl Backspace | Delete | |
+| Ctrl Z | Undo the last action | |
+| Ctrl , | Settings | |
+
+These defaults were chosen by the agent at the owner's request and are
+tried out in use.
+
 ## Open questions
 
 
