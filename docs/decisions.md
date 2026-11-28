@@ -429,3 +429,5 @@ are 25 November 2026 unless a section says otherwise.
 | 402 | The line of text on the call screen shows only what the assistant says | [phone](design/visual/phone.md) |
 | 403 | The welcome shows the greeting in a fixed handful of languages, for show | [admin panel](design/visual/admin-panel.md) |
 | 404 | Settings pages are made by hand, and a generated page is allowed | [visual](design/visual/README.md) |
+| 405 | The character is central to the experience and is designed in a thread of its own | [assistant visuals](design/visual/assistant-visuals.md) |
+| 406 | Every screen gives the character a canvas that can be moved and resized, and the character scales to it in proportion | [assistant visuals](design/visual/assistant-visuals.md) |

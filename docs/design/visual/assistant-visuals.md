@@ -46,6 +46,13 @@ chosen yet.
 - **On a wider screen the figure gets more of the room.** It is larger
   there than on the stage and call board, and the column beside it is
   narrower.
+- **The character is central to the whole experience,** and it is
+  designed in a thread of its own. Its questions are kept below for that
+  thread and are not answered in this work.
+- **Every screen gives the character a canvas.** The canvas is an area
+  that a screen places, moves and resizes. The character lives inside
+  it, reacts to its size and is scaled in proportion. A screen arranges
+  the canvas, not the character.
 - **Layouts leave room for a larger figure.** A later figure may need
   more space than the one for now, with arms or a whole body, so no
   screen is fitted tightly around the present shape.
@@ -108,6 +115,13 @@ Assumed:
 
 ## Open questions
 
+These are for the thread on the character.
+
+- Can the character be anywhere on a screen, or only in the places a
+  screen gives a canvas?
+- Below which size of canvas does the character become a head only, or
+  a sound wave?
+
 - In which style are the full figures drawn, when they are redesigned
   later? Five styles are on
   [the figure style board](examples/figure-style-board.html).
@@ -115,8 +129,6 @@ Assumed:
   are ideas for the thread on the figures.
 - Is the figure of the first release a rendered three-dimensional one,
   or the flat one for now?
-- How much more room does a screen keep for a later figure: how much
-  wider and taller than the figure for now?
 - Who draws the figures, and how many are there in the first release?
 - How does a person give their own assistant a look: by choosing from a
   set of figures, by adjusting parts such as colour and clothing, or by

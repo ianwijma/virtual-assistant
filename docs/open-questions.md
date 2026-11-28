@@ -307,50 +307,52 @@ detail.
 
 ### Assistant visuals
 
-35. In which style are the full figures drawn, when they are redesigned
+35. Can the character be anywhere on a screen, or only in the places a
+   screen gives a canvas? [assistant visuals]
+36. Below which size of canvas does the character become a head only, or
+   a sound wave? [assistant visuals]
+37. In which style are the full figures drawn, when they are redesigned
    later? Five styles are on the figure style board. [assistant visuals]
-36. Does a figure have a mouth that moves when it talks, and arms? Both
+38. Does a figure have a mouth that moves when it talks, and arms? Both
    are ideas for the thread on the figures. [assistant visuals]
-37. Is the figure of the first release a rendered three-dimensional one,
+39. Is the figure of the first release a rendered three-dimensional one,
    or the flat one for now? [assistant visuals]
-38. How much more room does a screen keep for a later figure: how much
-   wider and taller than the figure for now? [assistant visuals]
-39. Who draws the figures, and how many are there in the first release?
+40. Who draws the figures, and how many are there in the first release?
    [assistant visuals]
-40. How does a person give their own assistant a look: by choosing from
+41. How does a person give their own assistant a look: by choosing from
    a set of figures, by adjusting parts such as colour and clothing, or
    by supplying their own drawing? [assistant visuals]
-41. How playful is the default household assistant: cute, friendly, or
+42. How playful is the default household assistant: cute, friendly, or
    calm? [assistant visuals]
-42. May a person bring their own figure, such as a character they like
+43. May a person bring their own figure, such as a character they like
    from elsewhere? The project cannot ship characters that belong to
    others. [assistant visuals]
-43. From the research: which of the three routes above do the first
+44. From the research: which of the three routes above do the first
    figures take? [assistant visuals]
 
 ### The clients
 
-44. Where is changing the idle figure by itself switched on: per tablet?
+45. Where is changing the idle figure by itself switched on: per tablet?
    [visual tablet]
 
 ### The mockups
 
-45. Agree to each mockup, or say what to change in it. [mockups]
+46. Agree to each mockup, or say what to change in it. [mockups]
 
 ### To research
 
 An agent does this work and the owner agrees to the outcome.
 
-46. A search of the trade mark registers of the EU, the Benelux, the UK
+47. A search of the trade mark registers of the EU, the Benelux, the UK
    and the US for "Heem", in the classes for software and devices. The
    registers could not be reached in the checks so far. [visual
    identity]
-47. How fast the blur is on an old tablet and in the launcher, measured
+48. How fast the blur is on an old tablet and in the launcher, measured
    on real devices. [glass]
-48. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
+49. Whether Slint, Jetpack Compose, SwiftUI and CSS can each grow a
    sheet or a page out of one element and keep a shared element, such as
    a title, moving between two screens. [motion]
-49. How much power a three-dimensional figure uses on an old tablet that
+50. How much power a three-dimensional figure uses on an old tablet that
    is on all day. No figures were found. [assistant visuals]
 
 [identity]: design/technical/server/identity-and-sharing.md

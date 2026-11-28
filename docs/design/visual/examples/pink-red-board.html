@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A pink and a red for the built-in accents</title>
+<!-- Six candidates for the new pink and red accents. Nothing here is decided. Icons: Phosphor (MIT), inlined. -->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  /* The six candidate accents, set the same way tokens.css sets the built-in ones. */
+  .accent-blossom { --accent: light-dark(#D6457F, #FF86B0); --accent-2: light-dark(#F4A77A, #F7B48E); --on-accent: light-dark(#FFFFFF, #0E1014); }
+  .accent-orchid  { --accent: light-dark(#C83B9A, #EE7FCC); --accent-2: light-dark(#7C5CE0, #9C85F0); --on-accent: light-dark(#FFFFFF, #0E1014); }
+  .accent-rose    { --accent: light-dark(#C2607A, #E58DA6); --accent-2: light-dark(#B9A7D6, #C9B9E6); --on-accent: light-dark(#FFFFFF, #0E1014); }
+  .accent-cherry  { --accent: light-dark(#D0343C, #FF6B72); --accent-2: light-dark(#F07A9A, #FF93B0); --on-accent: light-dark(#FFFFFF, #0E1014); }
+  .accent-brick   { --accent: light-dark(#B4412E, #E8806A); --accent-2: light-dark(#D9A441, #E6B858); --on-accent: light-dark(#FFFFFF, #0E1014); }
+  .accent-ruby    { --accent: light-dark(#B3243F, #F0627F); --accent-2: light-dark(#7A3A8C, #B070C6); --on-accent: light-dark(#FFFFFF, #0E1014); }
+
+  body { margin: 0; }
+  .page { max-width: 1240px; margin: 0 auto; padding: var(--s-4); }
+  h1 { font: var(--type-title); margin: 0 0 var(--s-1); }
+  p.lead { font: var(--type-label); color: var(--text-2); margin: 0 0 var(--s-3); max-width: 900px; }
+  .built { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-2) var(--s-3); border-radius: var(--r-md); margin-bottom: var(--s-4); background: var(--surface-tint), var(--bg); border: 1px solid var(--line); }
+  .built .t-caption { text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+  .built .one { display: flex; align-items: center; gap: var(--s-2); font: var(--type-label); }
+  .sw { display: inline-block; width: 34px; height: 16px; border-radius: var(--r-xs); background: linear-gradient(90deg, var(--accent) 50%, var(--accent-2) 50%); border: 1px solid var(--line); flex: none; }
+  .sw.big { width: 56px; height: 22px; }
+  .cols { display: grid; grid-template-columns: repeat(6, 185px); justify-content: space-between; }
+  .col { display: flex; flex-direction: column; gap: var(--s-2); }
+  .mode { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); display: block; margin-bottom: 2px; }
+  .phone { position: relative; width: 185px; height: 360px; border-radius: 28px; overflow: hidden; }
+  .phone > * { position: absolute; }
+  .sb { top: 9px; left: 20px; right: 20px; display: flex; justify-content: space-between; font: var(--type-label); font-weight: 600; font-size: 11px; }
+  .body { top: 32px; left: 9px; right: 9px; display: flex; flex-direction: column; gap: 6px; }
+  .grow { flex: 1; min-width: 0; }
+  .ell { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sub { font: var(--type-caption); color: var(--text-2); display: block; text-transform: none; letter-spacing: 0; font-size: 11px; }
+  .card { display: flex; align-items: center; gap: 7px; padding: 8px 9px; border-radius: var(--r-lg); }
+  .card .t-strong { font-size: 12.5px; }
+  .card .btn { height: 28px; padding: 0 11px; font-size: 12px; }
+  .nrow { display: flex; align-items: center; gap: 8px; padding: 6px 10px; }
+  .nrow + .nrow { border-top: 1px solid var(--line); }
+  .nrow .t-label { font-size: 12px; }
+  .tk { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--text-3); flex: none; }
+  .tb { left: 7px; right: 7px; bottom: 7px; display: flex; padding: 4px; border-radius: var(--r-xl); gap: 1px; }
+  .tb > div { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 5px 0 4px; border-radius: var(--r-md); font: var(--type-caption); font-size: 8px; letter-spacing: -.02em; text-transform: none; color: var(--text-2); }
+  .tb > .on { background: var(--accent-soft); color: var(--accent); }
+  svg.i { display: block; flex: none; }
+  .name { margin-top: var(--s-1); display: flex; align-items: center; gap: var(--s-2); }
+  .badge { width: 28px; height: 28px; border-radius: var(--r-sm); background: var(--accent); color: var(--on-accent); display: grid; place-items: center; font: var(--type-label); font-weight: 700; flex: none; }
+  .kind { font: var(--type-caption); letter-spacing: .04em; text-transform: uppercase; color: var(--text-2); }
+  .hexes { display: flex; align-items: center; gap: var(--s-2); }
+  .hexes .t-mono { font-size: 11px; line-height: 14px; }
+  .feel { font: var(--type-label); color: var(--text-2); }
+  .cap { font: var(--type-caption); color: var(--text-2); }
+</style>
+</head>
+<body class="va">
+<div class="page">
+  <h1>A pink and a red for the built-in accents</h1>
+  <p class="lead">A pink and a red join Tide, Ember, Aurora and Moss. Six candidates on the same Overview screen, light above and dark below. Each has a main colour and a second colour for the backdrop, and a name.</p>
+  <div class="built" id="built"></div>
+  <div class="cols" id="cols"></div>
+</div>
+<script>
+  var P = {
+    home: ['<path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/>', '<path d="M224,120v96a8,8,0,0,1-8,8H160a8,8,0,0,1-8-8V164a4,4,0,0,0-4-4H108a4,4,0,0,0-4,4v52a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V120a16,16,0,0,1,4.69-11.31l80-80a16,16,0,0,1,22.62,0l80,80A16,16,0,0,1,224,120Z"/>'],
+    assistant: ['<path d="M197.58,129.06,146,110l-19-51.62a15.92,15.92,0,0,0-29.88,0L78,110l-51.62,19a15.92,15.92,0,0,0,0,29.88L78,178l19,51.62a15.92,15.92,0,0,0,29.88,0L146,178l51.62-19a15.92,15.92,0,0,0,0-29.88ZM137,164.22a8,8,0,0,0-4.74,4.74L112,223.85,91.78,169A8,8,0,0,0,87,164.22L32.15,144,87,123.78A8,8,0,0,0,91.78,119L112,64.15,132.22,119a8,8,0,0,0,4.74,4.74L191.85,144ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"/>'],
+    timeline: ['<path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"/>'],
+    chat: ['<path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/>'],
+    all: ['<path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/>'],
+    timer: ['<path d="M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm0,176a80,80,0,1,1,80-80A80.09,80.09,0,0,1,128,216ZM173.66,90.34a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32l40-40A8,8,0,0,1,173.66,90.34ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z"/>'],
+    lists: ['<path d="M224,128a8,8,0,0,1-8,8H128a8,8,0,0,1,0-16h88A8,8,0,0,1,224,128ZM128,72h88a8,8,0,0,0,0-16H128a8,8,0,0,0,0,16Zm88,112H128a8,8,0,0,0,0,16h88a8,8,0,0,0,0-16ZM82.34,42.34,56,68.69,45.66,58.34A8,8,0,0,0,34.34,69.66l16,16a8,8,0,0,0,11.32,0l32-32A8,8,0,0,0,82.34,42.34Zm0,64L56,132.69,45.66,122.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Zm0,64L56,196.69,45.66,186.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32,0l32-32a8,8,0,0,0-11.32-11.32Z"/>']
+  };
+  function ic(n, size, filled) {
+    var p = P[n]; var inner = (filled && p[1]) ? p[1] : p[0];
+    return '<svg class="i" width="' + size + '" height="' + size + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">' + inner + '</svg>';
+  }
+  function ic(n, size, filled) {
+    var p = P[n]; var inner = (filled && p[1]) ? p[1] : p[0];
+    return '<svg class="i" width="' + size + '" height="' + size + '" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">' + inner + '</svg>';
+  }
+  var TABS = [['Overview', 'home'], ['Juno', 'assistant'], ['Timeline', 'timeline'], ['Chat', 'chat'], ['All', 'all']];
+  function phone(acc, mode, red) {
+    var tabs = TABS.map(function (t, i) { return '<div class="' + (i === 0 ? 'on' : '') + '">' + ic(t[1], 17, i === 0) + t[0] + '</div>'; }).join('');
+    var extra = red ? '<div class="glass card" style="flex-wrap:wrap;justify-content:flex-end"><span class="grow ell t-strong" style="flex-basis:100%">Old timer, not needed</span><span class="chip danger">Remove</span><span class="btn btn-primary">Keep</span></div>' : '';
+    return '<div class="phone backdrop ' + acc + ' ' + mode + '">' +
+      '<div class="sb"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>' +
+      '<div class="body">' +
+        '<div style="margin:2px 4px 0"><div class="t-caption">Tuesday</div><div class="t-heading" style="font-size:15px">Good morning, Alex</div></div>' +
+        '<div class="glass card" style="min-height:50px"><span class="character" style="--size:32px"></span><span class="grow"><span class="t-strong ell">Talk to Juno</span><span class="sub ell">Tap or say &ldquo;Hey Juno&rdquo;</span></span></div>' +
+        '<div class="glass card">' + ic('timer', 18) + '<span class="grow"><span class="t-strong ell">Pasta timer</span><span class="sub">07:42 left</span></span>' + (red ? '' : '<span class="btn btn-primary">Pause</span>') + (red ? '<span class="btn btn-primary">Pause</span>' : '') + '</div>' +
+        extra +
+        (red ? '' : '<div class="surface" style="margin-top:2px"><div class="nrow">' + ic('lists', 16) + '<span class="grow t-label ell">Shopping</span><span class="sub">2 left</span></div><div class="nrow"><span class="tk"></span><span class="grow t-label ell">Bins go out tonight</span></div></div>') +
+      '</div>' +
+      '<div class="glass-thick tb">' + tabs + '</div></div>';
+  }
+  var OLD = [['accent-tide','Tide'],['accent-ember','Ember'],['accent-aurora','Aurora'],['accent-moss','Moss'],['accent-graphite','Graphite']];
+  document.getElementById('built').innerHTML = '<span class="t-caption">Already built in</span>' + OLD.map(function (o) {
+    return '<span class="one ' + o[0] + ' light"><span class="sw"></span>' + o[1] + '</span>'; }).join('');
+  var A = [['A','accent-blossom','Blossom','pink','#D6457F','#F4A77A','Warm and friendly.'],
+           ['B','accent-orchid','Orchid','pink','#C83B9A','#7C5CE0','Cooler and more vivid.'],
+           ['C','accent-rose','Ros\u00e9','pink','#C2607A','#B9A7D6','Calm and muted.'],
+           ['D','accent-cherry','Cherry','red','#D0343C','#F07A9A','Bright and lively.'],
+           ['E','accent-brick','Brick','red','#B4412E','#D9A441','Earthy. Close to Ember, so it must stay apart.'],
+           ['F','accent-ruby','Ruby','red','#B3243F','#7A3A8C','Rich and darker.']];
+  document.getElementById('cols').innerHTML = A.map(function (a, i) {
+    var red = i >= 3;
+    return '<div class="col ' + a[1] + '" id="v-' + a[0].toLowerCase() + '"><div><span class="mode">Light</span>' + phone(a[1], 'light', red) + '</div>' +
+      '<div><span class="mode">Dark</span>' + phone(a[1], 'dark', red) + '</div>' +
+      '<div class="name"><span class="badge">' + a[0] + '</span><span class="t-heading">' + a[2] + '</span><span class="kind">' + a[3] + '</span></div>' +
+      '<div class="hexes light"><span class="sw big"></span><span class="t-mono">' + a[4] + '<br>' + a[5] + '</span></div>' +
+      '<div class="feel">' + a[6] + '</div>' +
+      (red ? '<div class="cap">Red is also the colour of danger; a danger button stays its own red.</div>' : '') + '</div>';
+  }).join('');
+</script>
+</body>
+</html>
